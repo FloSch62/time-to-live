@@ -1,0 +1,280 @@
+{
+ "piece": "blackout-heart",
+ "note": "Selected dark, restrained C-minor pair: the new exploration has dark 0.794 and score-not-club 0.937; battle t1 passes the raw automated gates. Both raw speech scans are clean. Exploration retains two short quiet phrase dips and a C-major/minor tonal-profile ambiguity in the audit. Shared grid and a lower exploration level preserve the transition.",
+ "gain_db": -7.26,
+ "loudest": "battle",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   20,
+   68
+  ],
+  "bars": 70,
+  "tail": 2,
+  "bar_s": 2.0689655172413794,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "H1",
+    "instrumental"
+   ],
+   [
+    8,
+    "H2",
+    "instrumental"
+   ],
+   [
+    12,
+    "P1",
+    "instrumental"
+   ],
+   [
+    16,
+    "P2",
+    "instrumental"
+   ],
+   [
+    20,
+    "E1",
+    "instrumental"
+   ],
+   [
+    24,
+    "E2",
+    "instrumental"
+   ],
+   [
+    28,
+    "H1",
+    "instrumental"
+   ],
+   [
+    32,
+    "H2",
+    "instrumental"
+   ],
+   [
+    36,
+    "W1",
+    "interlude"
+   ],
+   [
+    40,
+    "W2",
+    "interlude"
+   ],
+   [
+    44,
+    "E1",
+    "instrumental"
+   ],
+   [
+    48,
+    "E2",
+    "instrumental"
+   ],
+   [
+    52,
+    "H1",
+    "instrumental"
+   ],
+   [
+    56,
+    "H2",
+    "instrumental"
+   ],
+   [
+    60,
+    "P1",
+    "instrumental"
+   ],
+   [
+    64,
+    "P2",
+    "instrumental"
+   ],
+   [
+    68,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "explore": "audio/music/blackout-heart-explore.ogg",
+   "battle": "audio/music/blackout-heart-battle.ogg"
+  },
+  "bpm": 116,
+  "key": "Cm",
+  "bars": 70,
+  "barSeconds": 2.068966,
+  "duration": 147.327583,
+  "loopStart": 41.37931,
+  "loopEnd": 140.689655,
+  "loop": true,
+  "gainDb": -7.26
+ },
+ "versions": {
+  "explore": {
+   "take": "t2",
+   "seed": 904083,
+   "source": "audio-src/music/takes/blackout-heart/explore/t2/audio.flac",
+   "source_sha256": "0a95ea50aa9d36a7c89d4d1b2775ca6d130188be27db85346f2180de01d2fd7e",
+   "conform": {
+    "rate_min": 0.99929,
+    "rate_max": 1.00099,
+    "max_cents": 1.7,
+    "verify": {
+     "tempo_bpm": 116.0,
+     "grid_phase_ms": 0.2,
+     "window_error_ms": [
+      -70.0,
+      4.0,
+      0.0,
+      0.0,
+      0.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      1.35,
+      2.67,
+      3.18,
+      3.39,
+      3.03,
+      3.38,
+      3.27,
+      3.36,
+      3.47,
+      3.37,
+      3.35,
+      3.41,
+      3.44,
+      3.42,
+      3.47,
+      3.44,
+      3.43
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/blackout-heart-explore.flac",
+   "master_sha256": "3b9c33db0679f413d83c98def339e72708d9a67f83227f676c2384a32ceceffc",
+   "delivery": "public/audio/music/blackout-heart-explore.ogg",
+   "delivery_sha256": "f44f59f9e34afb6e0a76913ebadd2e32c8bbcd4cb83db5a2207aa1d698d4bd61",
+   "bytes": 2402678,
+   "samples": 7071724,
+   "decoded_samples": 7071724,
+   "source_levels": {
+    "lufs": -13.02,
+    "tp": 0.0,
+    "lra": 3.9
+   },
+   "layer_trim_db": -1.22,
+   "pre_gain": {
+    "lufs": -14.24,
+    "tp": -1.2200000000000006,
+    "lra": 3.9
+   },
+   "delivered": {
+    "lufs": -21.48,
+    "tp": -8.2,
+    "lra": 3.9
+   }
+  },
+  "battle": {
+   "take": "t1",
+   "seed": 754657,
+   "source": "audio-src/music/takes/blackout-heart/battle/t1/audio.flac",
+   "source_sha256": "1b15b2471a157e6ee282cc89026a0d6952458bfb6223e376b501ea360c208c78",
+   "conform": {
+    "rate_min": 0.99954,
+    "rate_max": 1.0005,
+    "max_cents": 0.9,
+    "verify": {
+     "tempo_bpm": 116.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      -80.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      -2.0
+     ],
+     "window_conf": [
+      2.05,
+      3.34,
+      3.06,
+      3.01,
+      3.37,
+      3.25,
+      3.2,
+      3.33,
+      3.5,
+      3.26,
+      3.21,
+      3.45,
+      3.38,
+      3.42,
+      3.42,
+      3.31,
+      3.42
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/blackout-heart-battle.flac",
+   "master_sha256": "603aa0cdf6acc1a8fa493ee6a588b3e6067a737d626e8a2a264add25ed302f5c",
+   "delivery": "public/audio/music/blackout-heart-battle.ogg",
+   "delivery_sha256": "8b0a86329d0dbc4cb32be8fa50cd3ac3f44739c10cc9e040e90e0e7f89fb500c",
+   "bytes": 2138194,
+   "samples": 7071724,
+   "decoded_samples": 7071724,
+   "source_levels": {
+    "lufs": -11.74,
+    "tp": -0.16,
+    "lra": 3.9
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -11.74,
+    "tp": -0.16,
+    "lra": 3.9
+   },
+   "delivered": {
+    "lufs": -18.97,
+    "tp": -7.34,
+    "lra": 4.0
+   }
+  }
+ }
+}

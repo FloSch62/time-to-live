@@ -1,0 +1,57 @@
+{
+ "canvas": [
+  344,
+  448
+ ],
+ "layout": [
+  172,
+  224
+ ],
+ "gen": [
+  688,
+  896
+ ],
+ "density": 2,
+ "remap": null,
+ "cable": {
+  "x": 172,
+  "y": 20
+ },
+ "class": "rear-car",
+ "grid": {
+  "x": 24,
+  "y": 120,
+  "cols": 4,
+  "rows": 4,
+  "tile": 72
+ },
+ "face": "right",
+ "mounts": [],
+ "couplerFront": {
+  "x": 342,
+  "y": 300
+ },
+ "lampColors": [
+  "#fff1c2",
+  "#ffd98a",
+  "#ffb347",
+  "#e8822a"
+ ],
+ "glow": [
+  {
+   "x": 20,
+   "y": 128,
+   "r": 6
+  },
+  {
+   "x": 52,
+   "y": 80,
+   "r": 8
+  },
+  {
+   "x": 288,
+   "y": 80,
+   "r": 8
+  }
+ ]
+}

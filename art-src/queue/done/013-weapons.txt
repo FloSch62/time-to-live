@@ -1,0 +1,16 @@
+weapons/packet-laser:p@3
+weapons/burst-emitter:p@3
+weapons/triple-burst:p@3
+weapons/jumbo-frame:p@3
+weapons/jumbo-frame-ii:p@3
+weapons/multicast-array:p@3
+weapons/jammer:p@3
+weapons/flood-cannon:p@3
+weapons/fiber-lance:p@3
+weapons/trunk-lance:p@3
+weapons/payload-launcher:p@3
+weapons/breach-spike:p@3
+weapons/thermite-payload:p@3
+weapons/scatter-shot:p@3
+weapons/heartpulse-chain:p@3
+weapons/cathedral-chime:p@3

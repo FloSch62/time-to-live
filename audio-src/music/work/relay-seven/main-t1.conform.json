@@ -1,0 +1,112 @@
+{
+ "piece": "relay-seven",
+ "version": "main",
+ "take": "t1",
+ "duration": 147.763167,
+ "samples": 7092632,
+ "bar_s": 3.1578947368421053,
+ "bars": 46,
+ "loop_bars": [
+  12,
+  44
+ ],
+ "loop_start": 37.894737,
+ "loop_end": 138.947368,
+ "anchors": [
+  {
+   "out": 6.316,
+   "take": 6.5182,
+   "local": false
+  },
+  {
+   "out": 18.947,
+   "take": 19.1498,
+   "local": false
+  },
+  {
+   "out": 31.579,
+   "take": 31.7813,
+   "local": false
+  },
+  {
+   "out": 44.211,
+   "take": 44.4129,
+   "local": false
+  },
+  {
+   "out": 56.842,
+   "take": 57.0445,
+   "local": false
+  },
+  {
+   "out": 69.474,
+   "take": 69.6761,
+   "local": false
+  },
+  {
+   "out": 82.105,
+   "take": 82.3077,
+   "local": true
+  },
+  {
+   "out": 94.737,
+   "take": 94.9392,
+   "local": false
+  },
+  {
+   "out": 107.368,
+   "take": 107.5708,
+   "local": false
+  },
+  {
+   "out": 120.0,
+   "take": 120.1984,
+   "local": true
+  },
+  {
+   "out": 132.632,
+   "take": 132.836,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99968,
+ "rate_max": 1.00048,
+ "max_cents": 0.8,
+ "take_seconds_used": 147.968,
+ "seam": {
+  "loop_start_sample": 1818947,
+  "loop_end_sample": 6669474,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 76.002,
+  "grid_phase_ms": 2.2,
+  "window_error_ms": [
+   36.0,
+   -58.0,
+   20.0,
+   2.0,
+   -2.0,
+   -10.0,
+   -2.0,
+   -20.0,
+   2.0,
+   -2.0,
+   4.0
+  ],
+  "window_conf": [
+   2.03,
+   3.08,
+   2.33,
+   2.4,
+   2.31,
+   2.39,
+   2.44,
+   2.4,
+   2.32,
+   2.71,
+   2.83
+  ]
+ },
+ "tempo_correction": null
+}

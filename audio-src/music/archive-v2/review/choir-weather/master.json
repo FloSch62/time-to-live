@@ -1,0 +1,280 @@
+{
+ "piece": "choir-weather",
+ "note": "Selected E-minor piano/celesta pair, stable timing and clean raw speech scans, replacing vocal-like and structurally inconsistent pilots. Both have brief quiet phrase dips retained in the source analysis. Loop bars 20-60 join matching B-minor/F-sharp cadences and avoid the exploration performance fading into its outro; both layers share the exact loop and sample length. Static level trim keeps exploration quieter.",
+ "gain_db": -3.81,
+ "loudest": "battle",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   20,
+   60
+  ],
+  "bars": 70,
+  "tail": 2,
+  "bar_s": 2.4,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "W1",
+    "instrumental"
+   ],
+   [
+    8,
+    "W2",
+    "instrumental"
+   ],
+   [
+    12,
+    "X1",
+    "instrumental"
+   ],
+   [
+    16,
+    "X2",
+    "instrumental"
+   ],
+   [
+    20,
+    "Y1",
+    "instrumental"
+   ],
+   [
+    24,
+    "Y2",
+    "instrumental"
+   ],
+   [
+    28,
+    "W1",
+    "instrumental"
+   ],
+   [
+    32,
+    "W2",
+    "instrumental"
+   ],
+   [
+    36,
+    "Z1",
+    "interlude"
+   ],
+   [
+    40,
+    "Z2",
+    "interlude"
+   ],
+   [
+    44,
+    "Y1",
+    "instrumental"
+   ],
+   [
+    48,
+    "Y2",
+    "instrumental"
+   ],
+   [
+    52,
+    "W1",
+    "instrumental"
+   ],
+   [
+    56,
+    "W2",
+    "instrumental"
+   ],
+   [
+    60,
+    "X1",
+    "instrumental"
+   ],
+   [
+    64,
+    "X2",
+    "instrumental"
+   ],
+   [
+    68,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "explore": "audio/music/choir-weather-explore.ogg",
+   "battle": "audio/music/choir-weather-battle.ogg"
+  },
+  "bpm": 100,
+  "key": "Em",
+  "bars": 70,
+  "barSeconds": 2.4,
+  "duration": 170.5,
+  "loopStart": 48.0,
+  "loopEnd": 144.0,
+  "loop": true,
+  "gainDb": -3.81
+ },
+ "versions": {
+  "explore": {
+   "take": "t3",
+   "seed": 723024,
+   "source": "audio-src/music/takes/choir-weather/explore/t3/audio.flac",
+   "source_sha256": "999758f6d5c667a0f03d0c54d74f60ddbc1695e74ff78b158d494878e5aade14",
+   "conform": {
+    "rate_min": 0.99958,
+    "rate_max": 1.00042,
+    "max_cents": 0.7,
+    "verify": {
+     "tempo_bpm": 100.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.4,
+      3.41,
+      3.43,
+      3.31,
+      3.36,
+      3.43,
+      3.35,
+      3.41,
+      3.47,
+      3.37,
+      3.45,
+      3.48,
+      3.55,
+      3.53,
+      3.51,
+      3.44,
+      3.42
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/choir-weather-explore.flac",
+   "master_sha256": "6844bb42fa06ac903a48615b049c5b9f16ff9e9a8436c424c0704983405035fc",
+   "delivery": "public/audio/music/choir-weather-explore.ogg",
+   "delivery_sha256": "b63afa89127339459c0b3a1ffc0943c0c5c23a25d9e778bf108276cd90571937",
+   "bytes": 3048343,
+   "samples": 8184000,
+   "decoded_samples": 8184000,
+   "source_levels": {
+    "lufs": -14.5,
+    "tp": 0.43,
+    "lra": 7.9
+   },
+   "layer_trim_db": -3.19,
+   "pre_gain": {
+    "lufs": -17.689999999999998,
+    "tp": -2.7599999999999976,
+    "lra": 7.9
+   },
+   "delivered": {
+    "lufs": -21.5,
+    "tp": -6.28,
+    "lra": 8.0
+   }
+  },
+  "battle": {
+   "take": "t3",
+   "seed": 544602,
+   "source": "audio-src/music/takes/choir-weather/battle/t3/audio.flac",
+   "source_sha256": "02ba3cffef34298d2c153370aaccec9ee1908677d8a8f43dc78c659e1bb00ad0",
+   "conform": {
+    "rate_min": 0.99896,
+    "rate_max": 1.00104,
+    "max_cents": 1.8,
+    "verify": {
+     "tempo_bpm": 100.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      -14.0,
+      0.0,
+      4.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.11,
+      2.46,
+      2.71,
+      3.23,
+      3.28,
+      3.36,
+      3.32,
+      3.37,
+      3.32,
+      3.33,
+      3.45,
+      3.36,
+      3.3,
+      3.33,
+      3.29,
+      3.35,
+      3.28
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/choir-weather-battle.flac",
+   "master_sha256": "abe4158a6f42d9f6c67f7407629736a66ee2801d076b931c4567f41235c8052d",
+   "delivery": "public/audio/music/choir-weather-battle.ogg",
+   "delivery_sha256": "e1226be01c78b457fb268d586a1a7060d45b93b4a8ec15ccb9ed9870bafe9413",
+   "bytes": 2682108,
+   "samples": 8184000,
+   "decoded_samples": 8184000,
+   "source_levels": {
+    "lufs": -15.19,
+    "tp": 0.09,
+    "lra": 5.7
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -15.19,
+    "tp": 0.09,
+    "lra": 5.7
+   },
+   "delivered": {
+    "lufs": -18.98,
+    "tp": -3.33,
+    "lra": 5.8
+   }
+  }
+ }
+}

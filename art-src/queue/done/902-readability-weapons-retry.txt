@@ -1,0 +1,5 @@
+weapons/jammer:readable@1
+weapons/fiber-lance:readable@1
+weapons/scatter-shot:readable@1
+weapons/thermite-payload:readable@1
+weapons/heartpulse-chain:readable@1

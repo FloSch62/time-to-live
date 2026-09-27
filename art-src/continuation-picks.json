@@ -1,0 +1,23 @@
+{
+  "ships/lamplighter": "art-src/cand/ships/lamplighter/lamplighter-h2-40757716.png",
+  "ships/packet-leech": "art-src/cand/ships/packet-leech/packet-leech-h-1439372212.png",
+  "ships/cable-wraith": "art-src/cand/ships/cable-wraith/cable-wraith-h-394587925.png",
+  "ships/rust-prophet": "art-src/cand/ships/rust-prophet/rust-prophet-h-120373321.png",
+  "ships/scrap-foreman": "art-src/cand/ships/scrap-foreman/scrap-foreman-h-29025147.png",
+  "ships/scavenger-skiff": "art-src/cand/ships/scavenger-skiff/scavenger-skiff-h-1062334805.png",
+  "ships/static-nest": "art-src/cand/ships/static-nest/static-nest-h-77937755.png",
+  "ships/ferric-colossus": "art-src/cand/ships/ferric-colossus/ferric-colossus-h-489389178.png",
+  "ships/iron-regent": "art-src/cand/ships/iron-regent/iron-regent-h-1044838216.png",
+  "ships/gate-warden": "art-src/cand/ships/gate-warden/gate-warden-h-686908134.png",
+  "cars/drone-car": "art-src/cand/cars/drone-car/drone-car-ha-289658501.png",
+  "cars/armory-car": "art-src/cand/cars/armory-car/armory-car-ha-185200452.png",
+  "cars/freight-car": "art-src/cand/cars/freight-car/freight-car-ha-1069715995.png",
+  "cars/bunk-car": "art-src/cand/cars/bunk-car/bunk-car-ha-228355168.png",
+  "cars/veil-car": "art-src/cand/cars/veil-car/veil-car-ha-737268018.png",
+  "cars/ballast-keel": "art-src/cand/cars/ballast-keel/ballast-keel-ha-276851108.png",
+  "cars/listening-keel": "art-src/cand/cars/listening-keel/listening-keel-ha-605383019.png",
+  "portraits/operator": "art-src/cand/portraits/operator/operator-hp-17737392.png",
+  "portraits/pell": "art-src/cand/portraits/pell/pell-hp-1255926682.png",
+  "events/lift-car-stuck": "art-src/cand/events/lift-car-stuck/lift-car-stuck-h-865443139.png",
+  "events/copper-market": "art-src/cand/events/copper-market/copper-market-h4-553912228.png"
+}

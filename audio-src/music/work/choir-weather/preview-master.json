@@ -1,0 +1,284 @@
+{
+ "piece": "choir-weather",
+ "note": "Fresh original composition candidate. Raw flags and sync report retained for selection review.",
+ "gain_db": -5.54,
+ "loudest": "battle",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   4,
+   56
+  ],
+  "bars": 62,
+  "tail": 2,
+  "bar_s": 2.2222222222222223,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "phrase01",
+    "instrumental"
+   ],
+   [
+    8,
+    "phrase02",
+    "instrumental"
+   ],
+   [
+    12,
+    "phrase03",
+    "instrumental"
+   ],
+   [
+    16,
+    "phrase04",
+    "instrumental"
+   ],
+   [
+    20,
+    "phrase05",
+    "instrumental"
+   ],
+   [
+    24,
+    "phrase06",
+    "instrumental"
+   ],
+   [
+    28,
+    "phrase07",
+    "interlude"
+   ],
+   [
+    32,
+    "phrase08",
+    "interlude"
+   ],
+   [
+    36,
+    "phrase09",
+    "instrumental"
+   ],
+   [
+    40,
+    "phrase10",
+    "instrumental"
+   ],
+   [
+    44,
+    "phrase11",
+    "instrumental"
+   ],
+   [
+    48,
+    "phrase12",
+    "instrumental"
+   ],
+   [
+    52,
+    "phrase13",
+    "instrumental"
+   ],
+   [
+    56,
+    "phrase14",
+    "instrumental"
+   ],
+   [
+    60,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "explore": "audio/music/choir-weather-explore.ogg",
+   "battle": "audio/music/choir-weather-battle.ogg"
+  },
+  "bpm": 108,
+  "key": "C#m",
+  "bars": 62,
+  "barSeconds": 2.222222,
+  "duration": 140.277771,
+  "loopStart": 8.888889,
+  "loopEnd": 124.444444,
+  "loop": true,
+  "gainDb": -5.54,
+  "revision": "v4-new-composition",
+  "takes": {
+   "explore": "t22",
+   "battle": "t22"
+  },
+  "cues": {
+   "theme": 8.889,
+   "contrast": 62.222,
+   "return": 80.0
+  }
+ },
+ "versions": {
+  "explore": {
+   "take": "t22",
+   "seed": 742024,
+   "source": "audio-src/music/takes/choir-weather/explore/t22/audio.flac",
+   "source_sha256": "ed5caa7c5f8e05f8a244a8f9b8f3c2b3c69b787bea3d8a966ecb7bf09f99c0ad",
+   "conform": {
+    "rate_min": 0.99958,
+    "rate_max": 0.9998,
+    "seam": {
+     "loop_start_sample": 426667,
+     "loop_end_sample": 5973333,
+     "crossfade_s": 2.2222291666666667
+    },
+    "phase_correction_beats": 0,
+    "max_cents": 0.7,
+    "verify": {
+     "tempo_bpm": 108.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.38,
+      3.37,
+      3.33,
+      3.36,
+      3.39,
+      3.42,
+      3.38,
+      3.38,
+      3.37,
+      3.36,
+      3.39,
+      3.4,
+      3.39,
+      3.39,
+      3.37
+     ]
+    }
+   },
+   "master": "audio-src/music/previews/lossless/choir-weather-explore.flac",
+   "master_sha256": "52473dbb5c49a27f7471b85c9422acbd879b9dd6e525d65c95d2290651511ea7",
+   "delivery": "audio-src/music/previews/choir-weather-explore.ogg",
+   "delivery_sha256": "5a3266b7e4ad761204dae35a72ca5e0b599c1fec6d77d19f3a848dbff7b0eff4",
+   "bytes": 2353584,
+   "samples": 6733333,
+   "decoded_samples": 6733333,
+   "source_levels": {
+    "lufs": -14.5,
+    "tp": 0.38,
+    "lra": 2.1
+   },
+   "layer_trim_db": -1.46,
+   "pre_gain": {
+    "lufs": -15.96,
+    "tp": -1.080000000000001,
+    "lra": 2.1
+   },
+   "delivered": {
+    "lufs": -21.51,
+    "tp": -6.56,
+    "lra": 2.1
+   }
+  },
+  "battle": {
+   "take": "t22",
+   "seed": 563602,
+   "source": "audio-src/music/takes/choir-weather/battle/t22/audio.flac",
+   "source_sha256": "710a6ec2566143526f0332ac82a0896848c4dde01dae3145ac143e1ea7b49e60",
+   "conform": {
+    "rate_min": 0.99917,
+    "rate_max": 0.99984,
+    "seam": {
+     "loop_start_sample": 426667,
+     "loop_end_sample": 5973333,
+     "crossfade_s": 2.2222291666666667
+    },
+    "phase_correction_beats": 0,
+    "max_cents": 1.4,
+    "verify": {
+     "tempo_bpm": 108.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.45,
+      3.47,
+      3.35,
+      3.35,
+      3.49,
+      3.36,
+      3.4,
+      3.44,
+      3.36,
+      3.39,
+      3.48,
+      3.38,
+      3.38,
+      3.45,
+      3.48
+     ]
+    }
+   },
+   "master": "audio-src/music/previews/lossless/choir-weather-battle.flac",
+   "master_sha256": "43a71c1b9d59848b8afa8a429a4fd21a48649726cac9178c6ea1eb31296fed67",
+   "delivery": "audio-src/music/previews/choir-weather-battle.ogg",
+   "delivery_sha256": "0286ae9dc5429a817b4460781cd169432de9b3c40969dd71043bed89e5d70ddb",
+   "bytes": 2453755,
+   "samples": 6733333,
+   "decoded_samples": 6733333,
+   "source_levels": {
+    "lufs": -13.46,
+    "tp": 0.39,
+    "lra": 5.1
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -13.46,
+    "tp": 0.39,
+    "lra": 5.1
+   },
+   "delivered": {
+    "lufs": -19.0,
+    "tp": -5.02,
+    "lra": 5.2
+   }
+  }
+ }
+}

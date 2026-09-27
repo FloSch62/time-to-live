@@ -1,0 +1,148 @@
+{
+  "model": "laion/clap-htsat-unfused",
+  "source_folder": "/mnt/c/Users/Flo/Downloads/ftl - multiverse soundtrack",
+  "cached_reference_library": true,
+  "method": "Normalized CLAP centroid of three 10s excerpts at 15/45/75% of available start range; compare same-layer files.",
+  "limitation": "Automated timbre/style similarity only. Not a perceptual quality score, melodic originality check or listening approval.",
+  "descriptions": {
+    "synth_sequences": "Instrumental electronic space game music with synthesizer arpeggios and sequenced bass.",
+    "synth_melody": "Melodic synthesizer video game soundtrack with a soft square wave lead and atmospheric pads.",
+    "ambient": "Ambient space music with slowly evolving synthesizer pads and sparse electronic tones.",
+    "piano_strings": "Melancholic cinematic music with soft piano, cello and orchestral strings.",
+    "chiptune": "Melodic chiptune video game music with eight bit electronic tones.",
+    "breakbeat": "Instrumental electronic music with syncopated breakbeats, synthesizers and a bass groove.",
+    "rock": "Instrumental progressive rock music with electric guitar, bass and drums.",
+    "club": "Electronic dance music with a four on the floor kick, a big drop and pumping supersaw chords.",
+    "orchestral": "Epic cinematic orchestral battle music with brass, strings and massive percussion.",
+    "vocals": "Music with a singer singing words and a choir."
+  },
+  "reference_summary": {
+    "explore": {
+      "count": 28,
+      "descriptions": {
+        "synth_sequences": 0.4614,
+        "synth_melody": 0.503,
+        "ambient": 0.4122,
+        "piano_strings": 0.4165,
+        "chiptune": 0.3386,
+        "breakbeat": 0.3788,
+        "rock": 0.2016,
+        "club": 0.4152,
+        "orchestral": 0.3125,
+        "vocals": 0.2009
+      }
+    },
+    "battle": {
+      "count": 28,
+      "descriptions": {
+        "synth_sequences": 0.3773,
+        "synth_melody": 0.3764,
+        "ambient": 0.2501,
+        "piano_strings": 0.3538,
+        "chiptune": 0.3154,
+        "breakbeat": 0.4773,
+        "rock": 0.35,
+        "club": 0.4577,
+        "orchestral": 0.4143,
+        "vocals": 0.1173
+      }
+    },
+    "main": {
+      "count": 8,
+      "descriptions": {
+        "synth_sequences": 0.348,
+        "synth_melody": 0.3644,
+        "ambient": 0.2526,
+        "piano_strings": 0.3542,
+        "chiptune": 0.3476,
+        "breakbeat": 0.4224,
+        "rock": 0.2654,
+        "club": 0.4192,
+        "orchestral": 0.3974,
+        "vocals": 0.1919
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "file": "/home/clab/projects/clab/time-to-live/audio-src/music/takes/blackout-heart/explore/t22/audio.flac",
+      "sha256": "f387ad20138217338923df7e86a171df31abf49c8132661267b3b920b21d69c2",
+      "layer": "explore",
+      "reference_mean": 0.6325,
+      "closest": [
+        {
+          "file": "mv_MUS_OrchidEXPLORE.ogg",
+          "cosine": 0.7929
+        },
+        {
+          "file": "mv_MUS_VoyagerEXPLORE.ogg",
+          "cosine": 0.7826
+        },
+        {
+          "file": "mv_MUS_AutoEXPLORE.ogg",
+          "cosine": 0.7511
+        },
+        {
+          "file": "mv_MUS_InsurgenceEXPLORE.ogg",
+          "cosine": 0.7149
+        },
+        {
+          "file": "mv_MUS_CorporateEXPLORE.ogg",
+          "cosine": 0.7127
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.3168,
+        "synth_melody": 0.3684,
+        "ambient": 0.2624,
+        "piano_strings": 0.3045,
+        "chiptune": 0.1609,
+        "breakbeat": 0.4359,
+        "rock": 0.1815,
+        "club": 0.565,
+        "orchestral": 0.0604,
+        "vocals": 0.0988
+      }
+    },
+    {
+      "file": "/home/clab/projects/clab/time-to-live/audio-src/music/takes/blackout-heart/battle/t21/audio.flac",
+      "sha256": "af92f0ec3b00cde0d703454b7c025156551f392aaa98c0ed40ebf3e258748e94",
+      "layer": "battle",
+      "reference_mean": 0.6678,
+      "closest": [
+        {
+          "file": "mv_MUS_ShiningBATTLE.ogg",
+          "cosine": 0.7898
+        },
+        {
+          "file": "mv_MUS_ConfederateBATTLE.ogg",
+          "cosine": 0.7847
+        },
+        {
+          "file": "mv_MUS_SeparatistBATTLE.ogg",
+          "cosine": 0.7782
+        },
+        {
+          "file": "mv_MUS_HektarBATTLE.ogg",
+          "cosine": 0.7738
+        },
+        {
+          "file": "mv_MUS_InsurgenceBATTLE.ogg",
+          "cosine": 0.7509
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.3102,
+        "synth_melody": 0.368,
+        "ambient": 0.1097,
+        "piano_strings": 0.2451,
+        "chiptune": 0.3816,
+        "breakbeat": 0.4995,
+        "rock": 0.3271,
+        "club": 0.6735,
+        "orchestral": 0.2695,
+        "vocals": 0.1731
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+ships//home/clab/projects/clab/time-to-live/art-src/packet-leech
+cable-wraith
+rust-prophet
+scrap-foreman
+scavenger-skiff
+static-nest
+ferric-colossus
+iron-regent
+gate-warden@3

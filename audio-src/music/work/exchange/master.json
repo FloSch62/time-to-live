@@ -1,0 +1,175 @@
+{
+ "piece": "exchange",
+ "note": "Replaces the bright v1 trade cue with a quiet, desolate felt-piano and analog-pad performance (dark 0.717, score-not-club 0.836). Raw instrumental speech scan clean. Accepted alpha performance variations: rubato in one late phrase, one brief attenuation and an ambiguous A-major/minor tonal profile. Timing is conformed; original flags remain visible.",
+ "gain_db": -3.86,
+ "loudest": "main",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   28,
+   52
+  ],
+  "bars": 54,
+  "tail": 2,
+  "bar_s": 2.5531914893617023,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "M1",
+    "instrumental"
+   ],
+   [
+    8,
+    "M2",
+    "instrumental"
+   ],
+   [
+    12,
+    "V1",
+    "interlude"
+   ],
+   [
+    16,
+    "V2",
+    "interlude"
+   ],
+   [
+    20,
+    "B1",
+    "instrumental"
+   ],
+   [
+    24,
+    "B2",
+    "instrumental"
+   ],
+   [
+    28,
+    "M1",
+    "instrumental"
+   ],
+   [
+    32,
+    "M2",
+    "instrumental"
+   ],
+   [
+    36,
+    "V1",
+    "interlude"
+   ],
+   [
+    40,
+    "V2",
+    "interlude"
+   ],
+   [
+    44,
+    "B1",
+    "instrumental"
+   ],
+   [
+    48,
+    "B2",
+    "instrumental"
+   ],
+   [
+    52,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "main": "audio/music/exchange.ogg"
+  },
+  "bpm": 94,
+  "key": "Am",
+  "bars": 54,
+  "barSeconds": 2.553191,
+  "duration": 140.372333,
+  "loopStart": 71.489362,
+  "loopEnd": 132.765957,
+  "loop": true,
+  "gainDb": -3.86
+ },
+ "versions": {
+  "main": {
+   "take": "t3",
+   "seed": 747900,
+   "source": "audio-src/music/takes/exchange/main/t3/audio.flac",
+   "source_sha256": "3c06aee83bf56a197aefda5308c4a2444acc67de4a38b595b2c51af32b64df53",
+   "conform": {
+    "rate_min": 0.99855,
+    "rate_max": 1.00247,
+    "max_cents": 4.3,
+    "verify": {
+     "tempo_bpm": 94.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      68.0,
+      0.0,
+      0.0,
+      0.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      -36.0,
+      -80.0
+     ],
+     "window_conf": [
+      0.98,
+      3.16,
+      2.94,
+      2.94,
+      3.06,
+      3.13,
+      3.29,
+      3.19,
+      3.14,
+      3.16,
+      2.64,
+      2.51,
+      3.69
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/exchange.flac",
+   "master_sha256": "71cf068b6d0eb3d0dee2b7d16d04df152bbacef2fe048c2bb7d84c0ff4e2e6cb",
+   "delivery": "public/audio/music/exchange.ogg",
+   "delivery_sha256": "7c691e11fd2e758db1aaea12f18eb1c8d7aeffbf9c1a08eaaf187e726b9c035e",
+   "bytes": 2117751,
+   "samples": 6737872,
+   "decoded_samples": 6737872,
+   "source_levels": {
+    "lufs": -15.14,
+    "tp": 0.43,
+    "lra": 11.5
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -15.14,
+    "tp": 0.43,
+    "lra": 11.5
+   },
+   "delivered": {
+    "lufs": -18.98,
+    "tp": -3.49,
+    "lra": 11.5
+   }
+  }
+ }
+}

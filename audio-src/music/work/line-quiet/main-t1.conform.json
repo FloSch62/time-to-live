@@ -1,0 +1,56 @@
+{
+ "piece": "line-quiet",
+ "version": "main",
+ "take": "t1",
+ "duration": 50.5,
+ "samples": 2424000,
+ "bar_s": 3.4285714285714284,
+ "bars": 14,
+ "loop_bars": [
+  4,
+  12
+ ],
+ "loop_start": 13.714286,
+ "loop_end": 41.142857,
+ "anchors": [
+  {
+   "out": 6.857,
+   "take": 6.9525,
+   "local": false
+  },
+  {
+   "out": 20.571,
+   "take": 20.6639,
+   "local": 1.0
+  },
+  {
+   "out": 34.286,
+   "take": 34.3813,
+   "local": 1.0
+  }
+ ],
+ "rate_min": 0.99979,
+ "rate_max": 1.00023,
+ "max_cents": 0.4,
+ "take_seconds_used": 50.597,
+ "seam": null,
+ "verify": {
+  "tempo_bpm": 70.021,
+  "grid_phase_ms": 9.0,
+  "window_error_ms": [
+   12.0,
+   -2.0,
+   0.0
+  ],
+  "window_conf": [
+   2.87,
+   2.81,
+   2.98
+  ]
+ },
+ "tempo_correction": {
+  "rubberband_ratio": 0.993068,
+  "residual_ratio": 0.99992,
+  "realigned_flags": []
+ }
+}

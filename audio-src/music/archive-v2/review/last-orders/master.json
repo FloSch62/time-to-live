@@ -1,0 +1,282 @@
+{
+ "piece": "last-orders",
+ "note": "Selected matching C-minor pair, raw speech scans clean. Paired beat-chroma review found battle t2 anticipated exploration by one beat; its source-time origin is corrected by minus one beat during conforming, with pitch and tempo preserved. Local onset-offset flags and borderline vocal-texture scores remain in the audit. Shared mastering attenuates exploration, followed by a fresh phase check.",
+ "gain_db": -3.35,
+ "loudest": "battle",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   20,
+   68
+  ],
+  "bars": 70,
+  "tail": 2,
+  "bar_s": 2.0,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "O1",
+    "instrumental"
+   ],
+   [
+    8,
+    "O2",
+    "instrumental"
+   ],
+   [
+    12,
+    "M1",
+    "instrumental"
+   ],
+   [
+    16,
+    "M2",
+    "instrumental"
+   ],
+   [
+    20,
+    "L1",
+    "instrumental"
+   ],
+   [
+    24,
+    "L2",
+    "instrumental"
+   ],
+   [
+    28,
+    "O1",
+    "instrumental"
+   ],
+   [
+    32,
+    "O2",
+    "instrumental"
+   ],
+   [
+    36,
+    "W1",
+    "interlude"
+   ],
+   [
+    40,
+    "W2",
+    "interlude"
+   ],
+   [
+    44,
+    "L1",
+    "instrumental"
+   ],
+   [
+    48,
+    "L2",
+    "instrumental"
+   ],
+   [
+    52,
+    "O1",
+    "instrumental"
+   ],
+   [
+    56,
+    "O2",
+    "instrumental"
+   ],
+   [
+    60,
+    "M1",
+    "instrumental"
+   ],
+   [
+    64,
+    "M2",
+    "instrumental"
+   ],
+   [
+    68,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "explore": "audio/music/last-orders-explore.ogg",
+   "battle": "audio/music/last-orders-battle.ogg"
+  },
+  "bpm": 120,
+  "key": "Cm",
+  "bars": 70,
+  "barSeconds": 2.0,
+  "duration": 142.5,
+  "loopStart": 40.0,
+  "loopEnd": 136.0,
+  "loop": true,
+  "gainDb": -3.35
+ },
+ "versions": {
+  "explore": {
+   "take": "t2",
+   "seed": 943514,
+   "source": "audio-src/music/takes/last-orders/explore/t2/audio.flac",
+   "source_sha256": "08bbece968dfd06fd40a101fabbffc22088215dbf8dafe34133f61d4462a0a45",
+   "conform": {
+    "rate_min": 0.99825,
+    "rate_max": 1.00125,
+    "phase_correction_beats": 0,
+    "max_cents": 3.0,
+    "verify": {
+     "tempo_bpm": 120.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      -16.0,
+      4.0,
+      4.0,
+      -4.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.44,
+      1.63,
+      3.27,
+      2.97,
+      2.98,
+      3.39,
+      3.47,
+      3.52,
+      3.45,
+      3.51,
+      3.45,
+      3.5,
+      3.57,
+      3.51,
+      3.53,
+      3.54,
+      3.52
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/last-orders-explore.flac",
+   "master_sha256": "ba9b74200befd986dc11cc0a0eac9e1a7f0f45a63c494d0b206f4b9ae8a92851",
+   "delivery": "public/audio/music/last-orders-explore.ogg",
+   "delivery_sha256": "fcf58363191b08ed2ae2cdae248bc470ed69eada1483ccd4f8081e4b5f9e18a1",
+   "bytes": 2285628,
+   "samples": 6840000,
+   "decoded_samples": 6840000,
+   "source_levels": {
+    "lufs": -14.17,
+    "tp": -0.17,
+    "lra": 3.4
+   },
+   "layer_trim_db": -3.98,
+   "pre_gain": {
+    "lufs": -18.15,
+    "tp": -4.149999999999999,
+    "lra": 3.4
+   },
+   "delivered": {
+    "lufs": -21.49,
+    "tp": -7.32,
+    "lra": 3.4
+   }
+  },
+  "battle": {
+   "take": "t2",
+   "seed": 118700,
+   "source": "audio-src/music/takes/last-orders/battle/t2/audio.flac",
+   "source_sha256": "c759fc02d7664c5589ff0d83566cac0994bea7d658826dfcd6a3dcef9ba81fad",
+   "conform": {
+    "rate_min": 1.0,
+    "rate_max": 1.0,
+    "phase_correction_beats": -1,
+    "max_cents": 0.0,
+    "verify": {
+     "tempo_bpm": 120.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      24.0,
+      -70.0,
+      10.0,
+      44.0,
+      56.0,
+      54.0,
+      56.0,
+      54.0,
+      46.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.49,
+      2.43,
+      2.24,
+      2.3,
+      1.82,
+      2.23,
+      1.89,
+      2.71,
+      1.78,
+      3.52,
+      3.46,
+      3.48,
+      3.44,
+      3.5,
+      3.49,
+      3.46,
+      3.44
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/last-orders-battle.flac",
+   "master_sha256": "173ea877424e09ea8082aa4e52481cb62c4ef864cc8eb60be4c94c675736e253",
+   "delivery": "public/audio/music/last-orders-battle.ogg",
+   "delivery_sha256": "a84b9809cf5b1cc4ab9385efff91d7f13d77d0f2e62bac5856889d3e80a032d5",
+   "bytes": 2285909,
+   "samples": 6840000,
+   "decoded_samples": 6840000,
+   "source_levels": {
+    "lufs": -15.65,
+    "tp": -1.27,
+    "lra": 10.6
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -15.65,
+    "tp": -1.27,
+    "lra": 10.6
+   },
+   "delivered": {
+    "lufs": -18.98,
+    "tp": -4.59,
+    "lra": 10.6
+   }
+  }
+ }
+}

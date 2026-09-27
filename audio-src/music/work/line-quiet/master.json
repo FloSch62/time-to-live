@@ -1,0 +1,105 @@
+{
+ "piece": "line-quiet",
+ "note": "Selected restrained defeat cue: D minor, dark non-club arrangement, raw speech scan clean. Small global tempo correction conforms the written pulse; cue plays once and ends.",
+ "gain_db": -2.92,
+ "loudest": "main",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   4,
+   12
+  ],
+  "bars": 14,
+  "tail": 2,
+  "bar_s": 3.4285714285714284,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "T1",
+    "interlude"
+   ],
+   [
+    8,
+    "L1",
+    "outro"
+   ],
+   [
+    12,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": false
+ },
+ "entry": {
+  "files": {
+   "main": "audio/music/line-quiet.ogg"
+  },
+  "bpm": 70,
+  "key": "Dm",
+  "bars": 14,
+  "barSeconds": 3.428571,
+  "duration": 50.5,
+  "loopStart": 13.714286,
+  "loopEnd": 41.142857,
+  "loop": false,
+  "gainDb": -2.92
+ },
+ "versions": {
+  "main": {
+   "take": "t1",
+   "seed": 445388,
+   "source": "audio-src/music/takes/line-quiet/main/t1/audio.flac",
+   "source_sha256": "3ac5c82d623abc3b97fc11ca9c99fcabe62ff86eb06be09fa8ecc47dede1aa28",
+   "conform": {
+    "rate_min": 0.99979,
+    "rate_max": 1.00023,
+    "max_cents": 0.4,
+    "verify": {
+     "tempo_bpm": 70.021,
+     "grid_phase_ms": 9.0,
+     "window_error_ms": [
+      12.0,
+      -2.0,
+      0.0
+     ],
+     "window_conf": [
+      2.87,
+      2.81,
+      2.98
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/line-quiet.flac",
+   "master_sha256": "a309ea01f97434d90ae1d291c0d48cecea2e8d9c34c2819ffc47398ee3a241f9",
+   "delivery": "public/audio/music/line-quiet.ogg",
+   "delivery_sha256": "734292532dcc2a3dacdf84a79f0cd810ae29daaa3a3e95e6a3b7e33a98011d8e",
+   "bytes": 597202,
+   "samples": 2424000,
+   "decoded_samples": 2424000,
+   "source_levels": {
+    "lufs": -16.08,
+    "tp": 0.02,
+    "lra": 4.2
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -16.08,
+    "tp": 0.02,
+    "lra": 4.2
+   },
+   "delivered": {
+    "lufs": -18.96,
+    "tp": -2.99,
+    "lra": 4.2
+   }
+  }
+ }
+}

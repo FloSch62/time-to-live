@@ -1,0 +1,227 @@
+{
+  "model": "laion/clap-htsat-unfused",
+  "source_folder": "/mnt/c/Users/Flo/Downloads/ftl - multiverse soundtrack",
+  "method": "Normalized CLAP centroid of three 10s excerpts at 15/45/75% of available start range; compare same-layer files.",
+  "limitation": "Automated timbre/style similarity only. Not a perceptual quality score, melodic originality check or listening approval.",
+  "descriptions": {
+    "synth_sequences": "Instrumental electronic space game music with synthesizer arpeggios and sequenced bass.",
+    "synth_melody": "Melodic synthesizer video game soundtrack with a soft square wave lead and atmospheric pads.",
+    "ambient": "Ambient space music with slowly evolving synthesizer pads and sparse electronic tones.",
+    "piano_strings": "Melancholic cinematic music with soft piano, cello and orchestral strings.",
+    "chiptune": "Melodic chiptune video game music with eight bit electronic tones.",
+    "breakbeat": "Instrumental electronic music with syncopated breakbeats, synthesizers and a bass groove.",
+    "rock": "Instrumental progressive rock music with electric guitar, bass and drums.",
+    "club": "Electronic dance music with a four on the floor kick, a big drop and pumping supersaw chords.",
+    "orchestral": "Epic cinematic orchestral battle music with brass, strings and massive percussion.",
+    "vocals": "Music with a singer singing words and a choir."
+  },
+  "reference_summary": {
+    "explore": {
+      "count": 28,
+      "descriptions": {
+        "synth_sequences": 0.4614,
+        "synth_melody": 0.503,
+        "ambient": 0.4122,
+        "piano_strings": 0.4165,
+        "chiptune": 0.3386,
+        "breakbeat": 0.3788,
+        "rock": 0.2016,
+        "club": 0.4152,
+        "orchestral": 0.3125,
+        "vocals": 0.2009
+      }
+    },
+    "battle": {
+      "count": 28,
+      "descriptions": {
+        "synth_sequences": 0.3773,
+        "synth_melody": 0.3764,
+        "ambient": 0.2501,
+        "piano_strings": 0.3538,
+        "chiptune": 0.3154,
+        "breakbeat": 0.4773,
+        "rock": 0.35,
+        "club": 0.4577,
+        "orchestral": 0.4143,
+        "vocals": 0.1173
+      }
+    },
+    "main": {
+      "count": 8,
+      "descriptions": {
+        "synth_sequences": 0.348,
+        "synth_melody": 0.3644,
+        "ambient": 0.2526,
+        "piano_strings": 0.3542,
+        "chiptune": 0.3476,
+        "breakbeat": 0.4224,
+        "rock": 0.2654,
+        "club": 0.4192,
+        "orchestral": 0.3974,
+        "vocals": 0.1919
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "file": "audio-src/music/takes/copper-reach/explore/t10/audio.flac",
+      "sha256": "cc942c3b00e11623e4792510771ba048d9c23d95b0cda816d49da610fa394757",
+      "layer": "explore",
+      "reference_mean": 0.5572,
+      "closest": [
+        {
+          "file": "mv_MUS_UnexploredEXPLORE.ogg",
+          "cosine": 0.7086
+        },
+        {
+          "file": "mv_MUS_VoyagerEXPLORE.ogg",
+          "cosine": 0.7009
+        },
+        {
+          "file": "mv_MUS_OrchidEXPLORE.ogg",
+          "cosine": 0.686
+        },
+        {
+          "file": "mv_MUS_AutoEXPLORE.ogg",
+          "cosine": 0.6758
+        },
+        {
+          "file": "mv_MUS_FreeMantisEXPLORE.ogg",
+          "cosine": 0.6455
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.2185,
+        "synth_melody": 0.3005,
+        "ambient": 0.2246,
+        "piano_strings": 0.2183,
+        "chiptune": 0.0743,
+        "breakbeat": 0.384,
+        "rock": 0.2467,
+        "club": 0.4729,
+        "orchestral": -0.0129,
+        "vocals": 0.1233
+      }
+    },
+    {
+      "file": "audio-src/music/takes/copper-reach/explore/t11/audio.flac",
+      "sha256": "77f94efe3dc0f10750dc6f5cc2af1984bbbd1a83ec6b63c7a038209a619d41d5",
+      "layer": "explore",
+      "reference_mean": 0.4816,
+      "closest": [
+        {
+          "file": "mv_MUS_UnexploredEXPLORE.ogg",
+          "cosine": 0.6446
+        },
+        {
+          "file": "mv_MUS_VoyagerEXPLORE.ogg",
+          "cosine": 0.6297
+        },
+        {
+          "file": "mv_MUS_ShellEXPLORE.ogg",
+          "cosine": 0.6102
+        },
+        {
+          "file": "mv_MUS_AutoEXPLORE.ogg",
+          "cosine": 0.5968
+        },
+        {
+          "file": "mv_MUS_OrchidEXPLORE.ogg",
+          "cosine": 0.5932
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.181,
+        "synth_melody": 0.2406,
+        "ambient": 0.2189,
+        "piano_strings": 0.1741,
+        "chiptune": 0.0165,
+        "breakbeat": 0.2575,
+        "rock": 0.0544,
+        "club": 0.3589,
+        "orchestral": -0.0597,
+        "vocals": 0.1644
+      }
+    },
+    {
+      "file": "audio-src/music/takes/copper-reach/battle/t10/audio.flac",
+      "sha256": "91199e5f6613f69267c47ca2a30cd6f8040ddd566a24363d5cb3628f444c2fa6",
+      "layer": "battle",
+      "reference_mean": 0.7157,
+      "closest": [
+        {
+          "file": "mv_MUS_ShiningBATTLE.ogg",
+          "cosine": 0.8213
+        },
+        {
+          "file": "mv_MUS_ConfederateBATTLE.ogg",
+          "cosine": 0.8182
+        },
+        {
+          "file": "mv_MUS_JerryBATTLE.ogg",
+          "cosine": 0.8147
+        },
+        {
+          "file": "mv_MUS_AutoBATTLE.ogg",
+          "cosine": 0.8109
+        },
+        {
+          "file": "mv_MUS_InsurgenceBATTLE.ogg",
+          "cosine": 0.7955
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.3191,
+        "synth_melody": 0.3653,
+        "ambient": 0.1403,
+        "piano_strings": 0.2378,
+        "chiptune": 0.3093,
+        "breakbeat": 0.5191,
+        "rock": 0.3167,
+        "club": 0.6655,
+        "orchestral": 0.2256,
+        "vocals": 0.1327
+      }
+    },
+    {
+      "file": "audio-src/music/takes/copper-reach/battle/t11/audio.flac",
+      "sha256": "b541e9be175f3855b8af4f153828270ddc484ab7b1c0845cf5f309334aaf667f",
+      "layer": "battle",
+      "reference_mean": 0.7143,
+      "closest": [
+        {
+          "file": "mv_MUS_JerryBATTLE.ogg",
+          "cosine": 0.851
+        },
+        {
+          "file": "mv_MUS_AutoBATTLE.ogg",
+          "cosine": 0.8253
+        },
+        {
+          "file": "mv_MUS_ChaosBATTLE.ogg",
+          "cosine": 0.8015
+        },
+        {
+          "file": "mv_MUS_ConfederateBATTLE.ogg",
+          "cosine": 0.801
+        },
+        {
+          "file": "mv_MUS_InsurgenceBATTLE.ogg",
+          "cosine": 0.7942
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.2827,
+        "synth_melody": 0.3871,
+        "ambient": 0.1776,
+        "piano_strings": 0.2017,
+        "chiptune": 0.2518,
+        "breakbeat": 0.4678,
+        "rock": 0.3375,
+        "club": 0.6022,
+        "orchestral": 0.1487,
+        "vocals": 0.1284
+      }
+    }
+  ]
+}

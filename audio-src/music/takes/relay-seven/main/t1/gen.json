@@ -1,0 +1,104 @@
+{
+  "piece": "relay-seven",
+  "version": "main",
+  "take": 1,
+  "seed": 640043,
+  "cfg": 1.8,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, a choir, wordless choir aahs, vocal pads, humming, a solo voice, pop song with a lead vocalist. Happy, cheerful, joyful, uplifting, hopeful, triumphant, heroic fanfare, major key, bright pop, feel-good, playful, whimsical, children's music, corporate, upbeat, epic trailer, sunny, upbeat synthwave, outrun. Generic EDM club dance track with a four-on-the-floor kick.",
+  "plans": "v2-dark",
+  "style": "Intimate, sad and quiet prologue music in an old switchboard room at a lonely relay station at the edge of space, late at night. A soft felt piano plays a slow, melancholic minor phrase over a cold analog synth pad and a low sub-bass drone, the quiet tick of an old relay and a faint slow pulse like a blinking amber lamp, a lonely cello, glass bells far away, tape echo and big reverb. Sparse, still, sad and lonely. No drums. Purely instrumental. Dm, 76 BPM.",
+  "plan_sha256": "831883efcbfc5c14ce4ddb80bb738df3e95df78189921583e2bd7260e8dec762",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      12,
+      44
+    ],
+    "bars": 46,
+    "tail": 2,
+    "bar_s": 3.1578947368421053,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "P1",
+        "intro"
+      ],
+      [
+        8,
+        "P2",
+        "intro"
+      ],
+      [
+        12,
+        "L1",
+        "interlude"
+      ],
+      [
+        16,
+        "L2",
+        "interlude"
+      ],
+      [
+        20,
+        "P1",
+        "interlude"
+      ],
+      [
+        24,
+        "P2",
+        "interlude"
+      ],
+      [
+        28,
+        "L1",
+        "interlude"
+      ],
+      [
+        32,
+        "L2",
+        "interlude"
+      ],
+      [
+        36,
+        "P1",
+        "interlude"
+      ],
+      [
+        40,
+        "P2",
+        "interlude"
+      ],
+      [
+        44,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 4269,
+  "max_tokens": 5697,
+  "truncated": false,
+  "timing": {
+    "seconds": 45.00381203996949,
+    "prefill_seconds": 0.19273768097627908,
+    "ttft_seconds": 0.19442877097753808,
+    "output_tokens": 4270,
+    "content_tokens": 4269,
+    "output_tps": 94.88085134227431,
+    "prefix_tokens": 886,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 18.8,
+  "vae_seconds": 3.4,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

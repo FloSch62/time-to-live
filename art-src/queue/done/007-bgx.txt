@@ -1,0 +1,4 @@
+explore/s1-a:x-ill2@2
+explore/s1-a:x-hyb55@1
+explore/s1-a:x-hyb68@1
+explore/s1-a:x-pix8@1

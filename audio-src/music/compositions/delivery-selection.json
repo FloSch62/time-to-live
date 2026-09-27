@@ -1,0 +1,122 @@
+{
+  "copper-reach": {
+    "takes": {
+      "explore": "t22",
+      "battle": "t21"
+    },
+    "note": "New E-minor melody and electronic arrangement, following the user-positive exploration t21 direction. Exploration t22 retains the new score with a more stable pulse. Raw score-fit warnings remain; paired beat and pitch checks are aligned.",
+    "review": {
+      "method": "Signal and classifier checks; human listening approval only exists for Copper exploration t21 direction. Descriptor scores are not perceptual quality verdicts.",
+      "intensity_proxy": {
+        "explore": 0.102,
+        "battle": 0.561
+      },
+      "raw_flags": {
+        "explore": [
+          "lost plan (3 bars from bar 28)"
+        ],
+        "battle": []
+      }
+    }
+  },
+  "rust-kingdom": {
+    "takes": {
+      "explore": "t21",
+      "battle": "t21"
+    },
+    "note": "New G-minor pulse-synth theme with a more active battle groove. Battle receives 0.44 percent pitch-preserving tempo correction. Exploration phrase-fit warnings remain; paired timing and harmony are aligned inside the loop.",
+    "review": {
+      "method": "Signal and classifier checks; human listening approval only exists for Copper exploration t21 direction. Descriptor scores are not perceptual quality verdicts.",
+      "intensity_proxy": {
+        "explore": 0.354,
+        "battle": 0.63
+      },
+      "raw_flags": {
+        "explore": [
+          "lost plan (2 bars from bar 24)"
+        ],
+        "battle": []
+      }
+    }
+  },
+  "glass-cathedral": {
+    "takes": {
+      "explore": "t21",
+      "battle": "t22"
+    },
+    "note": "New F-sharp-minor FM/pluck theme. Battle t22 replaces t21 because the first arrangement lacked rhythmic contrast. Both chosen takes have clean raw timing and voice checks; brief energy dips remain review indicators.",
+    "review": {
+      "method": "Signal and classifier checks; human listening approval only exists for Copper exploration t21 direction. Descriptor scores are not perceptual quality verdicts.",
+      "intensity_proxy": {
+        "explore": 0.194,
+        "battle": 0.482
+      },
+      "raw_flags": {
+        "explore": [],
+        "battle": []
+      }
+    }
+  },
+  "choir-weather": {
+    "takes": {
+      "explore": "t22",
+      "battle": "t22"
+    },
+    "note": "New C-sharp-minor FM lead and glass-pluck theme. The t22 pair restores calm exploration and driving battle; the first pair had reversed intensity. Both chosen takes have clean raw timing and voice checks.",
+    "review": {
+      "method": "Signal and classifier checks; human listening approval only exists for Copper exploration t21 direction. Descriptor scores are not perceptual quality verdicts.",
+      "intensity_proxy": {
+        "explore": 0.192,
+        "battle": 0.44
+      },
+      "raw_flags": {
+        "explore": [],
+        "battle": []
+      }
+    }
+  },
+  "blackout-heart": {
+    "takes": {
+      "explore": "t22",
+      "battle": "t21"
+    },
+    "note": "New A-minor theme. Exploration t22 uses lighter percussion and sustained bass after t21 was more driving than combat. Raw phrase-fit warnings remain and are assessed alongside the paired beat, pitch and timing checks.",
+    "review": {
+      "method": "Signal and classifier checks; human listening approval only exists for Copper exploration t21 direction. Descriptor scores are not perceptual quality verdicts.",
+      "intensity_proxy": {
+        "explore": 0.071,
+        "battle": 0.615
+      },
+      "raw_flags": {
+        "explore": [
+          "lost plan (1 bars from bar 68)"
+        ],
+        "battle": [
+          "lost plan (3 bars from bar 24)"
+        ]
+      }
+    }
+  },
+  "last-orders": {
+    "takes": {
+      "explore": "t21",
+      "battle": "t21"
+    },
+    "note": "New B-minor finale at 126 BPM: restrained exploration and strongly driving combat. Raw phrase-fit warnings remain. Three onset windows favor a sixteenth-note offset by only 0.02-0.05 correlation; both recordings independently lock at 0 ms in those windows, with zero best beat/pitch shift. These are retained as rhythmic-pattern ambiguities, not corrected by shifting the music.",
+    "review": {
+      "method": "Signal and classifier checks; human listening approval only exists for Copper exploration t21 direction. Descriptor scores are not perceptual quality verdicts.",
+      "intensity_proxy": {
+        "explore": 0.024,
+        "battle": 0.886
+      },
+      "raw_flags": {
+        "explore": [
+          "lost plan (2 bars from bar 36)"
+        ],
+        "battle": [
+          "lost plan (3 bars from bar 28)"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+ "piece": "line-quiet",
+ "version": "main",
+ "take": "t1",
+ "duration": 49.879,
+ "dtw_cost": 0.336,
+ "period": 0.8631257,
+ "tempo_bpm": 69.515,
+ "plan_bpm": 70,
+ "ratio": 0.9930684,
+ "bar0": 0.1024,
+ "bar0_dtw": 0.165,
+ "first_onset": 0.11,
+ "phase_margin": -0.0051,
+ "chord_fit": 0.803,
+ "window_shifts": [
+  [
+   4,
+   0.814,
+   -4,
+   0.682
+  ],
+  [
+   8,
+   0.774,
+   4,
+   0.511
+  ]
+ ],
+ "body_end": 41.532,
+ "tail_seconds": 8.35,
+ "lock_conf": 3.02,
+ "window_residual_ms": [
+  2.0,
+  -4.0,
+  -2.0
+ ],
+ "window_conf": [
+  3.1,
+  2.84,
+  3.12
+ ],
+ "dtw_dev_beats": [
+  1.87,
+  1.59,
+  0.57,
+  0.54,
+  0.02,
+  -0.01,
+  -0.04,
+  -0.06,
+  -0.09,
+  0.13,
+  0.1,
+  0.07,
+  0.05,
+  -0.98
+ ],
+ "lost_bars": [],
+ "flags": []
+}

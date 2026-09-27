@@ -1,0 +1,154 @@
+{
+ "piece": "copper-reach",
+ "version": "battle",
+ "take": "t4",
+ "duration": 155.227271,
+ "samples": 7450909,
+ "bar_s": 2.1818181818181817,
+ "bars": 70,
+ "loop_bars": [
+  20,
+  68
+ ],
+ "loop_start": 43.636364,
+ "loop_end": 148.363636,
+ "anchors": [
+  {
+   "out": 4.364,
+   "take": 4.4469,
+   "local": false
+  },
+  {
+   "out": 13.091,
+   "take": 13.175,
+   "local": false
+  },
+  {
+   "out": 21.818,
+   "take": 21.9032,
+   "local": false
+  },
+  {
+   "out": 30.545,
+   "take": 30.6293,
+   "local": true
+  },
+  {
+   "out": 39.273,
+   "take": 39.3595,
+   "local": true
+  },
+  {
+   "out": 48.0,
+   "take": 48.0876,
+   "local": true
+  },
+  {
+   "out": 56.727,
+   "take": 56.8117,
+   "local": true
+  },
+  {
+   "out": 65.455,
+   "take": 65.5459,
+   "local": true
+  },
+  {
+   "out": 74.182,
+   "take": 74.274,
+   "local": true
+  },
+  {
+   "out": 82.909,
+   "take": 83.0022,
+   "local": true
+  },
+  {
+   "out": 91.636,
+   "take": 91.7283,
+   "local": false
+  },
+  {
+   "out": 100.364,
+   "take": 100.4605,
+   "local": true
+  },
+  {
+   "out": 109.091,
+   "take": 109.1826,
+   "local": true
+  },
+  {
+   "out": 117.818,
+   "take": 117.9128,
+   "local": true
+  },
+  {
+   "out": 126.545,
+   "take": 126.6409,
+   "local": true
+  },
+  {
+   "out": 135.273,
+   "take": 135.3671,
+   "local": true
+  },
+  {
+   "out": 144.0,
+   "take": 144.0972,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99941,
+ "rate_max": 1.00079,
+ "max_cents": 1.4,
+ "take_seconds_used": 155.326,
+ "seam": {
+  "loop_start_sample": 2094545,
+  "loop_end_sample": 7121455,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 110.0,
+  "grid_phase_ms": -0.5,
+  "window_error_ms": [
+   72.0,
+   6.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   -2.0,
+   0.0,
+   0.0,
+   -2.0,
+   -20.0,
+   0.0,
+   0.0,
+   0.0,
+   2.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   2.81,
+   1.07,
+   2.21,
+   3.23,
+   3.26,
+   3.15,
+   3.33,
+   3.5,
+   3.39,
+   2.9,
+   1.89,
+   2.65,
+   2.96,
+   3.48,
+   3.38,
+   2.97,
+   3.3
+  ]
+ },
+ "tempo_correction": null
+}

@@ -1,0 +1,15 @@
+{
+  "brief": "Instrumental progressive electronic space exploration game soundtrack. Compose a completely new piece with memorable interlocking synthesizer motifs, expressive rounded analog lead, flowing arpeggios, deep melodic bass and spacious evolving pads. Wistful, curious and mysterious. A supple syncopated rhythmic pulse creates forward motion. An opening texture establishes a distinctive short motif, then the bass and answering melodic patterns enter; the theme develops through changing harmonies, opens into a quieter contrasting middle passage, and returns with an intricate layered variation. The piece should have musical phrases and contrasts rather than repeating a single hook unchanged. Approximately two and a half minutes. Entirely instrumental.",
+  "request": {
+    "style": "Instrumental progressive electronic space exploration game soundtrack. Compose a completely new piece with memorable interlocking synthesizer motifs, expressive rounded analog lead, flowing arpeggios, deep melodic bass and spacious evolving pads. Wistful, curious and mysterious. A supple syncopated rhythmic pulse creates forward motion. An opening texture establishes a distinctive short motif, then the bass and answering melodic patterns enter; the theme develops through changing harmonies, opens into a quieter contrasting middle passage, and returns with an intricate layered variation. The piece should have musical phrases and contrasts rather than repeating a single hook unchanged. Approximately two and a half minutes. Entirely instrumental. 104 BPM, 4/4, E minor.",
+    "lyrics": "",
+    "cot": "full",
+    "seed": 406193,
+    "abc": null,
+    "cfg_scale": null,
+    "id": "ttl-fresh-copper-reach-2"
+  },
+  "truncated": false,
+  "source": "New symbolic generation. No previous TTL melody or reference score supplied.",
+  "reference_study": "audio-src/music/references/structure.json and timeline.json"
+}

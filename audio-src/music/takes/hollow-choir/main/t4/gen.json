@@ -1,0 +1,134 @@
+{
+  "piece": "hollow-choir",
+  "version": "main",
+  "take": 4,
+  "seed": 620951,
+  "cfg": 2.2,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, a choir, wordless choir aahs, vocal pads, humming, a solo voice, pop song with a lead vocalist. Happy, cheerful, joyful, uplifting, hopeful, triumphant, heroic fanfare, major key, bright pop, feel-good, playful, whimsical, children's music, corporate, upbeat, epic trailer, sunny, upbeat synthwave, outrun. Generic EDM club dance track with a four-on-the-floor kick.",
+  "plans": "v2-dark",
+  "style": "Somber instrumental music for an ancient glass machine in an abandoned hall at the edge of space. Sparse felt piano and muted glass bells repeat a sad minor phrase over a cold analog synthesizer pad and a deep sustained cello. Slow tape echoes, vast dark reverberation, isolated metallic creaks and a very quiet low heartbeat. Intimate, desolate and ominous, suspended and unresolved. No drums. Purely instrumental. Am, 108 BPM.",
+  "plan_sha256": "6941489da6f6c52ced90fed634a9220c08e91f61447cc95d15256830455ba145",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      20,
+      68
+    ],
+    "bars": 70,
+    "tail": 2,
+    "bar_s": 2.2222222222222223,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "T1",
+        "instrumental"
+      ],
+      [
+        8,
+        "T2",
+        "instrumental"
+      ],
+      [
+        12,
+        "O1",
+        "instrumental"
+      ],
+      [
+        16,
+        "O2",
+        "instrumental"
+      ],
+      [
+        20,
+        "S1",
+        "instrumental"
+      ],
+      [
+        24,
+        "S2",
+        "instrumental"
+      ],
+      [
+        28,
+        "T1",
+        "instrumental"
+      ],
+      [
+        32,
+        "T2",
+        "instrumental"
+      ],
+      [
+        36,
+        "W1",
+        "interlude"
+      ],
+      [
+        40,
+        "W2",
+        "interlude"
+      ],
+      [
+        44,
+        "S1",
+        "instrumental"
+      ],
+      [
+        48,
+        "S2",
+        "instrumental"
+      ],
+      [
+        52,
+        "T1",
+        "instrumental"
+      ],
+      [
+        56,
+        "T2",
+        "instrumental"
+      ],
+      [
+        60,
+        "O1",
+        "instrumental"
+      ],
+      [
+        64,
+        "O2",
+        "instrumental"
+      ],
+      [
+        68,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 3838,
+  "max_tokens": 6083,
+  "truncated": false,
+  "timing": {
+    "seconds": 41.857289778010454,
+    "prefill_seconds": 0.6372007579775527,
+    "ttft_seconds": 0.8916516869794577,
+    "output_tokens": 3839,
+    "content_tokens": 3838,
+    "output_tps": 91.71640161988705,
+    "prefix_tokens": 1194,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 18.5,
+  "vae_seconds": 5.7,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

@@ -1,0 +1,41 @@
+[
+ {
+  "take": "main/t1",
+  "reject": [
+   "transposed -5 st (corr 0.76 vs 0.48)",
+   "major-leaning (A 0.75 >= Dm 0.28)"
+  ],
+  "planned_dips": [],
+  "score": 2.092,
+  "cinematic": 0.997,
+  "intense": 0.001,
+  "dark": 0.78,
+  "not_club": 0.877,
+  "mode_margin": -0.464,
+  "cinematic_min": 0.98,
+  "vocal_max": 0.119,
+  "ftl": 0.173,
+  "speech_checked": true,
+  "lufs": -17.05,
+  "tp": 0.0,
+  "lra": 11.1,
+  "key": "-5 st",
+  "window_db": [
+   -27.5,
+   -18.1,
+   -16.7,
+   -24.1,
+   -23.3,
+   -21.1,
+   -16.6,
+   -23.9,
+   -22.9,
+   -22.5,
+   -19.4
+  ],
+  "seam_db": -2.9,
+  "seam_chroma": 0.996,
+  "ratio": 1.0,
+  "tail": 31.61
+ }
+]

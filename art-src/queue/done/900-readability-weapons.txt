@@ -1,0 +1,11 @@
+weapons/packet-laser:readable@1
+weapons/burst-emitter:readable@1
+weapons/triple-burst:readable@1
+weapons/jumbo-frame:readable@1
+weapons/jumbo-frame-ii:readable@1
+weapons/multicast-array:readable@1
+weapons/flood-cannon:readable@1
+weapons/cathedral-chime:readable@1
+weapons/trunk-lance:readable@1
+weapons/payload-launcher:readable@1
+weapons/breach-spike:readable@1

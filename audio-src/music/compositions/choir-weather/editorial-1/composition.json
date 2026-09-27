@@ -1,0 +1,67 @@
+{
+  "source": "Original editorial composition from blank, with explicit phrases and a contrasting middle. No prior TTL or reference notes copied.",
+  "sections": [
+    {
+      "bar": 0,
+      "label": "intro"
+    },
+    {
+      "bar": 4,
+      "label": "instrumental"
+    },
+    {
+      "bar": 8,
+      "label": "instrumental"
+    },
+    {
+      "bar": 12,
+      "label": "instrumental"
+    },
+    {
+      "bar": 16,
+      "label": "instrumental"
+    },
+    {
+      "bar": 20,
+      "label": "instrumental"
+    },
+    {
+      "bar": 24,
+      "label": "instrumental"
+    },
+    {
+      "bar": 28,
+      "label": "interlude"
+    },
+    {
+      "bar": 32,
+      "label": "interlude"
+    },
+    {
+      "bar": 36,
+      "label": "instrumental"
+    },
+    {
+      "bar": 40,
+      "label": "instrumental"
+    },
+    {
+      "bar": 44,
+      "label": "instrumental"
+    },
+    {
+      "bar": 48,
+      "label": "instrumental"
+    },
+    {
+      "bar": 52,
+      "label": "instrumental"
+    },
+    {
+      "bar": 56,
+      "label": "instrumental"
+    }
+  ],
+  "reference_study": "references/arrangement-study.md",
+  "supersedes": "Native draft did not satisfy synchronized instrumental form."
+}

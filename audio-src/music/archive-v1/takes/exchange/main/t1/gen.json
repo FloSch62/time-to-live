@@ -1,0 +1,113 @@
+{
+  "piece": "exchange",
+  "version": "main",
+  "take": 1,
+  "seed": 582354,
+  "cfg": 1.6,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, choir singing words, a solo voice, pop song with a lead vocalist. Generic EDM club dance track with a four-on-the-floor techno kick.",
+  "style": "Warm, playful and slightly comic shop music for a salvage market run by old scavengers in a pixel-art starship game. Bouncy plucked clean electric guitar and marimba, pizzicato strings, a walking upright bass, brushed drums, a cheeky analog synth lead and a clarinet trading the tune, warm analog pads, a little clockwork tick. Cozy, friendly, wry and unhurried. Retro-cinematic, spacious. Purely instrumental. F, 100 BPM.",
+  "plan_sha256": "4ed7505acc363cc454276e02de2e0e151d8357fc060379affa7411e75047787d",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      28,
+      52
+    ],
+    "bars": 54,
+    "tail": 2,
+    "bar_s": 2.4,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "M1",
+        "instrumental"
+      ],
+      [
+        8,
+        "M2",
+        "instrumental"
+      ],
+      [
+        12,
+        "V1",
+        "interlude"
+      ],
+      [
+        16,
+        "V2",
+        "interlude"
+      ],
+      [
+        20,
+        "B1",
+        "instrumental"
+      ],
+      [
+        24,
+        "B2",
+        "instrumental"
+      ],
+      [
+        28,
+        "M1",
+        "instrumental"
+      ],
+      [
+        32,
+        "M2",
+        "instrumental"
+      ],
+      [
+        36,
+        "V1",
+        "interlude"
+      ],
+      [
+        40,
+        "V2",
+        "interlude"
+      ],
+      [
+        44,
+        "B1",
+        "instrumental"
+      ],
+      [
+        48,
+        "B2",
+        "instrumental"
+      ],
+      [
+        52,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 3247,
+  "max_tokens": 5110,
+  "truncated": false,
+  "timing": {
+    "seconds": 35.29917546198703,
+    "prefill_seconds": 0.21490747801726684,
+    "ttft_seconds": 0.2164515900076367,
+    "output_tokens": 3248,
+    "content_tokens": 3247,
+    "output_tps": 92.0134806972391,
+    "prefix_tokens": 1207,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 18.8,
+  "vae_seconds": 4.8,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

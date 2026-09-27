@@ -1,0 +1,4 @@
+weapons/packet-laser:a@2
+weapons/packet-laser:p@2
+weapons/payload-launcher:a@2
+weapons/payload-launcher:p@2

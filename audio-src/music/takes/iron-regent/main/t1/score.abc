@@ -1,0 +1,98 @@
+X:1
+T:
+M:4/4
+L:1/32
+Q:1/4=116
+V: Vocal clef=treble name="Vocal Melody" snm="Vocal"
+V: Ins clef=treble name="Ins Melody" snm="Inst."
+K:Dm
+% intro
+V: Vocal
+"Dm"z32|"Dm"z32|"Dm"z32|"Dm"z32|
+V: Ins
+D,32|D,32|D,32|D,32|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Eb"z32|"Eb"z32|
+V: Ins
+D16 A16|d24 c8|B32|G24 F8|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Am"z32|"Am"z32|
+V: Ins
+A16 F16|D32|E16 C16|A,32|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Eb"z32|"Eb"z32|
+V: Ins
+D4 D4 _E4 D4 D4 A,4 C4 D4|D4 D4 _E4 D4 D4 A,4 C4 D4|D4 D4 _E4 D4 D4 A,4 C4 D4|D4 D4 _E4 D4 D4 A,4 C4 D4|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Am"z32|"Am"z32|
+V: Ins
+D4 D4 _E4 D4 D4 A,4 C4 D4|D4 D4 _E4 D4 D4 A,4 C4 D4|A,4 A,4 B,4 A,4 A,4 E,4 G,4 A,4|A,4 A,4 B,4 A,4 A,4 E,4 G,4 A,4|
+% instrumental
+V: Vocal
+"Gm"z32|"Gm"z32|"Dm"z32|"Dm"z32|
+V: Ins
+d32|c16 B16|A32|F16 D16|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Am"z32|"Am"z32|
+V: Ins
+F32|D16 F16|E32|E24 z8|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Eb"z32|"Eb"z32|
+V: Ins
+D16 A16|d24 c8|B32|G24 F8|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Am"z32|"Am"z32|
+V: Ins
+A16 F16|D32|E16 C16|A,32|
+% interlude
+V: Vocal
+"Dm"z32|"Dm"z32|"Dm"z32|"Dm"z32|
+V: Ins
+D,32|D,32|D,32|D,32|
+% interlude
+V: Vocal
+"Gm"z32|"Gm"z32|"Am"z32|"Am"z32|
+V: Ins
+D4 D4 D4 D4 D4 D4 D4 D4|D4 D4 D4 D4 D4 D4 D4 D4|A,4 A,4 A,4 A,4 A,4 A,4 A,4 A,4|A,4 A,4 A,4 A,4 A4 A4 A4 A4|
+% instrumental
+V: Vocal
+"Gm"z32|"Gm"z32|"Dm"z32|"Dm"z32|
+V: Ins
+d32|c16 B16|A32|F16 D16|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Am"z32|"Am"z32|
+V: Ins
+F32|D16 F16|E32|E24 z8|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Eb"z32|"Eb"z32|
+V: Ins
+D16 A16|d24 c8|B32|G24 F8|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Am"z32|"Am"z32|
+V: Ins
+A16 F16|D32|E16 C16|A,32|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Eb"z32|"Eb"z32|
+V: Ins
+D4 D4 _E4 D4 D4 A,4 C4 D4|D4 D4 _E4 D4 D4 A,4 C4 D4|D4 D4 _E4 D4 D4 A,4 C4 D4|D4 D4 _E4 D4 D4 A,4 C4 D4|
+% instrumental
+V: Vocal
+"Dm"z32|"Dm"z32|"Am"z32|"Am"z32|
+V: Ins
+D4 D4 _E4 D4 D4 A,4 C4 D4|D4 D4 _E4 D4 D4 A,4 C4 D4|A,4 A,4 B,4 A,4 A,4 E,4 G,4 A,4|A,4 A,4 B,4 A,4 A,4 E,4 G,4 A,4|
+% outro
+V: Vocal
+"Dm"z32|"Dm"z32|
+V: Ins
+D32|D32|

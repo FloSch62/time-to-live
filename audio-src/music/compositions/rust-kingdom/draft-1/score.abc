@@ -1,0 +1,83 @@
+X:1
+T:
+M:4/4
+L:1/32
+Q:1/4=100
+V: Vocal clef=treble name="Vocal Melody" snm="Vocal"
+V: Ins clef=treble name="Ins Melody" snm="Inst."
+K:D#m
+% intro
+V: Vocal
+"D#m"z32|
+V: Ins
+Z|
+V: Vocal
+M:7/8
+"D#m"z24z4|
+V: Ins
+M:7/8
+Z|
+V: Vocal
+M:4/4
+"D#m"z32|"D#m"z32|"D#m"z32|"D#m"z32|
+V: Ins
+M:4/4
+Z|z16z4a2z8z2|Z|e12z16z4|
+V: Vocal
+"D#m"z32|"D#m"z32|"D#m"z32|"D#m"z32|
+V: Ins
+Z|d8A8e8f8|g8f4e4d16|d8A8e8f8|
+V: Vocal
+"D#m"z32|"Bmaj7"z32|"C#"z32|"D#m"z32|
+V: Ins
+g8f4e4d16|d8A8e8f8|g8f4e4d16|d8A8e8f8|
+V: Vocal
+"D#m"z32|
+V: Ins
+g8f4e4d16|
+% verse
+V: Vocal
+"D#m"d4d4a4a4a4g4g4g4|"D#m"g4a4z16z4c4|"B"d8z16c4A4|"C#"A8z24|
+V: Ins
+Z4|
+V: Vocal
+"D#m"d4d4a4a4a4g4g8|"D#m"g4a8e8f8d2z2|"B"z24z4c4|"C#"c8d8e8d8|
+V: Ins
+Z4|
+V: Vocal
+"B"z32|"B"z32|"D#m"z32|"D#m"z16z4d4f8|
+V: Ins
+d'16a16|e16f16|d32|Z|
+V: Vocal
+"Bmaj7"a32-|"Bmaj7"a16z8f4e4|"C#"e4e24-e4-|"C#"e16-e4z4d4d4|
+V: Ins
+Z4|
+% chorus
+V: Vocal
+"D#m"z32|"D#m"z32|"Bmaj7"z32|"C#"z32|
+V: Ins
+d4D2D4A,2D2A,2E4A,2E4A,2E2A,2|F4A,2F4A,2F4G4A,2G4A,2G2A,2|D4A,2D4A,2D2A,2E4A,2E4A,2E2A,2|F4A,2F4A,2F2A,2G4A,2G4A,2G2A,2|
+V: Vocal
+"D#m"z32|"D#m"z32|"Bmaj7"z32|"C#"z32|
+V: Ins
+D4A,2D4A,2D2A,2E4A,2E4A,2E2A,2|F4A,2F4A,2F2A,2G4A,2G4A,2G4|D4A,2D4A,2D2A,2E4A,2E4A,2E2A,2|F4A,2F4A,2F2A,2G4A,2G4A,2G4|
+V: Vocal
+"D#m"z32|"D#m"z32|"Bmaj7"z32|"C#"z32|
+V: Ins
+D4A,2D4A,2D2A,2E4A,2E4A,2E2A,2|F4A,2F4A,2F2A,2G4A,2G4A,2G2A,2|D4A,2D4A,2D2A,2E4A,2E4A,2E2A,2|F4A,2F4A,2F2A,2G4A,2G4A,2G4|
+V: Vocal
+"D#m"z32|"D#m"z32|"Bmaj7"z32|"C#"z32|
+V: Ins
+D4A,2D4A,2D2A,2E4A,2E4A,2E2A,2|F4A,2F4A,2F2A,2G4A,2G4A,2G4|D4A,2D4A,2D2A,2E4A,2E4A,2E2A,2|F4A,2F4A,2F2A,2G4A,2G4A,2G4|
+V: Vocal
+"D#m"z32|"D#m"z32|"Bmaj7"z32|"C#"z32|
+V: Ins
+D4A,2D4A,2D2A,2E4A,2E4A,2E4|F4A,2F4A,2F2A,2G4A,2G4A,2G4|D4A,2D4A,2D2A,2E4A,2E4A,2E4|F4A,2F4A,2F4G4A,2G4A,2G4|
+V: Vocal
+"D#m"z32|"D#m"z32|"Bmaj7"z32|"C#"z32|
+V: Ins
+D4A,2D4A,2D4E4A,2E4A,2E4|F4A,2F4A,2F4G4A,2G4A,2G4|D4A,2D4A,2D4E4A,2E4A,2E4|F4A,2F4A,2F4G4A,2G4A,2G4|
+V: Vocal
+"D#m"z32|"D#m"z32|"D#m"z32|"D#m"z32|
+V: Ins
+F4z16z4F4F4|F8z24|F4z16z4F4F4|Z|

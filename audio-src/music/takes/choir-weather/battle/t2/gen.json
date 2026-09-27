@@ -1,0 +1,134 @@
+{
+  "piece": "choir-weather",
+  "version": "battle",
+  "take": 2,
+  "seed": 543602,
+  "cfg": 2.2,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, a choir, wordless choir aahs, vocal pads, humming, a solo voice, pop song with a lead vocalist. Happy, cheerful, joyful, uplifting, hopeful, triumphant, heroic fanfare, major key, bright pop, feel-good, playful, whimsical, children's music, corporate, upbeat, epic trailer, sunny, upbeat synthwave, outrun. Generic EDM club dance track with a four-on-the-floor kick.",
+  "plans": "v2-dark",
+  "style": "Dark, melancholic 1980s sci-fi film synth score for a lonely retro pixel-art space game, deep space ambient: slow-evolving retro analog synthesizer pads with filter sweeps, a soft low 16th-note arpeggiator, a sub-bass drone on a pedal tone, a sparse lonely lead with slow vibrato, tape echo and vast reverb, lots of space, an anxious interlocking sequence of delicate analog arpeggios and pulsing muted bass, restrained syncopated percussion with brushed metallic ticks and dry rim clicks, evolving melodic counterpoint, a distant heartbeat under the music, fragile suspended minor harmonies. An intimate tactical encounter cue, with the same lonely reflective atmosphere as exploration, muted celesta, interlocking glass mallet sequences, a low bowed cello and a sparse clicking rhythm. Cold violet windows tremble under machinery; a tense, intimate tactical encounter in an abandoned signal hall. Anxious, cold and unresolved; intricate, quietly dangerous momentum. Purely instrumental. Em, 100 BPM.",
+  "plan_sha256": "5e84948f98d2abb17b8b7762de050b88631cecc56ff9dffa06af48da5b6e2486",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      20,
+      68
+    ],
+    "bars": 70,
+    "tail": 2,
+    "bar_s": 2.4,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "W1",
+        "instrumental"
+      ],
+      [
+        8,
+        "W2",
+        "instrumental"
+      ],
+      [
+        12,
+        "X1",
+        "instrumental"
+      ],
+      [
+        16,
+        "X2",
+        "instrumental"
+      ],
+      [
+        20,
+        "Y1",
+        "instrumental"
+      ],
+      [
+        24,
+        "Y2",
+        "instrumental"
+      ],
+      [
+        28,
+        "W1",
+        "instrumental"
+      ],
+      [
+        32,
+        "W2",
+        "instrumental"
+      ],
+      [
+        36,
+        "Z1",
+        "interlude"
+      ],
+      [
+        40,
+        "Z2",
+        "interlude"
+      ],
+      [
+        44,
+        "Y1",
+        "instrumental"
+      ],
+      [
+        48,
+        "Y2",
+        "instrumental"
+      ],
+      [
+        52,
+        "W1",
+        "instrumental"
+      ],
+      [
+        56,
+        "W2",
+        "instrumental"
+      ],
+      [
+        60,
+        "X1",
+        "instrumental"
+      ],
+      [
+        64,
+        "X2",
+        "instrumental"
+      ],
+      [
+        68,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 4111,
+  "max_tokens": 6550,
+  "truncated": false,
+  "timing": {
+    "seconds": 43.81650392903248,
+    "prefill_seconds": 0.22961333999410272,
+    "ttft_seconds": 0.23057690303539857,
+    "output_tokens": 4112,
+    "content_tokens": 4111,
+    "output_tps": 93.84591720644833,
+    "prefix_tokens": 1312,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 18.7,
+  "vae_seconds": 3.3,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

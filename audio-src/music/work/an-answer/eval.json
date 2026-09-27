@@ -1,0 +1,42 @@
+[
+ {
+  "take": "main/t1",
+  "reject": [],
+  "planned_dips": [],
+  "score": 1.74,
+  "cinematic": 0.801,
+  "intense": 0.128,
+  "dark": 0.366,
+  "not_club": 0.54,
+  "mode_margin": null,
+  "cinematic_min": 0.332,
+  "vocal_max": 0.18,
+  "ftl": 0.325,
+  "speech_checked": true,
+  "lufs": -12.62,
+  "tp": 0.12,
+  "lra": 4.4,
+  "key": "F",
+  "window_db": [
+   -17.0,
+   -15.0,
+   -15.0,
+   -14.1,
+   -14.0,
+   -13.9,
+   -12.5,
+   -16.7,
+   -12.1,
+   -14.8,
+   -13.9,
+   -12.2,
+   -11.2,
+   -16.7,
+   -10.8
+  ],
+  "seam_db": 1.0,
+  "seam_chroma": 0.998,
+  "ratio": 1.00002,
+  "tail": 6.54
+ }
+]

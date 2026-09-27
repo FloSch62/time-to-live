@@ -1,0 +1,6 @@
+portraits/recruit-linefolk-b:h@2026092701
+portraits/recruit-warden-a:h@2026092701
+portraits/recruit-warden-b:h@2026092701
+portraits/recruit-rigger-a:h@2026092701
+portraits/recruit-rigger-b:h@2026092701
+portraits/recruit-courier-b:h@2026092701

@@ -1,0 +1,153 @@
+{
+ "piece": "copper-reach",
+ "version": "battle",
+ "take": "t5",
+ "duration": 155.227271,
+ "samples": 7450909,
+ "bar_s": 2.1818181818181817,
+ "bars": 70,
+ "loop_bars": [
+  20,
+  68
+ ],
+ "loop_start": 43.636364,
+ "loop_end": 148.363636,
+ "anchors": [
+  {
+   "out": 4.364,
+   "take": 4.4365,
+   "local": false
+  },
+  {
+   "out": 13.091,
+   "take": 13.164,
+   "local": false
+  },
+  {
+   "out": 21.818,
+   "take": 21.8894,
+   "local": true
+  },
+  {
+   "out": 30.545,
+   "take": 30.6169,
+   "local": true
+  },
+  {
+   "out": 39.273,
+   "take": 39.3443,
+   "local": true
+  },
+  {
+   "out": 48.0,
+   "take": 48.0738,
+   "local": true
+  },
+  {
+   "out": 56.727,
+   "take": 56.8012,
+   "local": true
+  },
+  {
+   "out": 65.455,
+   "take": 65.5287,
+   "local": true
+  },
+  {
+   "out": 74.182,
+   "take": 74.2581,
+   "local": true
+  },
+  {
+   "out": 82.909,
+   "take": 82.9836,
+   "local": false
+  },
+  {
+   "out": 91.636,
+   "take": 91.709,
+   "local": true
+  },
+  {
+   "out": 100.364,
+   "take": 100.4365,
+   "local": true
+  },
+  {
+   "out": 109.091,
+   "take": 109.1639,
+   "local": true
+  },
+  {
+   "out": 117.818,
+   "take": 117.8933,
+   "local": true
+  },
+  {
+   "out": 126.545,
+   "take": 126.6188,
+   "local": true
+  },
+  {
+   "out": 135.273,
+   "take": 135.3482,
+   "local": true
+  },
+  {
+   "out": 144.0,
+   "take": 144.0757,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99979,
+ "rate_max": 1.00025,
+ "max_cents": 0.4,
+ "take_seconds_used": 155.303,
+ "seam": {
+  "loop_start_sample": 2094545,
+  "loop_end_sample": 7121455,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 110.0,
+  "grid_phase_ms": 0.1,
+  "window_error_ms": [
+   64.0,
+   -12.0,
+   0.0,
+   0.0,
+   0.0,
+   2.0,
+   0.0,
+   -2.0,
+   0.0,
+   4.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   1.92,
+   1.18,
+   2.72,
+   2.84,
+   2.86,
+   3.3,
+   3.21,
+   3.36,
+   3.41,
+   2.28,
+   3.22,
+   3.4,
+   3.45,
+   3.42,
+   3.15,
+   3.33,
+   3.18
+  ]
+ }
+}

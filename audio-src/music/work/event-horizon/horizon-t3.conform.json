@@ -1,0 +1,162 @@
+{
+ "piece": "event-horizon",
+ "version": "horizon",
+ "take": "t3",
+ "duration": 135.833333,
+ "samples": 6520000,
+ "bar_s": 1.9047619047619047,
+ "bars": 70,
+ "loop_bars": [
+  12,
+  68
+ ],
+ "loop_start": 22.857143,
+ "loop_end": 129.52381,
+ "anchors": [
+  {
+   "out": 3.81,
+   "take": 4.2753,
+   "local": false
+  },
+  {
+   "out": 11.429,
+   "take": 11.8944,
+   "local": 0.0
+  },
+  {
+   "out": 19.048,
+   "take": 19.5134,
+   "local": false
+  },
+  {
+   "out": 26.667,
+   "take": 27.1065,
+   "local": 1.0
+  },
+  {
+   "out": 34.286,
+   "take": 34.7515,
+   "local": false
+  },
+  {
+   "out": 41.905,
+   "take": 42.3606,
+   "local": 1.0
+  },
+  {
+   "out": 49.524,
+   "take": 49.9756,
+   "local": 1.0
+  },
+  {
+   "out": 57.143,
+   "take": 57.6127,
+   "local": 1.0
+  },
+  {
+   "out": 64.762,
+   "take": 65.2257,
+   "local": 1.0
+  },
+  {
+   "out": 72.381,
+   "take": 72.8527,
+   "local": 1.0
+  },
+  {
+   "out": 80.0,
+   "take": 80.4738,
+   "local": 1.0
+  },
+  {
+   "out": 87.619,
+   "take": 88.0908,
+   "local": 1.0
+  },
+  {
+   "out": 95.238,
+   "take": 95.7079,
+   "local": 1.0
+  },
+  {
+   "out": 102.857,
+   "take": 103.3249,
+   "local": 1.0
+  },
+  {
+   "out": 110.476,
+   "take": 110.938,
+   "local": 1.0
+  },
+  {
+   "out": 118.095,
+   "take": 118.557,
+   "local": 1.0
+  },
+  {
+   "out": 125.714,
+   "take": 126.1761,
+   "local": 1.0
+  }
+ ],
+ "rate_min": 0.99659,
+ "rate_max": 1.00341,
+ "max_cents": 5.9,
+ "take_seconds_used": 136.295,
+ "seam": {
+  "loop_start_sample": 1097143,
+  "loop_end_sample": 6217143,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 126.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   80.0,
+   -74.0,
+   -38.0,
+   -2.0,
+   -2.0,
+   0.0,
+   0.0,
+   4.0,
+   -2.0,
+   2.0,
+   0.0,
+   2.0,
+   0.0,
+   -2.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   1.85,
+   2.22,
+   2.11,
+   2.79,
+   2.76,
+   2.76,
+   3.01,
+   3.05,
+   2.74,
+   3.15,
+   3.15,
+   3.12,
+   3.16,
+   3.19,
+   3.23,
+   3.23,
+   3.16
+  ]
+ },
+ "tempo_correction": {
+  "rubberband_ratio": 0.997029,
+  "residual_ratio": 1.0,
+  "realigned_flags": [
+   "2 windows fit the plan better shifted (bars [8, 64])",
+   "drift windows >20 ms: [(0, np.float64(80.0)), (1, np.float64(-74.0)), (2, np.float64(-60.0)), (3, np.float64(-26.0))]"
+  ]
+ },
+ "phase_correction_beats": 1
+}

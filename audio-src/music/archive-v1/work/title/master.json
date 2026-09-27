@@ -1,0 +1,183 @@
+{
+ "piece": "title",
+ "note": "t4 (form rev 2): CLAP cine 0.98 (min 0.95), vocal 0.10, clean; played 1.06 % fast, rubberband-corrected",
+ "gain_db": -5.3,
+ "loudest": "main",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   20,
+   60
+  ],
+  "bars": 62,
+  "tail": 2,
+  "bar_s": 2.5,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "T1",
+    "intro"
+   ],
+   [
+    8,
+    "T2",
+    "intro"
+   ],
+   [
+    12,
+    "A1",
+    "instrumental"
+   ],
+   [
+    16,
+    "A2",
+    "instrumental"
+   ],
+   [
+    20,
+    "T1",
+    "instrumental"
+   ],
+   [
+    24,
+    "T2",
+    "instrumental"
+   ],
+   [
+    28,
+    "B1",
+    "instrumental"
+   ],
+   [
+    32,
+    "B2",
+    "instrumental"
+   ],
+   [
+    36,
+    "Q1",
+    "interlude"
+   ],
+   [
+    40,
+    "Q2",
+    "interlude"
+   ],
+   [
+    44,
+    "T1",
+    "instrumental"
+   ],
+   [
+    48,
+    "T2",
+    "instrumental"
+   ],
+   [
+    52,
+    "A1",
+    "interlude"
+   ],
+   [
+    56,
+    "A2",
+    "interlude"
+   ],
+   [
+    60,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "main": "audio/music/title.ogg"
+  },
+  "bpm": 96,
+  "key": "Dm",
+  "bars": 62,
+  "barSeconds": 2.5,
+  "duration": 157.5,
+  "loopStart": 50.0,
+  "loopEnd": 150.0,
+  "loop": true,
+  "gainDb": -5.3
+ },
+ "versions": {
+  "main": {
+   "take": "t4",
+   "seed": 530323,
+   "source": "audio-src/music/takes/title/main/t4/audio.flac",
+   "source_sha256": "638d92527450a4f8ca738cdd9741ee2f913f6dbb5ce5d05bb4cabaac301b512c",
+   "conform": {
+    "rate_min": 0.999,
+    "rate_max": 1.0016,
+    "max_cents": 2.8,
+    "verify": {
+     "tempo_bpm": 96.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      60.0,
+      76.0,
+      20.0,
+      0.0,
+      0.0,
+      0.0,
+      50.0,
+      0.0,
+      0.0,
+      0.0,
+      4.0,
+      -14.0,
+      4.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      1.91,
+      1.65,
+      1.99,
+      3.26,
+      3.03,
+      2.77,
+      1.57,
+      3.37,
+      3.44,
+      2.94,
+      2.66,
+      2.38,
+      1.69,
+      3.4,
+      3.33
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/title.flac",
+   "master_sha256": "ba875b9813f312dd5938f7231f7707ce31515c51b85760d7e8c962a8076ca307",
+   "delivery": "public/audio/music/title.ogg",
+   "delivery_sha256": "8a796970544b4eb25c6276895b5b75f4b39078e1d9eab5d906bebf2224bef1e1",
+   "bytes": 2432776,
+   "samples": 7560000,
+   "decoded_samples": 7560000,
+   "pre_gain": {
+    "lufs": -13.7,
+    "tp": -0.58,
+    "lra": 8.3
+   },
+   "delivered": {
+    "lufs": -18.99,
+    "tp": -5.88,
+    "lra": 8.3
+   }
+  }
+ }
+}

@@ -1,0 +1,5 @@
+drones/firewall-drone:a@1
+drones/relay-drone:a@1
+drones/rigger-drone:a@1
+drones/bulwark-drone:a@1
+drones/crawler-drone:a@1

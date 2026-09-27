@@ -1,0 +1,49 @@
+{
+ "canvas": [
+  840,
+  680
+ ],
+ "layout": [
+  420,
+  340
+ ],
+ "gen": [
+  1680,
+  1360
+ ],
+ "density": 2,
+ "remap": null,
+ "cable": null,
+ "class": "installation",
+ "grid": {
+  "x": 144,
+  "y": 200,
+  "cols": 9,
+  "rows": 5,
+  "tile": 72
+ },
+ "face": "left",
+ "mounts": [
+  {
+   "x": 202,
+   "y": 154
+  },
+  {
+   "x": 210,
+   "y": 598
+  }
+ ],
+ "lampColors": null,
+ "glow": [
+  {
+   "x": 440,
+   "y": 98,
+   "r": 14
+  },
+  {
+   "x": 92,
+   "y": 360,
+   "r": 20
+  }
+ ]
+}

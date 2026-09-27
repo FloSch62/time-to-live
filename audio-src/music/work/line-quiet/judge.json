@@ -1,0 +1,81 @@
+{
+ "main/t1": {
+  "cinematic": 0.846,
+  "cinematic_min": 0.789,
+  "vocal_max": 0.169,
+  "vocal_mean": 0.119,
+  "vocal_max_at": 25.0,
+  "ftl": 0.171,
+  "intense": 0.062,
+  "dark": 0.503,
+  "dark_min": 0.353,
+  "score": 0.546,
+  "score_min": 0.347,
+  "windows": [
+   {
+    "t": 5.0,
+    "cine": 0.89,
+    "vocal": 0.06,
+    "intense": 0.03,
+    "dark": 0.66,
+    "score": 0.6
+   },
+   {
+    "t": 10.0,
+    "cine": 0.89,
+    "vocal": 0.13,
+    "intense": 0.02,
+    "dark": 0.6,
+    "score": 0.68
+   },
+   {
+    "t": 15.0,
+    "cine": 0.86,
+    "vocal": 0.1,
+    "intense": 0.04,
+    "dark": 0.52,
+    "score": 0.57
+   },
+   {
+    "t": 20.0,
+    "cine": 0.84,
+    "vocal": 0.13,
+    "intense": 0.06,
+    "dark": 0.51,
+    "score": 0.57
+   },
+   {
+    "t": 25.0,
+    "cine": 0.87,
+    "vocal": 0.17,
+    "intense": 0.08,
+    "dark": 0.52,
+    "score": 0.64
+   },
+   {
+    "t": 30.0,
+    "cine": 0.84,
+    "vocal": 0.15,
+    "intense": 0.08,
+    "dark": 0.48,
+    "score": 0.55
+   },
+   {
+    "t": 35.0,
+    "cine": 0.79,
+    "vocal": 0.1,
+    "intense": 0.1,
+    "dark": 0.4,
+    "score": 0.41
+   },
+   {
+    "t": 40.0,
+    "cine": 0.79,
+    "vocal": 0.11,
+    "intense": 0.09,
+    "dark": 0.35,
+    "score": 0.35
+   }
+  ]
+ }
+}

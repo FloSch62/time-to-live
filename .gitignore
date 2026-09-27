@@ -1,0 +1,32 @@
+# Dependencies, builds, and local work
+node_modules/
+/dist/
+/.work/
+.venv/
+__pycache__/
+*.py[cod]
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Generated review evidence and art intermediates
+/tools/shots/
+/art-src/cand/
+/art-src/comfy/
+/art-src/sheets/
+/art-src/logs/
+/audio-src/logs/
+
+# Raw audio takes and analysis binaries; shipped audio lives in public/audio
+/audio-src/**/*.wav
+/audio-src/**/*.mp3
+/audio-src/**/*.ogg
+/audio-src/**/*.flac
+/audio-src/**/*.m4a
+/audio-src/**/*.npz
+/audio-src/**/*.npy
+/audio-src/**/*.pt
+/audio-src/**/*.pth
+/audio-src/**/*.safetensors

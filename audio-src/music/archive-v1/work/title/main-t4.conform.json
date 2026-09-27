@@ -1,0 +1,146 @@
+{
+ "piece": "title",
+ "version": "main",
+ "take": "t4",
+ "duration": 157.5,
+ "samples": 7560000,
+ "bar_s": 2.5,
+ "bars": 62,
+ "loop_bars": [
+  20,
+  60
+ ],
+ "loop_start": 50.0,
+ "loop_end": 150.0,
+ "anchors": [
+  {
+   "out": 5.0,
+   "take": 5.11,
+   "local": false
+  },
+  {
+   "out": 15.0,
+   "take": 15.11,
+   "local": false
+  },
+  {
+   "out": 25.0,
+   "take": 25.11,
+   "local": false
+  },
+  {
+   "out": 35.0,
+   "take": 35.1,
+   "local": 1.0
+  },
+  {
+   "out": 45.0,
+   "take": 45.11,
+   "local": 1.0
+  },
+  {
+   "out": 55.0,
+   "take": 55.11,
+   "local": 1.0
+  },
+  {
+   "out": 65.0,
+   "take": 65.11,
+   "local": false
+  },
+  {
+   "out": 75.0,
+   "take": 75.106,
+   "local": 1.0
+  },
+  {
+   "out": 85.0,
+   "take": 85.11,
+   "local": 1.0
+  },
+  {
+   "out": 95.0,
+   "take": 95.104,
+   "local": 1.0
+  },
+  {
+   "out": 105.0,
+   "take": 105.12,
+   "local": 1.0
+  },
+  {
+   "out": 115.0,
+   "take": 115.11,
+   "local": false
+  },
+  {
+   "out": 125.0,
+   "take": 125.11,
+   "local": false
+  },
+  {
+   "out": 135.0,
+   "take": 135.114,
+   "local": 1.0
+  },
+  {
+   "out": 145.0,
+   "take": 145.116,
+   "local": 1.0
+  }
+ ],
+ "rate_min": 0.999,
+ "rate_max": 1.0016,
+ "max_cents": 2.8,
+ "take_seconds_used": 157.616,
+ "seam": {
+  "loop_start_sample": 2400000,
+  "loop_end_sample": 7200000,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 96.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   60.0,
+   76.0,
+   20.0,
+   0.0,
+   0.0,
+   0.0,
+   50.0,
+   0.0,
+   0.0,
+   0.0,
+   4.0,
+   -14.0,
+   4.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   1.91,
+   1.65,
+   1.99,
+   3.26,
+   3.03,
+   2.77,
+   1.57,
+   3.37,
+   3.44,
+   2.94,
+   2.66,
+   2.38,
+   1.69,
+   3.4,
+   3.33
+  ]
+ },
+ "tempo_correction": {
+  "rubberband_ratio": 1.010571,
+  "residual_ratio": 1.0,
+  "realigned_flags": [
+   "4 windows without a beat lock"
+  ]
+ }
+}

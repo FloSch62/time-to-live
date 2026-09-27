@@ -1,0 +1,154 @@
+{
+ "piece": "blackout-heart",
+ "version": "battle",
+ "take": "t1",
+ "duration": 147.327583,
+ "samples": 7071724,
+ "bar_s": 2.0689655172413794,
+ "bars": 70,
+ "loop_bars": [
+  20,
+  68
+ ],
+ "loop_start": 41.37931,
+ "loop_end": 140.689655,
+ "anchors": [
+  {
+   "out": 4.138,
+   "take": 4.1888,
+   "local": false
+  },
+  {
+   "out": 12.414,
+   "take": 12.4648,
+   "local": true
+  },
+  {
+   "out": 20.69,
+   "take": 20.7389,
+   "local": true
+  },
+  {
+   "out": 28.966,
+   "take": 29.0149,
+   "local": true
+  },
+  {
+   "out": 37.241,
+   "take": 37.2929,
+   "local": true
+  },
+  {
+   "out": 45.517,
+   "take": 45.5689,
+   "local": true
+  },
+  {
+   "out": 53.793,
+   "take": 53.845,
+   "local": true
+  },
+  {
+   "out": 62.069,
+   "take": 62.125,
+   "local": true
+  },
+  {
+   "out": 70.345,
+   "take": 70.399,
+   "local": true
+  },
+  {
+   "out": 78.621,
+   "take": 78.6751,
+   "local": true
+  },
+  {
+   "out": 86.897,
+   "take": 86.9471,
+   "local": true
+  },
+  {
+   "out": 95.172,
+   "take": 95.2251,
+   "local": true
+  },
+  {
+   "out": 103.448,
+   "take": 103.5011,
+   "local": true
+  },
+  {
+   "out": 111.724,
+   "take": 111.7772,
+   "local": true
+  },
+  {
+   "out": 120.0,
+   "take": 120.0532,
+   "local": true
+  },
+  {
+   "out": 128.276,
+   "take": 128.3292,
+   "local": true
+  },
+  {
+   "out": 136.552,
+   "take": 136.6052,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99954,
+ "rate_max": 1.0005,
+ "max_cents": 0.9,
+ "take_seconds_used": 147.381,
+ "seam": {
+  "loop_start_sample": 1986207,
+  "loop_end_sample": 6753103,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 116.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   -80.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   2.0,
+   2.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   -2.0
+  ],
+  "window_conf": [
+   2.05,
+   3.34,
+   3.06,
+   3.01,
+   3.37,
+   3.25,
+   3.2,
+   3.33,
+   3.5,
+   3.26,
+   3.21,
+   3.45,
+   3.38,
+   3.42,
+   3.42,
+   3.31,
+   3.42
+  ]
+ },
+ "tempo_correction": null
+}

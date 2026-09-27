@@ -1,0 +1,37 @@
+{
+ "file": "/home/clab/projects/clab/time-to-live/audio-src/music/takes/glass-cathedral/explore/t21/audio.flac",
+ "language": "en",
+ "language_prob": 0.71,
+ "segments": [
+  {
+   "start": 0.05,
+   "end": 1.01,
+   "text": "Thanks for watching.",
+   "avg_logprob": -0.82,
+   "no_speech": 0.67,
+   "comp": 0.71,
+   "lang": null,
+   "words": [
+    {
+     "w": " Thanks",
+     "start": 0.05,
+     "end": 0.83,
+     "p": 0.0
+    },
+    {
+     "w": " for",
+     "start": 0.83,
+     "end": 1.01,
+     "p": 0.77
+    },
+    {
+     "w": " watching.",
+     "start": 1.01,
+     "end": 1.01,
+     "p": 0.92
+    }
+   ],
+   "speech": false
+  }
+ ]
+}

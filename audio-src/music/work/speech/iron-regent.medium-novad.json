@@ -1,0 +1,3079 @@
+{
+ "file": "/home/clab/projects/clab/time-to-live/public/audio/music/iron-regent.ogg",
+ "language": "en",
+ "language_prob": 0.42,
+ "segments": [
+  {
+   "start": 9.8,
+   "end": 29.66,
+   "text": "I'm sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry, I'm so sorry",
+   "avg_logprob": -0.16,
+   "no_speech": 0.62,
+   "comp": 23.15,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 9.8,
+     "end": 10.64,
+     "p": 0.08
+    },
+    {
+     "w": " sorry,",
+     "start": 10.64,
+     "end": 11.48,
+     "p": 0.06
+    },
+    {
+     "w": " I'm",
+     "start": 11.48,
+     "end": 11.48,
+     "p": 0.3
+    },
+    {
+     "w": " so",
+     "start": 11.48,
+     "end": 11.48,
+     "p": 0.11
+    },
+    {
+     "w": " sorry,",
+     "start": 11.48,
+     "end": 11.48,
+     "p": 0.72
+    },
+    {
+     "w": " I'm",
+     "start": 11.48,
+     "end": 11.48,
+     "p": 0.62
+    },
+    {
+     "w": " so",
+     "start": 11.48,
+     "end": 11.48,
+     "p": 0.81
+    },
+    {
+     "w": " sorry,",
+     "start": 11.48,
+     "end": 11.48,
+     "p": 0.95
+    },
+    {
+     "w": " I'm",
+     "start": 11.48,
+     "end": 11.48,
+     "p": 0.86
+    },
+    {
+     "w": " so",
+     "start": 11.48,
+     "end": 11.48,
+     "p": 0.9
+    },
+    {
+     "w": " sorry,",
+     "start": 11.48,
+     "end": 11.48,
+     "p": 0.95
+    },
+    {
+     "w": " I'm",
+     "start": 11.48,
+     "end": 11.8,
+     "p": 0.92
+    },
+    {
+     "w": " so",
+     "start": 11.8,
+     "end": 11.8,
+     "p": 0.93
+    },
+    {
+     "w": " sorry,",
+     "start": 11.8,
+     "end": 11.8,
+     "p": 0.96
+    },
+    {
+     "w": " I'm",
+     "start": 11.8,
+     "end": 13.4,
+     "p": 0.94
+    },
+    {
+     "w": " so",
+     "start": 13.4,
+     "end": 13.4,
+     "p": 0.94
+    },
+    {
+     "w": " sorry,",
+     "start": 13.4,
+     "end": 13.4,
+     "p": 0.97
+    },
+    {
+     "w": " I'm",
+     "start": 13.4,
+     "end": 14.24,
+     "p": 0.95
+    },
+    {
+     "w": " so",
+     "start": 14.24,
+     "end": 14.24,
+     "p": 0.95
+    },
+    {
+     "w": " sorry,",
+     "start": 14.24,
+     "end": 14.24,
+     "p": 0.97
+    },
+    {
+     "w": " I'm",
+     "start": 14.24,
+     "end": 15.54,
+     "p": 0.96
+    },
+    {
+     "w": " so",
+     "start": 15.54,
+     "end": 15.54,
+     "p": 0.95
+    },
+    {
+     "w": " sorry,",
+     "start": 15.54,
+     "end": 15.54,
+     "p": 0.97
+    },
+    {
+     "w": " I'm",
+     "start": 15.54,
+     "end": 18.84,
+     "p": 0.96
+    },
+    {
+     "w": " so",
+     "start": 18.84,
+     "end": 20.3,
+     "p": 0.95
+    },
+    {
+     "w": " sorry,",
+     "start": 20.3,
+     "end": 20.3,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 20.3,
+     "end": 20.3,
+     "p": 0.97
+    },
+    {
+     "w": " so",
+     "start": 20.3,
+     "end": 20.3,
+     "p": 0.95
+    },
+    {
+     "w": " sorry,",
+     "start": 20.3,
+     "end": 20.3,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 20.3,
+     "end": 20.3,
+     "p": 0.97
+    },
+    {
+     "w": " so",
+     "start": 20.3,
+     "end": 20.66,
+     "p": 0.95
+    },
+    {
+     "w": " sorry,",
+     "start": 20.66,
+     "end": 20.66,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 20.68,
+     "end": 21.1,
+     "p": 0.97
+    },
+    {
+     "w": " so",
+     "start": 21.1,
+     "end": 21.12,
+     "p": 0.95
+    },
+    {
+     "w": " sorry,",
+     "start": 21.12,
+     "end": 21.12,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 21.12,
+     "end": 21.12,
+     "p": 0.97
+    },
+    {
+     "w": " so",
+     "start": 21.12,
+     "end": 23.14,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 23.14,
+     "end": 23.14,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 23.16,
+     "end": 23.16,
+     "p": 0.98
+    },
+    {
+     "w": " so",
+     "start": 23.16,
+     "end": 23.16,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 23.16,
+     "end": 23.16,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 23.16,
+     "end": 23.16,
+     "p": 0.98
+    },
+    {
+     "w": " so",
+     "start": 23.16,
+     "end": 23.16,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 23.16,
+     "end": 23.16,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 23.16,
+     "end": 23.16,
+     "p": 0.98
+    },
+    {
+     "w": " so",
+     "start": 23.16,
+     "end": 23.36,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 23.36,
+     "end": 23.36,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 23.68,
+     "end": 23.68,
+     "p": 0.98
+    },
+    {
+     "w": " so",
+     "start": 23.68,
+     "end": 23.9,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 23.9,
+     "end": 23.9,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.98
+    },
+    {
+     "w": " so",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.98
+    },
+    {
+     "w": " so",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.98
+    },
+    {
+     "w": " so",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.98
+    },
+    {
+     "w": " so",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 24.28,
+     "end": 24.28,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 24.5,
+     "end": 24.5,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 25.7,
+     "end": 25.7,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 26.76,
+     "end": 26.76,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 26.76,
+     "end": 26.76,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 26.76,
+     "end": 26.76,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 28.06,
+     "end": 28.06,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 28.06,
+     "end": 28.06,
+     "p": 0.96
+    },
+    {
+     "w": " sorry,",
+     "start": 28.06,
+     "end": 28.06,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 29.48,
+     "end": 29.56,
+     "p": 0.99
+    },
+    {
+     "w": " so",
+     "start": 29.56,
+     "end": 29.56,
+     "p": 0.96
+    },
+    {
+     "w": " sorry",
+     "start": 29.56,
+     "end": 29.66,
+     "p": 0.97
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 31.66,
+   "end": 33.06,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.24,
+   "no_speech": 0.9,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 31.66,
+     "end": 33.06,
+     "p": 0.07
+    },
+    {
+     "w": " going",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.14
+    },
+    {
+     "w": " to",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.93
+    },
+    {
+     "w": " add",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.08
+    },
+    {
+     "w": " a",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.27
+    },
+    {
+     "w": " little",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.15
+    },
+    {
+     "w": " bit",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.34
+    },
+    {
+     "w": " of",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.85
+    },
+    {
+     "w": " color",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.04
+    },
+    {
+     "w": " to",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.4
+    },
+    {
+     "w": " the",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.62
+    },
+    {
+     "w": " background.",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.04
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 33.06,
+   "end": 33.76,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.24,
+   "no_speech": 0.9,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.35
+    },
+    {
+     "w": " going",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.62
+    },
+    {
+     "w": " to",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.99
+    },
+    {
+     "w": " add",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.18
+    },
+    {
+     "w": " a",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.5
+    },
+    {
+     "w": " little",
+     "start": 33.06,
+     "end": 33.06,
+     "p": 0.7
+    },
+    {
+     "w": " bit",
+     "start": 33.06,
+     "end": 33.76,
+     "p": 0.89
+    },
+    {
+     "w": " of",
+     "start": 33.76,
+     "end": 33.76,
+     "p": 0.96
+    },
+    {
+     "w": " color",
+     "start": 33.76,
+     "end": 33.76,
+     "p": 0.7
+    },
+    {
+     "w": " to",
+     "start": 33.76,
+     "end": 33.76,
+     "p": 0.9
+    },
+    {
+     "w": " the",
+     "start": 33.76,
+     "end": 33.76,
+     "p": 0.98
+    },
+    {
+     "w": " background.",
+     "start": 33.76,
+     "end": 33.76,
+     "p": 0.88
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 38.6,
+   "end": 40.0,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.24,
+   "no_speech": 0.9,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 38.6,
+     "end": 40.0,
+     "p": 0.64
+    },
+    {
+     "w": " going",
+     "start": 40.0,
+     "end": 40.0,
+     "p": 0.94
+    },
+    {
+     "w": " to",
+     "start": 40.0,
+     "end": 40.0,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 40.0,
+     "end": 40.0,
+     "p": 0.78
+    },
+    {
+     "w": " a",
+     "start": 40.0,
+     "end": 40.0,
+     "p": 0.98
+    },
+    {
+     "w": " little",
+     "start": 40.0,
+     "end": 40.0,
+     "p": 0.99
+    },
+    {
+     "w": " bit",
+     "start": 40.0,
+     "end": 40.0,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 40.0,
+     "end": 40.0,
+     "p": 0.99
+    },
+    {
+     "w": " color",
+     "start": 40.0,
+     "end": 40.0,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 40.0,
+     "end": 40.0,
+     "p": 0.99
+    },
+    {
+     "w": " the",
+     "start": 40.0,
+     "end": 40.0,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 40.0,
+     "end": 40.0,
+     "p": 0.99
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 42.46,
+   "end": 43.86,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.24,
+   "no_speech": 0.9,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 42.46,
+     "end": 43.86,
+     "p": 0.71
+    },
+    {
+     "w": " going",
+     "start": 43.86,
+     "end": 43.86,
+     "p": 0.95
+    },
+    {
+     "w": " to",
+     "start": 43.86,
+     "end": 43.86,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 43.86,
+     "end": 43.86,
+     "p": 0.86
+    },
+    {
+     "w": " a",
+     "start": 43.86,
+     "end": 43.86,
+     "p": 0.98
+    },
+    {
+     "w": " little",
+     "start": 43.86,
+     "end": 43.86,
+     "p": 0.99
+    },
+    {
+     "w": " bit",
+     "start": 43.86,
+     "end": 43.86,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 43.86,
+     "end": 43.86,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 43.86,
+     "end": 43.86,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 43.86,
+     "end": 43.86,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 43.86,
+     "end": 43.86,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 43.86,
+     "end": 43.86,
+     "p": 0.99
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 43.86,
+   "end": 44.64,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.24,
+   "no_speech": 0.9,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 43.86,
+     "end": 44.62,
+     "p": 0.8
+    },
+    {
+     "w": " going",
+     "start": 44.62,
+     "end": 44.62,
+     "p": 0.96
+    },
+    {
+     "w": " to",
+     "start": 44.62,
+     "end": 44.62,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 44.62,
+     "end": 44.62,
+     "p": 0.92
+    },
+    {
+     "w": " a",
+     "start": 44.62,
+     "end": 44.62,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 44.62,
+     "end": 44.62,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 44.62,
+     "end": 44.62,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 44.62,
+     "end": 44.62,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 44.62,
+     "end": 44.64,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 44.64,
+     "end": 44.64,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 44.64,
+     "end": 44.64,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 44.64,
+     "end": 44.64,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 45.44,
+   "end": 46.94,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.24,
+   "no_speech": 0.9,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 45.44,
+     "end": 46.84,
+     "p": 0.86
+    },
+    {
+     "w": " going",
+     "start": 46.84,
+     "end": 46.84,
+     "p": 0.97
+    },
+    {
+     "w": " to",
+     "start": 46.84,
+     "end": 46.86,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 46.86,
+     "end": 46.86,
+     "p": 0.95
+    },
+    {
+     "w": " a",
+     "start": 46.86,
+     "end": 46.86,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 46.86,
+     "end": 46.86,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 46.86,
+     "end": 46.86,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 46.86,
+     "end": 46.86,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 46.86,
+     "end": 46.86,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 46.86,
+     "end": 46.86,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 46.86,
+     "end": 46.86,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 46.86,
+     "end": 46.94,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 46.94,
+   "end": 47.1,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.24,
+   "no_speech": 0.9,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 46.94,
+     "end": 47.06,
+     "p": 0.89
+    },
+    {
+     "w": " going",
+     "start": 47.06,
+     "end": 47.06,
+     "p": 0.98
+    },
+    {
+     "w": " to",
+     "start": 47.06,
+     "end": 47.08,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 47.08,
+     "end": 47.08,
+     "p": 0.97
+    },
+    {
+     "w": " a",
+     "start": 47.08,
+     "end": 47.08,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 47.08,
+     "end": 47.08,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 47.08,
+     "end": 47.08,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 47.08,
+     "end": 47.08,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 47.08,
+     "end": 47.08,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 47.08,
+     "end": 47.08,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 47.08,
+     "end": 47.08,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 47.08,
+     "end": 47.1,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 47.72,
+   "end": 49.18,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.24,
+   "no_speech": 0.9,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 47.72,
+     "end": 49.12,
+     "p": 0.91
+    },
+    {
+     "w": " going",
+     "start": 49.12,
+     "end": 49.18,
+     "p": 0.99
+    },
+    {
+     "w": " to",
+     "start": 49.18,
+     "end": 49.18,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 49.18,
+     "end": 49.18,
+     "p": 0.98
+    },
+    {
+     "w": " a",
+     "start": 49.18,
+     "end": 49.18,
+     "p": 1.0
+    },
+    {
+     "w": " little",
+     "start": 49.18,
+     "end": 49.18,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 49.18,
+     "end": 49.18,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 49.18,
+     "end": 49.18,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 49.18,
+     "end": 49.18,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 49.18,
+     "end": 49.18,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 49.18,
+     "end": 49.18,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 49.18,
+     "end": 49.18,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 49.18,
+   "end": 50.22,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.24,
+   "no_speech": 0.9,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 49.18,
+     "end": 50.22,
+     "p": 0.93
+    },
+    {
+     "w": " going",
+     "start": 50.22,
+     "end": 50.22,
+     "p": 0.99
+    },
+    {
+     "w": " to",
+     "start": 50.22,
+     "end": 50.22,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 50.22,
+     "end": 50.22,
+     "p": 0.98
+    },
+    {
+     "w": " a",
+     "start": 50.22,
+     "end": 50.22,
+     "p": 1.0
+    },
+    {
+     "w": " little",
+     "start": 50.22,
+     "end": 50.22,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 50.22,
+     "end": 50.22,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 50.22,
+     "end": 50.22,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 50.22,
+     "end": 50.22,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 50.22,
+     "end": 50.22,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 50.22,
+     "end": 50.22,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 50.22,
+     "end": 50.22,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 62.4,
+   "end": 63.12,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.31,
+   "no_speech": 0.86,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 62.4,
+     "end": 63.12,
+     "p": 0.03
+    },
+    {
+     "w": " cures",
+     "start": 63.12,
+     "end": 63.12,
+     "p": 0.52
+    },
+    {
+     "w": " the",
+     "start": 63.12,
+     "end": 63.12,
+     "p": 0.8
+    },
+    {
+     "w": " tip",
+     "start": 63.12,
+     "end": 63.12,
+     "p": 0.26
+    },
+    {
+     "w": " in",
+     "start": 63.12,
+     "end": 63.12,
+     "p": 0.93
+    },
+    {
+     "w": " a",
+     "start": 63.12,
+     "end": 63.12,
+     "p": 0.95
+    },
+    {
+     "w": " combo",
+     "start": 63.12,
+     "end": 63.12,
+     "p": 0.66
+    },
+    {
+     "w": " lamp",
+     "start": 63.12,
+     "end": 63.12,
+     "p": 0.99
+    },
+    {
+     "w": " for",
+     "start": 63.12,
+     "end": 63.12,
+     "p": 0.89
+    },
+    {
+     "w": " 60",
+     "start": 63.12,
+     "end": 63.12,
+     "p": 0.34
+    },
+    {
+     "w": " seconds.",
+     "start": 63.12,
+     "end": 63.12,
+     "p": 0.95
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 64.88,
+   "end": 66.14,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.31,
+   "no_speech": 0.86,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 64.88,
+     "end": 65.6,
+     "p": 0.27
+    },
+    {
+     "w": " cures",
+     "start": 65.6,
+     "end": 65.6,
+     "p": 0.55
+    },
+    {
+     "w": " the",
+     "start": 65.6,
+     "end": 65.62,
+     "p": 0.89
+    },
+    {
+     "w": " tip",
+     "start": 65.62,
+     "end": 65.62,
+     "p": 0.64
+    },
+    {
+     "w": " in",
+     "start": 65.62,
+     "end": 65.62,
+     "p": 0.99
+    },
+    {
+     "w": " a",
+     "start": 65.62,
+     "end": 65.62,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 65.62,
+     "end": 65.62,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 65.62,
+     "end": 65.62,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 65.62,
+     "end": 66.14,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 66.14,
+     "end": 66.14,
+     "p": 0.91
+    },
+    {
+     "w": " seconds.",
+     "start": 66.14,
+     "end": 66.14,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 66.14,
+   "end": 68.42,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.31,
+   "no_speech": 0.86,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 66.14,
+     "end": 66.16,
+     "p": 0.36
+    },
+    {
+     "w": " cures",
+     "start": 66.16,
+     "end": 66.16,
+     "p": 0.89
+    },
+    {
+     "w": " the",
+     "start": 66.16,
+     "end": 68.42,
+     "p": 1.0
+    },
+    {
+     "w": " tip",
+     "start": 68.42,
+     "end": 68.42,
+     "p": 0.95
+    },
+    {
+     "w": " in",
+     "start": 68.42,
+     "end": 68.42,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 68.42,
+     "end": 68.42,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 68.42,
+     "end": 68.42,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 68.42,
+     "end": 68.42,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 68.42,
+     "end": 68.42,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 68.42,
+     "end": 68.42,
+     "p": 0.96
+    },
+    {
+     "w": " seconds.",
+     "start": 68.42,
+     "end": 68.42,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 70.88,
+   "end": 71.6,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.31,
+   "no_speech": 0.86,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 70.88,
+     "end": 71.6,
+     "p": 0.41
+    },
+    {
+     "w": " cures",
+     "start": 71.6,
+     "end": 71.6,
+     "p": 0.79
+    },
+    {
+     "w": " the",
+     "start": 71.6,
+     "end": 71.6,
+     "p": 1.0
+    },
+    {
+     "w": " tip",
+     "start": 71.6,
+     "end": 71.6,
+     "p": 0.95
+    },
+    {
+     "w": " in",
+     "start": 71.6,
+     "end": 71.6,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 71.6,
+     "end": 71.6,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 71.6,
+     "end": 71.6,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 71.6,
+     "end": 71.6,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 71.6,
+     "end": 71.6,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 71.6,
+     "end": 71.6,
+     "p": 0.97
+    },
+    {
+     "w": " seconds.",
+     "start": 71.6,
+     "end": 71.6,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 71.6,
+   "end": 71.84,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.31,
+   "no_speech": 0.86,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 71.6,
+     "end": 71.64,
+     "p": 0.46
+    },
+    {
+     "w": " cures",
+     "start": 71.64,
+     "end": 71.84,
+     "p": 0.86
+    },
+    {
+     "w": " the",
+     "start": 71.84,
+     "end": 71.84,
+     "p": 1.0
+    },
+    {
+     "w": " tip",
+     "start": 71.84,
+     "end": 71.84,
+     "p": 0.96
+    },
+    {
+     "w": " in",
+     "start": 71.84,
+     "end": 71.84,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 71.84,
+     "end": 71.84,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 71.84,
+     "end": 71.84,
+     "p": 0.98
+    },
+    {
+     "w": " lamp",
+     "start": 71.84,
+     "end": 71.84,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 71.84,
+     "end": 71.84,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 71.84,
+     "end": 71.84,
+     "p": 0.98
+    },
+    {
+     "w": " seconds.",
+     "start": 71.84,
+     "end": 71.84,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 83.32,
+   "end": 84.7,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.89,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 83.32,
+     "end": 84.6,
+     "p": 0.02
+    },
+    {
+     "w": " cures",
+     "start": 84.6,
+     "end": 84.66,
+     "p": 0.53
+    },
+    {
+     "w": " the",
+     "start": 84.66,
+     "end": 84.66,
+     "p": 0.82
+    },
+    {
+     "w": " tip",
+     "start": 84.66,
+     "end": 84.66,
+     "p": 0.26
+    },
+    {
+     "w": " in",
+     "start": 84.66,
+     "end": 84.66,
+     "p": 0.92
+    },
+    {
+     "w": " a",
+     "start": 84.66,
+     "end": 84.66,
+     "p": 0.94
+    },
+    {
+     "w": " combo",
+     "start": 84.66,
+     "end": 84.66,
+     "p": 0.66
+    },
+    {
+     "w": " lamp",
+     "start": 84.66,
+     "end": 84.7,
+     "p": 0.98
+    },
+    {
+     "w": " for",
+     "start": 84.7,
+     "end": 84.7,
+     "p": 0.88
+    },
+    {
+     "w": " 60",
+     "start": 84.7,
+     "end": 84.7,
+     "p": 0.36
+    },
+    {
+     "w": " seconds.",
+     "start": 84.7,
+     "end": 84.7,
+     "p": 0.95
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 84.7,
+   "end": 85.72,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.89,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 84.7,
+     "end": 85.34,
+     "p": 0.27
+    },
+    {
+     "w": " cures",
+     "start": 85.34,
+     "end": 85.34,
+     "p": 0.55
+    },
+    {
+     "w": " the",
+     "start": 85.34,
+     "end": 85.34,
+     "p": 0.89
+    },
+    {
+     "w": " tip",
+     "start": 85.34,
+     "end": 85.34,
+     "p": 0.64
+    },
+    {
+     "w": " in",
+     "start": 85.34,
+     "end": 85.34,
+     "p": 0.99
+    },
+    {
+     "w": " a",
+     "start": 85.34,
+     "end": 85.34,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 85.34,
+     "end": 85.34,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 85.34,
+     "end": 85.34,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 85.34,
+     "end": 85.7,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 85.7,
+     "end": 85.7,
+     "p": 0.92
+    },
+    {
+     "w": " seconds.",
+     "start": 85.7,
+     "end": 85.72,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 86.62,
+   "end": 88.76,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.89,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 86.62,
+     "end": 87.9,
+     "p": 0.36
+    },
+    {
+     "w": " cures",
+     "start": 87.9,
+     "end": 87.9,
+     "p": 0.87
+    },
+    {
+     "w": " the",
+     "start": 87.9,
+     "end": 88.76,
+     "p": 1.0
+    },
+    {
+     "w": " tip",
+     "start": 88.76,
+     "end": 88.76,
+     "p": 0.95
+    },
+    {
+     "w": " in",
+     "start": 88.76,
+     "end": 88.76,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 88.76,
+     "end": 88.76,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 88.76,
+     "end": 88.76,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 88.76,
+     "end": 88.76,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 88.76,
+     "end": 88.76,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 88.76,
+     "end": 88.76,
+     "p": 0.96
+    },
+    {
+     "w": " seconds.",
+     "start": 88.76,
+     "end": 88.76,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 91.0,
+   "end": 92.28,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.89,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 91.0,
+     "end": 92.28,
+     "p": 0.41
+    },
+    {
+     "w": " cures",
+     "start": 92.28,
+     "end": 92.28,
+     "p": 0.78
+    },
+    {
+     "w": " the",
+     "start": 92.28,
+     "end": 92.28,
+     "p": 1.0
+    },
+    {
+     "w": " tip",
+     "start": 92.28,
+     "end": 92.28,
+     "p": 0.95
+    },
+    {
+     "w": " in",
+     "start": 92.28,
+     "end": 92.28,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 92.28,
+     "end": 92.28,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 92.28,
+     "end": 92.28,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 92.28,
+     "end": 92.28,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 92.28,
+     "end": 92.28,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 92.28,
+     "end": 92.28,
+     "p": 0.97
+    },
+    {
+     "w": " seconds.",
+     "start": 92.28,
+     "end": 92.28,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 103.18,
+   "end": 104.58,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.87,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 103.18,
+     "end": 104.58,
+     "p": 0.03
+    },
+    {
+     "w": " cures",
+     "start": 104.58,
+     "end": 104.58,
+     "p": 0.53
+    },
+    {
+     "w": " the",
+     "start": 104.58,
+     "end": 104.58,
+     "p": 0.82
+    },
+    {
+     "w": " tip",
+     "start": 104.58,
+     "end": 104.58,
+     "p": 0.27
+    },
+    {
+     "w": " in",
+     "start": 104.58,
+     "end": 104.58,
+     "p": 0.93
+    },
+    {
+     "w": " a",
+     "start": 104.58,
+     "end": 104.58,
+     "p": 0.94
+    },
+    {
+     "w": " combo",
+     "start": 104.58,
+     "end": 104.58,
+     "p": 0.66
+    },
+    {
+     "w": " lamp",
+     "start": 104.58,
+     "end": 104.58,
+     "p": 0.99
+    },
+    {
+     "w": " for",
+     "start": 104.58,
+     "end": 104.58,
+     "p": 0.88
+    },
+    {
+     "w": " 60",
+     "start": 104.58,
+     "end": 104.58,
+     "p": 0.35
+    },
+    {
+     "w": " seconds.",
+     "start": 104.58,
+     "end": 104.58,
+     "p": 0.95
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 105.02,
+   "end": 106.66,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.87,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 105.02,
+     "end": 106.42,
+     "p": 0.27
+    },
+    {
+     "w": " cures",
+     "start": 106.42,
+     "end": 106.42,
+     "p": 0.55
+    },
+    {
+     "w": " the",
+     "start": 106.42,
+     "end": 106.42,
+     "p": 0.9
+    },
+    {
+     "w": " tip",
+     "start": 106.42,
+     "end": 106.42,
+     "p": 0.65
+    },
+    {
+     "w": " in",
+     "start": 106.42,
+     "end": 106.42,
+     "p": 0.99
+    },
+    {
+     "w": " a",
+     "start": 106.42,
+     "end": 106.42,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 106.42,
+     "end": 106.42,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 106.42,
+     "end": 106.42,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 106.42,
+     "end": 106.66,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 106.66,
+     "end": 106.66,
+     "p": 0.92
+    },
+    {
+     "w": " seconds.",
+     "start": 106.66,
+     "end": 106.66,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 109.66,
+   "end": 111.06,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.87,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 109.66,
+     "end": 111.06,
+     "p": 0.35
+    },
+    {
+     "w": " cures",
+     "start": 111.06,
+     "end": 111.06,
+     "p": 0.85
+    },
+    {
+     "w": " the",
+     "start": 111.06,
+     "end": 111.06,
+     "p": 1.0
+    },
+    {
+     "w": " tip",
+     "start": 111.06,
+     "end": 111.06,
+     "p": 0.96
+    },
+    {
+     "w": " in",
+     "start": 111.06,
+     "end": 111.06,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 111.06,
+     "end": 111.06,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 111.06,
+     "end": 111.06,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 111.06,
+     "end": 111.06,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 111.06,
+     "end": 111.06,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 111.06,
+     "end": 111.06,
+     "p": 0.96
+    },
+    {
+     "w": " seconds.",
+     "start": 111.06,
+     "end": 111.06,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 111.28,
+   "end": 112.68,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.87,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 111.28,
+     "end": 112.68,
+     "p": 0.4
+    },
+    {
+     "w": " cures",
+     "start": 112.68,
+     "end": 112.68,
+     "p": 0.75
+    },
+    {
+     "w": " the",
+     "start": 112.68,
+     "end": 112.68,
+     "p": 1.0
+    },
+    {
+     "w": " tip",
+     "start": 112.68,
+     "end": 112.68,
+     "p": 0.95
+    },
+    {
+     "w": " in",
+     "start": 112.68,
+     "end": 112.68,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 112.68,
+     "end": 112.68,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 112.68,
+     "end": 112.68,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 112.68,
+     "end": 112.68,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 112.68,
+     "end": 112.68,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 112.68,
+     "end": 112.68,
+     "p": 0.97
+    },
+    {
+     "w": " seconds.",
+     "start": 112.68,
+     "end": 112.68,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 112.68,
+   "end": 112.86,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.87,
+   "comp": 4.98,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 112.68,
+     "end": 112.68,
+     "p": 0.47
+    },
+    {
+     "w": " cures",
+     "start": 112.68,
+     "end": 112.86,
+     "p": 0.91
+    },
+    {
+     "w": " the",
+     "start": 112.86,
+     "end": 112.86,
+     "p": 1.0
+    },
+    {
+     "w": " tip",
+     "start": 112.86,
+     "end": 112.86,
+     "p": 0.97
+    },
+    {
+     "w": " in",
+     "start": 112.86,
+     "end": 112.86,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 112.86,
+     "end": 112.86,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 112.86,
+     "end": 112.86,
+     "p": 0.98
+    },
+    {
+     "w": " lamp",
+     "start": 112.86,
+     "end": 112.86,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 112.86,
+     "end": 112.86,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 112.86,
+     "end": 112.86,
+     "p": 0.99
+    },
+    {
+     "w": " seconds.",
+     "start": 112.86,
+     "end": 112.86,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 125.0,
+   "end": 126.4,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.35,
+   "no_speech": 0.84,
+   "comp": 4.15,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 125.0,
+     "end": 126.4,
+     "p": 0.04
+    },
+    {
+     "w": " cures",
+     "start": 126.4,
+     "end": 126.4,
+     "p": 0.53
+    },
+    {
+     "w": " the",
+     "start": 126.4,
+     "end": 126.4,
+     "p": 0.85
+    },
+    {
+     "w": " tip",
+     "start": 126.4,
+     "end": 126.4,
+     "p": 0.27
+    },
+    {
+     "w": " in",
+     "start": 126.4,
+     "end": 126.4,
+     "p": 0.94
+    },
+    {
+     "w": " a",
+     "start": 126.4,
+     "end": 126.4,
+     "p": 0.94
+    },
+    {
+     "w": " combo",
+     "start": 126.4,
+     "end": 126.4,
+     "p": 0.63
+    },
+    {
+     "w": " lamp",
+     "start": 126.4,
+     "end": 126.4,
+     "p": 0.99
+    },
+    {
+     "w": " for",
+     "start": 126.4,
+     "end": 126.4,
+     "p": 0.89
+    },
+    {
+     "w": " 60",
+     "start": 126.4,
+     "end": 126.4,
+     "p": 0.36
+    },
+    {
+     "w": " seconds.",
+     "start": 126.4,
+     "end": 126.4,
+     "p": 0.95
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 126.4,
+   "end": 126.46,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.35,
+   "no_speech": 0.84,
+   "comp": 4.15,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 126.4,
+     "end": 126.44,
+     "p": 0.26
+    },
+    {
+     "w": " cures",
+     "start": 126.44,
+     "end": 126.44,
+     "p": 0.55
+    },
+    {
+     "w": " the",
+     "start": 126.44,
+     "end": 126.46,
+     "p": 0.89
+    },
+    {
+     "w": " tip",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 0.59
+    },
+    {
+     "w": " in",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 0.99
+    },
+    {
+     "w": " a",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 0.9
+    },
+    {
+     "w": " seconds.",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 126.46,
+   "end": 127.84,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.35,
+   "no_speech": 0.84,
+   "comp": 4.15,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 0.35
+    },
+    {
+     "w": " cures",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 0.85
+    },
+    {
+     "w": " the",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 1.0
+    },
+    {
+     "w": " tip",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 0.94
+    },
+    {
+     "w": " in",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 126.46,
+     "end": 126.46,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 126.46,
+     "end": 127.84,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 127.84,
+     "end": 127.84,
+     "p": 0.96
+    },
+    {
+     "w": " seconds.",
+     "start": 127.84,
+     "end": 127.84,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 131.82,
+   "end": 133.22,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.35,
+   "no_speech": 0.84,
+   "comp": 4.15,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 131.82,
+     "end": 133.22,
+     "p": 0.39
+    },
+    {
+     "w": " cures",
+     "start": 133.22,
+     "end": 133.22,
+     "p": 0.75
+    },
+    {
+     "w": " the",
+     "start": 133.22,
+     "end": 133.22,
+     "p": 1.0
+    },
+    {
+     "w": " tip",
+     "start": 133.22,
+     "end": 133.22,
+     "p": 0.95
+    },
+    {
+     "w": " in",
+     "start": 133.22,
+     "end": 133.22,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 133.22,
+     "end": 133.22,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 133.22,
+     "end": 133.22,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 133.22,
+     "end": 133.22,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 133.22,
+     "end": 133.22,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 133.22,
+     "end": 133.22,
+     "p": 0.97
+    },
+    {
+     "w": " seconds.",
+     "start": 133.22,
+     "end": 133.22,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 133.22,
+   "end": 133.3,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.35,
+   "no_speech": 0.84,
+   "comp": 4.15,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 133.22,
+     "end": 133.28,
+     "p": 0.43
+    },
+    {
+     "w": " cures",
+     "start": 133.28,
+     "end": 133.3,
+     "p": 0.81
+    },
+    {
+     "w": " the",
+     "start": 133.3,
+     "end": 133.3,
+     "p": 1.0
+    },
+    {
+     "w": " tip",
+     "start": 133.3,
+     "end": 133.3,
+     "p": 0.96
+    },
+    {
+     "w": " in",
+     "start": 133.3,
+     "end": 133.3,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 133.3,
+     "end": 133.3,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 133.3,
+     "end": 133.3,
+     "p": 0.98
+    },
+    {
+     "w": " lamp",
+     "start": 133.3,
+     "end": 133.3,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 133.3,
+     "end": 133.3,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 133.3,
+     "end": 133.3,
+     "p": 0.98
+    },
+    {
+     "w": " seconds.",
+     "start": 133.3,
+     "end": 133.3,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 144.5,
+   "end": 144.92,
+   "text": "you",
+   "avg_logprob": -0.77,
+   "no_speech": 0.91,
+   "comp": 0.27,
+   "lang": null,
+   "words": [
+    {
+     "w": " you",
+     "start": 144.5,
+     "end": 145.2,
+     "p": 0.21
+    }
+   ],
+   "speech": false
+  }
+ ]
+}

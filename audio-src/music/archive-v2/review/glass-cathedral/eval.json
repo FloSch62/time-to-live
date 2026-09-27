@@ -1,0 +1,106 @@
+[
+ {
+  "take": "explore/t1",
+  "reject": [
+   "lost plan (3 bars from bar 28)",
+   "dropouts [(64.1, 1.0, 15.9), (69.8, 0.4, 13.4)]",
+   "major-leaning (E 0.36 >= Am 0.15)"
+  ],
+  "planned_dips": [],
+  "score": 2.167,
+  "cinematic": 0.878,
+  "intense": 0.276,
+  "dark": 0.485,
+  "not_club": 0.798,
+  "mode_margin": -0.211,
+  "cinematic_min": 0.684,
+  "vocal_max": 0.408,
+  "ftl": 0.267,
+  "speech_checked": true,
+  "lufs": -12.99,
+  "tp": 0.11,
+  "lra": 6.8,
+  "key": "Am",
+  "window_db": [
+   -24.8,
+   -14.6,
+   -14.6,
+   -14.4,
+   -14.6,
+   -14.4,
+   -18.1,
+   -13.5,
+   -12.9,
+   -16.7,
+   -12.4,
+   -15.7,
+   -16.7,
+   -11.8,
+   -11.5
+  ],
+  "seam_db": 2.7,
+  "seam_chroma": 0.994,
+  "ratio": 1.0,
+  "tail": 5.06
+ },
+ {
+  "take": "battle/t1",
+  "reject": [
+   "drift [-48.0, -70.0, -80.0, 70.0] ms",
+   "dropouts [(35.5, 1.1, 24.3), (40.7, 1.2, 25.9), (46.1, 1.0, 14.7)]",
+   "major-leaning (Bb 0.36 >= Am 0.15)"
+  ],
+  "planned_dips": [
+   [
+    103.7,
+    0.8,
+    27.7
+   ],
+   [
+    109.2,
+    0.5,
+    25.4
+   ],
+   [
+    114.6,
+    0.3,
+    19.8
+   ]
+  ],
+  "score": 2.193,
+  "cinematic": 0.947,
+  "intense": 0.067,
+  "dark": 0.577,
+  "not_club": 0.867,
+  "mode_margin": -0.207,
+  "cinematic_min": 0.87,
+  "vocal_max": 0.414,
+  "ftl": 0.317,
+  "speech_checked": true,
+  "lufs": -15.71,
+  "tp": -0.36,
+  "lra": 8.1,
+  "key": "Am",
+  "window_db": [
+   -23.0,
+   -18.4,
+   -20.5,
+   -15.1,
+   -17.2,
+   -15.4,
+   -16.0,
+   -15.6,
+   -15.7,
+   -18.6,
+   -16.6,
+   -21.7,
+   -22.5,
+   -16.2,
+   -16.3
+  ],
+  "seam_db": 4.8,
+  "seam_chroma": 0.934,
+  "ratio": 1.00002,
+  "tail": 4.68
+ }
+]

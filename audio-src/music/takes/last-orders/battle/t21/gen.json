@@ -1,0 +1,158 @@
+{
+  "piece": "last-orders",
+  "version": "battle",
+  "take": 21,
+  "seed": 137700,
+  "cfg": 1.6,
+  "negative": "Vocals, sung lyrics, spoken words, choir, humming, a pop singer. Festival EDM drops, cheerful pop song, heroic trailer fanfare.",
+  "plans": "v4-new-composition",
+  "composition_source": "compositions/last-orders/editorial-1/score.abc",
+  "reference_method": "Original editorial composition; no old melody retained. Arrangement informed by Multiverse timeline analysis.",
+  "style": "Driving instrumental electronic space battle game soundtrack, inspired by FTL and FTL Multiverse. A firm syncopated electronic drum groove, active deep synth bass, crisp snare and hi-hats, small tom fills and layered answering arpeggios. Urgent, tense and focused. Precise clockwork synth plucks, an expressive wistful electronic lead, restless melodic bass and warm slowly opening pads; determined momentum with a bittersweet release. Build the full rhythmic arrangement through the first theme, thin it in the middle while keeping the pulse audible, then return with richer counterpoint and stronger drums. A tactical space battle. Purely instrumental. Bm, 126 BPM.",
+  "plan_sha256": "51094aabf28ccda699411abb23aff7ed9c7ef31c1ef37c2c22bc079632dd8863",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      4,
+      80
+    ],
+    "bars": 86,
+    "tail": 2,
+    "bar_s": 1.9047619047619047,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "phrase01",
+        "instrumental"
+      ],
+      [
+        8,
+        "phrase02",
+        "instrumental"
+      ],
+      [
+        12,
+        "phrase03",
+        "instrumental"
+      ],
+      [
+        16,
+        "phrase04",
+        "instrumental"
+      ],
+      [
+        20,
+        "phrase05",
+        "instrumental"
+      ],
+      [
+        24,
+        "phrase06",
+        "instrumental"
+      ],
+      [
+        28,
+        "phrase07",
+        "instrumental"
+      ],
+      [
+        32,
+        "phrase08",
+        "instrumental"
+      ],
+      [
+        36,
+        "phrase09",
+        "instrumental"
+      ],
+      [
+        40,
+        "phrase10",
+        "interlude"
+      ],
+      [
+        44,
+        "phrase11",
+        "interlude"
+      ],
+      [
+        48,
+        "phrase12",
+        "instrumental"
+      ],
+      [
+        52,
+        "phrase13",
+        "instrumental"
+      ],
+      [
+        56,
+        "phrase14",
+        "instrumental"
+      ],
+      [
+        60,
+        "phrase15",
+        "instrumental"
+      ],
+      [
+        64,
+        "phrase16",
+        "instrumental"
+      ],
+      [
+        68,
+        "phrase17",
+        "instrumental"
+      ],
+      [
+        72,
+        "phrase18",
+        "instrumental"
+      ],
+      [
+        76,
+        "phrase19",
+        "instrumental"
+      ],
+      [
+        80,
+        "phrase20",
+        "instrumental"
+      ],
+      [
+        84,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 4285,
+  "max_tokens": 6392,
+  "truncated": false,
+  "timing": {
+    "seconds": 47.512280548000035,
+    "prefill_seconds": 0.3828917140000385,
+    "ttft_seconds": 0.3855941190000749,
+    "output_tokens": 4286,
+    "content_tokens": 4285,
+    "output_tps": 90.20825669839192,
+    "prefix_tokens": 2413,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 23.1,
+  "vae_seconds": 2.8,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)",
+  "gpu_peak_allocated_gib": 8.807,
+  "gpu_peak_reserved_gib": 9.029
+}

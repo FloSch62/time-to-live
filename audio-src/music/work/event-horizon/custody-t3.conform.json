@@ -1,0 +1,155 @@
+{
+ "piece": "event-horizon",
+ "version": "custody",
+ "take": "t3",
+ "duration": 135.833333,
+ "samples": 6520000,
+ "bar_s": 1.9047619047619047,
+ "bars": 70,
+ "loop_bars": [
+  12,
+  68
+ ],
+ "loop_start": 22.857143,
+ "loop_end": 129.52381,
+ "anchors": [
+  {
+   "out": 3.81,
+   "take": 3.9509,
+   "local": false
+  },
+  {
+   "out": 11.429,
+   "take": 11.555,
+   "local": true
+  },
+  {
+   "out": 19.048,
+   "take": 19.1752,
+   "local": true
+  },
+  {
+   "out": 26.667,
+   "take": 26.7933,
+   "local": true
+  },
+  {
+   "out": 34.286,
+   "take": 34.4115,
+   "local": true
+  },
+  {
+   "out": 41.905,
+   "take": 42.0316,
+   "local": true
+  },
+  {
+   "out": 49.524,
+   "take": 49.6498,
+   "local": true
+  },
+  {
+   "out": 57.143,
+   "take": 57.2619,
+   "local": true
+  },
+  {
+   "out": 64.762,
+   "take": 64.8801,
+   "local": true
+  },
+  {
+   "out": 72.381,
+   "take": 72.4982,
+   "local": true
+  },
+  {
+   "out": 80.0,
+   "take": 80.1144,
+   "local": true
+  },
+  {
+   "out": 87.619,
+   "take": 87.7325,
+   "local": true
+  },
+  {
+   "out": 95.238,
+   "take": 95.3487,
+   "local": true
+  },
+  {
+   "out": 102.857,
+   "take": 102.9609,
+   "local": true
+  },
+  {
+   "out": 110.476,
+   "take": 110.575,
+   "local": true
+  },
+  {
+   "out": 118.095,
+   "take": 118.1892,
+   "local": true
+  },
+  {
+   "out": 125.714,
+   "take": 125.8013,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99804,
+ "rate_max": 1.00014,
+ "max_cents": 3.4,
+ "take_seconds_used": 135.916,
+ "seam": {
+  "loop_start_sample": 1097143,
+  "loop_end_sample": 6217143,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 126.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   -14.0,
+   -2.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   2.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   3.41,
+   3.31,
+   3.34,
+   3.37,
+   3.4,
+   3.32,
+   3.36,
+   3.15,
+   3.35,
+   3.33,
+   3.31,
+   3.39,
+   3.36,
+   3.38,
+   3.35,
+   3.25,
+   3.31
+  ]
+ },
+ "tempo_correction": null,
+ "phase_correction_beats": 0
+}

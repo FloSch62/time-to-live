@@ -1,0 +1,136 @@
+{
+  "piece": "rust-kingdom",
+  "version": "battle",
+  "take": 21,
+  "seed": 580208,
+  "cfg": 1.6,
+  "negative": "Vocals, sung lyrics, spoken words, choir, humming, a pop singer. Festival EDM drops, cheerful pop song, heroic trailer fanfare.",
+  "plans": "v4-new-composition",
+  "composition_source": "compositions/rust-kingdom/editorial-1/score.abc",
+  "reference_method": "Original editorial composition; no old melody retained. Arrangement informed by Multiverse timeline analysis.",
+  "style": "Instrumental electronic science fiction strategy game soundtrack in the musical world of Ben Prunty FTL and FTL Multiverse. Dry hollow pulse-synth lead, dusty metallic plucks, elastic resonant bass and slow tape echoes; rusted machinery and lonely distant signals. An evolving melodic instrumental with arpeggiated inner motion, subtle harmonic colour and clear phrasing. Battle arrangement: a firm syncopated electronic drum groove, active bass movement, crisp snare and hi-hats, small tom fills and layered answering arpeggios. Driving, tense and focused. Build the full rhythmic arrangement through the first theme, thin it in the middle while keeping the pulse audible, then return with richer counterpoint and stronger drums. A tactical space battle. Purely instrumental. Gm, 100 BPM.",
+  "plan_sha256": "f2f20697d59828a2c8f4cc96f4bf3b55fd0c3f489c00d8080b12b311c15c4b4a",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      4,
+      68
+    ],
+    "bars": 70,
+    "tail": 2,
+    "bar_s": 2.4,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "phrase01",
+        "instrumental"
+      ],
+      [
+        8,
+        "phrase02",
+        "instrumental"
+      ],
+      [
+        12,
+        "phrase03",
+        "instrumental"
+      ],
+      [
+        16,
+        "phrase04",
+        "instrumental"
+      ],
+      [
+        20,
+        "phrase05",
+        "instrumental"
+      ],
+      [
+        24,
+        "phrase06",
+        "instrumental"
+      ],
+      [
+        28,
+        "phrase07",
+        "instrumental"
+      ],
+      [
+        32,
+        "phrase08",
+        "interlude"
+      ],
+      [
+        36,
+        "phrase09",
+        "interlude"
+      ],
+      [
+        40,
+        "phrase10",
+        "instrumental"
+      ],
+      [
+        44,
+        "phrase11",
+        "instrumental"
+      ],
+      [
+        48,
+        "phrase12",
+        "instrumental"
+      ],
+      [
+        52,
+        "phrase13",
+        "instrumental"
+      ],
+      [
+        56,
+        "phrase14",
+        "instrumental"
+      ],
+      [
+        60,
+        "phrase15",
+        "instrumental"
+      ],
+      [
+        64,
+        "phrase16",
+        "instrumental"
+      ],
+      [
+        68,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 4184,
+  "max_tokens": 6550,
+  "truncated": false,
+  "timing": {
+    "seconds": 47.04071878400009,
+    "prefill_seconds": 0.30995587200004593,
+    "ttft_seconds": 0.31250721100013834,
+    "output_tokens": 4185,
+    "content_tokens": 4184,
+    "output_tps": 88.965477317992,
+    "prefix_tokens": 1971,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 19.6,
+  "vae_seconds": 3.8,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

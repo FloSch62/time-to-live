@@ -1,0 +1,4 @@
+bg/s1-a:a@3
+bg/s1-b:a@3
+bg/s1-c:a@3
+bg/title:a@3

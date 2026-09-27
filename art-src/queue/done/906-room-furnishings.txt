@@ -1,0 +1,3 @@
+props/bay-stores:readable@1
+props/bay-workshop:readable@1
+props/bay-bunks:readable@1

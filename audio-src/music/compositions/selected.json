@@ -1,0 +1,217 @@
+{
+  "copper-reach": {
+    "score": "copper-reach/editorial-1/score.abc",
+    "key_accidentals": {
+      "F": 1
+    },
+    "tonic_note": "E",
+    "source_kind": "Original editorial composition; no old melody retained.",
+    "takes_from": 21,
+    "loop_bars": [
+      4,
+      64
+    ],
+    "section_labels": [
+      "intro",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "interlude",
+      "interlude",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental"
+    ],
+    "explore": "Instrumental electronic science fiction strategy game soundtrack in the musical world of Ben Prunty FTL and FTL Multiverse. Warm rounded analog lead, rippling FM plucks, a deep melodic synth bass and drifting string-synth pads; curious, wistful frontier travel. An evolving melodic instrumental with arpeggiated inner motion, subtle harmonic colour and clear phrasing. Exploration arrangement: spacious, reflective and curious. Soft detailed electronic percussion, a gently moving bass and delicate repeating synthesizer patterns support the expressive lead. The middle passage opens into lighter suspended textures before the developed theme returns. Intimate game underscore with room between phrases. Steady tempo throughout; the quiet bass pulse and small percussion stay precisely on the beat through the thinner passage, return and ending.",
+    "battle": "Driving instrumental electronic space battle game soundtrack, inspired by FTL and FTL Multiverse. A firm syncopated electronic drum groove, active deep synth bass, crisp snare and hi-hats, small tom fills and layered answering arpeggios. Urgent, tense and focused. Warm rounded analog lead, rippling FM plucks, a deep melodic synth bass and drifting string-synth pads; curious, wistful frontier travel. Build the full rhythmic arrangement through the first theme, thin it in the middle while keeping the pulse audible, then return with richer counterpoint and stronger drums. A tactical space battle."
+  },
+  "rust-kingdom": {
+    "score": "rust-kingdom/editorial-1/score.abc",
+    "key_accidentals": {
+      "B": -1,
+      "E": -1
+    },
+    "tonic_note": "G",
+    "source_kind": "Original editorial composition; no old melody retained.",
+    "takes_from": 21,
+    "loop_bars": [
+      4,
+      64
+    ],
+    "section_labels": [
+      "intro",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "interlude",
+      "interlude",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental"
+    ],
+    "explore": "Instrumental electronic science fiction strategy game soundtrack in the musical world of Ben Prunty FTL and FTL Multiverse. Dry hollow pulse-synth lead, dusty metallic plucks, elastic resonant bass and slow tape echoes; rusted machinery and lonely distant signals. An evolving melodic instrumental with arpeggiated inner motion, subtle harmonic colour and clear phrasing. Exploration arrangement: spacious, reflective and curious. Soft detailed electronic percussion, a gently moving bass and delicate repeating synthesizer patterns support the expressive lead. The middle passage opens into lighter suspended textures before the developed theme returns. Intimate game underscore with room between phrases. Steady tempo throughout; the quiet bass pulse and small percussion stay precisely on the beat through the thinner passage, return and ending.",
+    "battle": "Driving instrumental electronic space battle game soundtrack, inspired by FTL and FTL Multiverse. A firm syncopated electronic drum groove, active deep synth bass, crisp snare and hi-hats, small tom fills and layered answering arpeggios. Urgent, tense and focused. Dry hollow pulse-synth lead, dusty metallic plucks, elastic resonant bass and slow tape echoes; rusted machinery and lonely distant signals. Build the full rhythmic arrangement through the first theme, thin it in the middle while keeping the pulse audible, then return with richer counterpoint and stronger drums. A tactical space battle."
+  },
+  "glass-cathedral": {
+    "score": "glass-cathedral/editorial-1/score.abc",
+    "key_accidentals": {
+      "F": 1,
+      "C": 1,
+      "G": 1
+    },
+    "tonic_note": "F",
+    "source_kind": "Original editorial composition; no old melody retained.",
+    "takes_from": 21,
+    "loop_bars": [
+      4,
+      72
+    ],
+    "section_labels": [
+      "intro",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "interlude",
+      "interlude",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental"
+    ],
+    "explore": "Instrumental electronic science fiction strategy game soundtrack in the musical world of Ben Prunty FTL and FTL Multiverse. Clear crystalline FM bells, delicate high synth plucks, an expressive analog synth lead and deep rounded bass in a spacious resonant hall; intricate and mysterious. An evolving melodic instrumental with arpeggiated inner motion, subtle harmonic colour and clear phrasing. Exploration arrangement: spacious, reflective and curious. Soft detailed electronic percussion, a gently moving bass and delicate repeating synthesizer patterns support the expressive lead. The middle passage opens into lighter suspended textures before the developed theme returns. Intimate game underscore with room between phrases. Steady tempo throughout; the quiet bass pulse and small percussion stay precisely on the beat through the thinner passage, return and ending.",
+    "battle": "Driving instrumental electronic space battle game soundtrack, inspired by FTL and FTL Multiverse. A firm syncopated electronic drum groove, active deep synth bass, crisp snare and hi-hats, small tom fills and layered answering arpeggios. Urgent, tense and focused. Clear crystalline FM bells, delicate high synth plucks, an expressive analog synth lead and deep rounded bass in a spacious resonant hall; intricate and mysterious. Build the full rhythmic arrangement through the first theme, thin it in the middle while keeping the pulse audible, then return with richer counterpoint and stronger drums. A tactical space battle."
+  },
+  "choir-weather": {
+    "score": "choir-weather/editorial-1/score.abc",
+    "key_accidentals": {
+      "F": 1,
+      "C": 1,
+      "G": 1,
+      "D": 1
+    },
+    "tonic_note": "C",
+    "source_kind": "Original editorial composition; no old melody retained.",
+    "takes_from": 21,
+    "loop_bars": [
+      4,
+      56
+    ],
+    "section_labels": [
+      "intro",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "interlude",
+      "interlude",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental"
+    ],
+    "explore": "Instrumental electronic science fiction strategy game soundtrack in the musical world of Ben Prunty FTL and FTL Multiverse. Rounded FM synthesizer lead with slow pitch vibrato, interlocking glass-pluck sequences, filtered electronic chords, long digital delays and a warm low synthesizer bass; an eerie shifting signal cloud. An evolving melodic instrumental with arpeggiated inner motion, subtle harmonic colour and clear phrasing. Exploration arrangement: spacious, reflective and curious. Soft detailed electronic percussion, a gently moving bass and delicate repeating synthesizer patterns support the expressive lead. The middle passage opens into lighter suspended textures before the developed theme returns. Intimate game underscore with room between phrases. Steady tempo throughout; the quiet bass pulse and small percussion stay precisely on the beat through the thinner passage, return and ending.",
+    "battle": "Driving instrumental electronic space battle game soundtrack, inspired by FTL and FTL Multiverse. A firm syncopated electronic drum groove, active deep synth bass, crisp snare and hi-hats, small tom fills and layered answering arpeggios. Urgent, tense and focused. Rounded FM synthesizer lead with slow pitch vibrato, interlocking glass-pluck sequences, filtered electronic chords, long digital delays and a warm low synthesizer bass; an eerie shifting signal cloud. Build the full rhythmic arrangement through the first theme, thin it in the middle while keeping the pulse audible, then return with richer counterpoint and stronger drums. A tactical space battle."
+  },
+  "blackout-heart": {
+    "score": "blackout-heart/editorial-1/score.abc",
+    "key_accidentals": {},
+    "tonic_note": "A",
+    "source_kind": "Original editorial composition; no old melody retained.",
+    "takes_from": 21,
+    "loop_bars": [
+      4,
+      72
+    ],
+    "section_labels": [
+      "intro",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "interlude",
+      "interlude",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental"
+    ],
+    "explore": "Reflective, hushed instrumental electronic space exploration soundtrack, inspired by Ben Prunty FTL and FTL Multiverse. A distant wistful square-synth melody answers delicate filtered plucks. Slowly moving warm analog pads and deep sustained bass notes leave wide spaces around the lead. Sparse light electronic percussion: soft taps and a quiet steady pulse beneath the melody. Curiosity and solitude inside an immense silent archive. Gentle melodic development, a thinner middle passage, then a warm restrained return. Keep the written tempo steady through every passage.",
+    "battle": "Driving instrumental electronic space battle game soundtrack, inspired by FTL and FTL Multiverse. A firm syncopated electronic drum groove, active deep synth bass, crisp snare and hi-hats, small tom fills and layered answering arpeggios. Urgent, tense and focused. Resonant low analog sequences, deep rounded bass, distant plaintive square-synth lead and slowly moving filtered pads; mounting pressure inside an immense archive. Build the full rhythmic arrangement through the first theme, thin it in the middle while keeping the pulse audible, then return with richer counterpoint and stronger drums. A tactical space battle."
+  },
+  "last-orders": {
+    "score": "last-orders/editorial-1/score.abc",
+    "key_accidentals": {
+      "F": 1,
+      "C": 1
+    },
+    "tonic_note": "B",
+    "source_kind": "Original editorial composition; no old melody retained.",
+    "takes_from": 21,
+    "loop_bars": [
+      4,
+      80
+    ],
+    "section_labels": [
+      "intro",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "interlude",
+      "interlude",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental",
+      "instrumental"
+    ],
+    "explore": "Instrumental electronic science fiction strategy game soundtrack in the musical world of Ben Prunty FTL and FTL Multiverse. Precise clockwork synth plucks, an expressive wistful electronic lead, restless melodic bass and warm slowly opening pads; determined momentum with a bittersweet release. An evolving melodic instrumental with arpeggiated inner motion, subtle harmonic colour and clear phrasing. Exploration arrangement: spacious, reflective and curious. Soft detailed electronic percussion, a gently moving bass and delicate repeating synthesizer patterns support the expressive lead. The middle passage opens into lighter suspended textures before the developed theme returns. Intimate game underscore with room between phrases. Steady tempo throughout; the quiet bass pulse and small percussion stay precisely on the beat through the thinner passage, return and ending.",
+    "battle": "Driving instrumental electronic space battle game soundtrack, inspired by FTL and FTL Multiverse. A firm syncopated electronic drum groove, active deep synth bass, crisp snare and hi-hats, small tom fills and layered answering arpeggios. Urgent, tense and focused. Precise clockwork synth plucks, an expressive wistful electronic lead, restless melodic bass and warm slowly opening pads; determined momentum with a bittersweet release. Build the full rhythmic arrangement through the first theme, thin it in the middle while keeping the pulse audible, then return with richer counterpoint and stronger drums. A tactical space battle."
+  }
+}

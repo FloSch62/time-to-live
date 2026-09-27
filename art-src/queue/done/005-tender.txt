@@ -1,0 +1,3 @@
+explore/tender:x-ill-d80
+explore/tender:x-ill-d88
+explore/tender:x-ill-t2i

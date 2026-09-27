@@ -1,0 +1,361 @@
+{
+ "piece": "event-horizon",
+ "note": "Alpha selection: darker piano-led Custody t3, restrained synth Emergency t2, and ominous Horizon t3. All raw speech scans are clean. Custody retains a score-versus-club classifier warning despite its darker mood result; its opening arrangement remains a listening-review item. Tonal-profile ambiguity, brief phrase dips, and local timing/adherence flags are retained. The layers share one grid; Horizon is advanced one source beat to correct its measured harmonic phase. Custody and Emergency are attenuated below Horizon.",
+ "gain_db": -4.65,
+ "loudest": "horizon",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   12,
+   68
+  ],
+  "bars": 70,
+  "tail": 2,
+  "bar_s": 1.9047619047619047,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "H1",
+    "instrumental"
+   ],
+   [
+    8,
+    "H2",
+    "instrumental"
+   ],
+   [
+    12,
+    "D1",
+    "instrumental"
+   ],
+   [
+    16,
+    "D2",
+    "instrumental"
+   ],
+   [
+    20,
+    "Q1",
+    "instrumental"
+   ],
+   [
+    24,
+    "Q2",
+    "instrumental"
+   ],
+   [
+    28,
+    "H1",
+    "instrumental"
+   ],
+   [
+    32,
+    "H2",
+    "instrumental"
+   ],
+   [
+    36,
+    "E1",
+    "instrumental"
+   ],
+   [
+    40,
+    "E2",
+    "instrumental"
+   ],
+   [
+    44,
+    "D1",
+    "instrumental"
+   ],
+   [
+    48,
+    "D2",
+    "instrumental"
+   ],
+   [
+    52,
+    "Q1",
+    "instrumental"
+   ],
+   [
+    56,
+    "Q2",
+    "instrumental"
+   ],
+   [
+    60,
+    "H1",
+    "instrumental"
+   ],
+   [
+    64,
+    "H2",
+    "instrumental"
+   ],
+   [
+    68,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "custody": "audio/music/event-horizon-custody.ogg",
+   "emergency": "audio/music/event-horizon-emergency.ogg",
+   "horizon": "audio/music/event-horizon-horizon.ogg",
+   "main": "audio/music/event-horizon-custody.ogg"
+  },
+  "bpm": 126,
+  "key": "Cm",
+  "bars": 70,
+  "barSeconds": 1.904762,
+  "duration": 135.833333,
+  "loopStart": 22.857143,
+  "loopEnd": 129.52381,
+  "loop": true,
+  "gainDb": -4.65
+ },
+ "versions": {
+  "custody": {
+   "take": "t3",
+   "seed": 540577,
+   "source": "audio-src/music/takes/event-horizon/custody/t3/audio.flac",
+   "source_sha256": "8282fcb7c23ec8bb73ca55c937c427cf6eebaf3618c56a3a3a791f0cb1c27a4a",
+   "conform": {
+    "rate_min": 0.99804,
+    "rate_max": 1.00014,
+    "phase_correction_beats": 0,
+    "max_cents": 3.4,
+    "verify": {
+     "tempo_bpm": 126.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      -14.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.41,
+      3.31,
+      3.34,
+      3.37,
+      3.4,
+      3.32,
+      3.36,
+      3.15,
+      3.35,
+      3.33,
+      3.31,
+      3.39,
+      3.36,
+      3.38,
+      3.35,
+      3.25,
+      3.31
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/event-horizon-custody.flac",
+   "master_sha256": "77ec60f7313f18d54f32362f0645bae08ffb15e682a3f163028a9a91b424b706",
+   "delivery": "public/audio/music/event-horizon-custody.ogg",
+   "delivery_sha256": "bf683669e004840be31cb021feaf95a48d1dbc1bbc677e05d357a70dde928273",
+   "bytes": 2481279,
+   "samples": 6520000,
+   "decoded_samples": 6520000,
+   "source_levels": {
+    "lufs": -13.7,
+    "tp": 0.33,
+    "lra": 2.7
+   },
+   "layer_trim_db": -4.65,
+   "pre_gain": {
+    "lufs": -18.35,
+    "tp": -4.320000000000002,
+    "lra": 2.7
+   },
+   "delivered": {
+    "lufs": -23.01,
+    "tp": -8.33,
+    "lra": 2.8
+   }
+  },
+  "emergency": {
+   "take": "t2",
+   "seed": 674201,
+   "source": "audio-src/music/takes/event-horizon/emergency/t2/audio.flac",
+   "source_sha256": "427c4339d64e886fe5659c81a05d0c933964b4cf66d1bd1610a323bee8798321",
+   "conform": {
+    "rate_min": 0.99486,
+    "rate_max": 1.00483,
+    "phase_correction_beats": 0,
+    "max_cents": 8.9,
+    "verify": {
+     "tempo_bpm": 126.003,
+     "grid_phase_ms": 1.2,
+     "window_error_ms": [
+      70.0,
+      -36.0,
+      2.0,
+      6.0,
+      -34.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      62.0,
+      10.0,
+      -4.0,
+      -2.0
+     ],
+     "window_conf": [
+      1.77,
+      1.55,
+      2.39,
+      1.7,
+      2.02,
+      3.37,
+      3.2,
+      3.48,
+      3.44,
+      3.44,
+      3.4,
+      3.45,
+      3.44,
+      2.19,
+      2.18,
+      3.12,
+      3.43
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/event-horizon-emergency.flac",
+   "master_sha256": "62169daac69d10860ca2f23ac4ecb06026ff7022f5fa6ea2c800615c379c27e1",
+   "delivery": "public/audio/music/event-horizon-emergency.ogg",
+   "delivery_sha256": "732ca0856c3f9d209060547be89c42d18ce4d7a005d50ae1c1d5396ab58ea563",
+   "bytes": 2440252,
+   "samples": 6520000,
+   "decoded_samples": 6520000,
+   "source_levels": {
+    "lufs": -14.87,
+    "tp": 0.19,
+    "lra": 4.5
+   },
+   "layer_trim_db": -1.48,
+   "pre_gain": {
+    "lufs": -16.35,
+    "tp": -1.2900000000000023,
+    "lra": 4.5
+   },
+   "delivered": {
+    "lufs": -20.99,
+    "tp": -5.96,
+    "lra": 4.5
+   }
+  },
+  "horizon": {
+   "take": "t3",
+   "seed": 409954,
+   "source": "audio-src/music/takes/event-horizon/horizon/t3/audio.flac",
+   "source_sha256": "5562fa50b27eb5bf77097d7380e6952c6b7c75f733772a6f03776f35c44fe05e",
+   "conform": {
+    "rate_min": 0.99659,
+    "rate_max": 1.00341,
+    "phase_correction_beats": 1,
+    "max_cents": 5.9,
+    "verify": {
+     "tempo_bpm": 126.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      80.0,
+      -74.0,
+      -38.0,
+      -2.0,
+      -2.0,
+      0.0,
+      0.0,
+      4.0,
+      -2.0,
+      2.0,
+      0.0,
+      2.0,
+      0.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      1.85,
+      2.22,
+      2.11,
+      2.79,
+      2.76,
+      2.76,
+      3.01,
+      3.05,
+      2.74,
+      3.15,
+      3.15,
+      3.12,
+      3.16,
+      3.19,
+      3.23,
+      3.23,
+      3.16
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/event-horizon-horizon.flac",
+   "master_sha256": "eb90f24876bbfce14b1345062045fcac40edb39ed445d5d6ebc9fb8a40469138",
+   "delivery": "public/audio/music/event-horizon-horizon.ogg",
+   "delivery_sha256": "3e3d01c4f537d780e87ddf9f634f99ea8811b723a8265a9ddbf5bdbc7f7fe56d",
+   "bytes": 1910717,
+   "samples": 6520000,
+   "decoded_samples": 6520000,
+   "source_levels": {
+    "lufs": -14.35,
+    "tp": 0.93,
+    "lra": 8.8
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -14.35,
+    "tp": 0.93,
+    "lra": 8.8
+   },
+   "delivered": {
+    "lufs": -18.98,
+    "tp": -3.7,
+    "lra": 8.8
+   }
+  }
+ }
+}

@@ -1,0 +1,134 @@
+{
+  "piece": "copper-reach",
+  "version": "battle",
+  "take": 3,
+  "seed": 158967,
+  "cfg": 1.6,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, choir singing words, a solo voice, pop song with a lead vocalist. Happy, cheerful, joyful, uplifting, hopeful, triumphant, heroic fanfare, major key, bright pop, feel-good, playful, whimsical, children's music, corporate, upbeat, epic trailer, sunny. Generic EDM club dance track with a four-on-the-floor kick.",
+  "plans": "v2-dark",
+  "style": "Tense, menacing 1980s sci-fi synth battle score for a lonely retro pixel-art space game: a relentless dark synth-bass ostinato, an electronic drum machine with a gated snare, a tense low arpeggiator, minor-second synth stabs, cold analog pads, tape echo and big reverb, rusted metallic percussion, a lonely cello line and heavy low toms. A fight among rusted copper relays at the edge of space. Urgent, dark and relentless, menacing, never heroic. Purely instrumental. Dm, 108 BPM.",
+  "plan_sha256": "0fc75b15f9c65531dd12c96fb59c51e04b2a45b072af687531ea60395086e74f",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      20,
+      68
+    ],
+    "bars": 70,
+    "tail": 2,
+    "bar_s": 2.2222222222222223,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "A1",
+        "instrumental"
+      ],
+      [
+        8,
+        "A2",
+        "instrumental"
+      ],
+      [
+        12,
+        "G1",
+        "instrumental"
+      ],
+      [
+        16,
+        "G2",
+        "instrumental"
+      ],
+      [
+        20,
+        "B1",
+        "instrumental"
+      ],
+      [
+        24,
+        "B2",
+        "instrumental"
+      ],
+      [
+        28,
+        "A1",
+        "instrumental"
+      ],
+      [
+        32,
+        "A2",
+        "instrumental"
+      ],
+      [
+        36,
+        "R1",
+        "interlude"
+      ],
+      [
+        40,
+        "R2",
+        "interlude"
+      ],
+      [
+        44,
+        "B1",
+        "instrumental"
+      ],
+      [
+        48,
+        "B2",
+        "instrumental"
+      ],
+      [
+        52,
+        "A1",
+        "instrumental"
+      ],
+      [
+        56,
+        "A2",
+        "instrumental"
+      ],
+      [
+        60,
+        "G1",
+        "instrumental"
+      ],
+      [
+        64,
+        "G2",
+        "instrumental"
+      ],
+      [
+        68,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 3850,
+  "max_tokens": 6083,
+  "truncated": false,
+  "timing": {
+    "seconds": 44.83673010504572,
+    "prefill_seconds": 0.43017795303603634,
+    "ttft_seconds": 0.43206162902060896,
+    "output_tokens": 3851,
+    "content_tokens": 3850,
+    "output_tps": 85.88940341942167,
+    "prefix_tokens": 1589,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 18.1,
+  "vae_seconds": 4.3,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

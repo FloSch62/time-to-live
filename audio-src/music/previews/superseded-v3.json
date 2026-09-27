@@ -1,0 +1,17 @@
+{
+ "copper-reach": {
+  "files": {
+   "explore": "audio/music/copper-reach-explore.ogg",
+   "battle": "audio/music/copper-reach-battle.ogg"
+  },
+  "bpm": 108,
+  "key": "Dm",
+  "bars": 70,
+  "barSeconds": 2.222222,
+  "duration": 158.055563,
+  "loopStart": 44.444444,
+  "loopEnd": 151.111111,
+  "loop": true,
+  "gainDb": -6.85
+ }
+}

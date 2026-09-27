@@ -1,0 +1,155 @@
+{
+ "piece": "relay-seven",
+ "note": "Alpha selection: very dark atmospheric cue (CLAP mood 0.780), no detected lexical speech, low vocal likelihood. YuE transposed the written key; this standalone cue preserves that performance. Tonal-profile flags are retained as advisory evidence, not hidden.",
+ "gain_db": -2.3,
+ "loudest": "main",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   12,
+   44
+  ],
+  "bars": 46,
+  "tail": 2,
+  "bar_s": 3.1578947368421053,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "P1",
+    "intro"
+   ],
+   [
+    8,
+    "P2",
+    "intro"
+   ],
+   [
+    12,
+    "L1",
+    "interlude"
+   ],
+   [
+    16,
+    "L2",
+    "interlude"
+   ],
+   [
+    20,
+    "P1",
+    "interlude"
+   ],
+   [
+    24,
+    "P2",
+    "interlude"
+   ],
+   [
+    28,
+    "L1",
+    "interlude"
+   ],
+   [
+    32,
+    "L2",
+    "interlude"
+   ],
+   [
+    36,
+    "P1",
+    "interlude"
+   ],
+   [
+    40,
+    "P2",
+    "interlude"
+   ],
+   [
+    44,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "main": "audio/music/relay-seven.ogg"
+  },
+  "bpm": 76,
+  "key": "Dm",
+  "bars": 46,
+  "barSeconds": 3.157895,
+  "duration": 147.763167,
+  "loopStart": 37.894737,
+  "loopEnd": 138.947368,
+  "loop": true,
+  "gainDb": -2.3
+ },
+ "versions": {
+  "main": {
+   "take": "t1",
+   "seed": 640043,
+   "source": "audio-src/music/takes/relay-seven/main/t1/audio.flac",
+   "source_sha256": "68d3e22b6c56a7e5ccde90d7542505818ca31541378f27a74c96d8248ca79881",
+   "conform": {
+    "rate_min": 0.99968,
+    "rate_max": 1.00048,
+    "max_cents": 0.8,
+    "verify": {
+     "tempo_bpm": 76.002,
+     "grid_phase_ms": 2.2,
+     "window_error_ms": [
+      36.0,
+      -58.0,
+      20.0,
+      2.0,
+      -2.0,
+      -10.0,
+      -2.0,
+      -20.0,
+      2.0,
+      -2.0,
+      4.0
+     ],
+     "window_conf": [
+      2.03,
+      3.08,
+      2.33,
+      2.4,
+      2.31,
+      2.39,
+      2.44,
+      2.4,
+      2.32,
+      2.71,
+      2.83
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/relay-seven.flac",
+   "master_sha256": "f7b54373e2178c6cc7e97d88647f14dac2f6cf24f33e3e11281b38d01ff439cf",
+   "delivery": "public/audio/music/relay-seven.ogg",
+   "delivery_sha256": "deae5f3c68399345ef1ac40f0c52fdc66d1400b72778bed834d43d786b98c0f0",
+   "bytes": 2586563,
+   "samples": 7092632,
+   "decoded_samples": 7092632,
+   "pre_gain": {
+    "lufs": -16.91,
+    "tp": 0.0,
+    "lra": 10.4
+   },
+   "delivered": {
+    "lufs": -19.19,
+    "tp": -2.5,
+    "lra": 10.4
+   }
+  }
+ }
+}

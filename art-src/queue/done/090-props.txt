@@ -1,0 +1,12 @@
+props/spire-top:a@1
+props/ring-gate:a@1
+props/lamp-tower:a@1
+props/market-stack:a@1
+props/cathedral-dome:a@1
+props/heart-sphere:a@1
+props/faultline-gap:a@1
+props/lift-car:a@1
+props/cloud-bank:a@1
+props/solar-array:a@1
+props/bell-frame:a@1
+props/seal-lattice:a@1

@@ -1,0 +1,2060 @@
+{
+ "file": "/home/clab/projects/clab/time-to-live/audio-src/music/previews/choir-weather-explore.ogg",
+ "audio_sha256": "5a3266b7e4ad761204dae35a72ca5e0b599c1fec6d77d19f3a848dbff7b0eff4",
+ "language": "jw",
+ "language_prob": 0.38,
+ "segments": [
+  {
+   "start": 10.78,
+   "end": 29.98,
+   "text": "Add 1 teaspoon of vanilla extract, 1 teaspoon of baking powder, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda, 1 teaspoon of baking soda,",
+   "avg_logprob": -0.25,
+   "no_speech": 0.84,
+   "comp": 14.2,
+   "lang": null,
+   "words": [
+    {
+     "w": " Add",
+     "start": 10.78,
+     "end": 11.5,
+     "p": 0.02
+    },
+    {
+     "w": " 1",
+     "start": 11.5,
+     "end": 11.5,
+     "p": 0.09
+    },
+    {
+     "w": " teaspoon",
+     "start": 11.5,
+     "end": 11.5,
+     "p": 0.37
+    },
+    {
+     "w": " of",
+     "start": 11.5,
+     "end": 11.5,
+     "p": 0.84
+    },
+    {
+     "w": " vanilla",
+     "start": 11.5,
+     "end": 11.5,
+     "p": 0.07
+    },
+    {
+     "w": " extract,",
+     "start": 11.5,
+     "end": 11.5,
+     "p": 0.55
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.18
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.78
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.95
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.15
+    },
+    {
+     "w": " powder,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.84
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.25
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.83
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.98
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.21
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.79
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.31
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.82
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.98
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.23
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.78
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.29
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.83
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.98
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.32
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.8
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.36
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.86
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.99
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.67
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.74
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.42
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.88
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.99
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.88
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.51
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.48
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.89
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.99
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.94
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.48
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.52
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.9
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.99
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.96
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.6
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.56
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.91
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.97
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.77
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.58
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.91
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.97
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.88
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.61
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.92
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.97
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.93
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.63
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.92
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.96
+    },
+    {
+     "w": " 1",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.65
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.92
+    },
+    {
+     "w": " of",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 18.66,
+     "end": 18.66,
+     "p": 0.97
+    },
+    {
+     "w": " 1",
+     "start": 18.68,
+     "end": 18.68,
+     "p": 0.67
+    },
+    {
+     "w": " teaspoon",
+     "start": 18.68,
+     "end": 18.68,
+     "p": 0.92
+    },
+    {
+     "w": " of",
+     "start": 18.68,
+     "end": 18.68,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 18.68,
+     "end": 18.68,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 18.68,
+     "end": 18.68,
+     "p": 0.98
+    },
+    {
+     "w": " 1",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.69
+    },
+    {
+     "w": " teaspoon",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.92
+    },
+    {
+     "w": " of",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.98
+    },
+    {
+     "w": " 1",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.7
+    },
+    {
+     "w": " teaspoon",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.72
+    },
+    {
+     "w": " teaspoon",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 19.34,
+     "end": 19.34,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 21.28,
+     "end": 21.28,
+     "p": 0.74
+    },
+    {
+     "w": " teaspoon",
+     "start": 21.28,
+     "end": 21.28,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 21.28,
+     "end": 21.28,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 21.28,
+     "end": 21.28,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 21.28,
+     "end": 21.28,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 21.28,
+     "end": 21.28,
+     "p": 0.75
+    },
+    {
+     "w": " teaspoon",
+     "start": 21.28,
+     "end": 21.28,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 21.28,
+     "end": 21.28,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 21.28,
+     "end": 21.28,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 21.28,
+     "end": 21.28,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 21.76,
+     "end": 21.76,
+     "p": 0.77
+    },
+    {
+     "w": " teaspoon",
+     "start": 21.76,
+     "end": 21.76,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 21.76,
+     "end": 21.76,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 21.76,
+     "end": 21.76,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 21.76,
+     "end": 21.76,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 21.76,
+     "end": 21.76,
+     "p": 0.79
+    },
+    {
+     "w": " teaspoon",
+     "start": 21.76,
+     "end": 21.76,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 21.76,
+     "end": 21.76,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 21.76,
+     "end": 21.76,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 21.76,
+     "end": 21.76,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 21.8,
+     "end": 21.8,
+     "p": 0.8
+    },
+    {
+     "w": " teaspoon",
+     "start": 21.8,
+     "end": 21.8,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 21.8,
+     "end": 21.8,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 21.8,
+     "end": 21.8,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 21.8,
+     "end": 21.8,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.81
+    },
+    {
+     "w": " teaspoon",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.82
+    },
+    {
+     "w": " teaspoon",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.84
+    },
+    {
+     "w": " teaspoon",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 22.12,
+     "end": 22.12,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 23.72,
+     "end": 23.72,
+     "p": 0.85
+    },
+    {
+     "w": " teaspoon",
+     "start": 23.72,
+     "end": 23.72,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 23.72,
+     "end": 24.04,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 24.04,
+     "end": 24.04,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 24.04,
+     "end": 24.04,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 24.3,
+     "end": 24.3,
+     "p": 0.86
+    },
+    {
+     "w": " teaspoon",
+     "start": 24.3,
+     "end": 24.3,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 24.3,
+     "end": 24.36,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.87
+    },
+    {
+     "w": " teaspoon",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.88
+    },
+    {
+     "w": " teaspoon",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.89
+    },
+    {
+     "w": " teaspoon",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 24.36,
+     "end": 24.36,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 24.72,
+     "end": 24.72,
+     "p": 0.9
+    },
+    {
+     "w": " teaspoon",
+     "start": 24.72,
+     "end": 24.72,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 24.72,
+     "end": 24.84,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 24.84,
+     "end": 24.84,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 24.84,
+     "end": 24.84,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 24.84,
+     "end": 24.84,
+     "p": 0.9
+    },
+    {
+     "w": " teaspoon",
+     "start": 24.84,
+     "end": 24.84,
+     "p": 0.93
+    },
+    {
+     "w": " of",
+     "start": 24.84,
+     "end": 25.18,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 25.18,
+     "end": 25.18,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 25.18,
+     "end": 25.18,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 25.66,
+     "end": 25.66,
+     "p": 0.91
+    },
+    {
+     "w": " teaspoon",
+     "start": 25.66,
+     "end": 25.66,
+     "p": 0.92
+    },
+    {
+     "w": " of",
+     "start": 25.66,
+     "end": 25.66,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 25.66,
+     "end": 25.66,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 25.66,
+     "end": 25.72,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 26.66,
+     "end": 27.48,
+     "p": 0.92
+    },
+    {
+     "w": " teaspoon",
+     "start": 27.48,
+     "end": 27.62,
+     "p": 0.92
+    },
+    {
+     "w": " of",
+     "start": 27.62,
+     "end": 27.62,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 27.62,
+     "end": 27.62,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 27.62,
+     "end": 27.62,
+     "p": 0.99
+    },
+    {
+     "w": " 1",
+     "start": 27.62,
+     "end": 28.36,
+     "p": 0.93
+    },
+    {
+     "w": " teaspoon",
+     "start": 28.36,
+     "end": 28.48,
+     "p": 0.92
+    },
+    {
+     "w": " of",
+     "start": 28.48,
+     "end": 28.48,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 28.48,
+     "end": 28.48,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 28.48,
+     "end": 28.48,
+     "p": 0.98
+    },
+    {
+     "w": " 1",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.93
+    },
+    {
+     "w": " teaspoon",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.92
+    },
+    {
+     "w": " of",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 1.0
+    },
+    {
+     "w": " baking",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.98
+    },
+    {
+     "w": " soda,",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.99
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 37.48,
+   "end": 38.88,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.43,
+   "no_speech": 0.86,
+   "comp": 3.32,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 37.48,
+     "end": 38.88,
+     "p": 0.02
+    },
+    {
+     "w": " cures",
+     "start": 38.88,
+     "end": 38.88,
+     "p": 0.53
+    },
+    {
+     "w": " the",
+     "start": 38.88,
+     "end": 38.88,
+     "p": 0.88
+    },
+    {
+     "w": " tip",
+     "start": 38.88,
+     "end": 38.88,
+     "p": 0.29
+    },
+    {
+     "w": " in",
+     "start": 38.88,
+     "end": 38.88,
+     "p": 0.92
+    },
+    {
+     "w": " a",
+     "start": 38.88,
+     "end": 38.88,
+     "p": 0.93
+    },
+    {
+     "w": " combo",
+     "start": 38.88,
+     "end": 38.88,
+     "p": 0.65
+    },
+    {
+     "w": " lamp",
+     "start": 38.88,
+     "end": 38.88,
+     "p": 0.99
+    },
+    {
+     "w": " for",
+     "start": 38.88,
+     "end": 38.88,
+     "p": 0.91
+    },
+    {
+     "w": " 60",
+     "start": 38.88,
+     "end": 38.88,
+     "p": 0.42
+    },
+    {
+     "w": " seconds.",
+     "start": 38.88,
+     "end": 38.88,
+     "p": 0.94
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 42.24,
+   "end": 43.78,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.43,
+   "no_speech": 0.86,
+   "comp": 3.32,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 42.24,
+     "end": 43.64,
+     "p": 0.28
+    },
+    {
+     "w": " cures",
+     "start": 43.64,
+     "end": 43.66,
+     "p": 0.55
+    },
+    {
+     "w": " the",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 0.88
+    },
+    {
+     "w": " tip",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 0.6
+    },
+    {
+     "w": " in",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 0.99
+    },
+    {
+     "w": " a",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 0.98
+    },
+    {
+     "w": " lamp",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 43.66,
+     "end": 43.78,
+     "p": 0.93
+    },
+    {
+     "w": " seconds.",
+     "start": 43.78,
+     "end": 43.78,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 44.12,
+   "end": 48.76,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.43,
+   "no_speech": 0.86,
+   "comp": 3.32,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 44.12,
+     "end": 44.9,
+     "p": 0.37
+    },
+    {
+     "w": " cures",
+     "start": 44.9,
+     "end": 44.9,
+     "p": 0.67
+    },
+    {
+     "w": " the",
+     "start": 44.9,
+     "end": 48.76,
+     "p": 0.99
+    },
+    {
+     "w": " tip",
+     "start": 48.76,
+     "end": 48.76,
+     "p": 0.92
+    },
+    {
+     "w": " in",
+     "start": 48.76,
+     "end": 48.76,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 48.76,
+     "end": 48.76,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 48.76,
+     "end": 48.76,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 48.76,
+     "end": 48.76,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 48.76,
+     "end": 48.76,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 48.76,
+     "end": 48.76,
+     "p": 0.96
+    },
+    {
+     "w": " seconds.",
+     "start": 48.76,
+     "end": 48.76,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 49.54,
+   "end": 51.04,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.43,
+   "no_speech": 0.86,
+   "comp": 3.32,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 49.54,
+     "end": 50.94,
+     "p": 0.4
+    },
+    {
+     "w": " cures",
+     "start": 50.94,
+     "end": 51.04,
+     "p": 0.63
+    },
+    {
+     "w": " the",
+     "start": 51.04,
+     "end": 51.04,
+     "p": 0.99
+    },
+    {
+     "w": " tip",
+     "start": 51.04,
+     "end": 51.04,
+     "p": 0.93
+    },
+    {
+     "w": " in",
+     "start": 51.04,
+     "end": 51.04,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 51.04,
+     "end": 51.04,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 51.04,
+     "end": 51.04,
+     "p": 0.98
+    },
+    {
+     "w": " lamp",
+     "start": 51.04,
+     "end": 51.04,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 51.04,
+     "end": 51.04,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 51.04,
+     "end": 51.04,
+     "p": 0.97
+    },
+    {
+     "w": " seconds.",
+     "start": 51.04,
+     "end": 51.04,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 54.56,
+   "end": 56.3,
+   "text": "Add 1 teaspoon of lemon juice",
+   "avg_logprob": -0.64,
+   "no_speech": 0.87,
+   "comp": 3.73,
+   "lang": null,
+   "words": [
+    {
+     "w": " Add",
+     "start": 54.56,
+     "end": 55.96,
+     "p": 0.03
+    },
+    {
+     "w": " 1",
+     "start": 55.96,
+     "end": 55.96,
+     "p": 0.09
+    },
+    {
+     "w": " teaspoon",
+     "start": 55.96,
+     "end": 56.2,
+     "p": 0.31
+    },
+    {
+     "w": " of",
+     "start": 56.2,
+     "end": 56.2,
+     "p": 0.81
+    },
+    {
+     "w": " lemon",
+     "start": 56.2,
+     "end": 56.2,
+     "p": 0.05
+    },
+    {
+     "w": " juice",
+     "start": 56.2,
+     "end": 56.3,
+     "p": 0.94
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 59.08,
+   "end": 65.12,
+   "text": "Add 1 teaspoon of lemon juice",
+   "avg_logprob": -0.64,
+   "no_speech": 0.87,
+   "comp": 3.73,
+   "lang": null,
+   "words": [
+    {
+     "w": " Add",
+     "start": 59.08,
+     "end": 60.48,
+     "p": 0.16
+    },
+    {
+     "w": " 1",
+     "start": 60.48,
+     "end": 60.48,
+     "p": 0.38
+    },
+    {
+     "w": " teaspoon",
+     "start": 60.48,
+     "end": 61.48,
+     "p": 0.68
+    },
+    {
+     "w": " of",
+     "start": 61.48,
+     "end": 61.48,
+     "p": 0.96
+    },
+    {
+     "w": " lemon",
+     "start": 61.48,
+     "end": 61.48,
+     "p": 0.07
+    },
+    {
+     "w": " juice",
+     "start": 61.48,
+     "end": 65.12,
+     "p": 0.91
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 67.46,
+   "end": 68.86,
+   "text": "Add 1 teaspoon of lemon juice",
+   "avg_logprob": -0.64,
+   "no_speech": 0.87,
+   "comp": 3.73,
+   "lang": null,
+   "words": [
+    {
+     "w": " Add",
+     "start": 67.46,
+     "end": 68.86,
+     "p": 0.27
+    },
+    {
+     "w": " 1",
+     "start": 68.86,
+     "end": 68.86,
+     "p": 0.54
+    },
+    {
+     "w": " teaspoon",
+     "start": 68.86,
+     "end": 68.86,
+     "p": 0.8
+    },
+    {
+     "w": " of",
+     "start": 68.86,
+     "end": 68.86,
+     "p": 0.99
+    },
+    {
+     "w": " lemon",
+     "start": 68.86,
+     "end": 68.86,
+     "p": 0.47
+    },
+    {
+     "w": " juice",
+     "start": 68.86,
+     "end": 68.86,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 68.86,
+   "end": 70.88,
+   "text": "Add 1 teaspoon of lemon juice",
+   "avg_logprob": -0.64,
+   "no_speech": 0.87,
+   "comp": 3.73,
+   "lang": null,
+   "words": [
+    {
+     "w": " Add",
+     "start": 68.86,
+     "end": 70.88,
+     "p": 0.4
+    },
+    {
+     "w": " 1",
+     "start": 70.88,
+     "end": 70.88,
+     "p": 0.62
+    },
+    {
+     "w": " teaspoon",
+     "start": 70.88,
+     "end": 70.88,
+     "p": 0.85
+    },
+    {
+     "w": " of",
+     "start": 70.88,
+     "end": 70.88,
+     "p": 0.99
+    },
+    {
+     "w": " lemon",
+     "start": 70.88,
+     "end": 70.88,
+     "p": 0.81
+    },
+    {
+     "w": " juice",
+     "start": 70.88,
+     "end": 70.88,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 70.88,
+   "end": 72.68,
+   "text": "Add 1 teaspoon of lemon juice",
+   "avg_logprob": -0.64,
+   "no_speech": 0.87,
+   "comp": 3.73,
+   "lang": null,
+   "words": [
+    {
+     "w": " Add",
+     "start": 70.88,
+     "end": 72.68,
+     "p": 0.48
+    },
+    {
+     "w": " 1",
+     "start": 72.68,
+     "end": 72.68,
+     "p": 0.66
+    },
+    {
+     "w": " teaspoon",
+     "start": 72.68,
+     "end": 72.68,
+     "p": 0.87
+    },
+    {
+     "w": " of",
+     "start": 72.68,
+     "end": 72.68,
+     "p": 0.99
+    },
+    {
+     "w": " lemon",
+     "start": 72.68,
+     "end": 72.68,
+     "p": 0.9
+    },
+    {
+     "w": " juice",
+     "start": 72.68,
+     "end": 72.68,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 83.76,
+   "end": 84.78,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.55,
+   "no_speech": 0.83,
+   "comp": 2.48,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 83.76,
+     "end": 84.24,
+     "p": 0.01
+    },
+    {
+     "w": " cures",
+     "start": 84.24,
+     "end": 84.24,
+     "p": 0.53
+    },
+    {
+     "w": " the",
+     "start": 84.24,
+     "end": 84.24,
+     "p": 0.87
+    },
+    {
+     "w": " tip",
+     "start": 84.24,
+     "end": 84.24,
+     "p": 0.28
+    },
+    {
+     "w": " in",
+     "start": 84.24,
+     "end": 84.26,
+     "p": 0.92
+    },
+    {
+     "w": " a",
+     "start": 84.26,
+     "end": 84.26,
+     "p": 0.93
+    },
+    {
+     "w": " combo",
+     "start": 84.26,
+     "end": 84.28,
+     "p": 0.64
+    },
+    {
+     "w": " lamp",
+     "start": 84.28,
+     "end": 84.78,
+     "p": 0.99
+    },
+    {
+     "w": " for",
+     "start": 84.78,
+     "end": 84.78,
+     "p": 0.94
+    },
+    {
+     "w": " 60",
+     "start": 84.78,
+     "end": 84.78,
+     "p": 0.42
+    },
+    {
+     "w": " seconds.",
+     "start": 84.78,
+     "end": 84.78,
+     "p": 0.93
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 84.78,
+   "end": 85.02,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.55,
+   "no_speech": 0.83,
+   "comp": 2.48,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 84.78,
+     "end": 85.0,
+     "p": 0.26
+    },
+    {
+     "w": " cures",
+     "start": 85.0,
+     "end": 85.0,
+     "p": 0.55
+    },
+    {
+     "w": " the",
+     "start": 85.0,
+     "end": 85.0,
+     "p": 0.88
+    },
+    {
+     "w": " tip",
+     "start": 85.0,
+     "end": 85.0,
+     "p": 0.57
+    },
+    {
+     "w": " in",
+     "start": 85.0,
+     "end": 85.02,
+     "p": 0.99
+    },
+    {
+     "w": " a",
+     "start": 85.02,
+     "end": 85.02,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 85.02,
+     "end": 85.02,
+     "p": 0.98
+    },
+    {
+     "w": " lamp",
+     "start": 85.02,
+     "end": 85.02,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 85.02,
+     "end": 85.02,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 85.02,
+     "end": 85.02,
+     "p": 0.91
+    },
+    {
+     "w": " seconds.",
+     "start": 85.02,
+     "end": 85.02,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 85.02,
+   "end": 88.46,
+   "text": "She cures the tip in a combo lamp for 60 seconds.",
+   "avg_logprob": -0.55,
+   "no_speech": 0.83,
+   "comp": 2.48,
+   "lang": null,
+   "words": [
+    {
+     "w": " She",
+     "start": 85.02,
+     "end": 85.02,
+     "p": 0.35
+    },
+    {
+     "w": " cures",
+     "start": 85.02,
+     "end": 85.02,
+     "p": 0.69
+    },
+    {
+     "w": " the",
+     "start": 85.02,
+     "end": 85.02,
+     "p": 0.99
+    },
+    {
+     "w": " tip",
+     "start": 85.02,
+     "end": 85.02,
+     "p": 0.91
+    },
+    {
+     "w": " in",
+     "start": 85.02,
+     "end": 85.28,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 85.28,
+     "end": 85.28,
+     "p": 1.0
+    },
+    {
+     "w": " combo",
+     "start": 85.28,
+     "end": 85.28,
+     "p": 0.99
+    },
+    {
+     "w": " lamp",
+     "start": 85.28,
+     "end": 85.28,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 85.28,
+     "end": 88.46,
+     "p": 1.0
+    },
+    {
+     "w": " 60",
+     "start": 88.46,
+     "end": 88.46,
+     "p": 0.96
+    },
+    {
+     "w": " seconds.",
+     "start": 88.46,
+     "end": 88.46,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 125.88,
+   "end": 126.96,
+   "text": "This is the end of the video.",
+   "avg_logprob": -0.8,
+   "no_speech": 0.82,
+   "comp": 1.11,
+   "lang": null,
+   "words": [
+    {
+     "w": " This",
+     "start": 125.88,
+     "end": 126.56,
+     "p": 0.01
+    },
+    {
+     "w": " is",
+     "start": 126.56,
+     "end": 126.88,
+     "p": 0.4
+    },
+    {
+     "w": " the",
+     "start": 126.88,
+     "end": 126.92,
+     "p": 0.3
+    },
+    {
+     "w": " end",
+     "start": 126.92,
+     "end": 126.94,
+     "p": 0.07
+    },
+    {
+     "w": " of",
+     "start": 126.94,
+     "end": 126.94,
+     "p": 0.8
+    },
+    {
+     "w": " the",
+     "start": 126.94,
+     "end": 126.96,
+     "p": 0.57
+    },
+    {
+     "w": " video.",
+     "start": 126.96,
+     "end": 126.96,
+     "p": 0.27
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 131.62,
+   "end": 133.02,
+   "text": "Thank you for watching.",
+   "avg_logprob": -0.8,
+   "no_speech": 0.82,
+   "comp": 1.11,
+   "lang": null,
+   "words": [
+    {
+     "w": " Thank",
+     "start": 131.62,
+     "end": 132.3,
+     "p": 0.43
+    },
+    {
+     "w": " you",
+     "start": 132.3,
+     "end": 132.98,
+     "p": 0.99
+    },
+    {
+     "w": " for",
+     "start": 132.98,
+     "end": 133.0,
+     "p": 0.71
+    },
+    {
+     "w": " watching.",
+     "start": 133.0,
+     "end": 133.02,
+     "p": 0.84
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 135.98,
+   "end": 139.88,
+   "text": "See you in the next video.",
+   "avg_logprob": -0.8,
+   "no_speech": 0.82,
+   "comp": 1.11,
+   "lang": null,
+   "words": [
+    {
+     "w": " See",
+     "start": 135.98,
+     "end": 136.66,
+     "p": 0.15
+    },
+    {
+     "w": " you",
+     "start": 136.66,
+     "end": 137.34,
+     "p": 0.98
+    },
+    {
+     "w": " in",
+     "start": 137.34,
+     "end": 139.52,
+     "p": 0.57
+    },
+    {
+     "w": " the",
+     "start": 139.52,
+     "end": 139.52,
+     "p": 0.97
+    },
+    {
+     "w": " next",
+     "start": 139.52,
+     "end": 139.52,
+     "p": 0.99
+    },
+    {
+     "w": " video.",
+     "start": 139.52,
+     "end": 139.88,
+     "p": 0.91
+    }
+   ],
+   "speech": false
+  }
+ ]
+}

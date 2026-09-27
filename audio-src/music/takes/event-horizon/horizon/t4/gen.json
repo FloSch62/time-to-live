@@ -1,0 +1,134 @@
+{
+  "piece": "event-horizon",
+  "version": "horizon",
+  "take": 4,
+  "seed": 410954,
+  "cfg": 2.2,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, a choir, wordless choir aahs, vocal pads, humming, a solo voice, pop song with a lead vocalist. Happy, cheerful, joyful, uplifting, hopeful, triumphant, heroic fanfare, major key, bright pop, feel-good, playful, whimsical, children's music, corporate, upbeat, epic trailer, sunny, upbeat synthwave, outrun. Generic EDM club dance track with a four-on-the-floor kick.",
+  "plans": "v2-dark",
+  "style": "Cold, melancholic instrumental tactical game score at the heart of an abandoned archive. A felt piano, muted celesta and interlocking plucked analog synthesizer figures rise over sustained low cello and a dark synthesizer pad. Small irregular metallic clicks and dry rim taps add anxious motion beneath a slow, sad minor melody. Suspended, mysterious and unresolved, long tape echoes, no large drum beat. Purely instrumental. Cm, 126 BPM.",
+  "plan_sha256": "438ca4d4be17e1e17393a4407163f513ed9b2a223441e39526ea207fac664e3d",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      12,
+      68
+    ],
+    "bars": 70,
+    "tail": 2,
+    "bar_s": 1.9047619047619047,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "H1",
+        "instrumental"
+      ],
+      [
+        8,
+        "H2",
+        "instrumental"
+      ],
+      [
+        12,
+        "D1",
+        "instrumental"
+      ],
+      [
+        16,
+        "D2",
+        "instrumental"
+      ],
+      [
+        20,
+        "Q1",
+        "instrumental"
+      ],
+      [
+        24,
+        "Q2",
+        "instrumental"
+      ],
+      [
+        28,
+        "H1",
+        "instrumental"
+      ],
+      [
+        32,
+        "H2",
+        "instrumental"
+      ],
+      [
+        36,
+        "E1",
+        "instrumental"
+      ],
+      [
+        40,
+        "E2",
+        "instrumental"
+      ],
+      [
+        44,
+        "D1",
+        "instrumental"
+      ],
+      [
+        48,
+        "D2",
+        "instrumental"
+      ],
+      [
+        52,
+        "Q1",
+        "instrumental"
+      ],
+      [
+        56,
+        "Q2",
+        "instrumental"
+      ],
+      [
+        60,
+        "H1",
+        "instrumental"
+      ],
+      [
+        64,
+        "H2",
+        "instrumental"
+      ],
+      [
+        68,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 3335,
+  "max_tokens": 5250,
+  "truncated": false,
+  "timing": {
+    "seconds": 34.527180331991985,
+    "prefill_seconds": 0.2144710589782335,
+    "ttft_seconds": 0.2163407729822211,
+    "output_tokens": 3336,
+    "content_tokens": 3335,
+    "output_tps": 96.6195318564415,
+    "prefix_tokens": 1253,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 14.8,
+  "vae_seconds": 2.9,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

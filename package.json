@@ -1,0 +1,34 @@
+{
+  "name": "time-to-live",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "TIME TO LIVE \u2014 a Faultline voyage. An FTL-style pixel-art roguelike in the Containerlab universe.",
+  "author": "Florian Schwarz (https://flosch.me/)",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5181",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4181",
+    "test": "node --experimental-strip-types --test 'src/**/*.test.ts'",
+    "fonts": "tools/.venv/bin/python tools/build_fonts.py",
+    "test:e2e": "node tools/qa.mjs",
+    "test:balance": "node --experimental-strip-types tools/balance/run.ts --n 6 --out docs/balance-combat.md",
+    "test:audio": "node tools/audio-qa.mjs",
+    "test:assets": "node --experimental-strip-types tools/assets-audit.mjs",
+    "test:media": "node tools/media-qa.mjs",
+    "test:narrative": "node tools/narrative-qa.mjs",
+    "test:soak": "node tools/soak.mjs",
+    "test:campaign": "node --experimental-strip-types tools/balance/campaign.ts --n 128 --out tools/shots/qa/campaign-balance.json",
+    "test:ux": "node tools/ux-qa.mjs",
+    "test:production": "node tools/production-qa.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.7"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

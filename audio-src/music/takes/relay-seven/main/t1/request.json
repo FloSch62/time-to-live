@@ -1,0 +1,9 @@
+{
+  "style": "Intimate, sad and quiet prologue music in an old switchboard room at a lonely relay station at the edge of space, late at night. A soft felt piano plays a slow, melancholic minor phrase over a cold analog synth pad and a low sub-bass drone, the quiet tick of an old relay and a faint slow pulse like a blinking amber lamp, a lonely cello, glass bells far away, tape echo and big reverb. Sparse, still, sad and lonely. No drums. Purely instrumental. Dm, 76 BPM.",
+  "lyrics": "",
+  "cot": "full",
+  "seed": 640043,
+  "abc": "X:1\nT:\nM:4/4\nL:1/32\nQ:1/4=76\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:Dm\n% intro\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Dm\"z32|\"Dm\"z32|\nV: Ins\nA32|A32|A32|A32|\n% intro\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Gm\"z32|\"Gm\"z32|\nV: Ins\nA32|d16 c16|B32|A16 G16|\n% intro\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Am\"z32|\"Am\"z32|\nV: Ins\nF32|E16 D16|E32|E24 z8|\n% interlude\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Dm\"z32|\"Dm\"z32|\nV: Ins\nA32|A32|A32|A32|\n% interlude\nV: Vocal\n\"Gm\"z32|\"Gm\"z32|\"Am\"z32|\"Am\"z32|\nV: Ins\nG32|G32|E32|E32|\n% interlude\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Gm\"z32|\"Gm\"z32|\nV: Ins\nA32|d16 c16|B32|A16 G16|\n% interlude\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Am\"z32|\"Am\"z32|\nV: Ins\nF32|E16 D16|E32|E24 z8|\n% interlude\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Dm\"z32|\"Dm\"z32|\nV: Ins\nA32|A32|A32|A32|\n% interlude\nV: Vocal\n\"Gm\"z32|\"Gm\"z32|\"Am\"z32|\"Am\"z32|\nV: Ins\nG32|G32|E32|E32|\n% interlude\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Gm\"z32|\"Gm\"z32|\nV: Ins\nA32|d16 c16|B32|A16 G16|\n% interlude\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Am\"z32|\"Am\"z32|\nV: Ins\nF32|E16 D16|E32|E24 z8|\n% outro\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\nV: Ins\nD32|D32|\n",
+  "cfg_scale": null,
+  "id": "ttl-relay-seven-main-t1"
+}

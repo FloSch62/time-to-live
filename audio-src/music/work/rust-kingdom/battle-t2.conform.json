@@ -1,0 +1,154 @@
+{
+ "piece": "rust-kingdom",
+ "version": "battle",
+ "take": "t2",
+ "duration": 170.5,
+ "samples": 8184000,
+ "bar_s": 2.4,
+ "bars": 70,
+ "loop_bars": [
+  20,
+  68
+ ],
+ "loop_start": 48.0,
+ "loop_end": 163.2,
+ "anchors": [
+  {
+   "out": 4.8,
+   "take": 4.975,
+   "local": false
+  },
+  {
+   "out": 14.4,
+   "take": 14.575,
+   "local": true
+  },
+  {
+   "out": 24.0,
+   "take": 24.175,
+   "local": true
+  },
+  {
+   "out": 33.6,
+   "take": 33.775,
+   "local": true
+  },
+  {
+   "out": 43.2,
+   "take": 43.375,
+   "local": true
+  },
+  {
+   "out": 52.8,
+   "take": 52.979,
+   "local": true
+  },
+  {
+   "out": 62.4,
+   "take": 62.575,
+   "local": true
+  },
+  {
+   "out": 72.0,
+   "take": 72.175,
+   "local": true
+  },
+  {
+   "out": 81.6,
+   "take": 81.775,
+   "local": true
+  },
+  {
+   "out": 91.2,
+   "take": 91.375,
+   "local": true
+  },
+  {
+   "out": 100.8,
+   "take": 100.975,
+   "local": true
+  },
+  {
+   "out": 110.4,
+   "take": 110.575,
+   "local": true
+  },
+  {
+   "out": 120.0,
+   "take": 120.175,
+   "local": true
+  },
+  {
+   "out": 129.6,
+   "take": 129.775,
+   "local": true
+  },
+  {
+   "out": 139.2,
+   "take": 139.375,
+   "local": true
+  },
+  {
+   "out": 148.8,
+   "take": 148.975,
+   "local": false
+  },
+  {
+   "out": 158.4,
+   "take": 158.575,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99958,
+ "rate_max": 1.00042,
+ "max_cents": 0.7,
+ "take_seconds_used": 170.675,
+ "seam": {
+  "loop_start_sample": 2304000,
+  "loop_end_sample": 7833600,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 100.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   64.0,
+   0.0
+  ],
+  "window_conf": [
+   3.45,
+   3.45,
+   3.48,
+   3.3,
+   3.48,
+   3.55,
+   3.49,
+   3.47,
+   3.49,
+   3.43,
+   3.42,
+   3.47,
+   3.57,
+   3.54,
+   3.55,
+   1.93,
+   3.35
+  ]
+ },
+ "tempo_correction": null
+}

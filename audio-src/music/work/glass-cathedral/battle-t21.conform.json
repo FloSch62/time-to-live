@@ -1,0 +1,169 @@
+{
+ "piece": "glass-cathedral",
+ "version": "battle",
+ "take": "t21",
+ "duration": 169.642854,
+ "samples": 8142857,
+ "bar_s": 2.142857142857143,
+ "bars": 78,
+ "loop_bars": [
+  4,
+  72
+ ],
+ "loop_start": 8.571429,
+ "loop_end": 154.285714,
+ "anchors": [
+  {
+   "out": 4.286,
+   "take": 4.3007,
+   "local": false
+  },
+  {
+   "out": 12.857,
+   "take": 12.8721,
+   "local": true
+  },
+  {
+   "out": 21.429,
+   "take": 21.4416,
+   "local": true
+  },
+  {
+   "out": 30.0,
+   "take": 30.015,
+   "local": true
+  },
+  {
+   "out": 38.571,
+   "take": 38.5864,
+   "local": true
+  },
+  {
+   "out": 47.143,
+   "take": 47.1579,
+   "local": true
+  },
+  {
+   "out": 55.714,
+   "take": 55.7293,
+   "local": true
+  },
+  {
+   "out": 64.286,
+   "take": 64.3007,
+   "local": true
+  },
+  {
+   "out": 72.857,
+   "take": 72.8721,
+   "local": true
+  },
+  {
+   "out": 81.429,
+   "take": 81.4436,
+   "local": true
+  },
+  {
+   "out": 90.0,
+   "take": 90.015,
+   "local": true
+  },
+  {
+   "out": 98.571,
+   "take": 98.5864,
+   "local": true
+  },
+  {
+   "out": 107.143,
+   "take": 107.1579,
+   "local": true
+  },
+  {
+   "out": 115.714,
+   "take": 115.7313,
+   "local": true
+  },
+  {
+   "out": 124.286,
+   "take": 124.3007,
+   "local": true
+  },
+  {
+   "out": 132.857,
+   "take": 132.8721,
+   "local": true
+  },
+  {
+   "out": 141.429,
+   "take": 141.4436,
+   "local": true
+  },
+  {
+   "out": 150.0,
+   "take": 150.015,
+   "local": true
+  },
+  {
+   "out": 158.571,
+   "take": 158.5864,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99977,
+ "rate_max": 1.00023,
+ "max_cents": 0.4,
+ "take_seconds_used": 169.658,
+ "seam": {
+  "loop_start_sample": 411429,
+  "loop_end_sample": 7405714,
+  "crossfade_s": 2.1428541666666665
+ },
+ "verify": {
+  "tempo_bpm": 112.0,
+  "grid_phase_ms": -0.1,
+  "window_error_ms": [
+   -2.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   3.53,
+   3.53,
+   3.24,
+   3.25,
+   3.14,
+   3.17,
+   3.48,
+   3.5,
+   3.22,
+   3.19,
+   3.46,
+   3.2,
+   3.23,
+   3.12,
+   3.44,
+   3.3,
+   3.23,
+   3.49,
+   3.46
+  ]
+ },
+ "tempo_correction": null,
+ "phase_correction_beats": 0
+}

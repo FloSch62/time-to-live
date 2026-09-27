@@ -1,0 +1,547 @@
+{
+  "model": "laion/clap-htsat-unfused",
+  "source_folder": "/mnt/c/Users/Flo/Downloads/ftl - multiverse soundtrack",
+  "method": "Normalized CLAP centroid of three 10s excerpts at 15/45/75% of available start range; compare same-layer files.",
+  "limitation": "Automated timbre/style similarity only. Not a perceptual quality score, melodic originality check or listening approval.",
+  "descriptions": {
+    "synth_sequences": "Instrumental electronic space game music with synthesizer arpeggios and sequenced bass.",
+    "synth_melody": "Melodic synthesizer video game soundtrack with a soft square wave lead and atmospheric pads.",
+    "ambient": "Ambient space music with slowly evolving synthesizer pads and sparse electronic tones.",
+    "piano_strings": "Melancholic cinematic music with soft piano, cello and orchestral strings.",
+    "chiptune": "Melodic chiptune video game music with eight bit electronic tones.",
+    "breakbeat": "Instrumental electronic music with syncopated breakbeats, synthesizers and a bass groove.",
+    "rock": "Instrumental progressive rock music with electric guitar, bass and drums.",
+    "club": "Electronic dance music with a four on the floor kick, a big drop and pumping supersaw chords.",
+    "orchestral": "Epic cinematic orchestral battle music with brass, strings and massive percussion.",
+    "vocals": "Music with a singer singing words and a choir."
+  },
+  "reference_summary": {
+    "explore": {
+      "count": 28,
+      "descriptions": {
+        "synth_sequences": 0.4614,
+        "synth_melody": 0.503,
+        "ambient": 0.4122,
+        "piano_strings": 0.4165,
+        "chiptune": 0.3386,
+        "breakbeat": 0.3788,
+        "rock": 0.2016,
+        "club": 0.4152,
+        "orchestral": 0.3125,
+        "vocals": 0.2009
+      }
+    },
+    "battle": {
+      "count": 28,
+      "descriptions": {
+        "synth_sequences": 0.3773,
+        "synth_melody": 0.3764,
+        "ambient": 0.2501,
+        "piano_strings": 0.3538,
+        "chiptune": 0.3154,
+        "breakbeat": 0.4773,
+        "rock": 0.35,
+        "club": 0.4577,
+        "orchestral": 0.4143,
+        "vocals": 0.1173
+      }
+    },
+    "main": {
+      "count": 8,
+      "descriptions": {
+        "synth_sequences": 0.348,
+        "synth_melody": 0.3644,
+        "ambient": 0.2526,
+        "piano_strings": 0.3542,
+        "chiptune": 0.3476,
+        "breakbeat": 0.4224,
+        "rock": 0.2654,
+        "club": 0.4192,
+        "orchestral": 0.3974,
+        "vocals": 0.1919
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "file": "public/audio/music/blackout-heart-explore.ogg",
+      "sha256": "f44f59f9e34afb6e0a76913ebadd2e32c8bbcd4cb83db5a2207aa1d698d4bd61",
+      "layer": "explore",
+      "reference_mean": 0.5633,
+      "closest": [
+        {
+          "file": "mv_MUS_SerenityEXPLORE.ogg",
+          "cosine": 0.7669
+        },
+        {
+          "file": "mv_MUS_UnexploredEXPLORE.ogg",
+          "cosine": 0.7572
+        },
+        {
+          "file": "mv_MUS_OrchidEXPLORE.ogg",
+          "cosine": 0.7494
+        },
+        {
+          "file": "mv_MUS_DynastyEXPLORE.ogg",
+          "cosine": 0.7473
+        },
+        {
+          "file": "mv_MUS_ShellEXPLORE.ogg",
+          "cosine": 0.7435
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.1771,
+        "synth_melody": 0.3179,
+        "ambient": 0.3844,
+        "piano_strings": 0.3706,
+        "chiptune": -0.0165,
+        "breakbeat": 0.1949,
+        "rock": 0.1244,
+        "club": 0.311,
+        "orchestral": 0.1113,
+        "vocals": 0.2382
+      }
+    },
+    {
+      "file": "public/audio/music/choir-weather-explore.ogg",
+      "sha256": "b63afa89127339459c0b3a1ffc0943c0c5c23a25d9e778bf108276cd90571937",
+      "layer": "explore",
+      "reference_mean": 0.5361,
+      "closest": [
+        {
+          "file": "mv_MUS_DynastyEXPLORE.ogg",
+          "cosine": 0.6769
+        },
+        {
+          "file": "mv_MUS_OrchidEXPLORE.ogg",
+          "cosine": 0.6692
+        },
+        {
+          "file": "mv_MUS_UnexploredEXPLORE.ogg",
+          "cosine": 0.6545
+        },
+        {
+          "file": "mv_MUS_SerenityEXPLORE.ogg",
+          "cosine": 0.6376
+        },
+        {
+          "file": "mv_MUS_FreeMantisEXPLORE.ogg",
+          "cosine": 0.6145
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.1836,
+        "synth_melody": 0.3066,
+        "ambient": 0.2852,
+        "piano_strings": 0.3161,
+        "chiptune": 0.0884,
+        "breakbeat": 0.3353,
+        "rock": 0.3605,
+        "club": 0.3558,
+        "orchestral": 0.1619,
+        "vocals": 0.2089
+      }
+    },
+    {
+      "file": "public/audio/music/copper-reach-explore.ogg",
+      "sha256": "5ec3da1d2c3587fdb57b3f0abc4000ede9052b80249a532859394ff0a3147276",
+      "layer": "explore",
+      "reference_mean": 0.64,
+      "closest": [
+        {
+          "file": "mv_MUS_OrchidEXPLORE.ogg",
+          "cosine": 0.7781
+        },
+        {
+          "file": "mv_MUS_SerenityEXPLORE.ogg",
+          "cosine": 0.7766
+        },
+        {
+          "file": "mv_MUS_DynastyEXPLORE.ogg",
+          "cosine": 0.7758
+        },
+        {
+          "file": "mv_MUS_FreeMantisEXPLORE.ogg",
+          "cosine": 0.7648
+        },
+        {
+          "file": "mv_MUS_ShellEXPLORE.ogg",
+          "cosine": 0.7331
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.2925,
+        "synth_melody": 0.3568,
+        "ambient": 0.4256,
+        "piano_strings": 0.3875,
+        "chiptune": 0.0196,
+        "breakbeat": 0.363,
+        "rock": 0.345,
+        "club": 0.3854,
+        "orchestral": 0.2568,
+        "vocals": 0.2194
+      }
+    },
+    {
+      "file": "public/audio/music/glass-cathedral-explore.ogg",
+      "sha256": "5979cc4275ece91bc5c71cd411555c9233ba384d2c493468c96cd7730d904302",
+      "layer": "explore",
+      "reference_mean": 0.5947,
+      "closest": [
+        {
+          "file": "mv_MUS_UnexploredEXPLORE.ogg",
+          "cosine": 0.7436
+        },
+        {
+          "file": "mv_MUS_DynastyEXPLORE.ogg",
+          "cosine": 0.727
+        },
+        {
+          "file": "mv_MUS_SerenityEXPLORE.ogg",
+          "cosine": 0.7153
+        },
+        {
+          "file": "mv_MUS_VoyagerEXPLORE.ogg",
+          "cosine": 0.7152
+        },
+        {
+          "file": "mv_MUS_ShellEXPLORE.ogg",
+          "cosine": 0.6926
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.2818,
+        "synth_melody": 0.3989,
+        "ambient": 0.3301,
+        "piano_strings": 0.2833,
+        "chiptune": 0.146,
+        "breakbeat": 0.3769,
+        "rock": 0.3916,
+        "club": 0.4039,
+        "orchestral": 0.204,
+        "vocals": 0.1431
+      }
+    },
+    {
+      "file": "public/audio/music/last-orders-explore.ogg",
+      "sha256": "fcf58363191b08ed2ae2cdae248bc470ed69eada1483ccd4f8081e4b5f9e18a1",
+      "layer": "explore",
+      "reference_mean": 0.5656,
+      "closest": [
+        {
+          "file": "mv_MUS_FreeMantisEXPLORE.ogg",
+          "cosine": 0.7285
+        },
+        {
+          "file": "mv_MUS_UnexploredEXPLORE.ogg",
+          "cosine": 0.6763
+        },
+        {
+          "file": "mv_MUS_VoyagerEXPLORE.ogg",
+          "cosine": 0.6654
+        },
+        {
+          "file": "mv_MUS_OrchidEXPLORE.ogg",
+          "cosine": 0.6638
+        },
+        {
+          "file": "mv_MUS_DynastyEXPLORE.ogg",
+          "cosine": 0.6585
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.2402,
+        "synth_melody": 0.3166,
+        "ambient": 0.3166,
+        "piano_strings": 0.2223,
+        "chiptune": -0.008,
+        "breakbeat": 0.3346,
+        "rock": 0.3556,
+        "club": 0.3741,
+        "orchestral": 0.046,
+        "vocals": 0.2078
+      }
+    },
+    {
+      "file": "public/audio/music/rust-kingdom-explore.ogg",
+      "sha256": "f84d556d33e501d4d5e5b9fbd3d4ed8c27b2bb24949ecbfa01025260860af4d4",
+      "layer": "explore",
+      "reference_mean": 0.6618,
+      "closest": [
+        {
+          "file": "mv_MUS_UnexploredEXPLORE.ogg",
+          "cosine": 0.7781
+        },
+        {
+          "file": "mv_MUS_DynastyEXPLORE.ogg",
+          "cosine": 0.764
+        },
+        {
+          "file": "mv_MUS_OrchidEXPLORE.ogg",
+          "cosine": 0.7637
+        },
+        {
+          "file": "mv_MUS_VoyagerEXPLORE.ogg",
+          "cosine": 0.7299
+        },
+        {
+          "file": "mv_MUS_SerenityEXPLORE.ogg",
+          "cosine": 0.7205
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.3044,
+        "synth_melody": 0.4524,
+        "ambient": 0.3833,
+        "piano_strings": 0.4012,
+        "chiptune": 0.2064,
+        "breakbeat": 0.3869,
+        "rock": 0.347,
+        "club": 0.4524,
+        "orchestral": 0.2799,
+        "vocals": 0.2525
+      }
+    },
+    {
+      "file": "public/audio/music/blackout-heart-battle.ogg",
+      "sha256": "8b0a86329d0dbc4cb32be8fa50cd3ac3f44739c10cc9e040e90e0e7f89fb500c",
+      "layer": "battle",
+      "reference_mean": 0.6078,
+      "closest": [
+        {
+          "file": "mv_MUS_ShellBATTLE.ogg",
+          "cosine": 0.7245
+        },
+        {
+          "file": "mv_MUS_UnexploredBATTLE.ogg",
+          "cosine": 0.71
+        },
+        {
+          "file": "mv_MUS_VoyagerBATTLE.ogg",
+          "cosine": 0.7057
+        },
+        {
+          "file": "mv_MUS_JerryBATTLE.ogg",
+          "cosine": 0.6648
+        },
+        {
+          "file": "mv_MUS_CrystalBATTLE.ogg",
+          "cosine": 0.6606
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.3615,
+        "synth_melody": 0.535,
+        "ambient": 0.5285,
+        "piano_strings": 0.3312,
+        "chiptune": 0.149,
+        "breakbeat": 0.3295,
+        "rock": 0.231,
+        "club": 0.4447,
+        "orchestral": 0.184,
+        "vocals": 0.3444
+      }
+    },
+    {
+      "file": "public/audio/music/choir-weather-battle.ogg",
+      "sha256": "e1226be01c78b457fb268d586a1a7060d45b93b4a8ec15ccb9ed9870bafe9413",
+      "layer": "battle",
+      "reference_mean": 0.5825,
+      "closest": [
+        {
+          "file": "mv_MUS_ShellBATTLE.ogg",
+          "cosine": 0.7764
+        },
+        {
+          "file": "mv_MUS_MonkBATTLE.ogg",
+          "cosine": 0.7082
+        },
+        {
+          "file": "mv_MUS_SerenityBATTLE.ogg",
+          "cosine": 0.6953
+        },
+        {
+          "file": "mv_MUS_UnexploredBATTLE.ogg",
+          "cosine": 0.691
+        },
+        {
+          "file": "mv_MUS_JerryBATTLE.ogg",
+          "cosine": 0.6488
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.2184,
+        "synth_melody": 0.2947,
+        "ambient": 0.3214,
+        "piano_strings": 0.2974,
+        "chiptune": 0.0524,
+        "breakbeat": 0.3277,
+        "rock": 0.2706,
+        "club": 0.385,
+        "orchestral": 0.1003,
+        "vocals": 0.2036
+      }
+    },
+    {
+      "file": "public/audio/music/copper-reach-battle.ogg",
+      "sha256": "5483fb8f99b253072a2baf6479ad94ac851b568b2a10b22d5ecfc61ed0803267",
+      "layer": "battle",
+      "reference_mean": 0.6706,
+      "closest": [
+        {
+          "file": "mv_MUS_ShellBATTLE.ogg",
+          "cosine": 0.7968
+        },
+        {
+          "file": "mv_MUS_UnexploredBATTLE.ogg",
+          "cosine": 0.7941
+        },
+        {
+          "file": "mv_MUS_JerryBATTLE.ogg",
+          "cosine": 0.77
+        },
+        {
+          "file": "mv_MUS_VoyagerBATTLE.ogg",
+          "cosine": 0.7517
+        },
+        {
+          "file": "mv_MUS_FreeMantisBATTLE.ogg",
+          "cosine": 0.7473
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.2983,
+        "synth_melody": 0.3807,
+        "ambient": 0.3897,
+        "piano_strings": 0.2739,
+        "chiptune": 0.0928,
+        "breakbeat": 0.3999,
+        "rock": 0.3874,
+        "club": 0.4821,
+        "orchestral": 0.2127,
+        "vocals": 0.2592
+      }
+    },
+    {
+      "file": "public/audio/music/glass-cathedral-battle.ogg",
+      "sha256": "7b4cce6c7db3ffad5cf47fbf088a53f3b3f168b3c4bdad1dc7e55f478d7e6b4c",
+      "layer": "battle",
+      "reference_mean": 0.5621,
+      "closest": [
+        {
+          "file": "mv_MUS_ShellBATTLE.ogg",
+          "cosine": 0.7591
+        },
+        {
+          "file": "mv_MUS_UnexploredBATTLE.ogg",
+          "cosine": 0.7183
+        },
+        {
+          "file": "mv_MUS_VoyagerBATTLE.ogg",
+          "cosine": 0.6749
+        },
+        {
+          "file": "mv_MUS_AutoBATTLE.ogg",
+          "cosine": 0.6439
+        },
+        {
+          "file": "mv_MUS_JerryBATTLE.ogg",
+          "cosine": 0.6435
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.2813,
+        "synth_melody": 0.4255,
+        "ambient": 0.4042,
+        "piano_strings": 0.224,
+        "chiptune": 0.1042,
+        "breakbeat": 0.2744,
+        "rock": 0.2266,
+        "club": 0.3887,
+        "orchestral": 0.0696,
+        "vocals": 0.2722
+      }
+    },
+    {
+      "file": "public/audio/music/last-orders-battle.ogg",
+      "sha256": "a84b9809cf5b1cc4ab9385efff91d7f13d77d0f2e62bac5856889d3e80a032d5",
+      "layer": "battle",
+      "reference_mean": 0.4321,
+      "closest": [
+        {
+          "file": "mv_MUS_ShellBATTLE.ogg",
+          "cosine": 0.637
+        },
+        {
+          "file": "mv_MUS_AutoBATTLE.ogg",
+          "cosine": 0.5532
+        },
+        {
+          "file": "mv_MUS_UnexploredBATTLE.ogg",
+          "cosine": 0.541
+        },
+        {
+          "file": "mv_MUS_MonkBATTLE.ogg",
+          "cosine": 0.5065
+        },
+        {
+          "file": "mv_MUS_VoyagerBATTLE.ogg",
+          "cosine": 0.5064
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.269,
+        "synth_melody": 0.3485,
+        "ambient": 0.4132,
+        "piano_strings": 0.1714,
+        "chiptune": -0.0124,
+        "breakbeat": 0.2089,
+        "rock": 0.0488,
+        "club": 0.2699,
+        "orchestral": -0.0678,
+        "vocals": 0.2421
+      }
+    },
+    {
+      "file": "public/audio/music/rust-kingdom-battle.ogg",
+      "sha256": "6b9c00d416acfb9c1740887ee3262d8cddffa771dfaeb10fec0c2d8349edd1fe",
+      "layer": "battle",
+      "reference_mean": 0.6603,
+      "closest": [
+        {
+          "file": "mv_MUS_UnexploredBATTLE.ogg",
+          "cosine": 0.7779
+        },
+        {
+          "file": "mv_MUS_ShellBATTLE.ogg",
+          "cosine": 0.7625
+        },
+        {
+          "file": "mv_MUS_AutoBATTLE.ogg",
+          "cosine": 0.7503
+        },
+        {
+          "file": "mv_MUS_MonkBATTLE.ogg",
+          "cosine": 0.7337
+        },
+        {
+          "file": "mv_MUS_JerryBATTLE.ogg",
+          "cosine": 0.7222
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.3771,
+        "synth_melody": 0.4688,
+        "ambient": 0.3907,
+        "piano_strings": 0.273,
+        "chiptune": 0.1645,
+        "breakbeat": 0.3516,
+        "rock": 0.2453,
+        "club": 0.4713,
+        "orchestral": 0.1923,
+        "vocals": 0.2404
+      }
+    }
+  ]
+}

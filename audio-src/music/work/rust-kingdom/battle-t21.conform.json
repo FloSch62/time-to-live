@@ -1,0 +1,161 @@
+{
+ "piece": "rust-kingdom",
+ "version": "battle",
+ "take": "t21",
+ "duration": 170.5,
+ "samples": 8184000,
+ "bar_s": 2.4,
+ "bars": 70,
+ "loop_bars": [
+  4,
+  64
+ ],
+ "loop_start": 9.6,
+ "loop_end": 153.6,
+ "anchors": [
+  {
+   "out": 4.8,
+   "take": 4.915,
+   "local": false
+  },
+  {
+   "out": 14.4,
+   "take": 14.515,
+   "local": 1.0
+  },
+  {
+   "out": 24.0,
+   "take": 24.115,
+   "local": 1.0
+  },
+  {
+   "out": 33.6,
+   "take": 33.715,
+   "local": 1.0
+  },
+  {
+   "out": 43.2,
+   "take": 43.315,
+   "local": 1.0
+  },
+  {
+   "out": 52.8,
+   "take": 52.919,
+   "local": 1.0
+  },
+  {
+   "out": 62.4,
+   "take": 62.521,
+   "local": 1.0
+  },
+  {
+   "out": 72.0,
+   "take": 72.121,
+   "local": 1.0
+  },
+  {
+   "out": 81.6,
+   "take": 81.721,
+   "local": 1.0
+  },
+  {
+   "out": 91.2,
+   "take": 91.321,
+   "local": 1.0
+  },
+  {
+   "out": 100.8,
+   "take": 100.915,
+   "local": 1.0
+  },
+  {
+   "out": 110.4,
+   "take": 110.515,
+   "local": 1.0
+  },
+  {
+   "out": 120.0,
+   "take": 120.111,
+   "local": 1.0
+  },
+  {
+   "out": 129.6,
+   "take": 129.705,
+   "local": 1.0
+  },
+  {
+   "out": 139.2,
+   "take": 139.295,
+   "local": 1.0
+  },
+  {
+   "out": 148.8,
+   "take": 148.889,
+   "local": 1.0
+  },
+  {
+   "out": 158.4,
+   "take": 158.515,
+   "local": 0.0
+  }
+ ],
+ "rate_min": 0.99896,
+ "rate_max": 1.00271,
+ "max_cents": 4.7,
+ "take_seconds_used": 170.615,
+ "seam": {
+  "loop_start_sample": 460800,
+  "loop_end_sample": 7372800,
+  "crossfade_s": 2.4
+ },
+ "verify": {
+  "tempo_bpm": 100.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   -44.0
+  ],
+  "window_conf": [
+   3.36,
+   3.14,
+   3.15,
+   3.34,
+   3.23,
+   3.26,
+   3.23,
+   3.43,
+   3.19,
+   3.43,
+   3.17,
+   3.2,
+   3.26,
+   3.39,
+   3.22,
+   3.15,
+   2.55
+  ]
+ },
+ "tempo_correction": {
+  "rubberband_ratio": 1.00444,
+  "residual_ratio": 1.0,
+  "realigned_flags": [
+   "drift windows >20 ms: [(15, np.float64(-26.0)), (16, np.float64(-44.0))]"
+  ]
+ },
+ "phase_correction_beats": 0
+}

@@ -1,0 +1,160 @@
+{
+ "piece": "copper-reach",
+ "version": "battle",
+ "take": "t3",
+ "duration": 158.055563,
+ "samples": 7586667,
+ "bar_s": 2.2222222222222223,
+ "bars": 70,
+ "loop_bars": [
+  20,
+  68
+ ],
+ "loop_start": 44.444444,
+ "loop_end": 151.111111,
+ "anchors": [
+  {
+   "out": 4.444,
+   "take": 4.5776,
+   "local": false
+  },
+  {
+   "out": 13.333,
+   "take": 13.4663,
+   "local": 0.0
+  },
+  {
+   "out": 22.222,
+   "take": 22.355,
+   "local": false
+  },
+  {
+   "out": 31.111,
+   "take": 31.2517,
+   "local": 1.0
+  },
+  {
+   "out": 40.0,
+   "take": 40.1404,
+   "local": 1.0
+  },
+  {
+   "out": 48.889,
+   "take": 49.0251,
+   "local": 1.0
+  },
+  {
+   "out": 57.778,
+   "take": 57.9098,
+   "local": 1.0
+  },
+  {
+   "out": 66.667,
+   "take": 66.7985,
+   "local": 1.0
+  },
+  {
+   "out": 75.556,
+   "take": 75.6872,
+   "local": 1.0
+  },
+  {
+   "out": 84.444,
+   "take": 84.5739,
+   "local": 1.0
+  },
+  {
+   "out": 93.333,
+   "take": 93.4647,
+   "local": 1.0
+  },
+  {
+   "out": 102.222,
+   "take": 102.3534,
+   "local": 1.0
+  },
+  {
+   "out": 111.111,
+   "take": 111.2421,
+   "local": 1.0
+  },
+  {
+   "out": 120.0,
+   "take": 120.1288,
+   "local": 1.0
+  },
+  {
+   "out": 128.889,
+   "take": 129.0195,
+   "local": 1.0
+  },
+  {
+   "out": 137.778,
+   "take": 137.9082,
+   "local": 1.0
+  },
+  {
+   "out": 146.667,
+   "take": 146.7989,
+   "local": 1.0
+  }
+ ],
+ "rate_min": 0.99953,
+ "rate_max": 1.00088,
+ "max_cents": 1.5,
+ "take_seconds_used": 158.188,
+ "seam": {
+  "loop_start_sample": 2133333,
+  "loop_end_sample": 7253333,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 108.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   24.0,
+   -42.0,
+   80.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   2.0,
+   2.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   1.86,
+   2.55,
+   2.76,
+   3.13,
+   3.16,
+   3.08,
+   3.26,
+   3.25,
+   3.15,
+   3.18,
+   3.27,
+   3.27,
+   3.21,
+   3.27,
+   3.29,
+   3.09,
+   3.29
+  ]
+ },
+ "tempo_correction": {
+  "rubberband_ratio": 1.002587,
+  "residual_ratio": 1.00002,
+  "realigned_flags": [
+   "drift windows >20 ms: [(1, np.float64(-42.0)), (2, np.float64(80.0))]"
+  ]
+ }
+}

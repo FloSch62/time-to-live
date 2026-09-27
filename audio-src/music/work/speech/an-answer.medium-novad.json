@@ -1,0 +1,1837 @@
+{
+ "file": "/home/clab/projects/clab/time-to-live/public/audio/music/an-answer.ogg",
+ "language": "jw",
+ "language_prob": 0.27,
+ "segments": [
+  {
+   "start": 3.34,
+   "end": 4.74,
+   "text": "I'm going to add a little bit of color to make it look a little bit more realistic.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.87,
+   "comp": 7.53,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 3.34,
+     "end": 4.74,
+     "p": 0.07
+    },
+    {
+     "w": " going",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.14
+    },
+    {
+     "w": " to",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.9
+    },
+    {
+     "w": " add",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.07
+    },
+    {
+     "w": " a",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.29
+    },
+    {
+     "w": " little",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.12
+    },
+    {
+     "w": " bit",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.37
+    },
+    {
+     "w": " of",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.83
+    },
+    {
+     "w": " color",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.05
+    },
+    {
+     "w": " to",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.4
+    },
+    {
+     "w": " make",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.05
+    },
+    {
+     "w": " it",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.62
+    },
+    {
+     "w": " look",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.31
+    },
+    {
+     "w": " a",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.07
+    },
+    {
+     "w": " little",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.68
+    },
+    {
+     "w": " bit",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.26
+    },
+    {
+     "w": " more",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.51
+    },
+    {
+     "w": " realistic.",
+     "start": 4.74,
+     "end": 4.74,
+     "p": 0.12
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 10.42,
+   "end": 11.82,
+   "text": "I'm going to add a little bit of color to make it look a little bit more realistic.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.87,
+   "comp": 7.53,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 10.42,
+     "end": 11.82,
+     "p": 0.64
+    },
+    {
+     "w": " going",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 0.95
+    },
+    {
+     "w": " to",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 0.78
+    },
+    {
+     "w": " a",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 0.99
+    },
+    {
+     "w": " bit",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 0.98
+    },
+    {
+     "w": " color",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 1.0
+    },
+    {
+     "w": " make",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 0.95
+    },
+    {
+     "w": " it",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 1.0
+    },
+    {
+     "w": " look",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 0.99
+    },
+    {
+     "w": " a",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 0.98
+    },
+    {
+     "w": " little",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 1.0
+    },
+    {
+     "w": " more",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 1.0
+    },
+    {
+     "w": " realistic.",
+     "start": 11.82,
+     "end": 11.82,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 15.5,
+   "end": 16.9,
+   "text": "I'm going to add a little bit of color to make it look a little bit more realistic.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.87,
+   "comp": 7.53,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 15.5,
+     "end": 16.9,
+     "p": 0.71
+    },
+    {
+     "w": " going",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 0.95
+    },
+    {
+     "w": " to",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 0.82
+    },
+    {
+     "w": " a",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 0.99
+    },
+    {
+     "w": " bit",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 0.99
+    },
+    {
+     "w": " color",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 1.0
+    },
+    {
+     "w": " make",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 0.98
+    },
+    {
+     "w": " it",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 1.0
+    },
+    {
+     "w": " look",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 1.0
+    },
+    {
+     "w": " more",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 1.0
+    },
+    {
+     "w": " realistic.",
+     "start": 16.9,
+     "end": 16.9,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 17.62,
+   "end": 19.02,
+   "text": "I'm going to add a little bit of color to make it look a little bit more realistic.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.87,
+   "comp": 7.53,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 17.62,
+     "end": 19.02,
+     "p": 0.81
+    },
+    {
+     "w": " going",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 0.96
+    },
+    {
+     "w": " to",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 0.87
+    },
+    {
+     "w": " a",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 0.99
+    },
+    {
+     "w": " color",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 1.0
+    },
+    {
+     "w": " make",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 0.99
+    },
+    {
+     "w": " it",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 1.0
+    },
+    {
+     "w": " look",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 1.0
+    },
+    {
+     "w": " more",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 1.0
+    },
+    {
+     "w": " realistic.",
+     "start": 19.02,
+     "end": 19.02,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 19.94,
+   "end": 21.66,
+   "text": "I'm going to add a little bit of color to make it look a little bit more realistic.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.87,
+   "comp": 7.53,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 19.94,
+     "end": 21.34,
+     "p": 0.87
+    },
+    {
+     "w": " going",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 0.98
+    },
+    {
+     "w": " to",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 0.91
+    },
+    {
+     "w": " a",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 0.98
+    },
+    {
+     "w": " color",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 1.0
+    },
+    {
+     "w": " make",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 0.99
+    },
+    {
+     "w": " it",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 1.0
+    },
+    {
+     "w": " look",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 21.34,
+     "end": 21.34,
+     "p": 1.0
+    },
+    {
+     "w": " little",
+     "start": 21.34,
+     "end": 21.66,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 21.66,
+     "end": 21.66,
+     "p": 1.0
+    },
+    {
+     "w": " more",
+     "start": 21.66,
+     "end": 21.66,
+     "p": 1.0
+    },
+    {
+     "w": " realistic.",
+     "start": 21.66,
+     "end": 21.66,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 21.66,
+   "end": 22.78,
+   "text": "I'm going to add a little bit of color to make it look a little bit more realistic.",
+   "avg_logprob": -0.32,
+   "no_speech": 0.87,
+   "comp": 7.53,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 21.66,
+     "end": 22.78,
+     "p": 0.91
+    },
+    {
+     "w": " going",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 0.99
+    },
+    {
+     "w": " to",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 0.94
+    },
+    {
+     "w": " a",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 0.98
+    },
+    {
+     "w": " color",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " make",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " it",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " look",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " little",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " more",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    },
+    {
+     "w": " realistic.",
+     "start": 22.78,
+     "end": 22.78,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 26.42,
+   "end": 31.32,
+   "text": "I'm going to add a little bit of color to the top of the tree to make it look more like a tree.",
+   "avg_logprob": -0.42,
+   "no_speech": 0.87,
+   "comp": 5.64,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 26.42,
+     "end": 27.82,
+     "p": 0.09
+    },
+    {
+     "w": " going",
+     "start": 27.82,
+     "end": 27.82,
+     "p": 0.16
+    },
+    {
+     "w": " to",
+     "start": 27.82,
+     "end": 27.82,
+     "p": 0.93
+    },
+    {
+     "w": " add",
+     "start": 27.82,
+     "end": 27.82,
+     "p": 0.09
+    },
+    {
+     "w": " a",
+     "start": 27.82,
+     "end": 27.82,
+     "p": 0.27
+    },
+    {
+     "w": " little",
+     "start": 27.82,
+     "end": 27.82,
+     "p": 0.14
+    },
+    {
+     "w": " bit",
+     "start": 27.82,
+     "end": 28.78,
+     "p": 0.35
+    },
+    {
+     "w": " of",
+     "start": 28.78,
+     "end": 28.78,
+     "p": 0.83
+    },
+    {
+     "w": " color",
+     "start": 28.78,
+     "end": 28.78,
+     "p": 0.05
+    },
+    {
+     "w": " to",
+     "start": 28.78,
+     "end": 28.78,
+     "p": 0.4
+    },
+    {
+     "w": " the",
+     "start": 28.78,
+     "end": 31.32,
+     "p": 0.61
+    },
+    {
+     "w": " top",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.02
+    },
+    {
+     "w": " of",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.45
+    },
+    {
+     "w": " the",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.86
+    },
+    {
+     "w": " tree",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.08
+    },
+    {
+     "w": " to",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.15
+    },
+    {
+     "w": " make",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.57
+    },
+    {
+     "w": " it",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.83
+    },
+    {
+     "w": " look",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.38
+    },
+    {
+     "w": " more",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.39
+    },
+    {
+     "w": " like",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.18
+    },
+    {
+     "w": " a",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.65
+    },
+    {
+     "w": " tree.",
+     "start": 31.32,
+     "end": 31.32,
+     "p": 0.12
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 31.32,
+   "end": 31.38,
+   "text": "I'm going to add a little bit of color to the top of the tree to make it look more like a tree.",
+   "avg_logprob": -0.42,
+   "no_speech": 0.87,
+   "comp": 5.64,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 31.32,
+     "end": 31.38,
+     "p": 0.31
+    },
+    {
+     "w": " going",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.54
+    },
+    {
+     "w": " to",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.99
+    },
+    {
+     "w": " add",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.23
+    },
+    {
+     "w": " a",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.43
+    },
+    {
+     "w": " little",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.63
+    },
+    {
+     "w": " bit",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.75
+    },
+    {
+     "w": " of",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.94
+    },
+    {
+     "w": " color",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.59
+    },
+    {
+     "w": " to",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.93
+    },
+    {
+     "w": " the",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.98
+    },
+    {
+     "w": " top",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.73
+    },
+    {
+     "w": " of",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.99
+    },
+    {
+     "w": " the",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.99
+    },
+    {
+     "w": " tree",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.99
+    },
+    {
+     "w": " to",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.89
+    },
+    {
+     "w": " make",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 1.0
+    },
+    {
+     "w": " it",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 1.0
+    },
+    {
+     "w": " look",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.98
+    },
+    {
+     "w": " more",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.86
+    },
+    {
+     "w": " like",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.99
+    },
+    {
+     "w": " tree.",
+     "start": 31.38,
+     "end": 31.38,
+     "p": 0.99
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 35.56,
+   "end": 36.96,
+   "text": "I'm going to add a little bit of color to the top of the tree to make it look more like a tree.",
+   "avg_logprob": -0.42,
+   "no_speech": 0.87,
+   "comp": 5.64,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 35.56,
+     "end": 36.96,
+     "p": 0.67
+    },
+    {
+     "w": " going",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 0.96
+    },
+    {
+     "w": " to",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 0.79
+    },
+    {
+     "w": " a",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 0.98
+    },
+    {
+     "w": " little",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 0.99
+    },
+    {
+     "w": " bit",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " top",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 0.98
+    },
+    {
+     "w": " of",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " tree",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 0.98
+    },
+    {
+     "w": " make",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " it",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " look",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 0.99
+    },
+    {
+     "w": " more",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 0.95
+    },
+    {
+     "w": " like",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    },
+    {
+     "w": " tree.",
+     "start": 36.96,
+     "end": 36.96,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 41.1,
+   "end": 42.62,
+   "text": "I'm going to add a little bit of color to the top of the tree to make it look more like a tree.",
+   "avg_logprob": -0.42,
+   "no_speech": 0.87,
+   "comp": 5.64,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 41.1,
+     "end": 42.5,
+     "p": 0.7
+    },
+    {
+     "w": " going",
+     "start": 42.5,
+     "end": 42.54,
+     "p": 0.95
+    },
+    {
+     "w": " to",
+     "start": 42.54,
+     "end": 42.54,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 42.54,
+     "end": 42.54,
+     "p": 0.83
+    },
+    {
+     "w": " a",
+     "start": 42.54,
+     "end": 42.54,
+     "p": 0.98
+    },
+    {
+     "w": " little",
+     "start": 42.54,
+     "end": 42.54,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 42.54,
+     "end": 42.54,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 42.54,
+     "end": 42.54,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 42.54,
+     "end": 42.54,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 42.54,
+     "end": 42.54,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 42.54,
+     "end": 42.56,
+     "p": 1.0
+    },
+    {
+     "w": " top",
+     "start": 42.56,
+     "end": 42.56,
+     "p": 0.98
+    },
+    {
+     "w": " of",
+     "start": 42.56,
+     "end": 42.56,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 42.56,
+     "end": 42.56,
+     "p": 1.0
+    },
+    {
+     "w": " tree",
+     "start": 42.56,
+     "end": 42.56,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 42.56,
+     "end": 42.56,
+     "p": 0.99
+    },
+    {
+     "w": " make",
+     "start": 42.56,
+     "end": 42.6,
+     "p": 1.0
+    },
+    {
+     "w": " it",
+     "start": 42.6,
+     "end": 42.6,
+     "p": 1.0
+    },
+    {
+     "w": " look",
+     "start": 42.6,
+     "end": 42.6,
+     "p": 0.99
+    },
+    {
+     "w": " more",
+     "start": 42.6,
+     "end": 42.6,
+     "p": 0.98
+    },
+    {
+     "w": " like",
+     "start": 42.6,
+     "end": 42.6,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 42.6,
+     "end": 42.6,
+     "p": 1.0
+    },
+    {
+     "w": " tree.",
+     "start": 42.6,
+     "end": 42.62,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 43.78,
+   "end": 44.12,
+   "text": "I'm going to add a little bit of color to the top of the tree to make it look more like a tree.",
+   "avg_logprob": -0.42,
+   "no_speech": 0.87,
+   "comp": 5.64,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 43.42,
+     "end": 44.12,
+     "p": 0.75
+    },
+    {
+     "w": " going",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 0.96
+    },
+    {
+     "w": " to",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 0.85
+    },
+    {
+     "w": " a",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 0.98
+    },
+    {
+     "w": " little",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " top",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 0.99
+    },
+    {
+     "w": " of",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " tree",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 0.99
+    },
+    {
+     "w": " make",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " it",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " look",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " more",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 0.99
+    },
+    {
+     "w": " like",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " a",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    },
+    {
+     "w": " tree.",
+     "start": 44.12,
+     "end": 44.12,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 76.42,
+   "end": 104.1,
+   "text": "\u0d85\u0db4\u0dd2 \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2",
+   "avg_logprob": -0.14,
+   "no_speech": 0.84,
+   "comp": 7.95,
+   "lang": null,
+   "words": [
+    {
+     "w": " \u0d85\u0db4\u0dd2",
+     "start": 76.42,
+     "end": 77.82,
+     "p": 0.71
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 77.82,
+     "end": 79.22,
+     "p": 0.73
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 79.22,
+     "end": 79.22,
+     "p": 0.83
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 79.22,
+     "end": 79.22,
+     "p": 0.87
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 79.22,
+     "end": 81.04,
+     "p": 0.9
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 81.04,
+     "end": 81.32,
+     "p": 0.91
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 81.32,
+     "end": 82.08,
+     "p": 0.92
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 82.08,
+     "end": 82.32,
+     "p": 0.93
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 82.32,
+     "end": 83.96,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 83.96,
+     "end": 84.14,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 84.14,
+     "end": 85.26,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 85.26,
+     "end": 85.26,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 85.26,
+     "end": 85.26,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 85.26,
+     "end": 86.2,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 86.2,
+     "end": 88.7,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 88.7,
+     "end": 89.52,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 89.52,
+     "end": 92.6,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2",
+     "start": 92.6,
+     "end": 104.1,
+     "p": 0.95
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 104.1,
+   "end": 134.08,
+   "text": "\u0d85\u0db4\u0dd2 \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2",
+   "avg_logprob": -0.13,
+   "no_speech": 0.82,
+   "comp": 7.95,
+   "lang": null,
+   "words": [
+    {
+     "w": " \u0d85\u0db4\u0dd2",
+     "start": 104.1,
+     "end": 104.52,
+     "p": 0.71
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 104.52,
+     "end": 108.46,
+     "p": 0.73
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 108.46,
+     "end": 108.46,
+     "p": 0.83
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 108.46,
+     "end": 108.46,
+     "p": 0.87
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 108.46,
+     "end": 111.08,
+     "p": 0.9
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 111.08,
+     "end": 112.18,
+     "p": 0.91
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 112.18,
+     "end": 112.38,
+     "p": 0.92
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 112.38,
+     "end": 112.6,
+     "p": 0.93
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 112.6,
+     "end": 113.76,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 113.76,
+     "end": 113.82,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 113.82,
+     "end": 115.28,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 115.28,
+     "end": 116.98,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 116.98,
+     "end": 117.4,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 117.4,
+     "end": 117.98,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 117.98,
+     "end": 118.84,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 118.84,
+     "end": 121.3,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 121.3,
+     "end": 124.04,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2",
+     "start": 124.04,
+     "end": 134.08,
+     "p": 0.95
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 134.08,
+   "end": 164.06,
+   "text": "\u0d85\u0db4\u0dd2 \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2",
+   "avg_logprob": -0.13,
+   "no_speech": 0.84,
+   "comp": 7.95,
+   "lang": null,
+   "words": [
+    {
+     "w": " \u0d85\u0db4\u0dd2",
+     "start": 134.08,
+     "end": 134.54,
+     "p": 0.71
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 134.54,
+     "end": 139.1,
+     "p": 0.73
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 139.1,
+     "end": 139.1,
+     "p": 0.83
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 139.1,
+     "end": 139.1,
+     "p": 0.87
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 139.1,
+     "end": 141.34,
+     "p": 0.9
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 141.34,
+     "end": 142.06,
+     "p": 0.91
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 142.06,
+     "end": 142.54,
+     "p": 0.92
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 142.54,
+     "end": 142.54,
+     "p": 0.93
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 142.54,
+     "end": 143.72,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 143.72,
+     "end": 143.88,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 143.88,
+     "end": 145.22,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 145.22,
+     "end": 145.72,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 145.72,
+     "end": 146.16,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 146.16,
+     "end": 148.32,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 148.32,
+     "end": 148.32,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 148.32,
+     "end": 151.98,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 151.98,
+     "end": 152.32,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2",
+     "start": 152.32,
+     "end": 164.06,
+     "p": 0.95
+    }
+   ],
+   "speech": false
+  }
+ ]
+}

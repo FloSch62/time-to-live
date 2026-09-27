@@ -1,0 +1,140 @@
+{
+ "piece": "an-answer",
+ "version": "main",
+ "take": "t1",
+ "duration": 179.642854,
+ "samples": 8622857,
+ "bar_s": 2.857142857142857,
+ "bars": 62,
+ "loop_bars": [
+  36,
+  60
+ ],
+ "loop_start": 102.857143,
+ "loop_end": 171.428571,
+ "anchors": [
+  {
+   "out": 5.714,
+   "take": 5.8704,
+   "local": false
+  },
+  {
+   "out": 17.143,
+   "take": 17.3027,
+   "local": true
+  },
+  {
+   "out": 28.571,
+   "take": 28.7311,
+   "local": true
+  },
+  {
+   "out": 40.0,
+   "take": 40.1594,
+   "local": true
+  },
+  {
+   "out": 51.429,
+   "take": 51.5897,
+   "local": true
+  },
+  {
+   "out": 62.857,
+   "take": 63.0101,
+   "local": true
+  },
+  {
+   "out": 74.286,
+   "take": 74.4384,
+   "local": true
+  },
+  {
+   "out": 85.714,
+   "take": 85.8728,
+   "local": true
+  },
+  {
+   "out": 97.143,
+   "take": 97.2951,
+   "local": true
+  },
+  {
+   "out": 108.571,
+   "take": 108.7315,
+   "local": true
+  },
+  {
+   "out": 120.0,
+   "take": 120.1598,
+   "local": true
+  },
+  {
+   "out": 131.429,
+   "take": 131.5801,
+   "local": true
+  },
+  {
+   "out": 142.857,
+   "take": 143.0105,
+   "local": true
+  },
+  {
+   "out": 154.286,
+   "take": 154.4428,
+   "local": true
+  },
+  {
+   "out": 165.714,
+   "take": 165.8672,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99928,
+ "rate_max": 1.00068,
+ "max_cents": 1.2,
+ "take_seconds_used": 179.795,
+ "seam": {
+  "loop_start_sample": 4937143,
+  "loop_end_sample": 8228571,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 84.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   4.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   2.0,
+   -2.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   3.5,
+   3.44,
+   3.55,
+   3.18,
+   3.4,
+   3.37,
+   3.42,
+   3.43,
+   3.46,
+   3.44,
+   3.42,
+   3.47,
+   3.45,
+   3.46,
+   3.41
+  ]
+ },
+ "tempo_correction": null
+}

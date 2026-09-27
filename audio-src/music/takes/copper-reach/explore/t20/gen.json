@@ -1,0 +1,160 @@
+{
+  "piece": "copper-reach",
+  "version": "explore",
+  "take": 20,
+  "seed": 737235,
+  "cfg": 1.6,
+  "negative": "Vocals, sung lyrics, spoken words, choir, humming, a pop singer. Festival EDM drops, cheerful pop song, heroic trailer fanfare.",
+  "plans": "v4-new-composition",
+  "reference_method": "New symbolic composition from blank score; arrangement informed by Multiverse timeline analysis.",
+  "style": "Instrumental progressive electronic space exploration game soundtrack. Expressive analog synthesizer lead, liquid FM arpeggios, rounded melodic bass, rich slowly filtered string-synth chords and distant clean plucked guitar accents. A restrained syncopated electronic rhythm supports the melody. Pattern-driven passages open into thinner atmospheric phrases, then the sequenced theme returns with new answering lines. Curious, wistful and mysterious, spacious yet always moving. Detailed, evolving electronic music for a starship journey. Purely instrumental. D#m, 94 BPM.",
+  "plan_sha256": "40bebaf5b70ff9f205dfd3a0402826dd6a334512f154a350fa93d9cf8e2d1a1b",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      4,
+      88
+    ],
+    "bars": 90,
+    "tail": 2,
+    "bar_s": 2.5531914893617023,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "phrase01",
+        "instrumental"
+      ],
+      [
+        8,
+        "phrase02",
+        "instrumental"
+      ],
+      [
+        12,
+        "phrase03",
+        "instrumental"
+      ],
+      [
+        16,
+        "phrase04",
+        "instrumental"
+      ],
+      [
+        20,
+        "phrase05",
+        "interlude"
+      ],
+      [
+        24,
+        "phrase06",
+        "interlude"
+      ],
+      [
+        28,
+        "phrase07",
+        "interlude"
+      ],
+      [
+        32,
+        "phrase08",
+        "interlude"
+      ],
+      [
+        36,
+        "phrase09",
+        "instrumental"
+      ],
+      [
+        40,
+        "phrase10",
+        "instrumental"
+      ],
+      [
+        44,
+        "phrase11",
+        "instrumental"
+      ],
+      [
+        48,
+        "phrase12",
+        "instrumental"
+      ],
+      [
+        52,
+        "phrase13",
+        "instrumental"
+      ],
+      [
+        56,
+        "phrase14",
+        "instrumental"
+      ],
+      [
+        60,
+        "phrase15",
+        "interlude"
+      ],
+      [
+        64,
+        "phrase16",
+        "interlude"
+      ],
+      [
+        68,
+        "phrase17",
+        "interlude"
+      ],
+      [
+        72,
+        "phrase18",
+        "interlude"
+      ],
+      [
+        76,
+        "phrase19",
+        "interlude"
+      ],
+      [
+        80,
+        "phrase20",
+        "interlude"
+      ],
+      [
+        84,
+        "phrase21",
+        "instrumental"
+      ],
+      [
+        88,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 6032,
+  "max_tokens": 8867,
+  "truncated": false,
+  "timing": {
+    "seconds": 72.35298651900007,
+    "prefill_seconds": 0.8920874990000129,
+    "ttft_seconds": 1.6030205580000256,
+    "output_tokens": 6033,
+    "content_tokens": 6032,
+    "output_tps": 83.38287457444095,
+    "prefix_tokens": 3244,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 42.4,
+  "vae_seconds": 9.5,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

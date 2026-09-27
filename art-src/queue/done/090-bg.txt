@@ -1,0 +1,12 @@
+bg/s1-a:h@1
+bg/s1-b:h@1
+bg/s1-c:h@1
+bg/s2-a:h@1
+bg/s2-b:h@1
+bg/s2-c:h@1
+bg/s3-a:h@1
+bg/s3-b:h@1
+bg/s3-c:h@1
+bg/title:h@1
+bg/relay-seven:h@1
+bg/line-quiet:h@1

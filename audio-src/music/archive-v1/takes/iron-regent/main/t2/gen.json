@@ -1,0 +1,133 @@
+{
+  "piece": "iron-regent",
+  "version": "main",
+  "take": 2,
+  "seed": 278590,
+  "cfg": 1.6,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, choir singing words, a solo voice, pop song with a lead vocalist. Generic EDM club dance track with a four-on-the-floor techno kick.",
+  "style": "Epic retro-cinematic boss battle music for a pixel-art starship game: a colossal crowned gate machine of armoured iron and tarnished brass blocks the way. Pounding live drums, taiko and big toms, a relentless pulsing analog bass and synthesizer arpeggio ostinato, massive low brass chords, a commanding horn and clean electric guitar theme doubled by strings, glass bells ringing over it. Regal, heavy, stern and heroic, melodic and cinematic, spacious reverb. Purely instrumental. Dm, 120 BPM.",
+  "plan_sha256": "1a805dc7c09917fb0ca89ef61e5aaf161d7ccdb2a6d94cead4a185056a6af01e",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      20,
+      68
+    ],
+    "bars": 70,
+    "tail": 2,
+    "bar_s": 2.0,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "T1",
+        "instrumental"
+      ],
+      [
+        8,
+        "T2",
+        "instrumental"
+      ],
+      [
+        12,
+        "R1",
+        "instrumental"
+      ],
+      [
+        16,
+        "R2",
+        "instrumental"
+      ],
+      [
+        20,
+        "S1",
+        "instrumental"
+      ],
+      [
+        24,
+        "S2",
+        "instrumental"
+      ],
+      [
+        28,
+        "T1",
+        "instrumental"
+      ],
+      [
+        32,
+        "T2",
+        "instrumental"
+      ],
+      [
+        36,
+        "W1",
+        "interlude"
+      ],
+      [
+        40,
+        "W2",
+        "interlude"
+      ],
+      [
+        44,
+        "S1",
+        "instrumental"
+      ],
+      [
+        48,
+        "S2",
+        "instrumental"
+      ],
+      [
+        52,
+        "T1",
+        "instrumental"
+      ],
+      [
+        56,
+        "T2",
+        "instrumental"
+      ],
+      [
+        60,
+        "R1",
+        "instrumental"
+      ],
+      [
+        64,
+        "R2",
+        "instrumental"
+      ],
+      [
+        68,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 3502,
+  "max_tokens": 5500,
+  "truncated": false,
+  "timing": {
+    "seconds": 39.05538407800486,
+    "prefill_seconds": 0.25785672001075,
+    "ttft_seconds": 0.2602786140050739,
+    "output_tokens": 3503,
+    "content_tokens": 3502,
+    "output_tps": 89.6931391841775,
+    "prefix_tokens": 1563,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 15.3,
+  "vae_seconds": 3.1,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

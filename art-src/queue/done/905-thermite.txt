@@ -1,0 +1,1 @@
+weapons/thermite-payload:readable2@1

@@ -1,0 +1,133 @@
+{
+  "piece": "rust-kingdom",
+  "version": "explore",
+  "take": 2,
+  "seed": 322577,
+  "cfg": 1.6,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, choir singing words, a solo voice, pop song with a lead vocalist. Generic EDM club dance track with a four-on-the-floor techno kick.",
+  "style": "Retro-cinematic space exploration soundtrack for a pixel-art starship game. Warm analog synthesizer arpeggios, a soft pulsing sequenced bass, lush evolving synth pads, spacious reverb, a low cello melody, clean electric guitar, felt piano, soft metallic clockwork ticks and faint glass bells. Slow cranes still moving over stacked containers in a rusted kingdom at the edge of space. Mysterious, proud, weathered and warm. Purely instrumental. Am, 102 BPM.",
+  "plan_sha256": "3842bedb68f020bdb4dd8821da28bead73d5c047dbc6122e134e47b375415036",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      20,
+      68
+    ],
+    "bars": 70,
+    "tail": 2,
+    "bar_s": 2.3529411764705883,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "R1",
+        "instrumental"
+      ],
+      [
+        8,
+        "R2",
+        "instrumental"
+      ],
+      [
+        12,
+        "H1",
+        "instrumental"
+      ],
+      [
+        16,
+        "H2",
+        "instrumental"
+      ],
+      [
+        20,
+        "S1",
+        "instrumental"
+      ],
+      [
+        24,
+        "S2",
+        "instrumental"
+      ],
+      [
+        28,
+        "R1",
+        "instrumental"
+      ],
+      [
+        32,
+        "R2",
+        "instrumental"
+      ],
+      [
+        36,
+        "W1",
+        "interlude"
+      ],
+      [
+        40,
+        "W2",
+        "interlude"
+      ],
+      [
+        44,
+        "S1",
+        "instrumental"
+      ],
+      [
+        48,
+        "S2",
+        "instrumental"
+      ],
+      [
+        52,
+        "R1",
+        "instrumental"
+      ],
+      [
+        56,
+        "R2",
+        "instrumental"
+      ],
+      [
+        60,
+        "H1",
+        "instrumental"
+      ],
+      [
+        64,
+        "H2",
+        "instrumental"
+      ],
+      [
+        68,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 4121,
+  "max_tokens": 6426,
+  "truncated": false,
+  "timing": {
+    "seconds": 43.72272831998998,
+    "prefill_seconds": 0.23608689097454771,
+    "ttft_seconds": 0.23706166399642825,
+    "output_tokens": 4122,
+    "content_tokens": 4121,
+    "output_tps": 94.27590999886039,
+    "prefix_tokens": 1354,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 19.4,
+  "vae_seconds": 4.6,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

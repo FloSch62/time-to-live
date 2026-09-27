@@ -1,0 +1,25 @@
+{
+ "file": "/home/clab/projects/clab/time-to-live/audio-src/music/takes/last-orders/battle/t1/audio.flac",
+ "language": "en",
+ "language_prob": 0.69,
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 0.5,
+   "text": "No",
+   "avg_logprob": -1.1,
+   "no_speech": 0.6,
+   "comp": 0.2,
+   "lang": null,
+   "words": [
+    {
+     "w": " No",
+     "start": 0.0,
+     "end": 0.5,
+     "p": 0.06
+    }
+   ],
+   "speech": false
+  }
+ ]
+}

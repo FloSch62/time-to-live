@@ -1,0 +1,485 @@
+{
+ "laser-fire": {
+  "files": [
+   "audio/sfx/laser-fire-1.ogg",
+   "audio/sfx/laser-fire-2.ogg",
+   "audio/sfx/laser-fire-3.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "laser-heavy": {
+  "files": [
+   "audio/sfx/laser-heavy-1.ogg",
+   "audio/sfx/laser-heavy-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "ion-fire": {
+  "files": [
+   "audio/sfx/ion-fire-1.ogg",
+   "audio/sfx/ion-fire-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "beam-fire": {
+  "files": [
+   "audio/sfx/beam-fire-1.ogg",
+   "audio/sfx/beam-fire-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "payload-launch": {
+  "files": [
+   "audio/sfx/payload-launch-1.ogg",
+   "audio/sfx/payload-launch-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "flak-fire": {
+  "files": [
+   "audio/sfx/flak-fire-1.ogg",
+   "audio/sfx/flak-fire-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "shield-hit": {
+  "files": [
+   "audio/sfx/shield-hit-1.ogg",
+   "audio/sfx/shield-hit-2.ogg",
+   "audio/sfx/shield-hit-3.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "shield-up": {
+  "files": [
+   "audio/sfx/shield-up.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "shield-down": {
+  "files": [
+   "audio/sfx/shield-down.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "hull-hit-small": {
+  "files": [
+   "audio/sfx/hull-hit-small-1.ogg",
+   "audio/sfx/hull-hit-small-2.ogg",
+   "audio/sfx/hull-hit-small-3.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "hull-hit-big": {
+  "files": [
+   "audio/sfx/hull-hit-big-1.ogg",
+   "audio/sfx/hull-hit-big-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "miss": {
+  "files": [
+   "audio/sfx/miss-1.ogg",
+   "audio/sfx/miss-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "explosion-room": {
+  "files": [
+   "audio/sfx/explosion-room-1.ogg",
+   "audio/sfx/explosion-room-2.ogg",
+   "audio/sfx/explosion-room-3.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "ship-destroyed": {
+  "files": [
+   "audio/sfx/ship-destroyed.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "fire-loop": {
+  "files": [
+   "audio/sfx/fire-loop.ogg"
+  ],
+  "gain": 0.0,
+  "loop": true,
+  "loopStart": 0.0,
+  "loopEnd": 7.2
+ },
+ "breach": {
+  "files": [
+   "audio/sfx/breach-1.ogg",
+   "audio/sfx/breach-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "air-alarm": {
+  "files": [
+   "audio/sfx/air-alarm.ogg"
+  ],
+  "gain": 0.0,
+  "loop": true,
+  "loopStart": 0.0,
+  "loopEnd": 1.2
+ },
+ "hull-alarm": {
+  "files": [
+   "audio/sfx/hull-alarm.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "door-open": {
+  "files": [
+   "audio/sfx/door-open-1.ogg",
+   "audio/sfx/door-open-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "door-close": {
+  "files": [
+   "audio/sfx/door-close-1.ogg",
+   "audio/sfx/door-close-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "repair-loop": {
+  "files": [
+   "audio/sfx/repair-loop.ogg"
+  ],
+  "gain": 0.0,
+  "loop": true,
+  "loopStart": 0.0,
+  "loopEnd": 4.0
+ },
+ "repair-done": {
+  "files": [
+   "audio/sfx/repair-done.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "crew-select": {
+  "files": [
+   "audio/sfx/crew-select.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "crew-move": {
+  "files": [
+   "audio/sfx/crew-move.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "crew-fight": {
+  "files": [
+   "audio/sfx/crew-fight-1.ogg",
+   "audio/sfx/crew-fight-2.ogg",
+   "audio/sfx/crew-fight-3.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "crew-stopped": {
+  "files": [
+   "audio/sfx/crew-stopped.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "boarders": {
+  "files": [
+   "audio/sfx/boarders.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "power-up": {
+  "files": [
+   "audio/sfx/power-up.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "power-down": {
+  "files": [
+   "audio/sfx/power-down.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "power-denied": {
+  "files": [
+   "audio/sfx/power-denied.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "weapon-charged": {
+  "files": [
+   "audio/sfx/weapon-charged.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "weapon-select": {
+  "files": [
+   "audio/sfx/weapon-select.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "hop-charge": {
+  "files": [
+   "audio/sfx/hop-charge.ogg"
+  ],
+  "gain": 0.0,
+  "loop": true,
+  "loopStart": 0.0,
+  "loopEnd": 2.0
+ },
+ "hop-ready": {
+  "files": [
+   "audio/sfx/hop-ready.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "hop": {
+  "files": [
+   "audio/sfx/hop.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "arrive": {
+  "files": [
+   "audio/sfx/arrive.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "ui-click": {
+  "files": [
+   "audio/sfx/ui-click.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "ui-hover": {
+  "files": [
+   "audio/sfx/ui-hover.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "ui-back": {
+  "files": [
+   "audio/sfx/ui-back.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "ui-open": {
+  "files": [
+   "audio/sfx/ui-open.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "buy": {
+  "files": [
+   "audio/sfx/buy.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "sell": {
+  "files": [
+   "audio/sfx/sell.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "salvage-pickup": {
+  "files": [
+   "audio/sfx/salvage-pickup-1.ogg",
+   "audio/sfx/salvage-pickup-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "event-open": {
+  "files": [
+   "audio/sfx/event-open.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "map-open": {
+  "files": [
+   "audio/sfx/map-open.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "seal-advance": {
+  "files": [
+   "audio/sfx/seal-advance.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "lamp-on": {
+  "files": [
+   "audio/sfx/lamp-on.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "glass-bell": {
+  "files": [
+   "audio/sfx/glass-bell-1.ogg",
+   "audio/sfx/glass-bell-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "radio-squelch": {
+  "files": [
+   "audio/sfx/radio-squelch-1.ogg",
+   "audio/sfx/radio-squelch-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "page-lamp": {
+  "files": [
+   "audio/sfx/page-lamp.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "victory-sting": {
+  "files": [
+   "audio/sfx/victory-sting.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "defeat-sting": {
+  "files": [
+   "audio/sfx/defeat-sting.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "drone-launch": {
+  "files": [
+   "audio/sfx/drone-launch.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "veil-on": {
+  "files": [
+   "audio/sfx/veil-on.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "veil-off": {
+  "files": [
+   "audio/sfx/veil-off.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "ion-hit": {
+  "files": [
+   "audio/sfx/ion-hit-1.ogg",
+   "audio/sfx/ion-hit-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "teleport-in": {
+  "files": [
+   "audio/sfx/teleport-in-1.ogg",
+   "audio/sfx/teleport-in-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "handshake-1": {
+  "files": [
+   "audio/sfx/handshake-1.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "handshake-2": {
+  "files": [
+   "audio/sfx/handshake-2.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "handshake-3": {
+  "files": [
+   "audio/sfx/handshake-3.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "cable-creak": {
+  "files": [
+   "audio/sfx/cable-creak.ogg"
+  ],
+  "gain": 0.0,
+  "loop": true,
+  "loopStart": 0.0,
+  "loopEnd": 7.0
+ },
+ "couple": {
+  "files": [
+   "audio/sfx/couple.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "uncouple": {
+  "files": [
+   "audio/sfx/uncouple.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ },
+ "refit": {
+  "files": [
+   "audio/sfx/refit.ogg"
+  ],
+  "gain": 0.0,
+  "loop": false
+ }
+}

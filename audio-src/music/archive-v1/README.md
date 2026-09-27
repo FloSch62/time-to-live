@@ -1,0 +1,1 @@
+Superseded 2026-09-27 after user feedback ('very happy and far away from Ben Prunty'): plans v1 (relative-major pop harmony, warm/hopeful style texts). Kept for provenance only; nothing here is delivered.

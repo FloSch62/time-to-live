@@ -1,0 +1,154 @@
+{
+ "piece": "choir-weather",
+ "version": "battle",
+ "take": "t3",
+ "duration": 170.5,
+ "samples": 8184000,
+ "bar_s": 2.4,
+ "bars": 70,
+ "loop_bars": [
+  20,
+  60
+ ],
+ "loop_start": 48.0,
+ "loop_end": 144.0,
+ "anchors": [
+  {
+   "out": 4.8,
+   "take": 4.965,
+   "local": false
+  },
+  {
+   "out": 14.4,
+   "take": 14.555,
+   "local": true
+  },
+  {
+   "out": 24.0,
+   "take": 24.165,
+   "local": true
+  },
+  {
+   "out": 33.6,
+   "take": 33.765,
+   "local": true
+  },
+  {
+   "out": 43.2,
+   "take": 43.365,
+   "local": true
+  },
+  {
+   "out": 52.8,
+   "take": 52.965,
+   "local": true
+  },
+  {
+   "out": 62.4,
+   "take": 62.565,
+   "local": true
+  },
+  {
+   "out": 72.0,
+   "take": 72.165,
+   "local": true
+  },
+  {
+   "out": 81.6,
+   "take": 81.765,
+   "local": true
+  },
+  {
+   "out": 91.2,
+   "take": 91.365,
+   "local": true
+  },
+  {
+   "out": 100.8,
+   "take": 100.961,
+   "local": true
+  },
+  {
+   "out": 110.4,
+   "take": 110.565,
+   "local": true
+  },
+  {
+   "out": 120.0,
+   "take": 120.165,
+   "local": true
+  },
+  {
+   "out": 129.6,
+   "take": 129.765,
+   "local": true
+  },
+  {
+   "out": 139.2,
+   "take": 139.365,
+   "local": true
+  },
+  {
+   "out": 148.8,
+   "take": 148.965,
+   "local": true
+  },
+  {
+   "out": 158.4,
+   "take": 158.565,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99896,
+ "rate_max": 1.00104,
+ "max_cents": 1.8,
+ "take_seconds_used": 170.665,
+ "seam": {
+  "loop_start_sample": 2304000,
+  "loop_end_sample": 6912000,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 100.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   -14.0,
+   0.0,
+   4.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   3.11,
+   2.46,
+   2.71,
+   3.23,
+   3.28,
+   3.36,
+   3.32,
+   3.37,
+   3.32,
+   3.33,
+   3.45,
+   3.36,
+   3.3,
+   3.33,
+   3.29,
+   3.35,
+   3.28
+  ]
+ },
+ "tempo_correction": null
+}

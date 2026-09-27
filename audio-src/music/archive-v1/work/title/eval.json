@@ -1,0 +1,38 @@
+[
+ {
+  "take": "main/t4",
+  "reject": [],
+  "planned_dips": [],
+  "score": 2.015,
+  "cinematic": 0.98,
+  "cinematic_min": 0.95,
+  "vocal_max": 0.096,
+  "ftl": 0.213,
+  "speech_checked": true,
+  "lufs": -12.05,
+  "tp": -0.02,
+  "lra": 8.2,
+  "key": "Dm",
+  "window_db": [
+   -19.7,
+   -15.9,
+   -16.5,
+   -21.5,
+   -16.6,
+   -13.2,
+   -12.4,
+   -15.5,
+   -15.0,
+   -25.2,
+   -13.4,
+   -12.1,
+   -11.4,
+   -13.2,
+   -12.7
+  ],
+  "seam_db": 3.7,
+  "seam_chroma": 0.977,
+  "ratio": 1.0105706,
+  "tail": 4.86
+ }
+]

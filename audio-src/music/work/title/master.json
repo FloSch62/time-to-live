@@ -1,0 +1,183 @@
+{
+ "piece": "title",
+ "note": "Selected v2 pilot for stronger retro synth-score similarity, low vocal likelihood and stable beat grid. Whisper found no words. Preserve the generated key; tonal-profile flags and a brief phrase-level attenuation remain documented in the analysis. This standalone title cue is not required to match another layer harmonically.",
+ "gain_db": -4.21,
+ "loudest": "main",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   20,
+   60
+  ],
+  "bars": 62,
+  "tail": 2,
+  "bar_s": 2.608695652173913,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "T1",
+    "intro"
+   ],
+   [
+    8,
+    "T2",
+    "intro"
+   ],
+   [
+    12,
+    "P1",
+    "instrumental"
+   ],
+   [
+    16,
+    "P2",
+    "instrumental"
+   ],
+   [
+    20,
+    "T1",
+    "instrumental"
+   ],
+   [
+    24,
+    "T2",
+    "instrumental"
+   ],
+   [
+    28,
+    "B1",
+    "instrumental"
+   ],
+   [
+    32,
+    "B2",
+    "instrumental"
+   ],
+   [
+    36,
+    "Q1",
+    "interlude"
+   ],
+   [
+    40,
+    "Q2",
+    "interlude"
+   ],
+   [
+    44,
+    "T1",
+    "instrumental"
+   ],
+   [
+    48,
+    "T2",
+    "instrumental"
+   ],
+   [
+    52,
+    "P1",
+    "instrumental"
+   ],
+   [
+    56,
+    "P2",
+    "instrumental"
+   ],
+   [
+    60,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "main": "audio/music/title.ogg"
+  },
+  "bpm": 92,
+  "key": "Dm",
+  "bars": 62,
+  "barSeconds": 2.608696,
+  "duration": 164.239125,
+  "loopStart": 52.173913,
+  "loopEnd": 156.521739,
+  "loop": true,
+  "gainDb": -4.21
+ },
+ "versions": {
+  "main": {
+   "take": "t2",
+   "seed": 986432,
+   "source": "audio-src/music/takes/title/main/t2/audio.flac",
+   "source_sha256": "bbbf64aa122d4f84134ad7cb830598d209bdb6ec1dec2612b3301937a55507d3",
+   "conform": {
+    "rate_min": 0.99941,
+    "rate_max": 1.00036,
+    "max_cents": 1.0,
+    "verify": {
+     "tempo_bpm": 92.0,
+     "grid_phase_ms": 0.2,
+     "window_error_ms": [
+      2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.37,
+      3.38,
+      3.5,
+      3.41,
+      3.44,
+      3.42,
+      3.26,
+      3.4,
+      3.4,
+      3.43,
+      3.44,
+      3.46,
+      3.39,
+      3.51,
+      3.55
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/title.flac",
+   "master_sha256": "b9f65e7702c2f1871e5dc5096377615676ef74778b6341234290dfdb8a72fac3",
+   "delivery": "public/audio/music/title.ogg",
+   "delivery_sha256": "ee92e6456fb086f99dcd06d1b875bd5acd6475dce94e64b291f82b76c957bb52",
+   "bytes": 2875513,
+   "samples": 7883478,
+   "decoded_samples": 7883478,
+   "pre_gain": {
+    "lufs": -14.79,
+    "tp": 0.08,
+    "lra": 4.2
+   },
+   "delivered": {
+    "lufs": -18.99,
+    "tp": -4.0,
+    "lra": 4.2
+   }
+  }
+ }
+}

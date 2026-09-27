@@ -1,0 +1,16 @@
+{
+  "request_hash": "0761a218eb188f43d84388351df86ac962684cdc38be2bf2d9a2519fffa1d898",
+  "timing": {
+    "seconds": 37.690983566,
+    "prefill_seconds": 0.6567620430000716,
+    "ttft_seconds": 1.044258027000069,
+    "output_tokens": 3444,
+    "content_tokens": 3443,
+    "output_tps": 91.37463855166511,
+    "prefix_tokens": 1797,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "truncated": false
+}

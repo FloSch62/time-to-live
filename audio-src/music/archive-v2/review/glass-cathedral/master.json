@@ -1,0 +1,262 @@
+{
+ "piece": "glass-cathedral",
+ "note": "Selected the strongly atmospheric glass pair: CLAP dark 0.485/0.577 and score-not-club 0.798/0.867; raw lexical speech scans clean. These are alpha generative performances: phrase alignment, tonal-profile and brief quiet-gap flags remain in the report. The measured beat grid is conformed, with final layer sync and delivery checks recorded separately.",
+ "gain_db": -3.29,
+ "loudest": "battle",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   12,
+   60
+  ],
+  "bars": 62,
+  "tail": 2,
+  "bar_s": 2.608695652173913,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "G1",
+    "instrumental"
+   ],
+   [
+    8,
+    "G2",
+    "instrumental"
+   ],
+   [
+    12,
+    "H1",
+    "instrumental"
+   ],
+   [
+    16,
+    "H2",
+    "instrumental"
+   ],
+   [
+    20,
+    "L1",
+    "instrumental"
+   ],
+   [
+    24,
+    "L2",
+    "instrumental"
+   ],
+   [
+    28,
+    "G1",
+    "instrumental"
+   ],
+   [
+    32,
+    "G2",
+    "instrumental"
+   ],
+   [
+    36,
+    "W1",
+    "interlude"
+   ],
+   [
+    40,
+    "W2",
+    "interlude"
+   ],
+   [
+    44,
+    "L1",
+    "instrumental"
+   ],
+   [
+    48,
+    "L2",
+    "instrumental"
+   ],
+   [
+    52,
+    "G1",
+    "instrumental"
+   ],
+   [
+    56,
+    "G2",
+    "instrumental"
+   ],
+   [
+    60,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "explore": "audio/music/glass-cathedral-explore.ogg",
+   "battle": "audio/music/glass-cathedral-battle.ogg"
+  },
+  "bpm": 92,
+  "key": "Am",
+  "bars": 62,
+  "barSeconds": 2.608696,
+  "duration": 164.239125,
+  "loopStart": 31.304348,
+  "loopEnd": 156.521739,
+  "loop": true,
+  "gainDb": -3.29
+ },
+ "versions": {
+  "explore": {
+   "take": "t1",
+   "seed": 735951,
+   "source": "audio-src/music/takes/glass-cathedral/explore/t1/audio.flac",
+   "source_sha256": "503d9203af37c79e9d7e20c90483b7b2e523a107b22126a0de32d12aeaa7dbd8",
+   "conform": {
+    "rate_min": 0.99962,
+    "rate_max": 1.00038,
+    "max_cents": 0.7,
+    "verify": {
+     "tempo_bpm": 92.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      60.0,
+      2.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.32,
+      3.25,
+      3.12,
+      3.06,
+      3.33,
+      3.35,
+      3.32,
+      3.32,
+      3.32,
+      3.38,
+      3.14,
+      3.25,
+      3.39,
+      3.32,
+      3.27
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/glass-cathedral-explore.flac",
+   "master_sha256": "71d78df0690d4a5deb805a10422ebf67fd6710e1bfb03a81608fb9c40bad9c83",
+   "delivery": "public/audio/music/glass-cathedral-explore.ogg",
+   "delivery_sha256": "5979cc4275ece91bc5c71cd411555c9233ba384d2c493468c96cd7730d904302",
+   "bytes": 2555766,
+   "samples": 7883478,
+   "decoded_samples": 7883478,
+   "source_levels": {
+    "lufs": -12.97,
+    "tp": 0.1,
+    "lra": 6.7
+   },
+   "layer_trim_db": -5.24,
+   "pre_gain": {
+    "lufs": -18.21,
+    "tp": -5.140000000000001,
+    "lra": 6.7
+   },
+   "delivered": {
+    "lufs": -21.47,
+    "tp": -8.17,
+    "lra": 6.7
+   }
+  },
+  "battle": {
+   "take": "t1",
+   "seed": 104268,
+   "source": "audio-src/music/takes/glass-cathedral/battle/t1/audio.flac",
+   "source_sha256": "451b44b77882e9c438b834431453f80678cbd8eb838a3e6fc1a5359728f21238",
+   "conform": {
+    "rate_min": 0.99864,
+    "rate_max": 1.00094,
+    "max_cents": 2.4,
+    "verify": {
+     "tempo_bpm": 92.002,
+     "grid_phase_ms": 1.2,
+     "window_error_ms": [
+      -66.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      -2.0,
+      -48.0,
+      -70.0,
+      -80.0,
+      70.0
+     ],
+     "window_conf": [
+      1.67,
+      2.98,
+      2.44,
+      3.4,
+      3.48,
+      3.44,
+      3.44,
+      3.43,
+      3.46,
+      3.41,
+      3.2,
+      2.36,
+      2.9,
+      4.63,
+      2.89
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/glass-cathedral-battle.flac",
+   "master_sha256": "58a49ca80e47c96cc1b7dc8f6c556d776d8601f3fd3018328dc9b12240f53c07",
+   "delivery": "public/audio/music/glass-cathedral-battle.ogg",
+   "delivery_sha256": "7b4cce6c7db3ffad5cf47fbf088a53f3b3f168b3c4bdad1dc7e55f478d7e6b4c",
+   "bytes": 2811269,
+   "samples": 7883478,
+   "decoded_samples": 7883478,
+   "source_levels": {
+    "lufs": -15.71,
+    "tp": -0.36,
+    "lra": 7.3
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -15.71,
+    "tp": -0.36,
+    "lra": 7.3
+   },
+   "delivered": {
+    "lufs": -18.98,
+    "tp": -3.65,
+    "lra": 7.3
+   }
+  }
+ }
+}

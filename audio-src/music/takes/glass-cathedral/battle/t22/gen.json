@@ -1,0 +1,146 @@
+{
+  "piece": "glass-cathedral",
+  "version": "battle",
+  "take": 22,
+  "seed": 125268,
+  "cfg": 1.6,
+  "negative": "Vocals, sung lyrics, spoken words, choir, humming, a pop singer. Festival EDM drops, cheerful pop song, heroic trailer fanfare.",
+  "plans": "v4-new-composition",
+  "composition_source": "compositions/glass-cathedral/editorial-1/score.abc",
+  "reference_method": "Original editorial composition; no old melody retained. Arrangement informed by Multiverse timeline analysis.",
+  "style": "Driving instrumental electronic space battle game soundtrack, inspired by FTL and FTL Multiverse. A firm syncopated electronic drum groove, active deep synth bass, crisp snare and hi-hats, small tom fills and layered answering arpeggios. Urgent, tense and focused. Clear crystalline FM bells, delicate high synth plucks, an expressive analog synth lead and deep rounded bass in a spacious resonant hall; intricate and mysterious. Build the full rhythmic arrangement through the first theme, thin it in the middle while keeping the pulse audible, then return with richer counterpoint and stronger drums. A tactical space battle. Purely instrumental. F#m, 112 BPM.",
+  "plan_sha256": "4859f78200dea447fb8ef05d355cede8793e48fbb9a7ee94bc3d772c0029031d",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      4,
+      72
+    ],
+    "bars": 78,
+    "tail": 2,
+    "bar_s": 2.142857142857143,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "phrase01",
+        "instrumental"
+      ],
+      [
+        8,
+        "phrase02",
+        "instrumental"
+      ],
+      [
+        12,
+        "phrase03",
+        "instrumental"
+      ],
+      [
+        16,
+        "phrase04",
+        "instrumental"
+      ],
+      [
+        20,
+        "phrase05",
+        "instrumental"
+      ],
+      [
+        24,
+        "phrase06",
+        "instrumental"
+      ],
+      [
+        28,
+        "phrase07",
+        "instrumental"
+      ],
+      [
+        32,
+        "phrase08",
+        "instrumental"
+      ],
+      [
+        36,
+        "phrase09",
+        "interlude"
+      ],
+      [
+        40,
+        "phrase10",
+        "interlude"
+      ],
+      [
+        44,
+        "phrase11",
+        "instrumental"
+      ],
+      [
+        48,
+        "phrase12",
+        "instrumental"
+      ],
+      [
+        52,
+        "phrase13",
+        "instrumental"
+      ],
+      [
+        56,
+        "phrase14",
+        "instrumental"
+      ],
+      [
+        60,
+        "phrase15",
+        "instrumental"
+      ],
+      [
+        64,
+        "phrase16",
+        "instrumental"
+      ],
+      [
+        68,
+        "phrase17",
+        "instrumental"
+      ],
+      [
+        72,
+        "phrase18",
+        "instrumental"
+      ],
+      [
+        76,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 4185,
+  "max_tokens": 6517,
+  "truncated": false,
+  "timing": {
+    "seconds": 48.42719522800007,
+    "prefill_seconds": 0.7866365529998802,
+    "ttft_seconds": 0.9769788559997323,
+    "output_tokens": 4186,
+    "content_tokens": 4185,
+    "output_tps": 86.43903451958954,
+    "prefix_tokens": 2245,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 22.4,
+  "vae_seconds": 3.5,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

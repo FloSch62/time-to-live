@@ -1,0 +1,92 @@
+{
+  "copper-reach": {
+    "files": {
+      "explore": "audio/music/copper-reach-explore.ogg",
+      "battle": "audio/music/copper-reach-battle.ogg"
+    },
+    "bpm": 108,
+    "key": "Dm",
+    "bars": 70,
+    "barSeconds": 2.222222,
+    "duration": 158.055563,
+    "loopStart": 44.444444,
+    "loopEnd": 151.111111,
+    "loop": true,
+    "gainDb": -5.15
+  },
+  "rust-kingdom": {
+    "files": {
+      "explore": "audio/music/rust-kingdom-explore.ogg",
+      "battle": "audio/music/rust-kingdom-battle.ogg"
+    },
+    "bpm": 100,
+    "key": "Am",
+    "bars": 70,
+    "barSeconds": 2.4,
+    "duration": 170.5,
+    "loopStart": 48.0,
+    "loopEnd": 163.2,
+    "loop": true,
+    "gainDb": -8.66
+  },
+  "glass-cathedral": {
+    "files": {
+      "explore": "audio/music/glass-cathedral-explore.ogg",
+      "battle": "audio/music/glass-cathedral-battle.ogg"
+    },
+    "bpm": 92,
+    "key": "Am",
+    "bars": 62,
+    "barSeconds": 2.608696,
+    "duration": 164.239125,
+    "loopStart": 31.304348,
+    "loopEnd": 156.521739,
+    "loop": true,
+    "gainDb": -3.29
+  },
+  "choir-weather": {
+    "files": {
+      "explore": "audio/music/choir-weather-explore.ogg",
+      "battle": "audio/music/choir-weather-battle.ogg"
+    },
+    "bpm": 100,
+    "key": "Em",
+    "bars": 70,
+    "barSeconds": 2.4,
+    "duration": 170.5,
+    "loopStart": 48.0,
+    "loopEnd": 144.0,
+    "loop": true,
+    "gainDb": -3.81
+  },
+  "blackout-heart": {
+    "files": {
+      "explore": "audio/music/blackout-heart-explore.ogg",
+      "battle": "audio/music/blackout-heart-battle.ogg"
+    },
+    "bpm": 116,
+    "key": "Cm",
+    "bars": 70,
+    "barSeconds": 2.068966,
+    "duration": 147.327583,
+    "loopStart": 41.37931,
+    "loopEnd": 140.689655,
+    "loop": true,
+    "gainDb": -7.26
+  },
+  "last-orders": {
+    "files": {
+      "explore": "audio/music/last-orders-explore.ogg",
+      "battle": "audio/music/last-orders-battle.ogg"
+    },
+    "bpm": 120,
+    "key": "Cm",
+    "bars": 70,
+    "barSeconds": 2.0,
+    "duration": 142.5,
+    "loopStart": 40.0,
+    "loopEnd": 136.0,
+    "loop": true,
+    "gainDb": -3.35
+  }
+}

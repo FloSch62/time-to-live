@@ -1,0 +1,122 @@
+{
+ "file": "/home/clab/projects/clab/time-to-live/audio-src/music/previews/last-orders-explore.ogg",
+ "audio_sha256": "9d9fcc5e656a20fe70529cc53f68e5cc4f2df60e66900452d8e7bb8f1a3b98f3",
+ "language": "en",
+ "language_prob": 0.61,
+ "segments": [
+  {
+   "start": 86.12,
+   "end": 89.48,
+   "text": "We'll be right back.",
+   "avg_logprob": -0.84,
+   "no_speech": 0.87,
+   "comp": 1.16,
+   "lang": null,
+   "words": [
+    {
+     "w": " We'll",
+     "start": 86.12,
+     "end": 87.52,
+     "p": 0.14
+    },
+    {
+     "w": " be",
+     "start": 87.52,
+     "end": 87.52,
+     "p": 0.52
+    },
+    {
+     "w": " right",
+     "start": 87.52,
+     "end": 87.52,
+     "p": 0.65
+    },
+    {
+     "w": " back.",
+     "start": 87.52,
+     "end": 89.48,
+     "p": 0.98
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 89.48,
+   "end": 89.98,
+   "text": "Thank you for joining us.",
+   "avg_logprob": -0.84,
+   "no_speech": 0.87,
+   "comp": 1.16,
+   "lang": null,
+   "words": [
+    {
+     "w": " Thank",
+     "start": 89.48,
+     "end": 89.48,
+     "p": 0.12
+    },
+    {
+     "w": " you",
+     "start": 89.48,
+     "end": 89.98,
+     "p": 0.99
+    },
+    {
+     "w": " for",
+     "start": 89.98,
+     "end": 89.98,
+     "p": 0.12
+    },
+    {
+     "w": " joining",
+     "start": 89.98,
+     "end": 89.98,
+     "p": 0.58
+    },
+    {
+     "w": " us.",
+     "start": 89.98,
+     "end": 89.98,
+     "p": 0.94
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 118.58,
+   "end": 119.98,
+   "text": "We'll be right back.",
+   "avg_logprob": -0.85,
+   "no_speech": 0.86,
+   "comp": 1.32,
+   "lang": null,
+   "words": [
+    {
+     "w": " We'll",
+     "start": 118.58,
+     "end": 119.98,
+     "p": 0.13
+    },
+    {
+     "w": " be",
+     "start": 119.98,
+     "end": 119.98,
+     "p": 0.51
+    },
+    {
+     "w": " right",
+     "start": 119.98,
+     "end": 119.98,
+     "p": 0.67
+    },
+    {
+     "w": " back.",
+     "start": 119.98,
+     "end": 119.98,
+     "p": 0.98
+    }
+   ],
+   "speech": false
+  }
+ ]
+}

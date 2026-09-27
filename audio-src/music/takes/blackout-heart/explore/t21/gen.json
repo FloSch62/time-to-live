@@ -1,0 +1,146 @@
+{
+  "piece": "blackout-heart",
+  "version": "explore",
+  "take": 21,
+  "seed": 923083,
+  "cfg": 1.6,
+  "negative": "Vocals, sung lyrics, spoken words, choir, humming, a pop singer. Festival EDM drops, cheerful pop song, heroic trailer fanfare.",
+  "plans": "v4-new-composition",
+  "composition_source": "compositions/blackout-heart/editorial-1/score.abc",
+  "reference_method": "Original editorial composition; no old melody retained. Arrangement informed by Multiverse timeline analysis.",
+  "style": "Instrumental electronic science fiction strategy game soundtrack in the musical world of Ben Prunty FTL and FTL Multiverse. Resonant low analog sequences, deep rounded bass, distant plaintive square-synth lead and slowly moving filtered pads; mounting pressure inside an immense archive. An evolving melodic instrumental with arpeggiated inner motion, subtle harmonic colour and clear phrasing. Exploration arrangement: spacious, reflective and curious. Soft detailed electronic percussion, a gently moving bass and delicate repeating synthesizer patterns support the expressive lead. The middle passage opens into lighter suspended textures before the developed theme returns. Intimate game underscore with room between phrases. Steady tempo throughout; the quiet bass pulse and small percussion stay precisely on the beat through the thinner passage, return and ending. Purely instrumental. Am, 120 BPM.",
+  "plan_sha256": "3de3b89630aea33a69d99c0412a74a5038bc3a9854c8bbdf29517dabfdfdac0d",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      4,
+      72
+    ],
+    "bars": 78,
+    "tail": 2,
+    "bar_s": 2.0,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "phrase01",
+        "instrumental"
+      ],
+      [
+        8,
+        "phrase02",
+        "instrumental"
+      ],
+      [
+        12,
+        "phrase03",
+        "instrumental"
+      ],
+      [
+        16,
+        "phrase04",
+        "instrumental"
+      ],
+      [
+        20,
+        "phrase05",
+        "instrumental"
+      ],
+      [
+        24,
+        "phrase06",
+        "instrumental"
+      ],
+      [
+        28,
+        "phrase07",
+        "instrumental"
+      ],
+      [
+        32,
+        "phrase08",
+        "instrumental"
+      ],
+      [
+        36,
+        "phrase09",
+        "interlude"
+      ],
+      [
+        40,
+        "phrase10",
+        "interlude"
+      ],
+      [
+        44,
+        "phrase11",
+        "instrumental"
+      ],
+      [
+        48,
+        "phrase12",
+        "instrumental"
+      ],
+      [
+        52,
+        "phrase13",
+        "instrumental"
+      ],
+      [
+        56,
+        "phrase14",
+        "instrumental"
+      ],
+      [
+        60,
+        "phrase15",
+        "instrumental"
+      ],
+      [
+        64,
+        "phrase16",
+        "instrumental"
+      ],
+      [
+        68,
+        "phrase17",
+        "instrumental"
+      ],
+      [
+        72,
+        "phrase18",
+        "instrumental"
+      ],
+      [
+        76,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 3908,
+  "max_tokens": 6100,
+  "truncated": false,
+  "timing": {
+    "seconds": 43.57220394899991,
+    "prefill_seconds": 0.8647252430000663,
+    "ttft_seconds": 1.2187056709999524,
+    "output_tokens": 3909,
+    "content_tokens": 3908,
+    "output_tps": 89.71315760330552,
+    "prefix_tokens": 2216,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 19.8,
+  "vae_seconds": 5.9,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

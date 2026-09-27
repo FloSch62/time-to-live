@@ -1,0 +1,9 @@
+ships/packet-leech:h@3
+ships/cable-wraith:h@3
+ships/rust-prophet:h@3
+ships/scrap-foreman:h@3
+ships/scavenger-skiff:h@3
+ships/static-nest:h@3
+ships/ferric-colossus:h@3
+ships/iron-regent:h@3
+ships/gate-warden:h@3

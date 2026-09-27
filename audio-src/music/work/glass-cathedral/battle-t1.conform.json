@@ -1,0 +1,140 @@
+{
+ "piece": "glass-cathedral",
+ "version": "battle",
+ "take": "t1",
+ "duration": 164.239125,
+ "samples": 7883478,
+ "bar_s": 2.608695652173913,
+ "bars": 62,
+ "loop_bars": [
+  12,
+  60
+ ],
+ "loop_start": 31.304348,
+ "loop_end": 156.521739,
+ "anchors": [
+  {
+   "out": 5.217,
+   "take": 5.3755,
+   "local": false
+  },
+  {
+   "out": 15.652,
+   "take": 15.8201,
+   "local": true
+  },
+  {
+   "out": 26.087,
+   "take": 26.2466,
+   "local": true
+  },
+  {
+   "out": 36.522,
+   "take": 36.6812,
+   "local": true
+  },
+  {
+   "out": 46.957,
+   "take": 47.1158,
+   "local": true
+  },
+  {
+   "out": 57.391,
+   "take": 57.5484,
+   "local": true
+  },
+  {
+   "out": 67.826,
+   "take": 67.9849,
+   "local": true
+  },
+  {
+   "out": 78.261,
+   "take": 78.4175,
+   "local": true
+  },
+  {
+   "out": 88.696,
+   "take": 88.8521,
+   "local": true
+  },
+  {
+   "out": 99.13,
+   "take": 99.2907,
+   "local": true
+  },
+  {
+   "out": 109.565,
+   "take": 109.7112,
+   "local": true
+  },
+  {
+   "out": 120.0,
+   "take": 120.1558,
+   "local": false
+  },
+  {
+   "out": 130.435,
+   "take": 130.5904,
+   "local": false
+  },
+  {
+   "out": 140.87,
+   "take": 141.025,
+   "local": false
+  },
+  {
+   "out": 151.304,
+   "take": 151.4595,
+   "local": false
+  }
+ ],
+ "rate_min": 0.99864,
+ "rate_max": 1.00094,
+ "max_cents": 2.4,
+ "take_seconds_used": 164.394,
+ "seam": {
+  "loop_start_sample": 1502609,
+  "loop_end_sample": 7513043,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 92.002,
+  "grid_phase_ms": 1.2,
+  "window_error_ms": [
+   -66.0,
+   2.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   2.0,
+   -2.0,
+   -48.0,
+   -70.0,
+   -80.0,
+   70.0
+  ],
+  "window_conf": [
+   1.67,
+   2.98,
+   2.44,
+   3.4,
+   3.48,
+   3.44,
+   3.44,
+   3.43,
+   3.46,
+   3.41,
+   3.2,
+   2.36,
+   2.9,
+   4.63,
+   2.89
+  ]
+ },
+ "tempo_correction": null
+}

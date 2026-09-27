@@ -1,0 +1,203 @@
+{
+ "piece": "iron-regent",
+ "note": "Selected revised held-note guardian arrangement: stronger retro-score similarity (0.357), restrained percussion, stable timing and clean raw speech scan. Preserves the generated D-minor performance. Alpha review accepts tonal-profile ambiguity and 30 percent brighter CLAP windows; these mood flags remain documented.",
+ "gain_db": -4.76,
+ "loudest": "main",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   20,
+   68
+  ],
+  "bars": 70,
+  "tail": 2,
+  "bar_s": 2.0689655172413794,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "T1",
+    "instrumental"
+   ],
+   [
+    8,
+    "T2",
+    "instrumental"
+   ],
+   [
+    12,
+    "R1",
+    "instrumental"
+   ],
+   [
+    16,
+    "R2",
+    "instrumental"
+   ],
+   [
+    20,
+    "S1",
+    "instrumental"
+   ],
+   [
+    24,
+    "S2",
+    "instrumental"
+   ],
+   [
+    28,
+    "T1",
+    "instrumental"
+   ],
+   [
+    32,
+    "T2",
+    "instrumental"
+   ],
+   [
+    36,
+    "W1",
+    "interlude"
+   ],
+   [
+    40,
+    "W2",
+    "interlude"
+   ],
+   [
+    44,
+    "S1",
+    "instrumental"
+   ],
+   [
+    48,
+    "S2",
+    "instrumental"
+   ],
+   [
+    52,
+    "T1",
+    "instrumental"
+   ],
+   [
+    56,
+    "T2",
+    "instrumental"
+   ],
+   [
+    60,
+    "R1",
+    "instrumental"
+   ],
+   [
+    64,
+    "R2",
+    "instrumental"
+   ],
+   [
+    68,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "main": "audio/music/iron-regent.ogg"
+  },
+  "bpm": 116,
+  "key": "Dm",
+  "bars": 70,
+  "barSeconds": 2.068966,
+  "duration": 147.327583,
+  "loopStart": 41.37931,
+  "loopEnd": 140.689655,
+  "loop": true,
+  "gainDb": -4.76
+ },
+ "versions": {
+  "main": {
+   "take": "t3",
+   "seed": 191555,
+   "source": "audio-src/music/takes/iron-regent/main/t3/audio.flac",
+   "source_sha256": "a5942f55760d4a66403c2579deee639c4321cf87fe4502c368ea2ddb8d48be28",
+   "conform": {
+    "rate_min": 0.99928,
+    "rate_max": 1.00145,
+    "max_cents": 2.5,
+    "verify": {
+     "tempo_bpm": 116.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      10.0,
+      2.0,
+      0.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      -2.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      0.46,
+      2.85,
+      2.89,
+      3.39,
+      3.4,
+      3.4,
+      3.54,
+      3.46,
+      3.43,
+      3.28,
+      3.25,
+      3.33,
+      3.33,
+      3.45,
+      3.26,
+      3.31,
+      3.43
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/iron-regent.flac",
+   "master_sha256": "f02d369f0e1bc694607e0dc8a053f8051a23a9f133da336c44fe64a56172fccc",
+   "delivery": "public/audio/music/iron-regent.ogg",
+   "delivery_sha256": "2466b57aee0fe5c951b3b74c785d9d882975a41a9d7815af8366ccc39b4cbbe1",
+   "bytes": 2255369,
+   "samples": 7071724,
+   "decoded_samples": 7071724,
+   "source_levels": {
+    "lufs": -14.24,
+    "tp": -0.9,
+    "lra": 5.4
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -14.24,
+    "tp": -0.9,
+    "lra": 5.4
+   },
+   "delivered": {
+    "lufs": -18.99,
+    "tp": -5.76,
+    "lra": 5.4
+   }
+  }
+ }
+}

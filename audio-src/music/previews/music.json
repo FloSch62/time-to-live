@@ -1,0 +1,152 @@
+{
+ "copper-reach": {
+  "files": {
+   "explore": "audio/music/copper-reach-explore.ogg",
+   "battle": "audio/music/copper-reach-battle.ogg"
+  },
+  "bpm": 104,
+  "key": "Em",
+  "bars": 70,
+  "barSeconds": 2.307692,
+  "duration": 164.038458,
+  "loopStart": 9.230769,
+  "loopEnd": 147.692308,
+  "loop": true,
+  "gainDb": -5.25,
+  "revision": "v4-new-composition",
+  "takes": {
+   "explore": "t22",
+   "battle": "t21"
+  },
+  "cues": {
+   "theme": 9.231,
+   "contrast": 83.077,
+   "return": 101.538
+  }
+ },
+ "rust-kingdom": {
+  "files": {
+   "explore": "audio/music/rust-kingdom-explore.ogg",
+   "battle": "audio/music/rust-kingdom-battle.ogg"
+  },
+  "bpm": 100,
+  "key": "Gm",
+  "bars": 70,
+  "barSeconds": 2.4,
+  "duration": 170.5,
+  "loopStart": 9.6,
+  "loopEnd": 153.6,
+  "loop": true,
+  "gainDb": -6.84,
+  "revision": "v4-new-composition",
+  "takes": {
+   "explore": "t21",
+   "battle": "t21"
+  },
+  "cues": {
+   "theme": 9.6,
+   "contrast": 76.8,
+   "return": 96.0
+  }
+ },
+ "glass-cathedral": {
+  "files": {
+   "explore": "audio/music/glass-cathedral-explore.ogg",
+   "battle": "audio/music/glass-cathedral-battle.ogg"
+  },
+  "bpm": 112,
+  "key": "F#m",
+  "bars": 78,
+  "barSeconds": 2.142857,
+  "duration": 169.642854,
+  "loopStart": 8.571429,
+  "loopEnd": 154.285714,
+  "loop": true,
+  "gainDb": -6.02,
+  "revision": "v4-new-composition",
+  "takes": {
+   "explore": "t21",
+   "battle": "t22"
+  },
+  "cues": {
+   "theme": 8.571,
+   "contrast": 77.143,
+   "return": 94.286
+  }
+ },
+ "choir-weather": {
+  "files": {
+   "explore": "audio/music/choir-weather-explore.ogg",
+   "battle": "audio/music/choir-weather-battle.ogg"
+  },
+  "bpm": 108,
+  "key": "C#m",
+  "bars": 62,
+  "barSeconds": 2.222222,
+  "duration": 140.277771,
+  "loopStart": 8.888889,
+  "loopEnd": 124.444444,
+  "loop": true,
+  "gainDb": -5.54,
+  "revision": "v4-new-composition",
+  "takes": {
+   "explore": "t22",
+   "battle": "t22"
+  },
+  "cues": {
+   "theme": 8.889,
+   "contrast": 62.222,
+   "return": 80.0
+  }
+ },
+ "blackout-heart": {
+  "files": {
+   "explore": "audio/music/blackout-heart-explore.ogg",
+   "battle": "audio/music/blackout-heart-battle.ogg"
+  },
+  "bpm": 120,
+  "key": "Am",
+  "bars": 78,
+  "barSeconds": 2.0,
+  "duration": 158.5,
+  "loopStart": 8.0,
+  "loopEnd": 144.0,
+  "loop": true,
+  "gainDb": -5.38,
+  "revision": "v4-new-composition",
+  "takes": {
+   "explore": "t22",
+   "battle": "t21"
+  },
+  "cues": {
+   "theme": 8.0,
+   "contrast": 72.0,
+   "return": 88.0
+  }
+ },
+ "last-orders": {
+  "files": {
+   "explore": "audio/music/last-orders-explore.ogg",
+   "battle": "audio/music/last-orders-battle.ogg"
+  },
+  "bpm": 126,
+  "key": "Bm",
+  "bars": 86,
+  "barSeconds": 1.904762,
+  "duration": 166.309521,
+  "loopStart": 7.619048,
+  "loopEnd": 152.380952,
+  "loop": true,
+  "gainDb": -4.84,
+  "revision": "v4-new-composition",
+  "takes": {
+   "explore": "t21",
+   "battle": "t21"
+  },
+  "cues": {
+   "theme": 7.619,
+   "contrast": 76.19,
+   "return": 91.429
+  }
+ }
+}

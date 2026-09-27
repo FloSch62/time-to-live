@@ -1,0 +1,9 @@
+{
+  "style": "Short, quiet game over music for a lonely retro pixel-art space game: the line goes quiet. A lonely felt piano plays a slow, sad minor phrase over a cold analog synth pad and a sub-bass drone, a faint slow pulse like a blinking lamp, a distant glass bell, tape echo and vast reverb; it fades and ends open and unresolved. Sparse, still, desolate. No drums. Purely instrumental. Dm, 70 BPM.",
+  "lyrics": "",
+  "cot": "full",
+  "seed": 445388,
+  "abc": "X:1\nT:\nM:4/4\nL:1/32\nQ:1/4=70\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:Dm\n% intro\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Dm\"z32|\"Dm\"z32|\nV: Ins\nA32|A32|A32|A32|\n% interlude\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Gm\"z32|\"Gm\"z32|\nV: Ins\nA32|d16 c16|B32|A16 G16|\n% outro\nV: Vocal\n\"Dm\"z32|\"Dm\"z32|\"Am\"z32|\"Am\"z32|\nV: Ins\nF32|F32|E32|E32|\n% outro\nV: Vocal\n\"Gm\"z32|\"Gm\"z32|\nV: Ins\nB32|B32|\n",
+  "cfg_scale": null,
+  "id": "ttl-line-quiet-main-t1"
+}

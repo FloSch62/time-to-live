@@ -1,0 +1,37 @@
+{
+ "file": "/home/clab/projects/clab/time-to-live/audio-src/music/takes/hollow-choir/main/t3/audio.flac",
+ "language": "en",
+ "language_prob": 0.57,
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 0.22,
+   "text": "Thanks for watching!",
+   "avg_logprob": -0.91,
+   "no_speech": 0.9,
+   "comp": 0.71,
+   "lang": null,
+   "words": [
+    {
+     "w": " Thanks",
+     "start": 0.0,
+     "end": 0.0,
+     "p": 0.01
+    },
+    {
+     "w": " for",
+     "start": 0.0,
+     "end": 0.0,
+     "p": 0.78
+    },
+    {
+     "w": " watching!",
+     "start": 0.0,
+     "end": 0.22,
+     "p": 0.94
+    }
+   ],
+   "speech": false
+  }
+ ]
+}

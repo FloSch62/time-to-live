@@ -1,0 +1,268 @@
+{
+ "piece": "copper-reach",
+ "note": "explore t2: the calmest, most cinematic explore (CLAP cinematic 0.83, min 0.67, intensity 0.28); battle t4: rev-2 battle plan, cinematic 0.85 (min 0.47) and clearly driving (intensity 0.70), the same loudness as the explore; t5 (more cinematic 0.91 but less driving, 0.56) is the runner-up",
+ "gain_db": -7.54,
+ "loudest": "battle",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   20,
+   68
+  ],
+  "bars": 70,
+  "tail": 2,
+  "bar_s": 2.1818181818181817,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "A1",
+    "instrumental"
+   ],
+   [
+    8,
+    "A2",
+    "instrumental"
+   ],
+   [
+    12,
+    "G1",
+    "instrumental"
+   ],
+   [
+    16,
+    "G2",
+    "instrumental"
+   ],
+   [
+    20,
+    "B1",
+    "instrumental"
+   ],
+   [
+    24,
+    "B2",
+    "instrumental"
+   ],
+   [
+    28,
+    "A1",
+    "instrumental"
+   ],
+   [
+    32,
+    "A2",
+    "instrumental"
+   ],
+   [
+    36,
+    "R1",
+    "interlude"
+   ],
+   [
+    40,
+    "R2",
+    "interlude"
+   ],
+   [
+    44,
+    "B1",
+    "instrumental"
+   ],
+   [
+    48,
+    "B2",
+    "instrumental"
+   ],
+   [
+    52,
+    "A1",
+    "instrumental"
+   ],
+   [
+    56,
+    "A2",
+    "instrumental"
+   ],
+   [
+    60,
+    "G1",
+    "instrumental"
+   ],
+   [
+    64,
+    "G2",
+    "instrumental"
+   ],
+   [
+    68,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "explore": "audio/music/copper-reach-explore.ogg",
+   "battle": "audio/music/copper-reach-battle.ogg"
+  },
+  "bpm": 110,
+  "key": "Dm",
+  "bars": 70,
+  "barSeconds": 2.181818,
+  "duration": 155.227271,
+  "loopStart": 43.636364,
+  "loopEnd": 148.363636,
+  "loop": true,
+  "gainDb": -7.54
+ },
+ "versions": {
+  "explore": {
+   "take": "t2",
+   "seed": 608314,
+   "source": "audio-src/music/takes/copper-reach/explore/t2/audio.flac",
+   "source_sha256": "08eade5c7e448a89a8be2227526dbb6ed8016086a912a493ea3cf2b8f95264a4",
+   "conform": {
+    "rate_min": 0.99908,
+    "rate_max": 1.00137,
+    "max_cents": 2.4,
+    "verify": {
+     "tempo_bpm": 110.0,
+     "grid_phase_ms": -0.5,
+     "window_error_ms": [
+      30.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      -2.0,
+      0.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0,
+      -2.0,
+      2.0,
+      -2.0
+     ],
+     "window_conf": [
+      3.2,
+      3.44,
+      3.45,
+      3.4,
+      3.31,
+      3.32,
+      3.32,
+      3.31,
+      3.28,
+      3.3,
+      3.34,
+      3.34,
+      3.41,
+      3.27,
+      3.25,
+      3.09,
+      3.44
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/copper-reach-explore.flac",
+   "master_sha256": "8f4f7681b744909e42dbcff5407fc1988eb119d40b6b614336b39d5c7b6a1dc3",
+   "delivery": "public/audio/music/copper-reach-explore.ogg",
+   "delivery_sha256": "620f126f6e447fbd4447ba40751f5aca8986d5d1ba100694e975ca5f391fbdb9",
+   "bytes": 2680115,
+   "samples": 7450909,
+   "decoded_samples": 7450909,
+   "pre_gain": {
+    "lufs": -11.53,
+    "tp": 0.51,
+    "lra": 6.2
+   },
+   "delivered": {
+    "lufs": -19.09,
+    "tp": -7.29,
+    "lra": 6.1
+   }
+  },
+  "battle": {
+   "take": "t4",
+   "seed": 395152,
+   "source": "audio-src/music/takes/copper-reach/battle/t4/audio.flac",
+   "source_sha256": "72990da996b5ddbe86f6dc57adaa661cacec8ca96d1ef42f30c6a248bd090b1e",
+   "conform": {
+    "rate_min": 0.99941,
+    "rate_max": 1.00079,
+    "max_cents": 1.4,
+    "verify": {
+     "tempo_bpm": 110.0,
+     "grid_phase_ms": -0.5,
+     "window_error_ms": [
+      72.0,
+      6.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      -2.0,
+      0.0,
+      0.0,
+      -2.0,
+      -20.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      2.81,
+      1.07,
+      2.21,
+      3.23,
+      3.26,
+      3.15,
+      3.33,
+      3.5,
+      3.39,
+      2.9,
+      1.89,
+      2.65,
+      2.96,
+      3.48,
+      3.38,
+      2.97,
+      3.3
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/copper-reach-battle.flac",
+   "master_sha256": "77d164a4024f9d30707941fa402260c3af436bdec058042020b3b082d92cf43a",
+   "delivery": "public/audio/music/copper-reach-battle.ogg",
+   "delivery_sha256": "2137a97313b8d147f0565b278ced7e132430f436718a281435ebdb404dc2db57",
+   "bytes": 2855128,
+   "samples": 7450909,
+   "decoded_samples": 7450909,
+   "pre_gain": {
+    "lufs": -11.46,
+    "tp": 0.56,
+    "lra": 11.4
+   },
+   "delivered": {
+    "lufs": -19.01,
+    "tp": -7.18,
+    "lra": 11.4
+   }
+  }
+ }
+}

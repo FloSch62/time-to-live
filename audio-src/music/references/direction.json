@@ -1,0 +1,30 @@
+{
+  "reference_folder": "/mnt/c/Users/Flo/Downloads/ftl - multiverse soundtrack",
+  "method": "Local audio-embedding comparison; no audio reference passed to YuE2",
+  "compositions": "Original editorial scores written from blank, separate from rejected v2/v3 melodies and native planner drafts.",
+  "status": "Delivered six fresh original exploration/battle pairs after review. Current runtime music.json points to the new masters; prior deliveries remain in archive-v2. All twelve encoded replacements passed the hash-matched no-VAD speech screen. Browser audition checks passed for all six pairs.",
+  "baseline": "baseline.json",
+  "pilots": [
+    "pilot.json",
+    "pilot-refined.json"
+  ],
+  "scores": "../compositions/selected.json",
+  "study": "arrangement-study.md",
+  "user_feedback": [
+    {
+      "take": "copper-reach/explore/t21",
+      "feedback": "t21 of exploree goes in the right direction",
+      "decision": "The new Copper t21 melodic electronic direction remains the reference and is linked on the listening page. Delivery uses exploration t22 from the same score for stable beat timing, paired with battle t21. Old v2 melodies were replaced."
+    }
+  ],
+  "selection": "../compositions/delivery-selection.json",
+  "validation": {
+    "build": "passed",
+    "assets": "299 references, 14 themes, 64 effect cues; no problems",
+    "media": "199 images and 111 sound files decoded; no problems",
+    "audio_engine": "phase changes, equal-power fades, loop metadata and bounded caches passed",
+    "audition": "all six pairs: equal buffer sizes, intensity crossfade, loop wrap, mobile layout; current and archive pages play",
+    "speech": "all twelve delivered replacements have matching hashes and no confident lexical speech detections in the no-VAD screen",
+    "production": "all twelve encodings match the production build byte for byte"
+  }
+}

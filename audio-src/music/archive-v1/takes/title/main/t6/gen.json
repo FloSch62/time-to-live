@@ -1,0 +1,123 @@
+{
+  "piece": "title",
+  "version": "main",
+  "take": 6,
+  "seed": 532323,
+  "cfg": 1.6,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, choir singing words, a solo voice, pop song with a lead vocalist. Generic EDM club dance track with a four-on-the-floor techno kick.",
+  "style": "Main title theme of a retro-cinematic pixel-art starship game about a lone relay tender flying the dark outside of a ring of relays above the clouds. A soft ticking pulse like a blinking lamp and a felt piano state a melancholic, hopeful minor-key theme over warm analog synth pads; warm analog synthesizer arpeggios and a gentle sequenced bass join, then the theme returns on a clean electric guitar and a singing synth lead with cello, strings and glass bells, rising to a wide, heroic, bittersweet statement, and settles back to the piano and the lamp pulse. Spacious reverb, melodic and cinematic. Purely instrumental. Dm, 96 BPM.",
+  "plan_sha256": "74578756c865277e6abe2c6e3592cc9936fe92f8414d283693600b0cc566b7de",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      20,
+      60
+    ],
+    "bars": 62,
+    "tail": 2,
+    "bar_s": 2.5,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "T1",
+        "intro"
+      ],
+      [
+        8,
+        "T2",
+        "intro"
+      ],
+      [
+        12,
+        "A1",
+        "instrumental"
+      ],
+      [
+        16,
+        "A2",
+        "instrumental"
+      ],
+      [
+        20,
+        "T1",
+        "instrumental"
+      ],
+      [
+        24,
+        "T2",
+        "instrumental"
+      ],
+      [
+        28,
+        "B1",
+        "instrumental"
+      ],
+      [
+        32,
+        "B2",
+        "instrumental"
+      ],
+      [
+        36,
+        "Q1",
+        "interlude"
+      ],
+      [
+        40,
+        "Q2",
+        "interlude"
+      ],
+      [
+        44,
+        "T1",
+        "instrumental"
+      ],
+      [
+        48,
+        "T2",
+        "instrumental"
+      ],
+      [
+        52,
+        "A1",
+        "interlude"
+      ],
+      [
+        56,
+        "A2",
+        "interlude"
+      ],
+      [
+        60,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 3895,
+  "max_tokens": 6062,
+  "truncated": false,
+  "timing": {
+    "seconds": 51.031555524037685,
+    "prefill_seconds": 0.5137680239859037,
+    "ttft_seconds": 0.5248224689858034,
+    "output_tokens": 3896,
+    "content_tokens": 3895,
+    "output_tps": 76.34491953052157,
+    "prefix_tokens": 1313,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 20.2,
+  "vae_seconds": 6.2,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

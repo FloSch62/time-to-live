@@ -1,0 +1,189 @@
+{
+ "piece": "an-answer",
+ "note": "Selected hopeful ending: raw timing, non-club mood and instrumental speech checks pass. The ending deliberately opens into F major. Original takes and analysis retained.",
+ "gain_db": -6.41,
+ "loudest": "main",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   36,
+   60
+  ],
+  "bars": 62,
+  "tail": 2,
+  "bar_s": 2.857142857142857,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "Q1",
+    "intro"
+   ],
+   [
+    8,
+    "Q2",
+    "intro"
+   ],
+   [
+    12,
+    "S1",
+    "instrumental"
+   ],
+   [
+    16,
+    "S2",
+    "instrumental"
+   ],
+   [
+    20,
+    "T1",
+    "instrumental"
+   ],
+   [
+    24,
+    "T2",
+    "instrumental"
+   ],
+   [
+    28,
+    "C1",
+    "interlude"
+   ],
+   [
+    32,
+    "C2",
+    "interlude"
+   ],
+   [
+    36,
+    "S1",
+    "instrumental"
+   ],
+   [
+    40,
+    "S2",
+    "instrumental"
+   ],
+   [
+    44,
+    "T1",
+    "instrumental"
+   ],
+   [
+    48,
+    "T2",
+    "instrumental"
+   ],
+   [
+    52,
+    "C1",
+    "interlude"
+   ],
+   [
+    56,
+    "C2",
+    "interlude"
+   ],
+   [
+    60,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "main": "audio/music/an-answer.ogg"
+  },
+  "bpm": 84,
+  "key": "F",
+  "bars": 62,
+  "barSeconds": 2.857143,
+  "duration": 179.642854,
+  "loopStart": 102.857143,
+  "loopEnd": 171.428571,
+  "loop": true,
+  "gainDb": -6.41
+ },
+ "versions": {
+  "main": {
+   "take": "t1",
+   "seed": 701619,
+   "source": "audio-src/music/takes/an-answer/main/t1/audio.flac",
+   "source_sha256": "cb91bc37b36d5b180250bde2aecc9d588fbf263932120b9f2d79c984b19a9c09",
+   "conform": {
+    "rate_min": 0.99928,
+    "rate_max": 1.00068,
+    "max_cents": 1.2,
+    "verify": {
+     "tempo_bpm": 84.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      4.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.5,
+      3.44,
+      3.55,
+      3.18,
+      3.4,
+      3.37,
+      3.42,
+      3.43,
+      3.46,
+      3.44,
+      3.42,
+      3.47,
+      3.45,
+      3.46,
+      3.41
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/an-answer.flac",
+   "master_sha256": "0b6fc05caf779baeba12e824a8ce8cabc4f90f9cddb8fae514924c18c30fb806",
+   "delivery": "public/audio/music/an-answer.ogg",
+   "delivery_sha256": "efd5e492f384ae42eaad5bd7d1eabd21c5f3d1189b5832ee33fed46193ba7fab",
+   "bytes": 3206334,
+   "samples": 8622857,
+   "decoded_samples": 8622857,
+   "source_levels": {
+    "lufs": -12.59,
+    "tp": 0.12,
+    "lra": 4.5
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -12.59,
+    "tp": 0.12,
+    "lra": 4.5
+   },
+   "delivered": {
+    "lufs": -18.98,
+    "tp": -6.19,
+    "lra": 4.4
+   }
+  }
+ }
+}

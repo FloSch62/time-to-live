@@ -1,0 +1,15 @@
+portraits/scavenger:h@1
+portraits/bench-keeper:h@1
+portraits/bellmaker:h@1
+portraits/teal-jacket:h@1
+portraits/warden-memory:h@1
+portraits/moss:h@1
+portraits/ennis:h@1
+portraits/recruit-linefolk-a:h@1
+portraits/recruit-linefolk-b:h@1
+portraits/recruit-warden-a:h@1
+portraits/recruit-warden-b:h@1
+portraits/recruit-rigger-a:h@1
+portraits/recruit-rigger-b:h@1
+portraits/recruit-courier-a:h@1
+portraits/recruit-courier-b:h@1

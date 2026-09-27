@@ -1,0 +1,1087 @@
+{
+ "file": "/home/clab/projects/clab/time-to-live/public/audio/music/exchange.ogg",
+ "language": "en",
+ "language_prob": 0.53,
+ "segments": [
+  {
+   "start": 32.26,
+   "end": 59.98,
+   "text": "\u0d85\u0db4\u0dd2 \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2",
+   "avg_logprob": -0.13,
+   "no_speech": 0.88,
+   "comp": 7.95,
+   "lang": null,
+   "words": [
+    {
+     "w": " \u0d85\u0db4\u0dd2",
+     "start": 32.26,
+     "end": 33.66,
+     "p": 0.71
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 33.66,
+     "end": 35.06,
+     "p": 0.72
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 35.06,
+     "end": 35.06,
+     "p": 0.82
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 35.06,
+     "end": 35.08,
+     "p": 0.87
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 35.08,
+     "end": 37.56,
+     "p": 0.9
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 37.56,
+     "end": 38.18,
+     "p": 0.92
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 38.18,
+     "end": 38.22,
+     "p": 0.93
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 38.22,
+     "end": 38.22,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 38.22,
+     "end": 40.26,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 40.26,
+     "end": 40.26,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 40.26,
+     "end": 41.28,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 41.28,
+     "end": 43.36,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 43.36,
+     "end": 43.9,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 43.9,
+     "end": 45.18,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 45.18,
+     "end": 45.8,
+     "p": 0.96
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 45.8,
+     "end": 47.9,
+     "p": 0.96
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 47.9,
+     "end": 48.92,
+     "p": 0.96
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2",
+     "start": 48.92,
+     "end": 59.98,
+     "p": 0.96
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 61.74,
+   "end": 64.8,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.23,
+   "no_speech": 0.87,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 61.74,
+     "end": 63.14,
+     "p": 0.1
+    },
+    {
+     "w": " going",
+     "start": 63.14,
+     "end": 63.14,
+     "p": 0.15
+    },
+    {
+     "w": " to",
+     "start": 63.14,
+     "end": 63.14,
+     "p": 0.93
+    },
+    {
+     "w": " add",
+     "start": 63.14,
+     "end": 63.14,
+     "p": 0.07
+    },
+    {
+     "w": " a",
+     "start": 63.14,
+     "end": 63.14,
+     "p": 0.26
+    },
+    {
+     "w": " little",
+     "start": 63.14,
+     "end": 63.14,
+     "p": 0.15
+    },
+    {
+     "w": " bit",
+     "start": 63.14,
+     "end": 64.42,
+     "p": 0.34
+    },
+    {
+     "w": " of",
+     "start": 64.42,
+     "end": 64.42,
+     "p": 0.85
+    },
+    {
+     "w": " color",
+     "start": 64.42,
+     "end": 64.42,
+     "p": 0.05
+    },
+    {
+     "w": " to",
+     "start": 64.42,
+     "end": 64.42,
+     "p": 0.4
+    },
+    {
+     "w": " the",
+     "start": 64.42,
+     "end": 64.42,
+     "p": 0.59
+    },
+    {
+     "w": " background.",
+     "start": 64.42,
+     "end": 64.8,
+     "p": 0.04
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 64.8,
+   "end": 64.84,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.23,
+   "no_speech": 0.87,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 64.8,
+     "end": 64.8,
+     "p": 0.33
+    },
+    {
+     "w": " going",
+     "start": 64.8,
+     "end": 64.8,
+     "p": 0.58
+    },
+    {
+     "w": " to",
+     "start": 64.8,
+     "end": 64.8,
+     "p": 0.99
+    },
+    {
+     "w": " add",
+     "start": 64.8,
+     "end": 64.8,
+     "p": 0.18
+    },
+    {
+     "w": " a",
+     "start": 64.8,
+     "end": 64.8,
+     "p": 0.52
+    },
+    {
+     "w": " little",
+     "start": 64.8,
+     "end": 64.8,
+     "p": 0.71
+    },
+    {
+     "w": " bit",
+     "start": 64.8,
+     "end": 64.84,
+     "p": 0.9
+    },
+    {
+     "w": " of",
+     "start": 64.84,
+     "end": 64.84,
+     "p": 0.96
+    },
+    {
+     "w": " color",
+     "start": 64.84,
+     "end": 64.84,
+     "p": 0.76
+    },
+    {
+     "w": " to",
+     "start": 64.84,
+     "end": 64.84,
+     "p": 0.91
+    },
+    {
+     "w": " the",
+     "start": 64.84,
+     "end": 64.84,
+     "p": 0.99
+    },
+    {
+     "w": " background.",
+     "start": 64.84,
+     "end": 64.84,
+     "p": 0.89
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 69.28,
+   "end": 70.68,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.23,
+   "no_speech": 0.87,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 69.28,
+     "end": 70.68,
+     "p": 0.65
+    },
+    {
+     "w": " going",
+     "start": 70.68,
+     "end": 70.68,
+     "p": 0.95
+    },
+    {
+     "w": " to",
+     "start": 70.68,
+     "end": 70.68,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 70.68,
+     "end": 70.68,
+     "p": 0.81
+    },
+    {
+     "w": " a",
+     "start": 70.68,
+     "end": 70.68,
+     "p": 0.98
+    },
+    {
+     "w": " little",
+     "start": 70.68,
+     "end": 70.68,
+     "p": 0.99
+    },
+    {
+     "w": " bit",
+     "start": 70.68,
+     "end": 70.68,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 70.68,
+     "end": 70.68,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 70.68,
+     "end": 70.68,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 70.68,
+     "end": 70.68,
+     "p": 0.99
+    },
+    {
+     "w": " the",
+     "start": 70.68,
+     "end": 70.68,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 70.68,
+     "end": 70.68,
+     "p": 0.99
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 72.72,
+   "end": 74.12,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.23,
+   "no_speech": 0.87,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 72.72,
+     "end": 74.12,
+     "p": 0.72
+    },
+    {
+     "w": " going",
+     "start": 74.12,
+     "end": 74.12,
+     "p": 0.95
+    },
+    {
+     "w": " to",
+     "start": 74.12,
+     "end": 74.12,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 74.12,
+     "end": 74.12,
+     "p": 0.89
+    },
+    {
+     "w": " a",
+     "start": 74.12,
+     "end": 74.12,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 74.12,
+     "end": 74.12,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 74.12,
+     "end": 74.12,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 74.12,
+     "end": 74.12,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 74.12,
+     "end": 74.12,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 74.12,
+     "end": 74.12,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 74.12,
+     "end": 74.12,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 74.12,
+     "end": 74.12,
+     "p": 0.99
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 74.9,
+   "end": 76.3,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.23,
+   "no_speech": 0.87,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 74.9,
+     "end": 76.3,
+     "p": 0.8
+    },
+    {
+     "w": " going",
+     "start": 76.3,
+     "end": 76.3,
+     "p": 0.96
+    },
+    {
+     "w": " to",
+     "start": 76.3,
+     "end": 76.3,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 76.3,
+     "end": 76.3,
+     "p": 0.93
+    },
+    {
+     "w": " a",
+     "start": 76.3,
+     "end": 76.3,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 76.3,
+     "end": 76.3,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 76.3,
+     "end": 76.3,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 76.3,
+     "end": 76.3,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 76.3,
+     "end": 76.3,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 76.3,
+     "end": 76.3,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 76.3,
+     "end": 76.3,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 76.3,
+     "end": 76.3,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 76.3,
+   "end": 76.36,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.23,
+   "no_speech": 0.87,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 76.3,
+     "end": 76.36,
+     "p": 0.85
+    },
+    {
+     "w": " going",
+     "start": 76.36,
+     "end": 76.36,
+     "p": 0.97
+    },
+    {
+     "w": " to",
+     "start": 76.36,
+     "end": 76.36,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 76.36,
+     "end": 76.36,
+     "p": 0.95
+    },
+    {
+     "w": " a",
+     "start": 76.36,
+     "end": 76.36,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 76.36,
+     "end": 76.36,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 76.36,
+     "end": 76.36,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 76.36,
+     "end": 76.36,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 76.36,
+     "end": 76.36,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 76.36,
+     "end": 76.36,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 76.36,
+     "end": 76.36,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 76.36,
+     "end": 76.36,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 76.36,
+   "end": 77.78,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.23,
+   "no_speech": 0.87,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 76.36,
+     "end": 77.64,
+     "p": 0.88
+    },
+    {
+     "w": " going",
+     "start": 77.64,
+     "end": 77.78,
+     "p": 0.98
+    },
+    {
+     "w": " to",
+     "start": 77.78,
+     "end": 77.78,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 77.78,
+     "end": 77.78,
+     "p": 0.97
+    },
+    {
+     "w": " a",
+     "start": 77.78,
+     "end": 77.78,
+     "p": 0.99
+    },
+    {
+     "w": " little",
+     "start": 77.78,
+     "end": 77.78,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 77.78,
+     "end": 77.78,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 77.78,
+     "end": 77.78,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 77.78,
+     "end": 77.78,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 77.78,
+     "end": 77.78,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 77.78,
+     "end": 77.78,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 77.78,
+     "end": 77.78,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 77.78,
+   "end": 78.26,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.23,
+   "no_speech": 0.87,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 77.78,
+     "end": 78.12,
+     "p": 0.9
+    },
+    {
+     "w": " going",
+     "start": 78.12,
+     "end": 78.26,
+     "p": 0.99
+    },
+    {
+     "w": " to",
+     "start": 78.26,
+     "end": 78.26,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 78.26,
+     "end": 78.26,
+     "p": 0.98
+    },
+    {
+     "w": " a",
+     "start": 78.26,
+     "end": 78.26,
+     "p": 1.0
+    },
+    {
+     "w": " little",
+     "start": 78.26,
+     "end": 78.26,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 78.26,
+     "end": 78.26,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 78.26,
+     "end": 78.26,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 78.26,
+     "end": 78.26,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 78.26,
+     "end": 78.26,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 78.26,
+     "end": 78.26,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 78.26,
+     "end": 78.26,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 78.32,
+   "end": 80.14,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.23,
+   "no_speech": 0.87,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 78.32,
+     "end": 79.72,
+     "p": 0.92
+    },
+    {
+     "w": " going",
+     "start": 79.72,
+     "end": 80.14,
+     "p": 0.99
+    },
+    {
+     "w": " to",
+     "start": 80.14,
+     "end": 80.14,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 80.14,
+     "end": 80.14,
+     "p": 0.98
+    },
+    {
+     "w": " a",
+     "start": 80.14,
+     "end": 80.14,
+     "p": 1.0
+    },
+    {
+     "w": " little",
+     "start": 80.14,
+     "end": 80.14,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 80.14,
+     "end": 80.14,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 80.14,
+     "end": 80.14,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 80.14,
+     "end": 80.14,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 80.14,
+     "end": 80.14,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 80.14,
+     "end": 80.14,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 80.14,
+     "end": 80.14,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 80.14,
+   "end": 80.22,
+   "text": "I'm going to add a little bit of color to the background.",
+   "avg_logprob": -0.23,
+   "no_speech": 0.87,
+   "comp": 9.93,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 80.14,
+     "end": 80.22,
+     "p": 0.94
+    },
+    {
+     "w": " going",
+     "start": 80.22,
+     "end": 80.22,
+     "p": 0.99
+    },
+    {
+     "w": " to",
+     "start": 80.22,
+     "end": 80.22,
+     "p": 1.0
+    },
+    {
+     "w": " add",
+     "start": 80.22,
+     "end": 80.22,
+     "p": 0.99
+    },
+    {
+     "w": " a",
+     "start": 80.22,
+     "end": 80.22,
+     "p": 1.0
+    },
+    {
+     "w": " little",
+     "start": 80.22,
+     "end": 80.22,
+     "p": 1.0
+    },
+    {
+     "w": " bit",
+     "start": 80.22,
+     "end": 80.22,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 80.22,
+     "end": 80.22,
+     "p": 1.0
+    },
+    {
+     "w": " color",
+     "start": 80.22,
+     "end": 80.22,
+     "p": 1.0
+    },
+    {
+     "w": " to",
+     "start": 80.22,
+     "end": 80.22,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 80.22,
+     "end": 80.22,
+     "p": 1.0
+    },
+    {
+     "w": " background.",
+     "start": 80.22,
+     "end": 80.22,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 81.38,
+   "end": 111.36,
+   "text": "\u0d85\u0db4\u0dd2 \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca \u0dc4\u0ddc\u0db3\u0dd2",
+   "avg_logprob": -0.13,
+   "no_speech": 0.87,
+   "comp": 7.95,
+   "lang": null,
+   "words": [
+    {
+     "w": " \u0d85\u0db4\u0dd2",
+     "start": 81.38,
+     "end": 81.58,
+     "p": 0.71
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 81.58,
+     "end": 86.32,
+     "p": 0.73
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 86.32,
+     "end": 86.32,
+     "p": 0.82
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 86.32,
+     "end": 86.34,
+     "p": 0.87
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 86.34,
+     "end": 89.14,
+     "p": 0.9
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 89.14,
+     "end": 89.26,
+     "p": 0.92
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 89.26,
+     "end": 90.04,
+     "p": 0.93
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 90.04,
+     "end": 90.04,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 90.04,
+     "end": 91.08,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 91.08,
+     "end": 91.16,
+     "p": 0.94
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 91.16,
+     "end": 92.3,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 92.3,
+     "end": 93.68,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 93.68,
+     "end": 94.68,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 94.68,
+     "end": 96.02,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 96.02,
+     "end": 96.94,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 96.94,
+     "end": 97.56,
+     "p": 0.95
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2\u0db1\u0dca",
+     "start": 97.56,
+     "end": 100.12,
+     "p": 0.96
+    },
+    {
+     "w": " \u0dc4\u0ddc\u0db3\u0dd2",
+     "start": 100.12,
+     "end": 111.36,
+     "p": 0.95
+    }
+   ],
+   "speech": false
+  }
+ ]
+}

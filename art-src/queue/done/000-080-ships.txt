@@ -1,0 +1,15 @@
+ships/prism-widow:h@1
+ships/glass-echo:h@1
+ships/wire-weaver:h@1
+ships/glass-choir:h@1
+ships/coil-serpent:h@1
+ships/echo-tender:h@1
+ships/hollow-choir:h@1
+ships/gate-sentinel:h@1
+ships/null-marshal:h@1
+ships/ash-moth:h@1
+ships/grave-reaver:h@1
+ships/demolition-engine:h@1
+ships/quarantine-drone:h@1
+ships/blackout-core:h@1
+ships/sealing-drone:h@1

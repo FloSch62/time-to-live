@@ -1,0 +1,126 @@
+{
+ "piece": "exchange",
+ "version": "main",
+ "take": "t1",
+ "duration": 132.1,
+ "samples": 6340800,
+ "bar_s": 2.4,
+ "bars": 54,
+ "loop_bars": [
+  28,
+  52
+ ],
+ "loop_start": 67.2,
+ "loop_end": 124.8,
+ "anchors": [
+  {
+   "out": 4.8,
+   "take": 4.85,
+   "local": false
+  },
+  {
+   "out": 14.4,
+   "take": 14.45,
+   "local": true
+  },
+  {
+   "out": 24.0,
+   "take": 24.05,
+   "local": true
+  },
+  {
+   "out": 33.6,
+   "take": 33.654,
+   "local": true
+  },
+  {
+   "out": 43.2,
+   "take": 43.25,
+   "local": true
+  },
+  {
+   "out": 52.8,
+   "take": 52.854,
+   "local": true
+  },
+  {
+   "out": 62.4,
+   "take": 62.45,
+   "local": true
+  },
+  {
+   "out": 72.0,
+   "take": 72.05,
+   "local": true
+  },
+  {
+   "out": 81.6,
+   "take": 81.65,
+   "local": true
+  },
+  {
+   "out": 91.2,
+   "take": 91.254,
+   "local": true
+  },
+  {
+   "out": 100.8,
+   "take": 100.85,
+   "local": true
+  },
+  {
+   "out": 110.4,
+   "take": 110.45,
+   "local": true
+  },
+  {
+   "out": 120.0,
+   "take": 120.05,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99958,
+ "rate_max": 1.00042,
+ "max_cents": 0.7,
+ "take_seconds_used": 132.15,
+ "seam": {
+  "loop_start_sample": 3225600,
+  "loop_end_sample": 5990400,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 100.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   14.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   3.13,
+   2.95,
+   3.17,
+   3.09,
+   3.21,
+   3.39,
+   3.37,
+   3.31,
+   3.4,
+   3.42,
+   3.41,
+   3.39,
+   3.46
+  ]
+ },
+ "tempo_correction": null
+}

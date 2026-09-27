@@ -1,0 +1,8 @@
+portraits/operator:h@2
+portraits/operator:hp@1
+portraits/pell:h@2
+portraits/pell:hp@1
+events/lift-car-stuck:h@2
+events/lift-car-stuck:h4@1
+events/copper-market:h@2
+events/copper-market:h4@1

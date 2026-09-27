@@ -1,0 +1,1423 @@
+{
+ "file": "/home/clab/projects/clab/time-to-live/public/audio/music/hollow-choir.ogg",
+ "language": "en",
+ "language_prob": 0.54,
+ "segments": [
+  {
+   "start": 10.96,
+   "end": 12.36,
+   "text": "Music",
+   "avg_logprob": -0.94,
+   "no_speech": 0.68,
+   "comp": 1.44,
+   "lang": null,
+   "words": [
+    {
+     "w": " Music",
+     "start": 10.96,
+     "end": 12.36,
+     "p": 0.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 12.36,
+   "end": 12.38,
+   "text": "Music",
+   "avg_logprob": -0.94,
+   "no_speech": 0.68,
+   "comp": 1.44,
+   "lang": null,
+   "words": [
+    {
+     "w": " Music",
+     "start": 12.36,
+     "end": 12.38,
+     "p": 0.01
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 19.26,
+   "end": 20.0,
+   "text": "Music",
+   "avg_logprob": -0.94,
+   "no_speech": 0.68,
+   "comp": 1.44,
+   "lang": null,
+   "words": [
+    {
+     "w": " Music",
+     "start": 19.26,
+     "end": 20.0,
+     "p": 0.94
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 32.36,
+   "end": 32.68,
+   "text": "This is the end of the video, I hope you enjoyed it.",
+   "avg_logprob": -0.81,
+   "no_speech": 0.9,
+   "comp": 1.3,
+   "lang": null,
+   "words": [
+    {
+     "w": " This",
+     "start": 32.36,
+     "end": 32.68,
+     "p": 0.02
+    },
+    {
+     "w": " is",
+     "start": 32.68,
+     "end": 32.68,
+     "p": 0.39
+    },
+    {
+     "w": " the",
+     "start": 32.68,
+     "end": 32.68,
+     "p": 0.27
+    },
+    {
+     "w": " end",
+     "start": 32.68,
+     "end": 32.68,
+     "p": 0.04
+    },
+    {
+     "w": " of",
+     "start": 32.68,
+     "end": 32.68,
+     "p": 0.76
+    },
+    {
+     "w": " the",
+     "start": 32.68,
+     "end": 32.68,
+     "p": 0.57
+    },
+    {
+     "w": " video,",
+     "start": 32.68,
+     "end": 32.68,
+     "p": 0.19
+    },
+    {
+     "w": " I",
+     "start": 32.68,
+     "end": 32.68,
+     "p": 0.11
+    },
+    {
+     "w": " hope",
+     "start": 32.68,
+     "end": 32.68,
+     "p": 0.73
+    },
+    {
+     "w": " you",
+     "start": 32.68,
+     "end": 32.68,
+     "p": 0.87
+    },
+    {
+     "w": " enjoyed",
+     "start": 32.68,
+     "end": 32.68,
+     "p": 0.42
+    },
+    {
+     "w": " it.",
+     "start": 32.68,
+     "end": 32.68,
+     "p": 0.54
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 33.08,
+   "end": 33.42,
+   "text": "If you have any questions or other problems, please post them in the comments.",
+   "avg_logprob": -0.81,
+   "no_speech": 0.9,
+   "comp": 1.3,
+   "lang": null,
+   "words": [
+    {
+     "w": " If",
+     "start": 33.08,
+     "end": 33.1,
+     "p": 0.21
+    },
+    {
+     "w": " you",
+     "start": 33.1,
+     "end": 33.16,
+     "p": 0.85
+    },
+    {
+     "w": " have",
+     "start": 33.16,
+     "end": 33.16,
+     "p": 0.18
+    },
+    {
+     "w": " any",
+     "start": 33.16,
+     "end": 33.2,
+     "p": 0.8
+    },
+    {
+     "w": " questions",
+     "start": 33.2,
+     "end": 33.2,
+     "p": 0.78
+    },
+    {
+     "w": " or",
+     "start": 33.2,
+     "end": 33.2,
+     "p": 0.2
+    },
+    {
+     "w": " other",
+     "start": 33.2,
+     "end": 33.2,
+     "p": 0.69
+    },
+    {
+     "w": " problems,",
+     "start": 33.2,
+     "end": 33.2,
+     "p": 0.95
+    },
+    {
+     "w": " please",
+     "start": 33.2,
+     "end": 33.2,
+     "p": 0.84
+    },
+    {
+     "w": " post",
+     "start": 33.2,
+     "end": 33.2,
+     "p": 0.69
+    },
+    {
+     "w": " them",
+     "start": 33.2,
+     "end": 33.2,
+     "p": 0.92
+    },
+    {
+     "w": " in",
+     "start": 33.2,
+     "end": 33.2,
+     "p": 0.98
+    },
+    {
+     "w": " the",
+     "start": 33.2,
+     "end": 33.2,
+     "p": 0.98
+    },
+    {
+     "w": " comments.",
+     "start": 33.2,
+     "end": 33.42,
+     "p": 0.85
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 45.86,
+   "end": 46.68,
+   "text": "Thank you very much for watching.",
+   "avg_logprob": -0.81,
+   "no_speech": 0.9,
+   "comp": 1.3,
+   "lang": null,
+   "words": [
+    {
+     "w": " Thank",
+     "start": 45.86,
+     "end": 46.18,
+     "p": 0.27
+    },
+    {
+     "w": " you",
+     "start": 46.18,
+     "end": 46.5,
+     "p": 0.99
+    },
+    {
+     "w": " very",
+     "start": 46.5,
+     "end": 46.5,
+     "p": 0.14
+    },
+    {
+     "w": " much",
+     "start": 46.5,
+     "end": 46.54,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 46.54,
+     "end": 46.54,
+     "p": 0.8
+    },
+    {
+     "w": " watching.",
+     "start": 46.54,
+     "end": 46.68,
+     "p": 0.66
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 51.78,
+   "end": 55.86,
+   "text": "This is the end of the video, I hope you enjoyed it.",
+   "avg_logprob": -0.83,
+   "no_speech": 0.91,
+   "comp": 1.3,
+   "lang": null,
+   "words": [
+    {
+     "w": " This",
+     "start": 51.78,
+     "end": 53.18,
+     "p": 0.02
+    },
+    {
+     "w": " is",
+     "start": 53.18,
+     "end": 54.58,
+     "p": 0.39
+    },
+    {
+     "w": " the",
+     "start": 54.58,
+     "end": 55.44,
+     "p": 0.27
+    },
+    {
+     "w": " end",
+     "start": 55.44,
+     "end": 55.44,
+     "p": 0.04
+    },
+    {
+     "w": " of",
+     "start": 55.44,
+     "end": 55.52,
+     "p": 0.76
+    },
+    {
+     "w": " the",
+     "start": 55.52,
+     "end": 55.52,
+     "p": 0.56
+    },
+    {
+     "w": " video,",
+     "start": 55.52,
+     "end": 55.56,
+     "p": 0.22
+    },
+    {
+     "w": " I",
+     "start": 55.7,
+     "end": 55.7,
+     "p": 0.11
+    },
+    {
+     "w": " hope",
+     "start": 55.7,
+     "end": 55.7,
+     "p": 0.74
+    },
+    {
+     "w": " you",
+     "start": 55.7,
+     "end": 55.72,
+     "p": 0.87
+    },
+    {
+     "w": " enjoyed",
+     "start": 55.72,
+     "end": 55.72,
+     "p": 0.42
+    },
+    {
+     "w": " it.",
+     "start": 55.72,
+     "end": 55.86,
+     "p": 0.54
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 60.04,
+   "end": 61.44,
+   "text": "If you have any questions or other problems, please post them in the comments.",
+   "avg_logprob": -0.83,
+   "no_speech": 0.91,
+   "comp": 1.3,
+   "lang": null,
+   "words": [
+    {
+     "w": " If",
+     "start": 60.04,
+     "end": 61.44,
+     "p": 0.21
+    },
+    {
+     "w": " you",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.85
+    },
+    {
+     "w": " have",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.18
+    },
+    {
+     "w": " any",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.8
+    },
+    {
+     "w": " questions",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.77
+    },
+    {
+     "w": " or",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.21
+    },
+    {
+     "w": " other",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.69
+    },
+    {
+     "w": " problems,",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.95
+    },
+    {
+     "w": " please",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.84
+    },
+    {
+     "w": " post",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.7
+    },
+    {
+     "w": " them",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.92
+    },
+    {
+     "w": " in",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.98
+    },
+    {
+     "w": " the",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.98
+    },
+    {
+     "w": " comments.",
+     "start": 61.44,
+     "end": 61.44,
+     "p": 0.85
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 64.7,
+   "end": 66.86,
+   "text": "Thank you very much for watching.",
+   "avg_logprob": -0.83,
+   "no_speech": 0.91,
+   "comp": 1.3,
+   "lang": null,
+   "words": [
+    {
+     "w": " Thank",
+     "start": 64.7,
+     "end": 65.8,
+     "p": 0.27
+    },
+    {
+     "w": " you",
+     "start": 65.8,
+     "end": 66.86,
+     "p": 0.99
+    },
+    {
+     "w": " very",
+     "start": 66.86,
+     "end": 66.86,
+     "p": 0.13
+    },
+    {
+     "w": " much",
+     "start": 66.86,
+     "end": 66.86,
+     "p": 1.0
+    },
+    {
+     "w": " for",
+     "start": 66.86,
+     "end": 66.86,
+     "p": 0.8
+    },
+    {
+     "w": " watching.",
+     "start": 66.86,
+     "end": 66.86,
+     "p": 0.65
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 80.9,
+   "end": 108.9,
+   "text": "I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry",
+   "avg_logprob": -0.14,
+   "no_speech": 0.93,
+   "comp": 23.62,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 80.9,
+     "end": 82.3,
+     "p": 0.09
+    },
+    {
+     "w": " sorry,",
+     "start": 82.3,
+     "end": 82.3,
+     "p": 0.06
+    },
+    {
+     "w": " I'm",
+     "start": 82.64,
+     "end": 82.64,
+     "p": 0.27
+    },
+    {
+     "w": " sorry,",
+     "start": 82.64,
+     "end": 82.64,
+     "p": 0.16
+    },
+    {
+     "w": " I'm",
+     "start": 82.64,
+     "end": 82.64,
+     "p": 0.8
+    },
+    {
+     "w": " sorry,",
+     "start": 82.64,
+     "end": 82.64,
+     "p": 0.76
+    },
+    {
+     "w": " I'm",
+     "start": 82.64,
+     "end": 86.0,
+     "p": 0.93
+    },
+    {
+     "w": " sorry,",
+     "start": 86.0,
+     "end": 88.72,
+     "p": 0.87
+    },
+    {
+     "w": " I'm",
+     "start": 89.98,
+     "end": 90.94,
+     "p": 0.95
+    },
+    {
+     "w": " sorry,",
+     "start": 90.94,
+     "end": 90.94,
+     "p": 0.91
+    },
+    {
+     "w": " I'm",
+     "start": 92.08,
+     "end": 92.64,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 92.64,
+     "end": 92.64,
+     "p": 0.93
+    },
+    {
+     "w": " I'm",
+     "start": 92.8,
+     "end": 93.88,
+     "p": 0.97
+    },
+    {
+     "w": " sorry,",
+     "start": 93.88,
+     "end": 93.88,
+     "p": 0.95
+    },
+    {
+     "w": " I'm",
+     "start": 94.0,
+     "end": 95.64,
+     "p": 0.98
+    },
+    {
+     "w": " sorry,",
+     "start": 95.64,
+     "end": 95.64,
+     "p": 0.95
+    },
+    {
+     "w": " I'm",
+     "start": 96.1,
+     "end": 96.1,
+     "p": 0.98
+    },
+    {
+     "w": " sorry,",
+     "start": 96.1,
+     "end": 96.1,
+     "p": 0.96
+    },
+    {
+     "w": " I'm",
+     "start": 96.44,
+     "end": 97.38,
+     "p": 0.98
+    },
+    {
+     "w": " sorry,",
+     "start": 97.38,
+     "end": 97.38,
+     "p": 0.96
+    },
+    {
+     "w": " I'm",
+     "start": 97.5,
+     "end": 97.64,
+     "p": 0.98
+    },
+    {
+     "w": " sorry,",
+     "start": 97.64,
+     "end": 97.66,
+     "p": 0.97
+    },
+    {
+     "w": " I'm",
+     "start": 98.24,
+     "end": 98.24,
+     "p": 0.98
+    },
+    {
+     "w": " sorry,",
+     "start": 98.24,
+     "end": 98.24,
+     "p": 0.97
+    },
+    {
+     "w": " I'm",
+     "start": 99.96,
+     "end": 99.96,
+     "p": 0.98
+    },
+    {
+     "w": " sorry,",
+     "start": 99.96,
+     "end": 99.96,
+     "p": 0.97
+    },
+    {
+     "w": " I'm",
+     "start": 100.62,
+     "end": 100.62,
+     "p": 0.98
+    },
+    {
+     "w": " sorry,",
+     "start": 100.62,
+     "end": 100.62,
+     "p": 0.97
+    },
+    {
+     "w": " I'm",
+     "start": 100.62,
+     "end": 100.62,
+     "p": 0.98
+    },
+    {
+     "w": " sorry,",
+     "start": 100.62,
+     "end": 100.62,
+     "p": 0.97
+    },
+    {
+     "w": " I'm",
+     "start": 100.62,
+     "end": 100.62,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 100.62,
+     "end": 100.62,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 102.54,
+     "end": 102.54,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 102.54,
+     "end": 102.54,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 102.54,
+     "end": 102.54,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 102.54,
+     "end": 102.54,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 102.54,
+     "end": 102.54,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 102.54,
+     "end": 102.54,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 103.02,
+     "end": 103.02,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 103.02,
+     "end": 103.02,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 103.88,
+     "end": 103.88,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 103.88,
+     "end": 103.88,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 103.88,
+     "end": 103.88,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 103.88,
+     "end": 103.88,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.44,
+     "end": 104.44,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.46,
+     "end": 104.46,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.46,
+     "end": 104.46,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.46,
+     "end": 104.46,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.46,
+     "end": 104.46,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.46,
+     "end": 104.46,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.46,
+     "end": 104.46,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 104.46,
+     "end": 104.46,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 104.46,
+     "end": 104.46,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 105.84,
+     "end": 105.84,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 105.84,
+     "end": 105.84,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 105.84,
+     "end": 105.84,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 105.84,
+     "end": 105.84,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 105.84,
+     "end": 105.84,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 105.84,
+     "end": 105.84,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 105.84,
+     "end": 105.84,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 105.84,
+     "end": 105.84,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 106.62,
+     "end": 106.62,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 106.62,
+     "end": 106.62,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 108.88,
+     "end": 108.88,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.88,
+     "end": 108.88,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry,",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.98
+    },
+    {
+     "w": " I'm",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.99
+    },
+    {
+     "w": " sorry",
+     "start": 108.9,
+     "end": 108.9,
+     "p": 0.98
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 121.96,
+   "end": 122.1,
+   "text": "This is the end of the video, thank you so much for watching,",
+   "avg_logprob": -0.85,
+   "no_speech": 0.93,
+   "comp": 1.35,
+   "lang": null,
+   "words": [
+    {
+     "w": " This",
+     "start": 121.96,
+     "end": 122.04,
+     "p": 0.02
+    },
+    {
+     "w": " is",
+     "start": 122.04,
+     "end": 122.06,
+     "p": 0.39
+    },
+    {
+     "w": " the",
+     "start": 122.06,
+     "end": 122.08,
+     "p": 0.27
+    },
+    {
+     "w": " end",
+     "start": 122.08,
+     "end": 122.1,
+     "p": 0.04
+    },
+    {
+     "w": " of",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.75
+    },
+    {
+     "w": " the",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.56
+    },
+    {
+     "w": " video,",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.23
+    },
+    {
+     "w": " thank",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.19
+    },
+    {
+     "w": " you",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.98
+    },
+    {
+     "w": " so",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.14
+    },
+    {
+     "w": " much",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.99
+    },
+    {
+     "w": " for",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.9
+    },
+    {
+     "w": " watching,",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.87
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 122.1,
+   "end": 122.28,
+   "text": "If you have any questions or other problems,",
+   "avg_logprob": -0.85,
+   "no_speech": 0.93,
+   "comp": 1.35,
+   "lang": null,
+   "words": [
+    {
+     "w": " If",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.07
+    },
+    {
+     "w": " you",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.84
+    },
+    {
+     "w": " have",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.15
+    },
+    {
+     "w": " any",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.8
+    },
+    {
+     "w": " questions",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.66
+    },
+    {
+     "w": " or",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.17
+    },
+    {
+     "w": " other",
+     "start": 122.1,
+     "end": 122.1,
+     "p": 0.47
+    },
+    {
+     "w": " problems,",
+     "start": 122.1,
+     "end": 122.28,
+     "p": 0.87
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 122.28,
+   "end": 122.32,
+   "text": "please post them in the comments.",
+   "avg_logprob": -0.85,
+   "no_speech": 0.93,
+   "comp": 1.35,
+   "lang": null,
+   "words": [
+    {
+     "w": " please",
+     "start": 122.28,
+     "end": 122.28,
+     "p": 0.65
+    },
+    {
+     "w": " post",
+     "start": 122.28,
+     "end": 122.28,
+     "p": 0.4
+    },
+    {
+     "w": " them",
+     "start": 122.28,
+     "end": 122.28,
+     "p": 0.85
+    },
+    {
+     "w": " in",
+     "start": 122.28,
+     "end": 122.28,
+     "p": 0.94
+    },
+    {
+     "w": " the",
+     "start": 122.28,
+     "end": 122.28,
+     "p": 0.95
+    },
+    {
+     "w": " comments.",
+     "start": 122.28,
+     "end": 122.32,
+     "p": 0.68
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 151.04,
+   "end": 153.84,
+   "text": "Thank you.",
+   "avg_logprob": -0.76,
+   "no_speech": 0.79,
+   "comp": 0.56,
+   "lang": null,
+   "words": [
+    {
+     "w": " Thank",
+     "start": 151.04,
+     "end": 152.44,
+     "p": 0.02
+    },
+    {
+     "w": " you.",
+     "start": 152.44,
+     "end": 153.84,
+     "p": 0.94
+    }
+   ],
+   "speech": false
+  }
+ ]
+}

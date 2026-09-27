@@ -1,0 +1,338 @@
+{
+ "piece": "last-orders",
+ "note": "New B-minor finale at 126 BPM: restrained exploration and strongly driving combat. Raw phrase-fit warnings remain. Three onset windows favor a sixteenth-note offset by only 0.02-0.05 correlation; both recordings independently lock at 0 ms in those windows, with zero best beat/pitch shift. These are retained as rhythmic-pattern ambiguities, not corrected by shifting the music.",
+ "gain_db": -4.84,
+ "loudest": "battle",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   4,
+   80
+  ],
+  "bars": 86,
+  "tail": 2,
+  "bar_s": 1.9047619047619047,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "phrase01",
+    "instrumental"
+   ],
+   [
+    8,
+    "phrase02",
+    "instrumental"
+   ],
+   [
+    12,
+    "phrase03",
+    "instrumental"
+   ],
+   [
+    16,
+    "phrase04",
+    "instrumental"
+   ],
+   [
+    20,
+    "phrase05",
+    "instrumental"
+   ],
+   [
+    24,
+    "phrase06",
+    "instrumental"
+   ],
+   [
+    28,
+    "phrase07",
+    "instrumental"
+   ],
+   [
+    32,
+    "phrase08",
+    "instrumental"
+   ],
+   [
+    36,
+    "phrase09",
+    "instrumental"
+   ],
+   [
+    40,
+    "phrase10",
+    "interlude"
+   ],
+   [
+    44,
+    "phrase11",
+    "interlude"
+   ],
+   [
+    48,
+    "phrase12",
+    "instrumental"
+   ],
+   [
+    52,
+    "phrase13",
+    "instrumental"
+   ],
+   [
+    56,
+    "phrase14",
+    "instrumental"
+   ],
+   [
+    60,
+    "phrase15",
+    "instrumental"
+   ],
+   [
+    64,
+    "phrase16",
+    "instrumental"
+   ],
+   [
+    68,
+    "phrase17",
+    "instrumental"
+   ],
+   [
+    72,
+    "phrase18",
+    "instrumental"
+   ],
+   [
+    76,
+    "phrase19",
+    "instrumental"
+   ],
+   [
+    80,
+    "phrase20",
+    "instrumental"
+   ],
+   [
+    84,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "explore": "audio/music/last-orders-explore.ogg",
+   "battle": "audio/music/last-orders-battle.ogg"
+  },
+  "bpm": 126,
+  "key": "Bm",
+  "bars": 86,
+  "barSeconds": 1.904762,
+  "duration": 166.309521,
+  "loopStart": 7.619048,
+  "loopEnd": 152.380952,
+  "loop": true,
+  "gainDb": -4.84,
+  "revision": "v4-new-composition",
+  "takes": {
+   "explore": "t21",
+   "battle": "t21"
+  },
+  "cues": {
+   "theme": 7.619,
+   "contrast": 76.19,
+   "return": 91.429
+  }
+ },
+ "versions": {
+  "explore": {
+   "take": "t21",
+   "seed": 962514,
+   "source": "audio-src/music/takes/last-orders/explore/t21/audio.flac",
+   "source_sha256": "9e5547da56423d3e49b04c8e4a012116fd15b068dee2b53a411a51485b53ff7b",
+   "conform": {
+    "rate_min": 0.99974,
+    "rate_max": 1.00026,
+    "seam": {
+     "loop_start_sample": 365714,
+     "loop_end_sample": 7314286,
+     "crossfade_s": 1.9047708333333333
+    },
+    "phase_correction_beats": 0,
+    "max_cents": 0.5,
+    "verify": {
+     "tempo_bpm": 126.0,
+     "grid_phase_ms": 0.2,
+     "window_error_ms": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      0.0
+     ],
+     "window_conf": [
+      3.44,
+      3.4,
+      3.49,
+      3.5,
+      3.49,
+      3.49,
+      3.51,
+      3.5,
+      3.52,
+      3.46,
+      3.43,
+      3.48,
+      3.49,
+      3.39,
+      3.45,
+      3.47,
+      3.38,
+      3.46,
+      3.41,
+      3.43,
+      3.46
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/last-orders-explore.flac",
+   "master_sha256": "c980d28bd158ada8515d465d56aa2cce4d74f05d226fe9e7952bbf627abed423",
+   "delivery": "public/audio/music/last-orders-explore.ogg",
+   "delivery_sha256": "9d9fcc5e656a20fe70529cc53f68e5cc4f2df60e66900452d8e7bb8f1a3b98f3",
+   "bytes": 2555339,
+   "samples": 7982857,
+   "decoded_samples": 7982857,
+   "source_levels": {
+    "lufs": -12.22,
+    "tp": -0.54,
+    "lra": 4.9
+   },
+   "layer_trim_db": -4.44,
+   "pre_gain": {
+    "lufs": -16.66,
+    "tp": -4.9799999999999995,
+    "lra": 4.9
+   },
+   "delivered": {
+    "lufs": -21.48,
+    "tp": -9.89,
+    "lra": 4.9
+   }
+  },
+  "battle": {
+   "take": "t21",
+   "seed": 137700,
+   "source": "audio-src/music/takes/last-orders/battle/t21/audio.flac",
+   "source_sha256": "6509af5e2aed13317386f3a9a5c2e9c92eea6f465ba3699fdacc50916b6ac76d",
+   "conform": {
+    "rate_min": 0.99974,
+    "rate_max": 1.00026,
+    "seam": {
+     "loop_start_sample": 365714,
+     "loop_end_sample": 7314286,
+     "crossfade_s": 1.9047708333333333
+    },
+    "phase_correction_beats": 0,
+    "max_cents": 0.5,
+    "verify": {
+     "tempo_bpm": 126.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      36.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      1.45,
+      3.56,
+      3.51,
+      3.56,
+      3.54,
+      3.52,
+      3.48,
+      3.22,
+      2.88,
+      2.98,
+      3.48,
+      2.77,
+      2.82,
+      2.78,
+      2.88,
+      3.57,
+      3.54,
+      3.48,
+      3.4,
+      2.86,
+      3.09
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/last-orders-battle.flac",
+   "master_sha256": "9a64b3f372dad0185cd43c45f325ccc4f351c2caa06aeab44cfa2d62fba08a3f",
+   "delivery": "public/audio/music/last-orders-battle.ogg",
+   "delivery_sha256": "2052027b704826963af90e2a6d5476816c60857e3f9e52d6a8a8848612ce2d95",
+   "bytes": 3367737,
+   "samples": 7982857,
+   "decoded_samples": 7982857,
+   "source_levels": {
+    "lufs": -14.16,
+    "tp": 0.13,
+    "lra": 7.1
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -14.16,
+    "tp": 0.13,
+    "lra": 7.1
+   },
+   "delivered": {
+    "lufs": -19.08,
+    "tp": -4.85,
+    "lra": 7.2
+   }
+  }
+ }
+}

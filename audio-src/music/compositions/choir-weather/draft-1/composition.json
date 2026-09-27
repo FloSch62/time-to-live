@@ -1,0 +1,15 @@
+{
+  "brief": "Entirely instrumental progressive electronic space strategy game soundtrack. Compose a completely new piece, approximately three minutes, with distinctive melodic phrases and answering motifs. Airy wavering synthesizer melodies, shifting interlocking digital patterns and a deep smooth bass; an eerie moving electronic atmosphere. Introduce a motif and a moving inner pattern, develop a first full statement with changing harmony, thin the texture into a contrasting middle passage, then return with a developed variation and interlocking counterpoint. Atmospheric but rhythmically alive, curious and mysterious, never a static drone or an unchanged repeated hook. This score will support calm and driving arrangements.",
+  "request": {
+    "style": "Entirely instrumental progressive electronic space strategy game soundtrack. Compose a completely new piece, approximately three minutes, with distinctive melodic phrases and answering motifs. Airy wavering synthesizer melodies, shifting interlocking digital patterns and a deep smooth bass; an eerie moving electronic atmosphere. Introduce a motif and a moving inner pattern, develop a first full statement with changing harmony, thin the texture into a contrasting middle passage, then return with a developed variation and interlocking counterpoint. Atmospheric but rhythmically alive, curious and mysterious, never a static drone or an unchanged repeated hook. This score will support calm and driving arrangements. 108 BPM, 4/4, C sharp minor.",
+    "lyrics": "",
+    "cot": "full",
+    "seed": 1733956082,
+    "abc": null,
+    "cfg_scale": null,
+    "id": "ttl-fresh-choir-weather-1"
+  },
+  "truncated": false,
+  "source": "New symbolic generation. No previous TTL melody or reference score supplied.",
+  "reference_study": "audio-src/music/references/structure.json and timeline.json"
+}

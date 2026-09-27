@@ -1,0 +1,15 @@
+{
+  "brief": "Entirely instrumental progressive electronic space strategy game soundtrack. Compose a completely new piece, approximately three minutes, with distinctive melodic phrases and answering motifs. Dusty pulse-wave motifs, a resonant plucked synth bass, metallic ticks and echoing electronic answers. Introduce a motif and a moving inner pattern, develop a first full statement with changing harmony, thin the texture into a contrasting middle passage, then return with a developed variation and interlocking counterpoint. Atmospheric but rhythmically alive, curious and mysterious, never a static drone or an unchanged repeated hook. This score will support calm and driving arrangements.",
+  "request": {
+    "style": "Entirely instrumental progressive electronic space strategy game soundtrack. Compose a completely new piece, approximately three minutes, with distinctive melodic phrases and answering motifs. Dusty pulse-wave motifs, a resonant plucked synth bass, metallic ticks and echoing electronic answers. Introduce a motif and a moving inner pattern, develop a first full statement with changing harmony, thin the texture into a contrasting middle passage, then return with a developed variation and interlocking counterpoint. Atmospheric but rhythmically alive, curious and mysterious, never a static drone or an unchanged repeated hook. This score will support calm and driving arrangements. 100 BPM, 4/4, G minor.",
+    "lyrics": "",
+    "cot": "full",
+    "seed": 1544981624,
+    "abc": null,
+    "cfg_scale": null,
+    "id": "ttl-fresh-rust-kingdom-1"
+  },
+  "truncated": false,
+  "source": "New symbolic generation. No previous TTL melody or reference score supplied.",
+  "reference_study": "audio-src/music/references/structure.json and timeline.json"
+}

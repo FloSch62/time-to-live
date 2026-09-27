@@ -1,0 +1,805 @@
+{
+ "file": "/home/clab/projects/clab/time-to-live/public/audio/music/relay-seven.ogg",
+ "language": "en",
+ "language_prob": 0.24,
+ "segments": [
+  {
+   "start": 27.18,
+   "end": 29.98,
+   "text": "I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry.",
+   "avg_logprob": -0.93,
+   "no_speech": 0.88,
+   "comp": 2.83,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 27.18,
+     "end": 28.58,
+     "p": 0.09
+    },
+    {
+     "w": " sorry,",
+     "start": 28.58,
+     "end": 29.98,
+     "p": 0.07
+    },
+    {
+     "w": " I'm",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.31
+    },
+    {
+     "w": " sorry,",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.28
+    },
+    {
+     "w": " I'm",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.81
+    },
+    {
+     "w": " sorry,",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.83
+    },
+    {
+     "w": " I'm",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.92
+    },
+    {
+     "w": " sorry,",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.9
+    },
+    {
+     "w": " I'm",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.95
+    },
+    {
+     "w": " sorry,",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.93
+    },
+    {
+     "w": " I'm",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.97
+    },
+    {
+     "w": " sorry.",
+     "start": 29.98,
+     "end": 29.98,
+     "p": 0.95
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 42.32,
+   "end": 43.22,
+   "text": "This is the end of the video, I hope you enjoyed it.",
+   "avg_logprob": -0.93,
+   "no_speech": 0.87,
+   "comp": 1.21,
+   "lang": null,
+   "words": [
+    {
+     "w": " This",
+     "start": 42.32,
+     "end": 43.16,
+     "p": 0.01
+    },
+    {
+     "w": " is",
+     "start": 43.16,
+     "end": 43.16,
+     "p": 0.37
+    },
+    {
+     "w": " the",
+     "start": 43.16,
+     "end": 43.16,
+     "p": 0.28
+    },
+    {
+     "w": " end",
+     "start": 43.16,
+     "end": 43.16,
+     "p": 0.05
+    },
+    {
+     "w": " of",
+     "start": 43.16,
+     "end": 43.2,
+     "p": 0.78
+    },
+    {
+     "w": " the",
+     "start": 43.2,
+     "end": 43.2,
+     "p": 0.52
+    },
+    {
+     "w": " video,",
+     "start": 43.2,
+     "end": 43.2,
+     "p": 0.22
+    },
+    {
+     "w": " I",
+     "start": 43.2,
+     "end": 43.2,
+     "p": 0.1
+    },
+    {
+     "w": " hope",
+     "start": 43.2,
+     "end": 43.2,
+     "p": 0.73
+    },
+    {
+     "w": " you",
+     "start": 43.2,
+     "end": 43.2,
+     "p": 0.87
+    },
+    {
+     "w": " enjoyed",
+     "start": 43.2,
+     "end": 43.2,
+     "p": 0.43
+    },
+    {
+     "w": " it.",
+     "start": 43.2,
+     "end": 43.22,
+     "p": 0.55
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 43.38,
+   "end": 44.14,
+   "text": "If you have any questions, please leave a comment.",
+   "avg_logprob": -0.93,
+   "no_speech": 0.87,
+   "comp": 1.21,
+   "lang": null,
+   "words": [
+    {
+     "w": " If",
+     "start": 43.38,
+     "end": 43.66,
+     "p": 0.18
+    },
+    {
+     "w": " you",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 0.86
+    },
+    {
+     "w": " have",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 0.18
+    },
+    {
+     "w": " any",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 0.79
+    },
+    {
+     "w": " questions,",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 0.78
+    },
+    {
+     "w": " please",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 0.56
+    },
+    {
+     "w": " leave",
+     "start": 43.66,
+     "end": 43.66,
+     "p": 0.36
+    },
+    {
+     "w": " a",
+     "start": 43.66,
+     "end": 44.14,
+     "p": 0.58
+    },
+    {
+     "w": " comment.",
+     "start": 44.14,
+     "end": 44.14,
+     "p": 0.89
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 44.14,
+   "end": 46.38,
+   "text": "Thank you for watching.",
+   "avg_logprob": -0.93,
+   "no_speech": 0.87,
+   "comp": 1.21,
+   "lang": null,
+   "words": [
+    {
+     "w": " Thank",
+     "start": 44.14,
+     "end": 44.84,
+     "p": 0.23
+    },
+    {
+     "w": " you",
+     "start": 44.84,
+     "end": 45.26,
+     "p": 0.99
+    },
+    {
+     "w": " for",
+     "start": 45.26,
+     "end": 46.38,
+     "p": 0.63
+    },
+    {
+     "w": " watching.",
+     "start": 46.38,
+     "end": 46.38,
+     "p": 0.8
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 66.12,
+   "end": 67.52,
+   "text": "I'm going to paint the rest of the flowers.",
+   "avg_logprob": -0.38,
+   "no_speech": 0.89,
+   "comp": 5.69,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 66.12,
+     "end": 67.52,
+     "p": 0.09
+    },
+    {
+     "w": " going",
+     "start": 67.52,
+     "end": 67.52,
+     "p": 0.12
+    },
+    {
+     "w": " to",
+     "start": 67.52,
+     "end": 67.52,
+     "p": 0.91
+    },
+    {
+     "w": " paint",
+     "start": 67.52,
+     "end": 67.52,
+     "p": 0.12
+    },
+    {
+     "w": " the",
+     "start": 67.52,
+     "end": 67.52,
+     "p": 0.46
+    },
+    {
+     "w": " rest",
+     "start": 67.52,
+     "end": 67.52,
+     "p": 0.02
+    },
+    {
+     "w": " of",
+     "start": 67.52,
+     "end": 67.52,
+     "p": 0.81
+    },
+    {
+     "w": " the",
+     "start": 67.52,
+     "end": 67.52,
+     "p": 0.85
+    },
+    {
+     "w": " flowers.",
+     "start": 67.52,
+     "end": 67.52,
+     "p": 0.04
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 67.52,
+   "end": 71.22,
+   "text": "I'm going to paint the rest of the flowers.",
+   "avg_logprob": -0.38,
+   "no_speech": 0.89,
+   "comp": 5.69,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 67.52,
+     "end": 67.52,
+     "p": 0.64
+    },
+    {
+     "w": " going",
+     "start": 67.52,
+     "end": 71.22,
+     "p": 0.95
+    },
+    {
+     "w": " to",
+     "start": 71.22,
+     "end": 71.22,
+     "p": 1.0
+    },
+    {
+     "w": " paint",
+     "start": 71.22,
+     "end": 71.22,
+     "p": 0.96
+    },
+    {
+     "w": " the",
+     "start": 71.22,
+     "end": 71.22,
+     "p": 0.99
+    },
+    {
+     "w": " rest",
+     "start": 71.22,
+     "end": 71.22,
+     "p": 0.99
+    },
+    {
+     "w": " of",
+     "start": 71.22,
+     "end": 71.22,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 71.22,
+     "end": 71.22,
+     "p": 1.0
+    },
+    {
+     "w": " flowers.",
+     "start": 71.22,
+     "end": 71.22,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 75.2,
+   "end": 78.0,
+   "text": "I'm going to paint the rest of the flowers.",
+   "avg_logprob": -0.38,
+   "no_speech": 0.89,
+   "comp": 5.69,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 75.2,
+     "end": 76.6,
+     "p": 0.73
+    },
+    {
+     "w": " going",
+     "start": 76.6,
+     "end": 78.0,
+     "p": 0.96
+    },
+    {
+     "w": " to",
+     "start": 78.0,
+     "end": 78.0,
+     "p": 1.0
+    },
+    {
+     "w": " paint",
+     "start": 78.0,
+     "end": 78.0,
+     "p": 0.98
+    },
+    {
+     "w": " the",
+     "start": 78.0,
+     "end": 78.0,
+     "p": 1.0
+    },
+    {
+     "w": " rest",
+     "start": 78.0,
+     "end": 78.0,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 78.0,
+     "end": 78.0,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 78.0,
+     "end": 78.0,
+     "p": 1.0
+    },
+    {
+     "w": " flowers.",
+     "start": 78.0,
+     "end": 78.0,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 78.0,
+   "end": 78.1,
+   "text": "I'm going to paint the rest of the flowers.",
+   "avg_logprob": -0.38,
+   "no_speech": 0.89,
+   "comp": 5.69,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 78.0,
+     "end": 78.1,
+     "p": 0.85
+    },
+    {
+     "w": " going",
+     "start": 78.1,
+     "end": 78.1,
+     "p": 0.98
+    },
+    {
+     "w": " to",
+     "start": 78.1,
+     "end": 78.1,
+     "p": 1.0
+    },
+    {
+     "w": " paint",
+     "start": 78.1,
+     "end": 78.1,
+     "p": 0.99
+    },
+    {
+     "w": " the",
+     "start": 78.1,
+     "end": 78.1,
+     "p": 1.0
+    },
+    {
+     "w": " rest",
+     "start": 78.1,
+     "end": 78.1,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 78.1,
+     "end": 78.1,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 78.1,
+     "end": 78.1,
+     "p": 1.0
+    },
+    {
+     "w": " flowers.",
+     "start": 78.1,
+     "end": 78.1,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 78.1,
+   "end": 81.38,
+   "text": "I'm going to paint the rest of the flowers.",
+   "avg_logprob": -0.38,
+   "no_speech": 0.89,
+   "comp": 5.69,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 78.1,
+     "end": 79.46,
+     "p": 0.92
+    },
+    {
+     "w": " going",
+     "start": 79.46,
+     "end": 81.38,
+     "p": 0.99
+    },
+    {
+     "w": " to",
+     "start": 81.38,
+     "end": 81.38,
+     "p": 1.0
+    },
+    {
+     "w": " paint",
+     "start": 81.38,
+     "end": 81.38,
+     "p": 0.99
+    },
+    {
+     "w": " the",
+     "start": 81.38,
+     "end": 81.38,
+     "p": 1.0
+    },
+    {
+     "w": " rest",
+     "start": 81.38,
+     "end": 81.38,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 81.38,
+     "end": 81.38,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 81.38,
+     "end": 81.38,
+     "p": 1.0
+    },
+    {
+     "w": " flowers.",
+     "start": 81.38,
+     "end": 81.38,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 81.38,
+   "end": 82.18,
+   "text": "I'm going to paint the rest of the flowers.",
+   "avg_logprob": -0.38,
+   "no_speech": 0.89,
+   "comp": 5.69,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'm",
+     "start": 81.38,
+     "end": 81.52,
+     "p": 0.94
+    },
+    {
+     "w": " going",
+     "start": 81.52,
+     "end": 82.18,
+     "p": 0.99
+    },
+    {
+     "w": " to",
+     "start": 82.18,
+     "end": 82.18,
+     "p": 1.0
+    },
+    {
+     "w": " paint",
+     "start": 82.18,
+     "end": 82.18,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 82.18,
+     "end": 82.18,
+     "p": 1.0
+    },
+    {
+     "w": " rest",
+     "start": 82.18,
+     "end": 82.18,
+     "p": 1.0
+    },
+    {
+     "w": " of",
+     "start": 82.18,
+     "end": 82.18,
+     "p": 1.0
+    },
+    {
+     "w": " the",
+     "start": 82.18,
+     "end": 82.18,
+     "p": 1.0
+    },
+    {
+     "w": " flowers.",
+     "start": 82.18,
+     "end": 82.18,
+     "p": 1.0
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 104.16,
+   "end": 108.1,
+   "text": "And I'm not maybe that Grimba",
+   "avg_logprob": -0.84,
+   "no_speech": 0.28,
+   "comp": 0.78,
+   "lang": null,
+   "words": [
+    {
+     "w": " And",
+     "start": 104.16,
+     "end": 105.08,
+     "p": 0.42
+    },
+    {
+     "w": " I'm",
+     "start": 105.08,
+     "end": 105.52,
+     "p": 0.82
+    },
+    {
+     "w": " not",
+     "start": 105.52,
+     "end": 105.86,
+     "p": 0.8
+    },
+    {
+     "w": " maybe",
+     "start": 105.86,
+     "end": 106.34,
+     "p": 0.3
+    },
+    {
+     "w": " that",
+     "start": 106.34,
+     "end": 106.54,
+     "p": 0.71
+    },
+    {
+     "w": " Grimba",
+     "start": 106.54,
+     "end": 108.1,
+     "p": 0.54
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 108.1,
+   "end": 111.36,
+   "text": "Is that all I need?",
+   "avg_logprob": -0.9,
+   "no_speech": 0.04,
+   "comp": 0.7,
+   "lang": null,
+   "words": [
+    {
+     "w": " Is",
+     "start": 108.1,
+     "end": 108.1,
+     "p": 0.02
+    },
+    {
+     "w": " that",
+     "start": 108.1,
+     "end": 110.58,
+     "p": 0.98
+    },
+    {
+     "w": " all",
+     "start": 110.58,
+     "end": 110.82,
+     "p": 0.91
+    },
+    {
+     "w": " I",
+     "start": 110.82,
+     "end": 111.08,
+     "p": 0.62
+    },
+    {
+     "w": " need?",
+     "start": 111.08,
+     "end": 111.36,
+     "p": 0.47
+    }
+   ],
+   "speech": false
+  },
+  {
+   "start": 143.4,
+   "end": 144.84,
+   "text": "I'll see you next time.",
+   "avg_logprob": -1.34,
+   "no_speech": 0.58,
+   "comp": 0.74,
+   "lang": null,
+   "words": [
+    {
+     "w": " I'll",
+     "start": 143.4,
+     "end": 143.44,
+     "p": 0.03
+    },
+    {
+     "w": " see",
+     "start": 143.44,
+     "end": 143.46,
+     "p": 0.2
+    },
+    {
+     "w": " you",
+     "start": 143.46,
+     "end": 144.8,
+     "p": 0.93
+    },
+    {
+     "w": " next",
+     "start": 144.8,
+     "end": 144.82,
+     "p": 0.19
+    },
+    {
+     "w": " time.",
+     "start": 144.82,
+     "end": 144.84,
+     "p": 0.92
+    }
+   ],
+   "speech": false
+  }
+ ]
+}

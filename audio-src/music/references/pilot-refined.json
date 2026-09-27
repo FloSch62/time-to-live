@@ -1,0 +1,147 @@
+{
+  "model": "laion/clap-htsat-unfused",
+  "source_folder": "/mnt/c/Users/Flo/Downloads/ftl - multiverse soundtrack",
+  "method": "Normalized CLAP centroid of three 10s excerpts at 15/45/75% of available start range; compare same-layer files.",
+  "limitation": "Automated timbre/style similarity only. Not a perceptual quality score, melodic originality check or listening approval.",
+  "descriptions": {
+    "synth_sequences": "Instrumental electronic space game music with synthesizer arpeggios and sequenced bass.",
+    "synth_melody": "Melodic synthesizer video game soundtrack with a soft square wave lead and atmospheric pads.",
+    "ambient": "Ambient space music with slowly evolving synthesizer pads and sparse electronic tones.",
+    "piano_strings": "Melancholic cinematic music with soft piano, cello and orchestral strings.",
+    "chiptune": "Melodic chiptune video game music with eight bit electronic tones.",
+    "breakbeat": "Instrumental electronic music with syncopated breakbeats, synthesizers and a bass groove.",
+    "rock": "Instrumental progressive rock music with electric guitar, bass and drums.",
+    "club": "Electronic dance music with a four on the floor kick, a big drop and pumping supersaw chords.",
+    "orchestral": "Epic cinematic orchestral battle music with brass, strings and massive percussion.",
+    "vocals": "Music with a singer singing words and a choir."
+  },
+  "reference_summary": {
+    "explore": {
+      "count": 28,
+      "descriptions": {
+        "synth_sequences": 0.4614,
+        "synth_melody": 0.503,
+        "ambient": 0.4122,
+        "piano_strings": 0.4165,
+        "chiptune": 0.3386,
+        "breakbeat": 0.3788,
+        "rock": 0.2016,
+        "club": 0.4152,
+        "orchestral": 0.3125,
+        "vocals": 0.2009
+      }
+    },
+    "battle": {
+      "count": 28,
+      "descriptions": {
+        "synth_sequences": 0.3773,
+        "synth_melody": 0.3764,
+        "ambient": 0.2501,
+        "piano_strings": 0.3538,
+        "chiptune": 0.3154,
+        "breakbeat": 0.4773,
+        "rock": 0.35,
+        "club": 0.4577,
+        "orchestral": 0.4143,
+        "vocals": 0.1173
+      }
+    },
+    "main": {
+      "count": 8,
+      "descriptions": {
+        "synth_sequences": 0.348,
+        "synth_melody": 0.3644,
+        "ambient": 0.2526,
+        "piano_strings": 0.3542,
+        "chiptune": 0.3476,
+        "breakbeat": 0.4224,
+        "rock": 0.2654,
+        "club": 0.4192,
+        "orchestral": 0.3974,
+        "vocals": 0.1919
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "file": "audio-src/music/takes/copper-reach/explore/t12/audio.flac",
+      "sha256": "1c7d80877b6c0600177634ed2d30df66a937ffedd7a8217ebe5fd23f0786e814",
+      "layer": "explore",
+      "reference_mean": 0.6212,
+      "closest": [
+        {
+          "file": "mv_MUS_AutoEXPLORE.ogg",
+          "cosine": 0.7469
+        },
+        {
+          "file": "mv_MUS_OrchidEXPLORE.ogg",
+          "cosine": 0.7342
+        },
+        {
+          "file": "mv_MUS_VoyagerEXPLORE.ogg",
+          "cosine": 0.7339
+        },
+        {
+          "file": "mv_MUS_JerryEXPLORE.ogg",
+          "cosine": 0.7129
+        },
+        {
+          "file": "mv_MUS_InsurgenceEXPLORE.ogg",
+          "cosine": 0.7056
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.2429,
+        "synth_melody": 0.3446,
+        "ambient": 0.2077,
+        "piano_strings": 0.2831,
+        "chiptune": 0.1977,
+        "breakbeat": 0.4506,
+        "rock": 0.2921,
+        "club": 0.5507,
+        "orchestral": 0.1362,
+        "vocals": 0.1219
+      }
+    },
+    {
+      "file": "audio-src/music/takes/copper-reach/explore/t13/audio.flac",
+      "sha256": "2914d41cc2f2b74b6a07ae72c36d1007d7c5e6983abd9430b974de953bde4165",
+      "layer": "explore",
+      "reference_mean": 0.5799,
+      "closest": [
+        {
+          "file": "mv_MUS_OrchidEXPLORE.ogg",
+          "cosine": 0.7351
+        },
+        {
+          "file": "mv_MUS_UnexploredEXPLORE.ogg",
+          "cosine": 0.7074
+        },
+        {
+          "file": "mv_MUS_VoyagerEXPLORE.ogg",
+          "cosine": 0.6891
+        },
+        {
+          "file": "mv_MUS_ShellEXPLORE.ogg",
+          "cosine": 0.6708
+        },
+        {
+          "file": "mv_MUS_FreeMantisEXPLORE.ogg",
+          "cosine": 0.6685
+        }
+      ],
+      "descriptions": {
+        "synth_sequences": 0.1823,
+        "synth_melody": 0.3226,
+        "ambient": 0.3302,
+        "piano_strings": 0.2445,
+        "chiptune": 0.0201,
+        "breakbeat": 0.2981,
+        "rock": 0.245,
+        "club": 0.4172,
+        "orchestral": 0.0202,
+        "vocals": 0.1728
+      }
+    }
+  ]
+}

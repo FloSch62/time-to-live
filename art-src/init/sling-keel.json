@@ -1,0 +1,49 @@
+{
+ "canvas": [
+  480,
+  248
+ ],
+ "layout": [
+  240,
+  124
+ ],
+ "gen": [
+  960,
+  496
+ ],
+ "density": 2,
+ "remap": null,
+ "cable": null,
+ "class": "keel-car",
+ "grid": {
+  "x": 24,
+  "y": 68,
+  "cols": 6,
+  "rows": 2,
+  "tile": 72
+ },
+ "face": "right",
+ "mounts": [
+  {
+   "x": 464,
+   "y": 232
+  }
+ ],
+ "hangTop": {
+  "x": 240,
+  "y": 0
+ },
+ "lampColors": [
+  "#fff1c2",
+  "#ffd98a",
+  "#ffb347",
+  "#e8822a"
+ ],
+ "glow": [
+  {
+   "x": 452,
+   "y": 92,
+   "r": 6
+  }
+ ]
+}

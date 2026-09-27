@@ -1,0 +1,169 @@
+{
+ "piece": "exchange",
+ "note": "t1: CLAP cine 0.84 (min 0.53), clean; t2 rejected (three 0.2 s dips of 16-20 dB)",
+ "gain_db": -4.99,
+ "loudest": "main",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   28,
+   52
+  ],
+  "bars": 54,
+  "tail": 2,
+  "bar_s": 2.4,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "M1",
+    "instrumental"
+   ],
+   [
+    8,
+    "M2",
+    "instrumental"
+   ],
+   [
+    12,
+    "V1",
+    "interlude"
+   ],
+   [
+    16,
+    "V2",
+    "interlude"
+   ],
+   [
+    20,
+    "B1",
+    "instrumental"
+   ],
+   [
+    24,
+    "B2",
+    "instrumental"
+   ],
+   [
+    28,
+    "M1",
+    "instrumental"
+   ],
+   [
+    32,
+    "M2",
+    "instrumental"
+   ],
+   [
+    36,
+    "V1",
+    "interlude"
+   ],
+   [
+    40,
+    "V2",
+    "interlude"
+   ],
+   [
+    44,
+    "B1",
+    "instrumental"
+   ],
+   [
+    48,
+    "B2",
+    "instrumental"
+   ],
+   [
+    52,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "main": "audio/music/exchange.ogg"
+  },
+  "bpm": 100,
+  "key": "F",
+  "bars": 54,
+  "barSeconds": 2.4,
+  "duration": 132.1,
+  "loopStart": 67.2,
+  "loopEnd": 124.8,
+  "loop": true,
+  "gainDb": -4.99
+ },
+ "versions": {
+  "main": {
+   "take": "t1",
+   "seed": 582354,
+   "source": "audio-src/music/takes/exchange/main/t1/audio.flac",
+   "source_sha256": "230951c7f875bc1fd34395c0565b0d4b21ae6bedba1cefa4f2ef010efb931ba9",
+   "conform": {
+    "rate_min": 0.99958,
+    "rate_max": 1.00042,
+    "max_cents": 0.7,
+    "verify": {
+     "tempo_bpm": 100.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      14.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.13,
+      2.95,
+      3.17,
+      3.09,
+      3.21,
+      3.39,
+      3.37,
+      3.31,
+      3.4,
+      3.42,
+      3.41,
+      3.39,
+      3.46
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/exchange.flac",
+   "master_sha256": "48bf02495e954004f873a9ad46e86cadb2df128886fe84ba5249229dc92a8c8f",
+   "delivery": "public/audio/music/exchange.ogg",
+   "delivery_sha256": "0b446e0f1741c3dcbeb260d9c8ae15dbf23bd9df5296f138b5723ba8c1c43d94",
+   "bytes": 2098954,
+   "samples": 6340800,
+   "decoded_samples": 6340800,
+   "pre_gain": {
+    "lufs": -14.01,
+    "tp": 0.08,
+    "lra": 5.9
+   },
+   "delivered": {
+    "lufs": -18.97,
+    "tp": -4.57,
+    "lra": 5.9
+   }
+  }
+ }
+}

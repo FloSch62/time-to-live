@@ -1,0 +1,227 @@
+[
+ {
+  "take": "main/t1",
+  "reject": [
+   "lost plan (2 bars from bar 4)",
+   "not dark enough (CLAP mood 0.223, need 0.33; bright windows 38%)",
+   "club/EDM-leaning (CLAP score-vs-club 0.392, min 0.128)",
+   "dropouts [(116.6, 0.8, 22.0)]",
+   "major-leaning (A 0.45 >= Am 0.33)"
+  ],
+  "planned_dips": [],
+  "score": 1.022,
+  "cinematic": 0.628,
+  "intense": 0.365,
+  "dark": 0.223,
+  "not_club": 0.392,
+  "mode_margin": -0.125,
+  "cinematic_min": 0.085,
+  "vocal_max": 0.432,
+  "ftl": 0.207,
+  "speech_checked": true,
+  "lufs": -14.97,
+  "tp": 0.24,
+  "lra": 7.5,
+  "key": "Am",
+  "window_db": [
+   -22.1,
+   -17.0,
+   -17.3,
+   -16.2,
+   -15.7,
+   -15.9,
+   -19.5,
+   -16.6,
+   -16.6,
+   -18.2,
+   -15.7,
+   -24.3,
+   -15.9
+  ],
+  "seam_db": 2.4,
+  "seam_chroma": 0.983,
+  "ratio": 1.0,
+  "tail": 5.02
+ },
+ {
+  "take": "main/t2",
+  "reject": [
+   "lost plan (4 bars from bar 4)",
+   "CLAP vocal 0.824",
+   "not dark enough (CLAP mood 0.233, need 0.33; bright windows 42%)",
+   "club/EDM-leaning (CLAP score-vs-club 0.315, min 0.046)",
+   "transposed +1 st (corr 0.55 vs -0.02)",
+   "major-leaning (Bb 0.44 >= Am -0.06)"
+  ],
+  "planned_dips": [],
+  "score": 1.115,
+  "cinematic": 0.419,
+  "intense": 0.462,
+  "dark": 0.233,
+  "not_club": 0.315,
+  "mode_margin": -0.5,
+  "cinematic_min": 0.017,
+  "vocal_max": 0.824,
+  "ftl": 0.285,
+  "speech_checked": true,
+  "lufs": -10.62,
+  "tp": 0.28,
+  "lra": 3.6,
+  "key": "+1 st",
+  "window_db": [
+   -20.9,
+   -12.0,
+   -12.2,
+   -10.1,
+   -10.3,
+   -11.0,
+   -10.9,
+   -11.1,
+   -11.2,
+   -10.2,
+   -10.4,
+   -10.5,
+   -11.1
+  ],
+  "seam_db": -1.2,
+  "seam_chroma": 0.986,
+  "ratio": 1.00002,
+  "tail": 5.42
+ },
+ {
+  "take": "main/t3",
+  "reject": [
+   "drift [-80.0] ms",
+   "dropouts [(82.0, 0.4, 13.3)]",
+   "major-leaning (A 0.72 >= Am 0.64)"
+  ],
+  "planned_dips": [
+   [
+    40.8,
+    0.5,
+    12.6
+   ],
+   [
+    104.9,
+    0.7,
+    15.8
+   ]
+  ],
+  "score": 1.98,
+  "cinematic": 0.964,
+  "intense": 0.079,
+  "dark": 0.717,
+  "not_club": 0.836,
+  "mode_margin": -0.081,
+  "cinematic_min": 0.916,
+  "vocal_max": 0.392,
+  "ftl": 0.218,
+  "speech_checked": true,
+  "lufs": -14.35,
+  "tp": 0.01,
+  "lra": 9.5,
+  "key": "Am",
+  "window_db": [
+   -23.1,
+   -23.6,
+   -23.0,
+   -14.9,
+   -14.6,
+   -16.2,
+   -15.3,
+   -12.2,
+   -13.6,
+   -15.0,
+   -13.9,
+   -15.3,
+   -16.4
+  ],
+  "seam_db": -1.7,
+  "seam_chroma": 0.993,
+  "ratio": 0.9922407,
+  "tail": 4.9
+ },
+ {
+  "take": "main/t4",
+  "reject": [
+   "lost plan (1 bars from bar 36)",
+   "dropouts [(91.4, 0.6, 14.6), (122.2, 0.4, 13.5), (132.2, 0.6, 14.2)]",
+   "major-leaning (A 0.42 >= Am 0.41)"
+  ],
+  "planned_dips": [
+   [
+    30.4,
+    0.3,
+    12.3
+   ],
+   [
+    50.6,
+    0.5,
+    13.0
+   ],
+   [
+    93.9,
+    0.6,
+    13.9
+   ],
+   [
+    96.4,
+    0.7,
+    15.9
+   ],
+   [
+    99.0,
+    0.5,
+    13.2
+   ],
+   [
+    101.4,
+    0.8,
+    22.7
+   ],
+   [
+    109.1,
+    0.8,
+    16.3
+   ],
+   [
+    111.9,
+    0.5,
+    17.2
+   ]
+  ],
+  "score": 1.937,
+  "cinematic": 0.947,
+  "intense": 0.021,
+  "dark": 0.713,
+  "not_club": 0.832,
+  "mode_margin": -0.009,
+  "cinematic_min": 0.859,
+  "vocal_max": 0.365,
+  "ftl": 0.187,
+  "speech_checked": true,
+  "lufs": -15.27,
+  "tp": -0.47,
+  "lra": 4.0,
+  "key": "Am",
+  "window_db": [
+   -19.4,
+   -18.1,
+   -17.3,
+   -17.2,
+   -14.4,
+   -15.7,
+   -17.4,
+   -15.7,
+   -15.7,
+   -16.6,
+   -16.1,
+   -16.9,
+   -18.2
+  ],
+  "seam_db": -1.4,
+  "seam_chroma": 0.962,
+  "ratio": 1.00002,
+  "tail": 5.88
+ }
+]

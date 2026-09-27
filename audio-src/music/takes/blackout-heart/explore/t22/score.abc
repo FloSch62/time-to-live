@@ -1,0 +1,108 @@
+X:1
+T:
+M:4/4
+L:1/32
+Q:1/4=120
+V: Vocal clef=treble name="Vocal Melody" snm="Vocal"
+V: Ins clef=treble name="Ins Melody" snm="Inst."
+K:Am
+% intro
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+E8 z8 E8 z8|A8 z8 A8 z8|D8 z8 D8 z8|G8 z8 G8 z8|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+A,4 E2 A2 c4 E4 A4 E2 G2 A4 E4|F,4 C2 F2 A4 C4 F4 C2 E2 F4 C4|D,4 A,2 D2 F4 A,4 D4 A,2 C2 D4 A,4|E,4 B,2 E2 G4 B,4 E4 B,2 D2 E4 B,4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+E4 A6 c2 B4 A4 E4 G4 z4|A8 G4 F4 C8 E4 z4|D4 A4 d8 c6 A2 F4 z4|G6 E2 B8 d4 B4 G4 z4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+c8 e4 d4 c6 B2 A4 z4|c4 A4 G8 F4 A4 c4 z4|f8 e4 d4 A4 c4 d4 z4|e8 d4 B4 G8 E4 z4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+A,4 E2 A2 c4 E4 A4 E2 G2 A4 E4|F,4 C2 F2 A4 C4 F4 C2 E2 F4 C4|D,4 A,2 D2 F4 A,4 D4 A,2 C2 D4 A,4|E,4 B,2 E2 G4 B,4 E4 B,2 D2 E4 B,4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+E4 A6 c2 B4 A4 E4 G4 z4|A8 G4 F4 C8 E4 z4|D4 A4 d8 c6 A2 F4 z4|G6 E2 B8 d4 B4 G4 z4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+e4 a6 c'2 b4 a4 e4 g4 z4|a8 g4 f4 c8 e4 z4|d4 a4 d'8 c'6 a2 f4 z4|g6 e2 b8 d'4 b4 g4 z4|
+% instrumental
+V: Vocal
+"Dm7"z32|"G"z32|"Fmaj7"z32|"Em7"z32|
+V: Ins
+d16 c8 A4 F4|B12 A4 G8 D4 z4|c16 A8 G4 F4|B12 G4 E8 D4 z4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+c8 e4 d4 c6 B2 A4 z4|c4 A4 G8 F4 A4 c4 z4|f8 e4 d4 A4 c4 d4 z4|e8 d4 B4 G8 E4 z4|
+% interlude
+V: Vocal
+"Dm7"z32|"G"z32|"Fmaj7"z32|"Em7"z32|
+V: Ins
+d16 z8 A4 z4|B16 z8 A4 z4|c16 z8 A4 z4|B16 z8 A4 z4|
+% interlude
+V: Vocal
+"Dm7"z32|"G"z32|"Fmaj7"z32|"Em7"z32|
+V: Ins
+d16 c8 A4 F4|B12 A4 G8 D4 z4|c16 A8 G4 F4|B12 G4 E8 D4 z4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+A,4 E2 A2 c4 E4 A4 E2 G2 A4 E4|F,4 C2 F2 A4 C4 F4 C2 E2 F4 C4|D,4 A,2 D2 F4 A,4 D4 A,2 C2 D4 A,4|E,4 B,2 E2 G4 B,4 E4 B,2 D2 E4 B,4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+c8 e4 d4 c6 B2 A4 z4|c4 A4 G8 F4 A4 c4 z4|f8 e4 d4 A4 c4 d4 z4|e8 d4 B4 G8 E4 z4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+e4 a6 c'2 b4 a4 e4 g4 z4|a8 g4 f4 c8 e4 z4|d4 a4 d'8 c'6 a2 f4 z4|g6 e2 b8 d'4 b4 g4 z4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+c8 e4 d4 c6 B2 A4 z4|c4 A4 G8 F4 A4 c4 z4|f8 e4 d4 A4 c4 d4 z4|e8 d4 B4 G8 E4 z4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+e4 a6 c'2 b4 a4 e4 g4 z4|a8 g4 f4 c8 e4 z4|d4 a4 d'8 c'6 a2 f4 z4|g6 e2 b8 d'4 b4 g4 z4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+c8 e4 d4 c6 B2 A4 z4|c4 A4 G8 F4 A4 c4 z4|f8 e4 d4 A4 c4 d4 z4|e8 d4 B4 G8 E4 z4|
+% instrumental
+V: Vocal
+"Dm7"z32|"G"z32|"Fmaj7"z32|"Em7"z32|
+V: Ins
+d16 c8 A4 F4|B12 A4 G8 D4 z4|c16 A8 G4 F4|B12 G4 E8 D4 z4|
+% instrumental
+V: Vocal
+"Am"z32|"Fmaj7"z32|"Dm7"z32|"Em7"z32|
+V: Ins
+E8 z8 E8 z8|A8 z8 A8 z8|D8 z8 D8 z8|G8 z8 G8 z8|
+% outro
+V: Vocal
+"Em7"z32|"Em7"z32|
+V: Ins
+A32|A32|

@@ -1,0 +1,2922 @@
+{
+ "laser-fire": {
+  "target_db": -13,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 2,
+  "loop": false,
+  "variants": [
+   {
+    "file": "laser-fire-1.ogg",
+    "seconds": 0.42,
+    "samples": 20168,
+    "samples_master": 20296,
+    "peak_dbfs": -9.22,
+    "level_db": -13.4,
+    "layers": [
+     {
+      "element": "elec_crack",
+      "rank": 0,
+      "file": "el/elec_crack/p1-s23.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 23,
+      "score": 0.59,
+      "speed": 1.0,
+      "length": 0.12,
+      "hp": 1500,
+      "lp": null
+     },
+     {
+      "element": "relay_clack",
+      "rank": 0,
+      "file": "el/relay_clack/p1-s37.wav",
+      "prompt": "A single crisp click of an old switchboard relay contact",
+      "seed": 37,
+      "score": 0.416,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "laser-fire-2.ogg",
+    "seconds": 0.451,
+    "samples": 21654,
+    "samples_master": 21782,
+    "peak_dbfs": -9.82,
+    "level_db": -13.5,
+    "layers": [
+     {
+      "element": "elec_crack",
+      "rank": 1,
+      "file": "el/elec_crack/p1-s73.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 73,
+      "score": 0.543,
+      "speed": 1.0,
+      "length": 0.12,
+      "hp": 1500,
+      "lp": null
+     },
+     {
+      "element": "relay_clack",
+      "rank": 1,
+      "file": "el/relay_clack/p1-s73.wav",
+      "prompt": "A single crisp click of an old switchboard relay contact",
+      "seed": 73,
+      "score": 0.409,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "laser-fire-3.ogg",
+    "seconds": 0.43,
+    "samples": 20658,
+    "samples_master": 20786,
+    "peak_dbfs": -9.38,
+    "level_db": -13.4,
+    "layers": [
+     {
+      "element": "elec_crack",
+      "rank": 2,
+      "file": "el/elec_crack/p1-s97.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 97,
+      "score": 0.499,
+      "speed": 1.0,
+      "length": 0.12,
+      "hp": 1500,
+      "lp": null
+     },
+     {
+      "element": "relay_clack",
+      "rank": 2,
+      "file": "el/relay_clack/p0-s59.wav",
+      "prompt": "One small brass electromechanical relay clacks shut, a single dry metallic click",
+      "seed": 59,
+      "score": 0.326,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "laser-heavy": {
+  "target_db": -11,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 2.5,
+  "loop": false,
+  "variants": [
+   {
+    "file": "laser-heavy-1.ogg",
+    "seconds": 0.662,
+    "samples": 31783,
+    "samples_master": 31911,
+    "peak_dbfs": -7.3,
+    "level_db": -11.1,
+    "layers": [
+     {
+      "element": "heavy_zap",
+      "rank": 0,
+      "file": "el/heavy_zap/p0-s89.wav",
+      "prompt": "One heavy powerful electric discharge, a deep crackling thump of high voltage",
+      "seed": 89,
+      "score": 0.309,
+      "speed": 1.0,
+      "length": 0.4,
+      "hp": 200,
+      "lp": null
+     },
+     {
+      "element": "elec_crack",
+      "rank": 1,
+      "file": "el/elec_crack/p1-s73.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 73,
+      "score": 0.543,
+      "speed": 1.0,
+      "length": 0.15,
+      "hp": 1500,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "laser-heavy-2.ogg",
+    "seconds": 0.661,
+    "samples": 31726,
+    "samples_master": 31854,
+    "peak_dbfs": -7.3,
+    "level_db": -11.1,
+    "layers": [
+     {
+      "element": "heavy_zap",
+      "rank": 1,
+      "file": "el/heavy_zap/p0-s59.wav",
+      "prompt": "One heavy powerful electric discharge, a deep crackling thump of high voltage",
+      "seed": 59,
+      "score": 0.294,
+      "speed": 1.0,
+      "length": 0.4,
+      "hp": 200,
+      "lp": null
+     },
+     {
+      "element": "elec_crack",
+      "rank": 2,
+      "file": "el/elec_crack/p1-s97.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 97,
+      "score": 0.499,
+      "speed": 1.0,
+      "length": 0.15,
+      "hp": 1500,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "ion-fire": {
+  "target_db": -13,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1.5,
+  "loop": false,
+  "variants": [
+   {
+    "file": "ion-fire-1.ogg",
+    "seconds": 0.753,
+    "samples": 36155,
+    "samples_master": 36283,
+    "peak_dbfs": -9.15,
+    "level_db": -13.2,
+    "layers": [
+     {
+      "element": "arc_buzz",
+      "rank": 0,
+      "file": "el/arc_buzz/p1-s89.wav",
+      "prompt": "Continuous humming electric plasma beam with a fizzing crackle",
+      "seed": 89,
+      "score": 0.57,
+      "speed": 1.0,
+      "length": 0.35,
+      "hp": 800,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "ion-fire-2.ogg",
+    "seconds": 0.752,
+    "samples": 36086,
+    "samples_master": 36214,
+    "peak_dbfs": -8.05,
+    "level_db": -13.2,
+    "layers": [
+     {
+      "element": "arc_buzz",
+      "rank": 1,
+      "file": "el/arc_buzz/p1-s41.wav",
+      "prompt": "Continuous humming electric plasma beam with a fizzing crackle",
+      "seed": 41,
+      "score": 0.541,
+      "speed": 1.0,
+      "length": 0.35,
+      "hp": 800,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "beam-fire": {
+  "target_db": -13,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1.5,
+  "loop": false,
+  "variants": [
+   {
+    "file": "beam-fire-1.ogg",
+    "seconds": 1.401,
+    "samples": 67252,
+    "samples_master": 67252,
+    "peak_dbfs": -7.85,
+    "level_db": -13.1,
+    "layers": [
+     {
+      "element": "arc_buzz",
+      "rank": 0,
+      "file": "el/arc_buzz/p1-s89.wav",
+      "prompt": "Continuous humming electric plasma beam with a fizzing crackle",
+      "seed": 89,
+      "score": 0.57,
+      "speed": 1.0,
+      "length": 1.3,
+      "hp": 300,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "beam-fire-2.ogg",
+    "seconds": 1.4,
+    "samples": 67183,
+    "samples_master": 67183,
+    "peak_dbfs": -7.18,
+    "level_db": -13.1,
+    "layers": [
+     {
+      "element": "arc_buzz",
+      "rank": 1,
+      "file": "el/arc_buzz/p1-s41.wav",
+      "prompt": "Continuous humming electric plasma beam with a fizzing crackle",
+      "seed": 41,
+      "score": 0.541,
+      "speed": 1.0,
+      "length": 1.3,
+      "hp": 300,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "payload-launch": {
+  "target_db": -12,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 2,
+  "loop": false,
+  "variants": [
+   {
+    "file": "payload-launch-1.ogg",
+    "seconds": 0.972,
+    "samples": 46657,
+    "samples_master": 46785,
+    "peak_dbfs": -5.25,
+    "level_db": -12.0,
+    "layers": [
+     {
+      "element": "pneu_launch",
+      "rank": 0,
+      "file": "el/pneu_launch/p1-s11.wav",
+      "prompt": "One missile launch from a metal tube, a deep thud and a rushing whoosh",
+      "seed": 11,
+      "score": 0.754,
+      "speed": 1.0,
+      "length": 1.0,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "payload-launch-2.ogg",
+    "seconds": 0.957,
+    "samples": 45917,
+    "samples_master": 46045,
+    "peak_dbfs": -4.64,
+    "level_db": -12.0,
+    "layers": [
+     {
+      "element": "pneu_launch",
+      "rank": 1,
+      "file": "el/pneu_launch/p1-s23.wav",
+      "prompt": "One missile launch from a metal tube, a deep thud and a rushing whoosh",
+      "seed": 23,
+      "score": 0.528,
+      "speed": 1.0,
+      "length": 1.0,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "flak-fire": {
+  "target_db": -12,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 2.5,
+  "loop": false,
+  "variants": [
+   {
+    "file": "flak-fire-1.ogg",
+    "seconds": 0.828,
+    "samples": 39744,
+    "samples_master": 38760,
+    "peak_dbfs": -3.62,
+    "level_db": -12.1,
+    "layers": [
+     {
+      "element": "cannon",
+      "rank": 0,
+      "file": "el/cannon/p0-s23.wav",
+      "prompt": "One short heavy cannon shot, a sharp boom with metallic ring",
+      "seed": 23,
+      "score": 0.759,
+      "speed": 1.0,
+      "length": 0.8,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "elec_crack",
+      "rank": 2,
+      "file": "el/elec_crack/p1-s97.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 97,
+      "score": 0.499,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": 2000,
+      "lp": null
+     },
+     {
+      "element": "elec_crack",
+      "rank": 3,
+      "file": "el/elec_crack/p0-s41.wav",
+      "prompt": "A single short sharp electric discharge crack, one snap of high voltage",
+      "seed": 41,
+      "score": 0.483,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": 2000,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "flak-fire-2.ogg",
+    "seconds": 0.787,
+    "samples": 37786,
+    "samples_master": 37914,
+    "peak_dbfs": -4.54,
+    "level_db": -12.0,
+    "layers": [
+     {
+      "element": "cannon",
+      "rank": 1,
+      "file": "el/cannon/p0-s41.wav",
+      "prompt": "One short heavy cannon shot, a sharp boom with metallic ring",
+      "seed": 41,
+      "score": 0.738,
+      "speed": 1.0,
+      "length": 0.8,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "elec_crack",
+      "rank": 3,
+      "file": "el/elec_crack/p0-s41.wav",
+      "prompt": "A single short sharp electric discharge crack, one snap of high voltage",
+      "seed": 41,
+      "score": 0.483,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": 2000,
+      "lp": null
+     },
+     {
+      "element": "elec_crack",
+      "rank": 4,
+      "file": "el/elec_crack/p1-s89.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 89,
+      "score": 0.479,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": 2000,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "shield-hit": {
+  "target_db": -14,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 2,
+  "loop": false,
+  "variants": [
+   {
+    "file": "shield-hit-1.ogg",
+    "seconds": 0.474,
+    "samples": 22753,
+    "samples_master": 22881,
+    "peak_dbfs": -8.65,
+    "level_db": -14.3,
+    "layers": [
+     {
+      "element": "elec_crack",
+      "rank": 0,
+      "file": "el/elec_crack/p1-s23.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 23,
+      "score": 0.59,
+      "speed": 1.0,
+      "length": 0.2,
+      "hp": 1200,
+      "lp": null
+     },
+     {
+      "element": "cable_twang",
+      "rank": 0,
+      "file": "el/cable_twang/p0-s59.wav",
+      "prompt": "A taut steel cable struck hard, a single deep metallic twang with a ringing tail",
+      "seed": 59,
+      "score": 1.001,
+      "speed": 1.25,
+      "length": 0.5,
+      "hp": 300,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "shield-hit-2.ogg",
+    "seconds": 0.478,
+    "samples": 22954,
+    "samples_master": 23082,
+    "peak_dbfs": -8.69,
+    "level_db": -14.3,
+    "layers": [
+     {
+      "element": "elec_crack",
+      "rank": 1,
+      "file": "el/elec_crack/p1-s73.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 73,
+      "score": 0.543,
+      "speed": 1.0,
+      "length": 0.2,
+      "hp": 1200,
+      "lp": null
+     },
+     {
+      "element": "cable_twang",
+      "rank": 1,
+      "file": "el/cable_twang/p1-s37.wav",
+      "prompt": "A thick tensioned wire snaps against a metal frame, one twangy metallic ring",
+      "seed": 37,
+      "score": 0.846,
+      "speed": 1.25,
+      "length": 0.5,
+      "hp": 300,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "shield-hit-3.ogg",
+    "seconds": 0.474,
+    "samples": 22750,
+    "samples_master": 22878,
+    "peak_dbfs": -7.58,
+    "level_db": -14.2,
+    "layers": [
+     {
+      "element": "elec_crack",
+      "rank": 2,
+      "file": "el/elec_crack/p1-s97.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 97,
+      "score": 0.499,
+      "speed": 1.0,
+      "length": 0.2,
+      "hp": 1200,
+      "lp": null
+     },
+     {
+      "element": "cable_twang",
+      "rank": 2,
+      "file": "el/cable_twang/p1-s89.wav",
+      "prompt": "A thick tensioned wire snaps against a metal frame, one twangy metallic ring",
+      "seed": 89,
+      "score": 0.813,
+      "speed": 1.25,
+      "length": 0.5,
+      "hp": 300,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "shield-up": {
+  "target_db": -19,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "shield-up.ogg",
+    "seconds": 0.805,
+    "samples": 38617,
+    "samples_master": 38745,
+    "peak_dbfs": -11.97,
+    "level_db": -19.2,
+    "layers": [
+     {
+      "element": "powerup",
+      "rank": 0,
+      "file": "el/powerup/p1-s11.wav",
+      "prompt": "A machine powering up, rising electrical whine and hum",
+      "seed": 11,
+      "score": 0.586,
+      "speed": 1.0,
+      "length": 0.8,
+      "hp": 300,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "shield-down": {
+  "target_db": -17,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1,
+  "loop": false,
+  "variants": [
+   {
+    "file": "shield-down.ogg",
+    "seconds": 0.882,
+    "samples": 42353,
+    "samples_master": 42481,
+    "peak_dbfs": -9.71,
+    "level_db": -17.2,
+    "layers": [
+     {
+      "element": "elec_crack",
+      "rank": 1,
+      "file": "el/elec_crack/p1-s73.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 73,
+      "score": 0.543,
+      "speed": 1.0,
+      "length": 0.2,
+      "hp": 1000,
+      "lp": null
+     },
+     {
+      "element": "powerdown",
+      "rank": 0,
+      "file": "el/powerdown/p0-s41.wav",
+      "prompt": "A large electrical machine powering down, a slow falling whine fading to silence",
+      "seed": 41,
+      "score": 0.819,
+      "speed": 1.0,
+      "length": 0.9,
+      "hp": 200,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "hull-hit-small": {
+  "target_db": -12,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 2.5,
+  "loop": false,
+  "variants": [
+   {
+    "file": "hull-hit-small-1.ogg",
+    "seconds": 0.671,
+    "samples": 32192,
+    "samples_master": 31205,
+    "peak_dbfs": -3.81,
+    "level_db": -12.1,
+    "layers": [
+     {
+      "element": "metal_clang",
+      "rank": 0,
+      "file": "el/metal_clang/p1-s23.wav",
+      "prompt": "A single heavy hammer blow on a metal ship hull, short clang",
+      "seed": 23,
+      "score": 0.89,
+      "speed": 1.0,
+      "length": 0.7,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "debris",
+      "rank": 0,
+      "file": "el/debris/p1-s23.wav",
+      "prompt": "Metal scraps scattering and clattering on a metal deck",
+      "seed": 23,
+      "score": 0.398,
+      "speed": 1.0,
+      "length": 0.5,
+      "hp": 800,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "hull-hit-small-2.ogg",
+    "seconds": 0.603,
+    "samples": 28947,
+    "samples_master": 29075,
+    "peak_dbfs": -4.43,
+    "level_db": -12.2,
+    "layers": [
+     {
+      "element": "metal_clang",
+      "rank": 1,
+      "file": "el/metal_clang/p0-s23.wav",
+      "prompt": "One hard metal impact on a thick steel hull, a single ringing clang",
+      "seed": 23,
+      "score": 0.867,
+      "speed": 1.0,
+      "length": 0.7,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "debris",
+      "rank": 1,
+      "file": "el/debris/p0-s41.wav",
+      "prompt": "Small metal parts and bolts falling and rattling on a steel floor",
+      "seed": 41,
+      "score": 0.382,
+      "speed": 1.0,
+      "length": 0.5,
+      "hp": 800,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "hull-hit-small-3.ogg",
+    "seconds": 0.666,
+    "samples": 31977,
+    "samples_master": 32105,
+    "peak_dbfs": -3.41,
+    "level_db": -12.1,
+    "layers": [
+     {
+      "element": "metal_clang",
+      "rank": 2,
+      "file": "el/metal_clang/p1-s89.wav",
+      "prompt": "A single heavy hammer blow on a metal ship hull, short clang",
+      "seed": 89,
+      "score": 0.847,
+      "speed": 1.0,
+      "length": 0.7,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "debris",
+      "rank": 2,
+      "file": "el/debris/p0-s97.wav",
+      "prompt": "Small metal parts and bolts falling and rattling on a steel floor",
+      "seed": 97,
+      "score": 0.381,
+      "speed": 1.0,
+      "length": 0.5,
+      "hp": 800,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "hull-hit-big": {
+  "target_db": -9,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 3,
+  "loop": false,
+  "variants": [
+   {
+    "file": "hull-hit-big-1.ogg",
+    "seconds": 1.237,
+    "samples": 59360,
+    "samples_master": 59360,
+    "peak_dbfs": -2.98,
+    "level_db": -9.5,
+    "layers": [
+     {
+      "element": "metal_heavy",
+      "rank": 0,
+      "file": "el/metal_heavy/p0-s23.wav",
+      "prompt": "A massive single impact crashing into a metal hull, deep crunch and rattle",
+      "seed": 23,
+      "score": 1.172,
+      "speed": 1.0,
+      "length": 1.3,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "explosion",
+      "rank": 0,
+      "file": "el/explosion/p0-s37.wav",
+      "prompt": "A single explosion inside a metal room, a punchy blast with rattling debris",
+      "seed": 37,
+      "score": 1.021,
+      "speed": 1.0,
+      "length": 1.0,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "debris",
+      "rank": 1,
+      "file": "el/debris/p0-s41.wav",
+      "prompt": "Small metal parts and bolts falling and rattling on a steel floor",
+      "seed": 41,
+      "score": 0.382,
+      "speed": 1.0,
+      "length": 1.2,
+      "hp": 500,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "hull-hit-big-2.ogg",
+    "seconds": 1.27,
+    "samples": 60956,
+    "samples_master": 60956,
+    "peak_dbfs": -2.99,
+    "level_db": -9.3,
+    "layers": [
+     {
+      "element": "metal_heavy",
+      "rank": 1,
+      "file": "el/metal_heavy/p0-s37.wav",
+      "prompt": "A massive single impact crashing into a metal hull, deep crunch and rattle",
+      "seed": 37,
+      "score": 1.095,
+      "speed": 1.0,
+      "length": 1.3,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "explosion",
+      "rank": 1,
+      "file": "el/explosion/p0-s23.wav",
+      "prompt": "A single explosion inside a metal room, a punchy blast with rattling debris",
+      "seed": 23,
+      "score": 0.975,
+      "speed": 1.0,
+      "length": 1.0,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "debris",
+      "rank": 2,
+      "file": "el/debris/p0-s97.wav",
+      "prompt": "Small metal parts and bolts falling and rattling on a steel floor",
+      "seed": 97,
+      "score": 0.381,
+      "speed": 1.0,
+      "length": 1.2,
+      "hp": 500,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "miss": {
+  "target_db": -18,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "miss-1.ogg",
+    "seconds": 0.564,
+    "samples": 27079,
+    "samples_master": 27207,
+    "peak_dbfs": -11.97,
+    "level_db": -18.4,
+    "layers": [
+     {
+      "element": "whoosh",
+      "rank": 0,
+      "file": "el/whoosh/p0-s89.wav",
+      "prompt": "One fast whoosh of air passing by, a quick swish",
+      "seed": 89,
+      "score": 1.11,
+      "speed": 1.0,
+      "length": 0.7,
+      "hp": 600,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "miss-2.ogg",
+    "seconds": 0.534,
+    "samples": 25650,
+    "samples_master": 25778,
+    "peak_dbfs": -10.47,
+    "level_db": -18.3,
+    "layers": [
+     {
+      "element": "whoosh",
+      "rank": 1,
+      "file": "el/whoosh/p0-s59.wav",
+      "prompt": "One fast whoosh of air passing by, a quick swish",
+      "seed": 59,
+      "score": 1.079,
+      "speed": 1.0,
+      "length": 0.7,
+      "hp": 600,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "explosion-room": {
+  "target_db": -9,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 3,
+  "loop": false,
+  "variants": [
+   {
+    "file": "explosion-room-1.ogg",
+    "seconds": 1.296,
+    "samples": 62200,
+    "samples_master": 62200,
+    "peak_dbfs": -3.39,
+    "level_db": -9.2,
+    "layers": [
+     {
+      "element": "explosion",
+      "rank": 0,
+      "file": "el/explosion/p0-s37.wav",
+      "prompt": "A single explosion inside a metal room, a punchy blast with rattling debris",
+      "seed": 37,
+      "score": 1.021,
+      "speed": 1.0,
+      "length": 1.8,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "debris",
+      "rank": 0,
+      "file": "el/debris/p1-s23.wav",
+      "prompt": "Metal scraps scattering and clattering on a metal deck",
+      "seed": 23,
+      "score": 0.398,
+      "speed": 1.0,
+      "length": 1.5,
+      "hp": 400,
+      "lp": null
+     },
+     {
+      "element": "metal_clang",
+      "rank": 3,
+      "file": "el/metal_clang/p1-s41.wav",
+      "prompt": "A single heavy hammer blow on a metal ship hull, short clang",
+      "seed": 41,
+      "score": 0.834,
+      "speed": 1.0,
+      "length": 0.5,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "explosion-room-2.ogg",
+    "seconds": 1.645,
+    "samples": 78946,
+    "samples_master": 78946,
+    "peak_dbfs": -2.84,
+    "level_db": -9.3,
+    "layers": [
+     {
+      "element": "explosion",
+      "rank": 1,
+      "file": "el/explosion/p0-s23.wav",
+      "prompt": "A single explosion inside a metal room, a punchy blast with rattling debris",
+      "seed": 23,
+      "score": 0.975,
+      "speed": 1.0,
+      "length": 1.8,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "debris",
+      "rank": 1,
+      "file": "el/debris/p0-s41.wav",
+      "prompt": "Small metal parts and bolts falling and rattling on a steel floor",
+      "seed": 41,
+      "score": 0.382,
+      "speed": 1.0,
+      "length": 1.5,
+      "hp": 400,
+      "lp": null
+     },
+     {
+      "element": "metal_clang",
+      "rank": 4,
+      "file": "el/metal_clang/p1-s59.wav",
+      "prompt": "A single heavy hammer blow on a metal ship hull, short clang",
+      "seed": 59,
+      "score": 0.828,
+      "speed": 1.0,
+      "length": 0.5,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "explosion-room-3.ogg",
+    "seconds": 1.618,
+    "samples": 77685,
+    "samples_master": 77685,
+    "peak_dbfs": -3.19,
+    "level_db": -9.2,
+    "layers": [
+     {
+      "element": "explosion",
+      "rank": 2,
+      "file": "el/explosion/p0-s41.wav",
+      "prompt": "A single explosion inside a metal room, a punchy blast with rattling debris",
+      "seed": 41,
+      "score": 0.91,
+      "speed": 1.0,
+      "length": 1.8,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "debris",
+      "rank": 2,
+      "file": "el/debris/p0-s97.wav",
+      "prompt": "Small metal parts and bolts falling and rattling on a steel floor",
+      "seed": 97,
+      "score": 0.381,
+      "speed": 1.0,
+      "length": 1.5,
+      "hp": 400,
+      "lp": null
+     },
+     {
+      "element": "metal_clang",
+      "rank": 5,
+      "file": "el/metal_clang/p0-s89.wav",
+      "prompt": "One hard metal impact on a thick steel hull, a single ringing clang",
+      "seed": 89,
+      "score": 0.772,
+      "speed": 1.0,
+      "length": 0.5,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "ship-destroyed": {
+  "target_db": -8,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 3,
+  "loop": false,
+  "variants": [
+   {
+    "file": "ship-destroyed.ogg",
+    "seconds": 4.084,
+    "samples": 196029,
+    "samples_master": 196029,
+    "peak_dbfs": -3.04,
+    "level_db": -8.6,
+    "layers": [
+     {
+      "element": "explosion_big",
+      "rank": 0,
+      "file": "el/explosion_big/p1-s97.wav",
+      "prompt": "A huge single blast, deep booming explosion with a long rumbling tail",
+      "seed": 97,
+      "score": 1.059,
+      "speed": 1.0,
+      "length": 3.2,
+      "hp": null,
+      "lp": 5000
+     },
+     {
+      "element": "explosion",
+      "rank": 1,
+      "file": "el/explosion/p0-s23.wav",
+      "prompt": "A single explosion inside a metal room, a punchy blast with rattling debris",
+      "seed": 23,
+      "score": 0.975,
+      "speed": 1.0,
+      "length": 1.5,
+      "hp": null,
+      "lp": 3500
+     },
+     {
+      "element": "powerdown",
+      "rank": 0,
+      "file": "el/powerdown/p0-s41.wav",
+      "prompt": "A large electrical machine powering down, a slow falling whine fading to silence",
+      "seed": 41,
+      "score": 0.819,
+      "speed": 1.0,
+      "length": 2.4,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "relay_clack",
+      "rank": 0,
+      "file": "el/relay_clack/p1-s37.wav",
+      "prompt": "A single crisp click of an old switchboard relay contact",
+      "seed": 37,
+      "score": 0.416,
+      "speed": 1.0,
+      "length": 0.1,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "fire-loop": {
+  "target_db": -24,
+  "measure": "mean loudness (loop)",
+  "drive_db": 0,
+  "loop": true,
+  "variants": [
+   {
+    "file": "fire-loop.ogg",
+    "seconds": 7.2,
+    "samples": 345600,
+    "samples_master": 345600,
+    "peak_dbfs": -11.28,
+    "level_db": -24.0,
+    "layers": [
+     {
+      "element": "fire",
+      "rank": 0,
+      "file": "el/fire/p1-s89.wav",
+      "prompt": "Steady burning fire with crackles and a low roar, close",
+      "seed": 89,
+      "score": 0.933,
+      "bed_seconds": 8.0
+     }
+    ]
+   }
+  ]
+ },
+ "breach": {
+  "target_db": -12,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 2,
+  "loop": false,
+  "variants": [
+   {
+    "file": "breach-1.ogg",
+    "seconds": 1.846,
+    "samples": 88618,
+    "samples_master": 88618,
+    "peak_dbfs": -4.96,
+    "level_db": -12.2,
+    "layers": [
+     {
+      "element": "metal_tear",
+      "rank": 0,
+      "file": "el/metal_tear/p0-s59.wav",
+      "prompt": "A metal hull plate tearing open, a short screeching rip of steel",
+      "seed": 59,
+      "score": 0.732,
+      "speed": 1.0,
+      "length": 0.8,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "air_rush",
+      "rank": 0,
+      "file": "el/air_rush/p1-s37.wav",
+      "prompt": "Loud continuous venting of pressurized air, a powerful hiss",
+      "seed": 37,
+      "score": 0.925,
+      "speed": 1.0,
+      "length": 1.8,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "breach-2.ogg",
+    "seconds": 1.846,
+    "samples": 88620,
+    "samples_master": 88620,
+    "peak_dbfs": -5.28,
+    "level_db": -12.2,
+    "layers": [
+     {
+      "element": "metal_tear",
+      "rank": 1,
+      "file": "el/metal_tear/p0-s89.wav",
+      "prompt": "A metal hull plate tearing open, a short screeching rip of steel",
+      "seed": 89,
+      "score": 0.575,
+      "speed": 1.0,
+      "length": 0.8,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "air_rush",
+      "rank": 1,
+      "file": "el/air_rush/p1-s59.wav",
+      "prompt": "Loud continuous venting of pressurized air, a powerful hiss",
+      "seed": 59,
+      "score": 0.865,
+      "speed": 1.0,
+      "length": 1.8,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "air-alarm": {
+  "target_db": -22,
+  "measure": "mean loudness (loop)",
+  "drive_db": 0,
+  "loop": true,
+  "variants": [
+   {
+    "file": "air-alarm.ogg",
+    "seconds": 1.2,
+    "samples": 57600,
+    "samples_master": 57600,
+    "peak_dbfs": -13.61,
+    "level_db": -21.9,
+    "layers": []
+   }
+  ]
+ },
+ "hull-alarm": {
+  "target_db": -16,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1,
+  "loop": false,
+  "variants": [
+   {
+    "file": "hull-alarm.ogg",
+    "seconds": 1.003,
+    "samples": 48146,
+    "samples_master": 48274,
+    "peak_dbfs": -10.67,
+    "level_db": -15.9,
+    "layers": []
+   }
+  ]
+ },
+ "door-open": {
+  "target_db": -21,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "door-open-1.ogg",
+    "seconds": 0.907,
+    "samples": 43548,
+    "samples_master": 43676,
+    "peak_dbfs": -9.44,
+    "level_db": -21.3,
+    "layers": [
+     {
+      "element": "door_slide",
+      "rank": 0,
+      "file": "el/door_slide/p0-s41.wav",
+      "prompt": "A sci-fi door slides open with a quick pneumatic hiss",
+      "seed": 41,
+      "score": 0.788,
+      "speed": 1.0,
+      "length": 0.9,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "air_brake",
+      "rank": 0,
+      "file": "el/air_brake/p1-s97.wav",
+      "prompt": "Pneumatic valve releases a quick burst of air",
+      "seed": 97,
+      "score": 0.811,
+      "speed": 1.0,
+      "length": 0.4,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "door-open-2.ogg",
+    "seconds": 0.908,
+    "samples": 43586,
+    "samples_master": 43714,
+    "peak_dbfs": -11.53,
+    "level_db": -21.5,
+    "layers": [
+     {
+      "element": "door_slide",
+      "rank": 1,
+      "file": "el/door_slide/p0-s89.wav",
+      "prompt": "A sci-fi door slides open with a quick pneumatic hiss",
+      "seed": 89,
+      "score": 0.58,
+      "speed": 1.0,
+      "length": 0.9,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "air_brake",
+      "rank": 1,
+      "file": "el/air_brake/p1-s59.wav",
+      "prompt": "Pneumatic valve releases a quick burst of air",
+      "seed": 59,
+      "score": 0.808,
+      "speed": 1.0,
+      "length": 0.4,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "door-close": {
+  "target_db": -20,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "door-close-1.ogg",
+    "seconds": 0.708,
+    "samples": 33988,
+    "samples_master": 34116,
+    "peak_dbfs": -7.68,
+    "level_db": -20.2,
+    "layers": [
+     {
+      "element": "door_thud",
+      "rank": 0,
+      "file": "el/door_thud/p0-s59.wav",
+      "prompt": "A heavy metal door slides shut with a solid thud",
+      "seed": 59,
+      "score": 0.611,
+      "speed": 1.0,
+      "length": 0.8,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "door-close-2.ogg",
+    "seconds": 0.728,
+    "samples": 34945,
+    "samples_master": 35073,
+    "peak_dbfs": -10.61,
+    "level_db": -20.1,
+    "layers": [
+     {
+      "element": "door_thud",
+      "rank": 1,
+      "file": "el/door_thud/p0-s97.wav",
+      "prompt": "A heavy metal door slides shut with a solid thud",
+      "seed": 97,
+      "score": 0.607,
+      "speed": 1.0,
+      "length": 0.8,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "repair-loop": {
+  "target_db": -26,
+  "measure": "mean loudness (loop)",
+  "drive_db": 0,
+  "loop": true,
+  "variants": [
+   {
+    "file": "repair-loop.ogg",
+    "seconds": 4.0,
+    "samples": 192000,
+    "samples_master": 192000,
+    "peak_dbfs": -8.25,
+    "level_db": -26.4,
+    "layers": [
+     {
+      "element": "ratchet",
+      "rank": 0,
+      "file": "el/ratchet/p0-s41.wav",
+      "prompt": "A ratchet wrench tightening bolts and light metal tapping, repair work",
+      "seed": 41,
+      "score": 0.158,
+      "bed_seconds": 4.5
+     },
+     {
+      "element": "sparks",
+      "rank": 0,
+      "file": "el/sparks/p0-s73.wav",
+      "prompt": "Welding torch sparks crackling, steady electric welding",
+      "seed": 73,
+      "score": 0.995,
+      "bed_seconds": 4.5
+     }
+    ]
+   }
+  ]
+ },
+ "repair-done": {
+  "target_db": -19,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "repair-done.ogg",
+    "seconds": 1.596,
+    "samples": 76604,
+    "samples_master": 76604,
+    "peak_dbfs": -12.11,
+    "level_db": -19.0,
+    "layers": [
+     {
+      "element": "relay_clack",
+      "rank": 1,
+      "file": "el/relay_clack/p1-s73.wav",
+      "prompt": "A single crisp click of an old switchboard relay contact",
+      "seed": 73,
+      "score": 0.409,
+      "speed": 1.0,
+      "length": 0.1,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "crew-select": {
+  "target_db": -25,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "crew-select.ogg",
+    "seconds": 0.112,
+    "samples": 5392,
+    "samples_master": 5520,
+    "peak_dbfs": -20.61,
+    "level_db": -25.1,
+    "layers": []
+   }
+  ]
+ },
+ "crew-move": {
+  "target_db": -26,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "crew-move.ogg",
+    "seconds": 0.067,
+    "samples": 3232,
+    "samples_master": 3360,
+    "peak_dbfs": -18.99,
+    "level_db": -26.0,
+    "layers": []
+   }
+  ]
+ },
+ "crew-fight": {
+  "target_db": -18,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1.5,
+  "loop": false,
+  "variants": [
+   {
+    "file": "crew-fight-1.ogg",
+    "seconds": 0.763,
+    "samples": 36625,
+    "samples_master": 36753,
+    "peak_dbfs": -10.89,
+    "level_db": -18.3,
+    "layers": [
+     {
+      "element": "scuffle",
+      "rank": 0,
+      "file": "el/scuffle/p1-s97.wav",
+      "prompt": "Quick metal punches on armor plates, clanking struggle",
+      "seed": 97,
+      "score": 0.611,
+      "speed": 1.0,
+      "length": 0.9,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "crew-fight-2.ogg",
+    "seconds": 0.787,
+    "samples": 37778,
+    "samples_master": 37906,
+    "peak_dbfs": -10.76,
+    "level_db": -18.4,
+    "layers": [
+     {
+      "element": "scuffle",
+      "rank": 1,
+      "file": "el/scuffle/p1-s41.wav",
+      "prompt": "Quick metal punches on armor plates, clanking struggle",
+      "seed": 41,
+      "score": 0.59,
+      "speed": 1.0,
+      "length": 0.9,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "crew-fight-3.ogg",
+    "seconds": 0.888,
+    "samples": 42631,
+    "samples_master": 42759,
+    "peak_dbfs": -11.39,
+    "level_db": -18.3,
+    "layers": [
+     {
+      "element": "scuffle",
+      "rank": 2,
+      "file": "el/scuffle/p1-s23.wav",
+      "prompt": "Quick metal punches on armor plates, clanking struggle",
+      "seed": 23,
+      "score": 0.563,
+      "speed": 1.0,
+      "length": 0.9,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "crew-stopped": {
+  "target_db": -19,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "crew-stopped.ogg",
+    "seconds": 0.898,
+    "samples": 43105,
+    "samples_master": 43233,
+    "peak_dbfs": -11.76,
+    "level_db": -18.9,
+    "layers": [
+     {
+      "element": "relay_clack",
+      "rank": 2,
+      "file": "el/relay_clack/p0-s59.wav",
+      "prompt": "One small brass electromechanical relay clacks shut, a single dry metallic click",
+      "seed": 59,
+      "score": 0.326,
+      "speed": 1.0,
+      "length": 0.1,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "boarders": {
+  "target_db": -15,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1.5,
+  "loop": false,
+  "variants": [
+   {
+    "file": "boarders.ogg",
+    "seconds": 1.65,
+    "samples": 79202,
+    "samples_master": 79202,
+    "peak_dbfs": -4.14,
+    "level_db": -15.1,
+    "layers": [
+     {
+      "element": "clamp",
+      "rank": 0,
+      "file": "el/clamp/p1-s73.wav",
+      "prompt": "A docking clamp locks onto steel, heavy metallic latch",
+      "seed": 73,
+      "score": 0.396,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "power-up": {
+  "target_db": -24,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "power-up.ogg",
+    "seconds": 0.082,
+    "samples": 3952,
+    "samples_master": 4080,
+    "peak_dbfs": -16.69,
+    "level_db": -24.1,
+    "layers": [
+     {
+      "element": "relay_clack",
+      "rank": 0,
+      "file": "el/relay_clack/p1-s37.wav",
+      "prompt": "A single crisp click of an old switchboard relay contact",
+      "seed": 37,
+      "score": 0.416,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "power-down": {
+  "target_db": -25,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "power-down.ogg",
+    "seconds": 0.082,
+    "samples": 3952,
+    "samples_master": 4080,
+    "peak_dbfs": -17.96,
+    "level_db": -25.0,
+    "layers": [
+     {
+      "element": "relay_clack",
+      "rank": 1,
+      "file": "el/relay_clack/p1-s73.wav",
+      "prompt": "A single crisp click of an old switchboard relay contact",
+      "seed": 73,
+      "score": 0.409,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "power-denied": {
+  "target_db": -23,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "power-denied.ogg",
+    "seconds": 0.277,
+    "samples": 13312,
+    "samples_master": 13440,
+    "peak_dbfs": -16.57,
+    "level_db": -22.9,
+    "layers": []
+   }
+  ]
+ },
+ "weapon-charged": {
+  "target_db": -22,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "weapon-charged.ogg",
+    "seconds": 0.969,
+    "samples": 46528,
+    "samples_master": 45559,
+    "peak_dbfs": -18.07,
+    "level_db": -22.0,
+    "layers": []
+   }
+  ]
+ },
+ "weapon-select": {
+  "target_db": -24,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "weapon-select.ogg",
+    "seconds": 0.117,
+    "samples": 5632,
+    "samples_master": 5760,
+    "peak_dbfs": -14.1,
+    "level_db": -24.1,
+    "layers": [
+     {
+      "element": "switch",
+      "rank": 0,
+      "file": "el/switch/p0-s97.wav",
+      "prompt": "A heavy electrical breaker lever thrown, one solid mechanical clunk",
+      "seed": 97,
+      "score": 0.467,
+      "speed": 1.0,
+      "length": 0.12,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "hop-charge": {
+  "target_db": -24,
+  "measure": "mean loudness (loop)",
+  "drive_db": 0,
+  "loop": true,
+  "variants": [
+   {
+    "file": "hop-charge.ogg",
+    "seconds": 2.0,
+    "samples": 96000,
+    "samples_master": 96000,
+    "peak_dbfs": -11.86,
+    "level_db": -24.0,
+    "layers": [
+     {
+      "element": "motor_spool",
+      "rank": 0,
+      "file": "el/motor_spool/p0-s23.wav",
+      "prompt": "An electric tram motor spinning up, a rising electric whine and hum",
+      "seed": 23,
+      "score": 0.763,
+      "bed_seconds": 3.0
+     }
+    ]
+   }
+  ]
+ },
+ "hop-ready": {
+  "target_db": -19,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "hop-ready.ogg",
+    "seconds": 2.598,
+    "samples": 124686,
+    "samples_master": 124686,
+    "peak_dbfs": -11.02,
+    "level_db": -19.0,
+    "layers": []
+   }
+  ]
+ },
+ "hop": {
+  "target_db": -12,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 2,
+  "loop": false,
+  "variants": [
+   {
+    "file": "hop.ogg",
+    "seconds": 3.54,
+    "samples": 169942,
+    "samples_master": 169942,
+    "peak_dbfs": -3.83,
+    "level_db": -12.2,
+    "layers": [
+     {
+      "element": "wheel_hiss",
+      "rank": 0,
+      "file": "el/wheel_hiss/p1-s23.wav",
+      "prompt": "A cable car trolley racing along a wire rope, rushing whir and hum",
+      "seed": 23,
+      "score": 0.508,
+      "bed_seconds": 4.5
+     },
+     {
+      "element": "switchgear",
+      "rank": 0,
+      "file": "el/switchgear/p1-s97.wav",
+      "prompt": "Huge industrial switchgear contactor slams closed, a deep metallic clunk",
+      "seed": 97,
+      "score": 0.774,
+      "speed": 1.0,
+      "length": 0.8,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "relay_clack",
+      "rank": 0,
+      "file": "el/relay_clack/p1-s37.wav",
+      "prompt": "A single crisp click of an old switchboard relay contact",
+      "seed": 37,
+      "score": 0.416,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "cable_twang",
+      "rank": 1,
+      "file": "el/cable_twang/p1-s37.wav",
+      "prompt": "A thick tensioned wire snaps against a metal frame, one twangy metallic ring",
+      "seed": 37,
+      "score": 0.846,
+      "speed": 0.8,
+      "length": 1.2,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "arrive": {
+  "target_db": -18,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "arrive.ogg",
+    "seconds": 3.173,
+    "samples": 152308,
+    "samples_master": 152308,
+    "peak_dbfs": -11.86,
+    "level_db": -18.4,
+    "layers": [
+     {
+      "element": "wheel_hiss",
+      "rank": 1,
+      "file": "el/wheel_hiss/p1-s97.wav",
+      "prompt": "A cable car trolley racing along a wire rope, rushing whir and hum",
+      "seed": 97,
+      "score": 0.454,
+      "bed_seconds": 4.5
+     },
+     {
+      "element": "cable_brake",
+      "rank": 0,
+      "file": "el/cable_brake/p1-s59.wav",
+      "prompt": "Metal brake shoes squeal on a moving steel wire rope, then stop with a clunk",
+      "seed": 59,
+      "score": 0.248,
+      "speed": 1.0,
+      "length": 1.2,
+      "hp": null,
+      "lp": 6000
+     },
+     {
+      "element": "air_brake",
+      "rank": 0,
+      "file": "el/air_brake/p1-s97.wav",
+      "prompt": "Pneumatic valve releases a quick burst of air",
+      "seed": 97,
+      "score": 0.811,
+      "speed": 1.0,
+      "length": 0.7,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "switchgear",
+      "rank": 1,
+      "file": "el/switchgear/p1-s23.wav",
+      "prompt": "Huge industrial switchgear contactor slams closed, a deep metallic clunk",
+      "seed": 23,
+      "score": 0.669,
+      "speed": 1.0,
+      "length": 0.5,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "relay_clack",
+      "rank": 0,
+      "file": "el/relay_clack/p1-s37.wav",
+      "prompt": "A single crisp click of an old switchboard relay contact",
+      "seed": 37,
+      "score": 0.416,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "ui-click": {
+  "target_db": -27,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "ui-click.ogg",
+    "seconds": 0.015,
+    "samples": 735,
+    "samples_master": 863,
+    "peak_dbfs": -15.83,
+    "level_db": -27.1,
+    "layers": []
+   }
+  ]
+ },
+ "ui-hover": {
+  "target_db": -33,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "ui-hover.ogg",
+    "seconds": 0.023,
+    "samples": 1088,
+    "samples_master": 576,
+    "peak_dbfs": -22.19,
+    "level_db": -32.9,
+    "layers": []
+   }
+  ]
+ },
+ "ui-back": {
+  "target_db": -27,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "ui-back.ogg",
+    "seconds": 0.129,
+    "samples": 6208,
+    "samples_master": 5280,
+    "peak_dbfs": -21.17,
+    "level_db": -27.2,
+    "layers": []
+   }
+  ]
+ },
+ "ui-open": {
+  "target_db": -26,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "ui-open.ogg",
+    "seconds": 0.157,
+    "samples": 7552,
+    "samples_master": 7680,
+    "peak_dbfs": -22.61,
+    "level_db": -26.0,
+    "layers": []
+   }
+  ]
+ },
+ "buy": {
+  "target_db": -20,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "buy.ogg",
+    "seconds": 1.16,
+    "samples": 55660,
+    "samples_master": 55660,
+    "peak_dbfs": -13.78,
+    "level_db": -20.1,
+    "layers": [
+     {
+      "element": "coins",
+      "rank": 0,
+      "file": "el/coins/p0-s89.wav",
+      "prompt": "A few brass tokens dropped into a metal tray, bright clinks",
+      "seed": 89,
+      "score": 0.578,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "sell": {
+  "target_db": -21,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "sell.ogg",
+    "seconds": 1.1,
+    "samples": 52794,
+    "samples_master": 52794,
+    "peak_dbfs": -14.66,
+    "level_db": -21.0,
+    "layers": [
+     {
+      "element": "coins",
+      "rank": 1,
+      "file": "el/coins/p1-s59.wav",
+      "prompt": "Small brass coins clinking together, a short jingle",
+      "seed": 59,
+      "score": 0.528,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "salvage-pickup": {
+  "target_db": -20,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "salvage-pickup-1.ogg",
+    "seconds": 0.591,
+    "samples": 28355,
+    "samples_master": 28483,
+    "peak_dbfs": -10.71,
+    "level_db": -20.4,
+    "layers": [
+     {
+      "element": "scrap",
+      "rank": 0,
+      "file": "el/scrap/p1-s11.wav",
+      "prompt": "Metal parts tossed into a metal bin, brief rattle",
+      "seed": 11,
+      "score": 0.654,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "salvage-pickup-2.ogg",
+    "seconds": 0.615,
+    "samples": 29504,
+    "samples_master": 28600,
+    "peak_dbfs": -11.08,
+    "level_db": -20.4,
+    "layers": [
+     {
+      "element": "scrap",
+      "rank": 1,
+      "file": "el/scrap/p1-s89.wav",
+      "prompt": "Metal parts tossed into a metal bin, brief rattle",
+      "seed": 89,
+      "score": 0.636,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "event-open": {
+  "target_db": -23,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "event-open.ogg",
+    "seconds": 1.541,
+    "samples": 73965,
+    "samples_master": 73965,
+    "peak_dbfs": -17.52,
+    "level_db": -23.0,
+    "layers": [
+     {
+      "element": "squelch",
+      "rank": 0,
+      "file": "el/squelch/p0-s89.wav",
+      "prompt": "A short radio squelch burst as a receiver opens, then silence",
+      "seed": 89,
+      "score": 0.704,
+      "speed": 1.0,
+      "length": 0.5,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "map-open": {
+  "target_db": -24,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "map-open.ogg",
+    "seconds": 0.527,
+    "samples": 25274,
+    "samples_master": 25402,
+    "peak_dbfs": -16.23,
+    "level_db": -24.1,
+    "layers": [
+     {
+      "element": "whoosh",
+      "rank": 1,
+      "file": "el/whoosh/p0-s59.wav",
+      "prompt": "One fast whoosh of air passing by, a quick swish",
+      "seed": 59,
+      "score": 1.079,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": 4000
+     },
+     {
+      "element": "relay_clack",
+      "rank": 1,
+      "file": "el/relay_clack/p1-s73.wav",
+      "prompt": "A single crisp click of an old switchboard relay contact",
+      "seed": 73,
+      "score": 0.409,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "seal-advance": {
+  "target_db": -16,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1,
+  "loop": false,
+  "variants": [
+   {
+    "file": "seal-advance.ogg",
+    "seconds": 2.626,
+    "samples": 126048,
+    "samples_master": 126048,
+    "peak_dbfs": -4.56,
+    "level_db": -16.1,
+    "layers": [
+     {
+      "element": "slam_far",
+      "rank": 0,
+      "file": "el/slam_far/p1-s37.wav",
+      "prompt": "Far away a heavy steel door closes with a huge reverberant clang",
+      "seed": 37,
+      "score": 0.895,
+      "speed": 1.0,
+      "length": 3.0,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "lamp-on": {
+  "target_db": -22,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "lamp-on.ogg",
+    "seconds": 1.146,
+    "samples": 55011,
+    "samples_master": 55011,
+    "peak_dbfs": -10.48,
+    "level_db": -22.3,
+    "layers": [
+     {
+      "element": "lamp_buzz",
+      "rank": 0,
+      "file": "el/lamp_buzz/p1-s37.wav",
+      "prompt": "Tiny relay click followed by a faint warm electric hum of a lamp filament",
+      "seed": 37,
+      "score": 0.451,
+      "speed": 1.0,
+      "length": 1.2,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "glass-bell": {
+  "target_db": -18,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "glass-bell-1.ogg",
+    "seconds": 4.839,
+    "samples": 232280,
+    "samples_master": 232280,
+    "peak_dbfs": -8.63,
+    "level_db": -18.1,
+    "layers": [
+     {
+      "element": "glass_bell",
+      "rank": 0,
+      "file": "el/glass_bell/p1-s89.wav",
+      "prompt": "One crystal bell tone ringing out, pure and slow decay",
+      "seed": 89,
+      "score": 0.804,
+      "speed": 1.0,
+      "length": 5.0,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "glass-bell-2.ogg",
+    "seconds": 4.922,
+    "samples": 236242,
+    "samples_master": 236242,
+    "peak_dbfs": -7.55,
+    "level_db": -18.1,
+    "layers": [
+     {
+      "element": "glass_bell",
+      "rank": 1,
+      "file": "el/glass_bell/p0-s59.wav",
+      "prompt": "A single glass bell struck once, a clear ringing tone with a long shimmer",
+      "seed": 59,
+      "score": 0.788,
+      "speed": 1.0,
+      "length": 5.0,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "radio-squelch": {
+  "target_db": -21,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "radio-squelch-1.ogg",
+    "seconds": 0.997,
+    "samples": 47872,
+    "samples_master": 48000,
+    "peak_dbfs": -7.29,
+    "level_db": -21.4,
+    "layers": [
+     {
+      "element": "squelch",
+      "rank": 0,
+      "file": "el/squelch/p0-s89.wav",
+      "prompt": "A short radio squelch burst as a receiver opens, then silence",
+      "seed": 89,
+      "score": 0.704,
+      "speed": 1.0,
+      "length": 1.0,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "radio-squelch-2.ogg",
+    "seconds": 0.995,
+    "samples": 47775,
+    "samples_master": 47903,
+    "peak_dbfs": -8.19,
+    "level_db": -21.2,
+    "layers": [
+     {
+      "element": "squelch",
+      "rank": 1,
+      "file": "el/squelch/p0-s41.wav",
+      "prompt": "A short radio squelch burst as a receiver opens, then silence",
+      "seed": 41,
+      "score": 0.672,
+      "speed": 1.0,
+      "length": 1.0,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "page-lamp": {
+  "target_db": -19,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "page-lamp.ogg",
+    "seconds": 3.471,
+    "samples": 166608,
+    "samples_master": 166608,
+    "peak_dbfs": -14.81,
+    "level_db": -18.9,
+    "layers": [
+     {
+      "element": "relay_clack",
+      "rank": 0,
+      "file": "el/relay_clack/p1-s37.wav",
+      "prompt": "A single crisp click of an old switchboard relay contact",
+      "seed": 37,
+      "score": 0.416,
+      "speed": 1.0,
+      "length": 0.1,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "lamp_buzz",
+      "rank": 0,
+      "file": "el/lamp_buzz/p1-s37.wav",
+      "prompt": "Tiny relay click followed by a faint warm electric hum of a lamp filament",
+      "seed": 37,
+      "score": 0.451,
+      "speed": 1.0,
+      "length": 1.2,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "victory-sting": {
+  "target_db": -16,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "victory-sting.ogg",
+    "seconds": 3.462,
+    "samples": 166159,
+    "samples_master": 166159,
+    "peak_dbfs": -8.18,
+    "level_db": -16.0,
+    "layers": []
+   }
+  ]
+ },
+ "defeat-sting": {
+  "target_db": -17,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "defeat-sting.ogg",
+    "seconds": 4.057,
+    "samples": 194723,
+    "samples_master": 194723,
+    "peak_dbfs": -8.74,
+    "level_db": -17.0,
+    "layers": []
+   }
+  ]
+ },
+ "drone-launch": {
+  "target_db": -16,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1,
+  "loop": false,
+  "variants": [
+   {
+    "file": "drone-launch.ogg",
+    "seconds": 0.657,
+    "samples": 31544,
+    "samples_master": 31672,
+    "peak_dbfs": -9.35,
+    "level_db": -16.1,
+    "layers": [
+     {
+      "element": "pneu_launch",
+      "rank": 1,
+      "file": "el/pneu_launch/p1-s23.wav",
+      "prompt": "One missile launch from a metal tube, a deep thud and a rushing whoosh",
+      "seed": 23,
+      "score": 0.528,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": 300,
+      "lp": null
+     },
+     {
+      "element": "servo",
+      "rank": 0,
+      "file": "el/servo/p1-s11.wav",
+      "prompt": "A tiny robot joint moves, short electric whir",
+      "seed": 11,
+      "score": 0.572,
+      "speed": 1.0,
+      "length": 0.5,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "veil-on": {
+  "target_db": -19,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "veil-on.ogg",
+    "seconds": 1.426,
+    "samples": 68459,
+    "samples_master": 68459,
+    "peak_dbfs": -6.75,
+    "level_db": -19.1,
+    "layers": []
+   }
+  ]
+ },
+ "veil-off": {
+  "target_db": -19,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "veil-off.ogg",
+    "seconds": 1.602,
+    "samples": 76887,
+    "samples_master": 76887,
+    "peak_dbfs": -6.0,
+    "level_db": -19.1,
+    "layers": []
+   }
+  ]
+ },
+ "ion-hit": {
+  "target_db": -14,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1.5,
+  "loop": false,
+  "variants": [
+   {
+    "file": "ion-hit-1.ogg",
+    "seconds": 0.706,
+    "samples": 33872,
+    "samples_master": 34000,
+    "peak_dbfs": -7.12,
+    "level_db": -14.2,
+    "layers": [
+     {
+      "element": "elec_crack",
+      "rank": 2,
+      "file": "el/elec_crack/p1-s97.wav",
+      "prompt": "One crisp electric spark snap, short and bright",
+      "seed": 97,
+      "score": 0.499,
+      "speed": 1.0,
+      "length": 0.25,
+      "hp": 1200,
+      "lp": null
+     },
+     {
+      "element": "arc_buzz",
+      "rank": 0,
+      "file": "el/arc_buzz/p1-s89.wav",
+      "prompt": "Continuous humming electric plasma beam with a fizzing crackle",
+      "seed": 89,
+      "score": 0.57,
+      "speed": 1.0,
+      "length": 0.4,
+      "hp": 1000,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "ion-hit-2.ogg",
+    "seconds": 0.695,
+    "samples": 33340,
+    "samples_master": 33468,
+    "peak_dbfs": -5.62,
+    "level_db": -14.2,
+    "layers": [
+     {
+      "element": "elec_crack",
+      "rank": 3,
+      "file": "el/elec_crack/p0-s41.wav",
+      "prompt": "A single short sharp electric discharge crack, one snap of high voltage",
+      "seed": 41,
+      "score": 0.483,
+      "speed": 1.0,
+      "length": 0.25,
+      "hp": 1200,
+      "lp": null
+     },
+     {
+      "element": "arc_buzz",
+      "rank": 1,
+      "file": "el/arc_buzz/p1-s41.wav",
+      "prompt": "Continuous humming electric plasma beam with a fizzing crackle",
+      "seed": 41,
+      "score": 0.541,
+      "speed": 1.0,
+      "length": 0.4,
+      "hp": 1000,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "teleport-in": {
+  "target_db": -16,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1.5,
+  "loop": false,
+  "variants": [
+   {
+    "file": "teleport-in-1.ogg",
+    "seconds": 0.549,
+    "samples": 26350,
+    "samples_master": 26478,
+    "peak_dbfs": -4.43,
+    "level_db": -16.2,
+    "layers": [
+     {
+      "element": "clamp",
+      "rank": 0,
+      "file": "el/clamp/p1-s73.wav",
+      "prompt": "A docking clamp locks onto steel, heavy metallic latch",
+      "seed": 73,
+      "score": 0.396,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "heavy_zap",
+      "rank": 0,
+      "file": "el/heavy_zap/p0-s89.wav",
+      "prompt": "One heavy powerful electric discharge, a deep crackling thump of high voltage",
+      "seed": 89,
+      "score": 0.309,
+      "speed": 1.0,
+      "length": 0.3,
+      "hp": 400,
+      "lp": null
+     }
+    ]
+   },
+   {
+    "file": "teleport-in-2.ogg",
+    "seconds": 0.792,
+    "samples": 38009,
+    "samples_master": 38137,
+    "peak_dbfs": -5.77,
+    "level_db": -16.2,
+    "layers": [
+     {
+      "element": "clamp",
+      "rank": 1,
+      "file": "el/clamp/p1-s37.wav",
+      "prompt": "A docking clamp locks onto steel, heavy metallic latch",
+      "seed": 37,
+      "score": 0.366,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "heavy_zap",
+      "rank": 1,
+      "file": "el/heavy_zap/p0-s59.wav",
+      "prompt": "One heavy powerful electric discharge, a deep crackling thump of high voltage",
+      "seed": 59,
+      "score": 0.294,
+      "speed": 1.0,
+      "length": 0.3,
+      "hp": 400,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "handshake-1": {
+  "target_db": -21,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "handshake-1.ogg",
+    "seconds": 0.95,
+    "samples": 45578,
+    "samples_master": 45706,
+    "peak_dbfs": -17.29,
+    "level_db": -21.0,
+    "layers": []
+   }
+  ]
+ },
+ "handshake-2": {
+  "target_db": -21,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "handshake-2.ogg",
+    "seconds": 0.964,
+    "samples": 46276,
+    "samples_master": 46404,
+    "peak_dbfs": -15.26,
+    "level_db": -21.0,
+    "layers": []
+   }
+  ]
+ },
+ "handshake-3": {
+  "target_db": -20,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 0,
+  "loop": false,
+  "variants": [
+   {
+    "file": "handshake-3.ogg",
+    "seconds": 1.048,
+    "samples": 50287,
+    "samples_master": 50287,
+    "peak_dbfs": -16.56,
+    "level_db": -19.9,
+    "layers": []
+   }
+  ]
+ },
+ "cable-creak": {
+  "target_db": -32,
+  "measure": "mean loudness (loop)",
+  "drive_db": 0,
+  "loop": true,
+  "variants": [
+   {
+    "file": "cable-creak.ogg",
+    "seconds": 7.0,
+    "samples": 336000,
+    "samples_master": 336000,
+    "peak_dbfs": -13.45,
+    "level_db": -32.1,
+    "layers": [
+     {
+      "element": "cable_creak",
+      "rank": 0,
+      "file": "el/cable_creak/p1-s59.wav",
+      "prompt": "Slow metallic creaks of a suspended cable car swaying on its cable",
+      "seed": 59,
+      "score": 0.698,
+      "bed_seconds": 8.0
+     }
+    ]
+   }
+  ]
+ },
+ "couple": {
+  "target_db": -15,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1.5,
+  "loop": false,
+  "variants": [
+   {
+    "file": "couple.ogg",
+    "seconds": 1.265,
+    "samples": 60708,
+    "samples_master": 60708,
+    "peak_dbfs": -6.31,
+    "level_db": -15.1,
+    "layers": [
+     {
+      "element": "clamp",
+      "rank": 0,
+      "file": "el/clamp/p1-s73.wav",
+      "prompt": "A docking clamp locks onto steel, heavy metallic latch",
+      "seed": 73,
+      "score": 0.396,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "switchgear",
+      "rank": 2,
+      "file": "el/switchgear/p1-s37.wav",
+      "prompt": "Huge industrial switchgear contactor slams closed, a deep metallic clunk",
+      "seed": 37,
+      "score": 0.619,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "scrap",
+      "rank": 1,
+      "file": "el/scrap/p1-s89.wav",
+      "prompt": "Metal parts tossed into a metal bin, brief rattle",
+      "seed": 89,
+      "score": 0.636,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": 500,
+      "lp": null
+     },
+     {
+      "element": "cable_twang",
+      "rank": 2,
+      "file": "el/cable_twang/p1-s89.wav",
+      "prompt": "A thick tensioned wire snaps against a metal frame, one twangy metallic ring",
+      "seed": 89,
+      "score": 0.813,
+      "speed": 0.75,
+      "length": 1.3,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "uncouple": {
+  "target_db": -16,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1,
+  "loop": false,
+  "variants": [
+   {
+    "file": "uncouple.ogg",
+    "seconds": 0.776,
+    "samples": 37265,
+    "samples_master": 37393,
+    "peak_dbfs": -8.04,
+    "level_db": -16.3,
+    "layers": [
+     {
+      "element": "switch",
+      "rank": 1,
+      "file": "el/switch/p0-s37.wav",
+      "prompt": "A heavy electrical breaker lever thrown, one solid mechanical clunk",
+      "seed": 37,
+      "score": 0.46,
+      "speed": 1.0,
+      "length": 0.3,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "air_brake",
+      "rank": 1,
+      "file": "el/air_brake/p1-s59.wav",
+      "prompt": "Pneumatic valve releases a quick burst of air",
+      "seed": 59,
+      "score": 0.808,
+      "speed": 1.0,
+      "length": 0.5,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "metal_clang",
+      "rank": 2,
+      "file": "el/metal_clang/p1-s89.wav",
+      "prompt": "A single heavy hammer blow on a metal ship hull, short clang",
+      "seed": 89,
+      "score": 0.847,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "cable_twang",
+      "rank": 3,
+      "file": "el/cable_twang/p0-s41.wav",
+      "prompt": "A taut steel cable struck hard, a single deep metallic twang with a ringing tail",
+      "seed": 41,
+      "score": 0.799,
+      "speed": 1.1,
+      "length": 0.8,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ },
+ "refit": {
+  "target_db": -17,
+  "measure": "peak momentary loudness, K-weighted 100 ms",
+  "drive_db": 1,
+  "loop": false,
+  "variants": [
+   {
+    "file": "refit.ogg",
+    "seconds": 2.106,
+    "samples": 101074,
+    "samples_master": 101074,
+    "peak_dbfs": -7.59,
+    "level_db": -17.3,
+    "layers": [
+     {
+      "element": "ratchet",
+      "rank": 0,
+      "file": "el/ratchet/p0-s41.wav",
+      "prompt": "A ratchet wrench tightening bolts and light metal tapping, repair work",
+      "seed": 41,
+      "score": 0.158,
+      "bed_seconds": 4.5
+     },
+     {
+      "element": "scrap",
+      "rank": 0,
+      "file": "el/scrap/p1-s11.wav",
+      "prompt": "Metal parts tossed into a metal bin, brief rattle",
+      "seed": 11,
+      "score": 0.654,
+      "speed": 1.0,
+      "length": 0.4,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "clamp",
+      "rank": 1,
+      "file": "el/clamp/p1-s37.wav",
+      "prompt": "A docking clamp locks onto steel, heavy metallic latch",
+      "seed": 37,
+      "score": 0.366,
+      "speed": 1.0,
+      "length": 0.6,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "switchgear",
+      "rank": 0,
+      "file": "el/switchgear/p1-s97.wav",
+      "prompt": "Huge industrial switchgear contactor slams closed, a deep metallic clunk",
+      "seed": 97,
+      "score": 0.774,
+      "speed": 1.0,
+      "length": 0.5,
+      "hp": null,
+      "lp": null
+     },
+     {
+      "element": "powerup",
+      "rank": 0,
+      "file": "el/powerup/p1-s11.wav",
+      "prompt": "A machine powering up, rising electrical whine and hum",
+      "seed": 11,
+      "score": 0.586,
+      "speed": 1.0,
+      "length": 0.7,
+      "hp": 200,
+      "lp": null
+     },
+     {
+      "element": "relay_clack",
+      "rank": 1,
+      "file": "el/relay_clack/p1-s73.wav",
+      "prompt": "A single crisp click of an old switchboard relay contact",
+      "seed": 73,
+      "score": 0.409,
+      "speed": 1.0,
+      "length": 0.08,
+      "hp": null,
+      "lp": null
+     }
+    ]
+   }
+  ]
+ }
+}

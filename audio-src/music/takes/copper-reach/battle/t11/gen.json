@@ -1,0 +1,135 @@
+{
+  "piece": "copper-reach",
+  "version": "battle",
+  "take": 11,
+  "seed": 394706,
+  "cfg": 1.8,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, a choir, wordless choir aahs, vocal pads, humming, a solo voice, pop song with a lead vocalist. EDM festival drops, four on the floor dance kick, pumping sidechain, trance supersaws, happy pop song, heroic orchestral trailer, brass fanfare, solo piano ballad, acoustic folk music.",
+  "plans": "v3-multiverse-pilot",
+  "reference_method": "Local Multiverse audio comparison; original ABC and text conditioning only",
+  "style": "Instrumental electronic tactical battle soundtrack for a space strategy game, inspired by Ben Prunty's FTL and FTL Multiverse. A memorable pulse-wave synthesizer melody over interlocking sixteenth-note plucked synth arpeggios, an active rounded resonant synth bass and atmospheric filtered pads. Crisp syncopated electronic kick and snare, ticking hi-hats and short tom fills create a driving broken-beat groove. Tense, determined and mysterious, intricate electronic counterpoint and stereo delay. The melody stays clearly audible above the drums; sustained momentum with room for game sounds. Purely instrumental. Dm, 108 BPM.",
+  "plan_sha256": "92cf340214bad7ea4289bbfb81369ed3261cb65600222e36bff269888551df3f",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      20,
+      68
+    ],
+    "bars": 70,
+    "tail": 2,
+    "bar_s": 2.2222222222222223,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "A1",
+        "instrumental"
+      ],
+      [
+        8,
+        "A2",
+        "instrumental"
+      ],
+      [
+        12,
+        "G1",
+        "instrumental"
+      ],
+      [
+        16,
+        "G2",
+        "instrumental"
+      ],
+      [
+        20,
+        "B1",
+        "instrumental"
+      ],
+      [
+        24,
+        "B2",
+        "instrumental"
+      ],
+      [
+        28,
+        "A1",
+        "instrumental"
+      ],
+      [
+        32,
+        "A2",
+        "instrumental"
+      ],
+      [
+        36,
+        "R1",
+        "interlude"
+      ],
+      [
+        40,
+        "R2",
+        "interlude"
+      ],
+      [
+        44,
+        "B1",
+        "instrumental"
+      ],
+      [
+        48,
+        "B2",
+        "instrumental"
+      ],
+      [
+        52,
+        "A1",
+        "instrumental"
+      ],
+      [
+        56,
+        "A2",
+        "instrumental"
+      ],
+      [
+        60,
+        "G1",
+        "instrumental"
+      ],
+      [
+        64,
+        "G2",
+        "instrumental"
+      ],
+      [
+        68,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 3894,
+  "max_tokens": 6083,
+  "truncated": false,
+  "timing": {
+    "seconds": 42.0466563939699,
+    "prefill_seconds": 0.26539980596862733,
+    "ttft_seconds": 0.26678412896580994,
+    "output_tokens": 3895,
+    "content_tokens": 3894,
+    "output_tps": 92.63518990676747,
+    "prefix_tokens": 1547,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 18.2,
+  "vae_seconds": 3.3,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

@@ -1,0 +1,280 @@
+{
+ "piece": "rust-kingdom",
+ "note": "Selected matching A-minor pair: exploration t2 is quieter and less intense; battle t2 passes the raw automated gates with strong score-not-club and retro-score similarity. Both raw speech scans are clean. Exploration has one 34 ms local timing flag, corrected onto the common grid during conforming. This replaces the transposed exploration pilot and club-leaning battle pilots.",
+ "gain_db": -8.66,
+ "loudest": "battle",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   20,
+   68
+  ],
+  "bars": 70,
+  "tail": 2,
+  "bar_s": 2.4,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "R1",
+    "instrumental"
+   ],
+   [
+    8,
+    "R2",
+    "instrumental"
+   ],
+   [
+    12,
+    "H1",
+    "instrumental"
+   ],
+   [
+    16,
+    "H2",
+    "instrumental"
+   ],
+   [
+    20,
+    "S1",
+    "instrumental"
+   ],
+   [
+    24,
+    "S2",
+    "instrumental"
+   ],
+   [
+    28,
+    "R1",
+    "instrumental"
+   ],
+   [
+    32,
+    "R2",
+    "instrumental"
+   ],
+   [
+    36,
+    "W1",
+    "interlude"
+   ],
+   [
+    40,
+    "W2",
+    "interlude"
+   ],
+   [
+    44,
+    "S1",
+    "instrumental"
+   ],
+   [
+    48,
+    "S2",
+    "instrumental"
+   ],
+   [
+    52,
+    "R1",
+    "instrumental"
+   ],
+   [
+    56,
+    "R2",
+    "instrumental"
+   ],
+   [
+    60,
+    "H1",
+    "instrumental"
+   ],
+   [
+    64,
+    "H2",
+    "instrumental"
+   ],
+   [
+    68,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "explore": "audio/music/rust-kingdom-explore.ogg",
+   "battle": "audio/music/rust-kingdom-battle.ogg"
+  },
+  "bpm": 100,
+  "key": "Am",
+  "bars": 70,
+  "barSeconds": 2.4,
+  "duration": 170.5,
+  "loopStart": 48.0,
+  "loopEnd": 163.2,
+  "loop": true,
+  "gainDb": -8.66
+ },
+ "versions": {
+  "explore": {
+   "take": "t2",
+   "seed": 737294,
+   "source": "audio-src/music/takes/rust-kingdom/explore/t2/audio.flac",
+   "source_sha256": "dd3a24f0ffaa95caa08e03dc0424e937badcfd2d2fec4ae477e1d304132b4f7c",
+   "conform": {
+    "rate_min": 0.99646,
+    "rate_max": 1.00354,
+    "max_cents": 6.1,
+    "verify": {
+     "tempo_bpm": 100.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      -60.0,
+      -4.0,
+      26.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      1.73,
+      1.98,
+      2.55,
+      3.56,
+      3.52,
+      3.58,
+      3.5,
+      3.33,
+      3.53,
+      3.47,
+      3.59,
+      3.46,
+      3.51,
+      3.43,
+      3.55,
+      3.49,
+      3.49
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/rust-kingdom-explore.flac",
+   "master_sha256": "39cec0464738526b0dc79b0af04d46c2c152033ed44283e4a1470b2bddc025e7",
+   "delivery": "public/audio/music/rust-kingdom-explore.ogg",
+   "delivery_sha256": "f84d556d33e501d4d5e5b9fbd3d4ed8c27b2bb24949ecbfa01025260860af4d4",
+   "bytes": 2986741,
+   "samples": 8184000,
+   "decoded_samples": 8184000,
+   "source_levels": {
+    "lufs": -13.74,
+    "tp": 0.13,
+    "lra": 7.6
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -13.74,
+    "tp": 0.13,
+    "lra": 7.6
+   },
+   "delivered": {
+    "lufs": -22.4,
+    "tp": -8.47,
+    "lra": 7.6
+   }
+  },
+  "battle": {
+   "take": "t2",
+   "seed": 561208,
+   "source": "audio-src/music/takes/rust-kingdom/battle/t2/audio.flac",
+   "source_sha256": "fb386fc24f975df59c15face1c52e179b9176bced19019e4c9d3ef8f82163eb2",
+   "conform": {
+    "rate_min": 0.99958,
+    "rate_max": 1.00042,
+    "max_cents": 0.7,
+    "verify": {
+     "tempo_bpm": 100.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      64.0,
+      0.0
+     ],
+     "window_conf": [
+      3.45,
+      3.45,
+      3.48,
+      3.3,
+      3.48,
+      3.55,
+      3.49,
+      3.47,
+      3.49,
+      3.43,
+      3.42,
+      3.47,
+      3.57,
+      3.54,
+      3.55,
+      1.93,
+      3.35
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/rust-kingdom-battle.flac",
+   "master_sha256": "94d5c6ff244ccdfcd1b29de7ab2befc425285578ec4bbcfc0080cca1fca77e8d",
+   "delivery": "public/audio/music/rust-kingdom-battle.ogg",
+   "delivery_sha256": "6b9c00d416acfb9c1740887ee3262d8cddffa771dfaeb10fec0c2d8349edd1fe",
+   "bytes": 2575372,
+   "samples": 8184000,
+   "decoded_samples": 8184000,
+   "source_levels": {
+    "lufs": -10.34,
+    "tp": 0.01,
+    "lra": 4.0
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -10.34,
+    "tp": 0.01,
+    "lra": 4.0
+   },
+   "delivered": {
+    "lufs": -18.98,
+    "tp": -8.41,
+    "lra": 3.9
+   }
+  }
+ }
+}

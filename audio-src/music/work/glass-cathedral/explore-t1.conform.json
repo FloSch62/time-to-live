@@ -1,0 +1,140 @@
+{
+ "piece": "glass-cathedral",
+ "version": "explore",
+ "take": "t1",
+ "duration": 164.239125,
+ "samples": 7883478,
+ "bar_s": 2.608695652173913,
+ "bars": 62,
+ "loop_bars": [
+  12,
+  60
+ ],
+ "loop_start": 31.304348,
+ "loop_end": 156.521739,
+ "anchors": [
+  {
+   "out": 5.217,
+   "take": 5.1512,
+   "local": false
+  },
+  {
+   "out": 15.652,
+   "take": 15.588,
+   "local": true
+  },
+  {
+   "out": 26.087,
+   "take": 26.0208,
+   "local": true
+  },
+  {
+   "out": 36.522,
+   "take": 36.4555,
+   "local": true
+  },
+  {
+   "out": 46.957,
+   "take": 46.8903,
+   "local": true
+  },
+  {
+   "out": 57.391,
+   "take": 57.3271,
+   "local": true
+  },
+  {
+   "out": 67.826,
+   "take": 67.7579,
+   "local": true
+  },
+  {
+   "out": 78.261,
+   "take": 78.1967,
+   "local": true
+  },
+  {
+   "out": 88.696,
+   "take": 88.6295,
+   "local": true
+  },
+  {
+   "out": 99.13,
+   "take": 99.0602,
+   "local": true
+  },
+  {
+   "out": 109.565,
+   "take": 109.499,
+   "local": true
+  },
+  {
+   "out": 120.0,
+   "take": 119.9358,
+   "local": true
+  },
+  {
+   "out": 130.435,
+   "take": 130.3666,
+   "local": true
+  },
+  {
+   "out": 140.87,
+   "take": 140.8034,
+   "local": true
+  },
+  {
+   "out": 151.304,
+   "take": 151.2401,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99962,
+ "rate_max": 1.00038,
+ "max_cents": 0.7,
+ "take_seconds_used": 164.175,
+ "seam": {
+  "loop_start_sample": 1502609,
+  "loop_end_sample": 7513043,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 92.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   60.0,
+   2.0,
+   0.0,
+   2.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   3.32,
+   3.25,
+   3.12,
+   3.06,
+   3.33,
+   3.35,
+   3.32,
+   3.32,
+   3.32,
+   3.38,
+   3.14,
+   3.25,
+   3.39,
+   3.32,
+   3.27
+  ]
+ },
+ "tempo_correction": null
+}

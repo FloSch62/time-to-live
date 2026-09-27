@@ -1,0 +1,114 @@
+{
+  "piece": "exchange",
+  "version": "main",
+  "take": 3,
+  "seed": 747900,
+  "cfg": 2.2,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, a choir, wordless choir aahs, vocal pads, humming, a solo voice, pop song with a lead vocalist. Happy, cheerful, joyful, uplifting, hopeful, triumphant, heroic fanfare, major key, bright pop, feel-good, playful, whimsical, children's music, corporate, upbeat, epic trailer, sunny, upbeat synthwave, outrun. Generic EDM club dance track with a four-on-the-floor kick.",
+  "plans": "v2-dark",
+  "style": "Intimate, sad and quiet music in an abandoned switchboard exchange at the edge of space, late at night. Soft felt piano plays a sparse melancholic minor phrase over a cold analog synthesizer pad and a low sustained sub-bass drone; slow tape echoes, distant glass bells, a lonely cello and the quiet tick of an old relay. Still, desolate and suspended, a tired night-shift room. No drums. Purely instrumental. Am, 94 BPM.",
+  "plan_sha256": "1229639e482a71953f8764cf4a3d1aa0627245b3d0a6d66227743a197bde8062",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      28,
+      52
+    ],
+    "bars": 54,
+    "tail": 2,
+    "bar_s": 2.5531914893617023,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "M1",
+        "instrumental"
+      ],
+      [
+        8,
+        "M2",
+        "instrumental"
+      ],
+      [
+        12,
+        "V1",
+        "interlude"
+      ],
+      [
+        16,
+        "V2",
+        "interlude"
+      ],
+      [
+        20,
+        "B1",
+        "instrumental"
+      ],
+      [
+        24,
+        "B2",
+        "instrumental"
+      ],
+      [
+        28,
+        "M1",
+        "instrumental"
+      ],
+      [
+        32,
+        "M2",
+        "instrumental"
+      ],
+      [
+        36,
+        "V1",
+        "interlude"
+      ],
+      [
+        40,
+        "V2",
+        "interlude"
+      ],
+      [
+        44,
+        "B1",
+        "instrumental"
+      ],
+      [
+        48,
+        "B2",
+        "instrumental"
+      ],
+      [
+        52,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 3471,
+  "max_tokens": 5420,
+  "truncated": false,
+  "timing": {
+    "seconds": 36.8208170789876,
+    "prefill_seconds": 0.5683661359944381,
+    "ttft_seconds": 0.7626367300399579,
+    "output_tokens": 3472,
+    "content_tokens": 3471,
+    "output_tps": 94.29448544153446,
+    "prefix_tokens": 990,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 16.3,
+  "vae_seconds": 5.5,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}

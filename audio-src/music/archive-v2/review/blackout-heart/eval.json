@@ -1,0 +1,155 @@
+[
+ {
+  "take": "explore/t1",
+  "reject": [
+   "not dark enough (CLAP mood 0.296, need 0.33; bright windows 44%)"
+  ],
+  "planned_dips": [],
+  "score": 1.674,
+  "cinematic": 0.817,
+  "intense": 0.592,
+  "dark": 0.296,
+  "not_club": 0.725,
+  "mode_margin": 0.221,
+  "cinematic_min": 0.559,
+  "vocal_max": 0.097,
+  "ftl": 0.231,
+  "speech_checked": true,
+  "lufs": -9.97,
+  "tp": 0.28,
+  "lra": 3.0,
+  "key": "Cm",
+  "window_db": [
+   -19.2,
+   -12.4,
+   -11.9,
+   -12.7,
+   -12.3,
+   -12.1,
+   -11.9,
+   -11.4,
+   -10.7,
+   -11.1,
+   -11.6,
+   -11.5,
+   -10.7,
+   -10.6,
+   -9.8,
+   -10.2,
+   -10.4
+  ],
+  "seam_db": 2.0,
+  "seam_chroma": 0.985,
+  "ratio": 0.9984823,
+  "tail": 3.92
+ },
+ {
+  "take": "explore/t2",
+  "reject": [
+   "dropouts [(37.0, 0.5, 13.9), (95.1, 0.3, 12.2)]",
+   "major-leaning (C 0.67 >= Cm 0.53)"
+  ],
+  "planned_dips": [
+   [
+    78.4,
+    0.5,
+    15.9
+   ],
+   [
+    82.6,
+    0.4,
+    17.3
+   ],
+   [
+    86.7,
+    0.5,
+    14.6
+   ]
+  ],
+  "score": 2.723,
+  "cinematic": 0.981,
+  "intense": 0.022,
+  "dark": 0.794,
+  "not_club": 0.937,
+  "mode_margin": -0.141,
+  "cinematic_min": 0.959,
+  "vocal_max": 0.276,
+  "ftl": 0.219,
+  "speech_checked": true,
+  "lufs": -13.04,
+  "tp": 0.01,
+  "lra": 3.8,
+  "key": "Cm",
+  "window_db": [
+   -17.2,
+   -18.0,
+   -15.7,
+   -15.5,
+   -14.7,
+   -15.8,
+   -14.7,
+   -15.0,
+   -14.4,
+   -15.3,
+   -14.5,
+   -14.5,
+   -14.2,
+   -14.8,
+   -14.8,
+   -14.6,
+   -14.7
+  ],
+  "seam_db": -0.5,
+  "seam_chroma": 0.994,
+  "ratio": 0.99998,
+  "tail": 4.15
+ },
+ {
+  "take": "battle/t1",
+  "reject": [],
+  "planned_dips": [
+   [
+    82.3,
+    0.5,
+    13.2
+   ]
+  ],
+  "score": 2.01,
+  "cinematic": 0.893,
+  "intense": 0.023,
+  "dark": 0.452,
+  "not_club": 0.728,
+  "mode_margin": 0.172,
+  "cinematic_min": 0.715,
+  "vocal_max": 0.371,
+  "ftl": 0.352,
+  "speech_checked": true,
+  "lufs": -11.79,
+  "tp": -0.16,
+  "lra": 3.9,
+  "key": "Cm",
+  "window_db": [
+   -21.1,
+   -14.0,
+   -12.7,
+   -13.9,
+   -13.8,
+   -12.7,
+   -12.8,
+   -13.8,
+   -13.6,
+   -13.9,
+   -14.2,
+   -13.5,
+   -13.5,
+   -13.6,
+   -13.3,
+   -14.8,
+   -14.6
+  ],
+  "seam_db": -1.4,
+  "seam_chroma": 0.996,
+  "ratio": 0.99998,
+  "tail": 4.14
+ }
+]

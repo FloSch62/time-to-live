@@ -1,0 +1,1323 @@
+{
+ "armory-car": {
+  "file": "ships/cars/armory-car.png",
+  "w": 344,
+  "h": 448,
+  "class": "rear-car",
+  "face": "right",
+  "grid": {
+   "x": 24,
+   "y": 120,
+   "cols": 4,
+   "rows": 4,
+   "tile": 72
+  },
+  "cable": {
+   "x": 172,
+   "y": 20
+  },
+  "couplerFront": {
+   "x": 342,
+   "y": 300
+  },
+  "mounts": [
+   {
+    "x": 80,
+    "y": 52
+   }
+  ],
+  "glow": [
+   {
+    "x": 20,
+    "y": 128,
+    "r": 6
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ]
+ },
+ "ash-moth": {
+  "file": "ships/ash-moth.png",
+  "w": 552,
+  "h": 504,
+  "class": "flier",
+  "face": "left",
+  "grid": {
+   "x": 128,
+   "y": 152,
+   "cols": 5,
+   "rows": 3,
+   "tile": 72
+  },
+  "mounts": [
+   {
+    "x": 116,
+    "y": 196
+   },
+   {
+    "x": 116,
+    "y": 324
+   }
+  ],
+  "glow": [
+   {
+    "x": 88,
+    "y": 260,
+    "r": 18
+   },
+   {
+    "x": 532,
+    "y": 260,
+    "r": 10
+   }
+  ]
+ },
+ "ballast-keel": {
+  "file": "ships/cars/ballast-keel.png",
+  "w": 480,
+  "h": 248,
+  "class": "keel-car",
+  "face": "right",
+  "grid": {
+   "x": 24,
+   "y": 68,
+   "cols": 6,
+   "rows": 2,
+   "tile": 72
+  },
+  "hangTop": {
+   "x": 240,
+   "y": 0
+  },
+  "mounts": [],
+  "glow": [
+   {
+    "x": 452,
+    "y": 92,
+    "r": 6
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ]
+ },
+ "blackout-core": {
+  "file": "ships/blackout-core.png",
+  "w": 840,
+  "h": 688,
+  "class": "installation",
+  "face": "left",
+  "grid": {
+   "x": 96,
+   "y": 128,
+   "cols": 9,
+   "rows": 6,
+   "tile": 72
+  },
+  "mounts": [
+   {
+    "x": 80,
+    "y": 254
+   },
+   {
+    "x": 80,
+    "y": 434
+   },
+   {
+    "x": 204,
+    "y": 80
+   },
+   {
+    "x": 204,
+    "y": 608
+   }
+  ],
+  "glow": [
+   {
+    "x": 420,
+    "y": 344,
+    "r": 88
+   }
+  ]
+ },
+ "bunk-car": {
+  "file": "ships/cars/bunk-car.png",
+  "w": 344,
+  "h": 448,
+  "class": "rear-car",
+  "face": "right",
+  "grid": {
+   "x": 24,
+   "y": 120,
+   "cols": 4,
+   "rows": 4,
+   "tile": 72
+  },
+  "cable": {
+   "x": 172,
+   "y": 20
+  },
+  "couplerFront": {
+   "x": 342,
+   "y": 300
+  },
+  "mounts": [],
+  "glow": [
+   {
+    "x": 20,
+    "y": 128,
+    "r": 6
+   },
+   {
+    "x": 52,
+    "y": 80,
+    "r": 8
+   },
+   {
+    "x": 288,
+    "y": 80,
+    "r": 8
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ]
+ },
+ "cable-wraith": {
+  "file": "ships/cable-wraith.png",
+  "w": 688,
+  "h": 328,
+  "class": "crawler",
+  "face": "left",
+  "grid": {
+   "x": 92,
+   "y": 116,
+   "cols": 8,
+   "rows": 2,
+   "tile": 72
+  },
+  "cable": {
+   "x": 410,
+   "y": 16
+  },
+  "mounts": [
+   {
+    "x": 172,
+    "y": 100
+   },
+   {
+    "x": 260,
+    "y": 290
+   }
+  ],
+  "glow": [
+   {
+    "x": 80,
+    "y": 196,
+    "r": 10
+   }
+  ]
+ },
+ "coil-serpent": {
+  "file": "ships/coil-serpent.png",
+  "w": 680,
+  "h": 328,
+  "class": "crawler",
+  "face": "left",
+  "grid": {
+   "x": 78,
+   "y": 116,
+   "cols": 8,
+   "rows": 2,
+   "tile": 72
+  },
+  "cable": {
+   "x": 370,
+   "y": 16
+  },
+  "mounts": [
+   {
+    "x": 130,
+    "y": 104
+   },
+   {
+    "x": 130,
+    "y": 276
+   }
+  ],
+  "glow": [
+   {
+    "x": 36,
+    "y": 188,
+    "r": 8
+   }
+  ]
+ },
+ "demolition-engine": {
+  "file": "ships/demolition-engine.png",
+  "w": 688,
+  "h": 432,
+  "class": "crawler",
+  "face": "left",
+  "grid": {
+   "x": 80,
+   "y": 80,
+   "cols": 8,
+   "rows": 4,
+   "tile": 72
+  },
+  "cable": {
+   "x": 406,
+   "y": 12
+  },
+  "mounts": [
+   {
+    "x": 124,
+    "y": 72
+   },
+   {
+    "x": 368,
+    "y": 418
+   }
+  ],
+  "glow": [
+   {
+    "x": 386,
+    "y": 40,
+    "r": 8
+   },
+   {
+    "x": 442,
+    "y": 50,
+    "r": 6
+   },
+   {
+    "x": 368,
+    "y": 364,
+    "r": 4
+   }
+  ]
+ },
+ "drone-car": {
+  "file": "ships/cars/drone-car.png",
+  "w": 344,
+  "h": 448,
+  "class": "rear-car",
+  "face": "right",
+  "grid": {
+   "x": 24,
+   "y": 120,
+   "cols": 4,
+   "rows": 4,
+   "tile": 72
+  },
+  "cable": {
+   "x": 172,
+   "y": 20
+  },
+  "couplerFront": {
+   "x": 342,
+   "y": 300
+  },
+  "mounts": [],
+  "glow": [
+   {
+    "x": 20,
+    "y": 128,
+    "r": 6
+   },
+   {
+    "x": 50,
+    "y": 64,
+    "r": 6
+   },
+   {
+    "x": 290,
+    "y": 64,
+    "r": 6
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ]
+ },
+ "echo-tender": {
+  "file": "ships/echo-tender.png",
+  "w": 688,
+  "h": 400,
+  "class": "crawler",
+  "face": "left",
+  "grid": {
+   "x": 72,
+   "y": 116,
+   "cols": 8,
+   "rows": 3,
+   "tile": 72
+  },
+  "cable": {
+   "x": 356,
+   "y": 16
+  },
+  "mounts": [
+   {
+    "x": 200,
+    "y": 74
+   },
+   {
+    "x": 560,
+    "y": 74
+   }
+  ],
+  "glow": [
+   {
+    "x": 10,
+    "y": 242,
+    "r": 20
+   }
+  ]
+ },
+ "ferric-colossus": {
+  "file": "ships/ferric-colossus.png",
+  "w": 688,
+  "h": 456,
+  "class": "installation",
+  "face": "left",
+  "grid": {
+   "x": 84,
+   "y": 104,
+   "cols": 8,
+   "rows": 4,
+   "tile": 72
+  },
+  "mounts": [
+   {
+    "x": 152,
+    "y": 94
+   },
+   {
+    "x": 278,
+    "y": 94
+   }
+  ],
+  "glow": [
+   {
+    "x": 48,
+    "y": 248,
+    "r": 32
+   },
+   {
+    "x": 492,
+    "y": 26,
+    "r": 8
+   },
+   {
+    "x": 580,
+    "y": 50,
+    "r": 8
+   }
+  ]
+ },
+ "freight-car": {
+  "file": "ships/cars/freight-car.png",
+  "w": 344,
+  "h": 448,
+  "class": "rear-car",
+  "face": "right",
+  "grid": {
+   "x": 24,
+   "y": 120,
+   "cols": 4,
+   "rows": 4,
+   "tile": 72
+  },
+  "cable": {
+   "x": 172,
+   "y": 20
+  },
+  "couplerFront": {
+   "x": 342,
+   "y": 300
+  },
+  "mounts": [],
+  "glow": [
+   {
+    "x": 20,
+    "y": 128,
+    "r": 6
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ]
+ },
+ "gate-sentinel": {
+  "file": "ships/gate-sentinel.png",
+  "w": 624,
+  "h": 512,
+  "class": "installation",
+  "face": "left",
+  "grid": {
+   "x": 144,
+   "y": 128,
+   "cols": 6,
+   "rows": 4,
+   "tile": 72
+  },
+  "mounts": [
+   {
+    "x": 172,
+    "y": 112
+   },
+   {
+    "x": 364,
+    "y": 444
+   }
+  ],
+  "glow": [
+   {
+    "x": 56,
+    "y": 48,
+    "r": 20
+   },
+   {
+    "x": 342,
+    "y": 136,
+    "r": 6
+   }
+  ]
+ },
+ "gate-warden": {
+  "file": "ships/gate-warden.png",
+  "w": 168,
+  "h": 168,
+  "class": "flier",
+  "face": "left",
+  "grid": null,
+  "mounts": [
+   {
+    "x": 8,
+    "y": 96
+   }
+  ],
+  "glow": [
+   {
+    "x": 16,
+    "y": 96,
+    "r": 12
+   },
+   {
+    "x": 86,
+    "y": 14,
+    "r": 6
+   }
+  ]
+ },
+ "glass-choir": {
+  "file": "ships/glass-choir.png",
+  "w": 680,
+  "h": 480,
+  "class": "installation",
+  "face": "left",
+  "grid": {
+   "x": 52,
+   "y": 104,
+   "cols": 8,
+   "rows": 3,
+   "tile": 72
+  },
+  "mounts": [
+   {
+    "x": 70,
+    "y": 92
+   },
+   {
+    "x": 70,
+    "y": 332
+   }
+  ],
+  "glow": [
+   {
+    "x": 160,
+    "y": 446,
+    "r": 10
+   },
+   {
+    "x": 340,
+    "y": 446,
+    "r": 10
+   },
+   {
+    "x": 520,
+    "y": 446,
+    "r": 10
+   }
+  ]
+ },
+ "glass-echo": {
+  "file": "ships/glass-echo.png",
+  "w": 552,
+  "h": 368,
+  "class": "flier",
+  "face": "left",
+  "grid": {
+   "x": 136,
+   "y": 152,
+   "cols": 5,
+   "rows": 2,
+   "tile": 72
+  },
+  "mounts": [
+   {
+    "x": 132,
+    "y": 140
+   },
+   {
+    "x": 132,
+    "y": 308
+   }
+  ],
+  "glow": [
+   {
+    "x": 24,
+    "y": 224,
+    "r": 20
+   },
+   {
+    "x": 544,
+    "y": 224,
+    "r": 10
+   },
+   {
+    "x": 316,
+    "y": 36,
+    "r": 8
+   }
+  ]
+ },
+ "grave-reaver": {
+  "file": "ships/grave-reaver.png",
+  "w": 688,
+  "h": 360,
+  "class": "crawler",
+  "face": "left",
+  "grid": {
+   "x": 92,
+   "y": 70,
+   "cols": 8,
+   "rows": 3,
+   "tile": 72
+  },
+  "cable": {
+   "x": 434,
+   "y": 10
+  },
+  "mounts": [
+   {
+    "x": 136,
+    "y": 62
+   },
+   {
+    "x": 398,
+    "y": 294
+   }
+  ],
+  "glow": [
+   {
+    "x": 264,
+    "y": 178,
+    "r": 18
+   }
+  ]
+ },
+ "hollow-choir": {
+  "file": "ships/hollow-choir.png",
+  "w": 840,
+  "h": 680,
+  "class": "installation",
+  "face": "left",
+  "grid": {
+   "x": 128,
+   "y": 200,
+   "cols": 9,
+   "rows": 5,
+   "tile": 72
+  },
+  "mounts": [
+   {
+    "x": 116,
+    "y": 228
+   },
+   {
+    "x": 116,
+    "y": 542
+   }
+  ],
+  "glow": [
+   {
+    "x": 322,
+    "y": 376,
+    "r": 40
+   },
+   {
+    "x": 276,
+    "y": 664,
+    "r": 12
+   },
+   {
+    "x": 456,
+    "y": 664,
+    "r": 12
+   },
+   {
+    "x": 636,
+    "y": 664,
+    "r": 12
+   }
+  ]
+ },
+ "iron-regent": {
+  "file": "ships/iron-regent.png",
+  "w": 840,
+  "h": 680,
+  "class": "installation",
+  "face": "left",
+  "grid": {
+   "x": 144,
+   "y": 200,
+   "cols": 9,
+   "rows": 5,
+   "tile": 72
+  },
+  "mounts": [
+   {
+    "x": 202,
+    "y": 154
+   },
+   {
+    "x": 210,
+    "y": 598
+   }
+  ],
+  "glow": [
+   {
+    "x": 440,
+    "y": 98,
+    "r": 14
+   },
+   {
+    "x": 92,
+    "y": 360,
+    "r": 20
+   }
+  ]
+ },
+ "lamplighter": {
+  "file": "ships/lamplighter.png",
+  "w": 1008,
+  "h": 440,
+  "class": "player",
+  "face": "right",
+  "grid": {
+   "x": 48,
+   "y": 120,
+   "cols": 12,
+   "rows": 4,
+   "tile": 72
+  },
+  "cable": {
+   "x": 450,
+   "y": 20
+  },
+  "couplerRear": {
+   "x": 4,
+   "y": 300
+  },
+  "keelHang": {
+   "x": 464,
+   "y": 438
+  },
+  "mounts": [
+   {
+    "x": 162,
+    "y": 72
+   },
+   {
+    "x": 782,
+    "y": 72
+   },
+   {
+    "x": 182,
+    "y": 438
+   },
+   {
+    "x": 786,
+    "y": 438
+   }
+  ],
+  "glow": [
+   {
+    "x": 970,
+    "y": 284,
+    "r": 26
+   },
+   {
+    "x": 940,
+    "y": 164,
+    "r": 20
+   },
+   {
+    "x": 44,
+    "y": 128,
+    "r": 6
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ]
+ },
+ "listening-keel": {
+  "file": "ships/cars/listening-keel.png",
+  "w": 480,
+  "h": 248,
+  "class": "keel-car",
+  "face": "right",
+  "grid": {
+   "x": 24,
+   "y": 68,
+   "cols": 6,
+   "rows": 2,
+   "tile": 72
+  },
+  "hangTop": {
+   "x": 240,
+   "y": 0
+  },
+  "mounts": [],
+  "glow": [
+   {
+    "x": 452,
+    "y": 92,
+    "r": 6
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ]
+ },
+ "null-marshal": {
+  "file": "ships/null-marshal.png",
+  "w": 664,
+  "h": 440,
+  "class": "crawler",
+  "face": "left",
+  "grid": {
+   "x": 104,
+   "y": 144,
+   "cols": 7,
+   "rows": 3,
+   "tile": 72
+  },
+  "cable": {
+   "x": 370,
+   "y": 20
+  },
+  "mounts": [
+   {
+    "x": 176,
+    "y": 120
+   },
+   {
+    "x": 176,
+    "y": 396
+   }
+  ],
+  "glow": [
+   {
+    "x": 56,
+    "y": 252,
+    "r": 12
+   },
+   {
+    "x": 388,
+    "y": 404,
+    "r": 6
+   }
+  ]
+ },
+ "packet-leech": {
+  "file": "ships/packet-leech.png",
+  "w": 632,
+  "h": 440,
+  "class": "crawler",
+  "face": "left",
+  "grid": {
+   "x": 88,
+   "y": 160,
+   "cols": 7,
+   "rows": 3,
+   "tile": 72
+  },
+  "cable": {
+   "x": 344,
+   "y": 20
+  },
+  "mounts": [
+   {
+    "x": 132,
+    "y": 144
+   },
+   {
+    "x": 132,
+    "y": 400
+   }
+  ],
+  "glow": [
+   {
+    "x": 376,
+    "y": 260,
+    "r": 60
+   },
+   {
+    "x": 72,
+    "y": 268,
+    "r": 16
+   }
+  ]
+ },
+ "prism-widow": {
+  "file": "ships/prism-widow.png",
+  "w": 688,
+  "h": 480,
+  "class": "crawler",
+  "face": "left",
+  "grid": {
+   "x": 118,
+   "y": 132,
+   "cols": 7,
+   "rows": 3,
+   "tile": 72
+  },
+  "cable": {
+   "x": 382,
+   "y": 18
+  },
+  "mounts": [
+   {
+    "x": 114,
+    "y": 118
+   },
+   {
+    "x": 114,
+    "y": 370
+   }
+  ],
+  "glow": [
+   {
+    "x": 452,
+    "y": 240,
+    "r": 30
+   },
+   {
+    "x": 70,
+    "y": 240,
+    "r": 14
+   }
+  ]
+ },
+ "quarantine-drone": {
+  "file": "ships/quarantine-drone.png",
+  "w": 520,
+  "h": 408,
+  "class": "flier",
+  "face": "left",
+  "grid": {
+   "x": 80,
+   "y": 128,
+   "cols": 5,
+   "rows": 3,
+   "tile": 72
+  },
+  "mounts": [
+   {
+    "x": 60,
+    "y": 186
+   },
+   {
+    "x": 60,
+    "y": 286
+   }
+  ],
+  "glow": [
+   {
+    "x": 40,
+    "y": 236,
+    "r": 12
+   },
+   {
+    "x": 260,
+    "y": 96,
+    "r": 6
+   },
+   {
+    "x": 166,
+    "y": 36,
+    "r": 6
+   },
+   {
+    "x": 354,
+    "y": 36,
+    "r": 6
+   }
+  ]
+ },
+ "rust-prophet": {
+  "file": "ships/rust-prophet.png",
+  "w": 512,
+  "h": 552,
+  "class": "installation",
+  "face": "left",
+  "grid": {
+   "x": 128,
+   "y": 172,
+   "cols": 4,
+   "rows": 5,
+   "tile": 72
+  },
+  "mounts": [
+   {
+    "x": 116,
+    "y": 316
+   },
+   {
+    "x": 116,
+    "y": 510
+   }
+  ],
+  "glow": [
+   {
+    "x": 272,
+    "y": 24,
+    "r": 20
+   },
+   {
+    "x": 164,
+    "y": 204,
+    "r": 8
+   }
+  ]
+ },
+ "scavenger-skiff": {
+  "file": "ships/scavenger-skiff.png",
+  "w": 592,
+  "h": 456,
+  "class": "crawler",
+  "face": "left",
+  "grid": {
+   "x": 104,
+   "y": 144,
+   "cols": 6,
+   "rows": 3,
+   "tile": 72
+  },
+  "cable": {
+   "x": 320,
+   "y": 20
+  },
+  "mounts": [
+   {
+    "x": 144,
+    "y": 116
+   },
+   {
+    "x": 518,
+    "y": 396
+   }
+  ],
+  "glow": [
+   {
+    "x": 60,
+    "y": 216,
+    "r": 10
+   },
+   {
+    "x": 548,
+    "y": 208,
+    "r": 6
+   }
+  ]
+ },
+ "scrap-foreman": {
+  "file": "ships/scrap-foreman.png",
+  "w": 688,
+  "h": 448,
+  "class": "crawler",
+  "face": "left",
+  "grid": {
+   "x": 164,
+   "y": 100,
+   "cols": 7,
+   "rows": 3,
+   "tile": 72
+  },
+  "cable": {
+   "x": 448,
+   "y": 16
+  },
+  "mounts": [
+   {
+    "x": 208,
+    "y": 88
+   },
+   {
+    "x": 380,
+    "y": 438
+   }
+  ],
+  "glow": [
+   {
+    "x": 636,
+    "y": 122,
+    "r": 6
+   },
+   {
+    "x": 182,
+    "y": 122,
+    "r": 6
+   },
+   {
+    "x": 20,
+    "y": 294,
+    "r": 4
+   }
+  ]
+ },
+ "sealing-drone": {
+  "file": "ships/sealing-drone.png",
+  "w": 168,
+  "h": 168,
+  "class": "flier",
+  "face": "left",
+  "grid": null,
+  "mounts": [
+   {
+    "x": 14,
+    "y": 94
+   }
+  ],
+  "glow": [
+   {
+    "x": 24,
+    "y": 94,
+    "r": 8
+   },
+   {
+    "x": 86,
+    "y": 14,
+    "r": 6
+   }
+  ]
+ },
+ "sling-keel": {
+  "file": "ships/cars/sling-keel.png",
+  "w": 480,
+  "h": 248,
+  "class": "keel-car",
+  "face": "right",
+  "grid": {
+   "x": 24,
+   "y": 68,
+   "cols": 6,
+   "rows": 2,
+   "tile": 72
+  },
+  "hangTop": {
+   "x": 240,
+   "y": 0
+  },
+  "mounts": [
+   {
+    "x": 464,
+    "y": 232
+   }
+  ],
+  "glow": [
+   {
+    "x": 452,
+    "y": 92,
+    "r": 6
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ]
+ },
+ "static-nest": {
+  "file": "ships/static-nest.png",
+  "w": 552,
+  "h": 512,
+  "class": "installation",
+  "face": "left",
+  "grid": {
+   "x": 104,
+   "y": 168,
+   "cols": 5,
+   "rows": 4,
+   "tile": 72
+  },
+  "mounts": [
+   {
+    "x": 80,
+    "y": 222
+   },
+   {
+    "x": 80,
+    "y": 438
+   }
+  ],
+  "glow": [
+   {
+    "x": 298,
+    "y": 316,
+    "r": 40
+   },
+   {
+    "x": 36,
+    "y": 276,
+    "r": 8
+   },
+   {
+    "x": 44,
+    "y": 366,
+    "r": 8
+   }
+  ]
+ },
+ "veil-car": {
+  "file": "ships/cars/veil-car.png",
+  "w": 344,
+  "h": 448,
+  "class": "rear-car",
+  "face": "right",
+  "grid": {
+   "x": 24,
+   "y": 120,
+   "cols": 4,
+   "rows": 4,
+   "tile": 72
+  },
+  "cable": {
+   "x": 172,
+   "y": 20
+  },
+  "couplerFront": {
+   "x": 342,
+   "y": 300
+  },
+  "mounts": [],
+  "glow": [
+   {
+    "x": 20,
+    "y": 128,
+    "r": 6
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ]
+ },
+ "wire-weaver": {
+  "file": "ships/wire-weaver.png",
+  "w": 680,
+  "h": 472,
+  "class": "crawler",
+  "face": "left",
+  "grid": {
+   "x": 154,
+   "y": 132,
+   "cols": 7,
+   "rows": 3,
+   "tile": 72
+  },
+  "cable": {
+   "x": 426,
+   "y": 18
+  },
+  "mounts": [
+   {
+    "x": 236,
+    "y": 114
+   },
+   {
+    "x": 460,
+    "y": 370
+   }
+  ],
+  "glow": [
+   {
+    "x": 180,
+    "y": 240,
+    "r": 10
+   }
+  ]
+ },
+ "workshop-keel": {
+  "file": "ships/cars/workshop-keel.png",
+  "w": 480,
+  "h": 248,
+  "class": "keel-car",
+  "face": "right",
+  "grid": {
+   "x": 24,
+   "y": 68,
+   "cols": 6,
+   "rows": 2,
+   "tile": 72
+  },
+  "hangTop": {
+   "x": 240,
+   "y": 0
+  },
+  "mounts": [],
+  "glow": [
+   {
+    "x": 452,
+    "y": 92,
+    "r": 6
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ]
+ }
+}

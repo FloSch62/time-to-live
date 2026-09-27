@@ -1,0 +1,39 @@
+{
+ "canvas": [
+  168,
+  168
+ ],
+ "layout": [
+  84,
+  84
+ ],
+ "gen": [
+  336,
+  336
+ ],
+ "density": 2,
+ "remap": 1.125,
+ "cable": null,
+ "class": "flier",
+ "grid": null,
+ "face": "left",
+ "mounts": [
+  {
+   "x": 8,
+   "y": 96
+  }
+ ],
+ "lampColors": null,
+ "glow": [
+  {
+   "x": 16,
+   "y": 96,
+   "r": 12
+  },
+  {
+   "x": 86,
+   "y": 14,
+   "r": 6
+  }
+ ]
+}

@@ -1,0 +1,203 @@
+{
+ "piece": "hollow-choir",
+ "note": "Selected sparse felt-piano, glass-bell and analog-pad guardian cue: dark 0.822, score-not-club 0.857, low vocal likelihood 0.083 and no raw lexical speech. This encounter uses ominous restraint. Global tempo is corrected with pitch preserved. Accepted alpha variations are brief quiet phrase gaps and an ambiguous A-major/minor profile; the original flags remain in the report.",
+ "gain_db": -0.91,
+ "loudest": "main",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   20,
+   68
+  ],
+  "bars": 70,
+  "tail": 2,
+  "bar_s": 2.2222222222222223,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "T1",
+    "instrumental"
+   ],
+   [
+    8,
+    "T2",
+    "instrumental"
+   ],
+   [
+    12,
+    "O1",
+    "instrumental"
+   ],
+   [
+    16,
+    "O2",
+    "instrumental"
+   ],
+   [
+    20,
+    "S1",
+    "instrumental"
+   ],
+   [
+    24,
+    "S2",
+    "instrumental"
+   ],
+   [
+    28,
+    "T1",
+    "instrumental"
+   ],
+   [
+    32,
+    "T2",
+    "instrumental"
+   ],
+   [
+    36,
+    "W1",
+    "interlude"
+   ],
+   [
+    40,
+    "W2",
+    "interlude"
+   ],
+   [
+    44,
+    "S1",
+    "instrumental"
+   ],
+   [
+    48,
+    "S2",
+    "instrumental"
+   ],
+   [
+    52,
+    "T1",
+    "instrumental"
+   ],
+   [
+    56,
+    "T2",
+    "instrumental"
+   ],
+   [
+    60,
+    "O1",
+    "instrumental"
+   ],
+   [
+    64,
+    "O2",
+    "instrumental"
+   ],
+   [
+    68,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "main": "audio/music/hollow-choir.ogg"
+  },
+  "bpm": 108,
+  "key": "Am",
+  "bars": 70,
+  "barSeconds": 2.222222,
+  "duration": 158.055563,
+  "loopStart": 44.444444,
+  "loopEnd": 151.111111,
+  "loop": true,
+  "gainDb": -0.91
+ },
+ "versions": {
+  "main": {
+   "take": "t4",
+   "seed": 620951,
+   "source": "audio-src/music/takes/hollow-choir/main/t4/audio.flac",
+   "source_sha256": "e0db1b229039d77cee0d6e1b9aa6b3a357b9d67f638ebe614f38c499dc78c357",
+   "conform": {
+    "rate_min": 0.99888,
+    "rate_max": 1.00135,
+    "max_cents": 2.3,
+    "verify": {
+     "tempo_bpm": 108.002,
+     "grid_phase_ms": 1.2,
+     "window_error_ms": [
+      26.0,
+      4.0,
+      0.0,
+      6.0,
+      -2.0,
+      -2.0,
+      4.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      -2.0,
+      0.0,
+      -2.0,
+      -2.0,
+      0.0,
+      2.0
+     ],
+     "window_conf": [
+      3.35,
+      3.05,
+      3.0,
+      2.69,
+      2.75,
+      2.99,
+      2.9,
+      3.02,
+      2.97,
+      3.13,
+      2.85,
+      3.05,
+      2.93,
+      2.84,
+      2.59,
+      3.2,
+      2.85
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/hollow-choir.flac",
+   "master_sha256": "987494a426ca7a4fd6b69bb064cdb9f9360aeb75e2461ea204813a6a2695eb70",
+   "delivery": "public/audio/music/hollow-choir.ogg",
+   "delivery_sha256": "d8e042200a9c7886d44e18762d365b3293944f588e3f61856d26c421278906fc",
+   "bytes": 2407522,
+   "samples": 7586667,
+   "decoded_samples": 7586667,
+   "source_levels": {
+    "lufs": -18.09,
+    "tp": -2.31,
+    "lra": 3.3
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -18.09,
+    "tp": -2.31,
+    "lra": 3.3
+   },
+   "delivered": {
+    "lufs": -18.96,
+    "tp": -3.2,
+    "lra": 3.3
+   }
+  }
+ }
+}

@@ -1,0 +1,320 @@
+{
+ "piece": "glass-cathedral",
+ "note": "New F-sharp-minor FM/pluck theme. Battle t22 replaces t21 because the first arrangement lacked rhythmic contrast. Both chosen takes have clean raw timing and voice checks; brief energy dips remain review indicators.",
+ "gain_db": -6.02,
+ "loudest": "battle",
+ "target_lufs": -19.0,
+ "ceiling_dbtp": -2.0,
+ "layout": {
+  "intro": 4,
+  "loop": [
+   4,
+   72
+  ],
+  "bars": 78,
+  "tail": 2,
+  "bar_s": 2.142857142857143,
+  "sections": [
+   [
+    0,
+    "intro",
+    "intro"
+   ],
+   [
+    4,
+    "phrase01",
+    "instrumental"
+   ],
+   [
+    8,
+    "phrase02",
+    "instrumental"
+   ],
+   [
+    12,
+    "phrase03",
+    "instrumental"
+   ],
+   [
+    16,
+    "phrase04",
+    "instrumental"
+   ],
+   [
+    20,
+    "phrase05",
+    "instrumental"
+   ],
+   [
+    24,
+    "phrase06",
+    "instrumental"
+   ],
+   [
+    28,
+    "phrase07",
+    "instrumental"
+   ],
+   [
+    32,
+    "phrase08",
+    "instrumental"
+   ],
+   [
+    36,
+    "phrase09",
+    "interlude"
+   ],
+   [
+    40,
+    "phrase10",
+    "interlude"
+   ],
+   [
+    44,
+    "phrase11",
+    "instrumental"
+   ],
+   [
+    48,
+    "phrase12",
+    "instrumental"
+   ],
+   [
+    52,
+    "phrase13",
+    "instrumental"
+   ],
+   [
+    56,
+    "phrase14",
+    "instrumental"
+   ],
+   [
+    60,
+    "phrase15",
+    "instrumental"
+   ],
+   [
+    64,
+    "phrase16",
+    "instrumental"
+   ],
+   [
+    68,
+    "phrase17",
+    "instrumental"
+   ],
+   [
+    72,
+    "phrase18",
+    "instrumental"
+   ],
+   [
+    76,
+    "tail",
+    "outro"
+   ]
+  ],
+  "loop_ok": true
+ },
+ "entry": {
+  "files": {
+   "explore": "audio/music/glass-cathedral-explore.ogg",
+   "battle": "audio/music/glass-cathedral-battle.ogg"
+  },
+  "bpm": 112,
+  "key": "F#m",
+  "bars": 78,
+  "barSeconds": 2.142857,
+  "duration": 169.642854,
+  "loopStart": 8.571429,
+  "loopEnd": 154.285714,
+  "loop": true,
+  "gainDb": -6.02,
+  "revision": "v4-new-composition",
+  "takes": {
+   "explore": "t21",
+   "battle": "t22"
+  },
+  "cues": {
+   "theme": 8.571,
+   "contrast": 77.143,
+   "return": 94.286
+  }
+ },
+ "versions": {
+  "explore": {
+   "take": "t21",
+   "seed": 755951,
+   "source": "audio-src/music/takes/glass-cathedral/explore/t21/audio.flac",
+   "source_sha256": "15ae5896a40e1c0c4ee409946ff886920e011b36912922b2bbdeeedc4ba2f97c",
+   "conform": {
+    "rate_min": 0.99979,
+    "rate_max": 1.00025,
+    "seam": {
+     "loop_start_sample": 411429,
+     "loop_end_sample": 7405714,
+     "crossfade_s": 2.1428541666666665
+    },
+    "phase_correction_beats": 0,
+    "max_cents": 0.4,
+    "verify": {
+     "tempo_bpm": 112.0,
+     "grid_phase_ms": 0.0,
+     "window_error_ms": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.41,
+      3.39,
+      3.4,
+      3.38,
+      3.43,
+      3.4,
+      3.42,
+      3.42,
+      3.43,
+      3.38,
+      3.4,
+      3.37,
+      3.37,
+      3.37,
+      3.36,
+      3.38,
+      3.37,
+      3.4,
+      3.36
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/glass-cathedral-explore.flac",
+   "master_sha256": "28348a543f5106e8670a8a8b5f72825113fc79f1ea71a7f8883e42780dfbca72",
+   "delivery": "public/audio/music/glass-cathedral-explore.ogg",
+   "delivery_sha256": "5782e835548c462211e7ed519f4372d6e085b5fc7945c22ff1081ef2f6f4f849",
+   "bytes": 3171543,
+   "samples": 8142857,
+   "decoded_samples": 8142857,
+   "source_levels": {
+    "lufs": -15.78,
+    "tp": 0.25,
+    "lra": 6.7
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -15.78,
+    "tp": 0.25,
+    "lra": 6.7
+   },
+   "delivered": {
+    "lufs": -21.81,
+    "tp": -5.84,
+    "lra": 6.7
+   }
+  },
+  "battle": {
+   "take": "t22",
+   "seed": 125268,
+   "source": "audio-src/music/takes/glass-cathedral/battle/t22/audio.flac",
+   "source_sha256": "62e833e4ade9cb4a69cee8c56a32e8b4c182336fcd1e7aefd4a47b44318c8d32",
+   "conform": {
+    "rate_min": 0.99977,
+    "rate_max": 1.00023,
+    "seam": {
+     "loop_start_sample": 411429,
+     "loop_end_sample": 7405714,
+     "crossfade_s": 2.1428541666666665
+    },
+    "phase_correction_beats": 0,
+    "max_cents": 0.4,
+    "verify": {
+     "tempo_bpm": 112.0,
+     "grid_phase_ms": -0.1,
+     "window_error_ms": [
+      2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "window_conf": [
+      3.49,
+      3.5,
+      3.5,
+      3.37,
+      3.34,
+      3.49,
+      3.37,
+      3.37,
+      3.51,
+      3.34,
+      3.36,
+      3.53,
+      3.34,
+      3.34,
+      3.37,
+      3.33,
+      3.55,
+      3.48,
+      3.46
+     ]
+    }
+   },
+   "master": "audio-src/music/masters/glass-cathedral-battle.flac",
+   "master_sha256": "a3e6542b5e4ac6214707dcfe289091d2bf85fdd1d9b7d7df050adbe5d8448dc4",
+   "delivery": "public/audio/music/glass-cathedral-battle.ogg",
+   "delivery_sha256": "e5c8c7926dc6d56f111d258c4eeafacbc89382d2e81cc88cb6fa6032eee7a512",
+   "bytes": 2814227,
+   "samples": 8142857,
+   "decoded_samples": 8142857,
+   "source_levels": {
+    "lufs": -12.98,
+    "tp": 0.25,
+    "lra": 4.8
+   },
+   "layer_trim_db": 0.0,
+   "pre_gain": {
+    "lufs": -12.98,
+    "tp": 0.25,
+    "lra": 4.8
+   },
+   "delivered": {
+    "lufs": -19.01,
+    "tp": -5.86,
+    "lra": 4.8
+   }
+  }
+ }
+}

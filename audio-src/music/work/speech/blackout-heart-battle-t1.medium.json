@@ -1,0 +1,37 @@
+{
+ "file": "/home/clab/projects/clab/time-to-live/audio-src/music/takes/blackout-heart/battle/t1/audio.flac",
+ "language": "en",
+ "language_prob": 0.66,
+ "segments": [
+  {
+   "start": 0.46,
+   "end": 0.66,
+   "text": "Thanks for watching!",
+   "avg_logprob": -0.94,
+   "no_speech": 0.77,
+   "comp": 0.71,
+   "lang": null,
+   "words": [
+    {
+     "w": " Thanks",
+     "start": 0.46,
+     "end": 0.58,
+     "p": 0.0
+    },
+    {
+     "w": " for",
+     "start": 0.58,
+     "end": 0.64,
+     "p": 0.85
+    },
+    {
+     "w": " watching!",
+     "start": 0.64,
+     "end": 0.66,
+     "p": 0.95
+    }
+   ],
+   "speech": false
+  }
+ ]
+}

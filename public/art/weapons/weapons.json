@@ -1,0 +1,428 @@
+{
+ "breach-spike": {
+  "file": "weapons/breach-spike.png",
+  "w": 150,
+  "h": 70,
+  "pivot": {
+   "x": 70,
+   "y": 53
+  },
+  "muzzle": {
+   "x": 147,
+   "y": 32
+  },
+  "lens": [
+   {
+    "x": 37,
+    "y": 18,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/breach-spike-icon.png"
+ },
+ "burst-emitter": {
+  "file": "weapons/burst-emitter.png",
+  "w": 120,
+  "h": 60,
+  "pivot": {
+   "x": 32,
+   "y": 48
+  },
+  "muzzle": {
+   "x": 114,
+   "y": 26
+  },
+  "lens": [
+   {
+    "x": 7,
+    "y": 20,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/burst-emitter-icon.png"
+ },
+ "cathedral-chime": {
+  "file": "weapons/cathedral-chime.png",
+  "w": 150,
+  "h": 70,
+  "pivot": {
+   "x": 58,
+   "y": 66
+  },
+  "muzzle": {
+   "x": 125,
+   "y": 46
+  },
+  "lens": [
+   {
+    "x": 59,
+    "y": 18,
+    "r": 2
+   },
+   {
+    "x": 63,
+    "y": 30,
+    "r": 2
+   },
+   {
+    "x": 53,
+    "y": 25,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/cathedral-chime-icon.png"
+ },
+ "fiber-lance": {
+  "file": "weapons/fiber-lance.png",
+  "w": 120,
+  "h": 60,
+  "pivot": {
+   "x": 34,
+   "y": 40
+  },
+  "muzzle": {
+   "x": 114,
+   "y": 27
+  },
+  "lens": [
+   {
+    "x": 111,
+    "y": 27,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/fiber-lance-icon.png"
+ },
+ "flood-cannon": {
+  "file": "weapons/flood-cannon.png",
+  "w": 150,
+  "h": 70,
+  "pivot": {
+   "x": 52,
+   "y": 66
+  },
+  "muzzle": {
+   "x": 143,
+   "y": 24
+  },
+  "lens": [
+   {
+    "x": 140,
+    "y": 24,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/flood-cannon-icon.png"
+ },
+ "heartpulse-chain": {
+  "file": "weapons/heartpulse-chain.png",
+  "w": 120,
+  "h": 60,
+  "pivot": {
+   "x": 47,
+   "y": 53
+  },
+  "muzzle": {
+   "x": 115,
+   "y": 28
+  },
+  "lens": [
+   {
+    "x": 86,
+    "y": 25,
+    "r": 4
+   },
+   {
+    "x": 86,
+    "y": 30,
+    "r": 3
+   },
+   {
+    "x": 76,
+    "y": 30,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/heartpulse-chain-icon.png"
+ },
+ "jammer": {
+  "file": "weapons/jammer.png",
+  "w": 120,
+  "h": 60,
+  "pivot": {
+   "x": 30,
+   "y": 41
+  },
+  "muzzle": {
+   "x": 116,
+   "y": 28
+  },
+  "lens": [
+   {
+    "x": 51,
+    "y": 28,
+    "r": 3
+   },
+   {
+    "x": 60,
+    "y": 28,
+    "r": 2
+   },
+   {
+    "x": 69,
+    "y": 31,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/jammer-icon.png"
+ },
+ "jumbo-frame": {
+  "file": "weapons/jumbo-frame.png",
+  "w": 120,
+  "h": 60,
+  "pivot": {
+   "x": 43,
+   "y": 48
+  },
+  "muzzle": {
+   "x": 115,
+   "y": 26
+  },
+  "lens": [
+   {
+    "x": 112,
+    "y": 26,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/jumbo-frame-icon.png"
+ },
+ "jumbo-frame-ii": {
+  "file": "weapons/jumbo-frame-ii.png",
+  "w": 150,
+  "h": 70,
+  "pivot": {
+   "x": 52,
+   "y": 59
+  },
+  "muzzle": {
+   "x": 144,
+   "y": 31
+  },
+  "lens": [
+   {
+    "x": 141,
+    "y": 31,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/jumbo-frame-ii-icon.png"
+ },
+ "multicast-array": {
+  "file": "weapons/multicast-array.png",
+  "w": 150,
+  "h": 70,
+  "pivot": {
+   "x": 52,
+   "y": 62
+  },
+  "muzzle": {
+   "x": 143,
+   "y": 12
+  },
+  "lens": [
+   {
+    "x": 132,
+    "y": 32,
+    "r": 2
+   },
+   {
+    "x": 136,
+    "y": 26,
+    "r": 2
+   },
+   {
+    "x": 128,
+    "y": 38,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/multicast-array-icon.png"
+ },
+ "packet-laser": {
+  "file": "weapons/packet-laser.png",
+  "w": 120,
+  "h": 60,
+  "pivot": {
+   "x": 40,
+   "y": 45
+  },
+  "muzzle": {
+   "x": 114,
+   "y": 22
+  },
+  "lens": [
+   {
+    "x": 76,
+    "y": 24,
+    "r": 2
+   },
+   {
+    "x": 87,
+    "y": 24,
+    "r": 2
+   },
+   {
+    "x": 62,
+    "y": 24,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/packet-laser-icon.png"
+ },
+ "payload-launcher": {
+  "file": "weapons/payload-launcher.png",
+  "w": 120,
+  "h": 60,
+  "pivot": {
+   "x": 47,
+   "y": 52
+  },
+  "muzzle": {
+   "x": 115,
+   "y": 26
+  },
+  "lens": [
+   {
+    "x": 105,
+    "y": 25,
+    "r": 3
+   },
+   {
+    "x": 100,
+    "y": 26,
+    "r": 2
+   },
+   {
+    "x": 90,
+    "y": 26,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/payload-launcher-icon.png"
+ },
+ "scatter-shot": {
+  "file": "weapons/scatter-shot.png",
+  "w": 120,
+  "h": 60,
+  "pivot": {
+   "x": 62,
+   "y": 57
+  },
+  "muzzle": {
+   "x": 101,
+   "y": 34
+  },
+  "lens": [
+   {
+    "x": 98,
+    "y": 34,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/scatter-shot-icon.png"
+ },
+ "thermite-payload": {
+  "file": "weapons/thermite-payload.png",
+  "w": 120,
+  "h": 60,
+  "pivot": {
+   "x": 34,
+   "y": 56
+  },
+  "muzzle": {
+   "x": 115,
+   "y": 37
+  },
+  "lens": [
+   {
+    "x": 37,
+    "y": 9,
+    "r": 2
+   },
+   {
+    "x": 18,
+    "y": 10,
+    "r": 2
+   },
+   {
+    "x": 45,
+    "y": 8,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/thermite-payload-icon.png"
+ },
+ "triple-burst": {
+  "file": "weapons/triple-burst.png",
+  "w": 120,
+  "h": 60,
+  "pivot": {
+   "x": 40,
+   "y": 52
+  },
+  "muzzle": {
+   "x": 115,
+   "y": 27
+  },
+  "lens": [
+   {
+    "x": 22,
+    "y": 36,
+    "r": 3
+   },
+   {
+    "x": 22,
+    "y": 19,
+    "r": 3
+   },
+   {
+    "x": 18,
+    "y": 28,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/triple-burst-icon.png"
+ },
+ "trunk-lance": {
+  "file": "weapons/trunk-lance.png",
+  "w": 150,
+  "h": 70,
+  "pivot": {
+   "x": 42,
+   "y": 55
+  },
+  "muzzle": {
+   "x": 143,
+   "y": 34
+  },
+  "lens": [
+   {
+    "x": 66,
+    "y": 38,
+    "r": 2
+   },
+   {
+    "x": 63,
+    "y": 31,
+    "r": 2
+   },
+   {
+    "x": 52,
+    "y": 33,
+    "r": 2
+   }
+  ],
+  "icon": "weapons/trunk-lance-icon.png"
+ }
+}

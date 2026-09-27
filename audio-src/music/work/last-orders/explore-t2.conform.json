@@ -1,0 +1,155 @@
+{
+ "piece": "last-orders",
+ "version": "explore",
+ "take": "t2",
+ "duration": 142.5,
+ "samples": 6840000,
+ "bar_s": 2.0,
+ "bars": 70,
+ "loop_bars": [
+  20,
+  68
+ ],
+ "loop_start": 40.0,
+ "loop_end": 136.0,
+ "anchors": [
+  {
+   "out": 4.0,
+   "take": 3.76,
+   "local": false
+  },
+  {
+   "out": 12.0,
+   "take": 11.76,
+   "local": false
+  },
+  {
+   "out": 20.0,
+   "take": 19.77,
+   "local": true
+  },
+  {
+   "out": 28.0,
+   "take": 27.756,
+   "local": true
+  },
+  {
+   "out": 36.0,
+   "take": 35.76,
+   "local": true
+  },
+  {
+   "out": 44.0,
+   "take": 43.76,
+   "local": true
+  },
+  {
+   "out": 52.0,
+   "take": 51.76,
+   "local": true
+  },
+  {
+   "out": 60.0,
+   "take": 59.76,
+   "local": true
+  },
+  {
+   "out": 68.0,
+   "take": 67.76,
+   "local": true
+  },
+  {
+   "out": 76.0,
+   "take": 75.76,
+   "local": true
+  },
+  {
+   "out": 84.0,
+   "take": 83.76,
+   "local": true
+  },
+  {
+   "out": 92.0,
+   "take": 91.76,
+   "local": true
+  },
+  {
+   "out": 100.0,
+   "take": 99.76,
+   "local": true
+  },
+  {
+   "out": 108.0,
+   "take": 107.76,
+   "local": true
+  },
+  {
+   "out": 116.0,
+   "take": 115.76,
+   "local": true
+  },
+  {
+   "out": 124.0,
+   "take": 123.76,
+   "local": true
+  },
+  {
+   "out": 132.0,
+   "take": 131.76,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99825,
+ "rate_max": 1.00125,
+ "max_cents": 3.0,
+ "take_seconds_used": 142.26,
+ "seam": {
+  "loop_start_sample": 1920000,
+  "loop_end_sample": 6528000,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 120.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   -16.0,
+   4.0,
+   4.0,
+   -4.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   3.44,
+   1.63,
+   3.27,
+   2.97,
+   2.98,
+   3.39,
+   3.47,
+   3.52,
+   3.45,
+   3.51,
+   3.45,
+   3.5,
+   3.57,
+   3.51,
+   3.53,
+   3.54,
+   3.52
+  ]
+ },
+ "tempo_correction": null,
+ "phase_correction_beats": 0
+}

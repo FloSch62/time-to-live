@@ -1,0 +1,12 @@
+ships/packet-leech:readable@1
+ships/cable-wraith:readable@1
+ships/scrap-foreman:readable@1
+ships/scavenger-skiff:readable@1
+ships/prism-widow:readable@1
+ships/wire-weaver:readable@1
+ships/coil-serpent:readable@1
+ships/echo-tender:readable@1
+ships/null-marshal:readable@1
+ships/grave-reaver:readable@1
+ships/demolition-engine:readable@1
+ships/quarantine-drone:readable@1

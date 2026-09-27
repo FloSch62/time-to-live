@@ -1,0 +1,13 @@
+explore/lamplighter:x-pix-init
+explore/lamplighter:x-ill-init
+explore/lamplighter:x-pix-t2i
+explore/lamplighter:x-pix-card
+explore/s1-a:x-pix
+explore/s1-a:x-env
+explore/s1-a:x-pix-cath
+explore/packet-leech:x-pix-init
+explore/packet-leech:x-ill-init
+explore/operator:x-pix
+explore/operator:x-fig
+explore/lift-car:x-pix
+explore/lift-car:x-fig

@@ -1,0 +1,154 @@
+{
+ "piece": "iron-regent",
+ "version": "main",
+ "take": "t3",
+ "duration": 147.327583,
+ "samples": 7071724,
+ "bar_s": 2.0689655172413794,
+ "bars": 70,
+ "loop_bars": [
+  20,
+  68
+ ],
+ "loop_start": 41.37931,
+ "loop_end": 140.689655,
+ "anchors": [
+  {
+   "out": 4.138,
+   "take": 4.2311,
+   "local": false
+  },
+  {
+   "out": 12.414,
+   "take": 12.519,
+   "local": true
+  },
+  {
+   "out": 20.69,
+   "take": 20.7909,
+   "local": true
+  },
+  {
+   "out": 28.966,
+   "take": 29.0607,
+   "local": true
+  },
+  {
+   "out": 37.241,
+   "take": 37.3346,
+   "local": true
+  },
+  {
+   "out": 45.517,
+   "take": 45.6104,
+   "local": true
+  },
+  {
+   "out": 53.793,
+   "take": 53.8863,
+   "local": true
+  },
+  {
+   "out": 62.069,
+   "take": 62.1622,
+   "local": true
+  },
+  {
+   "out": 70.345,
+   "take": 70.438,
+   "local": true
+  },
+  {
+   "out": 78.621,
+   "take": 78.7119,
+   "local": true
+  },
+  {
+   "out": 86.897,
+   "take": 86.9878,
+   "local": true
+  },
+  {
+   "out": 95.172,
+   "take": 95.2656,
+   "local": true
+  },
+  {
+   "out": 103.448,
+   "take": 103.5415,
+   "local": true
+  },
+  {
+   "out": 111.724,
+   "take": 111.8173,
+   "local": true
+  },
+  {
+   "out": 120.0,
+   "take": 120.0932,
+   "local": true
+  },
+  {
+   "out": 128.276,
+   "take": 128.3751,
+   "local": true
+  },
+  {
+   "out": 136.552,
+   "take": 136.6469,
+   "local": true
+  }
+ ],
+ "rate_min": 0.99928,
+ "rate_max": 1.00145,
+ "max_cents": 2.5,
+ "take_seconds_used": 147.423,
+ "seam": {
+  "loop_start_sample": 1986207,
+  "loop_end_sample": 6753103,
+  "crossfade_s": 0.03
+ },
+ "verify": {
+  "tempo_bpm": 116.0,
+  "grid_phase_ms": 0.0,
+  "window_error_ms": [
+   10.0,
+   2.0,
+   0.0,
+   -2.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   -2.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   -2.0,
+   0.0,
+   0.0
+  ],
+  "window_conf": [
+   0.46,
+   2.85,
+   2.89,
+   3.39,
+   3.4,
+   3.4,
+   3.54,
+   3.46,
+   3.43,
+   3.28,
+   3.25,
+   3.33,
+   3.33,
+   3.45,
+   3.26,
+   3.31,
+   3.43
+  ]
+ },
+ "tempo_correction": null
+}

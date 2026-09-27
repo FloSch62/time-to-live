@@ -1,0 +1,2 @@
+ships/lamplighter:b@3
+ships/lamplighter:c@3

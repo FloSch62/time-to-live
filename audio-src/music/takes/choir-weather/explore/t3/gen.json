@@ -1,0 +1,134 @@
+{
+  "piece": "choir-weather",
+  "version": "explore",
+  "take": 3,
+  "seed": 723024,
+  "cfg": 2.2,
+  "negative": "Vocals, a singer singing lyrics, sung words, spoken words, speech, narration, voice-over, rap, whispering, a choir, wordless choir aahs, vocal pads, humming, a solo voice, pop song with a lead vocalist. Happy, cheerful, joyful, uplifting, hopeful, triumphant, heroic fanfare, major key, bright pop, feel-good, playful, whimsical, children's music, corporate, upbeat, epic trailer, sunny, upbeat synthwave, outrun. Generic EDM club dance track with a four-on-the-floor kick.",
+  "plans": "v2-dark",
+  "style": "Quiet instrumental music in an empty glass signal hall at night. A soft felt piano and muted celesta play sparse, sad minor phrases above a cold analog synthesizer pad and sustained low cello. Long tape echoes and distant metal chimes, restrained and desolate, lots of silence between notes. No drums. Purely instrumental. Em, 100 BPM.",
+  "plan_sha256": "5e84948f98d2abb17b8b7762de050b88631cecc56ff9dffa06af48da5b6e2486",
+  "layout": {
+    "intro": 4,
+    "loop": [
+      20,
+      68
+    ],
+    "bars": 70,
+    "tail": 2,
+    "bar_s": 2.4,
+    "sections": [
+      [
+        0,
+        "intro",
+        "intro"
+      ],
+      [
+        4,
+        "W1",
+        "instrumental"
+      ],
+      [
+        8,
+        "W2",
+        "instrumental"
+      ],
+      [
+        12,
+        "X1",
+        "instrumental"
+      ],
+      [
+        16,
+        "X2",
+        "instrumental"
+      ],
+      [
+        20,
+        "Y1",
+        "instrumental"
+      ],
+      [
+        24,
+        "Y2",
+        "instrumental"
+      ],
+      [
+        28,
+        "W1",
+        "instrumental"
+      ],
+      [
+        32,
+        "W2",
+        "instrumental"
+      ],
+      [
+        36,
+        "Z1",
+        "interlude"
+      ],
+      [
+        40,
+        "Z2",
+        "interlude"
+      ],
+      [
+        44,
+        "Y1",
+        "instrumental"
+      ],
+      [
+        48,
+        "Y2",
+        "instrumental"
+      ],
+      [
+        52,
+        "W1",
+        "instrumental"
+      ],
+      [
+        56,
+        "W2",
+        "instrumental"
+      ],
+      [
+        60,
+        "X1",
+        "instrumental"
+      ],
+      [
+        64,
+        "X2",
+        "instrumental"
+      ],
+      [
+        68,
+        "tail",
+        "outro"
+      ]
+    ],
+    "loop_ok": true
+  },
+  "semantic_tokens": 4200,
+  "max_tokens": 6550,
+  "truncated": false,
+  "timing": {
+    "seconds": 44.50744040601421,
+    "prefill_seconds": 0.21835421299329028,
+    "ttft_seconds": 0.22056184703251347,
+    "output_tokens": 4201,
+    "content_tokens": 4200,
+    "output_tps": 94.38871257652296,
+    "prefix_tokens": 1170,
+    "cfg_branches": 2,
+    "execution": "cuda_graph",
+    "attention": "flash"
+  },
+  "nar_seconds": 18.6,
+  "vae_seconds": 3.5,
+  "model": "m-a-p/YuE2-3B",
+  "vae": "m-a-p/YuE2-Vae",
+  "package": "yue2-infer 0.1.6 (faultline .venv-score)"
+}
