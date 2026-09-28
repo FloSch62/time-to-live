@@ -1,0 +1,9 @@
+bg/title:v5c
+bg/relay-seven:v5c
+bg/line-quiet:v5c
+ending/e1:v5c
+ending/e2:v5c
+ending/e3:v5c
+ending/e4:v5c
+ending/e5:v5c
+ending/e6:v5c

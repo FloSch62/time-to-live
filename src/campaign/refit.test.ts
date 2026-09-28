@@ -91,3 +91,30 @@ test("the consist survives a save round-trip", () => {
   assert.equal(back.ship.livery.lamp, "violet");
   assert.equal(back.ship.weaponSlots, r.ship.weaponSlots);
 });
+
+test("paid car replacements and sales preserve occupied crew berths without charging", () => {
+  const run = createRun(171, testShip());
+  coupleCar(run.ship, "bunk-car");
+  while (run.ship.crew.length < 8) run.ship.crew.push({ ...run.ship.crew[0], id: String(100 + run.ship.crew.length) });
+  run.inv.salvage = 500;
+  const stock = rollStock(run, 1);
+  stock.items.push({ kind: "car", id: "armory-car", price: 75 });
+  const before = JSON.stringify(run.ship);
+  const result = buyItem(run, stock, stock.items.length - 1);
+  assert.equal(result.ok, false);
+  assert.match(result.reason!, /berths/);
+  assert.equal(sellCar(run, "rear").ok, false);
+  assert.equal(run.inv.salvage, 500);
+  assert.equal(JSON.stringify(run.ship), before);
+  assert.equal(stock.items.at(-1)!.sold, undefined);
+});
+
+test("a shop cannot sell a redundant second system housing", () => {
+  const run = createRun(172, testShip());
+  assert.ok(installSystem(run.ship, "drones"));
+  run.inv.salvage = 500;
+  const stock = rollStock(run, 1);
+  stock.items.push({ kind: "module", id: "drone-bay", price: 60 });
+  assert.equal(buyItem(run, stock, stock.items.length - 1).ok, false);
+  assert.equal(run.inv.salvage, 500);
+});

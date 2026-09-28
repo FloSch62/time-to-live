@@ -3,9 +3,15 @@
 import type { Gfx } from "../core/gfx";
 import { art, getJson, layoutSize, loadJson, markHD } from "../core/assets";
 import { P, hexToRgb } from "../core/palette";
+import { settings } from "../core/save";
 import type { ShipState } from "../game/types";
 import { combatApi, previewGrip } from "../campaign/combat-adapter";
-import { cable, cachedLayer, dot, glowHD } from "./kit";
+import { dot, glowHD } from "./kit";
+import { drawCarrier, carrierSag, carrierThrough, type CarrierRegion } from "../combat/carrier";
+import { shipPreviewGrips } from "../combat/preview";
+
+/** The carrier handed to the ship preview (see PreviewOpts.carrier). */
+export type PreviewCarrier = { region?: CarrierRegion; draw?: () => void; extend?: number; outside?: boolean };
 
 interface ShipsMeta {
   [id: string]: { w?: number; h?: number; grid?: { x: number; y: number }; cable?: { x: number; y: number }; glow?: { x: number; y: number; r?: number }[] };
@@ -187,9 +193,9 @@ export interface TenderDraw {
 }
 
 /** Size and grip offset of the tender image that will be drawn. */
-export function tenderMetrics(): { w: number; h: number; grip: { x: number; y: number }; source: "art" | "fallback" } {
-  const img = art("ships/lamplighter");
-  const meta = shipsMeta()?.lamplighter;
+export function tenderMetrics(id = "lamplighter"): { w: number; h: number; grip: { x: number; y: number }; source: "art" | "fallback" } {
+  const img = art(`ships/${id}`);
+  const meta = shipsMeta()?.[id];
   if (img) {
     const ls = layoutSize(img);
     // ships.json geometry is in image pixels (HD): halve it for layout units.
@@ -203,19 +209,20 @@ export function tenderMetrics(): { w: number; h: number; grip: { x: number; y: n
  * Draw the tender with its grip point at (gx, gy). `lamp` pulses the nose lamp. The combat workstream's preview is
  * used when it exists (it may draw rooms and crew too).
  */
-export function drawTender(g: Gfx, ship: ShipState, gx: number, gy: number, t: number, opts: { lamp?: boolean; preview?: boolean; crew?: boolean; draw?: (x: number, y: number) => void } = {}) {
+export function drawTender(g: Gfx, ship: ShipState, gx: number, gy: number, t: number, opts: { lamp?: boolean; preview?: boolean; crew?: boolean; carrier?: PreviewCarrier; sheave?: number; exterior?: boolean; draw?: (x: number, y: number) => void } = {}) {
   const pg = opts.preview !== false ? previewGrip(ship) : null;
   if (pg && combatApi.drawShipPreview) {
     const x = Math.round(gx - pg.x);
     const y = Math.round(gy - pg.y);
     if (opts.draw) opts.draw(x, y);
-    else combatApi.drawShipPreview(g, ship, x, y, { t, crew: opts.crew !== false });
+    else combatApi.drawShipPreview(g, ship, x, y, { t, crew: opts.crew !== false, carrier: opts.carrier, sheave: opts.sheave, exterior: opts.exterior });
     return { x, y, w: pg.w, h: pg.h };
   }
-  const m = tenderMetrics();
+  const id = ship.consist?.lead ?? ship.defId;
+  const m = tenderMetrics(id);
   const x = Math.round(gx - m.grip.x);
   const y = Math.round(gy - m.grip.y);
-  const img = art("ships/lamplighter");
+  const img = art(`ships/${id}`);
   const lampCol = LAMP[ship.livery?.lamp ?? "amber"] ?? P.amber1;
   if (img) g.image(img, x, y);
   else {
@@ -227,8 +234,8 @@ export function drawTender(g: Gfx, ship: ShipState, gx: number, gy: number, t: n
     g.image(fc, x, y);
   }
   if (opts.lamp !== false) {
-    const glowPts = shipsMeta()?.lamplighter?.glow;
-    const pulse = 0.25 + 0.1 * Math.sin(t * 2.4);
+    const glowPts = shipsMeta()?.[id]?.glow;
+    const pulse = 0.25 + (settings.reducedMotion ? 0 : 0.1 * Math.sin(t * 2.4));
     if (img && glowPts?.length) for (const p of glowPts) glowHD(g, x + p.x / 2, y + p.y / 2, (p.r ?? 24) / 2, lampCol, pulse);
     else if (!img) glowHD(g, x + 24 + 246 + 13, y + 38 + 21, 16, lampCol, pulse);
   }
@@ -237,6 +244,7 @@ export function drawTender(g: Gfx, ship: ShipState, gx: number, gy: number, t: n
 
 /** Trolley sparks where the grip rides the carrier. */
 export function trolleySparks(g: Gfx, gx: number, gy: number, t: number, intensity = 1) {
+  if (settings.reducedMotion) return;
   const n = Math.floor(3 * intensity);
   for (let i = 0; i < n; i++) {
     const ph = (t * 1.7 + i * 0.37) % 1;
@@ -249,8 +257,10 @@ export function trolleySparks(g: Gfx, gx: number, gy: number, t: number, intensi
   }
 }
 
-/** The carrier across the relay view and the tender hanging from it. Returns the grip position. */
-export function carrierScene(g: Gfx, ship: ShipState, t: number, opts: { x?: number; slideX?: number; sway?: boolean; cableY?: number; fitHeight?: number; draw?: (x: number, y: number) => void } = {}) {
+/** The carrier across the relay view and the tender hanging from it (the shared carrier renderer in
+ *  src/combat/carrier.ts, tinted per region). `under` draws between the carrier and the tender (the relay's switch
+ *  tower, which the carrier runs through). Returns the grip position. */
+export function carrierScene(g: Gfx, ship: ShipState, t: number, opts: { x?: number; slideX?: number; sway?: boolean; cableY?: number; fitHeight?: number; region?: CarrierRegion; under?: () => void; sheave?: number; exterior?: boolean; carrierFrom?: number; draw?: (x: number, y: number, carrier: PreviewCarrier) => void } = {}) {
   const x0 = -20;
   const x1 = 980;
   const y0 = opts.cableY ?? 96;
@@ -261,22 +271,45 @@ export function carrierScene(g: Gfx, ship: ShipState, t: number, opts: { x?: num
   const fit = pg ? Math.min(1, 760 / pg.w, (opts.fitHeight ?? Infinity) / pg.h) : 1;
   const baseX = pg ? centre - pg.w * fit / 2 + pg.x * fit : centre;
   const gx = Math.round(baseX + (opts.slideX ?? 0));
-  const swayX = opts.sway === false ? 0 : Math.round(Math.sin(t * 0.9) * 1.2);
+  const swayX = opts.sway === false || settings.reducedMotion ? 0 : Math.round(Math.sin(t * 0.9) * 1.2);
   const u = (gx - x0) / (x1 - x0);
   const gy = Math.round(y0 + sag * 4 * u * (1 - u));
-  // back cable shadow, cable (cached: a thousand pixels of braid)
-  const layer = cachedLayer("carrier", `${y0}|${sag}`, 960, y0 + sag + 12, (lg) => {
-    cable(lg, x0, y0 + 3, x1, y0 + 3, sag, { color: P.ink1, hi: P.ink1, lo: P.ink0, thick: 3, braid: false, hd: true });
-    cable(lg, x0, y0, x1, y0, sag, { thick: 7, hd: true, color: P.copper2, hi: P.copper0, lo: P.copper4 });
-    cable(lg, x0, y0 + 1.5, x1, y0 + 1.5, sag, { thick: 2, hd: true, color: P.copper3, hi: P.copper1, lo: P.copper3, braid: false });
-  });
-  g.image(layer, 0, 0);
-  g.ctx.save();
-  g.ctx.translate(gx + swayX, gy);
-  g.ctx.scale(fit, fit);
-  g.ctx.translate(-gx - swayX, -gy);
-  drawTender(g, ship, gx + swayX, gy, t, { draw: opts.draw });
-  g.ctx.restore();
-  trolleySparks(g, gx + swayX, gy, t, opts.slideX ? 3 : 1);
-  return { gx: gx + swayX, gy };
+  // The carrier is drawn in the tender's own (fit-scaled) space, so its thickness keeps the same proportion to the
+  // drive trolley in every view.
+  const px = gx + swayX;
+  // The tender loads the carrier: it runs taut through every grip of the consist and rises to the towers (so it never
+  // dips below a grip and the roof guns keep their clear air). Unloaded (the tender still off-screen) it hangs in a
+  // plain catenary; the two blend over the last 80 units at each edge.
+  const free = carrierSag(x0, y0, x1, y0, sag);
+  const grips = pg ? shipPreviewGrips(ship).map(([x, y]) => [px + (x - pg.x) * fit, gy + (y - pg.y) * fit] as [number, number]).filter(([x]) => x > x0 && x < x1) : [];
+  const loaded = grips.length ? carrierThrough([[x0, y0], ...grips, [x1, y0]], true) : free;
+  const k = Math.max(0, Math.min(1, Math.min(px - x0, x1 - px) / 80));
+  const screenY = (x: number) => loaded(x) * k + free(x) * (1 - k);
+  const localY = (xl: number) => gy + (screenY(px + (xl - px) * fit) - gy) / fit;
+  // `carrierFrom`: where the drawn carrier starts on the left (the title keeps it under its menu backing).
+  const lx0 = px + (Math.max(x0, opts.carrierFrom ?? x0) - px) / fit, lx1 = px + (x1 - px) / fit;
+  const key = `${px}|${gy}|${fit}|${y0}|${lx0}|${grips.join(";")}`;
+  const paintCarrier = () => {
+    if (opts.carrierFrom === undefined) { drawCarrier(g, localY, lx0, lx1, opts.region ?? null, 0, key); return; }
+    // Fade in over the first 96 screen units after `carrierFrom`, so the carrier comes out of the dark gradually.
+    const fade = 96 / fit, steps = 12;
+    for (let i = 0; i < steps; i++) {
+      const a = lx0 + (fade * i) / steps, b = lx0 + (fade * (i + 1)) / steps;
+      g.alpha((i + 1) / (steps + 1), () => drawCarrier(g, localY, a, b + 0.5, opts.region ?? null, 0, `${key}|${i}`));
+    }
+    drawCarrier(g, localY, lx0 + fade, lx1, opts.region ?? null, 0, `${key}|rest`);
+  };
+  const scaled = (fn: () => void) => {
+    g.ctx.save();
+    g.ctx.translate(px, gy);
+    g.ctx.scale(fit, fit);
+    g.ctx.translate(-px, -gy);
+    try { fn(); } finally { g.ctx.restore(); }
+  };
+  scaled(paintCarrier);
+  opts.under?.();
+  const carrier: PreviewCarrier = { region: opts.region ?? null, draw: paintCarrier, outside: true };
+  scaled(() => drawTender(g, ship, px, gy, t, { carrier, sheave: opts.sheave, exterior: opts.exterior, draw: opts.draw ? (x, y) => opts.draw!(x, y, carrier) : undefined }));
+  trolleySparks(g, px, gy, t, opts.slideX ? 3 : 1);
+  return { gx: px, gy };
 }

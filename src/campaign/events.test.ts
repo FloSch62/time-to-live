@@ -4,7 +4,7 @@ import { Rng } from "../core/rng.ts";
 import { loadContent, testShip } from "./testkit.ts";
 import { createRun } from "./run.ts";
 import {
-  applyOutcome, checkCondition, newCtx, presentEvent, reqLabel, substitute, resolveChoice, pickEventFor,
+  applyOutcome, checkCondition, eligibleEvents, newCtx, presentEvent, reqLabel, substitute, resolveChoice, pickEventFor, rollOutcome,
 } from "./events.ts";
 import { content } from "./content.ts";
 import { crewCap } from "./refit.ts";
@@ -188,4 +188,43 @@ test("resolveChoice rolls with the run rng and advances it", () => {
   resolveChoice(r, def, 0, newCtx(r));
   assert.notDeepEqual(r.rng, s0);
   assert.ok(r.inv.salvage > before);
+});
+
+test("human bodily events and species choices cast the participant who receives the consequence", () => {
+  const r = run();
+  const def: EventDef = { id: "t-body", cast: "human", pool: "event", text: "{crew} tastes the tea.", choices: [
+    { text: "Let the rigger handle the hot coupling.", req: { species: "rigger" }, outcomes: [{ outcome: { crewDamage: { who: "one", amount: 12 } } }] },
+  ] };
+  content.events.set(def.id, def);
+  const ctx = newCtx(r, def.id);
+  assert.notEqual(r.ship.crew.find(c => c.id === ctx.crewId)?.species, "rigger");
+  const human = r.ship.crew.find(c => c.id === ctx.crewId)!;
+  const hp = human.hp;
+  const rigger = r.ship.crew.find(c => c.species === "rigger")!;
+  resolveChoice(r, def, 0, ctx);
+  assert.equal(human.hp, hp);
+  assert.equal(rigger.hp, 78);
+  assert.match(rigger.memory!, /injured/);
+  r.ship.crew = [rigger];
+  assert.equal(eligibleEvents(r, "event").some(e => e.id === def.id), false);
+  assert.equal(substitute("{crew}", r, newCtx(r)), "the crew");
+  content.events.delete(def.id);
+});
+
+test("risk labels distinguish ordinary chance from an actual preparation modifier", () => {
+  const r = run();
+  const def: EventDef = { id: "t-risk", pool: "event", text: "A coupling slips.", choices: [
+    { text: "Hold it.", outcomes: [{ outcome: { flags: ["success"] } }, { outcome: { resources: { hull: -2 } } }] },
+    { text: "Use the drive stabilizer.", outcomes: [
+      { modifiers: [{ when: { system: { id: "engines", level: 2 } }, multiply: 3 }], outcome: { flags: ["success"] } },
+      { outcome: { resources: { hull: -2 } } },
+    ] },
+  ] };
+  const view = presentEvent(r, def, newCtx(r));
+  assert.equal(view.choices[0].risk, "Uncertain outcome");
+  assert.match(view.choices[1].risk!, /preparation/);
+  const rng = new Rng(801);
+  let successes = 0;
+  for (let i = 0; i < 2000; i++) if (rollOutcome(def.choices[1], rng, r).flags?.includes("success")) successes++;
+  assert.ok(successes > 1400 && successes < 1600, `prepared chance should stay near 75%, got ${successes / 20}%`);
 });

@@ -1,0 +1,26 @@
+{
+ "kind": "car",
+ "scale": 6,
+ "unit_px": 1.35,
+ "pad": 40,
+ "origin": [
+  189,
+  122
+ ],
+ "size": [
+  378,
+  240
+ ],
+ "carrier_half": 6,
+ "saddle_top": 62,
+ "canvas_k": 1.0,
+ "render_scale": 4.444444444444444,
+ "offset": [
+  0,
+  2
+ ],
+ "gen": [
+  1680,
+  1072
+ ]
+}

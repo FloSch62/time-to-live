@@ -3,6 +3,7 @@ import type {
   AugmentId, CarSlot, DroneId, EnemyId, HazardId, KeelCarId, LampColor, LeadCarId, ModuleId, MusicId, RearCarId,
   ResourceId, SpeciesId, StageIndex, SystemId, WeaponId,
 } from "./ids";
+import type { DifficultyId } from "../data/difficulty.ts";
 
 // ─── Ship and crew state (campaign ⇄ combat) ────────────────────────────────────────────────────────────────
 
@@ -25,6 +26,8 @@ export interface CrewMember {
   kills?: number;
   repairs?: number;
   joinedAt?: string; // stage/relay label, for the crew history
+  /** Last consequential voyage incident, retained through refits, combat and saves. */
+  memory?: string;
 }
 
 export interface SystemState {
@@ -66,6 +69,8 @@ export interface ShipState {
   weaponPower: boolean[]; // which mounted weapons are powered
   weaponSlots: number;
   drones: (DroneId | null)[];
+  /** Drones armed at the relay: they launch as the next fight starts (one spare each). */
+  dronePower?: boolean[];
   droneSlots: number;
   cargo: (WeaponId | DroneId)[]; // unmounted items (capacity from cars/modules; base 4)
   /** Modules owned but not installed (refit them into sockets at a market or bench). */
@@ -85,7 +90,15 @@ export interface Inventory {
 
 // ─── Combat API (implemented by the combat workstream, called by the campaign) ────────────────────────────
 
+export interface RetreatRoute {
+  to: number;
+  name: string;
+  cost: number;
+  sealed?: boolean;
+}
+
 export interface CombatSetup {
+  difficulty?: DifficultyId;
   enemy: EnemyId;
   stage: StageIndex;
   seed: number;
@@ -100,10 +113,31 @@ export interface CombatSetup {
   noReward?: boolean;
   /** Relay difficulty scaling within a stage, 0 (start) … 1 (exit). */
   depth: number;
+  /** A real linked relay offered for a charged combat departure. Campaign spends the TTL and advances the Seal. */
+  retreat?: RetreatRoute;
+  /** Linked destinations shown before committing to a combat departure. */
+  retreatOptions?: RetreatRoute[];
+  scenario?: CombatScenario;
+}
+
+export interface CombatScenario {
+  objective: "release-duty";
+  system: SystemId | "artillery";
+  holdSeconds?: number;
+  enemyHull?: number;
+  enemyDamage?: Partial<Record<SystemId | "artillery", number>>;
+  label?: string;
 }
 
 export interface CombatResult {
   outcome: "victory" | "fled" | "surrendered" | "defeat" | "escaped";
+  resolution?: "destroyed" | "disabled" | "released" | "delivered" | "spared" | "escaped";
+  /** The destination confirmed during combat. Campaign applies this departure exactly once. */
+  retreatTo?: number;
+  /** Machinery bars patched only after securing the berth; hull and crew wounds are retained. */
+  systemsPatched?: number;
+  /** Actual hull recovered by a coupled workshop after an ordinary secured encounter. */
+  hullRecovered?: number;
   ship: ShipState;
   inventory: Inventory;
   /** Rewards already rolled by combat for a victory/surrender (the campaign shows and applies them). */
@@ -138,6 +172,7 @@ export type EventPool =
   | "scripted";
 
 export interface Condition {
+  tender?: LeadCarId;
   /** e.g. { salvage: 30 } — at least this much. */
   resources?: Partial<Record<ResourceId, number>>;
   /** Installed system at least this level (e.g. sensors ≥ 2). */
@@ -161,6 +196,8 @@ export interface Condition {
 export type Range = number | [number, number];
 
 export interface Outcome {
+  /** Override this relay's one-time maintenance allocation; false means its stores are inaccessible. */
+  maintenance?: number | false;
   text?: string; // shown after the choice
   /** Resource changes (negative = cost/loss). Ranges are rolled. */
   resources?: Partial<Record<ResourceId, Range>>;
@@ -187,6 +224,7 @@ export interface Outcome {
     intro?: string;
     onWin?: string;
     onSurrender?: string;
+    scenario?: CombatScenario;
   };
   store?: boolean; // open the store after the text
   next?: string; // continue with another event id
@@ -205,6 +243,8 @@ export interface Outcome {
 
 export interface WeightedOutcome {
   weight?: number; // default 1
+  /** Preparation changes the odds without promising that an uncertain action succeeds. */
+  modifiers?: { when: Condition; multiply: number }[];
   outcome: Outcome;
 }
 
@@ -219,11 +259,20 @@ export interface ChoiceDef {
 }
 
 export interface EventDef {
+  /** Named participant required by this event's bodily actions or expertise. Human excludes riggers. */
+  cast?: "human" | SpeciesId;
   id: string;
   pool: EventPool;
   /** Stages where the event can appear (random pools). */
   stages?: StageIndex[];
   weight?: number; // default 1
+  /** An interception opens in combat immediately; choices are not presented. */
+  directCombat?: Outcome["combat"];
+  maintenance?: number | false;
+  /** Quiet stop: preserve its text at the relay without opening a decision window. */
+  glimpse?: boolean;
+  /** Fixed arrival consequence, applied once before any choices. */
+  arrival?: Outcome;
   unique?: boolean; // at most once per run
   requires?: Condition;
   /** For `hazard`-pool events: the hazard this arrival text describes. */

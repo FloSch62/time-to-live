@@ -17,13 +17,18 @@ import { carInfo, carSlot, coupleCar, freeSocket, moduleInfo, refit, tenderStats
 import { installSystem } from "../campaign/shipops";
 import { WEAPONS } from "../data/weapons";
 import { DRONES } from "../data/drones";
+import { CARS } from "../data/cars";
+import { combatApi, previewGrip } from "../campaign/combat-adapter";
 import type { WeaponId, DroneId } from "../game/ids";
-import { brassButton, counted, divider, hullBar, icon, resIcon, titlePlate, tracked } from "./kit";
-import { itemIcon32, equipmentArt } from "./items";
+import { RUN_MODAL, TYPE, brassButton, divider, footer, header as panelHeader, hullBar, icon, resIcon, runModal, salvageChip, tabRow, textAt } from "./kit";
+import { itemIcon32, equipmentArt, equipmentTooltip, itemStats } from "./items";
+import { lineHeight, measure, wrap } from "../core/font";
 import { statDeltas } from "./yard";
 import { placeholderPortrait } from "./event";
+import { showCarRefit } from "./refit-animation";
 
 const TABS = ["WEAPONS", "DRONES", "SYSTEMS", "CREW", "AUGMENTS", "CARS & REFITS", "SUPPLIES"] as const;
+const SELL_W = 244;
 const KINDS: StoreItem["kind"][][] = [["weapon"], ["drone"], ["system"], ["crew"], ["augment"], ["car", "module"], []];
 
 export function createStoreScene(app: App, run: RunState, onClose: () => void): Scene {
@@ -50,71 +55,64 @@ export function createStoreScene(app: App, run: RunState, onClose: () => void): 
       msgT = Math.max(0, msgT - dt);
     },
     draw(g, a) {
-      g.dim(0.62);
-      const X = 20;
-      const Y = 30;
-      const W = 920;
-      const H = 490;
-      g.panel(X, Y, W, H, "dialog");
-      const title = stock.pell ? "PELL'S STALL" : "THE SALVAGE EXCHANGE";
-      titlePlate(g, 480, Y - 11, title, { w: 340 });
-      if (stock.pell) {
-        tracked(g, "PELL · SALVAGE · FAIR PRICES · NO LENDING", X + 24, Y + 16, { font: "small", color: P.amber1, track: 1 });
-      } else tracked(g, `${relay.name.toUpperCase()} · SALVAGE, STAMPS, REPAIRS`, X + 24, Y + 16, { font: "small", color: P.ivory3, track: 1 });
-      // salvage counter
-      const sv = counted("store-salvage", run.inv.salvage);
-      g.panel(X + W - 150, Y + 10, 126, 26, "panel-dark");
-      resIcon(g, "salvage", X + W - 144, Y + 15);
-      g.text(String(sv), X + W - 32, Y + 14, { font: "head", color: P.brass1, align: "right" });
+      const title = stock.pell ? "Pell's Stall" : "The Salvage Exchange";
+      const sub = stock.pell ? "Pell · salvage · fair prices · no lending" : `${relay.name} · salvage, stamps, repairs`;
+      const box = runModal(g, a, run, title, sub, { subColor: stock.pell ? P.amber1 : P.ivory3 });
+      salvageChip(g, "store-salvage", run.inv.salvage, box.right, box.headerY - 5);
       // tabs
-      TABS.forEach((label, i) => {
-        const tw = 118;
-        const tx = X + 24 + i * (tw + 4);
-        const count = i < 6 ? stock.items.filter((it) => KINDS[i].includes(it.kind) && !it.sold).length : -1;
-        if (brassButton(a, `st-tab-${i}`, tx, Y + 40, tw, 24, count >= 0 ? `${label} ${count}` : label, { variant: i === tab ? "brass" : "normal", font: "label", hotkey: `Digit${i + 1}`, sound: "ui-click" })) {
-          tab = i;
-          confirmCar = null;
-        }
-      });
-      const cx = X + 24;
-      const cy = Y + 76;
-      const cw = W - 48 - 250;
-      const ch = H - 130;
-      if (tab < 6) cardsTab(g, a, cx, cy, cw, ch);
-      else suppliesTab(g, a, cx, cy, cw, ch);
-      sellPanel(g, a, X + W - 24 - 238, cy, 238, ch);
-      // footer
-      const fy = Y + H - 44;
-      divider(g, X + 24, fy - 8, W - 48);
-      if (msgT > 0) g.text(msg, X + 24, fy + 6, { font: "body", color: P.ivory1, alpha: Math.min(1, msgT) });
-      if (brassButton(a, "st-close", X + W - 24 - 150, fy, 150, 28, "LEAVE", { hotkey: "Escape", hotkeys: ["KeyS"] })) {
+      const next = tabRow(a, "st-tab", box.x, box.y - 4, box.w, 24, TABS.map((label, i) => ({
+        label,
+        count: i < 6 ? stock.items.filter((it) => KINDS[i].includes(it.kind) && !it.sold).length : undefined,
+        key: `Digit${i + 1}`,
+      })), tab);
+      if (next !== tab) {
+        tab = next;
+        confirmCar = null;
+        a.ui.resetScroll("st-list");
+      }
+      const cy = box.y + 28;
+      const ch = box.bottom - 36 - cy;
+      const cw = box.w - SELL_W - 12;
+      if (tab < 6) cardsTab(g, a, box.x, cy, cw, ch);
+      else suppliesTab(g, a, box.x, cy, cw, ch);
+      sellPanel(g, a, box.right - SELL_W, cy, SELL_W, ch);
+      // bottom row: the last message and LEAVE
+      const fy = box.bottom - 28;
+      if (msgT > 0) textAt(g, msg, box.x, fy + 9, { font: TYPE.body, color: P.ivory1, alpha: Math.min(1, msgT), width: box.w - 180 });
+      if (brassButton(a, "st-close", box.right - 150, fy, 150, 28, "LEAVE", { hotkey: "Escape", hotkeys: ["KeyS"] })) {
         sfx.play("ui-back");
         app.scenes.remove(scene);
         onClose();
       }
+      footer(g, a, [["1–7", "tabs"]], [["ESC", "leave"]]);
     },
   };
 
   function cardsTab(g: Gfx, a: App, x: number, y: number, w: number, h: number) {
     const idx = stock.items.map((it, i) => ({ it, i })).filter(({ it }) => KINDS[tab].includes(it.kind));
+    let listH = h;
     if (tab === 2) {
-      g.text("{ivory3}System upgrades are done on the Ship screen (U). A Drone Bay or a Veil needs a room: a car that carries one, or its module in a free socket.{/}", x, y + h - 36, { font: "body", width: w });
+      const note = "Upgrade systems aboard on the Tender screen (U). Drones and the Veil need a native bay, an equipped car, or a module in a free socket. Reactor power is separate.";
+      const nh = wrap(note, w, TYPE.note).length * lineHeight(TYPE.note);
+      textAt(g, note, x, y + h - nh + 2, { font: TYPE.note, color: P.ivory3, width: w });
+      listH = h - nh - 8;
     }
     if (!idx.length) {
-      g.text(tab === 5 ? "{ivory4}No cars or modules in stock here.{/}" : "{ivory4}Nothing of that kind today.{/}", x + w / 2, y + 60, { font: "body", align: "center" });
+      textAt(g, tab === 5 ? "No cars or modules in stock here." : "Nothing of that kind today.", x + w / 2, y + 60, { font: TYPE.body, color: P.ivory4, align: "center" });
       return;
     }
     if (confirmCar !== null) {
-      carConfirm(g, a, x, y, w, stock.items[confirmCar], confirmCar);
+      carConfirm(g, a, x, y, w, h, stock.items[confirmCar], confirmCar);
       return;
     }
-    const cols = 3;
-    const cw = Math.floor((w - (cols - 1) * 10) / cols);
-    const chh = 150;
-    idx.forEach(({ it, i }, k) => {
-      const col = k % cols;
-      const row = Math.floor(k / cols);
-      card(g, a, it, i, x + col * (cw + 10), y + row * (chh + 10), cw, chh);
+    const rows = idx.map(({ it, i }) => ({ it, i, h: rowHeight(it, w) }));
+    const total = rows.reduce((s2, r) => s2 + r.h + 6, -6);
+    a.ui.scrollArea("st-list", x, y, w, listH, total, (off) => {
+      let ry = y - off;
+      for (const r of rows) {
+        if (ry + r.h >= y && ry <= y + listH) row(g, a, r.it, r.i, x, ry, w - (total > listH ? 10 : 0), r.h, y, listH);
+        ry += r.h + 6;
+      }
     });
   }
 
@@ -132,35 +130,34 @@ export function createStoreScene(app: App, run: RunState, onClose: () => void): 
     if (it.kind === "module") return moduleInfo(it.id as ModuleId).desc;
     return itemInfo(it.id)?.desc ?? "";
   }
+  /** The kind tag after the name. */
+  function cardTag(it: StoreItem): string {
+    if (it.kind === "crew") return "crew";
+    if (it.kind === "system") return "system";
+    if (it.kind === "car") return `${carInfo(it.id as AttachCarId).slot} car`;
+    if (it.kind === "module") return "module";
+    if (it.kind === "augment") return "augment";
+    if (it.kind === "drone") return "drone";
+    return WEAPONS[it.id as WeaponId]?.type ?? "weapon";
+  }
+  /** The numbers line (teal). */
   function cardSub(it: StoreItem): string {
     if (it.kind === "crew") return `${catalog.species[it.id as SpeciesId]?.hp ?? 100} HP`;
     if (it.kind === "system") return "installs at level " + (catalog.systems[it.id as SystemId]?.buyLevel ?? 1);
-    if (it.kind === "car") return carInfo(it.id as AttachCarId).slot === "rear" ? "rear car · –2% evasion" : "keel car · –2% evasion";
-    if (it.kind === "module") return "module · fits a socket";
-    return itemInfo(it.id)?.stats ?? "";
+    if (it.kind === "car") return `${carInfo(it.id as AttachCarId).slot} coupling · –${CARS[it.id as AttachCarId].evasionCost ?? 2}% evasion`;
+    if (it.kind === "module") return "fits a socket";
+    if (it.kind === "augment") return "no power needed";
+    return itemStats(it.id);
   }
 
   /** FTL-level tooltip: full stats, what it does, what it changes aboard, the lore line. */
   function cardTooltip(it: StoreItem): string {
-    const lines: string[] = [`{brass1}${cardTitle(it)}{/}  {ivory4}${it.price} salvage${it.kind === "weapon" || it.kind === "drone" || it.kind === "augment" ? ` · sells for ${sellPrice(it.id)}` : ""}{/}`];
-    if (it.kind === "weapon") {
-      const w = catalog.weapons[it.id as WeaponId];
-      const d = WEAPONS[it.id as WeaponId];
-      if (d) {
-        lines.push(`{teal1}${d.type.toUpperCase()}{/} · ${d.type === "ion" ? `ion ${d.ion ?? d.damage}` : `${d.damage} damage`}${d.shots > 1 ? ` × ${d.shots}` : ""} · ${d.power} power · ${d.charge} s charge`);
-        const extra: string[] = [];
-        if (d.fireChance) extra.push(`fire ${Math.round(d.fireChance * 100)}%`);
-        if (d.breachChance) extra.push(`breach ${Math.round(d.breachChance * 100)}%`);
-        if (d.ammo) extra.push(`${d.ammo} payload per volley`);
-        if (d.beamLength) extra.push(`beam ${d.beamLength} tiles`);
-        if (d.crewDamage) extra.push(`${d.crewDamage} crew damage`);
-        if (extra.length) lines.push(`{ivory3}${extra.join(" · ")}{/}`);
-      } else if (w?.stats) lines.push(w.stats);
-    } else if (it.kind === "drone") {
-      const d = DRONES[it.id as DroneId];
-      if (d) lines.push(`{teal1}${d.kind.toUpperCase()}{/} · ${d.power} power · 1 spare per launch${d.damage ? ` · ${d.damage} per hit` : ""}`);
-      if (!run.ship.systems.drones || !run.ship.systemRooms.drones) lines.push("{amber1}Needs a Drone Bay to launch{/}");
-    } else if (it.kind === "crew") {
+    if (it.kind === "weapon" || it.kind === "drone" || it.kind === "augment") {
+      const block = buyBlocker(run, it);
+      return equipmentTooltip(it.id, { price: it.price, ship: run.ship }) + (block && !it.sold ? `\n{ember1}${block}{/}` : "");
+    }
+    const lines: string[] = [`{brass1}${cardTitle(it)}{/}  {ivory4}${it.price} salvage{/}`];
+    if (it.kind === "crew") {
       const sp = catalog.species[it.id as SpeciesId];
       lines.push(`{teal1}${SPECIES_FLAVOR?.[it.id as SpeciesId]?.name ?? it.id}{/} · ${sp?.hp ?? 100} HP`);
       if (sp?.special) lines.push(sp.special);
@@ -175,7 +172,7 @@ export function createStoreScene(app: App, run: RunState, onClose: () => void): 
       lines.push(...statDeltas(tenderStats(run.ship), tenderStats(probe)));
       if (it.kind === "module" && !freeSocket(run.ship)) lines.push("{amber1}No free socket: it goes to the stores{/}");
     }
-    lines.push(cardDesc(it));
+    if (it.kind !== "crew") lines.push(cardDesc(it));
     const lore = it.kind === "car" ? carInfo(it.id as AttachCarId).lore : it.kind === "module" ? moduleInfo(it.id as ModuleId).lore : itemInfo(it.id)?.lore;
     if (lore) lines.push(`{ivory4}${lore}{/}`);
     const block = buyBlocker(run, it);
@@ -183,26 +180,51 @@ export function createStoreScene(app: App, run: RunState, onClose: () => void): 
     return lines.join("\n");
   }
 
-  function card(g: Gfx, a: App, it: StoreItem, i: number, x: number, y: number, w: number, h: number) {
+  const ART_W = 100;
+  const BUY_W = 124;
+  function textWidth(w: number) {
+    return w - ART_W - 24 - BUY_W - 20;
+  }
+  function rowHeight(it: StoreItem, w: number): number {
+    const tw = textWidth(w);
+    const desc = wrap(cardDesc(it), tw, TYPE.note).length;
+    return Math.max(68, 41 + desc * lineHeight(TYPE.note) + 5);
+  }
+
+  /** One stock row: picture, name and kind, the numbers, the description (never cut), and BUY. */
+  function row(g: Gfx, a: App, it: StoreItem, i: number, x: number, y: number, w: number, h: number, clipY: number, clipH: number) {
     const block = buyBlocker(run, it);
-    const over = a.ui.hover(x, y, w, h);
+    const inView = a.input.y >= clipY && a.input.y < clipY + clipH;
+    const over = inView && a.ui.hover(x, y, w, h);
     g.panel(x, y, w, h, it.sold ? "panel-dark" : over ? "panel-hi" : "panel");
-    g.alpha(it.sold ? 0.4 : 1, () => {
+    const bx = x + w - BUY_W - 10;
+    g.alpha(it.sold ? 0.45 : 1, () => {
+      // picture
+      const px = x + 10;
+      const py = y + Math.round((h - 48) / 2);
+      g.rect(px, py, ART_W, 48, P.ink1);
       if (it.kind === "crew") {
-        g.rect(x + 8, y + 8, 32, 32, P.ink1);
-        if (!icon(g, `species-${it.id}`, x + 16, y + 16)) g.rect(x + 16, y + 16, 16, 16, P.ink3);
+        if (!g.sprite("crew", `${it.id}-portrait`, px + ART_W / 2 - 16, py + 8, { noAnchor: true }) && !icon(g, `species-${it.id}`, px + ART_W / 2 - 8, py + 16)) g.rect(px + 42, py + 16, 16, 16, P.ink3);
       } else if (it.kind === "system") {
-        g.rect(x + 8, y + 8, 32, 32, P.ink1);
-        if (!icon(g, `sys-${it.id}-powered`, x + 16, y + 16)) g.rect(x + 16, y + 16, 16, 16, P.teal3);
-      } else equipmentArt(g, it.id, x + 6, y + 6, 76, 38);
-      g.text(cardTitle(it), x + (it.kind === "crew" || it.kind === "system" ? 48 : 88), y + 7, { font: "body", color: P.ivory0, width: w - (it.kind === "crew" || it.kind === "system" ? 54 : 94), maxLines: 1 });
-      g.text(`{ivory4}${cardSub(it)}{/}`, x + (it.kind === "crew" || it.kind === "system" ? 48 : 88), y + 24, { font: "small", width: w - (it.kind === "crew" || it.kind === "system" ? 54 : 94), maxLines: 1 });
-      g.text(cardDesc(it), x + 8, y + 46, { font: "body", color: C.textDim, width: w - 16, maxLines: 3 });
+        if (!icon(g, `sys-${it.id}-powered`, px + ART_W / 2 - 8, py + 16)) g.rect(px + 42, py + 16, 16, 16, P.teal3);
+      } else if (it.kind === "weapon" || it.kind === "drone" || it.kind === "car") equipmentArt(g, it.id, px + 2, py + 2, ART_W - 4, 44);
+      else itemIcon32(g, it.id, px + ART_W / 2 - 16, py + 8);
+      // text
+      const tx = x + ART_W + 24;
+      const tw = textWidth(w);
+      const name = cardTitle(it);
+      textAt(g, name, tx, y + 10, { font: TYPE.body, color: P.ivory0, shadow: P.ink0 });
+      textAt(g, cardTag(it).toUpperCase(), tx + Math.ceil(measure(name, TYPE.body)) + 10, y + 12.5, { font: TYPE.label, color: P.ivory4 });
+      textAt(g, cardSub(it), tx, y + 27, { font: TYPE.note, color: P.teal1, width: tw });
+      textAt(g, cardDesc(it), tx, y + 41, { font: TYPE.note, color: P.ivory2, width: tw });
     });
-    if (over) a.ui.setTooltip(cardTooltip(it), 300);
+    if (over && !a.ui.hover(bx, y, BUY_W, h)) a.ui.setTooltip(cardTooltip(it), 320, { x, y, w, h, side: "right" });
     const label = it.sold ? "SOLD" : `BUY · ${it.price}`;
-    if (brassButton(a, `buy-${i}`, x + 8, y + h - 32, w - 16, 24, label, { disabled: !!block, variant: block ? "normal" : "brass", font: "label", tooltip: block && !it.sold ? block : undefined, sound: null })) {
-      if (it.kind === "car" && run.ship.consist?.[carSlot(it.id as AttachCarId)]) {
+    const by = y + Math.round((h - 26) / 2) - (block && !it.sold ? 6 : 0);
+    if (block && !it.sold) textAt(g, block, bx + BUY_W / 2, by + 32, { font: TYPE.note, color: P.ember1, align: "center", width: BUY_W + 8 });
+    const shown = by >= clipY - 1 && by + 26 <= clipY + clipH + 1;
+    if (brassButton(a, `buy-${i}`, bx, by, BUY_W, 26, label, { disabled: !!block || !shown, variant: block ? "normal" : "brass", tooltip: block && !it.sold ? block : undefined, sound: null })) {
+      if (it.kind === "car") {
         confirmCar = i;
         return;
       }
@@ -217,34 +239,58 @@ export function createStoreScene(app: App, run: RunState, onClose: () => void): 
     }
   }
 
-  function carConfirm(g: Gfx, a: App, x: number, y: number, w: number, it: StoreItem, i: number) {
+  function carConfirm(g: Gfx, a: App, x: number, y: number, w: number, h: number, it: StoreItem, i: number) {
     const id = it.id as AttachCarId;
-    const cur = run.ship.consist[carSlot(id)]!;
-    g.panel(x, y, w, 200, "panel-hi");
-    itemIcon32(g, id, x + 12, y + 12);
-    tracked(g, `COUPLE THE ${carInfo(id).name.toUpperCase()}?`, x + 56, y + 16, { font: "labelb", color: P.brass0 });
-    g.text(`It replaces the {amber1}${carInfo(cur).name}{/}, which stays at this relay. Modules in it go back to the stores.`, x + 56, y + 32, { font: "body", width: w - 70, color: C.text });
+    const cur = run.ship.consist[carSlot(id)];
+    g.panel(x, y, w, h, "panel-hi");
+    g.rect(x + 12, y + 10, 60, 38, P.ink1);
+    equipmentArt(g, id, x + 14, y + 11, 56, 36);
+    panelHeader(g, `Couple the ${carInfo(id).name}?`, x + 84, y + 16, { font: TYPE.strong, color: P.brass0 });
+    textAt(g, `${carSlot(id) === "rear" ? "Rear" : "Keel"} car · ${it.price} salvage`, x + 84, y + 32, { font: TYPE.note, color: P.ivory3 });
+    let ty = y + 56;
+    ty += textAt(g, carInfo(id).desc, x + 16, ty, { font: TYPE.body, width: w - 32, color: C.text }) + 6;
+    ty += textAt(g, cur ? `Replaces the ${carInfo(cur).name}; the old car stays here. Its modules return to the stores.` : `Couples to your ${carSlot(id)} socket. Crew reach it through a ${carSlot(id) === "rear" ? "gangway" : "belly hatch"}.`, x + 16, ty, { font: TYPE.body, width: w - 32, color: P.amber1 }) + 10;
     const probe = JSON.parse(JSON.stringify(run.ship));
     coupleCar(probe, id);
-    statDeltas(tenderStats(run.ship), tenderStats(probe)).forEach((d, k) => g.text(d, x + 16 + (k % 3) * 170, y + 80 + Math.floor(k / 3) * 18, { font: "body" }));
-    if (brassButton(a, "car-yes", x + 16, y + 160, 180, 28, `COUPLE · ${it.price}`, { hotkey: "Enter" })) {
+    panelHeader(g, "If coupled", x + 16, ty);
+    const deltas = statDeltas(tenderStats(run.ship), tenderStats(probe));
+    deltas.forEach((d, k) => textAt(g, d, x + 16, ty + 16 + k * 17, { font: TYPE.body }));
+    const pg = previewGrip(probe);
+    const pvX = x + 230;
+    const pvY = ty - 4;
+    const pvW = w - 246;
+    const pvH = y + h - 48 - pvY;
+    if (pg && combatApi.drawShipPreview && pvH > 60) {
+      const fit = Math.min(pvW / pg.w, pvH / pg.h);
+      g.clip(pvX, pvY, pvW, pvH, () => {
+        g.ctx.save();
+        g.ctx.translate(pvX + (pvW - pg.w * fit) / 2, pvY + (pvH - pg.h * fit) / 2);
+        g.ctx.scale(fit, fit);
+        combatApi.drawShipPreview!(g, probe, 0, 0, { t, crew: false, carrier: { region: run.stage, extend: 320 } });
+        g.ctx.restore();
+      });
+    }
+    if (brassButton(a, "car-yes", x + 16, y + h - 40, 190, 28, `COUPLE · ${it.price}`, { hotkey: "Enter" })) {
       const r = buyItem(run, stock, i);
-      if (r.ok) sfx.play("buy");
+      if (r.ok) {
+        sfx.play("buy");
+        showCarRefit(app, run.ship, id, undefined, run.stage);
+      }
       say(r.ok ? `${carInfo(id).name} coupled.` : r.reason ?? "");
       confirmCar = null;
     }
-    if (brassButton(a, "car-no", x + 206, y + 160, 120, 28, "NOT NOW", { variant: "normal" })) confirmCar = null;
+    if (brassButton(a, "car-no", x + 216, y + h - 40, 130, 28, "NOT NOW", { variant: "normal", hotkey: "Backspace" })) confirmCar = null;
   }
 
   function supplyRow(g: Gfx, a: App, kind: Supply, label: string, x: number, y: number, w: number) {
-    g.panel(x, y, w, 44, "panel");
-    resIcon(g, kind, x + 10, y + 14);
-    g.text(label, x + 34, y + 6, { font: "body", color: P.ivory0 });
-    g.text(`{ivory4}you have ${run.inv[kind]} · ${stock[kind]} in stock · ${stock.prices[kind]} each{/}`, x + 34, y + 23, { font: "small" });
+    g.panel(x, y, w, 50, "panel");
+    resIcon(g, kind, x + 12, y + 17);
+    textAt(g, label, x + 38, y + 11, { font: TYPE.body, color: P.ivory0 });
+    textAt(g, `you have ${run.inv[kind]} · ${stock[kind]} in stock · ${stock.prices[kind]} salvage each`, x + 38, y + 29, { font: TYPE.note, color: P.ivory3 });
     for (const n of [1, 3]) {
       const price = stock.prices[kind] * n;
       const dis = stock[kind] < n || run.inv.salvage < price;
-      if (brassButton(a, `sup-${kind}-${n}`, x + w - (n === 1 ? 210 : 104), y + 9, 98, 26, `+${n} · ${price}`, { disabled: dis, variant: "normal", font: "label", sound: null })) {
+      if (brassButton(a, `sup-${kind}-${n}`, x + w - (n === 1 ? 220 : 110), y + 12, 100, 26, `+${n} · ${price}`, { disabled: dis, variant: "normal", sound: null })) {
         const r = buySupply(run, stock, kind, n);
         if (r.ok) sfx.play("buy");
       }
@@ -253,21 +299,21 @@ export function createStoreScene(app: App, run: RunState, onClose: () => void): 
 
   function suppliesTab(g: Gfx, a: App, x: number, y: number, w: number, h: number) {
     supplyRow(g, a, "ttl", "Re-stamp the connection (TTL)", x, y, w);
-    supplyRow(g, a, "payloads", "Payloads", x, y + 52, w);
-    supplyRow(g, a, "spares", "Automaton spares", x, y + 104, w);
-    const ry = y + 168;
-    g.panel(x, ry, w, 96, "panel");
-    tracked(g, "HULL REPAIR", x + 12, ry + 10, { font: "labelb", color: P.ivory2 });
-    g.text(`{ivory4}${stock.prices.hull} salvage per point{/}`, x + 120, ry + 8, { font: "body" });
-    const segW = Math.max(3, Math.min(6, Math.floor((w - 40) / run.ship.hullMax) - 1));
-    hullBar(g, x + 14, ry + 34, run.ship.hull, run.ship.hullMax, segW, 12);
-    g.text(`${run.ship.hull}/${run.ship.hullMax}`, x + w - 12, ry + 30, { font: "body", align: "right", color: C.text });
+    supplyRow(g, a, "payloads", "Payloads", x, y + 58, w);
+    supplyRow(g, a, "spares", "Automaton spares", x, y + 116, w);
+    const ry = y + 182;
+    g.panel(x, ry, w, 100, "panel");
+    panelHeader(g, "Hull repair", x + 14, ry + 12, { color: P.ivory2 });
+    textAt(g, `${stock.prices.hull} salvage per point`, x + 120, ry + 12, { font: TYPE.note, color: P.ivory3 });
+    const segW = Math.max(3, Math.min(6, Math.floor((w - 90) / run.ship.hullMax) - 1));
+    hullBar(g, x + 16, ry + 34, run.ship.hull, run.ship.hullMax, segW, 12);
+    textAt(g, `${run.ship.hull}/${run.ship.hullMax}`, x + w - 14, ry + 35, { font: TYPE.body, align: "right", color: C.text });
     const missing = run.ship.hullMax - run.ship.hull;
     const all = repairCost(run, stock, "all");
-    if (brassButton(a, "rep-1", x + 12, ry + 58, 150, 28, `REPAIR 1 · ${stock.prices.hull}`, { disabled: missing <= 0 || run.inv.salvage < stock.prices.hull, variant: "normal", font: "label", sound: null })) {
+    if (brassButton(a, "rep-1", x + 14, ry + 60, 160, 28, `REPAIR 1 · ${stock.prices.hull}`, { disabled: missing <= 0 || run.inv.salvage < stock.prices.hull, variant: "normal", sound: null })) {
       if (repairHullAt(run, stock, 1).ok) sfx.play("repair-done", { volume: 0.6 });
     }
-    if (brassButton(a, "rep-all", x + 172, ry + 58, 190, 28, missing <= 0 ? "HULL IS WHOLE" : `REPAIR ALL · ${all}`, { disabled: missing <= 0 || all <= 0, font: "label", sound: null })) {
+    if (brassButton(a, "rep-all", x + 184, ry + 60, 200, 28, missing <= 0 ? "HULL IS WHOLE" : `REPAIR ALL · ${all}`, { disabled: missing <= 0 || all <= 0, sound: null })) {
       if (repairHullAt(run, stock, "all").ok) sfx.play("repair-done");
     }
     void h;
@@ -275,61 +321,59 @@ export function createStoreScene(app: App, run: RunState, onClose: () => void): 
 
   function sellPanel(g: Gfx, a: App, x: number, y: number, w: number, h: number) {
     g.panel(x, y, w, h, "panel-dark");
-    tracked(g, tab === 5 ? "YOUR CARS & STORES" : "SELL · HALF PRICE", x + 12, y + 10, { font: "label", color: P.ivory3 });
-    let ry = y + 26;
-    const row = (key: string, label: string, value: number, onSell: () => void, thumb?: string) => {
-      if (ry > y + h - 30 - (stock.pell ? 104 : 0)) return;
-      const over = a.ui.hover(x + 6, ry, w - 12, 26);
-      if (over) g.rect(x + 6, ry, w - 12, 26, rgba(P.brass3, 0.15));
-      if (thumb) {
-        g.alpha(1, () => {
-          const s = thumb.startsWith("aug-") ? thumb : "";
-          if (s) icon(g, s, x + 10, ry + 5);
-        });
-      }
-      const [main, sub] = label.split("|");
-      g.text(main, x + 30, ry + (sub ? 0 : 4), { font: "body", color: C.text, width: w - 110, maxLines: 1 });
-      if (sub) g.text(sub, x + 30, ry + 15, { font: "small", color: P.ivory4 });
-      if (brassButton(a, `sell-${key}`, x + w - 74, ry + 2, 66, 22, `+${value}`, { variant: "normal", font: "label", sound: null })) {
+    panelHeader(g, tab === 5 ? "Your cars & stores" : "Sell · half price", x + 12, y + 11);
+    const pellH = stock.pell ? 112 : 0;
+    let ry = y + 28;
+    const row = (key: string, label: string, sub: string, value: number, onSell: () => void, tip?: string, thumb?: string) => {
+      if (ry + 30 > y + h - 8 - pellH) return;
+      const over = a.ui.hover(x + 6, ry, w - 12, 30);
+      if (over) g.rect(x + 6, ry, w - 12, 30, rgba(P.brass3, 0.15));
+      let tx = x + 12;
+      if (thumb && icon(g, thumb, x + 10, ry + 7)) tx = x + 32;
+      textAt(g, label, tx, ry + 4, { font: TYPE.body, color: C.text });
+      if (sub) textAt(g, sub, tx, ry + 18, { font: TYPE.note, color: P.ivory4 });
+      if (over && tip && !a.ui.hover(x + w - 74, ry, 70, 30)) a.ui.setTooltip(tip, 300, { x: x + 6, y: ry, w: w - 12, h: 30, side: "left" });
+      if (brassButton(a, `sell-${key}`, x + w - 72, ry + 4, 62, 22, `+${value}`, { variant: "normal", sound: null })) {
         onSell();
         sfx.play("sell");
       }
-      ry += 28;
+      ry += 32;
     };
     if (tab === 5) {
       for (const slot of ["rear", "keel"] as const) {
         const id = run.ship.consist?.[slot];
-        if (id) row(`car-${slot}`, carInfo(id).name, Math.floor(carInfo(id).price / 2), () => say(sellCar(run, slot).ok ? `${carInfo(id).name} sold.` : ""));
+        if (id) row(`car-${slot}`, carInfo(id).name, `${slot} car`, Math.floor(carInfo(id).price / 2), () => say(sellCar(run, slot).ok ? `${carInfo(id).name} sold.` : ""), carInfo(id).desc);
       }
-      run.ship.moduleStore.forEach((m, k) => row(`mod-${k}`, moduleInfo(m).name, Math.floor(moduleInfo(m).price / 2), () => sellModule(run, m)));
-      if (!run.ship.consist?.rear && !run.ship.consist?.keel && !run.ship.moduleStore.length) g.text("{ivory4}No cars coupled, nothing in the stores. Refit installed modules on the Ship screen, Yard tab.{/}", x + 12, ry, { font: "body", width: w - 24 });
+      run.ship.moduleStore.forEach((m, k) => row(`mod-${k}`, moduleInfo(m).name, "in the stores", Math.floor(moduleInfo(m).price / 2), () => sellModule(run, m), moduleInfo(m).desc));
+      if (!run.ship.consist?.rear && !run.ship.consist?.keel && !run.ship.moduleStore.length) textAt(g, "No cars coupled, nothing in the stores. Installed modules are refitted on the Tender screen, Yard tab.", x + 12, ry + 4, { font: TYPE.note, color: P.ivory3, width: w - 24 });
       return;
     }
     const items: { id: string; where: string }[] = [
       ...run.ship.weapons.filter((v): v is NonNullable<typeof v> => !!v).map((id) => ({ id, where: "mounted" })),
       ...run.ship.drones.filter((v): v is NonNullable<typeof v> => !!v).map((id) => ({ id, where: "mounted" })),
-      ...run.ship.cargo.map((id) => ({ id, where: "cargo" })),
+      ...run.ship.cargo.map((id) => ({ id, where: "in cargo" })),
       ...run.ship.augments.map((id) => ({ id, where: "augment" })),
     ];
     items.forEach((it, k) => {
-      row(`it-${k}`, `${itemName(it.id)}|${it.where}`, sellPrice(it.id), () => {
+      row(`it-${k}`, itemName(it.id), it.where, sellPrice(it.id), () => {
         const r = sellItem(run, it.id);
         say(r.ok ? `${itemName(it.id)} sold.` : r.reason ?? "");
-      }, it.where === "augment" ? `aug-${it.id}` : undefined);
+      }, equipmentTooltip(it.id, { ship: run.ship }), it.where === "augment" ? `aug-${it.id}` : undefined);
     });
+    if (!items.length) textAt(g, "Nothing aboard to sell.", x + 12, ry + 4, { font: TYPE.note, color: P.ivory4 });
     if (stock.pell) {
       const img = art("portraits/pell");
-      const py = y + h - 110;
-      if (ry < py - 4) {
-        g.rect(x + 12, py, 96, 96, P.ink1);
-        if (img) g.image(img, x + 12, py);
-        else placeholderPortrait(g, x + 12, py, t);
-        g.box(x + 11, py - 1, 98, 98, P.brass3);
-        tracked(g, "PELL", x + 116, py + 8, { font: "labelb", color: P.brass1 });
-        g.text("{ivory4}Copper Market{/}", x + 116, py + 22, { font: "body", width: w - 124 });
-      }
+      const py = y + h - 104;
+      g.rect(x + 12, py, 92, 92, P.ink1);
+      if (img) g.ctx.drawImage(img, x + 12, py, 92, 92);
+      else placeholderPortrait(g, x + 12, py, t);
+      g.box(x + 11, py - 1, 94, 94, P.brass3);
+      panelHeader(g, "Pell", x + 114, py + 8, { font: TYPE.strong, color: P.brass1 });
+      textAt(g, "Copper Market", x + 114, py + 24, { font: TYPE.note, color: P.ivory3 });
     }
   }
 
+  void RUN_MODAL;
+  void divider;
   return scene;
 }

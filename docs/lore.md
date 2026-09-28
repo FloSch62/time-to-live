@@ -20,16 +20,14 @@ lamp, stamps the connection with a time to live of sixteen hops, and says "Go ah
 tender out of the Reach docks and ride the carriers along the dark outside of the Line, relay by relay: through the
 rust kingdom of the Copper Reach, past the Iron Regent in the Copper Gate, through the singing violet weather of the
 Glass Cathedral and the Hollow Choir, into the ember-red Blackout Heart. Behind them, the quarantine reads their
-connection as storm traffic and cuts the carriers relay by relay. Ahead of them, every machine meets them as an
+connection as storm traffic and isolates the signaling conduits relay by relay. Ahead of them, every machine meets them as an
 unknown sender. If the route holds all the way to the Core, the Core has its proof, and the shell opens.
 
-*Every hop costs a little life.*
-
-The Lamplighter still carries a maintenance key. Clearing a relay lets its crew open the old service locker:
-cable, lenses and standard fittings worth 24 salvage in the Reach, 36 in the Cathedral and 48 near the Heart.
-The stores are for the crew who restore a working connection, once per relay. Starting docks have already
-provisioned the tender; guardian gates keep no such locker. The Seal requisitions the stores at relays it closes.
-The chart marks recovered stores, so riding back along a quiet carrier does not make another day's supplies.
+Every fleet tender carries a maintenance key. Completing an arrival registers a one-time working allocation
+from the relay's service locker. This is an arrival entitlement, not a reward for a moral choice or a claim that
+the crew repaired the entire relay. A broken or inaccessible locker may supply nothing; such encounters say so.
+Starting docks have already provisioned the tender; guardian gates keep no locker. The Seal requisitions stores
+at relays it closes. The receipt records actual salvage, and revisiting never creates more supplies.
 
 ---
 
@@ -77,6 +75,13 @@ car with a **lamp cupola** at the nose (a guide lamp big enough to relight a rel
 window** at the helm under the cupola, the **drive trolley and grip arms** on the roof, a **keel** of air tanks and
 ballast below, and tool mounts on the roof and belly that were built for splicers and signal lamps long before
 anyone bolted weapons to them. Inside, four warm-lit decks joined by a brass service lift. Coupled rear cars carry their own lifts; a sealed lift tube reaches the keel car.
+
+The pattern was the rule even when the job was not lamps. A car built for other work kept the same family: the same
+brass ribs and chipped ivory panels, the same cupola and cab window at the nose, the same trolley and grip arms on the
+roof holding the whole car to its carrier, the same keel below. What changed were the fittings and the proportions.
+An inspection car was shorter and carried lenses; a retrieval car was taller and carried cradles and a crane. From a
+passing carrier a lamper could tell the job by the roof, and the family by everything else. Three of the forty-one
+are riding again this year: L-12 *Lamplighter*, G-04 *Glasswing* and S-08 *Switchback* (§6).
 
 Tender crews were called **lampers**. They were a proud, slightly ridiculous trade. They kept tally marks of every
 lamp they relit, scratched on the inside of the helm, and argued about the numbers in bars.
@@ -135,20 +140,21 @@ The wardens' quarantine order still stands: *close every route the storm could u
 confirmed*. To the quarantine machinery, a live connection crossing the Line relay by relay looks exactly like storm
 traffic. It is a route, and it is warm.
 
-So the quarantine follows the keeper, and it does it literally. **Cable Wraiths** crawl the carriers behind the
-tender and cut them. **Quarantine Drones** close each relay the connection has crossed, in a black lattice with a
-red seam of light, and hold it. The Night Shift call it **the Seal**. It is not a hunt. It is the order doing its
-job, one relay at a time, patiently, from the direction you came.
+**Quarantine Drones** close the signaling conduits and requisition service stores behind the tender,
+marking each held relay with a black lattice and a red seam. The Night Shift call this **the Seal**.
+The load-bearing carrier remains intact. Its low-power, independent switchgear still answers an attended
+greeting, but a patrol treats an arrival as a breach. **Cable Wraiths** can sever individual work spans;
+that specific damage is distinct from routine quarantine and a reply cannot mend missing steel.
 
-- The Seal comes from behind and never stops.
-- Lingering keeps a route warm, and the Seal moves faster toward warm routes.
-- A sealed relay is held by quarantine drones. Its switchgear still answers a hello, but the drones read anything
-  that arrives as a breach. Nothing there is worth taking.
-- The Seal cannot be argued with. It can be outrun, or occasionally fooled, or drawn off by someone willing to be
-  the storm for a while.
+- Hops, deliberate waits and explicitly costly actions advance quarantine. Reading, planning and tactical pause do not.
+- The guardian perimeter is already held: the advancing front stops there.
+- The Seal can be delayed or diverted. It cannot be bargained away at an ordinary relay.
+- The tender's greetings establish a surviving route. The final acknowledged delivery releases the signaling
+  shutters on that route; it does not magically repair every damaged carrier in the world.
 
-The Seal is also the most honest thing on the Line about what the voyage means. The carriers behind you are cut.
-There is no way home the way you came. The only second way home is the one you build.
+The supporting cable holds the car. The inner signaling core carries messages. Quarantine closes the latter's
+ordinary traffic while the independent switch accepts a crew member's limited greeting. These are separate
+functions of the same infrastructure, and both remain visible on the chart.
 
 ### Life in the car
 
@@ -351,7 +357,7 @@ the Night Shift on terms.
 
 **The car.** A long brass-and-ivory lead car, riveted plates, the lamp cupola at the nose, the cab window at the helm, the
 drive trolley and its grip arms on the roof, a keel of tanks and ballast below, tool mounts on the roof and belly.
-Inside, three decks: the drive at the tail, the air plant, a hall, a galley with a kettle, a bench infirmary, a
+Inside, four decks: the drive at the tail, the air plant, a hall, a galley with a kettle, a bench infirmary, a
 listening post, the ward mesh's charge room, holds, a corridor that everyone bumps their head in, and the helm up in
 the nose under the lamp. Its systems are named the way the lampers named them: Shield Array (the ward mesh),
 Thrusters (the drive trolley's motors; lampers never stopped calling them that), Weapons Bay (the tool mounts),
@@ -388,6 +394,34 @@ in the drawer. Their habits:
   that is purely for the crew, and every crew changes it at the first bench they reach.
 - Derelict cars are everywhere on the carriers, uncoupled and stalled where their tenders left them. A crew that
   finds one with a working trolley couples it and says thank you to whoever it belonged to.
+
+---
+
+## 6a. The other tenders: Glasswing and Switchback
+
+Both are lamplighter-pattern cars out of the Reach docks, the same family as L-12 and recognisable as such from any
+carrier: brass ribs and chipped ivory panels, a lamp cupola at the nose with the cab window under it, the drive
+trolley and grip arms on the roof gripping the carrier, a keel of tanks below, riveted plates and tool mounts. They
+were fitted for other jobs, and it shows in their roofs and proportions. Neither inherits L-12's eleven rescues, Ilse
+Corran's tally marks or Pell's replacement grip.
+
+**G-04 *Glasswing*, optical inspection.** Shorter and more compact than L-12 (four decks, one equipment bay). Under the
+nose cupola, two collimator lenses on a brass rail, a teal one above an amber one; on the forward roof a faceted
+prism housing with brass calibration rings; slim survey horns aft; lens caps on chains. Violet glass and teal accents
+on the brass-and-ivory body. Its crews kept the Reach's warning lamps in focus and read carrier glass for cracks.
+When the glass routes closed, they parked it with the lenses capped and painted KEEP THE PAIR TOGETHER on the tool
+rack. The Night Shift uncapped both. The paired emitters that once aligned a lamp now fire together, which is why the
+Glasswing starts with a Burst Emitter and a Packet Laser and no payload launcher. Its survey lab gives the Listening
+Post one extra level; a calibration cradle where L-12 has its second hold lets the crew recover a little between
+fights.
+
+**S-08 *Switchback*, drone retrieval.** Taller than L-12 (five decks, a long freight lift). On the aft roof, three
+launch cradles with parked rotor drones and a jointed retrieval crane, mounted on the roof beside the drive trolley,
+never floating above it; a heavy drive; dark retrieval shutters along the lower deck. Dark gunmetal and amber accents
+on the brass-and-ivory body. It fetched inspection drones back from spans no person could reach; its last dock list
+records six returned and one still missing. There was never a ward mesh aboard: the drive, the thicker plating and
+the shutters were its defence, and the shutters (its Lamp-Dark Veil) can douse every lamp while its drones keep
+working outside. A mesh can be fitted later in its empty ward bay.
 
 ---
 
@@ -455,8 +489,10 @@ it rises.
 *Its test:* **no passage without proof of a second way home.** The Regent opens only for a route that can lose any
 one road and still arrive. It does not want to be beaten. It wants to see the tender lose a road and keep coming:
 lose a system and fight on, lose the mesh and route around it. A route that survives the Regent has a second way
-home by definition. *Task ends:* the crown dims to the colour of old brass, the gate wings open, the carriers run on
-through, and beyond them the glass bells are ringing.
+home by definition. In a fight the gate wings close over its body and refuse every single road: only two roads at
+once open them, hits from two different weapons, or a weapon and a drone, landing within a breath of each other. Its
+Gate Wardens mend it while they fly. *Task ends:* the crown dims to the colour of old brass, the Regent settles back
+into its frame, the gate wings open, the carriers run on through, and beyond them the glass bells are ringing.
 
 ### Stage II · The Glass Cathedral
 
@@ -488,8 +524,10 @@ will not release.
 
 *Its test:* **plurality breaks the glass.** One voice is an echo; many voices can break the glass. A single weapon
 striking alone only makes a bell ring. Many hits landing together (a volley, beams and bolts and payloads arriving
-at once) break it. The Choir will only let a voice go when more than one voice is speaking. *Task ends:* the masks
-open their mouths, and this time the voices leave.
+at once) break it; in a fight, three hits within a second shatter the glass. A crew can also answer it in its own
+voice: hold the helm on the Choir's note for twelve seconds and the glass opens, at the price of the handshake charge
+the helm spends holding it. The Choir will only let a voice go when more than one voice is speaking. *Task ends:* the
+masks open their mouths, and this time the voices leave.
 
 ### Stage III · The Blackout Heart
 
@@ -522,7 +560,9 @@ last order it received. It sent for you. It has to stop you. Both are true.
 3. **Event Horizon.** It pulls every light in the room inward, even the tender's own lamp, and raises its sealing
    drones to close the shell for good.
 
-A route that survives all three is a safe route by definition. The Core cannot be ordered to open. It can only be
+Each custody step is worked from a room of the shell; break the room and the Core has to skip that step. Everything
+the crew strike is isolation machinery. The archive sits behind it and is never a target. A route that survives all
+three is a safe route by definition. The Core cannot be ordered to open. It can only be
 shown a route that holds. *Task ends:* the isolation shell falls silent. Inside it, the delivery lights are still
 on. Defeating the Core breaks the isolation machinery, never the archive.
 
@@ -608,7 +648,7 @@ This game adds a few of its own:
 | The greeting | *Hello. — I hear you. — I hear you hear me.* The only thing a relay checks | Three-way handshake |
 | TTL, stamp, re-stamp | A connection's hop limit; the press that sets it | Time to live |
 | Expired in transit | TTL 0; the connection dropped, the car stalled | ICMP time exceeded |
-| The Seal | The quarantine cutting carriers behind a live connection | An ACL following you around |
+| The Seal | The quarantine isolating signaling behind a live connection | An ACL following you around |
 | Ward mesh | The charged ward-wire lattice around a car | A firewall, roughly |
 | Unknown sender | Anyone whose key the Heart no longer signs | Untrusted peer / expired certificate |
 | First hello | Re-keying an escort automaton wiped to its first page | Factory reset + trust on first use |
@@ -616,6 +656,11 @@ This game adds a few of its own:
 | Echo tender | A crewless tender still running its round | A zombie process |
 | Buffer | What a leech holds and cannot deliver | A buffer |
 | Salvage | Night Shift currency | Scrap |
+| Lamplighter pattern | The one design every Reach tender was built to, whatever its job | A reference platform |
+| Mesh layer | One charged layer of the ward mesh; each catches one bolt and recharges | A firewall rule that has to reload |
+| Payloads | Spliced charges thrown by slug throwers; they go through the mesh and run out | Out-of-band traffic |
+| Spares | Automaton spares (a teal lens in an ivory ring); drones spend them | Spare parts |
+| Exchange | A relay with a market: salvage, stamps, repairs | A peering point |
 
 As in FAULTLINE, nobody out here knows these are network words. They are just the words.
 
@@ -640,5 +685,20 @@ This game adds:
   Stage II is beautiful and eerie: bells, fog, voices in the glass, a bellmaker's tea. Stage III is solemn and
   urgent: the archive burning its reserves, the queue glowing, wardens who remember the order.
 - **The crew is the keeper.** Write "the crew", "you", or a named crew member. Never a single hero.
+- **Three tenders, one pattern.** The player may be riding L-12, G-04 or S-08. Text that names the Lamplighter,
+  Ilse Corran's tally marks above *your* helm or Pell's grip debt is gated to the Lamplighter. Choices that use the
+  ward mesh, payloads or a drone require them (Switchback has no mesh; Glasswing has no payload launcher). Use the
+  tender's painted name, never "the Lamplighter", in neutral text. A reward the car cannot use (payloads without a
+  slug thrower, a payload rack) is swapped for one it can, or the choice is gated to the equipment; each car also has
+  one story of its own (L-12's harbour beacon, G-04's KEEP THE PAIR TOGETHER, S-08's seventh drone).
+- **One word for one thing.** The system is the *Shield Array*; in prose it is the *ward mesh* or *mesh*, and it
+  has *mesh layers*, never "shields". *Payloads* are the charges for slug throwers (never missiles or ammo);
+  *spares* are automaton spares; *salvage* is the currency; an *Exchange* is a market relay. The drive's system is
+  called *Thrusters*, the crew say *the drive*. Crew stand *at the helm*, they do not pilot. The Veil *douses*; it
+  does not cloak. Machines' tasks *end*; boarders are *stopped*; cars *break up*.
+- **Events do not hop.** An event happens at the relay the tender is in. Its text may describe the car running up
+  and down the local carrier, but the switch to the next relay belongs to the chart, where it costs its TTL.
 - **Losses are fair.** When a choice can go badly, the text says so before the choice, in a way a careful reader
   would catch.
+
+The [current design reference](current-design.md) records the adopted travel, recovery, equipment and final-delivery rules.

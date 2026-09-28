@@ -6,6 +6,7 @@ const browser=await chromium.launch();
 const errors=[];
 try {
   const page=await browser.newPage({viewport:{width:1920,height:1080}});
+  await page.routeWebSocket('**', socket=>socket.close());
   page.on('pageerror',e=>errors.push(e.message));
   await page.goto('http://127.0.0.1:5181/?dev=relay');
   await page.waitForFunction(()=>window.__ttl);
@@ -28,7 +29,7 @@ try {
     };
     return amount;
   });
-  assert.equal(receipt,24);
+  assert.equal(receipt,16, 'Copper arrival allocation matches Medium rules (16/23/30 since the Medium tune-down)');
   await page.waitForTimeout(100);
   await page.screenshot({path:'tools/shots/qa/relay-stores.png'});
   await page.keyboard.press('u');await page.waitForTimeout(300);
@@ -47,7 +48,7 @@ try {
   await page.screenshot({path:'tools/shots/qa/field-guide-1366.png'});
   await page.keyboard.press('Escape');await page.waitForTimeout(100);
   await page.keyboard.press('Enter');await page.waitForTimeout(1700);
-  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('ttl.voyage')).run.map.relays.some(r=>r.serviceSalvage===24)),true);
+  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('ttl.voyage')).run.map.relays.some(r=>r.serviceSalvage===16)),true,'the claimed allocation survives Continue');
   assert.deepEqual(errors,[]);
   const result={receipt,upgradeControls:Object.keys(buttons).length,continue:true,guide1366:true,errors};
   await writeFile('tools/shots/qa/ux.json',JSON.stringify(result,null,2));

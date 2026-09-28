@@ -1,0 +1,7 @@
+parts/body-4a:i2
+parts/body-4b:i2
+parts/body-5a:i2
+parts/body-5b:i2
+parts/rear-cap:i2
+parts/rear-cap-5:i2
+parts/nose-optical:i2

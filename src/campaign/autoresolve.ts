@@ -4,6 +4,7 @@ import { Rng } from "../core/rng.ts";
 import type { CombatResult, CombatSetup, Inventory, ShipState } from "../game/types.ts";
 import { catalog } from "./catalog.ts";
 import { rollReward } from "./rewards.ts";
+import { difficultyRules } from "../data/difficulty.ts";
 
 function clone<T>(v: T): T {
   return JSON.parse(JSON.stringify(v)) as T;
@@ -27,7 +28,9 @@ export function playerStrength(ship: ShipState, inv: Inventory): number {
 
 export function enemyStrength(setup: CombatSetup): number {
   const elite = catalog.elites.includes(setup.enemy);
-  return 2.4 + setup.stage * 1.6 + setup.depth * 1.6 + (setup.boss ? 3.5 + setup.stage : 0) + (elite ? 2 : 0);
+  const rules = difficultyRules(setup.difficulty);
+  const scale = Math.sqrt((setup.boss ? rules.guardianHull : rules.enemyHull) * rules.enemyDamage / rules.enemyWeaponCharge);
+  return (2.4 + setup.stage * 1.6 + setup.depth * 1.6 + (setup.boss ? 3.5 + setup.stage : 0) + (elite ? 2 : 0)) * scale;
 }
 
 export function autoResolve(ship0: ShipState, inv0: Inventory, setup: CombatSetup, opts: { force?: CombatResult["outcome"] } = {}): CombatResult {
@@ -42,7 +45,7 @@ export function autoResolve(ship0: ShipState, inv0: Inventory, setup: CombatSetu
   if (opts.force) outcome = opts.force;
   else if (taken >= ship.hull) {
     // A losing fight: sometimes the hop drive charges in time.
-    if (rng.chance(0.35) && !setup.boss) {
+    if (rng.chance(0.35) && !setup.boss && setup.retreat && inventory.ttl >= setup.retreat.cost) {
       outcome = "fled";
       taken = Math.max(0, ship.hull - rng.int(1, 4));
     } else outcome = "defeat";
@@ -69,6 +72,10 @@ export function autoResolve(ship0: ShipState, inv0: Inventory, setup: CombatSetu
   }
   return {
     outcome,
+    resolution: outcome === "fled" || outcome === "escaped" ? "escaped" : outcome === "surrendered" ? "spared"
+      : outcome === "victory" ? setup.scenario ? "released" : setup.enemy === "blackout-core" ? "delivered"
+      : catalog.humans.includes(setup.enemy) ? "destroyed" : "disabled" : undefined,
+    retreatTo: outcome === "fled" ? setup.retreat?.to : undefined,
     ship,
     inventory,
     reward,

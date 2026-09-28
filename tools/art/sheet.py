@@ -1,6 +1,6 @@
 """Small, bounded contact sheets of delivered art, for visual review without loading model weights.
 
-Usage: python tools/art/sheet.py ships portraits weapons events ending
+Usage: python tools/art/sheet.py ships portraits weapons events ending regions
 """
 import json
 import math
@@ -13,10 +13,12 @@ manifest = json.loads((ROOT / "art-src/manifest.json").read_text())
 out = ROOT / "tools/shots/art"
 out.mkdir(parents=True, exist_ok=True)
 for group in sys.argv[1:]:
-    entries = sorted(manifest.get(group, {}).items())
+    entries = sorted(manifest.get("bg" if group == "regions" else group, {}).items())
+    if group == "regions":
+        entries = [(name, entry) for name, entry in entries if name.startswith(("s1-", "s2-", "s3-"))]
     if not entries:
         continue
-    columns = 4 if group in ("portraits", "weapons", "drones", "props") else 3
+    columns = 5 if group == "regions" else 4 if group in ("portraits", "weapons", "drones", "props") else 3
     cell_w, cell_h = (256, 220) if columns == 4 else (384, 240)
     sheet = Image.new("RGB", (columns * cell_w, math.ceil(len(entries) / columns) * cell_h), "#0b111c")
     draw = ImageDraw.Draw(sheet)

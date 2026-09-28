@@ -9,9 +9,10 @@ import { rollReward, surrenderOffer } from "../../data/rewards.ts";
 import { FALLBACK_NAMES } from "../../data/ship.ts";
 import { normalizeShip } from "../../data/consist.ts";
 import { TUNING } from "../../data/systems.ts";
+import { difficultyRules } from "../../data/difficulty.ts";
 import type { SysKey } from "../../data/layouts.ts";
 import {
-  DT, other, type BeamShot, type CombatStats, type Projectile, type SimCrew, type SimDrone, type SimEvent,
+  DT, other, type BeamShot, type BoardingTransit, type CombatStats, type Projectile, type SimCrew, type SimDrone, type SimEvent,
   type SimSetup, type SimShip, type Side, type Target,
 } from "./model.ts";
 import { buildEnemyShip, buildPlayerShip } from "./build.ts";
@@ -23,7 +24,7 @@ import { updateCrew, orderMove, makeCrewFromMember, makeHumanCrew, makeEscort, m
 import { updateEnv, doorMaxHp, startBreach } from "./env.ts";
 import { updateWeapons, updateProjectiles, updateBeams, chargeTime, targetValid } from "./weapons.ts";
 import { updateDrones, destroyDrone } from "./drones.ts";
-import { updateEnemy, updateHazards, specialShield, aiPower } from "./ai.ts";
+import { updateEnemy, updateHazards, specialShield, aiPower, gateRoute } from "./ai.ts";
 
 export type Outcome = "victory" | "defeat" | "fled" | "surrendered" | "escaped";
 
@@ -35,6 +36,7 @@ export class Sim {
   crew: SimCrew[] = [];
   projectiles: Projectile[] = [];
   beams: BeamShot[] = [];
+  boarding: BoardingTransit[] = [];
   events: SimEvent[] = [];
   outcome: Outcome | null = null;
   outcomeT = 0;
@@ -47,6 +49,11 @@ export class Sim {
   crewLost: { name: string; species: SpeciesId }[] = [];
   swhUsed = false;
   reward: Reward | undefined;
+  resolution: CombatResult["resolution"];
+  dutyProgress = 0;
+  /** The isolation shell is stopped. No further simulation can harm the crew or archive. */
+  deliveryReady = false;
+  retreatTo?: number;
   enemyDef: ScaledEnemy;
   private playerState: ShipState;
   private inventory: Inventory;
@@ -61,7 +68,16 @@ export class Sim {
     P.payloads = inv.payloads;
     P.spares = inv.spares;
     const E = buildEnemyShip(this.enemyDef);
+    const rules = difficultyRules(setup.difficulty);
+    E.hull = E.hullMax = Math.max(1, Math.round(E.hullMax * (setup.boss || Object.keys(E.boss).length ? rules.guardianHull : rules.enemyHull)));
     this.ships = [P, E];
+    if (setup.scenario) {
+      if (setup.scenario.enemyHull !== undefined) E.hull = Math.max(1, Math.min(E.hullMax, setup.scenario.enemyHull));
+      for (const [id, damage] of Object.entries(setup.scenario.enemyDamage ?? {})) {
+        const s = E.sys[id as SysKey];
+        if (s) s.damage = Math.min(s.level, Math.max(0, damage ?? 0));
+      }
+    }
     // Crew.
     for (const m of this.playerState.crew) this.placeMember(m);
     this.placeEnemyCrew();
@@ -152,6 +168,7 @@ export class Sim {
       for (const S of this.ships) if (S.dead) S.deadT += dt;
       return;
     }
+    if (this.deliveryReady) return;
     this.t += dt;
     this.stats.seconds += dt;
     const [P, E] = this.ships;
@@ -171,6 +188,7 @@ export class Sim {
     P.hitT += dt;
     E.hitT += dt;
     this.checkEnd();
+    if (!this.outcome && !this.deliveryReady) this.updateDuty(dt);
   }
 
   /** Run for `seconds` of sim time. */
@@ -193,7 +211,15 @@ export class Sim {
     }
     if (E.hull <= 0) {
       E.hull = 0;
-      E.dead = true;
+      if (E.boss.core) {
+        this.deliveryReady = true;
+        this.stopFlight();
+        this.quietEnemy();
+        this.emit({ type: "delivery-ready", side: 1 });
+        return;
+      }
+      this.resolution = E.enemy?.boss ? "released" : "destroyed";
+      E.dead = this.resolution === "destroyed";
       this.finish("victory");
       return;
     }
@@ -210,20 +236,74 @@ export class Sim {
     if (this.outcome) return;
     this.outcome = o;
     this.outcomeT = 0;
+    this.resolution ??= o === "surrendered" ? "spared" : o === "fled" || o === "escaped" ? "escaped" : o === "victory" ? "destroyed" : undefined;
     const e = this.enemyDef;
     const salvageMul = this.ships[0].augments.includes("salvage-arm") ? 1.15 : 1;
     if (o === "victory" && !this.setup.noReward) {
-      const tier = crewKill && e.reward === "med" ? "high" : e.reward;
+      const tier = e.reward;
       this.reward = rollReward(this.rng, this.setup.stage, this.setup.depth, tier, { salvageMul, forceItem: e.boss });
     } else if (o === "surrendered" && this.surrender) this.reward = this.surrender.reward;
     // Stop everything in flight.
-    for (const p of this.projectiles) p.dead = true;
-    for (const b of this.beams) b.done = true;
+    this.stopFlight();
+    if (o === "victory" || o === "surrendered") this.quietEnemy();
     for (const c of this.crew) if (!c.dead && c.side !== c.ship && o === "victory" && c.side === 1) {
       c.dead = true;
       c.deadT = 0;
     }
     this.emit({ type: "outcome", text: o });
+    void crewKill;
+  }
+
+  private stopFlight() {
+    for (const p of this.projectiles) p.dead = true;
+    for (const b of this.beams) b.done = true;
+    this.boarding = [];
+    for (const S of this.ships) for (const w of S.weapons) { w.target = null; w.queue = 0; }
+  }
+
+  private quietEnemy() {
+    const E = this.ships[1];
+    E.shields = 0;
+    E.shieldT = 0;
+    E.bonusLayers = 0;
+    for (const w of E.weapons) { w.powered = false; w.active = false; w.charge = 0; }
+    for (const a of E.adjuncts) a.active = false;
+    if (E.boss.gate) E.boss.gate.up = false;
+    if (E.boss.glass) { E.boss.glass.up = false; E.boss.glass.tuning = false; }
+    for (const system of E.systems) { system.power = 0; system.bonus = 0; }
+  }
+
+  private updateDuty(dt: number) {
+    const scenario = this.setup.scenario;
+    if (!scenario || scenario.objective !== "release-duty") return;
+    const target = this.ships[1].sys[scenario.system];
+    const helm = this.ships[0].sys.helm;
+    // An acknowledgement is a greeting: the Runbook never trusts one to a machine alone.
+    const acknowledged = usable(helm) > 0 && !!manner(this, this.ships[0], "helm");
+    const active = !!target && usable(target) === 0 && acknowledged;
+    if (active && this.dutyProgress === 0) this.emit({ type: "duty-acknowledge", side: 1 });
+    this.dutyProgress = active ? this.dutyProgress + dt : 0;
+    if (this.dutyProgress >= (scenario.holdSeconds ?? 5)) {
+      this.resolution = "released";
+      this.finish("victory");
+    }
+  }
+
+  /** A deliberate, safe final greeting after the isolation machinery is overcome. */
+  deliver(): boolean {
+    if (!this.deliveryReady || this.outcome) return false;
+    this.resolution = "delivered";
+    this.emit({ type: "delivery-connected", side: 1 });
+    this.finish("victory");
+    return true;
+  }
+
+  tuneChoir(on: boolean): boolean {
+    const glass = this.ships[1].boss.glass;
+    if (!glass || this.outcome) return false;
+    glass.tuning = on;
+    this.emit({ type: "choir-tune", side: 0, n: on ? 1 : 0 });
+    return true;
   }
 
   // ─── callbacks used by the modules ────────────────────────────────────────────────────────────────────────
@@ -246,6 +326,8 @@ export class Sim {
   }
 
   damageHull(T: SimShip, n: number, from: Side | -1) {
+    if (from === 1 && T.side === 0) n *= difficultyRules(this.setup.difficulty).enemyDamage;
+    if (from === -1 && this.setup.hazard === "debris-field") n *= 1 - Math.min(.8, T.mods.debrisProtection);
     T.hull -= n;
     if (T.side === 1) this.stats.damageDealt += n;
     else this.stats.damageTaken += n;
@@ -264,6 +346,11 @@ export class Sim {
 
   specialShield(T: SimShip, source: string, count: number, x: number, y: number): boolean {
     return specialShield(this, T, source, count, x, y);
+  }
+
+  /** A hit on a gate warden proves its route to the Regent's gate (true when it opens the gate). */
+  gateRoute(T: SimShip, source: string, x: number, y: number): boolean {
+    return gateRoute(this, T, source, x, y);
   }
 
   crawlerArrives(p: Projectile, T: SimShip, tile: number) {
@@ -399,12 +486,21 @@ export class Sim {
     return true;
   }
 
-  hopReady(): boolean {
-    return this.ships[0].hop >= 1 && !this.outcome;
+  hopReady(to?: number): boolean {
+    const P = this.ships[0];
+    const routes = this.setup.retreatOptions ?? (this.setup.retreat ? [this.setup.retreat] : []);
+    const route = to === undefined ? routes.find(r => r.cost <= this.inventory.ttl) : routes.find(r => r.to === to);
+    // The handshake may charge on an automated helm, but the final "I hear you hear me" is always spoken by a
+    // crew member at the helm (riggers count): the Runbook never trusted a greeting to a machine alone.
+    return P.hop >= 1 && !this.outcome && !this.deliveryReady && !!route &&
+      this.inventory.ttl >= route.cost && effective(P.sys.engines) > 0 && usable(P.sys.helm) > 0 &&
+      !!manner(this, P, "helm");
   }
 
-  hop(): boolean {
-    if (!this.hopReady()) return false;
+  hop(to?: number): boolean {
+    if (!this.hopReady(to)) return false;
+    const routes = this.setup.retreatOptions ?? (this.setup.retreat ? [this.setup.retreat] : []);
+    this.retreatTo = to ?? routes.find(r => r.cost <= this.inventory.ttl)!.to;
     this.finish("fled");
     this.emit({ type: "hop", side: 0 });
     return true;
@@ -497,6 +593,7 @@ export class Sim {
   // ─── result ───────────────────────────────────────────────────────────────────────────────────────────────
 
   result(): CombatResult {
+    if (!this.outcome) throw new Error("Combat has not ended; an unfinished fight is not a departure.");
     const P = this.ships[0];
     const s = JSON.parse(JSON.stringify(this.playerState)) as ShipState;
     const defeat = this.outcome === "defeat";
@@ -504,10 +601,11 @@ export class Sim {
     for (const [id, st] of Object.entries(s.systems)) {
       if (!st) continue;
       const sim = P.sys[id as SysKey];
-      st.damage = defeat && sim ? sim.damage : 0; // the crew patch everything up after the fight
+      st.damage = sim ? sim.damage : st.damage;
       if (sim && id !== "weapons" && id !== "drones") st.power = Math.min(st.level, sim.want);
     }
     s.weaponPower = s.weapons.map((wid, i) => !!wid && !!P.weapons.find((w) => w.slot === i)?.want);
+    s.dronePower = s.drones.map((did, i) => !!did && !!P.drones.find((d) => d.slot === i)?.want);
     const byId = new Map(this.crew.filter((c) => c.side === 0 && c.kind === "crew").map((c) => [c.id, c]));
     s.crew = s.crew.filter((m) => !byId.get(m.id)?.dead);
     for (const m of s.crew) {
@@ -524,9 +622,11 @@ export class Sim {
     let spares = P.spares;
     if (P.augments.includes("drone-recovery")) for (const d of P.drones) if (d.out && d.def.kind !== "repair") spares++;
     const inventory: Inventory = { ...this.inventory, payloads: P.payloads, spares };
-    const outcome = this.outcome ?? "fled";
+    const outcome = this.outcome;
     return {
       outcome,
+      resolution: this.resolution,
+      retreatTo: this.retreatTo,
       ship: s,
       inventory,
       reward: outcome === "victory" || outcome === "surrendered" ? this.reward : undefined,

@@ -4,10 +4,14 @@
 //   {teal}…{/}          colour by palette name (see palette.ts P) or {#rrggbb}
 //   {icon:name}         inline 10–16 px icon from the "icons" atlas (vertically centred on the line)
 //   {br}                forced line break (also "\n")
+//
+// Type scale (see TYPE in screens/kit.ts): big (display) › head (title) › body › caps / capsb / note. The last three
+// are scaled pixel fonts (1.5 layout units per font pixel, 3 backing pixels at 1080p): legible labels and notes at
+// 1366×768. label / labelb / small are the old 5-px sizes, kept for dense HUD glyphs.
 import { loadImage, loadJson, atlas, atlasScale } from "./assets";
 import { P } from "./palette";
 
-export type FontId = "body" | "head" | "big" | "label" | "labelb" | "small";
+export type FontId = "body" | "head" | "big" | "label" | "labelb" | "small" | "caps" | "capsb" | "note";
 
 interface FontMeta {
   id: string;
@@ -15,6 +19,8 @@ interface FontMeta {
   bottom: number;
   lineHeight: number;
   capHeight: number;
+  /** Layout units per atlas pixel (scaled fonts); 1 when absent. Metrics above are already in layout units. */
+  scale?: number;
   glyphs: Record<string, [number, number, number, number, number, number, number]>;
 }
 
@@ -27,7 +33,7 @@ interface Font {
 const fonts = new Map<FontId, Font>();
 
 export async function loadFonts(): Promise<void> {
-  const ids: FontId[] = ["body", "head", "big", "label", "labelb", "small"];
+  const ids: FontId[] = ["body", "head", "big", "label", "labelb", "small", "caps", "capsb", "note"];
   await Promise.all(
     ids.map(async (id) => {
       const [meta, image] = await Promise.all([loadJson<FontMeta>(`fonts/${id}.json`), loadImage(`fonts/${id}.png`)]);
@@ -62,6 +68,20 @@ export function baselineOffset(font: FontId = "body"): number {
 
 export function capHeight(font: FontId = "body"): number {
   return fonts.get(font)?.meta.capHeight ?? 8;
+}
+
+/** Pixels from the top of a line box to the top of the capitals (for optical vertical centring). */
+export function capTop(font: FontId = "body"): number {
+  return baselineOffset(font) - capHeight(font);
+}
+
+/** y for a line box whose capitals are centred in the band [y, y + h). */
+export function centerY(font: FontId, y: number, h: number): number {
+  return Math.round((y + (h - capHeight(font)) / 2 - capTop(font)) * 2) / 2;
+}
+
+function scaleOf(font: Font | undefined): number {
+  return font?.meta.scale ?? 1;
 }
 
 // ─── markup ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -160,7 +180,7 @@ function iconFrame(name: string) {
 function charAdvance(font: Font | undefined, ch: string): number {
   if (!font) return 6;
   const g = font.meta.glyphs[ch] ?? font.meta.glyphs["?"];
-  return g ? g[6] : 6;
+  return g ? g[6] * scaleOf(font) : 6;
 }
 
 /** Width of a single line (markup aware, no wrapping). */
@@ -298,8 +318,11 @@ function drawLine(
   alpha?: number,
 ): number {
   const font = fonts.get(fontId);
-  x = Math.round(x);
-  y = Math.round(y);
+  const k = scaleOf(font);
+  // Scaled fonts snap to backing pixels (half layout units); the classic fonts keep whole layout units.
+  const snap = k === 1 ? 1 : 2;
+  x = Math.round(x * snap) / snap;
+  y = Math.round(y * snap) / snap;
   const base = y + baselineOffset(fontId);
   let color = baseColor;
   let img = font ? tinted(font, color) : null;
@@ -337,8 +360,11 @@ function drawLine(
       }
       const g = font.meta.glyphs[ch] ?? font.meta.glyphs["?"];
       if (!g) continue;
-      if (g[2] > 0) ctx.drawImage(img, g[0], g[1], g[2], g[3], x + g[4], base + g[5], g[2], g[3]);
-      x += g[6];
+      if (g[2] > 0) {
+        if (k === 1) ctx.drawImage(img, g[0], g[1], g[2], g[3], x + g[4], base + g[5], g[2], g[3]);
+        else ctx.drawImage(img, g[0], g[1], g[2], g[3], x + g[4] * k, base + g[5] * k, g[2] * k, g[3] * k);
+      }
+      x += g[6] * k;
     }
   }
   ctx.globalAlpha = prevAlpha;

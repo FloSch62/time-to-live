@@ -50,17 +50,17 @@ export const WEAPONS: Record<WeaponId, WeaponDef> = {
   "packet-laser": w({
     id: "packet-laser", name: "Packet Laser", type: "laser", damage: 1, shots: 1, power: 1, charge: 9, fireChance: 0.1,
     breachChance: 0, cost: 25, rarity: 0, stageMin: 1, color: "teal", sfx: "laser-fire",
-    desc: "One light bolt. Cheap, reliable, and it keeps a shield busy.",
+    desc: "One light bolt. Cheap, reliable, and it keeps a ward mesh busy.",
   }),
   "burst-emitter": w({
     id: "burst-emitter", name: "Burst Emitter", type: "laser", damage: 1, shots: 2, power: 2, charge: 12, fireChance: 0.1,
     breachChance: 0.05, cost: 45, rarity: 0, stageMin: 1, color: "teal", sfx: "laser-fire",
-    desc: "Two bolts in a quick burst. Each bolt strips one shield layer.",
+    desc: "Two bolts in a quick burst. Each bolt strips one mesh layer.",
   }),
   "triple-burst": w({
     id: "triple-burst", name: "Triple Burst", type: "laser", damage: 1, shots: 3, power: 2, charge: 12, fireChance: 0.1,
     breachChance: 0.1, cost: 70, rarity: 1, stageMin: 1, color: "teal", sfx: "laser-fire",
-    desc: "Three bolts per volley: the lampers' favourite shield-breaker.",
+    desc: "Three bolts per volley: the lampers' favourite mesh-breaker.",
   }),
   "jumbo-frame": w({
     id: "jumbo-frame", name: "Jumbo Frame", type: "laser", damage: 2, shots: 1, power: 1, charge: 9, fireChance: 0.15,
@@ -80,7 +80,7 @@ export const WEAPONS: Record<WeaponId, WeaponDef> = {
   jammer: w({
     id: "jammer", name: "Jammer", type: "ion", damage: 0, shots: 1, ion: 1, power: 1, charge: 8, fireChance: 0,
     breachChance: 0, cost: 30, rarity: 0, stageMin: 1, color: "violet", sfx: "ion-fire",
-    desc: "Ion bolt: strips a shield layer and locks one bar of power for a while. No hull damage.",
+    desc: "Ion pulse: strips a mesh layer and locks one bar of power for a while. No hull damage.",
   }),
   "flood-cannon": w({
     id: "flood-cannon", name: "Flood Cannon", type: "ion", damage: 0, shots: 1, ion: 2, power: 3, charge: 13, fireChance: 0,
@@ -90,17 +90,17 @@ export const WEAPONS: Record<WeaponId, WeaponDef> = {
   "fiber-lance": w({
     id: "fiber-lance", name: "Fiber Lance", type: "beam", damage: 1, shots: 1, power: 2, charge: 12, beamLength: 2.6,
     fireChance: 0.1, breachChance: 0, crewDamage: 15, cost: 40, rarity: 0, stageMin: 1, color: "teal", sfx: "beam-fire",
-    desc: "Short beam: 1 damage to every room it crosses, minus shield layers. Never misses.",
+    desc: "Short beam: 1 damage to every room it crosses, minus mesh layers. Never misses.",
   }),
   "trunk-lance": w({
     id: "trunk-lance", name: "Trunk Lance", type: "beam", damage: 2, shots: 1, power: 3, charge: 17, beamLength: 4.2,
     fireChance: 0.15, breachChance: 0, crewDamage: 15, cost: 65, rarity: 2, stageMin: 1, color: "amber", sfx: "beam-fire",
-    desc: "Long beam: 2 damage per room crossed, minus shield layers.",
+    desc: "Long beam: 2 damage per room crossed, minus mesh layers.",
   }),
   "payload-launcher": w({
     id: "payload-launcher", name: "Payload Launcher", type: "payload", damage: 3, shots: 1, ammo: 1, power: 1, charge: 11,
     fireChance: 0.1, breachChance: 0.2, cost: 40, rarity: 0, stageMin: 1, color: "amber", sfx: "payload-launch",
-    desc: "Fires one payload (uses 1). Ignores shields; firewall drones can shoot it down.",
+    desc: "Fires one payload (uses 1). Goes through the ward mesh; firewall drones can shoot it down.",
   }),
   "breach-spike": w({
     id: "breach-spike", name: "Breach Spike", type: "payload", damage: 4, shots: 1, ammo: 1, power: 3, charge: 22,
@@ -115,7 +115,7 @@ export const WEAPONS: Record<WeaponId, WeaponDef> = {
   "scatter-shot": w({
     id: "scatter-shot", name: "Scatter Shot", type: "flak", damage: 1, shots: 3, power: 2, charge: 10, spread: 1.1,
     fireChance: 0.05, breachChance: 0.05, cost: 60, rarity: 1, stageMin: 1, color: "ivory", sfx: "flak-fire",
-    desc: "Three pellets scattered around the target. Brutal against shields.",
+    desc: "Three rivets scattered around the target. Brutal against a ward mesh.",
   }),
   "heartpulse-chain": w({
     id: "heartpulse-chain", name: "Heartpulse Chain", type: "laser", damage: 1, shots: 2, power: 2, charge: 16,
@@ -126,7 +126,7 @@ export const WEAPONS: Record<WeaponId, WeaponDef> = {
     id: "cathedral-chime", name: "Cathedral Chime", type: "beam", damage: 1, shots: 1, ion: 1, power: 3, charge: 16,
     beamLength: 3.4, fireChance: 0, breachChance: 0, crewDamage: 15, cost: 90, rarity: 3, stageMin: 2, color: "violet",
     sfx: "beam-fire",
-    desc: "A ringing beam: ionises the shield it strikes (one layer), then 1 damage + 1 ion to every room it crosses.",
+    desc: "A ringing beam: ionises the mesh it strikes (one layer), then 1 damage + 1 ion to every room it crosses.",
   }),
 };
 
@@ -135,12 +135,12 @@ export const ENEMY_WEAPONS: Record<string, WeaponDef> = {
   "buffer-clamp": w({
     id: "buffer-clamp", name: "Buffer Clamp", type: "ion", damage: 0, shots: 1, ion: 1, power: 1, charge: 13, fireChance: 0,
     breachChance: 0, cost: 0, rarity: 0, stageMin: 1, color: "amber", sfx: "ion-fire", sprite: "jammer",
-    desc: "The leech's intake clamp: drains a shield layer and holds the power.",
+    desc: "The leech's intake clamp: drains a mesh layer and holds the power.",
   }),
   "wraith-shears": w({
     id: "wraith-shears", name: "Isolation Shears", type: "beam", damage: 2, shots: 1, power: 2, charge: 18, beamLength: 3.2,
     fireChance: 0.1, breachChance: 0, crewDamage: 15, cost: 0, rarity: 0, stageMin: 1, color: "ember", sfx: "beam-fire",
-    sprite: "trunk-lance", desc: "Cutting beam: 2 per room, minus shields.",
+    sprite: "trunk-lance", desc: "Cutting beam: 2 per room, minus mesh layers.",
   }),
   "warning-horn": w({
     id: "warning-horn", name: "Warning Horn", type: "ion", damage: 0, shots: 2, ion: 1, power: 2, charge: 14, fireChance: 0,
@@ -150,7 +150,7 @@ export const ENEMY_WEAPONS: Record<string, WeaponDef> = {
   "crane-hook": w({
     id: "crane-hook", name: "Crane Hook", type: "payload", damage: 2, shots: 1, power: 1, charge: 13, fireChance: 0.1,
     breachChance: 0.3, cost: 0, rarity: 0, stageMin: 1, color: "amber", sfx: "payload-launch", sprite: "payload-launcher",
-    desc: "Condemned scrap thrown into your skip. Ignores shields.",
+    desc: "Condemned scrap thrown into your skip. Goes through the ward mesh.",
   }),
   "furnace-maw": w({
     id: "furnace-maw", name: "Furnace Maw", type: "payload", damage: 1, shots: 1, power: 1, charge: 12, fireChance: 0.9,

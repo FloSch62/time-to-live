@@ -1,3 +1,4 @@
+import { difficultyRules } from "../../data/difficulty.ts";
 // Power, ion, shields, evasion, veil and hop drive (FTL rules).
 import type { SysKey } from "../../data/layouts.ts";
 import { SYSTEMS, TUNING } from "../../data/systems.ts";
@@ -252,6 +253,10 @@ export function removePower(ship: SimShip, id: SysKey): boolean {
   if (s.power <= 0) return false;
   s.power--;
   s.want = s.power;
+  if (id === "shields") {
+    ship.shields = Math.min(ship.shields, shieldMax(ship));
+    if (shieldMax(ship) === 0) ship.shieldT = 0;
+  }
   return true;
 }
 
@@ -364,7 +369,7 @@ export function updateSystems(sim: Sim, ship: SimShip, dt: number) {
     if (ship.shieldT >= 1) {
       ship.shieldT = 0;
       ship.shields++;
-      if (ship.side === 0) sim.emit({ type: "shield-up", side: ship.side });
+      sim.emit({ type: "shield-up", side: ship.side });
     }
   } else ship.shieldT = 0;
 
@@ -373,12 +378,12 @@ export function updateSystems(sim: Sim, ship: SimShip, dt: number) {
     ship.veilT -= dt;
     if (ship.veilT <= 0 || usable(ship.sys.veil) <= 0) {
       ship.veilT = 0;
-      ship.veilCd = TUNING.veilCooldown;
+      ship.veilCd = TUNING.veilCooldown * (1 - Math.min(.5, ship.mods.veilCooldown));
       sim.emit({ type: "veil-off", side: ship.side });
     }
   } else if (ship.veilCd > 0) ship.veilCd -= dt;
 
-  ship.evasion = computeEvasion(sim, ship);
+  ship.evasion = computeEvasion(sim, ship) * (ship.side === 1 ? difficultyRules(sim.setup.difficulty).enemyEvasion : 1);
 
   // Hop drive / handshake (player), escape charge (fleeing humans).
   if (ship.side === 0 || ship.fleeing) {

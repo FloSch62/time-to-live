@@ -302,7 +302,7 @@ ember-red **Blackout Heart** — and prove to the Blackout Core that a route can
 Behind you, the quarantine's cutters follow your connection and **seal** the Line relay by relay (FTL's rebel fleet).
 Ahead of you, every machine of the Line meets you as an unknown sender.
 
-Title card: **TIME TO LIVE** — subtitle *a Faultline voyage* — tagline *Every hop costs a little life.*
+Title card: **TIME TO LIVE** — subtitle *a Faultline voyage* (no tagline).
 
 ---
 

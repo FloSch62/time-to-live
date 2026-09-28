@@ -1,6 +1,6 @@
 // The stage chart (contract §3.2, ★ v2): braided carrier routes between relays along a stretch of the Line, drawn
 // on a brass-framed chart plate over the relay view. The Seal advances from the left under a red-violet lattice and
-// cuts the carriers behind the tender. Click a linked relay to select it, click again (or J / Enter) to hop.
+// locks signaling behind the tender; carrier steel remains intact. Click a linked relay to select it, click again (or J / Enter) to hop.
 import type { App, Scene } from "../core/scene";
 import type { Gfx } from "../core/gfx";
 import { art, artSettled } from "../core/assets";
@@ -12,11 +12,19 @@ import { canHop, knowledge, RELAY_STORES } from "../campaign/run";
 import { hopDistances, hopsUntilSealed, sealFactor } from "../campaign/map";
 import { stageName } from "../campaign/events";
 import type { Session } from "./session";
-import { ROMAN, brassButton, cable, cachedLayer, glow, icon, iconC, iconSize, keyHints, runHud, tint, titlePlate, tracked } from "./kit";
+import { RUN_MODAL, ROMAN, TYPE, brassButton, cable, cachedLayer, fitFont, footer, glow, header, icon, iconC, iconSize, scrim, textAt, tint, tracked } from "./kit";
+import { capHeight, capTop, measure } from "../core/font";
 
+/** The chart plate: the run-modal frame below the HUD band. */
+const PANEL = RUN_MODAL;
+/** The survey field inside it. */
+const FIELD = { x: 66, y: 110, w: 828, h: 344 };
+/** Chart units → screen: x 1:1, y compressed a little to fit the plate under the run HUD. */
 const CX = 100;
-const CY = 112;
-const PANEL = { x: 36, y: 60, w: 888, h: 470 };
+const CY = FIELD.y + 12;
+const SY = 0.92;
+const sxOf = (r: { x: number }) => CX + r.x;
+const syOf = (r: { y: number }) => Math.round(CY + r.y * SY);
 
 export interface MapOpts {
   hopEnabled: boolean;
@@ -52,16 +60,19 @@ export function createMapScene(app: App, session: Session, opts: MapOpts): Scene
       const map = run.map;
       const cur = currentRelay(run);
       const input = a.input;
-      g.dim(0.55);
-      // Use the region panorama behind the brass chart plate.
-      const bgId = `bg/s${run.stage}-c`;
-      const bgImg = art(bgId);
-      if (bgImg) g.cover(bgImg, 0.9);
+      scrim(g, a, run);
+      void art;
       void artSettled;
       g.image(cachedLayer("map-plate", `${run.stage}`, 960, 540, (lg) => drawPlate(lg, run, 0)), 0, 0);
-      titlePlate(g, 480, PANEL.y - 11, `STAGE ${ROMAN[run.stage]} · ${stageName(run.stage).toUpperCase()}`, { w: 360, color: tint(run.stage).light });
+      const title = stageName(run.stage);
+      textAt(g, title, PANEL.x + 24, PANEL.y + 20, { font: TYPE.title, color: tint(run.stage).light, shadow: P.ink0 });
       const fl = STAGE_FLAVOR?.[run.stage];
-      if (fl) g.text(`{ivory3}${fl.plate}{/}`, 480, PANEL.y + 15, { font: "body", align: "center", width: 760, maxLines: 1 });
+      if (fl) {
+        const sx = PANEL.x + 24 + Math.ceil(measure(title, TYPE.title)) + 14;
+        const room = PANEL.x + PANEL.w - 24 - 96 - sx;
+        const fit = fitFont(fl.plate, room, [[TYPE.note, 0]]);
+        textAt(g, fl.plate, sx, PANEL.y + 20 + capHeight(TYPE.title) - capHeight(TYPE.note) - (fit.w > room ? 7 : 0), { font: TYPE.note, color: P.ivory3, width: fit.w > room ? room : undefined });
+      }
       drawSeal(g, run, t);
       const linkKey = `${run.seed}|${run.stage}|${run.pos}|${map.sealX.toFixed(1)}|${run.route.length}|${run.inv.ttl > 0}`;
       g.image(cachedLayer("map-links", linkKey, 960, 540, (lg) => drawLinks(lg, run, null, null)), 0, 0);
@@ -70,14 +81,14 @@ export function createMapScene(app: App, session: Session, opts: MapOpts): Scene
       hover = null;
       const reachable = new Set(cur.links.filter((j) => canHop(run, j).ok && opts.hopEnabled));
       for (const r of map.relays) {
-        const x = CX + r.x;
-        const y = CY + r.y;
+        const x = sxOf(r);
+        const y = syOf(r);
         if (a.ui.hot(`relay-${r.id}`, x - 10, y - 10, 20, 20, false)) hover = r.id;
       }
       for (const r of map.relays) drawRelay(g, run, r, t, r.id === selected, r.id === hover, reachable.has(r.id));
       // the tender marker
-      const mx = CX + cur.x;
-      const my = CY + cur.y - 17 + (Math.floor(t * 2) % 2);
+      const mx = sxOf(cur);
+      const my = syOf(cur) - 17 + (Math.floor(t * 2) % 2);
       if (!g.anim("icons", "ship-lamplighter", t, mx, my) && !iconC(g, "ship-lamplighter-0", mx, my)) {
         g.rect(mx - 6, my - 2, 12, 5, P.ivory1);
         g.rect(mx + 5, my - 1, 2, 3, P.amber1);
@@ -86,7 +97,7 @@ export function createMapScene(app: App, session: Session, opts: MapOpts): Scene
       if (hover !== null) {
         const r = map.relays[hover];
         a.ui.cursor = reachable.has(hover) ? "pointer" : "arrow";
-        a.ui.setTooltip(tooltipFor(run, r, reachable.has(r.id)), 250);
+        a.ui.setTooltip(tooltipFor(run, r, reachable.has(r.id)), 260, { x: sxOf(r) - 12, y: syOf(r) - 30, w: 24, h: 54, side: sxOf(r) > 600 ? "left" : "right" });
         if (input.pressed(0)) {
           input.consume();
           if (reachable.has(hover)) {
@@ -107,7 +118,6 @@ export function createMapScene(app: App, session: Session, opts: MapOpts): Scene
         sfx.play("ui-hover", { volume: 0.4 });
       }
       bottomBar(g, a, run, selected, reachable, links);
-      runHud(g, a, run, { compact: true });
       if (input.keyPressed("Escape") || input.keyPressed("KeyM")) {
         input.eatKey("Escape");
         input.eatKey("KeyM");
@@ -131,36 +141,40 @@ export function createMapScene(app: App, session: Session, opts: MapOpts): Scene
   }
 
   function bottomBar(g: Gfx, a: App, run: RunState, sel: number | null, reachable: Set<number>, links: number[]) {
-    const y = PANEL.y + PANEL.h - 50;
-    legend(g, PANEL.x + 18, y + 2);
+    const y = FIELD.y + FIELD.h + 8;
+    const h = PANEL.y + PANEL.h - 20 - y;
+    legend(g, PANEL.x + 24, y + 2);
     // centre: selection / TTL info
     const cx = 580;
     const map = run.map;
     const toExit = hopDistances(map.relays, map.exit)[currentRelay(run).id];
+    const l1 = y + Math.round(h / 2) - 13;
     if (sel !== null) {
       const r = map.relays[sel];
       const k = kindOf(run, r);
       const name = k === "unknown" ? "Unknown relay" : (RELAY_FLAVOR as Record<string, { name: string }>)[k === "start" ? "empty" : k]?.name ?? k;
-      tracked(g, `${r.name.toUpperCase()} · ${name.toUpperCase()}`, cx, y + 4, { font: "labelb", color: P.teal1, align: "center" });
+      header(g, `${r.name} · ${name}`, cx, l1, { font: TYPE.strong, color: P.teal1, align: "center" });
       const seal = hopsUntilSealed(map, r);
-      g.text(`Handshake and hop: {amber1}1 TTL{/} · ${seal === Infinity ? "the gate holds the Seal" : seal <= 1 ? "{ember1}the Seal is at the door{/}" : `Seal in ${seal} hops`}`, cx, y + 18, { font: "body", align: "center", color: C.textDim });
+      textAt(g, `Handshake and hop: {amber1}1 TTL{/} · ${seal === Infinity ? "the gate holds the Seal" : seal <= 1 ? "{ember1}the Seal is at the door{/}" : `Seal in ${seal} hops`}`, cx, l1 + 15, { font: TYPE.body, align: "center", color: C.textDim });
     } else {
-      tracked(g, run.inv.ttl > 0 ? `TTL ${run.inv.ttl} · GUARDIAN ${toExit} HOP${toExit === 1 ? "" : "S"} AWAY` : "TTL 0 · THE CONNECTION IS DROPPED", cx, y + 4, { font: "labelb", color: run.inv.ttl > 0 ? P.amber1 : P.ember1, align: "center" });
-      g.text(run.inv.ttl > 0 ? (links.length ? "Pick a linked relay on the chart." : "Finish what is happening here first.") : "Drift on the carrier and wait for a signal. The Seal will not wait.", cx, y + 18, { font: "body", align: "center", color: C.textDim });
+      header(g, run.inv.ttl > 0 ? `TTL ${run.inv.ttl} · guardian ${toExit} hop${toExit === 1 ? "" : "s"} away` : "TTL 0 · the connection is dropped", cx, l1, { font: TYPE.strong, color: run.inv.ttl > 0 ? P.amber1 : P.ember1, align: "center" });
+      textAt(g, run.inv.ttl > 0 ? (links.length ? "Pick a linked relay on the chart." : "Finish what is happening here first.") : "Drift on the carrier and wait for a signal. The Seal will not wait.", cx, l1 + 15, { font: TYPE.body, align: "center", color: C.textDim });
     }
     // right: buttons
-    const bx = PANEL.x + PANEL.w - 18 - 132;
+    const bw = 140;
+    const bx = PANEL.x + PANEL.w - 24 - bw;
+    const by = y + Math.round((h - 40) / 2);
     if (run.inv.ttl <= 0 && opts.hopEnabled) {
-      if (brassButton(a, "map-wait", bx, y - 4, 132, 40, "WAIT", { hotkey: "KeyW", sub: "for a signal", variant: "danger", tooltip: "Drift on the carrier and hope something answers. The Seal advances faster while you wait." })) {
+      if (brassButton(a, "map-wait", bx, by, bw, 40, "WAIT", { hotkey: "KeyW", sub: "for a signal", variant: "danger", tooltip: "Drift on the carrier and hope something answers. The Seal advances faster while you wait." })) {
         closing = true;
         session.remove(scene);
         opts.onWait();
       }
-    } else if (brassButton(a, "map-hop", bx, y - 4, 132, 40, "HOP", { hotkey: "KeyJ", hotkeys: ["Enter"], icon: "glyph-hop", disabled: sel === null || !reachable.has(sel), sub: "handshake · 1 TTL" })) {
+    } else if (brassButton(a, "map-hop", bx, by, bw, 40, "HOP", { hotkey: "KeyJ", hotkeys: ["Enter"], icon: "glyph-hop", disabled: sel === null || !reachable.has(sel), sub: "handshake · 1 TTL" })) {
       if (sel !== null) doHop(sel);
     }
-    if (brassButton(a, "map-close", PANEL.x + PANEL.w - 100, PANEL.y + 10, 84, 22, "CLOSE", { variant: "normal", font: "label", sound: null })) close();
-    keyHints(g, a, PANEL.x + PANEL.w - 18, PANEL.y + PANEL.h + 4, [["TAB", "cycle"], ["J", "hop"], ["M", "close"]], "right");
+    if (brassButton(a, "map-close", PANEL.x + PANEL.w - 24 - 96, PANEL.y + 14, 96, 24, "CLOSE", { variant: "normal", hotkey: "KeyM", sound: null })) close();
+    footer(g, a, [["TAB", "next linked relay"]], [["J", "hop"], ["M", "close"]]);
   }
 
   return scene;
@@ -194,10 +208,7 @@ function drawPlate(g: Gfx, run: RunState, t: number) {
   const { x, y, w, h } = PANEL;
   g.panel(x, y, w, h, "dialog");
   // chart field
-  const fx = CX - 34;
-  const fy = CY - 34 + 10;
-  const fw = 760 + 68;
-  const fh = 330 + 50;
+  const { x: fx, y: fy, w: fw, h: fh } = FIELD;
   g.rect(fx, fy, fw, fh, P.ink1);
   g.box(fx, fy, fw, fh, P.ink3);
   g.box(fx + 2, fy + 2, fw - 4, fh - 4, rgba(P.ivory3, 0.18));
@@ -207,38 +218,40 @@ function drawPlate(g: Gfx, run: RunState, t: number) {
   }
   const tn = tint(run.stage);
   for (let i = 0; i < 3; i++) {
-    const by = fy + 40 + i * 120;
+    const by = fy + 40 + i * 110;
     for (let bx = fx + 6; bx < fx + fw - 6; bx += 3) g.rect(bx, by + Math.round(Math.sin(bx / 90 + i) * 3), 1, 1, rgba(tn.main, 0.18));
   }
-  // compass rose (lower right) and scale bar
-  const rx = fx + fw - 34;
-  const ry = fy + fh - 34;
+  // compass rose (lower right): the arrow points on toward the Heart; its label sits clear to the left
+  const rx = fx + fw - 30;
+  const ry = fy + fh - 30;
   g.circle(rx, ry, 14, rgba(P.ivory3, 0.35));
   g.circle(rx, ry, 9, rgba(P.ivory3, 0.2));
   g.line(rx - 18, ry, rx + 18, ry, rgba(P.ivory3, 0.35));
   g.line(rx, ry - 18, rx, ry + 18, rgba(P.ivory3, 0.35));
   g.rect(rx + 16, ry - 1, 4, 3, P.brass2);
-  tracked(g, "HEART", rx + 20, ry - 14, { font: "small", color: rgba(P.ivory3, 0.6), align: "right", track: 1 });
+  const lbl = run.stage === 3 ? "TO THE CORE" : "TOWARD THE HEART";
+  tracked(g, lbl, rx - 24, ry - capTop(TYPE.note) - capHeight(TYPE.note) / 2, { font: TYPE.note, color: rgba(P.ivory3, 0.75), align: "right", track: 0.5 });
+  // scale bar (lower left)
   const sx = fx + 16;
-  const sy = fy + fh - 18;
+  const sy = fy + fh - 14;
   g.hline(sx, sy, 130, rgba(P.ivory3, 0.5));
   g.vline(sx, sy - 3, 6, rgba(P.ivory3, 0.5));
   g.vline(sx + 130, sy - 3, 6, rgba(P.ivory3, 0.5));
-  tracked(g, "ONE HOP", sx + 65, sy - 11, { font: "small", color: rgba(P.ivory3, 0.6), align: "center", track: 1 });
+  tracked(g, "ONE HOP", sx + 65, sy - 12 - capTop(TYPE.note), { font: TYPE.note, color: rgba(P.ivory3, 0.75), align: "center", track: 0.5 });
   void t;
 }
 
 function drawSeal(g: Gfx, run: RunState, t: number) {
   const map = run.map;
   const sx = Math.round(CX + map.sealX);
-  const left = CX - 32;
+  const left = FIELD.x + 2;
   if (sx <= left) {
     // off-chart: a hint of the red seam at the left edge
-    g.alpha(0.5 + 0.2 * Math.sin(t * 3), () => g.rect(left, CY - 22, 2, 368, P.ember3));
+    g.alpha(0.5 + 0.2 * Math.sin(t * 3), () => g.rect(left, FIELD.y + 2, 2, FIELD.h - 4, P.ember3));
     return;
   }
-  const top = CY - 12;
-  const h = 360;
+  const top = FIELD.y + 14;
+  const h = FIELD.h - 18;
   const lattice = cachedLayer("seal-lattice", "v1", 900, h, (lg) => {
     lg.alpha(0.3, () => lg.rect(0, 0, 900, h, P.violet4));
     lg.alpha(0.45, () => {
@@ -257,7 +270,10 @@ function drawSeal(g: Gfx, run: RunState, t: number) {
   }
   g.alpha(0.12 + 0.05 * Math.sin(t * 3), () => g.rect(sx - 6, top, 12, h, P.ember2));
   if (!iconC(g, "beacon-seal-front", sx, top - 2)) g.rect(sx - 3, top - 5, 7, 7, P.ember2);
-  tracked(g, "THE SEAL", sx - 6, top + h + 4, { font: "small", color: P.ember1, align: "right", track: 1 });
+  const lw2 = Math.ceil(measure("THE SEAL", TYPE.note)) + 8;
+  const lx2 = Math.max(FIELD.x + 4, sx - 10 - lw2);
+  g.alpha(0.8, () => g.rect(lx2, top - 9, lw2, 13, P.ink0));
+  g.text("THE SEAL", lx2 + 4, top - 9 + Math.round((13 - capHeight(TYPE.note)) / 2) - capTop(TYPE.note), { font: TYPE.note, color: P.ember1 });
 }
 
 function drawLinks(g: Gfx, run: RunState, selected: number | null, hover: number | null, onlyHighlighted = false) {
@@ -275,8 +291,8 @@ function drawLinks(g: Gfx, run: RunState, selected: number | null, hover: number
     for (const j of r.links) {
       if (j < r.id) continue;
       const q = map.relays[j];
-      const a = { x: CX + r.x, y: CY + r.y };
-      const b = { x: CX + q.x, y: CY + q.y };
+      const a = { x: sxOf(r), y: syOf(r) };
+      const b = { x: sxOf(q), y: syOf(q) };
       const d = Math.hypot(b.x - a.x, b.y - a.y);
       const sag = Math.round(d * 0.07);
       const key = `${r.id}-${j}`;
@@ -304,26 +320,16 @@ function drawLinks(g: Gfx, run: RunState, selected: number | null, hover: number
         hi = P.teal0;
         lo = P.teal3;
       }
-      if (sa && sb) {
-        // cut on both ends: dark cable with a gap in the middle
-        cable(g, a.x, a.y, b.x, b.y, sag, { color: P.violet4, hi: P.violet3, lo: P.ink0, thick: 2, to: 0.42 });
-        cable(g, a.x, a.y, b.x, b.y, sag, { color: P.violet4, hi: P.violet3, lo: P.ink0, thick: 2, from: 0.58 });
-        frayed(g, a, b, sag, 0.42, 0.58);
-      } else if (sa || sb) {
-        // severed at the Seal's front: the sealed side is dark, the live side ends in frayed strands
-        const sealU = sealCrossing(map.sealX + CX, a, b);
-        const [u0, u1] = sa ? [sealU - 0.05, sealU + 0.05] : [sealU - 0.05, sealU + 0.05];
-        if (sa) {
-          cable(g, a.x, a.y, b.x, b.y, sag, { color: P.violet4, hi: P.violet3, lo: P.ink0, thick: 2, to: Math.max(0, u0) });
-          cable(g, a.x, a.y, b.x, b.y, sag, { color, hi, lo, thick: 2, from: Math.min(1, u1) });
-        } else {
-          cable(g, a.x, a.y, b.x, b.y, sag, { color, hi, lo, thick: 2, to: Math.max(0, u0) });
-          cable(g, a.x, a.y, b.x, b.y, sag, { color: P.violet4, hi: P.violet3, lo: P.ink0, thick: 2, from: Math.min(1, u1) });
-        }
-        frayed(g, a, b, sag, Math.max(0, u0), Math.min(1, u1));
-      } else {
-        // braided carrier
-        cable(g, a.x, a.y, b.x, b.y, sag, { color, hi, lo, thick: 2 });
+      // Quarantine locks signaling and service access, not the supporting cable.
+      cable(g, a.x, a.y, b.x, b.y, sag, { color: sa && sb ? P.violet4 : color,
+        hi: sa && sb ? P.violet3 : hi, lo: sa && sb ? P.ink0 : lo, thick: 2 });
+      if (sa || sb) {
+        const u = sa && sb ? 0.5 : sealCrossing(map.sealX + CX, a, b);
+        const lx = a.x + (b.x - a.x) * u;
+        const ly = a.y + (b.y - a.y) * u + 4 * sag * u * (1 - u);
+        g.rect(lx - 4, ly - 5, 8, 10, P.ink1);
+        g.box(lx - 4, ly - 5, 8, 10, P.ember2);
+        g.hline(lx - 2, ly, 4, P.ember1);
       }
     }
   }
@@ -345,8 +351,8 @@ function frayed(g: Gfx, a: { x: number; y: number }, b: { x: number; y: number }
 }
 
 function drawRelay(g: Gfx, run: RunState, r: Relay, t: number, selected: boolean, hovered: boolean, reachable: boolean) {
-  const x = CX + r.x;
-  const y = CY + r.y;
+  const x = sxOf(r);
+  const y = syOf(r);
   const k = kindOf(run, r);
   const isCur = r.id === run.pos;
   const dim = r.visited && r.resolved && !isCur && k !== "market" && k !== "sealed";
@@ -372,8 +378,8 @@ function drawRelay(g: Gfx, run: RunState, r: Relay, t: number, selected: boolean
   if (r.visited && !isCur && k !== "sealed") g.rect(x + 6, y + 5, 2, 2, P.brass1);
   if (k === "market" || k === "exit") glow(g, x, y, 12, k === "exit" ? P.ember2 : P.amber2, 0.18);
   const label = LABEL[k];
-  if (label && (k !== "sealed" || isCur)) tracked(g, label, x, y + 11, { font: "small", color: k === "exit" ? P.ember1 : k === "market" ? P.amber1 : k === "sealed" ? P.ember2 : P.ivory3, align: "center", track: 1 });
-  else if (k === "hazard" && r.hazard) tracked(g, HAZARD_FLAVOR[r.hazard].name.toUpperCase(), x, y + 11, { font: "small", color: P.amber3, align: "center", track: 1 });
+  if (label && (k !== "sealed" || isCur)) relayLabel(g, label, x, y + 12, k === "exit" ? P.ember1 : k === "market" ? P.amber1 : k === "sealed" ? P.ember2 : P.ivory2);
+  else if (k === "hazard" && r.hazard) relayLabel(g, HAZARD_FLAVOR[r.hazard].name.toUpperCase(), x, y + 12, P.amber2);
 }
 
 function fallbackBeacon(g: Gfx, x: number, y: number, k: string, dim: boolean) {
@@ -387,6 +393,14 @@ function fallbackBeacon(g: Gfx, x: number, y: number, k: string, dim: boolean) {
   g.rect(x - 1, y - 1, 3, 3, col[k] ?? P.ivory2);
 }
 
+/** A relay's kind under its beacon: note caps on a dark backing so it reads over the cables. */
+function relayLabel(g: Gfx, text: string, cx: number, y: number, color: string) {
+  const w = Math.ceil(measure(text, TYPE.note)) + 6;
+  const x = Math.round(cx - w / 2);
+  g.alpha(0.72, () => g.rect(x, y, w, 12, P.ink0));
+  g.text(text, x + 3, y + Math.round((12 - capHeight(TYPE.note)) / 2) - capTop(TYPE.note), { font: TYPE.note, color });
+}
+
 function legend(g: Gfx, x: number, y: number) {
   const items: [string, string][] = [
     ["beacon-market", "Exchange"], ["beacon-bench", "Bench"], ["beacon-distress", "Signal"], ["beacon-hazard", "Hazard"],
@@ -395,7 +409,7 @@ function legend(g: Gfx, x: number, y: number) {
   items.forEach(([f, label], i) => {
     const cx = x + (i % 4) * 88;
     const cy = y + Math.floor(i / 4) * 20;
-    if (!iconC(g, f, cx + 8, cy + 7)) fallbackBeacon(g, cx + 8, cy + 7, f.replace("beacon-", ""), false);
-    g.text(label, cx + 20, cy, { font: "body", color: C.textDim });
+    if (!iconC(g, f, cx + 8, cy + 8)) fallbackBeacon(g, cx + 8, cy + 8, f.replace("beacon-", ""), false);
+    textAt(g, label, cx + 20, cy + 4.5, { font: TYPE.note, color: P.ivory2 });
   });
 }

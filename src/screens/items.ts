@@ -8,7 +8,11 @@ import { catalog, itemInfo, type WeaponType } from "../campaign/catalog";
 import { isAugment, isDrone, isWeapon } from "../campaign/shipops";
 import { isCarId, isModuleId, carInfo } from "../campaign/refit";
 import { icon, iconSize } from "./kit";
-import type { WeaponId } from "../game/ids";
+import type { DroneId, WeaponId } from "../game/ids";
+import type { ShipState } from "../game/types";
+import { WEAPONS } from "../data/weapons";
+import { DRONES } from "../data/drones";
+import { itemName, sellPrice } from "../campaign/catalog";
 
 const TYPE_COLOR: Record<WeaponType, [string, string]> = {
   laser: [P.teal2, P.teal0],
@@ -156,10 +160,68 @@ function moduleGlyph(g: Gfx, x: number, y: number) {
 
 /** Wide hardware portrait: use the full engineering silhouette instead of crushing it into a square. */
 export function equipmentArt(g: Gfx, id: string, x: number, y: number, w: number, h: number) {
-  const group = isWeapon(id) ? "weapons" : isDrone(id) ? "drones" : null;
+  const group = isWeapon(id) ? "weapons" : isDrone(id) ? "drones" : isCarId(id) ? "ships/cars" : null;
   const img = group ? art(`${group}/${id}`) : null;
   if (!img) { itemIcon32(g, id, x + (w - 32) / 2, y + (h - 32) / 2); return; }
   const scale = Math.min((w - 4) / img.width, (h - 4) / img.height);
   const dw = Math.round(img.width * scale), dh = Math.round(img.height * scale);
   g.ctx.drawImage(img, Math.round(x + (w - dw) / 2), Math.round(y + (h - dh) / 2), dw, dh);
+}
+
+// ─── numbers and tooltips ─────────────────────────────────────────────────────────────────────────────────
+
+/** The numbers of a weapon or drone on one line (from the combat data, so they match the fight). */
+export function itemStats(id: string): string {
+  if (isWeapon(id)) {
+    const d = WEAPONS[id as WeaponId];
+    if (!d) return itemInfo(id)?.stats ?? "";
+    const hit = d.type === "ion" ? `ion ${d.ion ?? d.damage}${d.shots > 1 ? ` × ${d.shots}` : ""}`
+      : d.type === "beam" ? `${d.damage}/room${d.ion ? ` + ${d.ion} ion` : ""}`
+      : `${d.damage} dmg${d.shots > 1 ? ` × ${d.shots}` : ""}`;
+    return `${hit} · ${d.charge} s · ${d.power} power${d.ammo ? ` · ${d.ammo} payload` : ""}`;
+  }
+  if (isDrone(id)) {
+    const d = DRONES[id as DroneId];
+    if (!d) return itemInfo(id)?.stats ?? "";
+    return `${d.kind} drone · ${d.power} power · 1 spare`;
+  }
+  return itemInfo(id)?.stats ?? "";
+}
+
+/**
+ * The full tooltip for a weapon, drone or augment: name and price, type and numbers, the extras (fire, breach, beam
+ * length, payloads), what it does, the lore line, and whether this tender can use it.
+ */
+export function equipmentTooltip(id: string, opts: { price?: number; ship?: ShipState; where?: string } = {}): string {
+  const info = itemInfo(id);
+  const lines: string[] = [];
+  const price = opts.price !== undefined ? `{ivory4}${opts.price} salvage · sells for ${sellPrice(id)}{/}` : `{ivory4}sells for ${sellPrice(id)}{/}`;
+  lines.push(`{brass1}${itemName(id)}{/}  ${price}`);
+  if (isWeapon(id)) {
+    const d = WEAPONS[id as WeaponId];
+    if (d) {
+      const hit = d.type === "ion" ? `ion ${d.ion ?? d.damage}${d.shots > 1 ? ` × ${d.shots}` : ""}`
+        : d.type === "beam" ? `${d.damage} per room${d.ion ? ` + ${d.ion} ion` : ""}` : `${d.damage} damage${d.shots > 1 ? ` × ${d.shots}` : ""}`;
+      lines.push(`{teal1}${d.type.toUpperCase()}{/} · ${hit} · ${d.power} power · ${d.charge} s charge`);
+      const extra: string[] = [];
+      if (d.fireChance >= 0.2) extra.push(`fire ${Math.round(d.fireChance * 100)}%`);
+      if (d.breachChance >= 0.2) extra.push(`breach ${Math.round(d.breachChance * 100)}%`);
+      if (d.type === "payload") extra.push("passes the ward mesh");
+      if (d.ammo) extra.push(`${d.ammo} payload per volley`);
+      if (d.beamLength) extra.push(`beam ${d.beamLength} tiles`);
+      if (d.chain) extra.push(`each volley ${d.chain.step} s quicker, ${d.chain.max} times`);
+      if (d.crewDamage) extra.push(`${d.crewDamage} crew damage`);
+      if (extra.length) lines.push(`{ivory3}${extra.join(" · ")}{/}`);
+    } else if (info?.stats) lines.push(info.stats);
+  } else if (isDrone(id)) {
+    const d = DRONES[id as DroneId];
+    if (d) lines.push(`{teal1}${d.kind.toUpperCase()} DRONE{/} · ${d.power} power · 1 spare per launch${d.damage && d.kind === "combat" ? ` · ${d.damage} per hit` : ""}`);
+    if (opts.ship && (!opts.ship.systems.drones || !opts.ship.systemRooms.drones)) lines.push("{amber1}Needs a Drone Bay to launch{/}");
+  } else if (isAugment(id)) {
+    lines.push("{teal1}AUGMENT{/} · always working, no power");
+  }
+  if (info?.desc) lines.push(info.desc);
+  if (info?.lore) lines.push(`{ivory4}${info.lore}{/}`);
+  if (opts.where) lines.push(`{ivory4}${opts.where}{/}`);
+  return lines.join("\n");
 }

@@ -1,0 +1,486 @@
+[
+ {
+  "id": "cr-r0",
+  "subject": "cr",
+  "recipe": "R0 shipped (HD painting pixelized 2x2)",
+  "baseline": true,
+  "src": "public/art/bg/s1-a.png",
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ],
+  "note": "the look to replace"
+ },
+ {
+  "id": "cr-r1",
+  "subject": "cr",
+  "recipe": "R1 cel prompt 2560 -> 640x360 (Kuwahara + median 4x4)",
+  "src": "cand/study/cr/cr-cel-54067321.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "cel",
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ]
+ },
+ {
+  "id": "cr-r2",
+  "subject": "cr",
+  "recipe": "R2 cel prompt 2560 -> 480x270",
+  "src": "cand/study/cr/cr-cel-54067321.png",
+  "size": [
+   480,
+   270
+  ],
+  "preset": "cel",
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ]
+ },
+ {
+  "id": "cr-r3a",
+  "subject": "cr",
+  "recipe": "R3a pixel-art prompt 3840 (8 px = art px) -> 480x270",
+  "src": "cand/study/cr/cr-pix8-883393069.png",
+  "size": [
+   480,
+   270
+  ],
+  "preset": "pix8",
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ]
+ },
+ {
+  "id": "cr-r3b",
+  "subject": "cr",
+  "recipe": "R3b pixel-art prompt 5120 (8 px = art px) -> 640x360",
+  "src": "cand/study/cr/cr-pix8w-572308132.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "pix8",
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ],
+  "note": "dusk prompt: too pastel/bright behind the hull"
+ },
+ {
+  "id": "cr-r3b-tone",
+  "subject": "cr",
+  "recipe": "R3b + night tone curve (gamma 1.55, chroma 0.85, grade 0.55)",
+  "src": "cand/study/cr/cr-pix8w-572308132.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "pix8",
+  "params": {
+   "gamma": 1.55,
+   "chroma": 0.85,
+   "grade": 0.55
+  },
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ],
+  "note": "dusk render pushed to night"
+ },
+ {
+  "id": "cr-r3n",
+  "subject": "cr",
+  "recipe": "R3n pixel-art 5120 + NIGHT + LAYOUT prompt -> 640x360",
+  "src": "cand/study/cr/cr-pix8n-980868189.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "pix8",
+  "params": {
+   "layers": true
+  },
+  "crop": [
+   0.0,
+   0.25,
+   0.4,
+   0.4
+  ],
+  "note": "no carriers: rejected on lore"
+ },
+ {
+  "id": "cr-r3n2",
+  "subject": "cr",
+  "recipe": "R3n pixel-art 5120 + NIGHT + LAYOUT prompt (seed 2) -> 640x360",
+  "src": "cand/study/cr/cr-pix8n-607726298.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "pix8",
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ],
+  "note": "no carriers: rejected on lore"
+ },
+ {
+  "id": "cr-r3c",
+  "subject": "cr",
+  "recipe": "R3c pixel-art 5120 + NIGHT + LAYOUT + CARRIERS -> 640x360",
+  "src": "cand/study/cr/cr-pix8c-29216529.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "pix8",
+  "params": {
+   "layers": true
+  },
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ],
+  "note": "RECOMMENDED recipe (pix8 preset incl. night gamma 1.15)"
+ },
+ {
+  "id": "cr-r3c2",
+  "subject": "cr",
+  "recipe": "R3c pixel-art 5120 + NIGHT + LAYOUT + CARRIERS (seed 2) -> 640x360",
+  "src": "cand/study/cr/cr-pix8c-1854577383.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "pix8",
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ],
+  "note": "recommended recipe, seed 2"
+ },
+ {
+  "id": "cr-r5",
+  "subject": "cr",
+  "recipe": "R5 (APPROVED, 2560 cap) fine hi-bit pixel prompt 2560x1440 -> 640x360",
+  "src": "cand/bg/s1-a/s1-a-t640p-1715242735.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "pix8",
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ],
+  "note": "the A3 recipe (v5.py v5c)"
+ },
+ {
+  "id": "cr-r5i",
+  "subject": "cr",
+  "recipe": "R5i night illustration prompt 2560x1440 -> 640x360 (4x4 median)",
+  "src": "cand/bg/s1-a/s1-a-t640i-1881819515.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "cel",
+  "params": {
+   "gamma": 1.15
+  },
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ],
+  "note": "dark, vector-flat"
+ },
+ {
+  "id": "cr-r5s",
+  "subject": "cr",
+  "recipe": "R5s R3 pixel prompt 2560x1440 -> 320x180 (drawn 6x)",
+  "src": "cand/bg/s1-a/s1-a-t320-976396439.png",
+  "size": [
+   320,
+   180
+  ],
+  "preset": "pix8",
+  "crop": [
+   0.55,
+   0.45,
+   0.4,
+   0.4
+  ],
+  "note": "authentic but coarse beside the hulls"
+ },
+ {
+  "id": "gc-r0",
+  "subject": "gc",
+  "recipe": "R0 shipped (HD painting pixelized 2x2)",
+  "baseline": true,
+  "src": "public/art/bg/s2-c.png",
+  "crop": [
+   0.3,
+   0.0,
+   0.4,
+   0.4
+  ],
+  "note": "the look to replace"
+ },
+ {
+  "id": "gc-r1",
+  "subject": "gc",
+  "recipe": "R1 cel prompt 2560 -> 640x360",
+  "src": "cand/study/gc/gc-cel-31733404.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "cel",
+  "crop": [
+   0.3,
+   0.0,
+   0.4,
+   0.4
+  ]
+ },
+ {
+  "id": "gc-r2",
+  "subject": "gc",
+  "recipe": "R2 cel prompt 2560 -> 480x270",
+  "src": "cand/study/gc/gc-cel-31733404.png",
+  "size": [
+   480,
+   270
+  ],
+  "preset": "cel",
+  "crop": [
+   0.3,
+   0.0,
+   0.4,
+   0.4
+  ]
+ },
+ {
+  "id": "gc-r3a",
+  "subject": "gc",
+  "recipe": "R3a pixel-art prompt 3840 -> 480x270",
+  "src": "cand/study/gc/gc-pix8-1059624186.png",
+  "size": [
+   480,
+   270
+  ],
+  "preset": "pix8",
+  "crop": [
+   0.3,
+   0.0,
+   0.4,
+   0.4
+  ]
+ },
+ {
+  "id": "gc-r3n",
+  "subject": "gc",
+  "recipe": "R3n pixel-art 5120 + NIGHT + LAYOUT prompt -> 640x360",
+  "src": "cand/study/gc/gc-pix8n-1020892490.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "pix8",
+  "crop": [
+   0.3,
+   0.0,
+   0.4,
+   0.4
+  ],
+  "note": "closest Cathedral mood (lead); copper horizon to be violet in A3"
+ },
+ {
+  "id": "gc-r3c",
+  "subject": "gc",
+  "recipe": "R3c pixel-art 5120 + NIGHT + LAYOUT + CARRIERS -> 640x360",
+  "src": "cand/study/gc/gc-pix8c-1126456449.png",
+  "size": [
+   640,
+   360
+  ],
+  "preset": "pix8",
+  "params": {
+   "layers": true
+  },
+  "crop": [
+   0.3,
+   0.0,
+   0.4,
+   0.4
+  ],
+  "note": "carriers yes, but lost the glass ring, church spires, white horizon: rejected"
+ },
+ {
+  "id": "cm-r0",
+  "subject": "cm",
+  "recipe": "R0 shipped event (640x320 HD, pixelized 2x2)",
+  "baseline": true,
+  "src": "public/art/events/copper-market.png",
+  "crop": [
+   0.55,
+   0.5,
+   0.4,
+   0.5
+  ],
+  "note": "the look to replace"
+ },
+ {
+  "id": "cm-r1",
+  "subject": "cm",
+  "recipe": "R1 cel prompt 2560x1280 -> 213x106 (3 px, the 640 grid)",
+  "src": "cand/study/cm/cm-cel-1935957774.png",
+  "src_crop": [
+   0,
+   0,
+   2560,
+   1216
+  ],
+  "size": [
+   213,
+   106
+  ],
+  "preset": "cel",
+  "params": {
+   "sky_dither": 0.0,
+   "colors": 36,
+   "accents": 5
+  },
+  "crop": [
+   0.55,
+   0.5,
+   0.4,
+   0.5
+  ]
+ },
+ {
+  "id": "cm-r1b",
+  "subject": "cm",
+  "recipe": "R1 cel prompt 2560x1280 -> 320x160 (2 px, half the 480 grid)",
+  "src": "cand/study/cm/cm-cel-1935957774.png",
+  "src_crop": [
+   0,
+   0,
+   2560,
+   1216
+  ],
+  "size": [
+   320,
+   160
+  ],
+  "preset": "cel",
+  "params": {
+   "sky_dither": 0.0,
+   "colors": 36,
+   "accents": 5
+  },
+  "crop": [
+   0.55,
+   0.5,
+   0.4,
+   0.5
+  ]
+ },
+ {
+  "id": "cm-r3",
+  "subject": "cm",
+  "recipe": "R3 pixel-art prompt 2560x1280 (8 px = art px) -> 320x160 (2 px)",
+  "src": "cand/study/cm/cm-pix8-708074370.png",
+  "size": [
+   320,
+   160
+  ],
+  "preset": "event",
+  "crop": [
+   0.55,
+   0.5,
+   0.4,
+   0.5
+  ],
+  "note": "CHOSEN event size (lead)"
+ },
+ {
+  "id": "cm-r3s",
+  "subject": "cm",
+  "recipe": "R3 pixel-art prompt 1280x640 -> 160x80 (4 px = the 480 grid)",
+  "src": "cand/study/cm/cm-pix8s-160530766.png",
+  "size": [
+   160,
+   80
+  ],
+  "preset": "event",
+  "crop": [
+   0.0,
+   0.5,
+   0.4,
+   0.5
+  ]
+ },
+ {
+  "id": "cm-r3m",
+  "subject": "cm",
+  "recipe": "R3 pixel-art prompt 1712x848 -> 213x106 (3 px = the 640 grid)",
+  "src": "cand/study/cm/cm-pix8m-503155626.png",
+  "size": [
+   213,
+   106
+  ],
+  "preset": "event",
+  "crop": [
+   0.55,
+   0.5,
+   0.4,
+   0.5
+  ]
+ },
+ {
+  "id": "cm-r3m2",
+  "subject": "cm",
+  "recipe": "R3 pixel-art prompt 1712x848 (seed 2) -> 213x106 (3 px)",
+  "src": "cand/study/cm/cm-pix8m-663022625.png",
+  "size": [
+   213,
+   106
+  ],
+  "preset": "event",
+  "crop": [
+   0.55,
+   0.5,
+   0.4,
+   0.5
+  ]
+ }
+]

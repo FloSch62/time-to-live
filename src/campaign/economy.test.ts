@@ -6,8 +6,22 @@ import { serialize, deserialize } from './savegame.ts';
 import { loadContent, testShip } from './testkit.ts';
 import { runEncounter } from './voyage.ts';
 import { headlessPresenter } from './headless.ts';
+import { coupleCar } from './refit.ts';
 
 before(async()=>{await loadContent();});
+
+test('Freight Car adds its allocation at eligible stops, with no payment on empty or repeated claims',()=>{
+  const run=createRun(775,testShip());
+  coupleCar(run.ship,'freight-car');
+  run.pos=run.map.relays.find(r=>r.type!=='start'&&r.type!=='exit')!.id;
+  currentRelay(run).resolved=true;
+  assert.equal(claimRelayStores(run),RELAY_STORES[1]+4);
+  assert.equal(claimRelayStores(run),0);
+  run.pos=run.map.relays.find(r=>r.id!==run.pos&&r.type!=='start'&&r.type!=='exit')!.id;
+  currentRelay(run).resolved=true;
+  currentRelay(run).maintenance=false;
+  assert.equal(claimRelayStores(run),0);
+});
 
 test('maintenance stores pay once per cleared relay, including after save and restore',async()=>{
   const run=createRun(771,testShip());
@@ -52,7 +66,7 @@ test('later-stage maintenance stores follow the actual stage and cannot reuse ea
     assert.equal(claimRelayStores(run),RELAY_STORES[stage]);
     assert.equal(claimRelayStores(run),0);
   }
-  assert.equal(run.stats.salvageEarned,108);
+  assert.equal(run.stats.salvageEarned,Object.values(RELAY_STORES).reduce((a,b)=>a+b,0));
 });
 
 test('exchanges always stock an affordable class of ammo-free weapon for their stage',async()=>{

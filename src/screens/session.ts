@@ -7,6 +7,8 @@ import type { CombatResult, CombatSetup, ScriptBeat } from "../game/types";
 import type { RunState } from "../campaign/model";
 import { currentRelay, hasFlag, setFlag } from "../campaign/model";
 import { content } from "../campaign/content";
+import { tenderOpening, departureIntro } from "../content/tender-story";
+import { endingReflections } from "../content/voyage-record";
 import type { Applied, EventView } from "../campaign/events";
 import { playVoyage, type HubAction, type Presenter, type ScriptKind, type VictoryInfo } from "../campaign/voyage";
 import { saveRun, recordEnd, recordStart } from "../campaign/persist";
@@ -175,13 +177,6 @@ export class Session implements Presenter {
     if (result.outcome !== "defeat") {
       await this.ensureBase();
       music.setLayer("explore");
-      if (setup.boss && result.outcome === "victory") {
-        const g = content.script.GUARDIAN[setup.enemy] as Record<string, ScriptBeat[]> | undefined;
-        if (g?.defeat?.length) {
-          await this.script(run, g.defeat, "guardian");
-          await this.ensureBase();
-        }
-      }
     }
     return result;
   }
@@ -200,6 +195,16 @@ export class Session implements Presenter {
   }
 
   async script(run: RunState, beats: ScriptBeat[], kind: ScriptKind) {
+    if (kind === "prologue") beats = tenderOpening(run.ship);
+    else if (kind === "intro" && run.stage === 1) beats = departureIntro(run.ship);
+    else if (kind === "outro") {
+      // The guardian's written defeat (its task ending, in its own words), then the stage's outro without the beats
+      // that retell the same moment. After the Heart the ending follows directly.
+      const defeat = (content.script.GUARDIAN[guardianOf(run)] as Record<string, ScriptBeat[]> | undefined)?.defeat ?? [];
+      const first = (t: string) => t.split(/(?<=[.!?])\s/)[0].trim();
+      const rest = run.stage === 3 ? [] : beats.filter((b) => !defeat.some((d) => first(d.text) === first(b.text)));
+      beats = [...defeat, ...rest];
+    }
     if (!beats.length) return;
     await waitUntil(() => !this.scenes.transitioning);
     return this.guard(
@@ -247,7 +252,7 @@ export class Session implements Presenter {
     this.closeEvent();
     const s = content.script;
     const beats = [...s.ENDING];
-    const extra = s.ENDING_CALLBACKS.filter((c) => hasFlag(run, c.flag)).map((c) => c.beat);
+    const extra = endingReflections(run, s.ENDING_CALLBACKS);
     const at = s.endingInsertAt >= 0 ? Math.min(s.endingInsertAt, beats.length) : beats.length;
     beats.splice(at, 0, ...extra);
     void music.play("an-answer");

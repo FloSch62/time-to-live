@@ -1,0 +1,2 @@
+ships/glasswing:fam3
+ships/switchback:fam3

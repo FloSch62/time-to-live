@@ -126,6 +126,12 @@ export interface ConsistStats {
   airDecay: number;
   evasionMalus: number;
   reveal: boolean;
+  weaponCharge: number;
+  droneCharge: number;
+  veilCooldown: number;
+  debrisProtection: number;
+  relayStores: number;
+  salvageRepair: number;
   sockets: string[];
 }
 
@@ -133,7 +139,8 @@ export function consistStats(consist: Consist, modules: ModuleMap = {}): Consist
   const cars = carsOf(consist).map((c) => ({ slot: c.slot, def: carDef(c.id) }));
   const st: ConsistStats = {
     weaponSlots: 0, droneSlots: 0, crewCap: 0, cargoCap: 0, payloadCap: 0, sparesCap: 0, hullBonus: 0, sensors: 0,
-    repair: 0, airDecay: 1, evasionMalus: CAR_EVASION_MALUS * (cars.length - 1), reveal: false, sockets: [],
+    repair: 0, airDecay: 1, evasionMalus: 0, reveal: false, sockets: [],
+    weaponCharge: 0, droneCharge: 0, veilCooldown: 0, debrisProtection: 0, relayStores: 0, salvageRepair: 0,
   };
   for (const { slot, def } of cars) {
     st.weaponSlots += def.hardpoints.length;
@@ -142,11 +149,12 @@ export function consistStats(consist: Consist, modules: ModuleMap = {}): Consist
     st.cargoCap += def.cargo;
     st.payloadCap += def.payloadCap;
     st.sparesCap += def.sparesCap;
-    if (slot !== "lead") st.hullBonus += def.hull;
+    if (slot !== "lead") { st.hullBonus += def.hull; st.evasionMalus += def.evasionCost ?? CAR_EVASION_MALUS; }
     st.sensors += def.effects.sensors ?? 0;
     st.repair += def.effects.repair ?? 0;
     st.airDecay *= def.effects.airDecay ?? 1;
     st.reveal ||= !!def.effects.reveal;
+    for (const key of ["weaponCharge", "droneCharge", "veilCooldown", "debrisProtection", "relayStores", "salvageRepair"] as const) st[key] += def.effects[key] ?? 0;
     for (const lg of Object.values(def.legend)) if (lg.socket) st.sockets.push(roomKey(slot, lg.id));
   }
   for (const [rid, m] of Object.entries(modules)) {
@@ -167,8 +175,7 @@ export function consistStats(consist: Consist, modules: ModuleMap = {}): Consist
 export function deriveSystemRooms(consist: Consist, modules: ModuleMap = {}): Partial<Record<SystemId, string>> {
   const out: Partial<Record<SystemId, string>> = {};
   for (const { slot, id } of carsOf(consist)) {
-    if (slot === "lead") continue;
-    for (const lg of Object.values(carDef(id).legend)) if (lg.sys) out[lg.sys as SystemId] = roomKey(slot, lg.id);
+    for (const lg of Object.values(carDef(id).legend)) if (lg.sys && !out[lg.sys as SystemId]) out[lg.sys as SystemId] = roomKey(slot, lg.id);
   }
   const sockets = consistStats(consist, modules).sockets;
   for (const [rid, m] of Object.entries(modules)) {
@@ -189,6 +196,10 @@ export function normalizeShip(input: ShipState): ShipState {
   s.modules ??= {};
   s.moduleStore ??= [];
   s.livery ??= { lamp: "amber" };
+  // Earlier Switchback saves used modules where this pattern now has dedicated native bays.
+  if (s.consist.lead === "switchback") for (const [rid, id] of Object.entries(s.modules)) {
+    if (id === "drone-bay" || id === "veil-housing") { s.moduleStore.push(id); delete s.modules[rid]; }
+  }
   const st = consistStats(s.consist, s.modules);
   // Modules in sockets that no longer exist go back to the store.
   for (const rid of Object.keys(s.modules)) {
@@ -260,6 +271,10 @@ export function coupleCar(ship: ShipState, slot: "rear" | "keel", carId: RearCar
     const def = CARS[carId];
     if (!def || def.slot !== slot) throw new Error(`car ${carId} does not fit the ${slot} slot`);
     (s.consist as unknown as Record<string, string | undefined>)[slot] = carId;
+    for (const [id, level] of Object.entries(def.systemLevels ?? {}) as [SystemId, number][]) {
+      s.systems[id] ??= { level, damage: 0, power: 0 };
+      s.systems[id]!.level = Math.max(s.systems[id]!.level, level);
+    }
   } else delete s.consist[slot];
   normalizeShip(s);
   const after = consistStats(s.consist, s.modules).hullBonus;
@@ -285,14 +300,16 @@ export function applyRefit(ship: ShipState, socket: string, module: ModuleId | n
     s.modules[socket] = module;
   }
   normalizeShip(s);
-  adjustHull(s, consistStats(s.consist, s.modules).hullBonus - before);
+  // A reusable capacity module supplies no fresh plating. Otherwise removing/reinstalling ballast would
+  // heal the tender for free at a berth. New purchased cars bring their own plating in coupleCar above.
+  adjustHull(s, consistStats(s.consist, s.modules).hullBonus - before, false);
   return s;
 }
 
-function adjustHull(s: ShipState, delta: number) {
+function adjustHull(s: ShipState, delta: number, freshPlating = true) {
   if (!delta) return;
   s.hullMax = Math.max(1, s.hullMax + delta);
-  s.hull = Math.max(1, Math.min(s.hullMax, s.hull + Math.max(0, delta)));
+  s.hull = Math.max(1, Math.min(s.hullMax, s.hull + (freshPlating ? Math.max(0, delta) : 0)));
   if (s.hull > s.hullMax) s.hull = s.hullMax;
 }
 

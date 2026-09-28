@@ -70,6 +70,7 @@ export function resourceAmount(run: RunState, id: ResourceId): number {
 export function checkCondition(run: RunState, c: Condition | undefined): CheckResult {
   if (!c) return { ok: true };
   const ship = run.ship;
+  if (c.tender && ship.defId !== c.tender) return { ok: false, reason: "A different tender's history" };
   if (c.resources) {
     for (const [k, v] of Object.entries(c.resources) as [ResourceId, number][]) {
       if (resourceAmount(run, k) < v) return { ok: false, reason: `Needs ${v} ${RESOURCE_NAME[k]}` };
@@ -135,6 +136,8 @@ export function reqLabel(c: Condition | undefined): string {
 export interface EventCtx {
   /** Crew member chosen for {crew} in this encounter (id). */
   crewId?: string;
+  crewName?: string;
+  speciesCrew?: Partial<Record<SpeciesId, { id: string; name: string }>>;
   /** Seed for stable per-view choices. */
   seed: number;
 }
@@ -143,7 +146,13 @@ export function newCtx(run: RunState, salt = ""): EventCtx {
   const seed = hashString(`${run.seed}:${run.stage}:${run.pos}:${run.stats.hops}:${salt}`);
   const rng = new Rng(seed);
   const crew = run.ship.crew;
-  return { seed, crewId: crew.length ? rng.pick(crew).id : undefined };
+  const def = eventById(salt);
+  const namedSpecies = def?.text.match(/\{crew:([a-z]+)\}/)?.[1];
+  const actorPool = crew.filter(c => def?.cast && def.cast !== "human" ? c.species === def.cast : c.species !== "rigger");
+  const actor = crew.find(c => c.species === namedSpecies) ?? (actorPool.length ? rng.pick(actorPool) : undefined);
+  return { seed, crewId: actor?.id, crewName: actor?.name,
+    speciesCrew: Object.fromEntries(crew.map(c => [c.species, { id: c.id, name: c.name }]).reverse()),
+  };
 }
 
 export function substitute(text: string, run: RunState, ctx: EventCtx): string {
@@ -153,15 +162,18 @@ export function substitute(text: string, run: RunState, ctx: EventCtx): string {
     if (key === "ttl") return String(run.inv.ttl);
     if (key === "relay") return currentRelay(run)?.name ?? "the relay";
     if (key === "crew") {
+      if (ctx.crewName) return ctx.crewName;
       let c = run.ship.crew.find((x) => x.id === ctx.crewId);
-      if (!c && run.ship.crew.length) {
-        c = run.ship.crew[ctx.seed % run.ship.crew.length];
+      const humans = run.ship.crew.filter(c => c.species !== "rigger");
+      if (!c && humans.length) {
+        c = humans[ctx.seed % humans.length];
         ctx.crewId = c.id;
+        ctx.crewName = c.name;
       }
       return c?.name ?? "the crew";
     }
     const sp = key.slice(5) as SpeciesId;
-    const c = run.ship.crew.find((x) => x.species === sp);
+    const c = ctx.speciesCrew?.[sp] ?? run.ship.crew.find((x) => x.species === sp);
     if (c) return c.name;
     return (SPECIES_IDS as readonly string[]).includes(sp) ? `the ${speciesName(sp).toLowerCase()}` : m;
   });
@@ -175,9 +187,12 @@ export interface ChoiceView {
   enabled: boolean;
   blue: boolean;
   label: string; // "[Listening Post]"
+  risk?: string;
   reason?: string;
   /** Costs in the requirement (shown as a small line). */
   hidden: boolean;
+  /** Known, fixed costs every possible outcome takes (e.g. "Seal +1 hop · –2 hull · –1 payload"). */
+  cost?: string;
 }
 
 export interface EventView {
@@ -191,6 +206,42 @@ export interface EventView {
   music?: string;
 }
 
+const COST_NAME: Record<ResourceId, [string, string]> = {
+  salvage: ["salvage", "salvage"], ttl: ["TTL", "TTL"], payloads: ["payload", "payloads"], spares: ["spare", "spares"], hull: ["hull", "hull"],
+};
+
+/**
+ * The known, fixed cost of a choice: what every outcome it can still lead to takes (a Seal step, TTL, hull, payloads,
+ * spares, salvage, an injury, system damage, a crew member). Costs that only some outcomes carry are not listed: the
+ * choice is marked uncertain instead. Losses are fair when a careful reader can see them before choosing.
+ */
+export function choiceCost(run: RunState, c: ChoiceDef): string {
+  const outs = c.outcomes.filter((o) => outcomeWeight(o, run) > 0).map((o) => o.outcome);
+  if (!outs.length) return "";
+  const same = <T>(vals: T[]) => vals.every((v) => JSON.stringify(v) === JSON.stringify(vals[0]));
+  const parts: string[] = [];
+  const seals = outs.map((o) => o.seal ?? 0);
+  if (same(seals) && seals[0] < 0) parts.push(`Seal +${-seals[0]} hop${seals[0] < -1 ? "s" : ""}`);
+  for (const id of ["ttl", "hull", "payloads", "spares", "salvage"] as ResourceId[]) {
+    const vals = outs.map((o) => {
+      const v = o.resources?.[id];
+      return v === undefined ? [0, 0] : typeof v === "number" ? [v, v] : [Math.min(v[0], v[1]), Math.max(v[0], v[1])];
+    });
+    if (!same(vals) || vals[0][1] >= 0) continue;
+    const [lo, hi] = vals[0];
+    const n = lo === hi ? `${-hi}` : `${-hi} to ${-lo}`;
+    const [one, many] = COST_NAME[id];
+    parts.push(`–${n} ${lo === -1 && hi === -1 ? one : many}`);
+  }
+  const hurts = outs.map((o) => o.crewDamage ?? null);
+  if (same(hurts) && hurts[0]) parts.push(hurts[0].who === "all" ? `every crew member –${hurts[0].amount} health` : `one crew member –${hurts[0].amount} health`);
+  const sys = outs.map((o) => o.systemDamage ?? null);
+  if (same(sys) && sys[0]) parts.push(`${sys[0].system === "random" ? "a system" : systemName(sys[0].system)} –${sys[0].amount} bar${sys[0].amount > 1 ? "s" : ""}`);
+  const loss = outs.map((o) => o.crewLoss ?? null);
+  if (same(loss) && loss[0]) parts.push(loss[0] === "random" ? "a crew member is lost" : `a ${speciesName(loss[0] as SpeciesId)} is lost`);
+  return parts.join(" · ");
+}
+
 export function presentEvent(run: RunState, def: EventDef, ctx: EventCtx): EventView {
   const choices: ChoiceView[] = def.choices.map((c: ChoiceDef, i) => {
     const res = checkCondition(run, c.req);
@@ -202,8 +253,11 @@ export function presentEvent(run: RunState, def: EventDef, ctx: EventCtx): Event
       enabled: res.ok,
       blue: blue && res.ok,
       label: blue ? reqLabel(c.req) : "",
+      risk: c.outcomes.filter(o => outcomeWeight(o, run) > 0).length > 1
+        ? `Uncertain outcome${c.outcomes.some(o => o.modifiers?.length) ? " · preparation can change the odds" : ""}` : undefined,
       reason: res.ok ? undefined : res.reason,
       hidden: !res.ok && hideIfUnmet,
+      cost: choiceCost(run, c) || undefined,
     };
   });
   // Never leave the player without a way on: if everything is hidden/disabled, enable the last one.
@@ -244,6 +298,7 @@ export function eligibleEvents(run: RunState, pool: EventPool): EventDef[] {
     if (e.stages && e.stages.length && !e.stages.includes(run.stage)) continue;
     if (e.unique && run.usedEvents.includes(e.id)) continue;
     if (!checkCondition(run, e.requires).ok) continue;
+    if (e.cast && !run.ship.crew.some(c => e.cast === "human" ? c.species !== "rigger" : c.species === e.cast)) continue;
     out.push(e);
   }
   return out;
@@ -268,7 +323,9 @@ export function pickEventFor(run: RunState, relayId: number, salt = ""): string 
     }
   }
   if (list.length) {
-    const e = rng.weighted(list, (x) => x.weight ?? 1);
+    // Accepted commitments get the next appropriate story stop; they cannot be crowded out by fresh stories.
+    const due = promisedEvents(run).filter(e => e.pool === pool);
+    const e = due.length ? due[0] : rng.weighted(list, (x) => x.weight ?? 1);
     return e.id;
   }
   return generatedEvent(run, pool, rng).id;
@@ -311,9 +368,26 @@ export function generatedEvent(run: RunState, pool: EventPool, rng: Rng): EventD
 
 // ─── outcomes ─────────────────────────────────────────────────────────────────────────────────────────────
 
-export function rollOutcome(choice: ChoiceDef, rng: Rng): Outcome {
-  if (!choice.outcomes.length) return {};
-  return rng.weighted(choice.outcomes, (o) => o.weight ?? 1).outcome;
+export function outcomeWeight(o: import("../game/types.ts").WeightedOutcome, run?: RunState): number {
+  let weight = o.weight ?? 1;
+  if (run) for (const mod of o.modifiers ?? []) if (checkCondition(run, mod.when).ok) weight *= Math.max(0, mod.multiply);
+  return Math.max(0, weight);
+}
+
+export function rollOutcome(choice: ChoiceDef, rng: Rng, run?: RunState): Outcome {
+  const outcomes = choice.outcomes.filter(o => outcomeWeight(o, run) > 0);
+  if (!outcomes.length) return {};
+  return rng.weighted(outcomes, o => outcomeWeight(o, run)).outcome;
+}
+
+/** Follow-through for physical promises; the exit offers any still pending before leaving the region. */
+export function promisedEvents(run: RunState): EventDef[] {
+  const ids = ["chain-music-box-glass", "chain-music-box-freight", "chain-kittiwake", "chain-courier-last",
+    "chain-moss-glass", "chain-moss-glass-grudge", "chain-moss-heart", "chain-pell-letter"];
+  return ids.flatMap(id => {
+    const e = eventById(id);
+    return e && !run.usedEvents.includes(id) && (!e.stages || e.stages.includes(run.stage)) && checkCondition(run, e.requires).ok ? [e] : [];
+  });
 }
 
 export interface Delta {
@@ -448,6 +522,7 @@ function crewDeath(run: RunState, id: string, notices: Notice[], verb = "is lost
   const i = run.ship.crew.findIndex((c) => c.id === id);
   if (i < 0) return;
   const [c] = run.ship.crew.splice(i, 1);
+  for (const survivor of run.ship.crew) survivor.memory = `Lost ${c.name} at ${currentRelay(run).name}.`;
   run.stats.crewLost.push({ name: c.name, species: c.species });
   notices.push({ kind: "crew-loss", id: c.id, text: `${c.name} ${verb}` });
 }
@@ -473,6 +548,7 @@ export function applyOutcome(run: RunState, o: Outcome, ctx: EventCtx, rng: Rng)
   const grants: Grant[] = [];
   const stage = run.stage;
   const depth = relayDepth(run.map, currentRelay(run));
+  if (o.maintenance !== undefined) currentRelay(run).maintenance = o.maintenance;
 
   if (o.resources) {
     for (const [k, v] of Object.entries(o.resources) as [ResourceId, Range][]) addResource(run, k, rollRange(v, rng), deltas);
@@ -505,7 +581,10 @@ export function applyOutcome(run: RunState, o: Outcome, ctx: EventCtx, rng: Rng)
     for (const c of targets) {
       c.hp -= o.crewDamage.amount;
       if (c.hp <= 0) crewDeath(run, c.id, notices, "does not make it");
-      else notices.push({ kind: "crew-hurt", id: c.id, text: `${c.name} is hurt (–${o.crewDamage.amount})` });
+      else {
+        c.memory = `Was injured at ${currentRelay(run).name}; the wound cost ${o.crewDamage.amount} health.`;
+        notices.push({ kind: "crew-hurt", id: c.id, text: `${c.name} is hurt (–${o.crewDamage.amount})` });
+      }
     }
   }
   if (o.systemDamage) {
@@ -538,6 +617,7 @@ export function applyOutcome(run: RunState, o: Outcome, ctx: EventCtx, rng: Rng)
   if (o.heal) {
     const hurt = run.ship.crew.some((c) => c.hp < speciesMaxHp(c.species));
     healAll(run.ship);
+    if (["bench", "market"].includes(currentRelay(run).type)) for (const system of Object.values(run.ship.systems)) if (system) system.damage = 0;
     if (hurt) notices.push({ kind: "heal", text: "The crew are patched up" });
   }
 
@@ -554,6 +634,7 @@ export function applyOutcome(run: RunState, o: Outcome, ctx: EventCtx, rng: Rng)
       intro: o.combat.intro ? substitute(o.combat.intro, run, ctx) : undefined,
       onWin: o.combat.onWin,
       onSurrender: o.combat.onSurrender,
+      scenario: o.combat.scenario,
     };
   }
   const text = o.text ? substitute(o.text, run, ctx) : undefined;
@@ -575,7 +656,10 @@ export function applyOutcome(run: RunState, o: Outcome, ctx: EventCtx, rng: Rng)
 export function resolveChoice(run: RunState, def: EventDef, index: number, ctx: EventCtx): Applied {
   const choice = def.choices[index];
   if (!choice) return { deltas: [], notices: [], grants: [], empty: true };
-  return withRng(run, (rng) => applyOutcome(run, rollOutcome(choice, rng), ctx, rng));
+  const species = choice.req?.species;
+  const participant = species ? run.ship.crew.find(c => c.species === species) : undefined;
+  const chosenCtx = participant ? { ...ctx, crewId: participant.id, crewName: participant.name } : ctx;
+  return withRng(run, (rng) => applyOutcome(run, rollOutcome(choice, rng, run), chosenCtx, rng));
 }
 
 /** Mark an event as seen (unique events are used once per run). */
@@ -588,6 +672,8 @@ export function markSeen(run: RunState, id: string) {
 /** Every event id referenced by an event (next/onWin/onSurrender), for validation. */
 export function referencedEvents(def: EventDef): string[] {
   const out: string[] = [];
+  for (const ref of [def.arrival?.next, def.arrival?.combat?.onWin, def.arrival?.combat?.onSurrender,
+    def.directCombat?.onWin, def.directCombat?.onSurrender]) if (ref) out.push(ref);
   for (const c of def.choices) for (const w of c.outcomes) {
     const o = w.outcome;
     if (o.next) out.push(o.next);

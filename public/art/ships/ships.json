@@ -22,8 +22,8 @@
   },
   "mounts": [
    {
-    "x": 80,
-    "y": 52
+    "x": 18,
+    "y": 100
    }
   ],
   "glow": [
@@ -38,7 +38,39 @@
    "#ffd98a",
    "#ffb347",
    "#e8822a"
-  ]
+  ],
+  "trolley": {
+   "kind": "car",
+   "pivot": {
+    "x": 172,
+    "y": 92
+   },
+   "saddle": {
+    "x": 172,
+    "y": 20
+   }
+  },
+  "keepClear": [
+   {
+    "what": "drive trolley (car): carriage and sheaves",
+    "x": 57,
+    "y": -50,
+    "w": 230,
+    "h": 76
+   },
+   {
+    "what": "drive trolley (car): hanger and saddle",
+    "x": 127,
+    "y": 26,
+    "w": 90,
+    "h": 66
+   }
+  ],
+  "weaponEnvelope": {
+   "up": 63,
+   "left": 65,
+   "right": 102
+  }
  },
  "ash-moth": {
   "file": "ships/ash-moth.png",
@@ -191,7 +223,39 @@
    "#ffd98a",
    "#ffb347",
    "#e8822a"
-  ]
+  ],
+  "trolley": {
+   "kind": "car",
+   "pivot": {
+    "x": 172,
+    "y": 92
+   },
+   "saddle": {
+    "x": 172,
+    "y": 20
+   }
+  },
+  "keepClear": [
+   {
+    "what": "drive trolley (car): carriage and sheaves",
+    "x": 57,
+    "y": -50,
+    "w": 230,
+    "h": 76
+   },
+   {
+    "what": "drive trolley (car): hanger and saddle",
+    "x": 127,
+    "y": 26,
+    "w": 90,
+    "h": 66
+   }
+  ],
+  "weaponEnvelope": {
+   "up": 63,
+   "left": 65,
+   "right": 102
+  }
  },
  "cable-wraith": {
   "file": "ships/cable-wraith.png",
@@ -352,7 +416,39 @@
    "#ffd98a",
    "#ffb347",
    "#e8822a"
-  ]
+  ],
+  "trolley": {
+   "kind": "car",
+   "pivot": {
+    "x": 172,
+    "y": 92
+   },
+   "saddle": {
+    "x": 172,
+    "y": 20
+   }
+  },
+  "keepClear": [
+   {
+    "what": "drive trolley (car): carriage and sheaves",
+    "x": 57,
+    "y": -50,
+    "w": 230,
+    "h": 76
+   },
+   {
+    "what": "drive trolley (car): hanger and saddle",
+    "x": 127,
+    "y": 26,
+    "w": 90,
+    "h": 66
+   }
+  ],
+  "weaponEnvelope": {
+   "up": 63,
+   "left": 65,
+   "right": 102
+  }
  },
  "echo-tender": {
   "file": "ships/echo-tender.png",
@@ -464,7 +560,39 @@
    "#ffd98a",
    "#ffb347",
    "#e8822a"
-  ]
+  ],
+  "trolley": {
+   "kind": "car",
+   "pivot": {
+    "x": 172,
+    "y": 92
+   },
+   "saddle": {
+    "x": 172,
+    "y": 20
+   }
+  },
+  "keepClear": [
+   {
+    "what": "drive trolley (car): carriage and sheaves",
+    "x": 57,
+    "y": -50,
+    "w": 230,
+    "h": 76
+   },
+   {
+    "what": "drive trolley (car): hanger and saddle",
+    "x": 127,
+    "y": 26,
+    "w": 90,
+    "h": 66
+   }
+  ],
+  "weaponEnvelope": {
+   "up": 63,
+   "left": 65,
+   "right": 102
+  }
  },
  "gate-sentinel": {
   "file": "ships/gate-sentinel.png",
@@ -609,6 +737,140 @@
     "r": 8
    }
   ]
+ },
+ "glasswing": {
+  "file": "ships/glasswing.png",
+  "w": 980,
+  "h": 512,
+  "class": "player",
+  "face": "right",
+  "grid": {
+   "x": 48,
+   "y": 152,
+   "cols": 10,
+   "rows": 4,
+   "tile": 72
+  },
+  "cable": {
+   "x": 360,
+   "y": 60
+  },
+  "couplerRear": {
+   "x": 4,
+   "y": 296
+  },
+  "keelHang": {
+   "x": 400,
+   "y": 476
+  },
+  "mounts": [
+   {
+    "x": 106,
+    "y": 140
+   },
+   {
+    "x": 760,
+    "y": 138
+   },
+   {
+    "x": 44,
+    "y": 444
+   },
+   {
+    "x": 720,
+    "y": 459
+   }
+  ],
+  "glow": [
+   {
+    "x": 848,
+    "y": 320,
+    "r": 26
+   },
+   {
+    "x": 824,
+    "y": 202,
+    "r": 20
+   },
+   {
+    "x": 40,
+    "y": 168,
+    "r": 6
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ],
+  "trolley": {
+   "kind": "standard",
+   "pivot": {
+    "x": 360,
+    "y": 132
+   },
+   "saddle": {
+    "x": 360,
+    "y": 60
+   }
+  },
+  "keepClear": [
+   {
+    "what": "survey horns",
+    "x": 0,
+    "y": 80,
+    "w": 38,
+    "h": 62
+   },
+   {
+    "what": "collimator pair",
+    "x": 774,
+    "y": 350,
+    "w": 175,
+    "h": 54
+   },
+   {
+    "what": "drive trolley (standard): carriage and sheaves",
+    "x": 170,
+    "y": -23,
+    "w": 380,
+    "h": 89
+   },
+   {
+    "what": "drive trolley (standard): hanger and saddle",
+    "x": 209,
+    "y": 66,
+    "w": 302,
+    "h": 66
+   },
+   {
+    "what": "prism-housing",
+    "x": 598,
+    "y": 80,
+    "w": 93,
+    "h": 58
+   },
+   {
+    "what": "nose lamp",
+    "x": 816,
+    "y": 288,
+    "w": 64,
+    "h": 64
+   },
+   {
+    "what": "cab window",
+    "x": 798,
+    "y": 176,
+    "w": 52,
+    "h": 52
+   }
+  ],
+  "weaponEnvelope": {
+   "up": 63,
+   "left": 65,
+   "right": 102
+  }
  },
  "grave-reaver": {
   "file": "ships/grave-reaver.png",
@@ -755,19 +1017,19 @@
   "mounts": [
    {
     "x": 162,
-    "y": 72
+    "y": 100
    },
    {
     "x": 782,
-    "y": 72
+    "y": 100
    },
    {
-    "x": 182,
-    "y": 438
+    "x": 116,
+    "y": 407
    },
    {
     "x": 786,
-    "y": 438
+    "y": 437
    }
   ],
   "glow": [
@@ -792,7 +1054,53 @@
    "#ffd98a",
    "#ffb347",
    "#e8822a"
-  ]
+  ],
+  "trolley": {
+   "kind": "standard",
+   "pivot": {
+    "x": 450,
+    "y": 92
+   },
+   "saddle": {
+    "x": 450,
+    "y": 20
+   }
+  },
+  "keepClear": [
+   {
+    "what": "drive trolley (standard): carriage and sheaves",
+    "x": 260,
+    "y": -63,
+    "w": 380,
+    "h": 89
+   },
+   {
+    "what": "drive trolley (standard): hanger and saddle",
+    "x": 299,
+    "y": 26,
+    "w": 302,
+    "h": 66
+   },
+   {
+    "what": "nose lamp",
+    "x": 938,
+    "y": 252,
+    "w": 64,
+    "h": 64
+   },
+   {
+    "what": "cab window",
+    "x": 914,
+    "y": 138,
+    "w": 52,
+    "h": 52
+   }
+  ],
+  "weaponEnvelope": {
+   "up": 63,
+   "left": 65,
+   "right": 102
+  }
  },
  "listening-keel": {
   "file": "ships/cars/listening-keel.png",
@@ -1217,6 +1525,169 @@
    }
   ]
  },
+ "switchback": {
+  "file": "ships/switchback.png",
+  "w": 1120,
+  "h": 592,
+  "class": "player",
+  "face": "right",
+  "grid": {
+   "x": 48,
+   "y": 180,
+   "cols": 13,
+   "rows": 5,
+   "tile": 72
+  },
+  "cable": {
+   "x": 770,
+   "y": 88
+  },
+  "couplerRear": {
+   "x": 4,
+   "y": 360
+  },
+  "keelHang": {
+   "x": 540,
+   "y": 576
+  },
+  "mounts": [
+   {
+    "x": 1050,
+    "y": 170
+   },
+   {
+    "x": 190,
+    "y": 583
+   },
+   {
+    "x": 850,
+    "y": 583
+   }
+  ],
+  "glow": [
+   {
+    "x": 1060,
+    "y": 316,
+    "r": 26
+   },
+   {
+    "x": 1032,
+    "y": 228,
+    "r": 24
+   },
+   {
+    "x": 40,
+    "y": 196,
+    "r": 6
+   }
+  ],
+  "lampColors": [
+   "#fff1c2",
+   "#ffd98a",
+   "#ffb347",
+   "#e8822a"
+  ],
+  "trolley": {
+   "kind": "heavy",
+   "pivot": {
+    "x": 770,
+    "y": 160
+   },
+   "saddle": {
+    "x": 770,
+    "y": 88
+   }
+  },
+  "keepClear": [
+   {
+    "what": "drive trolley (heavy): carriage and sheaves",
+    "x": 504,
+    "y": 5,
+    "w": 532,
+    "h": 89
+   },
+   {
+    "what": "drive trolley (heavy): hanger and saddle",
+    "x": 562,
+    "y": 94,
+    "w": 416,
+    "h": 66
+   },
+   {
+    "what": "retrieval-crane",
+    "x": 100,
+    "y": 106,
+    "w": 153,
+    "h": 60
+   },
+   {
+    "what": "drone-cradle",
+    "x": 290,
+    "y": 108,
+    "w": 54,
+    "h": 58
+   },
+   {
+    "what": "drone-cradle",
+    "x": 356,
+    "y": 108,
+    "w": 54,
+    "h": 58
+   },
+   {
+    "what": "drone-cradle",
+    "x": 422,
+    "y": 108,
+    "w": 54,
+    "h": 58
+   },
+   {
+    "what": "nose lamp",
+    "x": 1028,
+    "y": 284,
+    "w": 64,
+    "h": 64
+   },
+   {
+    "what": "cab window",
+    "x": 1002,
+    "y": 198,
+    "w": 60,
+    "h": 60
+   }
+  ],
+  "weaponEnvelope": {
+   "up": 63,
+   "left": 65,
+   "right": 102
+  }
+ },
+ "trolley-heavy": {
+  "w": 756,
+  "h": 301,
+  "saddle": {
+   "x": 378,
+   "y": 162
+  },
+  "frames": 4,
+  "density": 2,
+  "saddleTop": 62,
+  "carrierHalf": 6,
+  "source": "art-src/cand/trolley/heavy/heavy-f55-1055718.png"
+ },
+ "trolley-standard": {
+  "w": 612,
+  "h": 301,
+  "saddle": {
+   "x": 306,
+   "y": 162
+  },
+  "frames": 4,
+  "density": 2,
+  "saddleTop": 62,
+  "carrierHalf": 6,
+  "source": "art-src/cand/trolley/standard/standard-f65-446994659.png"
+ },
  "veil-car": {
   "file": "ships/cars/veil-car.png",
   "w": 344,
@@ -1251,7 +1722,39 @@
    "#ffd98a",
    "#ffb347",
    "#e8822a"
-  ]
+  ],
+  "trolley": {
+   "kind": "car",
+   "pivot": {
+    "x": 172,
+    "y": 92
+   },
+   "saddle": {
+    "x": 172,
+    "y": 20
+   }
+  },
+  "keepClear": [
+   {
+    "what": "drive trolley (car): carriage and sheaves",
+    "x": 57,
+    "y": -50,
+    "w": 230,
+    "h": 76
+   },
+   {
+    "what": "drive trolley (car): hanger and saddle",
+    "x": 127,
+    "y": 26,
+    "w": 90,
+    "h": 66
+   }
+  ],
+  "weaponEnvelope": {
+   "up": 63,
+   "left": 65,
+   "right": 102
+  }
  },
  "wire-weaver": {
   "file": "ships/wire-weaver.png",
@@ -1319,5 +1822,18 @@
    "#ffb347",
    "#e8822a"
   ]
+ },
+ "trolley-car": {
+  "w": 378,
+  "h": 240,
+  "saddle": {
+   "x": 189,
+   "y": 122
+  },
+  "frames": 4,
+  "density": 2,
+  "saddleTop": 62,
+  "carrierHalf": 6,
+  "source": "art-src/cand/trolley/car/car-f55-751669808.png"
  }
 }

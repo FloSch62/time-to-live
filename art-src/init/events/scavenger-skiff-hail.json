@@ -1,0 +1,18 @@
+{
+ "stage": "I",
+ "hull": "cars/freight-car",
+ "scale": 1.0,
+ "at": [
+  1500,
+  380
+ ],
+ "lamp": false,
+ "extras": [
+  "skiff",
+  "towers"
+ ],
+ "size": [
+  2560,
+  1280
+ ]
+}

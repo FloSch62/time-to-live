@@ -4,6 +4,11 @@
 Run: tools/.venv/bin/python tools/build_fonts.py
 Output: public/fonts/<id>.png (white glyphs on transparent) + public/fonts/<id>.json + OFL licences.
 Glyph record: [x, y, w, h, ox, oy, adv] where (ox, oy) is the offset from the pen (baseline) to the glyph's top-left.
+
+Scaled fonts ("caps", "capsb", "note") reuse a small pixel font's atlas and are drawn at `scale` layout units per font
+pixel (1.5 = 3 backing pixels at 1080p): the legible middle step of the type scale between the 5-px labels and the
+body font. Their glyph records stay in atlas pixels; top/bottom/lineHeight/capHeight are written in layout units, with
+the capitals centred in the line box.
 """
 import json
 import shutil
@@ -25,10 +30,17 @@ FONTS = {
     "small": ("Tiny5-Regular.ttf", 8, 2, "tiny5-OFL.txt"),
 }
 
+# id: (file, size in px, scale in layout units per font pixel, line height in layout units, licence file)
+SCALED = {
+    "caps": ("Silkscreen-Regular.ttf", 8, 1.5, 13, "silkscreen-OFL.txt"),
+    "capsb": ("Silkscreen-Bold.ttf", 8, 1.5, 13, "silkscreen-OFL.txt"),
+    "note": ("Tiny5-Regular.ttf", 8, 1.5, 13, "tiny5-OFL.txt"),
+}
+
 CHARS = "".join(chr(c) for c in range(32, 127)) + "·—–…’‘“”éèàäöüßÉÖÜÄ×→←↑↓•°±½"
 
 
-def build(fid, file, size, gap, lic):
+def build(fid, file, size, gap, lic, scale=None, line=None):
     font = ImageFont.truetype(str(SRC / file), size)
     font.set_variation_by_name  # noqa: B018 (keep pillow happy for static fonts)
     ascent, descent = font.getmetrics()
@@ -79,6 +91,7 @@ def build(fid, file, size, gap, lic):
     ascii_recs = [glyphs[c] for c in CHARS[:95] if c in glyphs and glyphs[c][2] > 0]
     top = min(r[5] for r in ascii_recs)  # most negative: highest pixel above the baseline
     bottom = max(r[5] + r[3] for r in ascii_recs)
+    cap = -(font.getbbox("H", anchor="ls")[1])
     meta = {
         "id": fid,
         "top": top,
@@ -88,9 +101,14 @@ def build(fid, file, size, gap, lic):
         "ascent": ascent,
         "descent": descent,
         "lineHeight": bottom - top + gap,
-        "capHeight": -(font.getbbox("H", anchor="ls")[1]),
+        "capHeight": cap,
         "glyphs": glyphs,
     }
+    if scale:
+        # capitals centred in the line box, on the backing-pixel (half layout unit) grid
+        cap_h = cap * scale
+        base = round((line + cap_h) / 2 * 2) / 2
+        meta.update({"scale": scale, "top": -base, "bottom": line - base, "lineHeight": line, "capHeight": cap_h})
     (OUT / f"{fid}.json").write_text(json.dumps(meta, separators=(",", ":")))
     shutil.copy(SRC / lic, OUT / lic)
     print(f"{fid}: {len(glyphs)} glyphs, atlas {width}x{height}, line {meta['lineHeight']}, cap {meta['capHeight']}")
@@ -100,6 +118,8 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for fid, (file, size, gap, lic) in FONTS.items():
         build(fid, file, size, gap, lic)
+    for fid, (file, size, scale, line, lic) in SCALED.items():
+        build(fid, file, size, 0, lic, scale, line)
 
 
 if __name__ == "__main__":

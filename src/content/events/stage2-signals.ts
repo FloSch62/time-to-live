@@ -10,12 +10,12 @@ export const STAGE2_SIGNALS_FLAGS: Record<string, string> = {
 export const STAGE2_SIGNALS: EventDef[] = [
   // ─── Events ────────────────────────────────────────────────────────────────────────────────────────────
   {
-    id: "s2-wedding-pane", pool: "event", stages: [2], unique: true,
+    id: "s2-wedding-pane", cast: "human", pool: "event", stages: [2], unique: true,
     title: "Half a Sentence", art: "cathedral-nave",
     text: "The carrier runs close along a nave wall, and as the lamp crosses one pane the glass speaks. A woman's voice, warm, a little out of breath: \"—not cancelled, just postponed, so keep your good—\"\n\nThen the pane goes quiet. When the lamp crosses it again, it says the same half sentence, in the same breath.\n\n{crew} has stopped with a mug halfway up.",
     choices: [
       {
-        text: "Hold the lamp on the pane and listen.",
+        text: "Hold the lamp on the pane and listen. It may take a while.",
         outcomes: [
           { weight: 2, outcome: {
             text: "You hold the lamp steady for a long time. The glass gives up a little more on every pass, like a shy child: both families, the bells, the good clothes. Then, all at once, the whole of it.",
@@ -49,7 +49,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
     text: "A small bell hangs alone in a frame under the ring, turning slowly on its chain. It is ringing. By the switch house log it has been ringing for thirty-one years: one long note that never decays, held in the glass.\n\nThe frame is stencilled BIRTH BELL · LOFT 3. A paper tag hangs from the clapper. The ink has run, but you can still read the word girl.",
     choices: [
       {
-        text: "Stop the bell with a gloved hand.",
+        text: "Stop the bell with a gloved hand. It may not want to stop.",
         outcomes: [
           { weight: 2, outcome: {
             text: "The bell stops. For a moment it is the quietest the Cathedral has been all day. Then the glass lets go of what it held, and a message rides out on the last of the note.",
@@ -111,9 +111,9 @@ export const STAGE2_SIGNALS: EventDef[] = [
     text: "The carrier runs past the choir loft of the north nave: glass on three sides, the choir stalls empty under frost. The loft lamp is on. The big clock over the stalls is running, and it is right.\n\nClocks do not stay right for thirty-one years. Somebody winds this one. {crew} climbs across from the grip arms to look. The winding key is warm.",
     choices: [
       {
-        text: "Wait in the loft and see who comes.",
+        text: "Wait in the loft and see who comes (the Seal advances).",
         outcomes: [{ outcome: {
-          text: "You put the kettle on the loft's little stove and wait. It is nearly the hour when a key turns in the far door. Behind you, the Seal takes a relay while you are not looking.",
+          text: "You put the kettle on the loft's little stove and wait. It is nearly the hour when a key turns in the far door. Behind you, the Seal has taken another relay.",
           codex: "places-choir-loft", seal: -1, next: "s2-loft-clock-winder",
         } }],
       },
@@ -146,13 +146,13 @@ export const STAGE2_SIGNALS: EventDef[] = [
             crewJoin: { species: "bellmaker", name: "Veda Longwire" }, codex: "people-bellmakers",
           } },
           { weight: 1, outcome: {
-            text: "She will not leave the loft. But she comes aboard for the length of a pot of tea, sits by the drive with a glass fork, and when she goes back across the grip arms the trolley hums in tune.",
+            text: "She will not leave the loft. But she comes aboard for the length of a pot of tea, sits by the drive with a glass fork, and has the crew tighten every plate she taps. When she goes back across the grip arms the trolley hums in tune.",
             codex: "people-bellmakers", repair: 4,
           } },
         ],
       },
       {
-        text: "Leave her a lens for the loft lamp (1 spares).",
+        text: "Leave her a lens for the loft lamp (1 spare).",
         req: { resources: { spares: 1 } },
         outcomes: [{ outcome: {
           text: "She turns the lens in the lamplight and puts it in her pocket. In return she teaches {crew} to hear a failing route through the carrier before any instrument does. By the next relay {crew} can pick out every dead switch on this stretch by ear.",
@@ -181,15 +181,15 @@ export const STAGE2_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Fit it a new lens and let it run (1 spares).",
+        text: "Fit it a new lens and let it run (1 spare).",
         req: { resources: { spares: 1 } },
         outcomes: [{ outcome: {
-          text: "Twenty minutes hanging off the grip arms in the thin air. The Patience's lamp comes up full and white. It runs back to its relay and relights the guide lamp brighter than it has in years, and as you pass, its beam holds yours for a moment: the old lampers' salute. The relay under you switches you with a stamp to spare.",
+          text: "Twenty minutes hanging off the grip arms in the thin air. The Patience's lamp comes up full and white. It runs back to its relay and relights the guide lamp brighter than it has in years, and as you pass, its beam holds yours for a moment: the old lampers' salute. The relay under you re-stamps the connection with a hop to spare.",
           codex: "tender-echo-tenders", flags: ["s2-patience-lit"], resources: { spares: -1, ttl: 1 },
         } }],
       },
       {
-        text: "Strip its keel lockers while it runs.",
+        text: "Strip its keel lockers while it runs. Its autopilot will not like it.",
         outcomes: [{ outcome: {
           text: "You match its speed on the parallel carrier and start cutting at the lockers. The autopilot reads a strange car on its round as wreckage on a cable, and does what a lamper does about wreckage.",
           codex: "tender-echo-tenders",
@@ -223,7 +223,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
     id: "s2-lamp-returned", pool: "event", stages: [2], unique: true, weight: 3,
     requires: { flag: "s2-patience-lit" },
     title: "A Lamp Returned", art: "echo-tender-lit",
-    text: "The relay ahead is dark, guide lamp and all, and its switch will not take a greeting it cannot see. The helm is calling hello into nothing when a white lamp comes down the next carrier over.\n\nThe Patience. Its autopilot has found a new lamp for its round.",
+    text: "The relay ahead has lost its guide lamp, and without a lamp to run in by, the helm is feeling for the switch in the dark and calling hello into nothing. Then a white lamp comes down the next carrier over.\n\nThe Patience. Its autopilot has found a new lamp for its round.",
     choices: [
       {
         text: "Hold your lamp on its lamp. The old salute.",
@@ -247,7 +247,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
     text: "Frost is growing on the cab window, and it is growing in lines. {crew} wipes a patch clear. The lines grow back the same.\n\nBy the next relay they are letters. ALL SHIFTS TO THE LIFTS. The Cathedral's hum has been shaping ice for thirty-one years, and it only knows one sentence.\n\nThen, under it, smaller, the frost starts on something else: columns of relay numbers.",
     choices: [
       {
-        text: "Let it finish. Keep the heat off the cab.",
+        text: "Let it finish. Keep the heat off the cab, and off everyone's fingers.",
         outcomes: [{ outcome: {
           text: "It takes an hour and everyone's fingers. When it is done the whole cab window is a routing table for this stretch of the Cathedral, carrier by carrier, drawn by a hall that has nothing else left to say. You copy it before the lamp melts it.",
           revealMap: true, crewDamage: { amount: 10, who: "all" },
@@ -282,10 +282,10 @@ export const STAGE2_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Say the greeting again, and again, until one of them tires.",
+        text: "Say the greeting again, and again, until one of them tires. The relay may count every try.",
         outcomes: [
           { weight: 2, outcome: {
-            text: "Forty minutes of hello. On the thirty-first try the second bell misses its cue, the first bell's answer lands alone, and the switch throws before anyone can change their mind. The relay counted every try. It costs a stamp.",
+            text: "Forty minutes of hello. On the thirty-first try the second bell misses its cue, the first bell's answer lands alone, and the relay takes the car in before anyone can change their mind. The relay counted every try. It costs a hop.",
             resources: { ttl: -1 },
           } },
           { weight: 1, outcome: {
@@ -298,7 +298,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
         text: "Have {crew:bellmaker} sing the fourth voice.",
         blue: true, req: { species: "bellmaker" },
         outcomes: [{ outcome: {
-          text: "{crew:bellmaker} listens to the three notes, finds the one they are all missing, and sings it through the open hatch. For a moment there is a chord, and a chord is a quorum. \"I hear you hear me,\" say all three bells at once, and the switch throws.",
+          text: "{crew:bellmaker} listens to the three notes, finds the one they are all missing, and sings it through the open hatch. For a moment there is a chord, and a chord is a quorum. \"I hear you hear me,\" say all three bells at once, and the relay takes the car in.",
           codex: "people-bellmakers", reward: "med",
         } }],
       },
@@ -408,8 +408,8 @@ export const STAGE2_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Let {crew:bellmaker} choose three.",
-        blue: true, req: { species: "bellmaker" },
+        text: "Let {crew:bellmaker} choose three for the ward mesh.",
+        blue: true, req: { species: "bellmaker", system: { id: "shields", level: 1 } },
         outcomes: [{ outcome: {
           text: "{crew:bellmaker} picks three forks without reading the labels and clips them to the ward mesh's charge rail. The mesh starts to hum a chord. It recharges on the beat now, and faster.",
           augment: "keepalive", codex: "people-bellmakers",
@@ -425,7 +425,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
     ],
   },
   {
-    id: "s2-hymn-book", pool: "event", stages: [2],
+    id: "s2-hymn-book", cast: "human", pool: "event", stages: [2],
     title: "Notes in the Margins", art: "choir-loft",
     text: "Face down on a switch-house bench, as if someone meant to come straight back: a hymn book, swollen with damp, its margins full of pencil. Breath marks. Tempo changes. A small drawing of a kettle. Beside one verse the same pencil has written: he always comes in early here, wait for him.\n\nThe choir rehearsed on Thursdays.",
     choices: [
@@ -513,19 +513,19 @@ export const STAGE2_SIGNALS: EventDef[] = [
   {
     id: "s2-return-to-sender", pool: "event", stages: [2], unique: true,
     title: "Return to Sender", art: "relay-switchyard",
-    text: "The Listening Post keeps catching the same small packet. It leaves the relay ahead along the carrier toward the Reach, reaches the cut the Seal left behind you, and comes back. Out again. Back again. Every eleven seconds.\n\nThe relay's return routes are doing what they were built to do: sending the undeliverable home to try again. It is a small message. It has been trying for twenty-one years.",
+    text: "The Listening Post keeps catching the same small packet. It leaves the relay ahead along the carrier toward the Reach, reaches the quarantine shutters on the old route, and comes back. Out again. Back again. Every eleven seconds.\n\nThe relay's return routes are doing what they were built to do: sending the undeliverable home to try again. It is a small message. It has been trying for twenty-one years.",
     choices: [
       {
         text: "Catch it on the way past and read it.",
         outcomes: [{ outcome: {
-          text: "It came up from the Ground ten years after the Fault, looking for Relay Seven. The relay catches it again the moment you let go, and out it goes, toward the cut.",
+          text: "It came up from the Ground ten years after the Fault, looking for Relay Seven. The relay catches it again the moment you let go, and out it goes, toward the shutters.",
           fragment: "f2-ten-years", codex: "runbook-return-routes",
         } }],
       },
       {
         text: "Stamp it with a time to live of one, so it can stop.",
         outcomes: [{ outcome: {
-          text: "You give it a TTL. It goes out once more toward the cut, and this time, at the end of its one hop, it is allowed to stop. The relay goes quiet. {crew} says, out loud, to nobody, that Relay Seven is still there.",
+          text: "You give it a TTL. It goes out once more toward the shutters, and this time, at the end of its one hop, it is allowed to stop. The relay goes quiet. {crew} says, out loud, to nobody, that Relay Seven is still there.",
           fragment: "f2-ten-years", codex: "runbook-return-routes",
         } }],
       },
@@ -570,7 +570,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
   {
     id: "s2-workshop-freed", pool: "scripted", stages: [2],
     title: "Mended", art: "bellmakers-bench", portrait: "bellmaker", speaker: "Ysolde Carvell",
-    text: "She steps out of the switch house for the first time in, she thinks, nine years, and looks up at the carriers for a while.\n\n\"It was mending me,\" she says. \"Nobody else was. I'll give it that.\" Then she looks at your car and frowns. \"Your ward mesh is flat on the port side. Did you know?\"",
+    text: "She steps out of the switch house for the first time in, she thinks, nine years, and looks up at the carriers for a while.\n\n\"It was mending me,\" she says. \"Nobody else was. I'll give it that.\" Then she looks at your car and frowns. \"Your plating rings flat on the port side. Did you know?\"",
     choices: [
       {
         text: "Ask her to come and fix it on the way.",
@@ -582,7 +582,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
       {
         text: "Ask what in the workshop she no longer needs.",
         outcomes: [{ outcome: {
-          text: "\"The horn array,\" she says at once. \"I built it to hear the Heart from here. It never could.\" A crate of violet glass horns on a brass frame swings across on the grapple, packed in straw. \"From closer, it might.\"",
+          text: "\"The horn array,\" she says at once. \"I built it to hear the Heart from here. It never could.\" A crate of violet glass horns on a brass frame swings across on the grapple, packed in old choir robes. \"From closer, it might.\"",
           module: "listening-horn-array", codex: "people-bellmakers",
         } }],
       },
@@ -653,7 +653,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Kill the car's power and coast through on momentum.",
+        text: "Kill the car's power and coast through on momentum. If anything aboard wakes, the coils will feel it.",
         outcomes: [
           { weight: 2, outcome: {
             text: "Lamps out, sets off, air plant down to its pilot light. The serpent's turns slide round the car and find nothing live, and loosen. You come out the far end with frost on the inside of the windows.",
@@ -668,8 +668,8 @@ export const STAGE2_SIGNALS: EventDef[] = [
   },
   {
     id: "s2-came-too-far", pool: "event", stages: [2], unique: true,
-    title: "Came Too Far", art: "lift-car-stuck",
-    text: "A scavenger skiff is hanging dead on a glass carrier, frosted white, its trolley frozen to the cable. Somebody inside has scraped a hole in the frost on the window and is holding up a docket with one word chalked on it: TEA.\n\nThey came up a Cathedral spire on a freight lift years ago, looking for glass to sell, got their skiff onto a carrier, and got it stuck. They have been living on the carrier since.",
+    title: "Came Too Far", art: "derelict-car",
+    text: "A scavenger skiff is hanging dead on a glass carrier, frosted white, its trolley frozen to the cable. Somebody inside has scraped a hole in the frost on the window and is holding up a docket with one word chalked on it: TEA.\n\nThey came in from the Reach years ago on side carriers, looking for glass to sell, and got stuck here when the frost took their trolley. They have been living on the carrier since.",
     choices: [
       {
         text: "Pass a flask across on the grapple.",
@@ -696,7 +696,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
   },
   {
     id: "s2-came-too-far-tea", pool: "scripted", stages: [2],
-    title: "Tea Through the Hatch", art: "lift-car-stuck", portrait: "recruit-courier-b", speaker: "The skiff's courier",
+    title: "Tea Through the Hatch", art: "derelict-car", portrait: "recruit-courier-b", speaker: "The skiff's courier",
     text: "There are two of them: an old cable hand who does not want to talk, and a courier in goggles and three scarves who very much does. They have been up here six years. The glass sells, when they can get it down. They cannot get it down.\n\n\"He's staying with the skiff until it thaws,\" the courier says. \"Which is spring. Which is never. I was thinking of going on.\"",
     choices: [
       {
@@ -748,7 +748,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
     text: "The Cathedral's weather turns. Fine glass hail comes out of the fog in sheets, every grain ringing as it hits the car, until the roof sounds like a thousand spoons on a thousand cups.\n\nThere is a switch house fifty metres ahead with a heavy overhang. There is also a bell the size of a lift car hanging just off the carrier, mouth down, like an umbrella.",
     choices: [
       {
-        text: "Push on to the switch house.",
+        text: "Push on to the switch house through the hail.",
         outcomes: [
           { weight: 2, outcome: {
             text: "Fifty metres takes a long time. The hail chips the paint, stars the cab window and finds every loose rivet on the roof.",
@@ -869,10 +869,10 @@ export const STAGE2_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Leave it be. It will have company soon enough.",
+        text: "Leave it be. It will have company soon enough (the Seal advances).",
         outcomes: [{ outcome: {
-          text: "It has company sooner than you like. By the time you reach the next switchyard the lattice behind you is complete, and the Seal is a relay closer.",
-          seal: -1,
+          text: "You hold at the relay and let it work, and the crew spend the time on the plating. It has company sooner than you like: the lattice round that switch house is complete, and the Seal is a relay closer.",
+          seal: -1, repair: 2,
         } }],
       },
     ],
@@ -901,10 +901,10 @@ export const STAGE2_SIGNALS: EventDef[] = [
   {
     id: "s2-two-helmets", pool: "event", stages: [2], unique: true,
     title: "Two Helmets", art: "tender-wreck",
-    text: "Below the carrier, wedged in a bell frame, is a cable tender that fell a long time ago: your own lamplighter pattern, split along the spine, its trolley still gripping a snapped end of cable above. Two warden helmets sit side by side on the dash in the cab, visors up.\n\nThe Copper Market remembers a warden pair who went together. Nobody remembers their names.",
+    text: "Below the carrier, wedged in a bell frame, is a cable tender that fell a long time ago: your own lamplighter pattern, split along the spine, its trolley still gripping a snapped end of cable above. Two warden helmets sit side by side on the helm console, visors up.\n\nThe Copper Market remembers a warden pair who went together. Nobody remembers their names.",
     choices: [
       {
-        text: "Climb down and see what they left.",
+        text: "Climb down and see what they left. The frame may not hold.",
         outcomes: [
           { weight: 2, outcome: {
             text: "The hold is intact. They were carrying more than they needed. Wardens always do.",
@@ -1020,10 +1020,10 @@ export const STAGE2_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Douse the lamp and wait for it to pass.",
+        text: "Douse the lamp and wait for it to pass. It may take all night.",
         outcomes: [{ outcome: {
-          text: "It does not pass. By morning the fog lifts, and there beside you is the flank of the Cathedral, frost-feathered, a hand's breadth from the car. It was breathing all night. So were you. The Seal did not wait.",
-          seal: -1,
+          text: "It does not pass. By morning the fog lifts, and there beside you is the flank of the Cathedral, frost-feathered, a hand's breadth from the car. It was breathing all night. So were you, and everyone aboard slept, after a fashion. The Seal did not wait.",
+          seal: -1, heal: true,
         } }],
       },
     ],
@@ -1075,7 +1075,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
             crewJoin: { species: "bellmaker", name: "Clemency Hask" }, codex: "people-bellmakers",
           } },
           { weight: 1, outcome: {
-            text: "She thinks about it, then shakes her head. \"This bell's not finished.\" But she tunes the {ship}'s drive by ear before you go, and the car rides smoother than it has since Dock Twelve.",
+            text: "She thinks about it, then shakes her head. \"This bell's not finished.\" But she tunes the {ship}'s drive by ear before you go, and the car rides smoother than it has since the Reach docks.",
             repair: 4, codex: "people-bellmakers",
           } },
         ],
@@ -1083,7 +1083,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
       {
         text: "Anywhere with a kettle, mostly.",
         outcomes: [{ outcome: {
-          text: "\"Good answer.\" She drinks two cups, tunes the ward mesh as a thank-you, and climbs back into her bell, pulling the rim down behind her like a hatch.",
+          text: "\"Good answer.\" She drinks two cups, taps the plating tight as a thank-you, and climbs back into her bell, pulling the rim down behind her like a hatch.",
           repair: 3, heal: true, codex: "people-bellmakers",
         } }],
       },
@@ -1158,7 +1158,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
     text: "Somewhere ahead the bells are ringing backwards: a peal from the highest bell down to the lowest, over and over. The bellmakers rang it that way for one thing only. Fire.\n\nSmoke is coming out of a switch house on the carrier. Through the window: shelves of bell moulds, logbooks, a whole wall of labelled glass.",
     choices: [
       {
-        text: "Go in with the extinguishers.",
+        text: "Go in with the extinguishers. Someone will breathe smoke.",
         outcomes: [
           { weight: 2, outcome: {
             text: "It is a battery bank that finally cooked. Ten minutes of smoke and foam and the fire is out. The bellmakers' logbooks are singed at the edges. The glass is fine, and some of it comes with you.",
@@ -1226,7 +1226,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
     text: "A relay's own beacon is calling on the maintenance band: SWITCHGEAR ISOLATED. REQUEST TENDER. The timestamp says it has been asking for nineteen years.\n\nWhen you get there the whole relay is inside a Prism Widow's web, and so is the switch, and so is a small freight car that tried to pass, its lamp dark.",
     choices: [
       {
-        text: "Answer the request. You are a tender.",
+        text: "Answer the request. You are a tender, and the Widow is still on its web.",
         outcomes: [{ outcome: {
           text: "The widow feels you touch its web and comes across the strands to weave you in with everything else.",
           combat: { enemy: "prism-widow", intro: "REQUEST TENDER. TENDER ARRIVED. ISOLATING TENDER.", onWin: "s2-web-car" },
@@ -1250,7 +1250,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
   },
   {
     id: "s2-web-car", pool: "scripted", stages: [2],
-    title: "The Car in the Web", art: "machine-hulk",
+    title: "The Car in the Web", art: "derelict-car",
     text: "With the widow still, the web goes dull and starts to sag. The relay's switch house wakes up. The small freight car hangs where it was caught, empty. Its crew got out, the open hatch says, a long time ago. Its hold did not.",
     choices: [
       {
@@ -1300,7 +1300,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
   {
     id: "s2-held-tight-freed", pool: "scripted", stages: [2],
     title: "Two Couriers", art: "relay-switchyard", portrait: "recruit-courier-a", speaker: "A courier",
-    text: "The little car's crew are two couriers of the Night Shift, who came up a Cathedral lift to carry letters between the last bellmakers. It is a route with four stops and no pay.\n\n\"That's twice this month,\" says the younger one, shaking. \"Thank you. We don't have much. We have a lot of letters.\"",
+    text: "The little car's crew are two couriers of the Night Shift, who ride the side carriers to carry letters between the last bellmakers. It is a route with four stops and no pay.\n\n\"That's twice this month,\" says the younger one, shaking. \"Thank you. We don't have much. We have a lot of letters.\"",
     choices: [
       {
         text: "Ask whether one of them would ride with you.",
@@ -1349,12 +1349,12 @@ export const STAGE2_SIGNALS: EventDef[] = [
     ],
   },
   {
-    id: "s2-distress-tender-requests", pool: "distress", stages: [2],
+    id: "s2-distress-tender-requests", pool: "distress", stages: [2], weight: 0.5,
     title: "Tender Requests Tender", art: "echo-tender-lit",
     text: "The call is in the lampers' own format, and it is automatic: TENDER ON ROUND. LAMP FAILED. REQUEST TENDER. An echo tender on the next carrier, nobody aboard, lamp dark, still running its round in the dark and asking for help with the one thing it can't do for itself.\n\nIts round runs straight through your switchyard. It will not stop for you.",
     choices: [
       {
-        text: "Answer the request: fit it a new lamp (1 spares).",
+        text: "Answer the request: fit it a new lamp (1 spare).",
         req: { resources: { spares: 1 } },
         outcomes: [{ outcome: {
           text: "It takes three tries to catch it at the relay. Then the lamp is in, and lit, and the autopilot logs REQUEST CLOSED and runs off on its round. The relay it lit first throws your switch with a stamp to spare.",
@@ -1370,7 +1370,7 @@ export const STAGE2_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Wait for it to pass and slip in behind it.",
+        text: "Wait for it to pass and slip in behind it (the Seal advances).",
         outcomes: [{ outcome: {
           text: "It passes, in the dark, very close. You wait for its round to come back twice before you trust the timing. The Seal uses the time well.",
           seal: -1, codex: "tender-echo-tenders",

@@ -22,7 +22,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Prise the brass letters off the board.",
+        text: "Prise the brass letters off the board over the shaft.",
         outcomes: [
           { weight: 2, outcome: {
             text: "They come off with a screwdriver and a bad conscience. The board now reads CAR 2 4 · BO RDING, which is somehow worse.",
@@ -100,7 +100,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
     text: "The switch house at this relay is talking to itself. The same message goes out down the carrier, comes back, and goes out again: a must-arrive packet from the Night of the Fault, still circling on a return route nobody closed, thirty-one years into its retries.\n\nIt is small and it is not loud. What is left of the Null Storm mostly isn't. But the switchgear is so busy repeating it that it keeps losing your greeting halfway through.",
     choices: [
       {
-        text: "Say hello louder and take the switch anyway.",
+        text: "Say hello louder and take the switch, however many greetings it costs.",
         outcomes: [
           { weight: 2, outcome: {
             text: "It takes two full greetings, and the relay charges you for both. You go.",
@@ -138,7 +138,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
   },
   {
     id: "s1-yard-inspection", pool: "event", stages: [1],
-    title: "Inspection Due", art: "rust-yard",
+    title: "Chalk Marks", art: "rust-yard",
     text: "The yard's gantry crane rolls out along its rail as you come in, hook swinging, and stops right over the tender. A lamp on its cab blinks. INSPECTION DUE.\n\nIt is a Scrap Foreman, and it is not attacking. It is inspecting. A chalk arm unfolds from its frame and begins to write on your roof. You can hear it through the plating: a line, a line, a circle. Everything in the yard below has the same mark on it. The mark means CONDEMNED.",
     choices: [
       {
@@ -160,7 +160,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
         text: "Run for the switch before it finishes.",
         outcomes: [
           { weight: 2, outcome: {
-            text: "The greeting goes out, the switch throws, and you leave the Foreman writing on air. Its hook catches the tail on the way past.",
+            text: "The car runs in under the yard gantry at full drive and leaves the Foreman writing on air. Its hook catches the tail on the way past.",
             resources: { hull: [-3, -2] },
           } },
           { weight: 1, outcome: {
@@ -185,7 +185,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
     text: "Another yard, another crane. This one reads the chalk circle on your roof from forty metres away and goes very still.\n\nCONDEMNED ITEM IN TRANSIT. RETURNING TO SMELTER.\n\nIts hook is already coming down. It is not angry. It is tidying up.",
     choices: [
       {
-        text: "Scrub the chalk off from the roof hatch.",
+        text: "Scrub the chalk off from the roof hatch, out in the thin air.",
         outcomes: [
           { weight: 2, outcome: {
             text: "Someone goes up through the hatch into air too thin to breathe with a wet rag and a lot of courage. The circle comes off. The crane stops, confused, and rolls away to find something that is actually condemned.",
@@ -292,7 +292,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
     ],
   },
   {
-    id: "s1-condemned-skip", pool: "event", stages: [1],
+    id: "s1-condemned-skip", pool: "event", stages: [1], requires: { weapon: "payload" },
     title: "A Condemned Skip", art: "rust-yard",
     text: "A skip on the yard gantry, painted with a chalk circle: CONDEMNED. Under a tarpaulin inside, forty payload shells in a rack, brass going green. The Scrap Foreman that condemned them rolled away years ago and never came back to take them to the smelter.\n\nSome of them are fine. Some of them have been sweating in the damp for thirty-one years. From the outside, you cannot tell which.",
     choices: [
@@ -357,7 +357,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
         text: "Print a ticket of your own.",
         blue: true, req: { system: { id: "sensors", level: 2 } },
         outcomes: [{ outcome: {
-          text: "The machine takes a work order from the Listening Post without asking who sent it. SERVICE CAR L-12. PRIORITY IMMEDIATE. Ten minutes later two escort automatons crawl down the carrier with a toolbox, fix what they find, and leave without being thanked, which they seem to prefer.",
+          text: "The machine takes a work order from the Listening Post without asking who sent it. SERVICE CAR ON CARRIER 9. PRIORITY IMMEDIATE. Ten minutes later two escort automatons crawl down the carrier with a toolbox, fix what they find, and leave without being thanked, which they seem to prefer.",
           repair: 5, codex: "runbook-tickets",
         } }],
       },
@@ -376,13 +376,13 @@ export const STAGE1_SIGNALS: EventDef[] = [
         text: "Trade for a re-stamp (25 salvage).",
         req: { resources: { salvage: 25 } },
         outcomes: [{ outcome: {
-          text: "They pass the press across on a boathook. It thumps twice through the connection card. \"Pleasure,\" says the captain, and seems to mean it.",
+          text: "They pass the press across on a salvage hook. It thumps twice through the connection card. \"Pleasure,\" says the captain, and seems to mean it.",
           resources: { salvage: -25, ttl: 2 }, codex: "people-scavengers",
         } }],
       },
       {
         text: "Trade spares for payloads (2 spares).",
-        req: { resources: { spares: 2 } },
+        req: { resources: { spares: 2 }, weapon: "payload" }, hideIfUnmet: true,
         outcomes: [{ outcome: {
           text: "Two teal lenses go across, three payload shells come back, and everybody pretends the shells were not condemned once.",
           resources: { spares: -2, payloads: 3 }, codex: "people-scavengers",
@@ -404,7 +404,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
   {
     id: "s1-barter-press", pool: "scripted", stages: [1],
     title: "Shopping", art: "scavenger-skiff-hail", portrait: "scavenger", speaker: "Captain of the Fair Enough",
-    text: "The captain laughs. Then stops laughing and looks at your lamp cupola for longer than is polite.\n\n\"Tell you what. The press, for the lamp.\"\n\nBehind the captain, two of the crew are casually unhooking boathooks that nobody asked them to unhook.",
+    text: "The captain laughs. Then stops laughing and looks at your lamp cupola for longer than is polite.\n\n\"Tell you what. The press, for the lamp.\"\n\nBehind the captain, two of the crew are casually unhooking salvage hooks that nobody asked them to unhook.",
     choices: [
       {
         text: "Offer 40 salvage for the press instead.",
@@ -417,9 +417,9 @@ export const STAGE1_SIGNALS: EventDef[] = [
       {
         text: "No. The lamp stays.",
         outcomes: [
-          { weight: 2, outcome: { text: "\"Worth asking,\" the captain says, and the boathooks go back on their hooks. The Fair Enough rolls away." } },
+          { weight: 2, outcome: { text: "\"Worth asking,\" the captain says, and the salvage hooks go back on their pegs. The Fair Enough rolls away." } },
           { weight: 1, outcome: {
-            text: "\"Worth asking,\" the captain says, and a boathook comes across the gap for the mesh line.",
+            text: "\"Worth asking,\" the captain says, and a salvage hook comes across the gap for the cupola.",
             combat: { enemy: "scavenger-skiff", surrenderable: true, intro: "The Fair Enough swings in close, nets out." },
           } },
         ],
@@ -435,7 +435,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
         text: "Keep saying it until it takes.",
         outcomes: [
           { weight: 2, outcome: {
-            text: "Forty minutes and a great many hellos. The switch throws. Somewhere behind you, the lattice gained a relay while you were being polite.",
+            text: "Forty minutes and a great many hellos. The relay takes the car in at last. Somewhere behind you, the lattice gained a relay while you were being polite.",
             seal: -1,
           } },
           { weight: 1, outcome: { text: "Eleventh time lucky." } },
@@ -453,7 +453,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
         text: "Open the switch house and find the stutter.",
         blue: true, req: { species: "rigger" },
         outcomes: [{ outcome: {
-          text: "{crew:rigger} finds a contact that has been bouncing since before the Fault, bends it back with one tool arm, and closes the panel. The relay says I hear you exactly once, and seems embarrassed about the rest. There are spares in the panel nobody will miss.",
+          text: "{crew:rigger} finds a contact that has been bouncing since before the Fault, bends it back with one tool arm, and closes the panel. The relay says I hear you exactly once, and seems embarrassed about the rest. There are odds and ends in the panel nobody will miss.",
           resources: { ttl: 1 }, reward: "low",
         } }],
       },
@@ -462,7 +462,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
         outcomes: [
           { weight: 1, outcome: { text: "The Runbook does not mention kicking. It works anyway, and {crew} is unbearable about it for the next three relays." } },
           { weight: 1, outcome: {
-            text: "The switch house is two hundred years of Reach iron. It wins.",
+            text: "The switch house is two hundred years of Reach iron. It wins, and the argument takes long enough for the Seal to gain.",
             crewDamage: { amount: 10, who: "one" }, seal: -1,
           } },
         ],
@@ -514,14 +514,14 @@ export const STAGE1_SIGNALS: EventDef[] = [
   {
     id: "s1-cut-carrier", pool: "event", stages: [1],
     title: "A Cut Carrier", art: "carrier-cut",
-    text: "Behind you, the carrier you came down is cut. The Seal did it an hour ago; the severed end hangs from the last relay, swinging, its core still glowing where the shears went through.\n\nThere is a lampers' trick: splice it again, and the quarantine reads a warm route where it thought it had closed one. The Wraiths go back to cut it a second time, and every hour they spend on that is an hour they are not spending behind you.\n\nThe trick has a weakness. Sometimes a Wraith is still close enough to see you do it.",
+    text: "Behind you, the carrier you came down is cut. A Cable Wraith did it an hour ago; the severed end hangs from the last relay, swinging, its core still glowing where the shears went through.\n\nThere is a lampers' trick: splice it again, and the quarantine reads a warm route where it thought it had closed one. The Wraiths go back to cut it a second time, and every hour they spend on that is an hour they are not spending behind you.\n\nThe trick has a weakness. Sometimes a Wraith is still close enough to see you do it.",
     choices: [
       {
         text: "Splice it (2 spares).",
         req: { resources: { spares: 2 } },
         outcomes: [
           { weight: 2, outcome: {
-            text: "The splice takes. Somewhere back along the Line, a lattice pauses, turns, and goes back to cut a carrier it already cut.",
+            text: "The splice takes. Somewhere back along the Line, a Wraith pauses, turns, and goes back to cut a carrier it already cut, and the Seal waits for it.",
             resources: { spares: -2 }, seal: 2,
           } },
           { weight: 1, outcome: {
@@ -553,7 +553,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
       {
         text: "Climb down and strip it.",
         outcomes: [
-          { weight: 2, outcome: { text: "Good fittings, a toolbox, a crate of spares still in its straps. The crew are quick and quiet about it.", reward: "med" } },
+          { weight: 2, outcome: { text: "Good fittings, a toolbox, a crate of stores still in its straps. The crew are quick and quiet about it.", reward: "med" } },
           { weight: 1, outcome: {
             text: "The gantry lets go under a boot. A safety line holds. The crew member on the end of it does not enjoy the next ten seconds, and brings back less than hoped.",
             reward: "low", crewDamage: { amount: 20, who: "one" },
@@ -563,7 +563,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
       {
         text: "Bleed its keel tanks into ours.",
         outcomes: [{ outcome: {
-          text: "The tanks still hold air, and the ballast is brass. The air goes into the Lamplighter's keel with a long sigh; the brass goes into the hold. Somehow it feels like being given something.",
+          text: "The tanks still hold air, and the ballast is brass. The air goes into {ship}'s keel with a long sigh; the brass goes into the hold. Somehow it feels like being given something.",
           repair: 3, resources: { salvage: [10, 20] },
         } }],
       },
@@ -646,7 +646,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
             reward: "low",
           } },
           { weight: 1, outcome: {
-            text: "The lamp's pulse timer is a keepalive unit, the old kind that told a relay's neighbours it was still there. It comes out of its housing in one piece and fits the ward mesh as if it had been waiting to.",
+            text: "The lamp's pulse timer is a keepalive unit, the old kind that told a relay's neighbours it was still there. It comes out of its housing in one piece: the kind of unit a ward mesh keeps time by.",
             augment: "keepalive",
           } },
         ],
@@ -855,7 +855,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
         blue: true, req: { weapon: "laser" },
         outcomes: [
           { weight: 2, outcome: {
-            text: "One bolt to the grip. It lets go and hangs from its safety line, still asleep, buffer tank swinging. It will be fine. It will be furious, by leech standards. It drops a tray of spares on the way down.",
+            text: "One bolt to the grip. It lets go and hangs from its safety line, still asleep, buffer tank swinging. It will be fine. It will be furious, by leech standards. It drops a tray of odds and ends on the way down.",
             reward: "low",
           } },
           { weight: 1, outcome: {
@@ -879,10 +879,10 @@ export const STAGE1_SIGNALS: EventDef[] = [
     text: "The Listening Post hears it before anyone sees it: something on your carrier, behind you, closing. Long and thin, shears at the nose, trailing cut cable. A Cable Wraith, crawling the route you just made and cutting it as it comes.\n\nIt is not chasing you. It is following the order. The order says to cut every route the storm could use, and your route is right in front of it.",
     choices: [
       {
-        text: "Run for the next relay.",
+        text: "Run for the yard.",
         outcomes: [
           { weight: 2, outcome: {
-            text: "The greeting goes out at a run. The switch throws with the shears ten metres behind the trolley. Behind you, the carrier parts with a sound like a dropped bell.",
+            text: "The car runs for the yard at full drive and makes it with the shears ten metres behind the trolley. Behind you, the carrier parts with a sound like a dropped bell, and the Seal gains a relay.",
             seal: -1,
           } },
           { weight: 1, outcome: {
@@ -894,7 +894,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
       {
         text: "Open the drive all the way.",
         blue: true, req: { system: { id: "engines", level: 3 } },
-        outcomes: [{ outcome: { text: "The trolley screams on the carrier and the car swings like a bell. The Wraith falls behind, patient, cutting. You are three relays on before it reaches the first." } }],
+        outcomes: [{ outcome: { text: "The trolley screams on the carrier and the car swings like a bell. The Wraith falls behind, patient, cutting. The car is in the yard long before it, and a switchyard is not a route the Wraith knows how to cut." } }],
       },
       {
         text: "Turn and end its task.",
@@ -907,14 +907,14 @@ export const STAGE1_SIGNALS: EventDef[] = [
   },
   {
     id: "s1-escort-hello", pool: "event", stages: [1],
-    title: "Curled on the Gantry", art: "machine-escort",
-    text: "An escort automaton is curled on the gantry at this relay, powered down, lens dark. Its machine must have finished its task somewhere nearby; this one stayed where it was put, the way escorts do, waiting for a crew to follow.\n\nThe Night Shift know a way. Wipe it back to its first page, and it will trust the first voice that greets it properly. Say it right, all three lines, and the lens goes teal. Say it wrong, and it goes red, and you should step back quickly.",
+    title: "Still on Shift", art: "machine-escort",
+    text: "An escort automaton is working on the gantry at this relay, alone: sweeping frost off the switch house step with a broom it made from cable ends, one careful stroke at a time. Its machine finished its task somewhere nearby, long ago. The escort never got the order to stop, so it keeps the step clear for a crew that is not coming.\n\nThe Night Shift know a way. Wipe it back to its first page, and it will trust the first voice that greets it properly. Say it right, all three lines, and the lens goes teal. Say it wrong, and it goes red, and you should step back quickly.",
     choices: [
       {
         text: "Let the rigger talk it through.",
         blue: true, req: { species: "rigger" },
         outcomes: [{ outcome: {
-          text: "{crew:rigger} crouches beside it and says nothing for a long time. Then the greeting, all three lines, slow and exact. The lens flickers and settles teal. \"It asked where the crew was,\" {crew:rigger} says. \"I said: here.\"",
+          text: "{crew:rigger} picks up a second broom and sweeps beside it for a long time, saying nothing. Then the greeting, all three lines, slow and exact. The lens flickers and settles teal. \"It asked where the crew was,\" {crew:rigger} says. \"I said: here.\"",
           crewJoin: { species: "rigger" },
         } }],
       },
@@ -923,11 +923,11 @@ export const STAGE1_SIGNALS: EventDef[] = [
         blue: true, req: { system: { id: "sensors", level: 2 } },
         outcomes: [
           { weight: 3, outcome: {
-            text: "The Listening Post walks it back to its first page. {crew} says hello. The lens goes teal. It stands up, looks at the crew one by one, and follows you aboard.",
+            text: "The Listening Post walks it back to its first page. {crew} says hello. The lens goes teal. It leans the broom against the switch house, looks at the crew one by one, and follows you aboard.",
             crewJoin: { species: "rigger" },
           } },
           { weight: 1, outcome: {
-            text: "The lens goes red. A tool arm comes round fast, and then the escort curls up again and stays curled.",
+            text: "The lens goes red. A tool arm comes round fast, and then the escort goes back to its step and will not look up.",
             crewDamage: { amount: 15, who: "one" },
           } },
         ],
@@ -940,7 +940,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
             crewJoin: { species: "rigger" },
           } },
           { weight: 1, outcome: {
-            text: "Somebody says it in the wrong order. The lens goes red, a tool arm lashes out, and then it curls up and will not wake again.",
+            text: "Somebody says it in the wrong order. The lens goes red, a tool arm lashes out, and then it goes back to its sweeping and will not look up again.",
             crewDamage: { amount: 20, who: "one" },
           } },
         ],
@@ -948,7 +948,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
       {
         text: "Take its spares instead.",
         outcomes: [{ outcome: {
-          text: "Two teal lenses, carefully removed. It would have been someone. The crew are quiet about it for a while.",
+          text: "Two teal lenses, carefully removed. The broom falls over on the step. It would have been someone. The crew are quiet about it for a while.",
           resources: { spares: 2 },
         } }],
       },
@@ -995,12 +995,12 @@ export const STAGE1_SIGNALS: EventDef[] = [
   {
     id: "s1-derelict-freight", pool: "event", stages: [1], unique: true,
     title: "Return to Dock 9", art: "derelict-car",
-    text: "A freight car is stalled alone on the carrier ahead, uncoupled, its coupling hook swinging. Dock stencil on the side: REACH FREIGHT · RETURN TO DOCK 9. Its trolley brake is set. Someone uncoupled it here on the Night of the Fault to make a tender faster, and never came back for it.\n\nIt would couple to the Lamplighter's tail. Wrestling a thirty-year-old hook onto a live car takes time, though, and the Seal is not far behind.",
+    text: "A freight car is stalled alone on the carrier ahead, uncoupled, its coupling hook swinging. Dock stencil on the side: REACH FREIGHT · RETURN TO DOCK 9. Its trolley brake is set. Someone uncoupled it here on the Night of the Fault to make a tender faster, and never came back for it.\n\nIt would couple to {ship}'s tail. Wrestling a thirty-year-old hook onto a live car takes time, though, and the Seal is not far behind.",
     choices: [
       {
         text: "Couple it to the tail.",
         outcomes: [{ outcome: {
-          text: "An hour of swearing at a hook that has not moved since the Fault, and it closes with a clang the whole car feels. The Lamplighter has a freight car. Behind you, the lattice has had an hour too.",
+          text: "An hour of swearing at a hook that has not moved since the Fault, and it closes with a clang the whole car feels. {ship} has a freight car. Behind you, the lattice has had an hour too.",
           car: "freight-car", seal: -1,
         } }],
       },
@@ -1008,7 +1008,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
         text: "Let the rigger couple it.",
         blue: true, req: { species: "rigger" },
         outcomes: [{ outcome: {
-          text: "{crew:rigger} climbs out along the tail, frees the hook with one tool arm and seats it with another. Six minutes. The freight car follows the Lamplighter down the carrier like it was always meant to.",
+          text: "{crew:rigger} climbs out along the tail, frees the hook with one tool arm and seats it with another. Six minutes. The freight car follows {ship} down the carrier like it was always meant to.",
           car: "freight-car",
         } }],
       },
@@ -1033,17 +1033,29 @@ export const STAGE1_SIGNALS: EventDef[] = [
     choices: [
       {
         text: "Received, with thanks.",
-        outcomes: [{ outcome: {
-          text: "Two hops stamped across the gap and a crate of payloads on a line. \"Leave the lamp on,\" they call, and the relief car drops back onto its own carrier.",
-          resources: { ttl: 2, payloads: 2 }, clearFlags: ["s1-relief-owed"],
-        } }],
+        outcomes: [
+          { modifiers: [{ when: { tender: "glasswing" }, multiply: 0 }, { when: { tender: "switchback" }, multiply: 0 }], outcome: {
+            text: "Two hops stamped across the gap and a crate of payloads on a line. \"Leave the lamp on,\" they call, and the relief car drops back onto its own carrier.",
+            resources: { ttl: 2, payloads: 2 }, clearFlags: ["s1-relief-owed"],
+          } },
+          { modifiers: [{ when: { tender: "lamplighter" }, multiply: 0 }], outcome: {
+            text: "Two hops stamped across the gap and a crate of spares on a line. \"Leave the lamp on,\" they call, and the relief car drops back onto its own carrier.",
+            resources: { ttl: 2, spares: 2 }, clearFlags: ["s1-relief-owed"],
+          } },
+        ],
       },
       {
         text: "Ask where the crate came from.",
-        outcomes: [{ outcome: {
-          text: "\"A Scrap Foreman condemned it,\" says the younger one. \"We appealed.\" The hops and the crate come across anyway.",
-          resources: { ttl: 2, payloads: 2 }, clearFlags: ["s1-relief-owed"],
-        } }],
+        outcomes: [
+          { modifiers: [{ when: { tender: "glasswing" }, multiply: 0 }, { when: { tender: "switchback" }, multiply: 0 }], outcome: {
+            text: "\"A Scrap Foreman condemned it,\" says the younger one. \"We appealed.\" The hops and a crate of payloads come across anyway.",
+            resources: { ttl: 2, payloads: 2 }, clearFlags: ["s1-relief-owed"],
+          } },
+          { modifiers: [{ when: { tender: "lamplighter" }, multiply: 0 }], outcome: {
+            text: "\"A Scrap Foreman condemned it,\" says the younger one. \"We appealed.\" The hops and a crate of spares come across anyway.",
+            resources: { ttl: 2, spares: 2 }, clearFlags: ["s1-relief-owed"],
+          } },
+        ],
       },
     ],
   },
@@ -1073,7 +1085,7 @@ export const STAGE1_SIGNALS: EventDef[] = [
   },
   {
     id: "s1-sos-lift-car-inside", pool: "scripted", stages: [1],
-    title: "Three Taps", art: "lift-car-stuck", portrait: "recruit-linefolk-b", speaker: "The woman in the lift car",
+    title: "Three Taps", art: "lift-car-stuck", speaker: "The woman in the lift car",
     text: "Inside: somebody else's luggage, a lamp rigged to a battery by someone clever, and a radio patched into the car's own shaft aerial. And a woman in a Night Shift coat, sixty or so, who climbed down from the gantry six weeks ago to strip the car and could not climb back up.\n\n\"You took your time,\" she says. \"I've been listening to this all month.\" The radio is playing a message it caught years ago, coming up the shaft from the spire foot, over and over.",
     choices: [
       {
@@ -1141,14 +1153,14 @@ export const STAGE1_SIGNALS: EventDef[] = [
   {
     id: "s1-sos-skiff-grip", pool: "distress", stages: [1],
     title: "Grip Failed", art: "scavenger-skiff-hail",
-    text: "UNKNOWN SIGNAL · GRIP FAILED · PLEASE.\n\nA scavenger skiff is hanging by one grip arm from a carrier below yours, tilted thirty degrees, its crew waving hand lamps from every window. The other grip is open and slipping.\n\nIt might be exactly what it looks like. Scavengers have also been known to hang a skiff at an angle and wave lamps at passing cars, and then come aboard with boathooks.",
+    text: "UNKNOWN SIGNAL · GRIP FAILED · PLEASE.\n\nA scavenger skiff is hanging by one grip arm from a carrier below yours, tilted thirty degrees, its crew waving hand lamps from every window. The other grip is open and slipping.\n\nIt might be exactly what it looks like. Scavengers have also been known to hang a skiff at an angle and wave lamps at passing cars, and then come aboard with salvage hooks.",
     choices: [
       {
         text: "Lower a cable and haul them level.",
         outcomes: [
           { weight: 2, outcome: { text: "The cable takes the weight. The skiff comes level with a groan, and the waving turns into cheering.", next: "s1-sos-skiff-grateful" } },
           { weight: 1, outcome: {
-            text: "The first one up the cable has a boathook and an apologetic expression.",
+            text: "The first one up the cable has a salvage hook and an apologetic expression.",
             combat: { enemy: "scavenger-skiff", surrenderable: true, intro: "\"Sorry about this,\" someone calls. \"Times are hard.\"" },
           } },
         ],
@@ -1453,19 +1465,19 @@ export const STAGE1_SIGNALS: EventDef[] = [
   {
     id: "s1-sos-foundry-gallery", pool: "scripted", stages: [1],
     title: "Foundry Three", art: "foundry-mouth", portrait: "recruit-warden-a", speaker: "The foundry warden",
-    text: "In the control gallery is a young warden, armour scorched, sitting on a crate with her hand lamp in her lap. She came to see if the banked furnace could be lit again, for the Night Shift's winter, and the Colossus disagreed.\n\n\"Three days,\" she says. \"I've been reading the foundry stores list to stay awake. There's good stuff in here. Nobody's been able to get to it.\"",
+    text: "In the control gallery is a young warden, armour scorched, sitting on a crate with his hand lamp in his lap. He came to see if the banked furnace could be lit again, for the Night Shift's winter, and the Colossus disagreed.\n\n\"Three days,\" he says. \"I've been reading the foundry stores list to stay awake. There's good stuff in here. Nobody's been able to get to it.\"",
     choices: [
       {
         text: "Bring her aboard, and the best of the stores.",
         outcomes: [{ outcome: {
-          text: "She walks out past the quiet Colossus without looking at it, carrying a crate. \"I'll come,\" she says. \"I'm done with furnaces.\"",
+          text: "He walks out past the quiet Colossus without looking at it, carrying a crate. \"I'll come,\" he says. \"I'm done with furnaces.\"",
           crewJoin: { species: "warden" }, reward: "low",
         } }],
       },
       {
         text: "Take everything the stores list says is worth taking.",
         outcomes: [{ outcome: {
-          text: "She reads the list aloud and the crew carry. At the end she shakes everyone's hand and goes home along the gantry, and the hold is heavier than it has ever been.",
+          text: "He reads the list aloud and the crew carry. At the end he shakes everyone's hand and goes home along the gantry, and the hold is heavier than it has ever been.",
           reward: "high",
         } }],
       },

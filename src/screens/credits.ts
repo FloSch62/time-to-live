@@ -4,11 +4,11 @@ import type { App, Scene } from "../core/scene";
 import { goToTitle } from "./nav";
 import { music } from "../core/audio";
 import { lineHeight } from "../core/font";
-import { P } from "../core/palette";
+import { P, rgba } from "../core/palette";
 import { content, type CreditsBlock } from "../campaign/content";
 import type { RunState } from "../campaign/model";
 import { drawBackdrop, twinkle } from "./backdrop";
-import { keeperLamp, keyHints, tracked } from "./kit";
+import { FOOTER_Y, TYPE, footer, header, keeperLamp, textAt } from "./kit";
 import { createGameOverScene } from "./gameover";
 
 const ATTRIBUTION = "Original FAULTLINE created by Florian Schwarz — flosch.me";
@@ -17,7 +17,7 @@ function blocks(): CreditsBlock[] {
   const b = content.script.CREDITS.length
     ? content.script.CREDITS
     : [
-      { heading: "TIME TO LIVE", lines: ["a Faultline voyage", "Every hop costs a little life."] },
+      { heading: "TIME TO LIVE", lines: ["a Faultline voyage"] },
       { heading: "The Line", lines: [ATTRIBUTION] },
     ];
   const all = b.flatMap((x) => x.lines);
@@ -52,6 +52,13 @@ export function createCreditsScene(app: App, opts: { ending?: boolean; run?: Run
       drawBackdrop(g, opts.ending ? "ending/e6" : "bg/title", { kind: opts.ending ? "ending" : "title" });
       twinkle(g, t, 99, 30, 300);
       g.dim(0.62);
+      // a dark reading column behind the rolling text, fading out at its sides
+      g.alpha(0.55, () => g.rect(300, 0, 360, 540, P.ink0));
+      for (let i = 0; i < 60; i += 2) {
+        const a = 0.55 * (1 - i / 60);
+        g.alpha(a, () => g.rect(300 - i - 2, 0, 2, 540, P.ink0));
+        g.alpha(a, () => g.rect(660 + i, 0, 2, 540, P.ink0));
+      }
       let cy = Math.round(y);
       for (const b of list) {
         if (b.heading) {
@@ -59,8 +66,8 @@ export function createCreditsScene(app: App, opts: { ending?: boolean; run?: Run
             g.text("TIME TO LIVE", 480, cy, { font: "big", color: P.brass0, align: "center", shadow: P.ink0 });
             cy += 40;
           } else {
-            tracked(g, b.heading.toUpperCase(), 480, cy, { font: "labelb", color: P.brass1, align: "center" });
-            cy += 22;
+            header(g, b.heading, 480, cy + 4, { font: TYPE.strong, color: P.brass1, align: "center" });
+            cy += 24;
           }
         } else cy += 10;
         for (const l of b.lines) {
@@ -71,10 +78,11 @@ export function createCreditsScene(app: App, opts: { ending?: boolean; run?: Run
         cy += 36;
       }
       keeperLamp(g, 480, cy + 40, t);
-      // the attribution stays on screen at the bottom throughout
-      g.rect(0, 540 - 30, 960, 30, P.ink0);
-      g.text(`{ivory3}${ATTRIBUTION}{/}`, 480, 540 - 24, { font: "body", align: "center" });
-      keyHints(g, a, 12, 12, [["SPACE", "faster"], ["ESC", "leave"]]);
+      // the attribution stays on screen at the bottom throughout, above the key-hint strip
+      g.rect(0, FOOTER_Y - 30, 960, 540 - FOOTER_Y + 30, P.ink0);
+      g.hline(0, FOOTER_Y - 30, 960, rgba(P.brass4, 0.5));
+      textAt(g, ATTRIBUTION, 480, FOOTER_Y - 20, { font: TYPE.body, align: "center", color: P.ivory2 });
+      footer(g, a, [], [["SPACE", "faster"], ["ESC", "leave"]]);
       if (a.input.keyPressed("Escape") || a.input.keyPressed("Enter")) {
         a.input.eatKey("Escape");
         leave();

@@ -1,0 +1,7 @@
+events/cold-berths:v5c@2
+events/sealed-relay:v5c@2
+events/machine-escort:v5c@2
+events/spire-top:v5c@2
+events/queue-lights:v5c@2
+events/radio-mast-ground:v5c@2
+events/ground-lamp:v5c@2

@@ -1,0 +1,5 @@
+parts/prism-housing:m
+parts/collimators:m
+parts/survey-horns:m
+parts/drone-cradle:m
+parts/retrieval-crane:m

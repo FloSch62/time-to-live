@@ -1,0 +1,6 @@
+bg/s1-d:h@1
+bg/s1-e:h@1
+bg/s2-d:h@1
+bg/s2-e:h@1
+bg/s3-d:h@1
+bg/s3-e:h@1

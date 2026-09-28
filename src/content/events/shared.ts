@@ -83,7 +83,7 @@ export const SHARED_EVENTS: EventDef[] = [
     text: "The radio crackles on the tender band. An old voice, a bench keeper somewhere down the Line, who heard you calling the relay.\n\n\"You can stamp a card by hand at the switch house, if you've the nerve. Climb down the carrier to the house, open the brass panel, say the long greeting into the grille, pull the second lever. Not the first lever. Never the first lever.\"",
     choices: [
       {
-        text: "Send someone down the carrier to the switch house.",
+        text: "Send someone hand over hand to the switch house. It is a cold climb.",
         outcomes: [
           { weight: 3, outcome: { text: "{crew} goes hand over hand along the carrier with a line clipped to the trolley, says the long greeting into the grille and pulls the second lever. Two hops. Cold fingers for a week.", resources: { ttl: 2 }, crewDamage: { amount: 10, who: "one" } } },
           { weight: 1, outcome: { text: "The carrier is iced, and {crew} comes off it once, hanging from the line over the cloud sea for a long minute before the others haul them back. The second lever still gets pulled. One hop, and nobody jokes about it for a while.", resources: { ttl: 1 }, crewDamage: { amount: 25, who: "one" } } },
@@ -128,7 +128,7 @@ export const SHARED_EVENTS: EventDef[] = [
   {
     id: "any-first-hello", pool: "event", stages: [1, 2, 3], weight: 1.2,
     title: "An Escort, Waiting", art: "machine-escort", portrait: "recruit-rigger-b",
-    text: "An escort automaton sits on a gantry beside the switch house, curled up like something asleep, its lens dark. Its machine's task ended long ago and nobody came to say what happens next.\n\nIt has been wiped back to its first page by the cold. The Night Shift know what that means. Say the first hello properly, all three lines, and it may trust whoever said it. Say it wrong, and it will not.",
+    text: "An escort automaton sits on a gantry beside the switch house, curled up like something asleep, its lens dark. Its machine's task ended long ago and nobody came to say what happens next.\n\nIt has been wiped back to its first page by the cold. The Night Shift know what that means. Say the first hello properly, all three lines, and it may trust whoever said it. Say it wrong, and the lens goes red, and a frightened escort sparks.",
     choices: [
       {
         text: "Say the first hello.",
@@ -190,7 +190,7 @@ export const SHARED_EVENTS: EventDef[] = [
   },
   {
     id: "any-cold-berth-wake", pool: "scripted", stages: [1, 2, 3],
-    title: "Did the Lifts Come Back Up", art: "cold-berths", portrait: "recruit-linefolk-b", speaker: "The sleeper",
+    title: "Did the Lifts Come Back Up", art: "cold-berths", portrait: "recruit-linefolk-a", speaker: "The sleeper",
     text: "They are younger than anyone on the Night Shift, and older than anyone alive. They went to sleep with a broken leg on the Night of the Fault and the leg is fine now, which they find more upsetting than anything else.\n\n\"Did the lifts come back up?\"",
     choices: [
       {
@@ -215,7 +215,7 @@ export const SHARED_EVENTS: EventDef[] = [
     text: "A single car hangs from its own small trolley on a side carrier, uncoupled, lamps dark except one. The coupling hook at its nose dangles, and a tarpaulin over its gangway door flaps in the thin air.\n\nIt is a Reach dock rear car. Whoever it belonged to left it here on purpose: a chalk mark on the door reads GRIP GOOD · BRAKE SET · HELP YOURSELF.",
     choices: [
       {
-        text: "Couple it behind the lead car.",
+        text: "Couple it behind the lead car. Its brake is thirty-one years old.",
         outcomes: [
           { weight: 3, outcome: { text: "The coupling goes home with a sound every lamper would recognise. The new car's one lamp comes on in the same colour as yours, as if it had been waiting to be told.", car: "random-rear" } },
           { weight: 1, outcome: { text: "The trolley brake lets go early and the car comes down the side carrier a good deal faster than planned. The coupling holds. The plating at the back of the lead car has opinions about it.", car: "random-rear", resources: { hull: [-3, -2] } } },
@@ -258,7 +258,7 @@ export const SHARED_EVENTS: EventDef[] = [
       {
         text: "Answer its beacon and let it hang.",
         outcomes: [
-          { outcome: { text: "{crew} sends RECEIVED on the dock band. The beacon stops repeating. The belly car goes on swinging, quietly now, like something that has been told it can rest.", heal: true } },
+          { outcome: { text: "{crew} sends RECEIVED on the dock band. The beacon stops repeating. The belly car goes on swinging, quietly now, like something that has been told it can rest. Aboard, the crew find that they can rest too.", heal: true } },
         ],
       },
     ],
@@ -367,12 +367,12 @@ export const SHARED_EVENTS: EventDef[] = [
   {
     id: "any-long-greeting", pool: "event", stages: [1, 2, 3], weight: 1,
     title: "The Long Form", art: "relay-switchyard",
-    text: "The relay hears your hello and answers, but not with I hear you. It answers with a line nobody aboard knows, in a slow old voice, and then it waits.\n\nThere was a long form of the greeting once, for relays that wanted to be sure. The Runbook still has it. None of the copies the Night Shift carry do.",
+    text: "The relay hears your hello and answers, but not with I hear you. It answers with a line nobody aboard knows, in a slow old voice, and then it waits.\n\nThere was a long form of the greeting once, for relays that wanted to be sure. The Runbook still has it. None of the copies the Night Shift carry do. Get it wrong, and the relay will make you start again from hello.",
     choices: [
       {
         text: "Guess.",
         outcomes: [
-          { weight: 1, outcome: { text: "{crew} tries something that sounds right. The relay considers it for a long time and then switches you anyway, with a clunk that sounds disappointed.", } },
+          { weight: 1, outcome: { text: "{crew} tries something that sounds right. The relay considers it for a long time and then takes you in anyway, with a clunk that sounds disappointed.", } },
           { weight: 1, outcome: { text: "{crew} guesses wrong, and the relay makes you start again from hello. Twice. The switch costs you an extra hop.", resources: { ttl: -1 } } },
         ],
       },
@@ -414,7 +414,7 @@ export const SHARED_EVENTS: EventDef[] = [
       {
         text: "Say received.",
         outcomes: [
-          { outcome: { text: "\"Received.\" Somebody at Relay Seven laughs at the cards. The connection holds.", heal: true } },
+          { outcome: { text: "\"Received.\" Somebody at Relay Seven laughs at the cards. The connection holds, and aboard, for once, everybody sleeps.", heal: true } },
         ],
       },
     ],
@@ -427,7 +427,7 @@ export const SHARED_EVENTS: EventDef[] = [
       {
         text: "Hold the handset up to the window so she can hear them better.",
         outcomes: [
-          { outcome: { text: "Nobody speaks. The glass rings. After a minute the Operator says \"Received,\" very quietly, and the line clicks back to static.", heal: true } },
+          { outcome: { text: "Nobody speaks. The glass rings. After a minute the Operator says \"Received,\" very quietly, and the line clicks back to static. The crew sleep better than they have in days.", heal: true } },
         ],
       },
       {
@@ -446,7 +446,7 @@ export const SHARED_EVENTS: EventDef[] = [
       {
         text: "Say received.",
         outcomes: [
-          { outcome: { text: "\"Received.\" The hiss closes over her. {crew} sits by the set a while longer anyway.", heal: true } },
+          { outcome: { text: "\"Received.\" The hiss closes over her. {crew} sits by the set a while longer anyway, and the others get some rest.", heal: true } },
         ],
       },
       {
@@ -460,7 +460,7 @@ export const SHARED_EVENTS: EventDef[] = [
 
   // ─── The Lamplighter's berth ─────────────────────────────────────────────────────────────────────────────
   {
-    id: "any-harbour-beacon", pool: "event", stages: [1], weight: 1.5, unique: true,
+    id: "any-harbour-beacon", pool: "event", stages: [1], weight: 1.5, unique: true, requires: { tender: "lamplighter" },
     title: "For Tender L-12", art: "lamplighter-helm",
     text: "Passing the dark end of the Reach docks, the Listening Post picks up an automatic beacon on the dock band, repeating one short message to one addressee. The addressee is Tender L-12, I. Corran.\n\nThat is this car. The name under the cupola, under the name you painted. Ilse Corran was its chief for forty-one years and ran it eleven times down the carriers on the Night of the Fault. Her initials are scratched above the switch lever.",
     choices: [
@@ -481,6 +481,75 @@ export const SHARED_EVENTS: EventDef[] = [
         outcomes: [
           { outcome: { text: "{crew} counts the tally marks, gets 4,406, disagrees with themselves, and starts again. Then reads the relay numbers, and the capitals, and the newer clumsy line at the bottom about Pell. Then opens the message.", fragment: "f1-berth", flags: ["corran-berth"], codex: "tender-helm-scratches" } },
         ],
+      },
+    ],
+  },
+
+  // ─── The other tenders' histories ────────────────────────────────────────────────────────────────────────
+  {
+    id: "any-glasswing-pair", pool: "event", stages: [2], weight: 2, unique: true, requires: { tender: "glasswing" },
+    title: "Keep the Pair Together", art: "cathedral-nave",
+    text: "A warning lamp hangs off this relay's flank on a long brass arm, built to be read from three carriers away. Its lens has slipped in the collar. The light goes everywhere except where it should, the panes around it ring out of tune, and the relay's automatics, which cannot read their own warning, have stopped trusting the carriers beside them.\n\nThis is the job G-04 was built for. The two lenses under the cupola still carry their old alignment marks, and on the tool rack, in the last crew's paint: KEEP THE PAIR TOGETHER.",
+    choices: [
+      {
+        text: "Align it the old way, both lenses together. It takes time the Seal will use.",
+        outcomes: [{ outcome: {
+          seal: -1, resources: { ttl: 1 }, flags: ["glasswing-pair-aligned"],
+          text: "{crew} uncaps both lenses and walks the lamp in a quarter turn at a time, reading the two spots on the pane until they sit on top of each other. The panes around the arm settle into one note. The relay reads its own warning for the first time in years and re-stamps the connection that fixed it: one hop. Behind you, the Seal takes a relay while you work.",
+        } }],
+      },
+      {
+        text: "One lens is quicker. The paint on the rack says otherwise.",
+        outcomes: [
+          { weight: 1, outcome: {
+            resources: { ttl: 1 },
+            text: "One lens, one spot and a lot of squinting. The lamp comes close enough. The relay grumbles in its brass voice and re-stamps the connection anyway: one hop.",
+          } },
+          { weight: 1, outcome: {
+            systemDamage: { system: "weapons", amount: 1 },
+            text: "The single lens takes the whole beam, and its collar cracks with a sound like a bell dropped on stone. The emitter behind it shares that collar. Somebody on the old crew knew exactly why they painted the rack.",
+          } },
+        ],
+      },
+      {
+        text: "Leave it. That lamp is not your job any more.",
+        outcomes: [{ outcome: {
+          text: "The lamp goes on shining in every direction but the right one. {crew} looks back at it once, then at the paint on the rack, and says nothing.",
+        } }],
+      },
+    ],
+  },
+  {
+    id: "any-switchback-seventh", pool: "event", stages: [1], weight: 2, unique: true, requires: { tender: "switchback" },
+    title: "Six Returned, One Missing", art: "spire-top",
+    text: "The Listening Post picks up a keepalive on the old retrieval band, weak and patient, the way a drone calls when it is waiting for its car to come back. It comes from under this relay: a work span nobody can walk, and on it, wedged in a cable clamp, a small inspection drone with a flickering lamp. The stencil on its shell reads S-08 · 7.\n\nThe dock list in the cab says six returned, one missing. The crane on the roof was built for exactly this.",
+    choices: [
+      {
+        text: "Swing the crane down and fetch it. It takes time the Seal will use.",
+        outcomes: [{ outcome: {
+          seal: -1, resources: { spares: 3 }, revealMap: true, flags: ["switchback-seventh-home"],
+          text: "It is the slow work the crane was built for: the jib out over the span, the hook down, three tries at the clamp. Then the seventh drone comes up into its cradle with a thirty-one-year-old click. It will never fly again, but its lens and rotor hub are good spares, and its recorder still holds the survey it was flying when its power ran out. {crew} copies the survey onto the chart and writes the last line on the dock list: seven returned. Behind you, the Seal takes a relay while you work.",
+        } }],
+      },
+      {
+        text: "Send a service drone down for it (1 spare). The wind under the span is strong.",
+        req: { resources: { spares: 1 } },
+        outcomes: [
+          { weight: 2, outcome: {
+            resources: { spares: 2 }, revealMap: true, flags: ["switchback-seventh-home"],
+            text: "The service drone goes down on its rotors, clamps on, and hauls the old one up into the cradle beside it. Its lens and rotor hub more than pay for the launch, and its recorder still holds the survey it was flying when its power ran out. {crew} copies the survey onto the chart and writes the last line on the dock list: seven returned.",
+          } },
+          { weight: 1, outcome: {
+            resources: { spares: -1 },
+            text: "The wind under the span takes the service drone sideways into the cable. It comes home on one rotor and without the seventh, and the spare it burned on the launch is gone. The keepalive keeps calling.",
+          } },
+        ],
+      },
+      {
+        text: "Mark it on the chart for the next crew.",
+        outcomes: [{ outcome: {
+          text: "{crew} marks the span on the chart: S-08 · 7, still waiting. The keepalive keeps calling on the old band, patient as ever.",
+        } }],
       },
     ],
   },

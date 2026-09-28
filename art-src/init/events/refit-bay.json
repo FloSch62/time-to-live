@@ -1,0 +1,16 @@
+{
+ "stage": "shared",
+ "hull": "lamplighter",
+ "scale": 0.9,
+ "at": [
+  1280,
+  330
+ ],
+ "extras": [
+  "workshop"
+ ],
+ "size": [
+  2560,
+  1280
+ ]
+}

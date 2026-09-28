@@ -36,8 +36,8 @@ function shipFromLayout(L: LayoutDef, side: Side, defId: string, name: string): 
     doors: [], doorAt: new Map(), systems: [], sys: {}, reactor: 0, hull: 1, hullMax: 1, weapons: [], drones: [],
     shields: 0, shieldT: 0, hop: 0, veilT: 0, veilCd: 0, evasion: 0, augments: [], payloads: 0, spares: 0,
     kind: side === 0 ? "player" : "machine", mobility: side === 0 ? "player" : "crawler", adjuncts: [], boss: {},
-    dead: false, deadT: 0, fleeing: false, chargeMul: 1, bonusLayers: 0, aiT: 0, holdT: 0, salvoOk: true, broodT: 0, hitT: 99,
-    tileCar: L.tileCar ?? null, mods: { sensors: 0, repair: 0, airDecay: 1, evasion: 0 },
+    dead: false, deadT: 0, fleeing: false, chargeMul: 1, bonusLayers: 0, aiT: 0, holdT: 0, salvoOk: true, broodT: 0, repairArmT: 0, hitT: 99,
+    tileCar: L.tileCar ?? null, mods: { sensors: 0, repair: 0, airDecay: 1, evasion: 0, weaponCharge: 0, droneCharge: 0, veilCooldown: 0, debrisProtection: 0 },
   };
   buildDoors(ship, L);
   return ship;
@@ -124,9 +124,10 @@ export function buildPlayerShip(input: ShipState): SimShip {
   ship.hullMax = state.hullMax;
   ship.augments = [...state.augments];
   const st = consistStats(state.consist, state.modules);
-  ship.mods = { sensors: st.sensors, repair: st.repair, airDecay: st.airDecay, evasion: -st.evasionMalus };
+  ship.mods = { sensors: st.sensors, repair: st.repair, airDecay: st.airDecay, evasion: -st.evasionMalus, weaponCharge: st.weaponCharge, droneCharge: st.droneCharge, veilCooldown: st.veilCooldown, debrisProtection: st.debrisProtection };
   // Bench rooms (bunk car) and kettle-bench modules heal slowly.
   for (const r of ship.rooms) {
+    r.socket = L.sockets.includes(r.id);
     const [slot, rid] = r.id.split(":");
     const carId = state.consist[slot as "lead" | "rear" | "keel"];
     const lg = carId ? Object.values(CARS[carId].legend).find((q) => q.id === rid) : undefined;
@@ -139,7 +140,8 @@ export function buildPlayerShip(input: ShipState): SimShip {
   }
   for (const [id, sst] of Object.entries(state.systems) as [SystemId, NonNullable<ShipState["systems"][SystemId]>][]) {
     if (!sst || sst.level <= 0) continue;
-    const roomId = SYSTEMS[id].purchasable ? state.systemRooms[id] : `lead:${id}`;
+    // A purchasable array may occupy a native lead-car bay (e.g. optional shields).
+    const roomId = state.systemRooms[id] ?? `lead:${id}`;
     if (!roomId) continue; // stored (no car or module hosts it)
     const s = placeSystem(ship, id, sst.level, roomId);
     if (!s) continue;
@@ -157,7 +159,9 @@ export function buildPlayerShip(input: ShipState): SimShip {
   });
   state.drones.forEach((did, i) => {
     if (!did) return;
-    ship.drones.push(makeDrone(did, i, 0));
+    const d = makeDrone(did, i, 0);
+    d.want = !!state.dronePower?.[i];
+    ship.drones.push(d);
   });
   return ship;
 }
@@ -222,10 +226,21 @@ export function buildEnemyShip(e: ScaledEnemy): SimShip {
     }
   }
   if (e.id === "iron-regent") ship.boss.gate = { up: true, downT: 0, locks: [], repairT: 9 };
-  if (e.id === "hollow-choir") ship.boss.glass = { up: true, downT: 0, hits: [] };
+  if (e.id === "hollow-choir") ship.boss.glass = { up: true, downT: 0, hits: [], channel: 0, tuning: false };
   if (e.id === "blackout-core") {
     ship.boss.core = { phase: 1, step: 0, phaseT: 0 };
     ship.weapons.forEach((w, i) => (w.active = i === 0));
+    const heartRoom = ship.sys.heart ? ship.rooms[ship.sys.heart.room] : null;
+    if (heartRoom) heartRoom.name = "Isolation regulator";
+  }
+  if (e.autonomous) {
+    for (const r of ship.rooms) {
+      r.station = -1;
+      r.stationDir = null;
+      r.name = r.sys?.id === "helm" ? "Tracking controller" : r.sys?.id === "engines" ? "Drive actuators"
+        : r.sys?.id === "weapons" ? "Weapon feed" : r.sys?.id === "shields" ? "Ward capacitors"
+        : r.lift ? "Maintenance rail" : "Coolant manifold";
+    }
   }
   return ship;
 }

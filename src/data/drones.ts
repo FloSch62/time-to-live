@@ -24,11 +24,11 @@ export interface DroneDef {
 export const DRONES: Record<DroneId, DroneDef> = {
   "firewall-drone": {
     id: "firewall-drone", name: "Firewall Drone", kind: "defence", power: 2, cooldown: 1.6, damage: 0, cost: 45, rarity: 1,
-    stageMin: 1, desc: "Orbits the tender and shoots down incoming payloads, debris and crawlers.",
+    stageMin: 1, desc: "Circles the tender and shoots down incoming payloads, debris and crawlers.",
   },
   "relay-drone": {
     id: "relay-drone", name: "Relay Drone", kind: "combat", power: 2, cooldown: 4.6, damage: 1, cost: 45, rarity: 0,
-    stageMin: 1, desc: "Flies to the enemy and fires 1-damage laser bolts at random rooms.",
+    stageMin: 1, desc: "Flies out to the enemy on its rotors and fires 1-damage emitter bolts at random rooms.",
   },
   "rigger-drone": {
     id: "rigger-drone", name: "Rigger Drone", kind: "repair", power: 1, cooldown: 2.4, damage: 1, capacity: 4, cost: 40,
@@ -36,7 +36,7 @@ export const DRONES: Record<DroneId, DroneDef> = {
   },
   "bulwark-drone": {
     id: "bulwark-drone", name: "Bulwark Drone", kind: "anti", power: 2, cooldown: 2.8, damage: 1, cost: 35, rarity: 0,
-    stageMin: 1, desc: "Hunts enemy drones: each hit knocks one out of the sky.",
+    stageMin: 1, desc: "Hunts enemy drones: each hit knocks one off its rotors.",
   },
   "crawler-drone": {
     id: "crawler-drone", name: "Crawler Drone", kind: "boarding", power: 3, cooldown: 0, damage: 1, capacity: 110, cost: 60,

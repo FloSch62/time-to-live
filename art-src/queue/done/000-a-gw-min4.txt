@@ -1,0 +1,2 @@
+ships/glasswing:min4
+ships/glasswing:minr4

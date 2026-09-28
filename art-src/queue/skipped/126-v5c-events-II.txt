@@ -1,0 +1,5 @@
+events/glass-bells:v5c@2
+events/cathedral-nave:v5c@2
+events/choir-loft:v5c@2
+events/ringing-panes:v5c@2
+events/bellmakers-bench:v5c@2

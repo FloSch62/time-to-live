@@ -11,10 +11,18 @@ Individual looks are palette swaps of whole material ramps (see CHANNELS / LOOKS
 swappable colour belongs to one channel only.
 
 Frame 72x72 (contract v4), facing RIGHT, anchor (36, 71) = the outline row under the boots (put it on the room's
-floor line). The rig is posed in 64-unit "design" space and the canvas scales every shape by K = 72/64, so the
-figures are ~60 px tall while 1-px details stay single pixels. Left frames are exact mirrors (anchor x 35).
+floor line). The rig is posed in 64-unit "design" space and the canvas scales every shape by K = 72/64 while 1-px
+details stay single pixels. Left frames are exact mirrors (anchor x 35).
+
+Readability pass (design plan §2.4): the figures were ~60 px tall and 16-19 px wide, heads nearly touching a deck
+ceiling (~62 px of interior) and thin enough to vanish among the props. They are now sturdier FTL-grade figures:
+humans ~46 px tall and ~20-24 px wide with a larger head (about 1:4.5), riggers ~38 px. The rig keeps its poses:
+`sturdy()` rescales every species' limb lengths, widths and radii, `remap()` moves a pose's pelvis, feet and hands
+onto the new body (feet stay on the floor), and the head, hair and headgear are drawn under a head zoom.
 """
 from __future__ import annotations
+
+from contextlib import contextmanager
 
 import math
 from dataclasses import dataclass, field, replace
@@ -33,6 +41,11 @@ THIGH, SHIN = 11.0, 11.5
 UPPER, FORE = 9.5, 8.5
 SPINE = 15.0
 H, W = FH, FW
+# Readability proportions (see the module note): legs, spine and arms shorten, the body and head grow.
+LEGK, SPINEK, ARMK = 0.64, 0.64, 0.7
+HEADK, WIDK, RADK = 1.3, 1.62, 1.4
+RIGK = 0.78          # riggers scale about their feet
+
 
 
 # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -47,6 +60,7 @@ class Canvas:
     def __init__(self, w=FW, h=FH, k=K):
         self.w, self.h = w, h
         self.k = k
+        self.zooms = []      # [(center, scale)] applied innermost first (head zoom, whole-figure scale)
         self.mat = np.full((h, w), "", dtype=object)
         self.val = np.zeros((h, w))
         self.part = np.full((h, w), -1, int)
@@ -56,19 +70,42 @@ class Canvas:
         self.noshadow = set()
 
     # design-space -> pixel-space helpers
+    def Z(self, p):
+        x, y = p
+        for (cx, cy), s in reversed(self.zooms):
+            x, y = cx + (x - cx) * s, cy + (y - cy) * s
+        return x, y
+
     def T(self, p):
-        return p[0] * self.k, p[1] * self.k
+        x, y = self.Z(p)
+        return x * self.k, y * self.k
+
+    @property
+    def ks(self):
+        """Pixels per design unit for radii (zoom included)."""
+        s = self.k
+        for _, z in self.zooms:
+            s *= z
+        return s
+
+    @contextmanager
+    def zoom(self, center, scale):
+        self.zooms.append((center, scale))
+        try:
+            yield
+        finally:
+            self.zooms.pop()
 
     def polymask(self, pts):
         return hd.poly_mask(self.w, self.h, [self.T(p) for p in pts])
 
     def ellmask(self, cx, cy, rx, ry):
         x, y = self.T((cx, cy))
-        return hd.ellipse_mask(self.w, self.h, x, y, rx * self.k, ry * self.k)
+        return hd.ellipse_mask(self.w, self.h, x, y, rx * self.ks, ry * self.ks)
 
     def sphn(self, cx, cy, rx, ry):
         x, y = self.T((cx, cy))
-        return hd.sphere_normals(self.w, self.h, x, y, rx * self.k, ry * self.k)
+        return hd.sphere_normals(self.w, self.h, x, y, rx * self.ks, ry * self.ks)
 
     def fill(self, mask, mat, val, dv=0.0, cast=True):
         self.n += 1
@@ -163,7 +200,7 @@ class Canvas:
 
 # ── shapes ──────────────────────────────────────────────────────────────────────────────────────────────────
 def limb(cv: Canvas, p0, p1, r0, r1, mat, dv=0.0, amb=0.2, soft=1.0):
-    m, t, s, n = hd.capsule(cv.w, cv.h, cv.T(p0), cv.T(p1), r0 * cv.k, r1 * cv.k)
+    m, t, s, n = hd.capsule(cv.w, cv.h, cv.T(p0), cv.T(p1), r0 * cv.ks, r1 * cv.ks)
     nx, ny, nz = hd.cylinder_normals(s * soft, n)
     val = hd.lambert(nx, ny, nz, amb)
     return cv.fill(m, mat, val, dv)
@@ -182,7 +219,7 @@ def poly(cv: Canvas, pts, mat, dv=0.0, axis=None, amb=0.2, flat=0.62):
         val = np.full((cv.h, cv.w), flat)
     else:
         (x0, y0), (x1, y1), rad = axis
-        (x0, y0), (x1, y1), rad = cv.T((x0, y0)), cv.T((x1, y1)), rad * cv.k
+        (x0, y0), (x1, y1), rad = cv.T((x0, y0)), cv.T((x1, y1)), rad * cv.ks
         X, Y = hd.grid(cv.w, cv.h)
         dx, dy = x1 - x0, y1 - y0
         L = math.hypot(dx, dy) or 1
@@ -257,10 +294,12 @@ class Skeleton:
         n = (math.cos(pose.lean), math.sin(pose.lean))         # body front
         self.u, self.n = u, n
         self.P = P
+        self.spine = d["spine"]
         self.C = add(P, u, d["spine"])                         # chest top / neck base
         hu = (math.sin(pose.lean + pose.head), -math.cos(pose.lean + pose.head))
         self.hu = hu
-        self.Hc = add(add(self.C, hu, d["neck"] + 3.6), (math.cos(pose.lean + pose.head), math.sin(pose.lean + pose.head)), 0.6)
+        hk = d.get("headk", 1.0)
+        self.Hc = add(add(self.C, hu, d["neck"] + 3.6 * hk), (math.cos(pose.lean + pose.head), math.sin(pose.lean + pose.head)), 0.6 * hk)
         self.S = add(add(self.C, u, -2.2), n, -0.6)           # shoulder joint
         self.hip_near = add(P, n, 0.6)
         self.hip_far = add(P, n, -0.8)
@@ -343,7 +382,8 @@ def hand(cv, wrist, elbow, look, dv, kind="open"):
     d = (wrist[0] - elbow[0], wrist[1] - elbow[1])
     L = math.hypot(*d) or 1
     c = add(wrist, (d[0] / L, d[1] / L), 1.4)
-    blob(cv, c[0], c[1], 1.6, 1.7, look.hand, dv)
+    hs = 1.2 if look.dims.get("headk", 1.0) > 1 else 1.0
+    blob(cv, c[0], c[1], 1.6 * hs, 1.7 * hs, look.hand, dv)
     return c
 
 
@@ -366,6 +406,7 @@ def arm(cv, sk: Skeleton, look: Look, near: bool, pose: Pose):
         diry = Wr[1] - E[1]
         L = math.hypot(dirx, diry) or 1
         tip = add(c, (dirx / L, diry / L), 5.0)
+        cv.tip = cv.T(tip)
         matline(cv, c, tip, "tool", 0.7)
         cv.setmat(tip[0] + 0.5, tip[1] - 0.5, "tool", 0.9)
         cv.setmat(tip[0] + 0.5, tip[1] + 0.8, "tool", 0.5)
@@ -390,7 +431,7 @@ def skirt(cv, sk: Skeleton, look: Look, dv=0.0):
     L = look.skirt
     projs = []
     for Hp, K, r in ((sk.hip_near, sk.knee_near, look.dims["thigh_r"][0]), (sk.hip_far, sk.knee_far, look.dims["thigh_r"][0])):
-        f = min(1.0, L / THIGH)
+        f = min(1.0, L / look.dims["thigh"])
         q = lerp(Hp, K, f)
         rel = (q[0] - P[0], q[1] - P[1])
         projs.append((rel[0] * n[0] + rel[1] * n[1], rel[0] * u[0] + rel[1] * u[1]))
@@ -410,9 +451,16 @@ def skirt(cv, sk: Skeleton, look: Look, dv=0.0):
 
 def head(cv, sk: Skeleton, look: Look, pose: Pose):
     Hc = sk.Hc
-    x, y = Hc
     # neck (in the shadow of the jaw)
-    limb(cv, add(sk.C, sk.u, -0.5), add(sk.C, sk.hu, 2.6), 1.6, 1.5, "skin", -0.3)
+    hk = look.dims.get("headk", 1.0)
+    limb(cv, add(sk.C, sk.u, -0.5), add(sk.C, sk.hu, 2.6 * hk), 1.6 * RADK if hk > 1 else 1.6, 1.5 * RADK if hk > 1 else 1.5, "skin", -0.3)
+    with cv.zoom(Hc, hk):
+        return head_shape(cv, sk, look, pose)
+
+
+def head_shape(cv, sk: Skeleton, look: Look, pose: Pose):
+    Hc = sk.Hc
+    x, y = Hc
     # cranium + face profile (brow, nose, lips, chin, jaw)
     blob(cv, x - 0.5, y - 0.5, 3.7, 4.1, "skin", 0.08, amb=0.35)
     face = [(x + 2.0, y - 3.3), (x + 3.3, y - 1.8), (x + 3.5, y - 0.6), (x + 4.4, y + 0.9), (x + 4.3, y + 1.5),
@@ -466,6 +514,7 @@ def hair_long(cv, Hc, dv=0.0, length=9):
 
 def render_side(look: Look, pose: Pose) -> Canvas:
     cv = Canvas()
+    pose = remap(pose, look.dims)
     sk = Skeleton(pose, look.dims)
     arm(cv, sk, look, False, pose)
     leg(cv, sk, look, False, pose)
@@ -478,12 +527,13 @@ def render_side(look: Look, pose: Pose) -> Canvas:
     if look.torso_detail:
         look.torso_detail(cv, sk, look, pose)
     Hc = head(cv, sk, look, pose)
-    if look.hair == "short":
-        hair_short(cv, Hc)
-    elif look.hair == "long":
-        hair_long(cv, Hc, length=11)
-    if look.head_gear:
-        look.head_gear(cv, sk, look, pose)
+    with cv.zoom(Hc, look.dims.get("headk", 1.0)):
+        if look.hair == "short":
+            hair_short(cv, Hc)
+        elif look.hair == "long":
+            hair_long(cv, Hc, length=11)
+        if look.head_gear:
+            look.head_gear(cv, sk, look, pose)
     arm(cv, sk, look, True, pose)
     if look.front:
         look.front(cv, sk, look, pose)
@@ -533,7 +583,7 @@ R_LAMP_AMBER = ["e0", "a0", "a0h", "a1", "a1h", "a2", "a3"]
 
 
 def spine_pt(sk, t, off, d=None):
-    return add(add(sk.P, sk.u, t * SPINE), sk.n, off)
+    return add(add(sk.P, sk.u, t * sk.spine), sk.n, off)
 
 
 def belt(cv, sk, look, t=0.06, mat="leather", buckle=True, pouch=True):
@@ -1021,6 +1071,54 @@ MARSHAL.helmet = False
 
 
 # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# Readability proportions
+# ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+OLD_DIMS = dict(DIMS)
+
+
+def sturdy(d: dict) -> dict:
+    """Shorter limbs and spine, a broader body and larger head (see the module note)."""
+    d = dict(d)
+    d["spine"] *= SPINEK
+    d["neck"] *= 0.7
+    d["thigh"] *= LEGK
+    d["shin"] *= LEGK
+    d["upper"] *= ARMK
+    d["fore"] *= ARMK
+    d["front"] = [f * WIDK for f in d["front"]]
+    d["back"] = [b * WIDK for b in d["back"]]
+    for k in ("thigh_r", "shin_r", "arm_r", "fore_r"):
+        d[k] = tuple(r * RADK for r in d[k])
+    d["headk"] = HEADK
+    return d
+
+
+def remap(p: "Pose", dims: dict) -> "Pose":
+    """Move a pose authored for the old body onto the new one: the feet keep their floor contact and spread in
+    proportion to the legs, the pelvis sits lower, and each hand keeps its direction from the shoulder."""
+    if "headk" not in dims:
+        return p
+    P0 = p.pelvis
+    P = (P0[0], GROUND - (GROUND - P0[1]) * LEGK)
+
+    def ank(a):
+        return (P[0] + (a[0] - P0[0]) * LEGK, GROUND - (GROUND - a[1]) * LEGK)
+    q = replace(p, pelvis=P, near_ankle=ank(p.near_ankle), far_ankle=ank(p.far_ankle), near_wrist=None, far_wrist=None)
+    old = Skeleton(replace(p, near_wrist=None, far_wrist=None), dict(OLD_DIMS, spine=dims.get("spine0", OLD_DIMS["spine"])))
+    new = Skeleton(q, dims)
+
+    def wr(w, so, sn):
+        return None if w is None else (sn[0] + (w[0] - so[0]) * ARMK, sn[1] + (w[1] - so[1]) * ARMK)
+    return replace(q, near_wrist=wr(p.near_wrist, old.S, new.S), far_wrist=wr(p.far_wrist, old.S_far, new.S_far))
+
+
+for _look in (LINEFOLK, WARDEN, COURIER, BELLMAKER, SPLICER, MARSHAL):
+    _look.old_dims = dict(_look.dims)
+    _look.dims = dict(sturdy(_look.dims), spine0=_look.dims["spine"])
+    _look.skirt *= LEGK
+
+
+# ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
 # Pose library (facing right). Distances in atlas px; the floor is SOLE (62); a flat standing ankle is 58.5.
 # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
 GROUND = 58.5
@@ -1108,8 +1206,9 @@ CLIMB = [  # left hand, right hand, left foot (ankle), right foot, body dy
 
 def render_back(look: Look, f: int) -> Canvas:
     cv = Canvas()
+    cv.zooms.append(((32.0, SOLE), 0.8))    # the climb view keeps its old rig, scaled to the new height
     lh, rh, lf, rf, dy = CLIMB[f]
-    d = look.dims
+    d = getattr(look, "old_dims", look.dims)
     P = (32.0, 36.5 + dy)
     C = (32.0, P[1] - d["spine"])
     wide = d["front"][4] + d["back"][3]          # shoulder breadth follows the side-view chest depth
@@ -1206,6 +1305,7 @@ def rig_pose(kind, f):
 
 def render_rigger(kind, f) -> Canvas:
     cv = Canvas()
+    cv.zooms.append(((32.0, SOLE), RIGK))
     r = rig_pose(kind, f)
     P, lean = r["P"], r["lean"]
     u = (math.sin(lean), -math.cos(lean))
@@ -1291,6 +1391,7 @@ def render_rigger(kind, f) -> Canvas:
     L = math.hypot(*d) or 1
     d = (d[0] / L, d[1] / L)
     tip = add(wn, d, 3.0)
+    cv.tip = cv.T(tip)
     if r["tool"] == "torch":
         limb(cv, wn, tip, 1.0, 0.7, "brass", 0.0)
     else:  # two-finger claw
@@ -1306,6 +1407,7 @@ def render_rigger(kind, f) -> Canvas:
 
 def render_rigger_back(f) -> Canvas:
     cv = Canvas()
+    cv.zooms.append(((32.0, SOLE), RIGK))
     lh, rh, lf, rf, dy = CLIMB[f]
     P = (32.0, 43.5 + dy)
     for hip, ank, dv in (((29.5, P[1]), (lf[0], lf[1] + 1.0), 0.0), ((34.5, P[1]), (rf[0], rf[1] + 1.0), -0.1)):
@@ -1343,9 +1445,10 @@ class RiggerSpecies:
     def render(self, pose, f) -> Img:
         if pose == "climb":
             return render_rigger_back(f).resolve(RIG_RAMPS)
-        im = render_rigger(pose, f).resolve(RIG_RAMPS)
+        cv = render_rigger(pose, f)
+        im = cv.resolve(RIG_RAMPS)
         if pose == "repair":
-            sparks(im, f, ("t4", "i4", "a2"))
+            sparks(im, f, ("t4", "i4", "a2"), getattr(cv, "tip", None))
         return im
 
 
@@ -1455,12 +1558,14 @@ POSES = [  # (pose, frames, fps, loop, mirrored)
 IDLE_SEQ = [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 2]
 
 
-def sparks(img: Img, f: int, hot=("a3", "a2", "a1")):
+def sparks(img: Img, f: int, hot=("a3", "a2", "a1"), tip=None):
     """Repair sparks spraying from the tool tip (unoutlined), placed in frame pixels."""
     pts = [[(51, 32), (53, 30), (52, 35)], [(52, 31), (54, 29), (55, 33), (51, 35), (53, 36)],
            [(53, 30), (56, 28), (55, 34), (52, 36), (57, 31), (54, 38)]][f]
+    ox, oy = (round(tip[0]) - 50, round(tip[1]) - 32) if tip else (0, 0)
     for i, (x, y) in enumerate(pts):
-        img.put(x, y, hot[i % len(hot)])
+        if 0 <= x + ox < FW and 0 <= y + oy < FH:
+            img.put(x + ox, y + oy, hot[i % len(hot)])
 
 
 class HumanSpecies:
@@ -1474,9 +1579,10 @@ class HumanSpecies:
         if pose == "climb":
             return render_back(L, f).resolve(L.ramps)
         rig = "repair" if pose == "sabotage" else pose
-        im = render_side(L, pose_for(rig, f)).resolve(L.ramps)
+        cv = render_side(L, pose_for(rig, f))
+        im = cv.resolve(L.ramps)
         if rig == "repair":
-            sparks(im, f, self.spark)
+            sparks(im, f, self.spark, getattr(cv, "tip", None))
         return im
 
 

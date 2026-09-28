@@ -85,12 +85,13 @@ export const RELAY_NAMES: string[] = [
   "Candle Relay", "Relay 1,440", "Last Reel", "Relay 33", "Spool Relay",
 ];
 
-/** Suggestions for the tender naming screen. The dock plate always says Lamplighter underneath. */
+/** Suggestions for the tender naming screen. The dock plate keeps the car's own name (Lamplighter, Glasswing or
+ * Switchback) underneath, so no suggestion repeats a dock name. */
 export const TENDER_NAMES: string[] = [
-  "Lamplighter", "Second Shift", "Kettle On", "Received", "Keepalive", "Small Hours", "Good Crimper",
+  "Second Shift", "Kettle On", "Received", "Keepalive", "Small Hours", "Good Crimper",
   "Next Shift", "Hello Again", "Window Seat", "Thursday", "Quarter Tone", "Late Answer", "Paid Mostly",
   "Leave It Lit", "Still Here", "Return Trip", "Night Relief", "Fair Prices", "Sixteen Hops",
 ];
 
-/** Default tender name. */
+/** Default tender name (the Lamplighter's dock name; the other cars default to their own). */
 export const DEFAULT_TENDER_NAME = "Lamplighter";

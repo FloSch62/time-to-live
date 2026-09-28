@@ -1,0 +1,17 @@
+{
+ "stage": "I",
+ "hull": "switchback",
+ "scale": 1.0,
+ "at": [
+  1500,
+  120
+ ],
+ "extras": [
+  "span",
+  "towers"
+ ],
+ "size": [
+  2560,
+  1280
+ ]
+}

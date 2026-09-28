@@ -1,0 +1,18 @@
+{
+ "id": "switchback",
+ "note": "Switchback S-08, drone retrieval: tall 13x5, heavy double-bogie drive, retrieval crane reaching over three drone cradles aft",
+ "canvas": [1120, 616],
+ "grid": {"x": 48, "y": 180, "cols": 13, "rows": 5, "tile": 72},
+ "roof_h": 30, "keel_h": 42,
+ "rear": "rear-cap", "rear_w": 56, "rear_overlap": 8,
+ "nose": "nose-heavy", "nose_w": 144, "nose_overlap": 8,
+ "body": ["body-5a:0", "body-5b:1", "body-5a:2", "body-5b:3", "body-5a:4", "body-5b:5", "body-5a:1", "body-5b:0", "body-5a:3", "body-5b:2", "body-5a:5", "body-5b:4", "body-5a:0"],
+ "cable": [700, 20],
+ "trolley": "heavy-drive", "sheave_top": 1,
+ "mounts_top": [424, 958],
+ "mounts_belly": [150, 930],
+ "roof": [{"part": "retrieval-crane", "x": 52}, {"part": "drone-cradle", "x": 150}, {"part": "drone-cradle", "x": 236}, {"part": "drone-cradle", "x": 322}],
+ "keel": [{"part": "keel-air-tanks", "x": 200}, {"part": "keel-ballast", "x": 700}],
+ "keel_hang_x": 516,
+ "couplerRear": {"x": 4, "y": 432}
+}

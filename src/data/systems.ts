@@ -27,26 +27,26 @@ const E = [5, 10, 15, 20, 25, 28, 31, 35];
 
 export const SYSTEMS: Record<SystemId, SystemDef> = {
   shields: {
-    id: "shields", name: "Shield Array", short: "Shields", maxLevel: 8, subsystem: false, purchasable: false,
-    cost: [0, 0, 0, 20, 30, 40, 60, 80, 100], mannable: true,
-    desc: "Every 2 power raise one shield layer. Each projectile that strikes strips a layer; layers recharge.",
+    id: "shields", name: "Shield Array", short: "Shields", maxLevel: 8, subsystem: false, purchasable: true, buyCost: 90, buyLevel: 2,
+    cost: [0, 0, 0, 25, 35, 55, 75, 110, 145], mannable: true,
+    desc: "The ward mesh. Every 2 power raises one rechargeable mesh layer. Emitter bolts, rivets and jammer pulses strike the mesh; payloads go through it. Each layer weakens a lance beam by 1.",
     levels: ["", "1 bar", "1 layer", "1 layer (+1 bar)", "2 layers", "2 layers (+1 bar)", "3 layers", "3 layers (+1 bar)", "4 layers"],
   },
   engines: {
     id: "engines", name: "Thrusters", short: "Thrusters", maxLevel: 8, subsystem: false, purchasable: false,
-    cost: [0, 0, 0, 25, 35, 50, 65, 80, 95], mannable: true,
-    desc: "Evasion (with the Helm manned) and hop-drive charge.",
+    cost: [0, 0, 15, 25, 40, 60, 85, 110, 140], mannable: true,
+    desc: "The drive trolley's motors: evasion (with the Helm manned) and the handshake charge for the next switch.",
     levels: ["", ...E.map((e) => `${e}% evasion`)],
   },
   weapons: {
     id: "weapons", name: "Weapons Bay", short: "Weapons", maxLevel: 8, subsystem: false, purchasable: false,
-    cost: [0, 0, 0, 0, 35, 50, 65, 80, 95], mannable: true,
+    cost: [0, 0, 20, 25, 40, 60, 85, 115, 150], mannable: true,
     desc: "Power for mounted weapons: each weapon needs its own bars.",
     levels: ["", "1 bar", "2 bars", "3 bars", "4 bars", "5 bars", "6 bars", "7 bars", "8 bars"],
   },
   air: {
     id: "air", name: "Air Plant", short: "Air", maxLevel: 3, subsystem: false, purchasable: false, cost: [0, 0, 25, 45],
-    mannable: false, desc: "Refills air ship-wide. Unpowered, the air slowly thins; below 5% crew suffocate.",
+    mannable: false, desc: "Refills the air in every room of the car. Unpowered, the air slowly thins; below 5% crew suffocate.",
     levels: ["", "Slow refill", "Faster refill", "Fast refill"],
   },
   medbay: {
@@ -56,7 +56,7 @@ export const SYSTEMS: Record<SystemId, SystemDef> = {
   },
   helm: {
     id: "helm", name: "Helm", short: "Helm", maxLevel: 3, subsystem: true, purchasable: false, cost: [0, 0, 25, 45],
-    mannable: true, desc: "Must be manned to evade and to charge the hop drive. Higher levels fly on autopilot.",
+    mannable: true, desc: "A crew member must acknowledge every departure. Higher levels preserve partial evasion while the Helm is unattended.",
     levels: ["", "Manned only", "Autopilot at 50%", "Autopilot at 80%"],
   },
   sensors: {
@@ -72,7 +72,7 @@ export const SYSTEMS: Record<SystemId, SystemDef> = {
   },
   drones: {
     id: "drones", name: "Drone Bay", short: "Drones", maxLevel: 8, subsystem: false, purchasable: true, buyCost: 60,
-    buyLevel: 2, cost: [0, 0, 0, 20, 30, 40, 50, 60, 70], mannable: false,
+    buyLevel: 2, cost: [0, 0, 20, 25, 35, 55, 75, 100, 130], mannable: false,
     desc: "Power for drones. Each launch spends a spare.",
     levels: ["", "1 bar", "2 bars", "3 bars", "4 bars", "5 bars", "6 bars", "7 bars", "8 bars"],
   },
@@ -94,9 +94,9 @@ export const MAX_REACTOR = 25;
 export function reactorCost(bars: number): number {
   if (bars >= MAX_REACTOR) return Infinity;
   if (bars < 12) return 15;
-  if (bars < 17) return 20;
-  if (bars < 21) return 25;
-  return 30;
+  if (bars < 17) return 25;
+  if (bars < 21) return 40;
+  return 60;
 }
 
 /** Reactor upgrade costs indexed by current bar count (8…24). */

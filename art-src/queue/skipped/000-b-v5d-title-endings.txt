@@ -1,0 +1,4 @@
+bg/title:v5d
+ending/e1:v5d
+ending/e2:v5d
+ending/e3:v5d

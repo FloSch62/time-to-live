@@ -1,8 +1,8 @@
 // Run lifecycle: new voyage, arrival, hop, waiting for a signal at TTL 0, map knowledge, stage transitions.
 // Pure module.
 import { Rng, hashString } from "../core/rng.ts";
-import type { StageIndex } from "../game/ids.ts";
-import type { EventDef, Inventory, ShipState } from "../game/types.ts";
+import type { EnemyId, StageIndex } from "../game/ids.ts";
+import type { EventDef, Inventory, RetreatRoute, ShipState } from "../game/types.ts";
 import { catalog } from "./catalog.ts";
 import { content } from "./content.ts";
 import { eligibleEvents, pickEventFor, withRng } from "./events.ts";
@@ -10,29 +10,33 @@ import { advanceSeal, generateMap, sealFactor } from "./map.ts";
 import {
   SAVE_VERSION, currentRelay, emptyStats, isSealed, type Relay, type RunState,
 } from "./model.ts";
-import { afterHop, hasAugment, startInventory } from "./shipops.ts";
+import { afterHop, hasAugment, healAll, speciesMaxHp, startInventory } from "./shipops.ts";
 import { tenderStats } from "./refit.ts";
+import { difficultyRules, type DifficultyId } from "../data/difficulty.ts";
 
-export const STAGE_TTL_TOPUP = 3;
-export const STAGE_TTL_FLOOR = 6;
+export const STAGE_TTL_TOPUP = difficultyRules().stageTtlTopup;
+export const STAGE_TTL_FLOOR = difficultyRules().stageTtlFloor;
 
-/** The three-stage voyage has a compressed upgrade economy: each cleared relay carries maintenance stores. */
-export const RELAY_STORES: Record<StageIndex, number> = { 1: 24, 2: 36, 3: 48 };
+/** A modest per-stop service allocation. Combat rewards, repairs and deep upgrades compete with it. */
+export const RELAY_STORES: Record<StageIndex, number> = difficultyRules().relayStores;
 
 export function claimRelayStores(run: RunState): number {
   const relay = currentRelay(run);
   if (!relay.resolved || relay.serviceSalvage !== undefined || relay.type === "start" || relay.type === "exit"
     || relay.sealedVisit || isSealed(run.map, relay)) return 0;
-  const amount = RELAY_STORES[run.stage];
+  const base = relay.maintenance === false ? 0 : relay.maintenance ?? difficultyRules(run.difficulty).relayStores[run.stage];
+  const amount = base > 0 ? base + tenderStats(run.ship).relayStores : 0;
   relay.serviceSalvage = amount;
   run.inv.salvage += amount;
   run.stats.salvageEarned += amount;
   return amount;
 }
 
-export function createRun(seed: number, ship: ShipState, inv: Inventory = startInventory()): RunState {
-  const map = generateMap(1, seed);
+export function createRun(seed: number, ship: ShipState, inv?: Inventory, difficulty: DifficultyId = "medium"): RunState {
+  const map = generateMap(1, seed, difficulty);
+  const inventory = inv ?? { ...startInventory(ship.defId), salvage: difficultyRules(difficulty).startingSalvage };
   const run: RunState = {
+    difficulty,
     version: SAVE_VERSION,
     seed,
     rng: new Rng(hashString(`run-${seed}`)).state(),
@@ -40,7 +44,7 @@ export function createRun(seed: number, ship: ShipState, inv: Inventory = startI
     map,
     pos: map.start,
     ship,
-    inv: { ...inv },
+    inv: { ...inventory },
     flags: [],
     fragments: [],
     codex: [],
@@ -78,12 +82,23 @@ export function arrive(run: RunState, first = false) {
     // Every arrival at a sealed relay meets a fresh patrol, and there is nothing left worth taking.
     r.sealedVisit = true;
     r.resolved = false;
-    r.pendingCombat = undefined;
-    r.eventId = pickEventFor(run, r.id, `sealed-${run.stats.hops}`) ?? undefined;
-    reserveUnique(run, r.eventId);
+    r.pendingCombat = { enemy: "quarantine-drone", noReward: true,
+      intro: "QUARANTINE ROUTE LOCK. Unknown connection acquired; sealing patrol intercepting." };
+    r.eventId = undefined;
     return;
   }
   if (!r.resolved && !r.pendingCombat && !r.eventId) {
+    if (r.interception) {
+      const rng = new Rng(hashString(`${run.seed}|interception|${run.stage}|${r.id}`));
+      const pools: Record<StageIndex, EnemyId[]> = {
+        1: ["packet-leech", "cable-wraith", "rust-prophet"],
+        2: ["prism-widow", "glass-echo", "coil-serpent"],
+        3: ["gate-sentinel", "ash-moth", "null-marshal"],
+      };
+      r.pendingCombat = { enemy: rng.pick(pools[run.stage]), surrenderable: false,
+        intro: "The search beam catches your lamp. UNKNOWN SENDER. The machine turns onto your carrier and opens fire." };
+      return;
+    }
     r.eventId = pickEventFor(run, r.id) ?? undefined;
     reserveUnique(run, r.eventId);
   }
@@ -98,26 +113,88 @@ function reserveUnique(run: RunState, id: string | undefined) {
 
 export function canHop(run: RunState, to: number): { ok: boolean; reason?: string } {
   const r = currentRelay(run);
-  if (!r.links.includes(to)) return { ok: false, reason: "Out of range" };
+  if (!run.map.relays[to] || !r.links.includes(to)) return { ok: false, reason: "Out of range" };
   if (run.inv.ttl <= 0) return { ok: false, reason: "TTL 0 · no relay will throw you" };
+  if (!run.ship.crew.length) return { ok: false, reason: "A crew member must attend the greeting" };
+  for (const id of ["helm", "engines"] as const) {
+    const system = run.ship.systems[id];
+    if (!system || system.damage >= system.level) return { ok: false, reason: `${id === "helm" ? "Helm" : "Drive"} disabled · field service needed` };
+  }
   if (!r.resolved && !r.pendingCombat) return { ok: false, reason: "Finish what is happening here first" };
   return { ok: true };
 }
 
 /** Hop to a linked relay: spend 1 TTL, advance the Seal, crew mend between relays, augments tick. */
-export function hop(run: RunState, to: number) {
+export function hop(run: RunState, to: number): boolean {
+  if (!canHop(run, to).ok) return false;
   const from = currentRelay(run);
+  // Calm departure preparation calls an available crew member to the Helm before the switch throws.
+  // Their saved return station remains unchanged; combat still requires physical attendance in the simulator.
+  const pilot = run.ship.crew.find(c => c.station === "lead:helm") ?? run.ship.crew[0];
+  pilot.room = "lead:helm";
   run.inv.ttl = Math.max(0, run.inv.ttl - 1);
   run.stats.hops++;
   advanceSeal(run.map, sealFactor(from));
   run.pos = to;
   betweenRelays(run);
   arrive(run);
+  return true;
 }
 
-/** What happens during a hop regardless of destination: system damage is mended, augments work. */
+/** A real escape uses a connected destination. Prefer a known refuge that stays outside the advancing Seal. */
+export function retreatRoutes(run: RunState): RetreatRoute[] {
+  if (run.inv.ttl < 1) return [];
+  const cur = currentRelay(run);
+  const nextSeal = Math.min(run.map.relays[run.map.exit].x - 12, run.map.sealX + run.map.sealStep * sealFactor(cur));
+  const candidates = cur.links.map(id => run.map.relays[id]);
+  const previous = [...run.route].reverse().find(r => r.stage === run.stage && r.relay !== run.pos)?.relay;
+  candidates.sort((a, b) => {
+    const score = (r: Relay) => (r.x > nextSeal ? 100 : 0) + (r.resolved ? 30 : 0) + (r.id === previous ? 10 : 0) - (r.type === "exit" ? 15 : 0);
+    return score(b) - score(a) || a.id - b.id;
+  });
+  return candidates.map(to => ({ to: to.id, name: to.name, cost: 1, sealed: to.x < nextSeal || undefined }));
+}
+
+export function retreatRoute(run: RunState): RetreatRoute | undefined {
+  return retreatRoutes(run)[0];
+}
+
+export interface RecoveryStatus {
+  ok: boolean;
+  reason?: string;
+  sealSteps: number;
+  crewInjured: number;
+  systemsDamaged: number;
+  patrolRisk: boolean;
+}
+
+/** Field service is a deliberate route-time expense. Reading and ordinary dockside movement cost nothing. */
+export function safeRecoveryStatus(run: RunState): RecoveryStatus {
+  const relay = currentRelay(run);
+  const crewInjured = run.ship.crew.filter(c => c.hp < speciesMaxHp(c.species)).length;
+  const systemsDamaged = Object.values(run.ship.systems).reduce((n, s) => n + (s?.damage ?? 0), 0);
+  const nextSeal = Math.min(run.map.relays[run.map.exit].x - 12, run.map.sealX + run.map.sealStep);
+  const base = { sealSteps: 1, crewInjured, systemsDamaged, patrolRisk: !isSealed(run.map, relay) && relay.id !== run.map.exit && relay.x < nextSeal };
+  const reason = !relay.resolved || relay.pendingCombat ? "Clear this relay before field service"
+    : !run.ship.crew.length ? "No crew available for field service"
+    : !crewInjured && !systemsDamaged ? "Crew and systems are ready"
+    : undefined;
+  return { ...base, ok: !reason, reason };
+}
+
+/** Restore crew health and system bars, preserving hull damage and supplies. */
+export function safeRecovery(run: RunState): RecoveryStatus {
+  const status = safeRecoveryStatus(run);
+  if (!status.ok) return status;
+  healAll(run.ship);
+  for (const system of Object.values(run.ship.systems)) if (system) system.damage = 0;
+  advanceSeal(run.map, status.sealSteps);
+  if (status.patrolRisk) arrive(run);
+  return status;
+}
+
+/** Only installed travel augments provide free recovery; injury and damage persist between relays. */
 export function betweenRelays(run: RunState) {
-  for (const s of Object.values(run.ship.systems)) if (s) s.damage = 0;
   afterHop(run.ship);
 }
 
@@ -211,10 +288,11 @@ export function knowledge(run: RunState, r: Relay): Knowledge {
 export function advanceStage(run: RunState) {
   const next = (run.stage + 1) as StageIndex;
   run.stage = next;
-  run.map = generateMap(next, run.seed);
+  run.map = generateMap(next, run.seed, run.difficulty);
   run.pos = run.map.start;
   run.guardianBeaten = false;
-  run.inv.ttl = Math.max(STAGE_TTL_FLOOR, run.inv.ttl + STAGE_TTL_TOPUP);
+  const rules = difficultyRules(run.difficulty);
+  run.inv.ttl = Math.max(rules.stageTtlFloor, run.inv.ttl + rules.stageTtlTopup);
   arrive(run);
 }
 

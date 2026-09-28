@@ -1,0 +1,17 @@
+{
+ "stage": "II",
+ "hull": "glasswing",
+ "scale": 1.5,
+ "at": [
+  700,
+  180
+ ],
+ "crop_nose": true,
+ "extras": [
+  "relaylamp"
+ ],
+ "size": [
+  2560,
+  1280
+ ]
+}

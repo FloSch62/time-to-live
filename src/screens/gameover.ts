@@ -9,7 +9,8 @@ import { content } from "../campaign/content";
 import type { RunState } from "../campaign/model";
 import { stageName, speciesName } from "../campaign/events";
 import { drawBackdrop } from "./backdrop";
-import { ROMAN, brassButton, divider, keeperLamp, titlePlate, tracked } from "./kit";
+import { ROMAN, TYPE, brassButton, divider, header, keeperLamp, textAt, titlePlate } from "./kit";
+import { difficultyRules } from "../data/difficulty";
 
 export function createGameOverScene(app: App, run: RunState, opts: { victory?: boolean; onDone?: () => void } = {}): Scene {
   let t = 0;
@@ -24,20 +25,22 @@ export function createGameOverScene(app: App, run: RunState, opts: { victory?: b
     },
     draw(g, a) {
       drawBackdrop(g, opts.victory ? "ending/e6" : "bg/line-quiet", { kind: opts.victory ? "ending" : "quiet" });
-      g.dim(0.55);
-      if (!opts.victory) keeperLamp(g, 480, 44, t);
-      g.text(headline, 480, 62, { font: "big", color: opts.victory ? P.brass0 : P.ivory1, align: "center", shadow: P.ink0 });
-      tracked(g, `${run.ship.name.toUpperCase()} · ${opts.victory ? "VOYAGE COMPLETE" : `LOST IN ${stageName(run.stage).toUpperCase()}`}`, 480, 100, { font: "labelb", color: opts.victory ? P.teal1 : P.ember1, align: "center" });
+      g.dim(0.62);
+      if (!opts.victory) keeperLamp(g, 480, 22, t);
+      // the headline and its line sit on a dark band of their own, whatever the art behind
+      g.alpha(0.7, () => g.rect(0, 36, 960, 62, P.ink0));
+      textAt(g, headline, 480, 46, { font: TYPE.display, color: opts.victory ? P.brass0 : P.ivory1, align: "center", shadow: P.ink0 });
+      header(g, `${run.ship.name} · ${opts.victory ? "voyage complete" : `lost in ${stageName(run.stage)}`}`, 480, 78, { font: TYPE.strong, color: opts.victory ? P.teal1 : P.ember1, align: "center" });
       const x = 110;
       const w = 740;
-      const y = 124;
-      const h = 360;
+      const y = 120;
+      const h = 348;
       g.panel(x, y, w, h, "dialog");
-      titlePlate(g, 480, y - 10, "THE VOYAGE", { w: 200 });
-      stats(g, run, x + 30, y + 24);
+      titlePlate(g, 480, y - 11, `${difficultyRules(run.difficulty).name.toUpperCase()} VOYAGE`, { w: 200 });
+      stats(g, run, x + 30, y + 26);
       route(g, run, x + 30, y + 150, w - 60);
-      crew(g, run, x + 30, y + 244, w - 60);
-      if (brassButton(a, "go-title", 480 - 100, 540 - 46, 200, 32, "TO RELAY SEVEN", { hotkey: "Enter", hotkeys: ["Space", "Escape"] })) {
+      crew(g, run, x + 30, y + 236, w - 60);
+      if (brassButton(a, "go-title", 480 - 110, y + h + 12, 220, 32, "TO RELAY SEVEN", { hotkey: "Enter", hotkeys: ["Space", "Escape"] })) {
         if (opts.onDone) opts.onDone();
         else goToTitle(a, 0.8);
       }
@@ -47,8 +50,8 @@ export function createGameOverScene(app: App, run: RunState, opts: { victory?: b
 }
 
 function stat(g: Gfx, label: string, value: string, x: number, y: number, color: string = P.ivory0) {
-  tracked(g, label, x, y, { font: "label", color: P.ivory4 });
-  g.text(value, x, y + 12, { font: "head", color, shadow: P.ink0 });
+  header(g, label, x, y, { color: P.ivory3 });
+  textAt(g, value, x, y + 16, { font: TYPE.title, color, shadow: P.ink0 });
 }
 
 function stats(g: Gfx, run: RunState, x: number, y: number) {
@@ -65,7 +68,7 @@ function stats(g: Gfx, run: RunState, x: number, y: number) {
 }
 
 function route(g: Gfx, run: RunState, x: number, y: number, w: number) {
-  tracked(g, "ROUTE", x, y, { font: "label", color: P.ivory4 });
+  header(g, "Route", x, y, { color: P.ivory3 });
   const r = run.route;
   const step = Math.max(8, Math.min(26, Math.floor(w / Math.max(1, r.length))));
   const cy = y + 34;
@@ -77,17 +80,17 @@ function route(g: Gfx, run: RunState, x: number, y: number, w: number) {
     g.rect(px - 1, cy - 1, 3, 3, col);
     if (i > 0 && r[i - 1].stage !== e.stage) {
       g.vline(px - Math.floor(step / 2), cy - 12, 24, P.brass2);
-      tracked(g, ROMAN[e.stage], px - Math.floor(step / 2) + 3, cy - 14, { font: "small", color: P.brass1 });
+      header(g, ROMAN[e.stage], px - Math.floor(step / 2) + 4, cy - 12, { color: P.brass1 });
     }
   });
   const last = r[r.length - 1];
-  if (last) g.text(`{ivory3}last relay:{/} ${last.name}`, x, cy + 14, { font: "body" });
+  if (last) textAt(g, `{ivory3}Last relay:{/} ${last.name}`, x, cy + 16, { font: TYPE.body });
 }
 
 function crew(g: Gfx, run: RunState, x: number, y: number, w: number) {
-  tracked(g, "CREW", x, y, { font: "label", color: P.ivory4 });
-  const aboard = run.ship.crew.map((c) => `{ivory1}${c.name}{/} {ivory4}${speciesName(c.species)}{/}`);
-  const lost = run.stats.crewLost.map((c) => `{ember1}${c.name}{/} {ivory4}${speciesName(c.species)}{/}`);
-  g.text(aboard.length ? aboard.join("   ") : "{ivory4}Nobody was left aboard.{/}", x, y + 14, { font: "body", width: w, maxLines: 2 });
-  if (lost.length) g.text(`{ivory4}Lost:{/} ${lost.join("   ")}`, x, y + 50, { font: "body", width: w, maxLines: 2, color: C.textDim });
+  header(g, "Crew", x, y, { color: P.ivory3 });
+  const aboard = run.ship.crew.map((c) => `{ivory1}${c.name}{/} {ivory3}${speciesName(c.species)}{/}`);
+  const lost = run.stats.crewLost.map((c) => `{ember1}${c.name}{/} {ivory3}${speciesName(c.species)}{/}`);
+  const ah = textAt(g, aboard.length ? aboard.join("   ") : "{ivory3}Nobody was left aboard.{/}", x, y + 16, { font: TYPE.body, width: w });
+  if (lost.length) textAt(g, `{ivory3}Did not return:{/} ${lost.join("   ")}`, x, y + 22 + ah, { font: TYPE.body, width: w, color: C.textDim });
 }

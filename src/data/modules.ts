@@ -29,7 +29,7 @@ export const MODULES: Record<ModuleId, ModuleDef> = {
   bunks: { id: "bunks", name: "Bunks", desc: "+1 crew berth.", effects: { crew: 1 }, cost: 30, rarity: 0 },
   "cargo-hold": { id: "cargo-hold", name: "Cargo Hold", desc: "+2 cargo.", effects: { cargo: 2 }, cost: 25, rarity: 0 },
   "payload-rack": { id: "payload-rack", name: "Payload Rack", desc: "+3 max payloads.", effects: { payloadCap: 3 }, cost: 30, rarity: 0 },
-  ballast: { id: "ballast", name: "Ballast", desc: "+3 hull.", effects: { hull: 3 }, cost: 40, rarity: 0 },
+  ballast: { id: "ballast", name: "Ballast", desc: "+3 maximum hull. Repair the added capacity at an exchange; refitting does not restore hull.", effects: { hull: 3 }, cost: 40, rarity: 0 },
   "listening-horn-array": { id: "listening-horn-array", name: "Listening Horn Array", desc: "+1 Listening Post level.", effects: { sensors: 1 }, cost: 45, rarity: 1 },
   "kettle-bench": { id: "kettle-bench", name: "Kettle Bench", desc: "Crew in this room heal slowly.", effects: { bench: 1.5 }, cost: 30, rarity: 0 },
 };

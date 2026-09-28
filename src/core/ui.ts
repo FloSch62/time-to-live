@@ -29,6 +29,18 @@ interface Tooltip {
   x: number;
   y: number;
   width: number;
+  /** The thing the tooltip describes: the tooltip is placed beside it, never over it. */
+  anchor?: TipAnchor;
+}
+
+/** A rectangle a tooltip must not cover (the hovered element, plus any controls next to it). */
+export interface TipAnchor {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  /** Preferred side; the other sides are tried when it does not fit on screen. */
+  side?: "below" | "above" | "right" | "left";
 }
 
 export class UI {
@@ -84,8 +96,12 @@ export class UI {
     return this.time - this.hoverStart;
   }
 
-  setTooltip(text: string, width = 220) {
-    this.tooltip = { text, x: this.input.mx, y: this.input.my, width };
+  /**
+   * Show a tooltip this frame. Without an anchor it follows the cursor; with one it sits beside the anchor rectangle
+   * (below by default), clamped to the screen and never overlapping the anchor.
+   */
+  setTooltip(text: string, width = 220, anchor?: TipAnchor) {
+    this.tooltip = { text, x: this.input.mx, y: this.input.my, width, anchor };
   }
 
   /** Clickable region without visuals. Returns true on click (left). */
@@ -93,7 +109,7 @@ export class UI {
     const over = this.hot(id, x, y, w, h, false);
     if (!over) return false;
     this.cursor = opts.cursor ?? "pointer";
-    if (opts.tooltip && this.hoverTime() > 0.25) this.setTooltip(opts.tooltip);
+    if (opts.tooltip && this.hoverTime() > 0.25) this.setTooltip(opts.tooltip, 220, { x, y, w, h });
     const b = opts.button ?? 0;
     if (this.input.pressed(b)) {
       this.input.consume();
@@ -108,7 +124,7 @@ export class UI {
     let clicked = false;
     if (over) {
       this.cursor = opts.disabled ? "blocked" : "pointer";
-      if (opts.tooltip && this.hoverTime() > 0.3) this.setTooltip(opts.tooltip);
+      if (opts.tooltip && this.hoverTime() > 0.3) this.setTooltip(opts.tooltip, 220, { x, y, w, h });
       if (!opts.disabled && this.input.pressed(0)) {
         this.activeId = id;
         this.input.consume();
@@ -306,8 +322,28 @@ export class UI {
     const h = lines.length * lh + 8;
     let x = t.x + 14;
     let y = t.y + 14;
-    if (x + w > 956) x = t.x - w - 6;
-    if (y + h > 536) y = t.y - h - 6;
+    if (t.anchor) {
+      const a = t.anchor;
+      const clampX = (v: number) => Math.max(4, Math.min(956 - w, v));
+      const clampY = (v: number) => Math.max(4, Math.min(536 - h, v));
+      const spots: Record<string, () => [number, number] | null> = {
+        below: () => (a.y + a.h + 4 + h <= 536 ? [clampX(t.x - 10), a.y + a.h + 4] : null),
+        above: () => (a.y - 4 - h >= 4 ? [clampX(t.x - 10), a.y - 4 - h] : null),
+        right: () => (a.x + a.w + 4 + w <= 956 ? [a.x + a.w + 4, clampY(t.y - 10)] : null),
+        left: () => (a.x - 4 - w >= 4 ? [a.x - 4 - w, clampY(t.y - 10)] : null),
+      };
+      const order = [a.side ?? "below", "below", "above", "right", "left"];
+      let p: [number, number] | null = null;
+      for (const k of order) if ((p = spots[k]())) break;
+      if (p) [x, y] = p;
+      else {
+        if (x + w > 956) x = t.x - w - 6;
+        if (y + h > 536) y = t.y - h - 6;
+      }
+    } else {
+      if (x + w > 956) x = t.x - w - 6;
+      if (y + h > 536) y = t.y - h - 6;
+    }
     x = Math.max(4, x);
     y = Math.max(4, y);
     g.panel(x, y, w, h, "tooltip");

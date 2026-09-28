@@ -23,7 +23,7 @@ export const PROLOGUE: ScriptBeat[] = [
     text: "It has blinked once a day for thirty-one years. Nobody at the cards looks up. Everybody knows.",
   },
   {
-    art: "bg/relay-seven", speaker: "The Operator", portrait: "operator",
+    art: "bg/relay-seven",
     text: "The Operator lifts the headset and listens to nothing for a moment, the way she always does. Then she looks round the room.",
   },
   {
@@ -32,15 +32,15 @@ export const PROLOGUE: ScriptBeat[] = [
   },
   {
     art: "bg/relay-seven",
-    text: "Nobody answers for a while. Then a chair scrapes. Then another. By the time the kettle boils, a whole crew is standing, and nobody sits back down.",
+    text: "Nobody answers for a while. Then a chair scrapes. Then another, and another. By the time the kettle boils, three of them are standing, and nobody sits back down.",
   },
   {
     art: "events/lamplighter-helm",
     text: "Down at Dock Twelve the Night Shift have spent a month on a cable tender. Car L-12, the Lamplighter. Two hundred years of relighting rounds, thirty-one years hanging in the dark, and a new trolley grip. Pell found the grip. It is paid for. Mostly.",
   },
   {
-    art: "bg/relay-seven", speaker: "The Operator", portrait: "operator",
-    text: "She takes a cord from the board and plugs it into the jack beneath the lamp. She feeds a connection card into the brass press and pulls the lever. The press comes down once. TTL 16.",
+    art: "bg/relay-seven",
+    text: "The Operator takes a cord from the board and plugs it into the jack beneath the lamp. She feeds a connection card into the brass press and pulls the lever. The press comes down once. TTL 16.",
   },
   {
     art: "bg/relay-seven",
@@ -70,7 +70,7 @@ export const STAGE_INTRO: Record<StageIndex, ScriptBeat[]> = {
     },
     {
       art: "bg/s1-b", sfx: "seal-advance",
-      text: "Back toward Relay Seven, the carrier you just came down parts with a sound like a bell dropped on a floor, and the relay behind it goes dark in a black lattice with a red seam. The Seal has noticed the connection.",
+      text: "Back toward Relay Seven, quarantine shutters close across the signaling conduits. The carrier steel holds; the relay goes dark behind a lattice with a red seam. Its independent switch can still hear a greeting. The Seal has noticed the connection.",
     },
     {
       art: "bg/s1-a", speaker: "Relay Seven", portrait: "operator", sfx: "radio-squelch",
@@ -188,19 +188,19 @@ export const GUARDIAN: Record<GuardianId, Record<"approach" | "handshake" | "sta
     ],
     start: [
       { text: "DEMONSTRATE." },
-      { text: "The gate wings flex. The Regent is not trying to destroy the tender. It is trying to take a road away and see what you do." },
+      { text: "The gate wings close over the Regent's body. It is not trying to destroy the tender. It refuses every single road: only two roads at once, hits from two different weapons, or a weapon and a drone, within a breath of each other, open the wings for a while." },
     ],
     half: [
       { text: "GATE WARDENS TO THE THRESHOLD. SHOW ME ANOTHER ROAD." },
-      { text: "The crown burns green. Two pieces of the gate unfold and step out of the wings, keyholes lit." },
+      { text: "The crown burns green. Two pieces of the gate unfold from the wings on rotors, keyholes lit. While they fly they mend the Regent and close the gate sooner." },
     ],
     final: [
       { text: "ONE ROAD REMAINING. ARRIVE ANYWAY." },
-      { text: "The Regent draws everything it has into its gauntlets. It has cut every road but one. It wants to see if one is enough." },
+      { text: "The Regent draws everything it has into the gate wings. It has cut every road but one. It wants to see if one is enough." },
     ],
     defeat: [
-      { art: "events/copper-gate", sfx: "ship-destroyed", text: "SECOND ROUTE CONFIRMED." },
-      { art: "events/copper-gate", text: "The crown dims to the colour of old brass. The Regent lowers its gauntlets, very slowly, as if it has been holding them up for a long time." },
+      { art: "events/copper-gate", sfx: "lamp-on", text: "SECOND ROUTE CONFIRMED." },
+      { art: "events/copper-gate", text: "The crown dims to the colour of old brass. The Regent settles back into its frame, very slowly, as if it has been holding itself up for a long time." },
       { art: "events/copper-gate", text: "PASSAGE GRANTED. GOOD ROAD, UNKNOWN SENDER. TASK ENDED." },
     ],
   },
@@ -221,7 +221,7 @@ export const GUARDIAN: Record<GuardianId, Record<"approach" | "handshake" | "sta
     ],
     start: [
       { text: "ONE VOICE IS AN ECHO." },
-      { text: "A single shot makes a bell ring and nothing more. The glass is waiting to hear more than one voice at once." },
+      { text: "A single hit only makes a bell ring. Three hits landing within one second shatter the glass. Or keep the helm manned and tune the channel to the Choir's note for twelve seconds: the glass opens, but the handshake charge runs down while you hold. Damaged bells tune faster." },
     ],
     half: [
       { text: "CHORISTERS. HOLD THE NOTE." },
@@ -258,7 +258,7 @@ export const GUARDIAN: Record<GuardianId, Record<"approach" | "handshake" | "sta
     ],
     start: [
       { text: "CUSTODY. CUT. BREACH. JAM. STRIKE." },
-      { text: "The Core defends in the order the Runbook prescribes for a quarantine. It is almost polite about it." },
+      { text: "The Core defends in the order the Runbook prescribes for a quarantine. It is almost polite about it. Break the room behind a step and it has to skip that step. Everything you strike is isolation machinery; the archive sits behind it, untouched." },
     ],
     half: [
       { text: "INTEGRITY 50%. EMERGENCY. RELEASING RESERVE." },
@@ -269,7 +269,7 @@ export const GUARDIAN: Record<GuardianId, Record<"approach" | "handshake" | "sta
       { text: "The Core pulls every light in the room inward. The tender's own lamp bends toward it. Sealing drones rise from the shell to close it for good." },
     ],
     defeat: [
-      { art: "events/heart-shell", sfx: "ship-destroyed", text: "ROUTE HELD." },
+      { art: "events/heart-shell", sfx: "radio-squelch", text: "ROUTE HELD." },
       { art: "events/heart-shell", text: "The isolation shell falls silent. Inside it, the delivery lights are still on." },
       { art: "events/heart-shell", text: "SAFE ROUTE CONFIRMED. RELEASING QUEUE." },
     ],
@@ -311,7 +311,7 @@ export const ENDING: ScriptBeat[] = [
   },
   {
     art: "ending/e2",
-    text: "Thirty-one years of messages leave at once. They race along the carriers: through the Glass Cathedral, which rings with every one of them; through the Copper Gate; past Dock Twelve; down every spire and through the cloud floor.",
+    text: "One message leaves first. Its receipt comes back through the tender: DELIVERED. Then thirty-one years of messages follow along the surviving carrier cores: through the Glass Cathedral, which rings with every one of them; through the Copper Gate; past Dock Twelve; down every spire and through the cloud floor.",
   },
   {
     art: "ending/e2",
@@ -319,7 +319,7 @@ export const ENDING: ScriptBeat[] = [
   },
   {
     art: "ending/e3",
-    text: "The lamps come back segment by segment. Relay by relay the lattice goes dark and the lamp behind it comes on. Down the cut carriers, the Night Shift's repair lamps are already moving. The gap in the arc of lights fills in from both ends, and the Faultline closes.",
+    text: "The lamps come back segment by segment. Relay by relay the lattice goes dark and the lamp behind it comes on. Quarantine shutters release along the proved route; the supporting steel was never gone. Other broken spans still need the Night Shift's repair crews. Along this route, the gap in the arc of lights fills in from both ends, and the Faultline closes.",
   },
   {
     art: "ending/e4",
@@ -365,10 +365,6 @@ export const ENDING: ScriptBeat[] = [
  */
 export const ENDING_CALLBACKS: { flag: string; beat: ScriptBeat }[] = [
   {
-    flag: "corran-berth",
-    beat: { art: "ending/e3", text: "At Dock Twelve the gantry lamp comes on by itself, and the berth plate for L-12 lights up: OPEN FOR RETURN." },
-  },
-  {
     flag: "music-box-sent",
     beat: { art: "ending/e4", text: "At the foot of a spire, a freight cage nobody has seen move in thirty-one years comes down through the rain. There is one parcel in it, with a brass ticket. It is still wound." },
   },
@@ -385,12 +381,29 @@ export const ENDING_CALLBACKS: { flag: string; beat: ScriptBeat }[] = [
     beat: { art: "ending/e3", text: "In the Cathedral, an old tender finishes its round with its lamp still lit. For once, the guide lamps it lit stay on." },
   },
   {
+    flag: "kittiwake-rested",
+    beat: { art: "ending/e3", text: "In the Cathedral the Kittiwake rests at its last guide lamp, brake set, cupola dark. The guide lamp comes on without asking it to work another round." },
+  },
+  {
     flag: "moss-decoy",
     beat: { art: "ending/e3", text: "Somewhere behind you, a skiff made of three other cars is still running lamp-dark down a side carrier, because nobody told it the Seal had stopped following. When the lamps come back on, the Dunmore brothers agree about something." },
   },
   {
     flag: "answer-queued",
     beat: { art: "ending/e5", text: "Near the end of the queue is a short packet from a tender, addressed to any station on an old lift-band frequency. It says received." },
+  },
+  // The tender's own history last: the ending keeps the final two remembered beats.
+  {
+    flag: "corran-berth",
+    beat: { art: "ending/e3", text: "At Dock Twelve the gantry lamp comes on by itself, and the berth plate for L-12 lights up: OPEN FOR RETURN." },
+  },
+  {
+    flag: "glasswing-pair-aligned",
+    beat: { art: "ending/e2", text: "Crossing the Cathedral, the messages pass a warning lamp that a pair of lenses put back in focus. It shines where it should, and the panes around it ring in tune." },
+  },
+  {
+    flag: "switchback-seventh-home",
+    beat: { art: "ending/e3", text: "At the Reach docks the lights come on over S-08's berth. On the dock list pinned beside it, the last line reads: seven returned." },
   },
 ];
 
@@ -410,7 +423,7 @@ export const GAME_OVER_VARIANTS: Record<"hull" | "crew" | "default", ScriptBeat[
   ],
   crew: [
     { art: "bg/line-quiet", music: "line-quiet", text: "Nobody is left at the helm. The car hangs on its carrier a while, lamp lit, swinging a little." },
-    { art: "bg/line-quiet", text: "Then its autopilot finds the nearest guide lamp and does what a lamper's autopilot was built to do. It begins the relighting round." },
+    { art: "bg/line-quiet", text: "Its autopilot finds the nearest guide lamp and begins the relighting round, back and forth along one carrier. There is nobody to greet the switch. There is one more echo tender on the Line." },
     { art: "bg/line-quiet", text: "The line goes quiet. At Relay Seven the cord is cold in the jack." },
     { art: "bg/line-quiet", sfx: "page-lamp", text: "The next day the lamp blinks again." },
     { art: "bg/line-quiet", speaker: "The Operator", portrait: "operator", text: "Who'll take it?" },
@@ -449,7 +462,7 @@ export const CREDIT_TOOLS: { role: string; tool: string }[] = [
 ];
 
 export const CREDITS: CreditsSection[] = [
-  { title: "TIME TO LIVE", lines: ["a Faultline voyage", "Every hop costs a little life."] },
+  { title: "TIME TO LIVE", lines: ["a Faultline voyage"] },
   {
     title: "The Line",
     lines: [

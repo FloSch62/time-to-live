@@ -1,4 +1,5 @@
 // Purpose-built cutaway bays. One fixture and one visual identity per room; no repeating wallpaper.
+import { settings } from "../core/save";
 import { art } from "../core/assets";
 import type { Gfx } from "../core/gfx";
 import { P } from "../core/palette";
@@ -24,16 +25,21 @@ export const ROOM_STYLE: Record<string, { light: string; wall: string }> = {
   artillery: { light: P.ember1, wall: "#452c36" },
 };
 
+/** How far the back wall recedes: a wash of the wall colour (contrast) and a shade of ink (value). */
+export const RECEDE = { wash: 0.34, shade: 0.2 };
+
 /** Distinct built-in architecture, large Krea machinery and an uncluttered foreground crew path. */
 export function drawBay(g: Gfx, ship: SimShip, room: SimRoom, x: number, y: number, w: number, h: number, kind: string, live: boolean, t: number) {
   const key = room.sys?.id ?? kind;
+  const motionT = settings.reducedMotion || !live ? 0 : t;
   const style = ROOM_STYLE[key];
   const enemy = ship.side === 1;
   const accent = style?.light ?? (enemy ? enemyAccent(ship) : P.ivory2);
   const wall = style?.wall ?? (enemy ? "#252f3b" : "#393c40");
   const floor = y + h - 5;
-  const furnishing = /horn|array/i.test(room.name) ? "sensors"
+  const furnishing = /horn|array|optic|calibrat/i.test(room.name) ? "sensors"
     : /ballast|tank|reserve|sump/i.test(room.name) ? "air"
+    : /drone|cradle/i.test(room.name) ? "drones"
     : /bench|workshop|tool|service/i.test(room.name) ? "workshop"
     : /bunk|quarters/i.test(room.name) ? "bunks"
     : /rack|magazine|armoury/i.test(room.name) ? "weapons" : "stores";
@@ -41,20 +47,23 @@ export function drawBay(g: Gfx, ship: SimShip, room: SimRoom, x: number, y: numb
     : /wing|jaw|gate footing/i.test(room.name) ? "gate"
     : /toll|hall|bench|service/i.test(room.name) ? "workshop"
     : /buffer|tank|intake|clamp|coil|winch|ballast|keel/i.test(room.name) ? "enemy-buffer" : "enemy-vault";
-  const prop = enemy && !style ? enemyProp
+  const prop = ship.enemy?.autonomous && key === "helm" ? "sensors"
+    : ship.enemy?.autonomous && !room.sys ? "air"
+    : enemy && !style ? enemyProp
     : key === "corridor" || key === "galley" ? "mess" : key === "artillery" ? "weapons" : key === "hold" || key === "quarters" ? furnishing : key;
   g.rect(x, y, w, h, P.ink0);
   g.rect(x + 2, y + 2, w - 4, h - 4, wall);
   g.alpha(.09, () => g.rect(x + 3, y + 3, w - 6, h - 9, accent));
   g.clip(x + 3, y + 3, w - 6, h - 5, () => {
-    roomArchitecture(g, prop, x, y, w, h, accent, live, enemy, t);
+    roomArchitecture(g, prop, x, y, w, h, accent, live, enemy, motionT);
     // Opaque bounds matter: transparent padding used to shrink every prop into the middle of an empty bay.
     const bounds = PROP_BOUNDS[prop];
     const img = bounds ? art(`props/bay-${prop}`) : null;
     if (img && bounds) {
       const [sx, sy, ex, ey] = bounds, sw = ex - sx, sh = ey - sy;
       const wide = ["helm", "socket", "medbay", "enemy-buffer"].includes(prop);
-      const maxW = Math.max(16, Math.min(w - 12, w * (wide ? .7 : .56)));
+      // A bed is about one body length; other machinery may fill more of the bay.
+      const maxW = Math.max(16, Math.min(prop === "medbay" ? 34 : w - 12, w * (wide ? .7 : .56)));
       const maxH = h - (prop === "medbay" ? 10 : 8);
       const scale = Math.min(maxW / sw, maxH / sh);
       const dw = Math.round(sw * scale), dh = Math.round(sh * scale);
@@ -62,8 +71,13 @@ export function drawBay(g: Gfx, ship: SimShip, room: SimRoom, x: number, y: numb
       const px = Math.round(Math.max(x + 5, Math.min(x + w - dw - 5, center - dw / 2)));
       g.alpha(.4, () => g.rect(px - 2, floor - 1, dw + 4, 2, P.ink0));
       g.ctx.drawImage(img, sx, sy, sw, sh, px, Math.round(floor - dh), dw, dh);
-      if (live && style) g.alpha(.12 + Math.sin(t * 1.4) * .035, () => g.hline(px + 2, floor - 1, Math.max(1, dw - 4), accent));
-    } else fixture(g, key, x + w * .5, floor - 10, Math.max(16, Math.min(48, w - 22)), accent, live, t, enemy);
+      if (live && style) g.alpha(.12 + Math.sin(motionT * 1.4) * .035, () => g.hline(px + 2, floor - 1, Math.max(1, dw - 4), accent));
+      workingFittings(g, ship, room, prop, px, floor - dh, dw, dh, accent, live, motionT);
+    } else fixture(g, key, x + w * .5, floor - 10, Math.max(16, Math.min(48, w - 22)), accent, live, motionT, enemy);
+    // Crew first (design plan §2.4): the whole back wall and its machinery recede in contrast and value behind the
+    // standing zone, so the figures are the brightest, hardest-edged things in the bay. Lamps drawn after stay lit.
+    g.alpha(RECEDE.wash, () => g.rect(x + 3, y + 3, w - 6, h - 5, wall));
+    g.alpha(RECEDE.shade, () => g.rect(x + 3, y + 3, w - 6, h - 5, P.ink0));
   });
   // Structural lips, ceiling lamps and bolts replace the former textual nameplates.
   g.rect(x, y, 2, h, enemy ? P.steel0 : P.ivory4);
@@ -75,6 +89,39 @@ export function drawBay(g: Gfx, ship: SimShip, room: SimRoom, x: number, y: numb
   if (w > 55) {
     g.rect(x + w - 18, y + 2, 10, 3, P.ink0);
     g.hline(x + w - 17, y + 3, 8, room.sys && !live ? P.steel0 : accent);
+  }
+}
+
+/** Moving fittings remain visible over the shipped machinery art, tied to its power and actual work. */
+function workingFittings(g: Gfx, ship: SimShip, room: SimRoom, kind: string, x: number, y: number, w: number, h: number, accent: string, live: boolean, t: number) {
+  const cx = x + w * .72, cy = y + h * .58, lamp = live ? accent : P.steel1;
+  if (kind === "engines" || kind === "air") {
+    const r = Math.max(3, Math.min(6, h * .2));
+    g.circle(cx, cy, r + 1, P.ink0, true); g.circle(cx, cy, r, P.steel1);
+    for (let i = 0; i < 3; i++) {
+      const a = t * (kind === "air" ? 3 : 2) + i * Math.PI * 2 / 3;
+      g.line(cx, cy, cx + Math.cos(a) * (r - 1), cy + Math.sin(a) * (r - 1), lamp);
+    }
+  } else if (kind === "sensors") {
+    const r = Math.max(3, Math.min(5, h / 4)), a = ship.enemy?.autonomous ? Math.sin(t * .8) * .6 + Math.PI : t;
+    g.circle(cx, cy, r + 1, P.ink0, true); g.circle(cx, cy, r, P.violet3);
+    g.line(cx, cy, cx + Math.cos(a) * r, cy + Math.sin(a) * r, lamp);
+    if (ship.enemy?.autonomous && ship.repairArmT > 0 && live) {
+      const reach = 3 + Math.sin(t * 2) * 3;
+      g.line(x + 4, y + 2, x + 8 + reach, y + h * .45, P.steel2, 2);
+      g.line(x + 8 + reach, y + h * .45, x + 13, y + h - 2, P.brass1, 2);
+    }
+  } else if (kind === "weapons" || kind === "drones" || kind === "brood") {
+    const charge = ship.weapons.filter(w => !w.art || w.art.room === room.i).reduce((n, w) => Math.max(n, w.charge / w.def.charge), 0);
+    const stroke = live ? kind === "weapons" ? Math.min(1, charge) * 7 : (Math.sin(t * 1.3) + 1) * 3 : 0;
+    g.rect(x + 2, y + 2, 4, 5, P.steel0);
+    g.line(x + 4, y + 5, x + 11 + stroke, y + 5, P.steel2, 2);
+    g.rect(x + 10 + stroke, y + 2, 3, 7, lamp);
+  } else if (kind === "shields" || kind === "veil" || kind === "heart" || kind === "bells") {
+    const r = Math.max(3, Math.min(6, h / 4)), a = t * .8;
+    g.circle(cx, cy, r, live ? lamp : P.steel1);
+    g.line(cx - Math.cos(a) * r, cy - Math.sin(a) * r, cx + Math.cos(a) * r, cy + Math.sin(a) * r, P.steel2);
+    g.circle(cx, cy, 1, lamp, true);
   }
 }
 

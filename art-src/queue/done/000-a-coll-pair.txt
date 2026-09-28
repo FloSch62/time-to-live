@@ -1,0 +1,1 @@
+parts/collimator-pair:m

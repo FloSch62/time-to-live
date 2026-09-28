@@ -87,11 +87,23 @@ export function updateDrones(sim: Sim, ship: SimShip, dt: number) {
     const [x, y] = orbit(around, d, sim.t);
     d.x += (x - d.x) * Math.min(1, dt * 3);
     d.y += (y - d.y) * Math.min(1, dt * 3);
-    d.cd -= dt;
+    d.cd -= dt * (1 + ship.mods.droneCharge);
     if (d.cd > 0) continue;
     switch (d.def.kind) {
       case "combat": {
-        const room = sim.rng.pick(foe.rooms);
+        // While the Regent's gate is sealed a combat drone is the tender's second voice: it works the gate itself,
+        // so a drone and a gun can prove "a second way home" together. Otherwise it harries a random room.
+        const gate = foe.boss.gate?.up && foe.sys.gate ? foe.rooms[foe.sys.gate.room] : null;
+        if (gate) {
+          // It answers the tender's gun: a charged bolt waits (up to a few seconds) for a gun's bolt to be about to
+          // land on the gate, or to have just landed, so the two routes arrive inside the gate's 2.2 s window.
+          const g = foe.boss.gate!;
+          const answered = g.locks.some((l) => l.source.startsWith(`w${ship.side}:`) && sim.t - l.t < 1.5);
+          const inbound = sim.projectiles.some((p) => !p.dead && p.from === ship.side && p.to === foe.side && p.source.startsWith("w")
+            && p.target.kind !== "adj" && p.t1 + p.t2 - p.t < 1.2);
+          if (!answered && !inbound && d.cd > -5) continue;
+        }
+        const room = gate ?? sim.rng.pick(foe.rooms);
         spawnLocalShot(sim, ship.side, foe.side, d.x, d.y, { kind: "room", room: room.i }, {
           dmg: d.def.damage, source: `d${ship.side}:${d.slot}`, color: "teal", kind: "drone",
         });

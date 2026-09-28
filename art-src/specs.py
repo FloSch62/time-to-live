@@ -41,16 +41,16 @@ WORLD = ("The world of a ruined ancient relay network at the edge of space: worn
 
 ILL = ("A clean, detailed hard-edged game sprite illustration with bold readable shapes, crisp edges, flat cel "
        "shading with two or three tones per material and thin dark outlines, like hand-painted concept sprites for "
-       "a top-down space game.")
+       "a side-view game.")
 
 ENV_HEAD = ("An extraordinarily detailed cinematic matte painting in the exact finished science-fiction environment "
-            "art direction of the reference: monumental weathered orbital network infrastructure with richly "
+            "art direction of the reference: a ring of relay machinery held up on spires above a permanent cloud sea at the edge of space, richly "
             "rendered surfaces, precise mechanical engineering and dramatic naturalistic volumetric lighting.")
 ENV_TAIL = ("Sophisticated chiaroscuro, deep desaturated midnight-blue shadows, small warm amber highlights and "
             "restrained teal signal light, immense misty distance. Finished high-end game environment key art. Wide "
             "16:9 cinematic composition.")
 FIG_HEAD = ("A dark atmospheric science-fiction oil painting matching the painted look of the reference, set on a "
-            "ruined orbital relay megastructure where worn network hardware and futuristic equipment are dressed in "
+            "ring of relay machinery held up on spires above a permanent cloud sea at the edge of space, where worn network hardware and futuristic equipment are dressed in "
             "chipped ivory and tarnished dark brass.")
 FIG_TAIL = ("Rich layered oil-paint brushwork, intricate but clearly illustrated mechanical forms, chipped and pitted "
             "dark brass and worn ivory plates, deep indigo-black shadows, restrained luminous teal and warm amber "
@@ -224,8 +224,43 @@ def _vessels():
         mat = MAT[STAGE.get(sid, "I")]
         neg = NEG_MASKS if sid == "hollow-choir" else NEG_MACH
         base = {"prompt": f"{ILL2} {SIDE} {subject} {mat} {neg}", **hull(sid), "denoise": HULL_DENOISE}
+        if sid in ("glasswing", "switchback"):
+            base["denoise"] = 0.8
+            base["prompt"] += (" Every exterior service fitting is a finished mechanical assembly: finely engraved "
+                               "collars, inset bolts, joint housings, layered metal plates, cooling ribs and polished "
+                               "lens glass. Paint the roof equipment and nose with the same detailed craftsmanship "
+                               "as the body; no flat featureless geometric blocks.")
         ASSETS[f"ships/{sid}"] = {"size": (W, H), "gen": (gw, gh), "n": 3, "versions": {
-            v: dict(base) for v in ("h", "h2", "h3")}}
+            v: dict(base) for v in ("h", "h2", "h3", "h4", "h5", "h6", "h7")}}
+        if sid == "switchback":
+            ASSETS[f"ships/{sid}"]["versions"]["h5"].update(
+                denoise=0.76,
+                prompt=base["prompt"] + " The large rooftop cable grip is EXPOSED INDUSTRIAL PULLEY MACHINERY: "
+                "two naked grooved brass wheels held by a triangular open support frame, clamp jaws and axles. "
+                "Absolutely no vehicle, no truck, no car, no wheeled cart, no cabin, no window, no windshield "
+                "on the roof. The ONLY cabin is at the far right of the main hull. The three small rooftop "
+                "drone cradles contain compact dark teal sensor drones, each a distinct rotor hub in a U-shaped "
+                "brass saddle. Paint every part of the crane, grip and cradle as finely detailed functional metal.")
+            ASSETS[f"ships/{sid}"]["versions"]["h6"].update(
+                denoise=0.78,
+                prompt=f"{ILL2} {SIDE} A single large industrial cable-maintenance hull matching the input "
+                "silhouette exactly. The main ivory pressure body is a broad rectangle, brass-framed panels "
+                "and small portholes. Its ONLY glass window is in the body at the far RIGHT. The roof equipment "
+                "is strictly EXPOSED MACHINERY with OPEN GAPS: a narrow lifting crane on the LEFT, three small "
+                "dark cylindrical teal sensor drones in separate U-shaped brass cradles, and two large naked "
+                "brass PULLEY WHEELS at roof center-right. The pulley wheels have visible spokes, axle hubs, "
+                "an exposed narrow crossbar and thin diagonal hanger struts with OPEN DARK SKY between them. "
+                "Keep both pulley wheels visible. No enclosed housing around these wheels. Lower belly has "
+                "dark retrieval shutters and brass attachment lugs. Every metal component has inset bolts, "
+                f"fine wear and clear mechanical detail. {MAT['I']} {NEG_MACH} No rooftop cabin, no rooftop "
+                "windows, no truck, no additional vehicle, no second house on top, no living quarters on the roof.")
+            ASSETS[f"ships/{sid}"]["versions"]["h7"] = dict(
+                ASSETS[f"ships/{sid}"]["versions"]["h6"], denoise=0.8)
+            ASSETS[f"ships/{sid}"]["versions"]["h7"]["prompt"] += (
+                " The tall aft CRANE has a complete long horizontal TRUSSED JIB from its elbow to the hanging "
+                "hook, with visible triangular braces, hinge pins and dark cables. Keep the entire crane jib "
+                "inside the image. Paint the two pulley wheels with many precise spokes and layered brass rims; "
+                "finish the crossbar in weathered dark metal with polished axle housings and bolts.")
     for cid, subject in SUBJ.CARS.items():
         meta = json.loads((INIT / f"{cid}.json").read_text())
         W, H = meta["canvas"]
@@ -251,7 +286,9 @@ EVENT_HEAD_HD = ("A serious, richly detailed event illustration for a side-view 
 EVENT_WORLD = ("In this world nothing flies between relays except small drones on rotors: cable cars hang from drive "
                "trolleys on heavy braided carrier cables that sag between spire tops and relays. Outside, the sky is "
                "the dark indigo-black of the edge of space and below lies only the cloud sea: no water, no boats, no "
-               "sails. Figures are small, seen from behind or in silhouette, with no close-up faces.")
+               "sails. Most scenes have no people. When crew appear they are one to three small figures inside the car, at a "
+               "hatch or on a gantry in masks, never a crowd, never in the foreground edge, never standing on the cloud "
+               "sea. No close-up faces.")
 
 
 def _portraits():
@@ -385,12 +422,29 @@ from readability_rooms import install as install_rooms
 install_rooms(ASSETS, PIX)
 from readability_hulls import install as install_hulls
 install_hulls(ASSETS, SUBJ.SHIPS, STAGE, MAT, SIDE, PIX)
+from study import install as install_study  # A1 pixel-art style study (study.py)
+install_study(ASSETS)
+from v5 import install as install_v5  # DIRECTION v5 production prompts (v5.py)
+install_v5(ASSETS)
+from hullparts import install as install_parts  # A2 hull kit (hullparts.py, subjects.PARTS)
+install_parts(ASSETS, ILL2)
+from hullparts import install_trolley  # A2 drive trolley family (tools/art/trolley.py)
+install_trolley(ASSETS)
+from hullparts import install_keyed  # A2 fittings on a magenta key backdrop
+install_keyed(ASSETS, ILL2)
+from hullparts import install_hulls_v5  # A2 hulls: volume init + keyed fittings, one repaint
+install_hulls_v5(ASSETS, ILL2, SIDE, SUBJ.SHIPS, MAT['I'], NEG_MACH)
+from hullparts import install_blend  # A2 blend pass over the assembled hulls
+install_blend(ASSETS, ILL2, SIDE, SUBJ.SHIPS, MAT['I'], NEG_MACH)
 
 ASSETS["weapons/thermite-payload"]["versions"]["readable2"] = dict(ASSETS["weapons/thermite-payload"]["versions"]["readable"], prompt=(PIX + " Single wide horizontal side elevation game sprite on plain flat navy background. A thermite shell launcher aimed RIGHT: one broad short BLACK CERAMIC launch tube, riveted brass receiver, a fat RED-ORANGE THERMITE CANISTER loaded on a top rack with an ivory cap, copper cooling fins at the rear, short mechanical rail clamp base. Compact rectangular silhouette. Unlike a laser weapon: NO long slender barrels, NO multiple barrels. Big readable three-tone material planes with fine crisp industrial details, chipped ivory enamel, dark blue steel, copper. At rest, no shooting, no flames. No text, no labels, no scenery, no border. Entire object visible."))
 
-ASSETS["ships/iron-regent"]["versions"]["readable-regent"] = dict(ASSETS["ships/iron-regent"]["versions"]["h"], denoise=0.83, prompt=(PIX + " " + SIDE + " The Iron Regent, a massive armored industrial gate engine guarding an ancient orbital relay. Strict side elevation facing LEFT. Preserve the reference silhouette and proportions: solid broad compact rectangular central pressure hull, a massive sloping brass-and-black front shield on the LEFT with a recessed circular amber gate-lock lens, an armored raised command citadel above with a horizontal teal observation slit and three blunt sensor blocks, thick copper hydraulic rams joining the command citadel to the shoulders, two ribbed power blocks under the keel, a vertical fixed gate clamp attached tightly at the RIGHT rear. Heavy beveled interlocking brass armor panels and blue-black iron structural ribs, worn ivory edge guards, small amber lamps, realistic rivets and precise piston detail. Strong iconic silhouette, dense convincing mechanical details, restrained broad planes. Formidable and ancient. All structural parts physically connected. No giant enclosing rectangular frame, no empty cage, no triangular crown spikes, no medieval ornament, no castle, no face, no eyes, no creatures, no arms or legs. The central hull must stay solid to contain the cutaway rooms. Flat plain dark navy background. Entire object visible, no ground, no background scenery, no writing or text."))
+ASSETS["ships/iron-regent"]["versions"]["readable-regent"] = dict(ASSETS["ships/iron-regent"]["versions"]["h"], denoise=0.83, prompt=(PIX + " " + SIDE + " The Iron Regent, a massive armored industrial gate engine built into the Copper Gate between two gate wings. Strict side elevation facing LEFT. Preserve the reference silhouette and proportions: solid broad compact rectangular central pressure hull, a massive sloping brass-and-black front shield on the LEFT with a recessed circular amber gate-lock lens, an armored raised command citadel above with a horizontal teal observation slit and three blunt sensor blocks, thick copper hydraulic rams joining the command citadel to the shoulders, two ribbed power blocks under the keel, a vertical fixed gate clamp attached tightly at the RIGHT rear. Heavy beveled interlocking brass armor panels and blue-black iron structural ribs, worn ivory edge guards, small amber lamps, realistic rivets and precise piston detail. Strong iconic silhouette, dense convincing mechanical details, restrained broad planes. Formidable and ancient. All structural parts physically connected. No giant enclosing rectangular frame, no empty cage, no triangular crown spikes, no medieval ornament, no castle, no face, no eyes, no creatures, no arms or legs. The central hull must stay solid to contain the cutaway rooms. Flat plain dark navy background. Entire object visible, no ground, no background scenery, no writing or text."))
 
 # ------------------------------------------------------------------------------------------------ resolve
+# Finishing pass (user decision, 27 Sep 2026): never more than two Krea candidates per item.
+MAX_CANDIDATES = 2
+
 def resolve(spec):
     m = re.fullmatch(r"([\w-]+)/([\w-]+)(?::([\w-]+))?(?:@([\d,]+))?", spec)
     if not m:
@@ -401,9 +455,9 @@ def resolve(spec):
     version = version or next(iter(entry["versions"]))
     v = dict(entry["versions"][version])
     if seeds and ("," in seeds or len(seeds) > 3):
-        seed_list = [int(x) for x in seeds.split(",")]
+        seed_list = [int(x) for x in seeds.split(",")][:MAX_CANDIDATES]
     else:
-        n = int(seeds or v.pop("n", entry["n"]))
+        n = min(int(seeds or v.pop("n", entry["n"])), MAX_CANDIDATES)
         seed_list = [seed_for(key, version, k) for k in range(1, n + 1)]
     v.pop("n", None)
     W, H = v.pop("gen", entry["gen"])
@@ -411,3 +465,25 @@ def resolve(spec):
             "refs": [], "strength": 0.0, "shift": None}
     base.update(v)
     return [dict(base, seed=s) for s in seed_list]
+
+# ------------------------------------------------------------------------------------------------ A4 (27 Sep)
+# r2: the "readable" hostile hulls used the pixel-art head at 2x, so Krea's 8-px pseudo-pixels became 4-px blocks in
+# the final (Packet Leech's mosaic). Same subject and readability text in the illustration head (ILL2).
+from readability_hulls import HULLS as _RH  # noqa: E402
+for _k in _RH:
+    _e = ASSETS["ships/" + _k]
+    if "readable" in _e["versions"]:
+        _r = dict(_e["versions"]["readable"])
+        _r["prompt"] = _r["prompt"].replace(PIX + " ", ILL2 + " ", 1)
+        _r["n"] = 3
+        _e["versions"]["r2"] = _r
+# slug: the Payload Launcher read as a finned missile; lore and flavour say a pneumatic slug thrower
+ASSETS["weapons/payload-launcher"]["versions"]["slug"] = dict(
+    ASSETS["weapons/payload-launcher"]["versions"]["readable"], n=4, prompt=ASSETS["weapons/payload-launcher"][
+        "versions"]["readable"]["prompt"].replace(
+        "a squat single open-ended rectangular launch tube aimed right, ONE visible orange-tipped cylindrical missile "
+        "resting in the tube, ivory blast shield above and dark iron loading mechanism below",
+        "a pneumatic slug thrower: a short heavy iron barrel aimed right on a riveted brass receiver, a round riveted "
+        "compressed-air tank bolted under the barrel, a revolving drum magazine of stubby brass slugs with teal tips "
+        "at the breech, a coiled copper air hose; not a missile, no fins, no rocket, no warhead"))
+

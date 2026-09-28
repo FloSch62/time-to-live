@@ -5,7 +5,7 @@
 import { TILE } from "../data/layouts";
 import type { HullMeta } from "../data/hulls";
 import type { SimShip } from "./sim/model";
-import { hullMeta } from "./assets";
+import { hullMeta, hullBodyPoints } from "./assets";
 
 export interface CarView {
   slot: string;
@@ -19,6 +19,10 @@ export interface CarView {
   oy: number;
   cols: number;
   rows: number;
+  /** Occupied deck corners in hull-local pixels, four per room. */
+  body?: [number, number][];
+  /** Samples of the opaque hull art (null while the art is still loading). */
+  sampleArt?: () => { points: [number, number][]; step: number } | null;
 }
 
 export interface Camera {
@@ -55,11 +59,30 @@ export interface ShipView {
   bh: number;
   mobility: SimShip["mobility"];
   cam: Camera;
+  /** Further solid rectangles the ward wraps (view-local, without sway): the mounted weapons. null while their art
+   *  metadata is still loading (the envelope is rebuilt once it arrives). */
+  extras?: () => [number, number, number, number][] | null;
 }
 
 export const GANGWAY_GAP = 4;
-export const PLAYER_AREA = { x: 6, y: 78, w: 514, h: 268 };
-export const ENEMY_AREA = { x: 530, y: 48, w: 426, h: 390 };
+/**
+ * Combat screen layout (960×540 layout units). Top bar 4–48; the two vessels each own a world region that no HUD
+ * panel ever covers; below them the crew roster (left) and the comms log (right); the ship bar along the bottom.
+ */
+export const LAYOUT = {
+  topY: 4,
+  topH: 44,
+  /** Left/right split between the player's and the enemy's halves. */
+  splitX: 555,
+  enemyHead: { x: 558, y: 50, w: 398, h: 58 },
+  enemyCam: { x: 560, y: 110, w: 394, h: 260 },
+  crew: { x: 4, y: 374, w: 550, h: 66 },
+  comms: { x: 558, y: 374, w: 398, h: 66 },
+  barY: 442,
+  barH: 96,
+} as const;
+export const PLAYER_AREA = { x: 4, y: 52, w: 550, h: 318 };
+export const ENEMY_AREA = { x: 558, y: 50, w: 398, h: 320 };
 export const PLAYER_RIGHT = 632;
 export const PLAYER_TOP = 50;
 
@@ -96,7 +119,7 @@ export function buildPlayerView(ship: SimShip): ShipView {
     const y = ly + hangY - top.y;
     cars.push({ slot: "keel", id: keel.id, meta: km, x, y, ox: keel.ox, oy: keel.oy, cols: keel.cols, rows: keel.rows });
   }
-  return finish({ side: 0, cars, dx: 0, dy: 0, bx: 0, by: 0, bw: 0, bh: 0, mobility: "player", cam: camera(PLAYER_AREA) });
+  return finish({ side: 0, cars, dx: 0, dy: 0, bx: 0, by: 0, bw: 0, bh: 0, mobility: "player", cam: camera(PLAYER_AREA) }, ship);
 }
 
 export function buildEnemyView(ship: SimShip): ShipView {
@@ -111,15 +134,20 @@ export function buildEnemyView(ship: SimShip): ShipView {
   else y = Math.round(A.y + 30 + (A.h - 30) / 2 - m.h / 2);
   y = Math.max(A.y + 28 - m.gy + 6, Math.min(y, A.y + A.h - m.h + 16));
   const cars: CarView[] = [{ slot: "enemy", id: ship.defId, meta: m, x, y, ox: 0, oy: 0, cols: ship.cols, rows: ship.rows }];
-  return finish({ side: 1, cars, dx: 0, dy: 0, bx: 0, by: 0, bw: 0, bh: 0, mobility: ship.mobility, cam: camera(A) });
+  return finish({ side: 1, cars, dx: 0, dy: 0, bx: 0, by: 0, bw: 0, bh: 0, mobility: ship.mobility, cam: camera(A) }, ship);
 }
 
-function finish(v: ShipView): ShipView {
+function finish(v: ShipView, ship: SimShip): ShipView {
   let x0 = Infinity;
   let y0 = Infinity;
   let x1 = -Infinity;
   let y1 = -Infinity;
   for (const c of v.cars) {
+    c.body = ship.rooms.filter(r => r.x >= c.ox && r.x < c.ox + c.cols && r.y >= c.oy && r.y < c.oy + c.rows)
+      .flatMap(r => [[r.x, r.y], [r.x + r.w, r.y], [r.x + r.w, r.y + r.h], [r.x, r.y + r.h]]
+        .map(([x, y]) => [c.meta.gx + (x - c.ox) * TILE, c.meta.gy + (y - c.oy) * TILE] as [number, number]));
+    const cut = v.side === 0 || !!c.meta.cable;
+    c.sampleArt = () => hullBodyPoints(c.id, c.meta, [c.cols, c.rows], cut);
     x0 = Math.min(x0, c.x);
     y0 = Math.min(y0, c.y);
     x1 = Math.max(x1, c.x + c.meta.w);
@@ -131,14 +159,43 @@ function finish(v: ShipView): ShipView {
   v.bh = y1 - y0;
   // Fill both fighting areas from the actual hull bounds. Even a small enemy is a readable opponent.
   const c = v.cam;
-  if (v.side === 1) { c.rx += 6; c.rw -= 12; c.ry = 96; c.rh = 302; }
-  c.baseZ = Math.min(v.side === 1 ? 1.75 : 1.05, (c.rw - 16) / v.bw, (c.rh - 16) / v.bh);
+  if (v.side === 1) { const r = LAYOUT.enemyCam; c.rx = r.x; c.rw = r.w; c.ry = r.y; c.rh = r.h; }
+  fitCamera(v, ship);
+  return v;
+}
+
+type Rect = [number, number, number, number];
+
+/**
+ * Fit a view's camera to its hull bounds and any further world rectangles that belong to the vessel (the mounted
+ * weapons and the drive trolley: draw-ship `contentRects`). Pixel art stays crisp at whole-number zooms: a vessel
+ * that fits at 1× or more is shown at exactly 1× (2× for a very small hostile); only consists too large for their
+ * region scale down. Room for the ward mesh shells around it and 8 units of clear space inside the region, so
+ * neither hull, guns nor ward ever touch a screen edge.
+ */
+export function fitCamera(v: ShipView, ship: SimShip, warded: Rect[] = [], bare: Rect[] = []) {
+  const c = v.cam;
+  const shells = Math.floor((ship.sys.shields?.level ?? 0) / 2) + ship.bonusLayers + (ship.boss.gate || ship.boss.glass ? 1 : 0);
+  const ward = shells > 0 ? (v.side === 1 ? 12 : 11) + (Math.min(4, shells) - 1) * 2 + 1 : 0;
+  const pad = 2 * (ward + 8);
+  let x0 = v.bx, y0 = v.by, x1 = v.bx + v.bw, y1 = v.by + v.bh;
+  const add = (x: number, y: number, w: number, h: number) => {
+    x0 = Math.min(x0, x);
+    y0 = Math.min(y0, y);
+    x1 = Math.max(x1, x + w);
+    y1 = Math.max(y1, y + h);
+  };
+  // Warded parts (the guns) get the ward's room like the hull; bare parts (the trolley above the ward) only the
+  // 8 units of clear space: shrink them by the ward so the shared padding below fits both.
+  for (const [x, y, w, h] of warded) add(x, y, w, h);
+  for (const [x, y, w, h] of bare) add(x + Math.min(ward, w / 2), y + Math.min(ward, h / 2), Math.max(0, w - 2 * ward), Math.max(0, h - 2 * ward));
+  const fit = Math.min((c.rw - pad) / (x1 - x0), (c.rh - pad) / (y1 - y0));
+  c.baseZ = fit >= 1 ? Math.min(v.side === 1 ? 2 : 1, Math.floor(fit)) : fit;
   c.z = c.tz = c.baseZ;
-  c.baseX = v.bx + v.bw / 2 - c.rw / (2 * c.baseZ);
-  c.baseY = v.by + v.bh / 2 - c.rh / (2 * c.baseZ);
+  c.baseX = (x0 + x1) / 2 - c.rw / (2 * c.baseZ);
+  c.baseY = (y0 + y1) / 2 - c.rh / (2 * c.baseZ);
   c.x = c.baseX;
   c.y = c.baseY;
-  return v;
 }
 
 /** The car containing tile (tx, ty), or the nearest one. */

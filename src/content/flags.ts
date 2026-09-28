@@ -36,6 +36,8 @@ export const CORE_FLAGS: Record<string, string> = {
   "pell-letter-posted": "Pell's letter is in the queue.",
   "pell-crimper": "Varga's crimper is aboard, bought (or otherwise) from Pell.",
 
-  // The Lamplighter
+  // The three tenders (each gated to its own car)
   "corran-berth": "Found the harbour master's message to Ilse Corran, the Lamplighter's last chief.",
+  "glasswing-pair-aligned": "The Glasswing aligned a Cathedral warning lamp with both lenses, as its old crew asked.",
+  "switchback-seventh-home": "The Switchback brought its seventh inspection drone home; the dock list reads seven returned.",
 };

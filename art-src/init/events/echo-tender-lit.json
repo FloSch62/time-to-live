@@ -1,0 +1,16 @@
+{
+ "stage": "II",
+ "hull": "lamplighter",
+ "scale": 1.1,
+ "at": [
+  1380,
+  330
+ ],
+ "extras": [
+  "towers"
+ ],
+ "size": [
+  2560,
+  1280
+ ]
+}

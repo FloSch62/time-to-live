@@ -44,24 +44,28 @@ try {
   await key('F1');
   assert.equal(await page.evaluate(() => window.__ttl.scenes.stack.length), 2, 'field guide opens from title');
   await page.evaluate(() => {
+    // Each guide card draws its prose (body font) and then its control hint at the same wrap width; the prose must
+    // end above the hint (the redesigned guide lays cards out from the kit's type scale, not fixed coordinates).
     window.qaGuideBounds = {};
+    let pending = null;
     const g=window.__ttl.g, draw=g.text.bind(g);
     g.text=(text,x,y,opts)=>{
       const h=draw(text,x,y,opts);
-      if(opts?.font==='body'&&(x===92||x===498)&&(y===148||y===314)) window.qaGuideBounds[text]={bottom:y+h,limit:y+83};
+      if(opts?.width>300&&opts?.font==='body') pending={text,x,bottom:y+h};
+      else if(opts?.width>300&&pending&&pending.x===x) { window.qaGuideBounds[pending.text]={bottom:pending.bottom,limit:y}; pending=null; }
       return h;
     };
   });
-  for(let i=0;i<4;i++) {
+  for(let i=0;i<5;i++) {
     await page.waitForTimeout(100);
     await shot(`field-guide-${i+1}`);
-    if(i<3) await key('ArrowRight');
+    if(i<4) await key('ArrowRight');
   }
   const guideBounds=await page.evaluate(() => Object.values(window.qaGuideBounds));
-  assert.equal(guideBounds.length,16,'every guide card was rendered');
+  assert.equal(guideBounds.length,20,'every guide card on all five pages was rendered');
   assert.ok(guideBounds.every(b=>b.bottom<=b.limit),'guide prose fits above its control hints');
   await key('Escape');
-  results.push('Four-page field guide, controls and guardian tactics');
+  results.push('Five-page field guide, controls and guardian tactics');
   await key("Enter");
   await shot("new-voyage");
   await key("Enter");

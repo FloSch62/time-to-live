@@ -47,7 +47,7 @@ export function carInfo(id: AttachCarId): CarInfo {
     id,
     slot: d?.slot === "keel" ? "keel" : "rear",
     name: f?.name ?? d?.name ?? titleCase(id),
-    desc: f?.desc ?? d?.desc ?? "",
+    desc: d?.desc ?? f?.desc ?? "",
     lore: f?.lore ?? "",
     price: d?.cost ?? 70,
     rarity: (d?.rarity ?? 1) + 1,
@@ -107,6 +107,12 @@ export interface TenderStats {
   sparesMax: number;
   sensors: number;
   repair: number;
+  weaponCharge: number;
+  droneCharge: number;
+  veilCooldown: number;
+  debrisProtection: number;
+  relayStores: number;
+  salvageRepair: number;
   evasion: number; // penalty in %
   cars: number;
   reveal: boolean;
@@ -118,9 +124,9 @@ export function tenderStats(ship: ShipState): TenderStats {
   const st = consistStats(cs, ship.modules ?? {});
   const cars = (cs.rear ? 1 : 0) + (cs.keel ? 1 : 0);
   const hosted = new Set<SystemId>();
-  for (const id of [cs.rear, cs.keel]) {
+  for (const id of [cs.lead, cs.rear, cs.keel]) {
     if (!id) continue;
-    for (const lg of Object.values(CARS[id]?.legend ?? {})) if (lg.sys) hosted.add(lg.sys as SystemId);
+    for (const lg of Object.values(CARS[id]?.legend ?? {})) if (lg.sys === "drones" || lg.sys === "veil") hosted.add(lg.sys);
   }
   for (const [rid, m] of Object.entries(ship.modules ?? {})) if (st.sockets.includes(rid) && MODULES[m]?.hosts) hosted.add(MODULES[m].hosts!);
   return {
@@ -133,6 +139,12 @@ export function tenderStats(ship: ShipState): TenderStats {
     sparesMax: st.sparesCap,
     sensors: st.sensors,
     repair: st.repair,
+    weaponCharge: st.weaponCharge,
+    droneCharge: st.droneCharge,
+    veilCooldown: st.veilCooldown,
+    debrisProtection: st.debrisProtection,
+    relayStores: st.relayStores,
+    salvageRepair: st.salvageRepair,
     evasion: -st.evasionMalus,
     cars,
     reveal: st.reveal,
@@ -187,14 +199,34 @@ export function coupleCar(ship: ShipState, id: AttachCarId): Displaced {
 export function uncoupleCar(ship: ShipState, slot: "rear" | "keel"): Displaced {
   normalizeShip(ship);
   if (!ship.consist[slot]) return { items: [], modules: [] };
+  if (uncoupleBlocker(ship, slot)) return { items: [], modules: [] };
   return adopt(ship, dataCouple(ship, slot, null));
+}
+
+export function uncoupleBlocker(ship: ShipState, slot: "rear" | "keel"): string | null {
+  const next = dataCouple(ship, slot, null);
+  const cap = crewCap(next);
+  return ship.crew.length > cap ? `${ship.crew.length} crew aboard; uncoupling leaves only ${cap} berths.` : null;
 }
 
 /** Install (or remove with null) a module in a socket. The old module goes back to the stores. */
 export function refit(ship: ShipState, socket: string, module: ModuleId | null): Displaced {
   normalizeShip(ship);
   if (!sockets(ship).includes(socket)) return { items: [], modules: [] };
+  if (refitBlocker(ship, socket, module)) return { items: [], modules: [] };
   return adopt(ship, dataRefit(ship, socket, module));
+}
+
+/** A system has one working bay. A second housing cannot add a second copy of that system. */
+export function refitBlocker(ship: ShipState, socket: string, module: ModuleId | null): string | null {
+  const system = module ? MODULES[module]?.hosts : undefined;
+  const host = system ? ship.systemRooms?.[system] : undefined;
+  if (host && host !== socket) return `${titleCase(system!)} already has a working bay.`;
+  const modules = { ...ship.modules };
+  if (module) modules[socket] = module;
+  else delete modules[socket];
+  const cap = consistStats(ship.consist, modules).crewCap;
+  return ship.crew.length > cap ? `${ship.crew.length} crew aboard; this refit leaves only ${cap} berths.` : null;
 }
 
 export function lampColors(): readonly LampColor[] {
@@ -215,6 +247,5 @@ export function slotName(slot: CarSlot): string {
   return slot === "lead" ? "Lead car" : slot === "rear" ? "Rear car" : "Keel car";
 }
 
-export const EVASION_PER_CAR = 2;
 export const ALL_CARS: readonly AttachCarId[] = [...REAR_CAR_IDS, ...KEEL_CAR_IDS];
 export const ALL_MODULES: readonly ModuleId[] = MODULE_IDS;

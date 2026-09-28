@@ -8,8 +8,9 @@ import {
   AUGMENT_MAX, cargoCap, crewCap, SYSTEM_ROOM, addAugment, installSystem, makeCrew, pickCrewName, placeItem, removeItem,
 } from "./shipops.ts";
 import { relayLabel } from "./events.ts";
-import { ALL_CARS, ALL_MODULES, carInfo, coupleCar, freeSocket, isCarId, moduleInfo, payloadCap, refit, carSlot, sparesCap, uncoupleCar, type AttachCarId, type Displaced } from "./refit.ts";
+import { ALL_CARS, ALL_MODULES, carInfo, coupleCar, freeSocket, isCarId, moduleInfo, payloadCap, refit, refitBlocker, carSlot, sparesCap, uncoupleCar, uncoupleBlocker, type AttachCarId, type Displaced } from "./refit.ts";
 import type { ModuleId } from "../game/ids.ts";
+import { difficultyRules } from "../data/difficulty.ts";
 
 const STAGE_MARKUP = [1, 1, 1.1, 1.2];
 
@@ -31,6 +32,7 @@ function pickItems(list: ItemInfo[], n: number, stage: 1 | 2 | 3, rng: Rng): Ite
 /** Roll a market's stock (deterministic per run seed, stage and relay). */
 export function rollStock(run: RunState, relayId: number, pell = false): StoreStock {
   const stage = run.stage;
+  const rules = difficultyRules(run.difficulty);
   const rng = new Rng(hashString(`${run.seed}|store|${stage}|${relayId}`));
   const items: StoreItem[] = [];
   for (const w of pickItems(Object.values(catalog.weapons), 3, stage, rng)) items.push({ kind: "weapon", id: w.id, price: priceOf(w.price, stage, pell) });
@@ -59,24 +61,25 @@ export function rollStock(run: RunState, relayId: number, pell = false): StoreSt
     items.push({ kind: "crew", id: sp.id, price: priceOf(sp.price, stage), name });
   }
   // Cars and refits (Pell's stall in Stage I always has a couple of cars).
-  const cars = rng.shuffle([...ALL_CARS]).slice(0, pell ? rng.int(2, 3) : rng.chance(0.55) ? 1 : 0);
+  const cars = [rng.pick(ALL_CARS.filter(c => carSlot(c) === "rear")), rng.pick(ALL_CARS.filter(c => carSlot(c) === "keel"))];
+  if (pell) cars.push(rng.pick(ALL_CARS.filter(c => !cars.includes(c))));
   for (const c of cars) items.push({ kind: "car", id: c, price: priceOf(carInfo(c).price, stage, pell) });
   const mods = rng.shuffle([...ALL_MODULES].filter((m) => m !== "drone-bay" && m !== "veil-housing")).slice(0, rng.int(2, 3));
   for (const m of mods) items.push({ kind: "module", id: m, price: priceOf(moduleInfo(m).price, stage, pell) });
-  for (const sys of ["drones", "veil"] as SystemId[]) {
+  for (const sys of ["shields", "drones", "veil"] as SystemId[]) {
     const info = catalog.systems[sys];
-    if (info?.buy && rng.chance(sys === "drones" ? 0.75 : 0.5)) items.push({ kind: "system", id: sys, price: priceOf(info.buy, stage) });
+    if (info?.buy && (sys === "shields" || rng.chance(sys === "drones" ? 0.75 : 0.5))) items.push({ kind: "system", id: sys, price: priceOf(info.buy, stage) });
   }
   const stock: StoreStock = {
     items,
-    ttl: rng.int(3, 7),
-    payloads: rng.int(3, 7),
-    spares: rng.int(2, 6),
+    ttl: rng.int(3, 7) + rules.supplyStock,
+    payloads: rng.int(3, 7) + rules.supplyStock,
+    spares: rng.int(2, 6) + rules.supplyStock,
     prices: {
       ttl: priceOf(3, stage, pell),
       payloads: priceOf(6, stage, pell),
       spares: priceOf(8, stage, pell),
-      hull: 2 + (stage - 1),
+      hull: rules.repairPrices[stage],
     },
   };
   if (pell) stock.pell = true;
@@ -123,9 +126,19 @@ export function buyBlocker(run: RunState, it: StoreItem): string | null {
   }
   if (it.kind === "crew" && ship.crew.length >= crewCap(ship)) return `Crew full (${crewCap(ship)})`;
   if (it.kind === "car" && ship.consist?.[carSlot(it.id as AttachCarId)] === it.id) return "Already coupled";
+  if (it.kind === "car") {
+    const preview = JSON.parse(JSON.stringify(ship)) as typeof ship;
+    coupleCar(preview, it.id as AttachCarId);
+    const capacity = crewCap(preview);
+    if (ship.crew.length > capacity) return `Crew need ${ship.crew.length} berths; this consist has ${capacity}`;
+  }
+  if (it.kind === "module") {
+    const block = refitBlocker(ship, freeSocket(ship) ?? "", it.id as ModuleId);
+    if (block) return block;
+  }
   if (it.kind === "system") {
     if (ship.systems[it.id as SystemId]) return "Already installed";
-    if (!ship.systemRooms[it.id as SystemId] && !freeSocket(ship)) return "No free module socket";
+    if (it.id !== "shields" && !ship.systemRooms[it.id as SystemId] && !freeSocket(ship)) return "No free module socket";
   }
   return null;
 }
@@ -214,6 +227,8 @@ export function sellItem(run: RunState, id: string): TxResult {
 export function sellCar(run: RunState, slot: "rear" | "keel"): TxResult {
   const id = run.ship.consist?.[slot];
   if (!id || !isCarId(id)) return { ok: false, reason: "No car there" };
+  const block = uncoupleBlocker(run.ship, slot);
+  if (block) return { ok: false, reason: block };
   const out = uncoupleCar(run.ship, slot);
   let v = Math.floor(carInfo(id).price / 2);
   for (const x of out.items) v += sellPrice(x);

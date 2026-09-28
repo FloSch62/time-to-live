@@ -36,7 +36,8 @@ export function devRun(params: URLSearchParams): RunState {
   const seed = Number(params.get("seed") ?? 20260927);
   const stage = Math.max(1, Math.min(3, Number(params.get("stage") ?? 1))) as StageIndex;
   const rng = new Rng(seed);
-  const run = createRun(seed, newShip("Lamplighter", rng));
+  const tender = (params.get("tender") ?? "lamplighter") as Parameters<typeof newShip>[3];
+  const run = createRun(seed, newShip("Lamplighter", rng, "amber", tender));
   while (run.stage < stage) advanceStage(run);
   run.inv.salvage = 180;
   run.fragments.push(...[...content.fragments.keys()].filter((_, i) => i % 4 === 0).slice(0, 9));

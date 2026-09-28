@@ -25,7 +25,7 @@ fi
 
 cd "$COMFY" || exit 1
 ../.venv/bin/python main.py --listen 127.0.0.1 --port $PORT --disable-api-nodes --disable-all-custom-nodes \
-  --preview-method none --reserve-vram 2 \
+  --preview-method none --reserve-vram 2 --use-sage-attention \
   --input-directory "$ART/comfy/input" --output-directory "$ART/comfy/output" >"$LOG" 2>&1 &
 PID=$!
 

@@ -2,8 +2,11 @@
 // hatches with ladders, consoles, system emblems, air tint, fires, breaches, crew, weapon mounts and the ward mesh.
 // Serious and physical (hard rule 8): restrained light, no cartoon motion.
 import type { Gfx } from "../core/gfx";
+import { settings } from "../core/save";
+import { measure } from "../core/font";
 import { P, rgba } from "../core/palette";
-import { atlas, markHD, density } from "../core/assets";
+import { atlas, markHD, density, getJson } from "../core/assets";
+import { CARS } from "../data/cars";
 import { paletteSwap } from "../core/gfx";
 import { TILE } from "../data/layouts";
 import type { SimCrew, SimRoom, SimShip, SimSystem } from "./sim/model";
@@ -11,10 +14,12 @@ import type { Sim } from "./sim/sim";
 import { effective, usable } from "./sim/power";
 import type { CarView, ShipView } from "./view";
 import { carPoint, tileScreen, toScreen } from "./view";
-import { hullImage, lampColor, weaponArt, droneArt } from "./assets";
+import { hullImage, lampColor, weaponArt, droneArt, trolleyMeta, trolleyLayers, mountSpecs, keepClearBoxes, hullSolidAt, type TrolleyMeta, type TrolleyLayers, type MountSpec } from "./assets";
 import { chargeTime } from "./sim/weapons";
 import { orbit } from "./sim/drones";
 import { drawBay } from "./room-art";
+import { drawWardSurface } from "./shield-surface";
+import { CARRIER_THICKNESS, carrierThrough } from "./carrier";
 import type { LampColor } from "../game/ids";
 
 // ─── palette helpers ────────────────────────────────────────────────────────────────────────────────────────
@@ -65,6 +70,7 @@ export function drawHull(g: Gfx, sim: Sim, ship: SimShip, v: ShipView, lamp: Lam
     if (img) g.image(img, x, y);
     else proceduralHull(g, ship, c, x, y, lamp);
     if (ship.side === 1) drawHostileFrame(g, ship, c, x, y);
+    if (ship.side === 1) drawMachineDuty(g, sim, ship, c, x, y);
     // Hit flash: the whole car briefly brightens.
     if (ship.hitT < 0.12 && img) g.alpha(0.35 * (1 - ship.hitT / 0.12), () => g.image(img, x, y));
     // Lamps and glow points.
@@ -77,15 +83,126 @@ export function drawHull(g: Gfx, sim: Sim, ship: SimShip, v: ShipView, lamp: Lam
   }
 }
 
+// ─── drive trolley (separately painted layers, when the art provides them) ─────────────────────────────────
+
+/** Cars of a view whose drive trolley is a separate back/front layer pair (loaded). */
+export function trolleyCars(v: ShipView) {
+  const out: { car: CarView; meta: TrolleyMeta; layers: TrolleyLayers }[] = [];
+  for (const car of v.cars) {
+    const meta = trolleyMeta(car.id);
+    const layers = meta ? trolleyLayers(meta.kind) : null;
+    if (meta && layers) out.push({ car, meta, layers });
+  }
+  return out;
+}
+
+/** Where the carrier's centre passes through each car's grip. With a separate trolley the carriage rides the
+ *  carrier while the hull swings beneath it (the view's sideways sway, v.dx, moves the hull only). */
+export function carrierGrips(v: ShipView): [number, number][] {
+  const layered = new Map(trolleyCars(v).map((q) => [q.car, q.meta]));
+  const out: [number, number][] = [];
+  for (const c of v.cars) {
+    const tm = layered.get(c);
+    if (tm) out.push([Math.round(c.x + tm.saddle.x), Math.round(c.y + tm.saddle.y + v.dy)]);
+    else if (c.meta.cable) out.push([Math.round(c.x + c.meta.cable.x + v.dx), Math.round(c.y + c.meta.cable.y + v.dy)]);
+  }
+  return out.sort((a, b) => a[0] - b[0]);
+}
+
+/** Draw one layer of every separate trolley. `phase` counts sheave frames (advances while the drive runs). */
+export function drawTrolleys(g: Gfx, v: ShipView, layer: "back" | "front", phase = 0) {
+  for (const { car, meta, layers } of trolleyCars(v)) {
+    const img = layer === "back" ? layers.back : layers.front;
+    const f = settings.reducedMotion ? 0 : Math.floor(phase) % layers.frames;
+    const d = density(img) > 1 ? density(img) : 2;
+    const x = car.x + meta.saddle.x - layers.saddle.x;
+    const y = car.y + meta.saddle.y + v.dy - layers.saddle.y;
+    const sw = layers.w * d, sh = layers.h * d;
+    g.ctx.drawImage(img, f * sw, 0, sw, sh, Math.round(x * 2) / 2, Math.round(y * 2) / 2, layers.w, layers.h);
+  }
+}
+
+const trolleyBoxCache = new Map<string, [number, number, number, number]>();
+
+/** Opaque extent of a trolley kind's layers (frame 0, back and front), relative to its saddle (layout units). */
+function trolleyBox(layers: TrolleyLayers, kind: string): [number, number, number, number] {
+  const hit = trolleyBoxCache.get(kind);
+  if (hit) return hit;
+  const full: [number, number, number, number] = [-layers.saddle.x, -layers.saddle.y, layers.w, layers.h];
+  if (typeof document === "undefined" || !layers.back.complete || !layers.front.complete) return full;
+  const d = layers.back.width / (layers.w * layers.frames);
+  const W = Math.round(layers.w * d), H = Math.round(layers.h * d);
+  const cv = document.createElement("canvas");
+  cv.width = W;
+  cv.height = H;
+  const ctx = cv.getContext("2d", { willReadFrequently: true });
+  if (!ctx) return full;
+  ctx.drawImage(layers.back, 0, 0, W, H, 0, 0, W, H);
+  ctx.drawImage(layers.front, 0, 0, W, H, 0, 0, W, H);
+  const a = ctx.getImageData(0, 0, W, H).data;
+  let x0 = W, y0 = H, x1 = -1, y1 = -1;
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    if (a[(y * W + x) * 4 + 3] <= 100) continue;
+    x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y);
+  }
+  if (x1 < 0) return full;
+  const box: [number, number, number, number] = [x0 / d - layers.saddle.x, y0 / d - layers.saddle.y, (x1 + 1 - x0) / d, (y1 + 1 - y0) / d];
+  trolleyBoxCache.set(kind, box);
+  return box;
+}
+
+/** World rectangles of a vessel beyond its hull art: its mounted weapons with their pylons (inside the ward) and
+ *  its separately painted drive trolleys (above it). The camera fits them too (view `fitCamera`). */
+export function contentRects(v: ShipView, ship: SimShip): { warded: [number, number, number, number][]; bare: [number, number, number, number][] } {
+  const ms = ship.side === 0 ? mountPositions(ship, v, playerHardpoints(v)) : [];
+  const warded = ship.weapons.flatMap((w) => (ms[w.slot] ? [weaponRect(w, ms[w.slot], 1)] : []));
+  const bare = trolleyCars(v).map(({ car, meta, layers }) => {
+    const [bx, by, bw, bh] = trolleyBox(layers, meta.kind);
+    return [car.x + meta.saddle.x + bx, car.y + meta.saddle.y + v.dy + by, bw, bh] as [number, number, number, number];
+  });
+  return { warded, bare };
+}
+
+/** Purposeful external tooling remains visible even when the vessel uses shipped hull artwork. */
+function drawMachineDuty(g: Gfx, sim: Sim, ship: SimShip, car: CarView, x: number, y: number) {
+  const m = car.meta, live = !sim.outcome && !sim.deliveryReady && effective(ship.sys[sim.setup.scenario?.system ?? "weapons"]) > 0;
+  const t = settings.reducedMotion || !live ? 0 : sim.t;
+  const cx = x + m.gx - 4, cy = y + m.gy + Math.min(1.5, ship.rows / 2) * TILE;
+  if (ship.defId === "packet-leech") {
+    const aperture = live ? 5 + Math.sin(t * .7) * 2 : 14;
+    for (const sign of [-1, 1]) {
+      g.line(cx - 15, cy + sign * 18, cx - 15, cy + sign * aperture, P.brass2, 3);
+      g.line(cx - 15, cy + sign * aperture, cx - 3, cy + sign * aperture, P.brass1, 3);
+    }
+    g.circle(cx - 7, cy, 2, live ? P.amber1 : P.teal1, true);
+    if (live) for (let i = 0; i < 3; i++) g.rect(cx - 45 + ((t * 6 + i * 9) % 24), cy - 2, 3, 3, P.amber2);
+  } else if (ship.defId === "cable-wraith") {
+    const open = live ? 5 + Math.sin(t * 1.2) * 4 : 2;
+    g.circle(cx, cy, 4, P.steel1, true);
+    for (const sign of [-1, 1]) {
+      g.line(cx + 6, cy - sign * 6, cx - 21, cy + sign * open, P.steel2, 3);
+      g.line(cx - 12, cy + sign * open * .6, cx - 21, cy + sign * open, P.ember2);
+    }
+  } else if (ship.defId === "rust-prophet") {
+    const hornY = y + m.gy - 9, angle = live ? Math.sin(t * .5) * .3 : 0;
+    g.line(cx + 28, hornY + 8, cx + 28, hornY - 3, P.brass2, 3);
+    g.line(cx + 28, hornY, cx + 9, hornY - 7 + angle * 8, P.copper0, 3);
+    g.line(cx + 28, hornY, cx + 9, hornY + 7 + angle * 8, P.copper0, 3);
+    g.line(cx + 9, hornY - 7 + angle * 8, cx + 9, hornY + 7 + angle * 8, P.copper1, 2);
+  }
+}
+
 /** Exposed structural hardware connects the cutaway decks to each hostile's suspension and armor. */
 function drawHostileFrame(g: Gfx, ship: SimShip, car: CarView, x: number, y: number) {
   const m = car.meta;
   const tint = TINTS[ship.enemy?.tint ?? "iron"] ?? TINTS.iron;
   if (car.id === "iron-regent") {
-    // The guardian's exposed gun stations are supported by armored deck cradles.
+    // The guardian's exposed gun stations are supported by armored deck cradles (height: the mount's own `pylon`
+    // in ships.json when it has one).
+    const specs = mountSpecs(car.id, m, [car.cols, car.rows]);
     for (const [i, mount] of m.mounts.entries()) {
       const mx = x + mount.x, my = y + mount.y;
-      const depth = i === 0 ? 21 : 9;
+      const depth = specs[i]?.pylon ?? (i === 0 ? 21 : 9);
       g.rect(mx - 10, my + 1, 20, depth, P.ink0);
       g.rect(mx - 8, my + 2, 16, depth - 2, P.brass4);
       g.hline(mx - 9, my + 2, 18, P.brass1);
@@ -96,14 +213,18 @@ function drawHostileFrame(g: Gfx, ship: SimShip, car: CarView, x: number, y: num
   if (m.cable && ship.mobility === "crawler") {
     const cx = x + m.cable.x, cy = y + m.cable.y;
     const top = y + m.gy - 4;
-    // Two grooved steel grip wheels and a load-bearing crosshead, tied to the actual deck envelope.
+    // Two grooved steel sheaves ride ON the carrier (its centre line is cy, CARRIER_THICKNESS thick): each wheel's
+    // groove sits on the cable's top edge, its axle strap drops past the cable to a load-bearing crosshead.
+    const wy = cy - CARRIER_THICKNESS / 2 - 2;
     for (const dx of [-18, 18]) {
       g.rect(cx + dx - 3, cy + 7, 6, Math.max(3, top - cy - 7), P.ink0);
       g.rect(cx + dx - 2, cy + 7, 3, Math.max(3, top - cy - 7), tint.trim);
-      g.circle(cx + dx, cy, 8, P.ink0, true);
-      g.circle(cx + dx, cy, 6, P.steel1, true);
-      g.circle(cx + dx, cy, 3, tint.trim, true);
-      g.circle(cx + dx, cy, 1, P.ivory1, true);
+      g.rect(cx + dx - 1, wy, 3, cy + 8 - wy, P.ink0);
+      g.rect(cx + dx, wy, 1, cy + 8 - wy, tint.trim);
+      g.circle(cx + dx, wy, 8, P.ink0, true);
+      g.circle(cx + dx, wy, 6, P.steel1, true);
+      g.circle(cx + dx, wy, 3, tint.trim, true);
+      g.circle(cx + dx, wy, 1, P.ivory1, true);
     }
     g.rect(cx - 28, cy + 7, 56, 8, P.ink0);
     g.rect(cx - 26, cy + 8, 52, 5, tint.dark);
@@ -272,7 +393,7 @@ const KIT_SYS: Record<string, string> = {
 
 function wallKind(r: SimRoom): string {
   if (r.sys) return KIT_SYS[r.sys.id] ?? "hold";
-  if (r.id === "lead:hold-a" || r.id === "lead:hold-b" || r.id.endsWith(":hold")) return "socket";
+  if (r.socket) return "socket";
   const id = r.id.includes(":") ? r.id.split(":")[1] : r.id;
   if (/corridor|vestibule|gangway|hall|gallery|run|conduit|shell|keel|well/.test(id)) return "corridor";
   if (/quarters|bunk|bench|lockers|galley|warrant|brig|cells/.test(id)) return "quarters";
@@ -586,6 +707,9 @@ const CREW_COLORS: Record<string, [string, string, string]> = {
   "marshal-trooper": [P.ink3, P.ink5, P.ember2],
 };
 
+/** Height of a standing crew figure above its feet (layout units): name tags and health bars sit above it. */
+export const CREW_HEAD = 25;
+
 /** Horizontal slot of a crew member inside a tile (station consoles push them aside). */
 function slotX(ship: SimShip, c: SimCrew): number {
   if (c.task !== "man" || c.path.length) return MID;
@@ -611,18 +735,61 @@ export function crewFeet(ship: SimShip, v: ShipView, c: SimCrew): [number, numbe
 }
 
 const lookCache = new Map<string, CanvasImageSource | null>();
+const FIGURE = /^(linefolk|warden|rigger|courier|bellmaker|spark-mite|splicer|marshal-trooper)-(?!portrait)/;
+
+/**
+ * Crew readability (design plan §2.4): a copy of the crew atlas where every figure frame gets a clean one-pixel dark
+ * outline all round and a light rim along its lit (top and left) edge, so a figure reads against any room.
+ * Portraits, rings and bubbles are left alone. Cached per palette variant.
+ */
+function outlinedCrew(src: CanvasImageSource & { width: number; height: number }, species: string): HTMLCanvasElement | null {
+  const a = atlas("crew");
+  if (!a || typeof document === "undefined") return null;
+  const cv = document.createElement("canvas");
+  cv.width = src.width;
+  cv.height = src.height;
+  const ctx = cv.getContext("2d", { willReadFrequently: true });
+  if (!ctx) return null;
+  ctx.drawImage(src, 0, 0);
+  const img = ctx.getImageData(0, 0, cv.width, cv.height);
+  const d = img.data;
+  const W = cv.width;
+  const OUT = [7, 8, 15];
+  const RIM = [244, 236, 214];
+  for (const [name, f] of Object.entries(a.frames)) {
+    if (!FIGURE.test(name) || !name.startsWith(`${species}-`)) continue;
+    const x0 = f.x, y0 = f.y, x1 = f.x + f.w, y1 = f.y + f.h;
+    const solid = new Uint8Array(f.w * f.h);
+    for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) solid[(y - y0) * f.w + (x - x0)] = d[(y * W + x) * 4 + 3] > 0 ? 1 : 0;
+    const at = (x: number, y: number) => x >= x0 && y >= y0 && x < x1 && y < y1 && solid[(y - y0) * f.w + (x - x0)] === 1;
+    for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
+      const i = (y * W + x) * 4;
+      if (at(x, y)) {
+        // Lit edge: open to the upper-left light. Lift the pixel a third of the way to warm ivory.
+        if (!at(x, y - 1) || !at(x - 1, y) && at(x + 1, y)) for (let k = 0; k < 3; k++) d[i + k] = Math.round(d[i + k] + (RIM[k] - d[i + k]) * 0.34);
+        continue;
+      }
+      if (at(x - 1, y) || at(x + 1, y) || at(x, y - 1) || at(x, y + 1)) {
+        d[i] = OUT[0]; d[i + 1] = OUT[1]; d[i + 2] = OUT[2]; d[i + 3] = 255;
+      }
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+  markHD(cv, density(src));
+  return cv;
+}
 
 function crewImage(c: SimCrew): CanvasImageSource | undefined {
-  if (c.kind !== "crew" || !c.member) return undefined;
   const a = atlas("crew");
-  const variants = (a?.meta.variants as Record<string, Record<string, string>[]> | undefined)?.[c.species];
-  if (!a || !variants?.length) return undefined;
-  const look = (c.member.look ?? 0) % variants.length;
-  if (look === 0) return undefined;
-  const key = `crew-${c.species}-${look}`;
+  if (!a) return undefined;
+  const variants = c.kind === "crew" && c.member ? (a.meta.variants as Record<string, Record<string, string>[]> | undefined)?.[c.species] : undefined;
+  const look = variants?.length ? (c.member!.look ?? 0) % variants.length : 0;
+  const sp = c.species === "escort" ? "rigger" : c.species === "crawler" ? "spark-mite" : c.species;
+  const key = `crew-${sp}-${look}`;
   let img = lookCache.get(key);
   if (img === undefined) {
-    img = markHD(paletteSwap(a.image, key, variants[look]), density(a.image));
+    const base = look === 0 ? a.image : markHD(paletteSwap(a.image, key, variants![look]), density(a.image));
+    img = outlinedCrew(base as HTMLCanvasElement, sp) ?? base;
     lookCache.set(key, img);
   }
   return img ?? undefined;
@@ -653,10 +820,12 @@ export function drawCrew(g: Gfx, sim: Sim, ship: SimShip, v: ShipView, o: { visi
     const image = crewImage(c);
     const sel = o.selected.has(c.uid);
     const hostile = c.side !== 0;
-    if (!c.dead && (sel || o.hover === c.uid)) {
-      const ring = hostile ? "select-ring-enemy" : sel ? "select-ring" : "select-ring-hover";
-      if (!g.sprite("crew", ring, fx, fy + 1)) g.hline(fx - 8, fy + 1, 16, hostile ? P.ember1 : P.teal1);
-    }
+    const ringCol = hostile ? P.ember1 : sel ? P.teal1 : P.teal2;
+    const ring = !c.dead && (sel || o.hover === c.uid);
+    // A soft contact shadow grounds every figure; the selection ring wraps the feet (back arc behind, front arc in
+    // front of the figure).
+    if (!c.dead && !c.climbing) g.alpha(0.5 * alpha, () => floorEllipse(g, fx, fy, 7, 1.5, P.ink0));
+    if (ring) floorRing(g, fx, fy, ringCol, "back", sel ? 1 : 0.75);
     let drawn = false;
     for (const a of names) {
       if (!a) continue;
@@ -666,16 +835,17 @@ export function drawCrew(g: Gfx, sim: Sim, ship: SimShip, v: ShipView, o: { visi
       }
     }
     if (!drawn) proceduralCrew(g, c, fx, fy, t, alpha);
+    if (ring) floorRing(g, fx, fy, ringCol, "front", sel ? 1 : 0.75);
     // Escort automatons are the enemy's machines: a thin amber lens mark.
-    if (c.kind === "escort" && !c.dead) fine(g, fx - 1, fy - 15, 2, 0.5, P.amber1);
+    if (c.kind === "escort" && !c.dead) fine(g, fx - 1, fy - 13, 2, 0.5, P.amber1);
     if (c.dead) continue;
     // Hit flash.
-    if (c.hurtT < 0.08) g.alpha(0.5, () => g.rect(fx - 5, fy - 24, 10, 22, P.ivory0));
+    if (c.hurtT < 0.08) g.alpha(0.5, () => g.rect(fx - 6, fy - 23, 12, 22, P.ivory0));
     // Health.
     if (c.hp < c.maxHp || sel) {
       const f = c.hp / c.maxHp;
       const hx = fx - 9;
-      const hy = fy - 31;
+      const hy = fy - CREW_HEAD - 3;
       if (g.sprite("crew", "crew-hp-frame", hx, hy)) {
         const fill = f > 0.6 ? "green" : f > 0.3 ? "amber" : "red";
         const fw = Math.max(1, Math.round(16 * f));
@@ -692,9 +862,46 @@ export function drawCrew(g: Gfx, sim: Sim, ship: SimShip, v: ShipView, o: { visi
     if (ship.fire[c.tile] > 0) bubble = "fire";
     else if (c.breathes && room && room.o2 < 10) bubble = "suffocating";
     else if (c.task === "repair" && !boarder) bubble = "repair";
-    if (bubble && !c.path.length) g.anim("crew", `bubble-${bubble}`, t, fx + 6, fy - 33);
-    if (c.healT < 0.3) fine(g, fx - 0.5, fy - 35, 1, 1, P.verd0);
+    if (bubble && !c.path.length) g.anim("crew", `bubble-${bubble}`, t, fx + 6, fy - CREW_HEAD - 5);
+    if (c.healT < 0.3) fine(g, fx - 0.5, fy - CREW_HEAD - 6, 1, 1, P.verd0);
   }
+}
+
+/** Filled flat ellipse at half-unit resolution (contact shadow). */
+function floorEllipse(g: Gfx, cx: number, cy: number, rx: number, ry: number, color: string) {
+  for (let dy = -ry; dy <= ry + 1e-6; dy += 0.5) {
+    const hw = rx * Math.sqrt(Math.max(0, 1 - (dy / (ry + 0.25)) ** 2));
+    fine(g, cx - hw, cy + dy, hw * 2, 0.5, color);
+  }
+}
+
+/** Selection ring on the floor: a dark bed and a bright line, one half at a time. */
+function floorRing(g: Gfx, cx: number, cy: number, color: string, half: "back" | "front", a: number) {
+  const rx = 10, ry = 2.6;
+  g.alpha(a, () => {
+    for (let i = 0; i < 128; i++) {
+      const ang = (i / 128) * Math.PI * 2;
+      const s = Math.sin(ang);
+      if (half === "back" ? s > 0 : s <= 0) continue;
+      const x = cx + Math.cos(ang) * rx, y = cy + 0.5 + s * ry;
+      fine(g, x - 0.5, y - 0.5, 1.5, 1.5, P.ink0);
+    }
+    for (let i = 0; i < 128; i++) {
+      const ang = (i / 128) * Math.PI * 2;
+      const s = Math.sin(ang);
+      if (half === "back" ? s > 0 : s <= 0) continue;
+      fine(g, cx + Math.cos(ang) * rx, cy + 0.5 + s * ry, 0.5, 0.5, color);
+    }
+  });
+}
+
+/** A small name tag above a crew member's head (hover). (x, y) is the head top. */
+export function crewNameTag(g: Gfx, name: string, x: number, y: number, color: string = P.ivory0) {
+  const w = measure(name, "small") + 8;
+  const tx = Math.round(x - w / 2), ty = Math.round(y - 13);
+  g.rect(tx, ty, w, 11, P.ink0);
+  g.box(tx, ty, w, 11, P.brass4);
+  g.text(name, tx + 4, ty + 1, { font: "small", color });
 }
 
 function proceduralCrew(g: Gfx, c: SimCrew, x: number, y: number, t: number, alpha: number) {
@@ -713,7 +920,7 @@ function proceduralCrew(g: Gfx, c: SimCrew, x: number, y: number, t: number, alp
       for (const lx of [-6, -2, 2, 5]) g.rect(x + lx, y - 2, 1, 2, trim);
       return;
     }
-    const tall = c.species === "rigger" || c.species === "escort" ? 20 : 26;
+    const tall = c.species === "rigger" || c.species === "escort" ? 19 : 23;
     g.rect(x - 4, y - tall + 6, 8, tall - 8, P.ink0);
     g.rect(x - 3, y - tall + 7, 6, tall - 12, body);
     g.rect(x - 3, y - 5 + walk, 2, 5 - walk, trim);
@@ -727,51 +934,261 @@ function proceduralCrew(g: Gfx, c: SimCrew, x: number, y: number, t: number, alp
 
 // ─── weapons and drones ─────────────────────────────────────────────────────────────────────────────────────
 
+/** Open air kept between a roof weapon and the carrier or a keep-clear fitting above it (layout units). */
+export const CLEAR_AIR = 3;
+/** Default pylon heights (layout units): a short riveted pedestal on the roof, a snug collar under the keel. */
+export const PYLON_ROOF = 4;
+export const PYLON_BELLY = 1;
+/** A painted hardpoint plate is 6 image px deep, centred on its mount point: its face is 1.5 units off the centre. */
+const PLATE_HALF = 1.5;
+
 export interface MountPos {
+  /** The weapon's pivot (its foot; world). */
   x: number;
   y: number;
   belly: boolean;
+  /** Face of the hardpoint plate the pylon stands on (world y): the plate's top on the roof, its underside on the
+   *  belly. Absent for mounts without a pylon (hostile hulls). */
+  plateY?: number;
+  /** Pylon height in use (layout units, a multiple of one hull pixel) and the height the mount asked for; lower
+   *  when the weapon would otherwise come closer than CLEAR_AIR to the carrier or a keep-clear fitting. */
+  pylon?: number;
+  want?: number;
 }
 
-/** World position of each weapon mount (player: car hardpoints in consist order, matched to the nearest art mount on
- *  the same side of that car; procedural positions when the art has none). */
-export function mountPositions(ship: SimShip, v: ShipView, hardpoints: { car: string; x: number; side: "roof" | "belly"; mount?: { x: number; y: number } }[]): MountPos[] {
-  const out: MountPos[] = [];
-  const used = new Set<string>();
-  for (const hp of hardpoints) {
-    const c = v.cars.find((q) => q.slot === hp.car) ?? v.cars[0];
-    const want = c.meta.gx + (hp.x + 0.5) * TILE;
-    const midY = c.meta.gy + (c.rows * TILE) / 2;
-    let best: { x: number; y: number } | null = null;
-    let bd = Infinity;
-    c.meta.mounts.forEach((m, k) => {
-      const key = `${c.slot}:${k}`;
-      if (used.has(key)) return;
-      if ((m.y < midY) !== (hp.side === "roof")) return;
-      const d = Math.abs(m.x - want);
-      if (d < bd) {
-        bd = d;
-        best = m;
-      }
-    });
-    if (best) {
-      const k = c.meta.mounts.indexOf(best);
-      used.add(`${c.slot}:${k}`);
-      const [x, y] = carPoint(v, c, best);
-      out.push({ x, y, belly: hp.side === "belly" });
-    } else {
-      const gx = c.x + want + v.dx;
-      const y = hp.side === "roof" ? c.y + c.meta.gy - 8 + v.dy : c.y + c.meta.gy + c.rows * TILE + 8 + v.dy;
-      out.push({ x: Math.round(gx), y: Math.round(y), belly: hp.side === "belly" });
-    }
+/** A weapon sprite's opaque extent around its pivot (layout units; facing right, roof orientation). */
+export interface WeaponBox { l: number; r: number; up: number; down: number }
+
+const PROCEDURAL_BOX: WeaponBox = { l: 6, r: 18, up: 9, down: 0 };
+const boxCache = new Map<string, WeaponBox>();
+
+export function weaponBox(sprite: string): WeaponBox {
+  const hit = boxCache.get(sprite);
+  if (hit) return hit;
+  const { img, meta } = weaponArt(sprite);
+  if (!meta) return PROCEDURAL_BOX;
+  const full: WeaponBox = { l: meta.pivot.x, r: meta.w - meta.pivot.x, up: meta.pivot.y, down: meta.h - meta.pivot.y };
+  if (!img || typeof document === "undefined" || !img.complete || !img.naturalWidth) return full;
+  const cv = document.createElement("canvas");
+  cv.width = img.naturalWidth;
+  cv.height = img.naturalHeight;
+  const ctx = cv.getContext("2d", { willReadFrequently: true });
+  if (!ctx) return full;
+  ctx.drawImage(img, 0, 0);
+  const a = ctx.getImageData(0, 0, cv.width, cv.height).data;
+  let x0 = cv.width, y0 = cv.height, x1 = -1, y1 = -1;
+  for (let y = 0; y < cv.height; y++) for (let x = 0; x < cv.width; x++) {
+    if (a[(y * cv.width + x) * 4 + 3] <= 100) continue;
+    if (x < x0) x0 = x;
+    if (x > x1) x1 = x;
+    if (y < y0) y0 = y;
+    if (y > y1) y1 = y;
+  }
+  if (x1 < 0) return full;
+  const s = cv.width / meta.w;
+  const box = { l: meta.pivot.x - x0 / s, r: (x1 + 1) / s - meta.pivot.x, up: meta.pivot.y - y0 / s, down: (y1 + 1) / s - meta.pivot.y };
+  boxCache.set(sprite, box);
+  return box;
+}
+
+/** A mounted weapon's opaque rectangle (world) for the given facing. */
+export function weaponBounds(sprite: string, m: MountPos, face: 1 | -1): [number, number, number, number] {
+  const b = weaponBox(sprite);
+  const x0 = face > 0 ? m.x - b.l : m.x - b.r;
+  const y0 = m.belly ? m.y - b.down : m.y - b.up;
+  return [x0, y0, b.l + b.r, b.up + b.down];
+}
+
+/** Where the carrier's centre passes each car's grip (the trolley saddle, else the painted cable grip), world. */
+function gripLine(v: ShipView): [number, number][] {
+  const out: [number, number][] = [];
+  for (const c of v.cars) {
+    const tm = trolleyMeta(c.id);
+    const p = tm?.saddle ?? c.meta.cable;
+    if (p) out.push([c.x + p.x + (tm ? 0 : v.dx), c.y + p.y + v.dy]);
+  }
+  return out.sort((a, b) => a[0] - b[0]);
+}
+
+/**
+ * The lowest the carrier's centre line can run near a vessel (world y at x): level with each grip beyond the
+ * outermost ones, and no lower than the lower grip between two. Every carrier drawn around a tender is taut
+ * (carrierThrough `taut`) and rises away from its grips, so it never comes below this line; roof weapons are kept
+ * CLEAR_AIR under its lower edge.
+ */
+export function carrierFloor(v: ShipView): ((x: number) => number) | null {
+  const g = gripLine(v);
+  if (!g.length) return null;
+  return (x: number) => {
+    if (x <= g[0][0]) return g[0][1];
+    for (let k = 0; k < g.length - 1; k++) if (x <= g[k + 1][0]) return Math.max(g[k][1], g[k + 1][1]);
+    return g[g.length - 1][1];
+  };
+}
+
+/** The carrier line through a tender's grips out to x0 and x1: taut arms rising away from the load. */
+export function tenderCarrier(v: ShipView, x0: number, x1: number, rise: [number, number] = [18, 12]): { pts: [number, number][]; yAt: (x: number) => number } | null {
+  const grips = carrierGrips(v);
+  if (!grips.length) return null;
+  const first = grips[0], last = grips[grips.length - 1];
+  const pts: [number, number][] = [[Math.min(x0, first[0] - 40), first[1] - rise[0]], ...grips, [Math.max(x1, last[0] + 40), last[1] - rise[1]]];
+  return { pts, yAt: carrierThrough(pts, true) };
+}
+
+/** Zones no weapon may enter (ships.json `keepClear`: the drive trolley, roof fittings, lamp, cab window), world. */
+export function keepClearZones(v: ShipView): { what: string; x: number; y: number; w: number; h: number }[] {
+  return v.cars.flatMap((c) => keepClearBoxes(c.id, [c.cols, c.rows]).map((b) => ({ what: b.what ?? "fitting", x: c.x + b.x + v.dx, y: c.y + b.y + v.dy, w: b.w, h: b.h })));
+}
+
+type Hardpoint = { car: string; x: number; side: "roof" | "belly"; mount?: { x: number; y: number } };
+
+/** The consist's weapon hardpoints in slot order (lead car first, then rear and keel cars). */
+export function playerHardpoints(v: ShipView): Hardpoint[] {
+  const out: Hardpoint[] = [];
+  for (const c of v.cars) {
+    const def = CARS[c.id as keyof typeof CARS];
+    def?.hardpoints.forEach((hp, k) => out.push({ car: c.slot, x: hp.x, side: hp.side, mount: c.meta.mounts[k] }));
   }
   return out;
 }
 
+/** The ward wraps the mounted weapons and their pylons too (the envelope keeps its margin around every gun). */
+export function wrapWeapons(v: ShipView, ship: SimShip) {
+  v.extras = () => {
+    // Wait for the weapon art (its opaque extent) and the hull art (its plates) before wrapping.
+    if (!getJson("art/weapons/weapons.json")) return null;
+    if (ship.weapons.some((w) => { const { meta, img } = weaponArt(w.def.sprite); return meta && (!img || !img.complete); })) return null;
+    if (v.cars.some((c) => hullSolidAt(c.id, [c.cols, c.rows], 0, 0) === null && hullImage(c.id, undefined, [c.cols, c.rows]) !== null)) return null;
+    const ms = mountPositions(ship, v, playerHardpoints(v));
+    return ship.weapons.flatMap((w) => {
+      const m = ms[w.slot];
+      if (!m) return [];
+      const [x, y, rw, rh] = weaponRect(w, m, 1);
+      return [[x - v.dx, y - v.dy, rw, rh] as [number, number, number, number]];
+    });
+  };
+}
+
+/** World position of each weapon mount (player: car hardpoints in consist order, matched to the nearest painted
+ *  hardpoint plate on the same side of that car; procedural positions when the art has none). The weapon stands on a
+ *  pylon: PYLON_ROOF / PYLON_BELLY or the mount's own `pylon`, cut down (never below the plate) so that the weapon in
+ *  that slot keeps CLEAR_AIR under the carrier and under any keep-clear fitting above it. */
+export function mountPositions(ship: SimShip, v: ShipView, hardpoints: Hardpoint[]): MountPos[] {
+  const out: MountPos[] = [];
+  const used = new Set<string>();
+  const floor = carrierFloor(v);
+  const keep = keepClearZones(v);
+  hardpoints.forEach((hp, k) => {
+    const c = v.cars.find((q) => q.slot === hp.car) ?? v.cars[0];
+    const roof = hp.side === "roof";
+    const want = c.meta.gx + (hp.x + 0.5) * TILE;
+    const midY = c.meta.gy + (c.rows * TILE) / 2;
+    const specs = mountSpecs(c.id, c.meta, [c.cols, c.rows]);
+    let best = -1;
+    let bd = Infinity;
+    specs.forEach((m, i) => {
+      if (used.has(`${c.slot}:${i}`) || (m.y < midY) !== roof) return;
+      const d = Math.abs(m.x - want);
+      if (d < bd) { bd = d; best = i; }
+    });
+    // The hull is drawn at whole units: plates and pylons follow its pixel grid exactly.
+    const ox = Math.round(c.x + v.dx), oy = Math.round(c.y + v.dy);
+    let px: number, face: number, wantPylon: number;
+    if (best >= 0) {
+      used.add(`${c.slot}:${best}`);
+      const m = specs[best];
+      px = m.x;
+      face = plateFace(c, m, roof);
+      wantPylon = m.pylon ?? (roof ? PYLON_ROOF : PYLON_BELLY);
+    } else {
+      px = Math.round(want);
+      face = roof ? c.meta.gy - 3 : c.meta.gy + c.rows * TILE + 3;
+      wantPylon = roof ? PYLON_ROOF : PYLON_BELLY;
+    }
+    const X = ox + px, F = oy + face;
+    let pylon = wantPylon;
+    const w = ship.weapons.find((q) => q.slot === k);
+    if (roof && w) {
+      const b = weaponBox(w.def.sprite);
+      const x0 = X - b.l, x1 = X + b.r;
+      // The highest the weapon's top may reach.
+      let limit = -Infinity;
+      if (floor) for (let x = x0; ; x = Math.min(x1, x + 2)) {
+        limit = Math.max(limit, floor(x) + CARRIER_THICKNESS / 2 + CLEAR_AIR);
+        if (x >= x1) break;
+      }
+      for (const z of keep) if (z.x < x1 && z.x + z.w > x0 && z.y + z.h <= F + 0.5) limit = Math.max(limit, z.y + z.h + CLEAR_AIR);
+      pylon = Math.min(pylon, F - limit - b.up);
+    }
+    pylon = Math.max(0, Math.floor(pylon * 2) / 2);
+    out.push({ x: X, y: roof ? F - pylon : F + pylon, belly: !roof, plateY: F, pylon, want: wantPylon });
+  });
+  return out;
+}
+
+/** The face of a mount's hardpoint plate (car-local y). A mount point on the painted hull is a plate's centre; one in
+ *  open air (older art) stands on the first hull pixel below it (above it, under the belly). */
+function plateFace(c: CarView, m: MountSpec, roof: boolean): number {
+  const at = (y: number) => hullSolidAt(c.id, [c.cols, c.rows], m.x, y);
+  const here = at(m.y);
+  if (here === null || here) return roof ? m.y - PLATE_HALF : m.y + PLATE_HALF;
+  for (let d = 0.5; d <= 48; d += 0.5) {
+    const y = roof ? m.y + d : m.y - d;
+    if (at(y)) return roof ? y : y + 0.5;
+  }
+  return m.y;
+}
+
+/** A riveted brass pylon from a hardpoint plate's face up to (down to) a weapon's foot, on the hull pixel grid
+ *  (half-unit steps): a foot flange on the plate, a column with two rivet rows, a collar under the weapon. Low
+ *  pylons are a single clamp collar. */
+function drawPylon(g: Gfx, x: number, face: number, foot: number, belly: boolean) {
+  const h = Math.abs(face - foot);
+  if (h < 0.5) return;
+  const c = g.ctx;
+  const px = (x0: number, y0: number, w: number, hh: number, col: string) => {
+    if (w <= 0 || hh <= 0) return;
+    c.fillStyle = col;
+    c.fillRect(Math.round(x0 * 2) / 2, Math.round(y0 * 2) / 2, Math.round(w * 2) / 2, Math.round(hh * 2) / 2);
+  };
+  const f = Math.round(face * 2) / 2;
+  // Top y of a band `t` thick starting `d` from the plate face toward the weapon.
+  const band = (d: number, t: number) => (belly ? f + d : f - d - t);
+  const cx = Math.round(x * 2) / 2;
+  if (h < 3) {
+    px(cx - 6, band(0, h), 12, h, P.ink0);
+    if (h >= 1.5) {
+      px(cx - 5.5, band(0.5, h - 1), 11, h - 1, P.brass3);
+      px(cx - 5.5, belly ? band(0.5, 0.5) : band(h - 1, 0.5), 11, 0.5, P.brass1);
+    }
+    return;
+  }
+  // Foot flange.
+  px(cx - 7, band(0, 2), 14, 2, P.ink0);
+  px(cx - 6.5, band(0.5, 1), 13, 1, P.brass2);
+  px(cx - 6.5, belly ? band(0.5, 0.5) : band(1, 0.5), 13, 0.5, P.brass1);
+  // Column.
+  const c0 = 2, c1 = h - 1.5;
+  if (c1 > c0) {
+    px(cx - 4.5, band(c0, c1 - c0), 9, c1 - c0, P.ink0);
+    px(cx - 4, band(c0, c1 - c0), 8, c1 - c0, P.brass3);
+    px(cx - 4, band(c0, c1 - c0), 1, c1 - c0, P.brass1);
+    px(cx + 2.5, band(c0, c1 - c0), 1.5, c1 - c0, P.brass5);
+    for (let d = c0 + 1; d <= c1 - 1; d += 2.5) {
+      px(cx - 2.5, band(d, 0.5), 0.5, 0.5, P.brass0);
+      px(cx + 1.5, band(d, 0.5), 0.5, 0.5, P.brass0);
+    }
+  }
+  // Collar.
+  px(cx - 6, band(h - 1.5, 1.5), 12, 1.5, P.ink0);
+  px(cx - 5.5, band(h - 1, 0.5), 11, 0.5, P.brass2);
+}
+
 export function drawWeaponAt(g: Gfx, sim: Sim, w: SimShip["weapons"][number], m: MountPos, face: 1 | -1, showCharge: boolean) {
+  if (m.plateY !== undefined && m.pylon) drawPylon(g, m.x, m.plateY, m.y, m.belly);
   const { img, meta } = weaponArt(w.def.sprite);
   const f = Math.min(1, w.charge / chargeTime(w));
-  const recoil = w.fired < 0.12 ? Math.round((1 - w.fired / 0.12) * 2) : 0;
+  const recoil = !settings.reducedMotion && w.fired < 0.12 ? Math.round((1 - w.fired / 0.12) * 2) : 0;
   const live = w.powered || (w.art ? usable(w.art) > 0 : false);
   if (img && meta) {
     const c = g.ctx;
@@ -809,13 +1226,41 @@ export function drawWeaponAt(g: Gfx, sim: Sim, w: SimShip["weapons"][number], m:
   }
 }
 
+/** World rectangle covered by a mounted weapon and its pylon (for hover tooltips), padded a little. */
+export function weaponRect(w: SimShip["weapons"][number], m: MountPos, face: 1 | -1): [number, number, number, number] {
+  const [x, y, bw, bh] = weaponBounds(w.def.sprite, m, face);
+  let y0 = y, y1 = y + bh;
+  if (m.plateY !== undefined) { y0 = Math.min(y0, m.plateY); y1 = Math.max(y1, m.plateY); }
+  return [x - 2, y0 - 2, bw + 4, y1 - y0 + 4];
+}
+
+/** Corner brackets around a hovered hull mount. */
+export function mountHighlight(g: Gfx, r: [number, number, number, number], color: string) {
+  const [x, y, w, h] = r.map(Math.round);
+  g.alpha(0.85, () => {
+    for (const [cx, cy, sx, sy] of [[x, y, 1, 1], [x + w, y, -1, 1], [x, y + h, 1, -1], [x + w, y + h, -1, -1]] as const) {
+      g.rect(sx > 0 ? cx : cx - 4, cy, 4, 1, color);
+      g.rect(cx, sy > 0 ? cy : cy - 4, 1, 4, color);
+    }
+  });
+}
+
+/** World rectangle of a flying drone (for hover tooltips). */
+export function droneRect(d: SimShip["drones"][number], v: ShipView): [number, number, number, number] {
+  const [x, y] = toScreen(v, d.x, d.y);
+  const { meta } = droneArt(d.def.id);
+  const w = meta?.w ?? 12, h = meta?.h ?? 8;
+  return [x - w / 2 - 2, y - h / 2 - 3, w + 4, h + 6];
+}
+
 /** Muzzle point of a weapon on screen. */
 export function muzzle(w: SimShip["weapons"][number], m: MountPos, face: 1 | -1): [number, number] {
   const { meta } = weaponArt(w.def.sprite);
-  if (meta) return [m.x + face * (meta.muzzle.x - meta.pivot.x), m.y + (m.belly ? -1 : 1) * (meta.muzzle.y - meta.pivot.y)];
+  const recoil = !settings.reducedMotion && w.fired < .12 ? Math.round((1 - w.fired / .12) * 2) : 0;
+  if (meta) return [m.x + face * (meta.muzzle.x - meta.pivot.x - recoil), m.y + (m.belly ? -1 : 1) * (meta.muzzle.y - meta.pivot.y)];
   const s = m.belly ? -1 : 1;
   const len = w.def.power >= 3 ? 22 : 16;
-  return [m.x + face * (len - 4), m.y - s * 6 - (s > 0 ? 0 : -3)];
+  return [m.x + face * (len - 4 - recoil), m.y - s * 6 - (s > 0 ? 0 : -3)];
 }
 
 /** Drones of `owner` flying in the space of ship `at` (drawn inside that ship's camera). */
@@ -849,107 +1294,8 @@ export function drawDrones(g: Gfx, sim: Sim, owner: SimShip, views: [ShipView, S
 
 // ─── ward mesh (shields) ────────────────────────────────────────────────────────────────────────────────────
 
-const meshCache = new Map<string, HTMLCanvasElement>();
-
-function meshCanvas(w: number, h: number, color: string): HTMLCanvasElement {
-  const key = `${w}x${h}|${color}`;
-  let c = meshCache.get(key);
-  if (c) return c;
-  c = document.createElement("canvas");
-  c.width = w;
-  c.height = h;
-  const x = c.getContext("2d")!;
-  x.fillStyle = color;
-  // A rounded-rectangle band of lattice: two rails with diagonal cross ties.
-  const r = Math.min(24, Math.floor(h / 3));
-  const pts: [number, number][] = [];
-  const per = 2 * (w + h);
-  for (let i = 0; i < per; i += 1) pts.push(perimeter(i, w, h, r));
-  for (let i = 0; i < pts.length; i += 1) {
-    const [px, py] = pts[i];
-    const [ix, iy] = inward(px, py, w, h, 3);
-    if (i % 2 === 0) x.fillRect(px, py, 1, 1);
-    if (i % 2 === 1) x.fillRect(ix, iy, 1, 1);
-    // Diagonal ties every 6 px.
-    const k = i % 6;
-    if (k < 4) {
-      const f = k / 3;
-      const [ax, ay] = inward(px, py, w, h, Math.round(3 * f));
-      x.fillRect(ax, ay, 1, 1);
-    }
-  }
-  meshCache.set(key, c);
-  return c;
-}
-
-function perimeter(i: number, w: number, h: number, r: number): [number, number] {
-  // Walk the outline of a rounded rectangle (approximate corners with a quarter ellipse).
-  const top = w - 2 * r;
-  const side = h - 2 * r;
-  const arc = Math.round((Math.PI * r) / 2);
-  const seq = [top, arc, side, arc, top, arc, side, arc];
-  let s = i % (2 * top + 2 * side + 4 * arc);
-  for (let k = 0; k < 8; k++) {
-    if (s < seq[k]) {
-      const f = s / Math.max(1, seq[k]);
-      switch (k) {
-        case 0: return [r + s, 0];
-        case 1: return corner(w - r, r, r, -Math.PI / 2 + f * (Math.PI / 2));
-        case 2: return [w - 1, r + s];
-        case 3: return corner(w - r, h - r, r, f * (Math.PI / 2));
-        case 4: return [w - r - s, h - 1];
-        case 5: return corner(r, h - r, r, Math.PI / 2 + f * (Math.PI / 2));
-        case 6: return [0, h - r - s];
-        default: return corner(r, r, r, Math.PI + f * (Math.PI / 2));
-      }
-    }
-    s -= seq[k];
-  }
-  return [0, 0];
-}
-
-function corner(cx: number, cy: number, r: number, a: number): [number, number] {
-  return [Math.round(cx + Math.cos(a) * (r - 1)), Math.round(cy + Math.sin(a) * (r - 1))];
-}
-
-function inward(x: number, y: number, w: number, h: number, d: number): [number, number] {
-  const cx = w / 2;
-  const cy = h / 2;
-  const dx = cx - x;
-  const dy = cy - y;
-  const l = Math.hypot(dx, dy) || 1;
-  return [Math.round(x + (dx / l) * d), Math.round(y + (dy / l) * d)];
-}
-
-export function drawWardMesh(g: Gfx, sim: Sim, ship: SimShip, v: ShipView, hitFlash: number, extra: { gate?: boolean; glass?: boolean }) {
-  const layers = ship.shields;
-  const charging = ship.shieldT;
-  const maxL = Math.floor(effective(ship.sys.shields) / 2) + ship.bonusLayers;
-  if (maxL <= 0 && !extra.gate && !extra.glass) return;
-  const bx = v.bx + v.dx;
-  const by = v.by + v.dy;
-  for (let i = 0; i < maxL; i++) {
-    const pad = 4 + i * 5;
-    const w = Math.round(v.bw + pad * 2);
-    const h = Math.round(v.bh + pad * 2 - 20);
-    const up = i < layers;
-    const col = i >= Math.floor(effective(ship.sys.shields) / 2) ? P.ember2 : ship.side === 0 ? P.teal2 : P.teal3;
-    const img = meshCanvas(w, h, col);
-    const shimmer = 0.5 + 0.5 * Math.sin(sim.t * 1.3 + i);
-    let a = up ? 0.22 + 0.1 * shimmer + hitFlash * 0.5 : i === layers ? 0.08 * charging : 0.03;
-    if (ship.sys.shields && ship.sys.shields.ion > 0 && up) a += 0.1;
-    g.alpha(a, () => g.image(img, bx - pad, by - pad + 10));
-  }
-  if (extra.gate) {
-    const w = Math.round(v.bw + 36);
-    const h = Math.round(v.bh + 16);
-    g.alpha(0.35 + 0.1 * Math.sin(sim.t * 2), () => g.image(meshCanvas(w, h, P.brass1), bx - 18, by - 8));
-  }
-  if (extra.glass) {
-    const w = Math.round(v.bw + 40);
-    const h = Math.round(v.bh + 18);
-    g.alpha(0.3 + 0.12 * Math.sin(sim.t * 2.4), () => g.image(meshCanvas(w, h, P.violet1), bx - 20, by - 9));
-  }
+export function drawWardMesh(g: Gfx, sim: Sim, ship: SimShip, v: ShipView, _hitFlash: number, _extra: { gate?: boolean; glass?: boolean }) {
+  drawWardSurface(g, sim, ship, v);
 }
 
 export function droneOrbit(ship: SimShip, d: SimShip["drones"][number], t: number): [number, number] {

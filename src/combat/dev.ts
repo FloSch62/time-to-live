@@ -2,13 +2,15 @@
 //   /?dev=combat&enemy=<id>&stage=<n>[&depth=0.5][&hazard=<id>][&seed=n][&auto=1][&level=starter|typical|strong]
 //   /?dev=combat-strong&enemy=<id>[&stage=n]      upgraded ship for that stage
 //   /?dev=combat-ship[&rear=<car>][&keel=<car>]    drawShipPreview of a consist
-// Extra: &rear=<car> &keel=<car> couple cars; &lamp=teal; &paused=0 starts running.
+// Extra: &rear=<car> &keel=<car> couple cars; &lamp=teal; &paused=0 starts running; &tender=glasswing|switchback
+// starts from that lead car's opening fit instead of the bench Lamplighter; &crew=n adds bench crew up to n.
 import type { DevFactory } from "../dev";
 import type { App, Scene } from "../core/scene";
 import { P, C } from "../core/palette";
 import { settings } from "../core/save";
 import type { CombatResult, ShipState } from "../game/types";
-import type { EnemyId, HazardId, KeelCarId, LampColor, RearCarId, StageIndex } from "../game/ids";
+import type { EnemyId, HazardId, KeelCarId, LampColor, LeadCarId, RearCarId, StageIndex, WeaponId } from "../game/ids";
+import { makePlayerShip } from "../data/ship";
 import { ENEMY_IDS } from "../game/ids";
 import { ENEMIES } from "../data/enemies";
 import { coupleCar, applyRefit } from "../data/consist";
@@ -17,7 +19,11 @@ import { drawShipPreview } from "./preview";
 import { benchShip, benchInventory, type BenchLevel } from "./sim/bench";
 
 function shipFor(params: URLSearchParams, stage: StageIndex, level: BenchLevel): ShipState {
-  let s = benchShip(stage, level);
+  const tender = params.get("tender") as LeadCarId | null;
+  let s = tender ? makePlayerShip("", undefined, "amber", tender) : benchShip(stage, level);
+  const want = Number(params.get("crew") ?? 0);
+  const extra = benchShip(3, "strong").crew.slice(3);
+  for (let i = 0; s.crew.length < want && i < extra.length; i++) s.crew.push({ ...extra[i], id: `${extra[i].id}-x${i}` });
   const rear = params.get("rear") as RearCarId | null;
   const keel = params.get("keel") as KeelCarId | null;
   if (rear) s = coupleCar(s, "rear", rear === ("none" as string) ? null : rear);
@@ -26,6 +32,13 @@ function shipFor(params: URLSearchParams, stage: StageIndex, level: BenchLevel):
   if (mod) s = applyRefit(s, "lead:hold-a", mod as never);
   const lamp = params.get("lamp") as LampColor | null;
   if (lamp) s.livery = { lamp };
+  // &weapons=id,id,… fills every mount (dev only), to check mount placement on each hull.
+  const weapons = params.get("weapons")?.split(",").filter(Boolean) as WeaponId[] | undefined;
+  if (weapons?.length) {
+    s.weaponSlots = Math.max(s.weaponSlots, weapons.length);
+    s.weapons = weapons;
+    s.weaponPower = weapons.map(() => true);
+  }
   return s;
 }
 

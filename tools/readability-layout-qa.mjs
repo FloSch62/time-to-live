@@ -15,16 +15,21 @@ try {
   for(let i=run.ship.crew.length;i<10;i++)run.ship.crew.push(newCrew(['linefolk','warden','rigger'][i%3],`Test crew ${i+1}`,'lead:hall'));
   const relay=currentRelay(run);relay.hazard='debris-field';relay.serviceSalvage=24;session.saveFromUI(run);
   window.qaPanels={};window.qaRoster={};window.qaTip='';
-  const {g,ui}=window.__ttl,panel=g.panel.bind(g),area=ui.area.bind(ui),tip=ui.setTooltip.bind(ui);
-  g.panel=(x,y,w,h,...rest)=>{if(x===8&&w===770)window.qaPanels[y]={x,y,w,h};return panel(x,y,w,h,...rest);};
-  ui.area=(id,x,y,w,h,...rest)=>{if(id.startsWith('crew-'))window.qaRoster[id]={x,y,w,h};return area(id,x,y,w,h,...rest);};
+  // Ship-view layout: the crew roster (under the tender) and the relay panel (beside it) share one band above the
+  // ship bar; crew cards register as hot areas "crew-<id>".
+  const {g,ui}=window.__ttl,panel=g.panel.bind(g),hot=ui.hot.bind(ui),tip=ui.setTooltip.bind(ui);
+  g.panel=(x,y,w,h,...rest)=>{if(y>=360&&y<440&&h>=50&&w>=300)window.qaPanels[x]={x,y,w,h};return panel(x,y,w,h,...rest);};
+  ui.hot=(id,x,y,w,h,...rest)=>{if(id.startsWith('crew-'))window.qaRoster[id]={x,y,w,h};return hot(id,x,y,w,h,...rest);};
   ui.setTooltip=(s,...rest)=>{window.qaTip=s;return tip(s,...rest);};
  });
  await page.waitForTimeout(500);
  await page.screenshot({path:'tools/shots/readability/relay-ten-crew.png'});
- const panels=await page.evaluate(()=>Object.values(window.qaPanels).sort((a,b)=>a.y-b.y));
- assert.equal(panels.length,2);assert.ok(panels[0].y+panels[0].h<=panels[1].y,JSON.stringify(panels));
+ const panels=await page.evaluate(()=>Object.values(window.qaPanels).sort((a,b)=>a.x-b.x));
+ assert.equal(panels.length,2,JSON.stringify(panels));
+ assert.ok(panels[0].x+panels[0].w<=panels[1].x,'crew roster and relay panel do not overlap: '+JSON.stringify(panels));
+ assert.ok(panels.every(p=>p.y+p.h<=442),'both stay above the ship bar');
  const roster=await page.evaluate(()=>Object.values(window.qaRoster));assert.equal(roster.length,10);
+ assert.ok(roster.every(r=>r.x>=panels[0].x&&r.x+r.w<=panels[0].x+panels[0].w&&r.y>=panels[0].y&&r.y+r.h<=panels[0].y+panels[0].h),'all ten cards inside the roster panel');
  const last=roster.at(-1);await page.mouse.move((last.x+last.w/2)*2,(last.y+10)*2);await page.waitForTimeout(350);
  assert.ok((await page.evaluate(()=>window.qaTip)).includes('Test crew 10'),'second roster row has crew details');
  await page.setViewportSize({width:1366,height:768});await page.waitForTimeout(200);await page.screenshot({path:'tools/shots/readability/relay-ten-crew-1366.png'});

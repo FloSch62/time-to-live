@@ -1,11 +1,12 @@
 // Combat sim data model. Pure (no DOM). Coordinates inside a ship are in TILES (floats), origin at the top-left of
 // the ship's room grid; each grid row is one deck (★v2 side view). The renderer maps tiles to pixels (TILE 32).
 import type { AugmentId, CarId, CarSlot, EnemyId, HazardId, ModuleId, StageIndex } from "../../game/ids.ts";
-import type { CrewMember, SkillId } from "../../game/types.ts";
+import type { CombatScenario, CrewMember, SkillId } from "../../game/types.ts";
 import type { Dir, SysKey } from "../../data/layouts.ts";
 import type { WeaponDef } from "../../data/weapons.ts";
 import type { DroneDef } from "../../data/drones.ts";
 import type { ScaledEnemy } from "../../data/enemies.ts";
+import type { DifficultyId } from "../../data/difficulty.ts";
 
 export type Side = 0 | 1; // 0 = player, 1 = enemy
 export const other = (s: Side): Side => (s === 0 ? 1 : 0);
@@ -53,6 +54,8 @@ export interface SimRoom {
   bench: number;
   /** Module installed in this socket room (player). */
   module?: ModuleId;
+  /** Refit socket from the current car layout, independent of the room name. */
+  socket?: boolean;
 }
 
 export interface SimDoor {
@@ -283,8 +286,19 @@ export interface SimAdjunct {
 
 export interface BossState {
   gate?: { up: boolean; downT: number; locks: { source: string; t: number }[]; repairT: number };
-  glass?: { up: boolean; downT: number; hits: number[] };
+  glass?: { up: boolean; downT: number; hits: number[]; channel: number; tuning: boolean };
   core?: { phase: 1 | 2 | 3; step: number; phaseT: number };
+}
+
+/** A physical party traverses a grapple before it can breach a marked exterior bay. */
+export interface BoardingTransit {
+  id: number;
+  kind: "spark-mite" | "splicer" | "marshal-trooper";
+  count: number;
+  room: number;
+  tile: number;
+  elapsed: number;
+  duration: number;
 }
 
 export interface SimShip {
@@ -338,13 +352,15 @@ export interface SimShip {
   /** Enemy salvo gate: weapons may fire. */
   salvoOk: boolean;
   broodT: number;
+  /** Autonomous repair arm cycle, interrupted by disabling its controller. */
+  repairArmT: number;
   /** Seconds since the last hull hit (renderer flash). */
   hitT: number;
   /** Player consist: car of each tile (-1 none) and car placements in the composite grid. */
   tileCar: Int8Array | null;
   cars?: { slot: CarSlot; id: CarId; ox: number; oy: number; cols: number; rows: number }[];
   /** Consist/module modifiers: +sensors levels, +repair speed, air decay multiplier, evasion change. */
-  mods: { sensors: number; repair: number; airDecay: number; evasion: number };
+  mods: { sensors: number; repair: number; airDecay: number; evasion: number; weaponCharge: number; droneCharge: number; veilCooldown: number; debrisProtection: number };
 }
 
 export interface SimEvent {
@@ -358,6 +374,7 @@ export interface SimEvent {
   text?: string;
   uid?: number;
   slot?: number;
+  projectile?: Projectile;
 }
 
 export interface CombatStats {
@@ -369,6 +386,7 @@ export interface CombatStats {
 }
 
 export interface SimSetup {
+  difficulty?: DifficultyId;
   enemy: EnemyId;
   stage: StageIndex;
   seed: number;
@@ -377,6 +395,9 @@ export interface SimSetup {
   boss?: boolean;
   surrenderable?: boolean;
   noReward?: boolean;
+  retreat?: { to: number; name: string; cost: number };
+  retreatOptions?: { to: number; name: string; cost: number }[];
+  scenario?: CombatScenario;
 }
 
 export const DT = 1 / 60;

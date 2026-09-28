@@ -19,6 +19,7 @@ export function relayTheme(run: RunState): MusicId {
 export function playRelayMusic(run: RunState) {
   const r = currentRelay(run);
   if (r?.type === "market" && r.resolved) void music.play("exchange");
+  else if (r?.type === "bench" && r.resolved && !r.pendingCombat) void music.play("relay-seven", "explore");
   else void music.play(relayTheme(run), "explore");
 }
 

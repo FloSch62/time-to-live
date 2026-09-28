@@ -1,0 +1,26 @@
+{
+ "kind": "standard",
+ "scale": 6,
+ "unit_px": 1.8,
+ "pad": 40,
+ "origin": [
+  306,
+  162
+ ],
+ "size": [
+  612,
+  301
+ ],
+ "carrier_half": 6,
+ "saddle_top": 62,
+ "canvas_k": 1.0,
+ "render_scale": 3.333333333333333,
+ "offset": [
+  4,
+  3
+ ],
+ "gen": [
+  2048,
+  1008
+ ]
+}

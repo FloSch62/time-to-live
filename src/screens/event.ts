@@ -5,12 +5,13 @@ import type { App, Scene } from "../core/scene";
 import type { Gfx } from "../core/gfx";
 import { art, artSettled } from "../core/assets";
 import { sfx } from "../core/audio";
+import { settings } from "../core/save";
 import { lineHeight, wrap, measure } from "../core/font";
 import { P, C, rgba } from "../core/palette";
 import type { Applied, ChoiceView, EventView, Notice } from "../campaign/events";
 import type { Session } from "./session";
 import { createPauseMenu } from "./pause";
-import { artFrame, hasUi, icon, resColor, resIcon, RES_LABEL, titlePlate, tracked } from "./kit";
+import { SCRIM, TYPE, artFrame, hasUi, header, icon, resColor, resIcon, RES_LABEL, scrim, titlePlate, tracked } from "./kit";
 import { itemThumb } from "./items";
 
 export interface EventWindow extends Scene {
@@ -19,6 +20,8 @@ export interface EventWindow extends Scene {
 }
 
 const TEXT_SPEED = 150; // chars per second
+const PAD = 24;
+const SPEAKER_H = 17;
 
 export function createEventWindow(app: App, session: Session): EventWindow {
   let view: EventView | null = null;
@@ -30,10 +33,12 @@ export function createEventWindow(app: App, session: Session): EventWindow {
   let t = 0;
   let appear = 0;
   let hoverRow = -1;
+  /** Seconds since the text finished typing (the choices wake up). */
+  let settleT = 0;
 
   function startText(text: string) {
     chars = Math.max(1, text.replace(/\{[^}]*\}/g, "").length);
-    reveal = 0;
+    reveal = settings.textSpeed === "instant" ? 1 : 0;
   }
 
   const win: EventWindow = {
@@ -57,87 +62,111 @@ export function createEventWindow(app: App, session: Session): EventWindow {
     },
     update(dt) {
       t += dt;
+      settleT += dt;
       appear = Math.min(1, appear + dt * 5);
-      if (reveal < 1) reveal = Math.min(1, reveal + (dt * TEXT_SPEED) / chars);
+      if (reveal < 1) reveal = settings.textSpeed === "instant" ? 1 : Math.min(1, reveal + (dt * TEXT_SPEED * (settings.textSpeed === "fast" ? 3 : 1)) / chars);
     },
     draw(g, a) {
       if (!view) return;
-      g.dim(0.5 * appear);
+      scrim(g, a, session.run, SCRIM * Math.min(1, 0.4 + appear));
       const input = a.input;
-      // layout: art on top (320×160), portrait beside the text, width grows with long texts
       const artImg = view.art ? art(view.art.includes("/") ? view.art : `events/${view.art}`) : null;
       const portrait = view.portrait ? art(`portraits/${view.portrait}`) : null;
       const showPortrait = !!view.portrait;
       const body = applied ? applied.text ?? "" : view.text;
-      const pad = 24;
-      const lh = lineHeight("body");
-      const plainLen = (view.text ?? "").length;
-      let winW = showPortrait || plainLen > 420 ? 760 : 680;
-      const textW = () => winW - pad * 2 - (showPortrait ? 112 : 0);
-      let bodyLines = body ? wrap(body, textW(), "body") : [];
-      let rows = applied ? outcomeRows(applied) : choiceRows(view.choices, winW - pad * 2);
-      const rowsH = () => (applied ? rows.reduce((s2, r) => s2 + r.h, 0) + 8 + 30 : rows.reduce((s2, r) => s2 + r.h + 4, 0) + 8);
-      const speakerH = view.speaker && showPortrait ? 16 : view.speaker ? 12 : 0;
-      const textH = () => Math.max(bodyLines.length * lh + speakerH, showPortrait ? 100 : 0);
-      let artShown = !!view.art;
-      const total = () => pad + 8 + (artShown ? 178 : 0) + textH() + 14 + rowsH() + pad - 20;
-      if (total() > 528) {
-        winW = 860;
-        bodyLines = body ? wrap(body, textW(), "body") : [];
-        rows = applied ? outcomeRows(applied) : choiceRows(view.choices, winW - pad * 2);
-      }
-      if (total() > 528) artShown = false;
-      const h = total();
-      const x = Math.round(480 - winW / 2);
-      const textX = x + pad + (showPortrait ? 112 : 0);
-      const y = Math.max(12, Math.round(272 - h / 2 + (1 - appear) * 12));
+      const L = layout(view, body, !!view.art);
+      const { x, winW, h, textX, textW } = L;
+      const y = Math.round(L.y + (settings.reducedMotion ? 0 : (1 - appear) * 10));
       g.panel(x, y, winW, h, "dialog");
-      if (view.title) titlePlate(g, 480, y - 9, view.title.toUpperCase(), { w: 260 });
-      let cy = y + pad + 2;
-      if (artShown) {
+      if (view.title) titlePlate(g, 480, y - 11, view.title.toUpperCase(), { w: 260 });
+      let cy = y + PAD;
+      if (L.art === "top") {
         const ax = 480 - 160;
         artFrame(g, ax, cy, 320, 160);
-        if (artImg) g.image(artImg, ax, cy);
+        if (artImg) g.pixelFit(artImg, ax, cy, 320, 160); // v5 events are 320x160 art px drawn 2x; HD art fits at 1x
         else placeholderArt(g, ax, cy, 320, 160, t, view.art ?? "");
-        cy += 160 + 18;
+        cy += 160 + 16;
+      } else if (L.art === "side") {
+        const ax = x + PAD;
+        artFrame(g, ax, cy + 2, 320, 160);
+        if (artImg) g.pixelFit(artImg, ax, cy + 2, 320, 160); // v5 event art 320x160 drawn 2x (A)
+        else placeholderArt(g, ax, cy + 2, 320, 160, t, view.art ?? "");
       }
+      const blockTop = cy;
       if (showPortrait) {
-        const px = x + pad;
-        artFrame(g, px, cy + 2, 96, 96, P.brass2);
-        if (portrait) g.image(portrait, px, cy + 2);
-        else placeholderPortrait(g, px, cy + 2, t);
+        const px = L.art === "side" ? x + PAD : x + PAD;
+        const py = L.art === "side" ? cy + 176 : cy + 2;
+        artFrame(g, px, py, 96, 96, P.brass2);
+        if (portrait) g.image(portrait, px, py);
+        else placeholderPortrait(g, px, py, t);
       }
       if (view.speaker) {
-        tracked(g, view.speaker.toUpperCase(), textX, cy, { font: "labelb", color: P.brass1 });
-        cy += speakerH;
+        header(g, view.speaker, textX, cy + 2, { font: TYPE.strong, color: P.brass1 });
+        cy += SPEAKER_H;
       }
-      if (body) g.text(body, textX, cy, { font: "body", color: C.text, width: textW(), reveal, shadow: P.ink0 });
-      cy += textH() - speakerH + 14;
-      // divider
-      g.hline(x + pad, cy - 7, winW - pad * 2, rgba(P.brass3, 0.5));
-      const skip = input.keyPressed("Space") || input.keyPressed("Enter");
-      if (reveal < 1) {
+      if (body) g.text(body, textX, cy, { font: "body", color: C.text, width: textW, reveal, shadow: P.ink0 });
+      cy = blockTop + L.textBlockH + 14;
+      g.hline(x + PAD, cy - 8, winW - PAD * 2, rgba(P.brass3, 0.5));
+      const typing = reveal < 1;
+      if (typing) {
+        const skip = input.keyPressed("Space") || input.keyPressed("Enter");
         if (skip || input.pressed(0)) {
           reveal = 1;
           input.eatKey("Space");
           input.eatKey("Enter");
           input.consume();
         }
-        return;
       }
-      if (!applied) drawChoices(g, a, rows as ChoiceRow[], x + pad, cy, winW - pad * 2);
-      else drawOutcome(g, a, rows as OutRow[], x + pad, cy, winW - pad * 2, textW());
-      if (input.keyPressed("Escape")) {
+      // The choices are laid out from the start (no empty region while the text types); they wake when it is done.
+      g.alpha(typing ? 0.3 : Math.min(1, settleT * 6 + 0.3), () => {
+        if (!applied) drawChoices(g, a, L.rows as ChoiceRow[], x + PAD, cy, winW - PAD * 2, !typing);
+        else drawOutcome(g, a, L.rows as OutRow[], x + PAD, cy, winW - PAD * 2, !typing);
+      });
+      if (typing) settleT = 0;
+      if (!typing && input.keyPressed("Escape")) {
         input.eatKey("Escape");
         session.push(createPauseMenu(a, session));
       }
     },
   };
 
+  /** Space and placement of everything in the window; the art moves beside the text, then goes, when tall. */
+  function layout(v: EventView, body: string, hasArt: boolean) {
+    const showPortrait = !!v.portrait;
+    const maxH = 514 - 76;
+    const lh = lineHeight("body");
+    const speakerH = v.speaker ? SPEAKER_H : 0;
+    const build = (winW: number, artMode: "top" | "side" | "none") => {
+      const inner = winW - PAD * 2;
+      const leftCol = artMode === "side" ? 336 : showPortrait ? 112 : 0;
+      const textW = inner - leftCol;
+      const lines = body ? wrap(body, textW, "body").length : 0;
+      const leftH = artMode === "side" ? 162 + (showPortrait ? 16 + 98 : 0) : showPortrait ? 100 : 0;
+      const textBlockH = Math.max(lines * lh + speakerH, leftH);
+      const rows = applied ? outcomeRows(applied) : choiceRows(v.choices, inner);
+      const rowsH = applied ? rows.reduce((s2, r) => s2 + r.h, 0) + 8 + 24 : rows.reduce((s2, r) => s2 + r.h + 4, 0);
+      const h = PAD + (artMode === "top" ? 176 : 0) + textBlockH + 14 + rowsH + PAD - 6;
+      return { winW, art: artMode, textW, textBlockH, rows, h, leftCol };
+    };
+    const tries: [number, "top" | "side" | "none"][] = hasArt
+      ? [[showPortrait || (v.text ?? "").length > 420 ? 760 : 700, "top"], [860, "top"], [900, "side"], [900, "none"]]
+      : [[showPortrait || (v.text ?? "").length > 420 ? 760 : 700, "none"], [860, "none"], [900, "none"]];
+    let L = build(tries[0][0], tries[0][1]);
+    for (const [w0, m] of tries) {
+      L = build(w0, m);
+      if (L.h <= maxH) break;
+    }
+    const x = Math.round(480 - L.winW / 2);
+    const y = Math.max(76, Math.round(76 + (maxH - L.h) / 2));
+    const textX = x + PAD + L.leftCol;
+    return { ...L, x, y, textX };
+  }
+
   interface ChoiceRow {
     c: ChoiceView;
     num: number;
     lines: string[];
+    sub: string[];
     h: number;
   }
 
@@ -147,33 +176,34 @@ export function createEventWindow(app: App, session: Session): EventWindow {
     for (const c of choices) {
       if (c.hidden) continue;
       const label = c.blue && c.label ? `{teal1}${c.label}{/} ` : "";
-      const txt = `${label}${c.text}`;
-      const lines = wrap(txt, w - 34, "body");
-      const extra = !c.enabled && c.reason ? 1 : 0;
-      rows.push({ c, num: num++, lines, h: lines.length * lineHeight("body") + extra * 10 + 4 });
+      const lines = wrap(`${label}${c.text}`, w - 30, "body");
+      // a fixed cost first (amber), then the requirement that is missing, or the uncertainty
+      const note = [c.cost ? `{amber1}${c.cost}{/}` : "", !c.enabled && c.reason ? c.reason : c.risk ? c.risk : c.blue && !c.cost ? "capability available" : ""].filter(Boolean).join(" {ivory4}·{/} ");
+      const sub = note ? wrap(note, w - 30, TYPE.note) : [];
+      rows.push({ c, num: num++, lines, sub, h: lines.length * lineHeight("body") + sub.length * lineHeight(TYPE.note) + 2 });
     }
     return rows;
   }
 
-  function drawChoices(g: Gfx, a: App, rows: ChoiceRow[], x: number, y: number, w: number) {
+  function drawChoices(g: Gfx, a: App, rows: ChoiceRow[], x: number, y: number, w: number, live: boolean) {
     let cy = y;
     let hovered = -1;
     for (const r of rows) {
-      const over = a.ui.hot(`evc-${r.num}`, x - 6, cy - 2, w + 12, r.h + 2, r.c.enabled);
+      const over = live && a.ui.hot(`evc-${r.num}`, x - 6, cy - 3, w + 12, r.h + 2, r.c.enabled);
       if (over) hovered = r.num;
       const key = `Digit${r.num}`;
-      const keyHit = a.input.keyPressed(key) || a.input.keyPressed(`Numpad${r.num}`);
+      const keyHit = live && (a.input.keyPressed(key) || a.input.keyPressed(`Numpad${r.num}`));
       if (over && r.c.enabled) {
         a.ui.cursor = "pointer";
-        g.rect(x - 6, cy - 2, w + 12, r.h + 2, rgba(r.c.blue ? P.teal3 : P.brass3, 0.18));
-        g.rect(x - 6, cy - 2, 2, r.h + 2, r.c.blue ? P.teal2 : P.brass1);
+        g.rect(x - 6, cy - 3, w + 12, r.h + 2, rgba(r.c.blue ? P.teal3 : P.brass3, 0.18));
+        g.rect(x - 6, cy - 3, 2, r.h + 2, r.c.blue ? P.teal2 : P.brass1);
       } else if (over) a.ui.cursor = "blocked";
       const numCol = !r.c.enabled ? P.ivory4 : r.c.blue ? P.teal1 : P.brass1;
       g.text(`${r.num}.`, x, cy, { font: "body", color: numCol, shadow: P.ink0 });
       const col = !r.c.enabled ? C.textFaint : r.c.blue ? P.teal0 : over ? P.ivory0 : C.text;
       g.text(r.lines.join("\n"), x + 24, cy, { font: "body", color: col, shadow: P.ink0 });
-      if (!r.c.enabled && r.c.reason) g.text(`(${r.c.reason})`, x + 24, cy + r.lines.length * lineHeight("body") - 3, { font: "small", color: P.ember1 });
-      if (r.c.enabled && ((over && a.input.pressed(0)) || keyHit)) {
+      if (r.sub.length) g.text(r.sub.join("\n"), x + 24, cy + r.lines.length * lineHeight("body") - 2, { font: TYPE.note, color: !r.c.enabled ? P.ember1 : r.c.blue ? P.teal2 : P.ivory4 });
+      if (live && r.c.enabled && ((over && a.input.pressed(0)) || keyHit)) {
         a.input.consume();
         a.input.eatKey(key);
         pick(r.c.index);
@@ -184,7 +214,7 @@ export function createEventWindow(app: App, session: Session): EventWindow {
     if (hovered !== hoverRow) hoverRow = hovered;
   }
 
-  function pick(i: number) {
+function pick(i: number) {
     const f = onChoice;
     onChoice = null;
     sfx.play("ui-click");
@@ -220,21 +250,22 @@ export function createEventWindow(app: App, session: Session): EventWindow {
     return rows;
   }
 
-  function drawOutcome(g: Gfx, a: App, rows: OutRow[], x: number, y: number, w: number, _tw: number) {
+  function drawOutcome(g: Gfx, a: App, rows: OutRow[], x: number, y: number, w: number, live: boolean) {
     let cy = y;
     for (const r of rows) {
       r.draw(g, x, cy);
       cy += r.h;
     }
     cy += 8;
-    const over = a.ui.hot("ev-continue", x - 6, cy - 2, w + 12, 22, true);
+    const over = live && a.ui.hot("ev-continue", x - 6, cy - 3, w + 12, 22, true);
     if (over) {
       a.ui.cursor = "pointer";
-      g.rect(x - 6, cy - 2, w + 12, 22, rgba(P.brass3, 0.18));
-      g.rect(x - 6, cy - 2, 2, 22, P.brass1);
+      g.rect(x - 6, cy - 3, w + 12, 22, rgba(P.brass3, 0.18));
+      g.rect(x - 6, cy - 3, 2, 22, P.brass1);
     }
     g.text("1.", x, cy, { font: "body", color: P.brass1, shadow: P.ink0 });
     g.text(applied?.combat ? "Continue. {ember1}(a fight){/}" : applied?.store ? "Continue. {amber1}(trade){/}" : "Continue.", x + 24, cy, { font: "body", color: over ? P.ivory0 : C.text, shadow: P.ink0 });
+    if (!live) return;
     const key = a.input.keyPressed("Digit1") || a.input.keyPressed("Space") || a.input.keyPressed("Enter") || a.input.keyPressed("Numpad1");
     if ((over && a.input.pressed(0)) || key) {
       a.input.consume();

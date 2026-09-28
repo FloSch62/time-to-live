@@ -81,7 +81,15 @@ test("an opponent that escapes clears the relay without becoming a pending remat
 test("every event reference resolves (next/onWin/onSurrender, fragments, codex, enemies)", () => {
   const missing: string[] = [];
   for (const e of content.events.values()) {
-    if (!e.choices.length) missing.push(`${e.id}: no choices`);
+    if (!e.choices.length && !e.directCombat && !e.arrival && !e.glimpse) missing.push(`${e.id}: no choices or arrival action`);
+    const fixed = [e.arrival, ...(e.directCombat ? [{ combat: e.directCombat }] : [])].filter(Boolean);
+    for (const o of fixed) {
+      for (const ref of [o!.next, o!.combat?.onWin, o!.combat?.onSurrender]) {
+        if (ref && !content.events.has(ref)) missing.push(`${e.id} → ${ref}`);
+      }
+      if (report.real && o!.fragment && !content.fragments.has(o!.fragment)) missing.push(`${e.id}: fragment ${o!.fragment}`);
+      if (report.real && o!.codex && content.codex.size && !content.codex.has(o!.codex)) missing.push(`${e.id}: codex ${o!.codex}`);
+    }
     for (const c of e.choices) {
       if (!c.outcomes.length) missing.push(`${e.id}: choice without outcomes`);
       for (const w of c.outcomes) {

@@ -26,7 +26,7 @@ export const AUGMENTS: Record<AugmentId, AugmentDef> = {
   "bench-kit": { id: "bench-kit", name: "Bench Kit", cost: 40, rarity: 1, scope: "combat", desc: "Crew slowly heal anywhere aboard during fights." },
   "lamp-dark-coating": { id: "lamp-dark-coating", name: "Lamp-Dark Coating", cost: 45, rarity: 1, scope: "combat", desc: "+5% evasion." },
   "second-way-home": { id: "second-way-home", name: "Second Way Home", cost: 65, rarity: 3, scope: "both", desc: "Once per stage, a lethal hit leaves the tender at 1 hull instead." },
-  keepalive: { id: "keepalive", name: "Keepalive", cost: 50, rarity: 1, scope: "combat", desc: "Shields recharge 15% faster." },
+  keepalive: { id: "keepalive", name: "Keepalive", cost: 50, rarity: 1, scope: "combat", desc: "Mesh layers recharge 15% faster." },
   "drone-recovery": { id: "drone-recovery", name: "Drone Recovery", cost: 40, rarity: 1, scope: "combat", desc: "Drones still flying when a fight ends are recovered (their spare is refunded)." },
   "wireshark-tap": { id: "wireshark-tap", name: "Wireshark Tap", cost: 35, rarity: 0, scope: "combat", desc: "See enemy weapon charge regardless of your Listening Post." },
 };

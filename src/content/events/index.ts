@@ -10,12 +10,14 @@ import { STAGE3_SIGNALS, STAGE3_SIGNALS_FLAGS } from "./stage3-signals.ts";
 import { STAGE3_RELAYS, STAGE3_RELAYS_FLAGS } from "./stage3-relays.ts";
 import { SHARED_EVENTS, SHARED_FLAGS } from "./shared.ts";
 import { CHAIN_EVENTS, CHAIN_FLAGS } from "./chains.ts";
+import { OPERATIONS } from "./operations.ts";
 
 export const ALL_EVENTS: EventDef[] = [
   ...STAGE1_SIGNALS, ...STAGE1_RELAYS,
   ...STAGE2_SIGNALS, ...STAGE2_RELAYS,
   ...STAGE3_SIGNALS, ...STAGE3_RELAYS,
   ...SHARED_EVENTS, ...CHAIN_EVENTS,
+  ...OPERATIONS,
 ];
 
 /** Every run flag content may set or read, with a one-line meaning. */

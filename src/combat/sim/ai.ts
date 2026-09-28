@@ -1,13 +1,14 @@
+import { difficultyRules } from "../../data/difficulty.ts";
 // Enemy AI (power profile, targeting, crew/escort orders, veil, surrender and flight), boarders, the three
 // guardians' laws, and stage hazards.
 import type { SysKey } from "../../data/layouts.ts";
 import { weaponDef } from "../../data/weapons.ts";
 import type { SimShip, SimWeapon, Target, SimCrew } from "./model.ts";
 import type { Sim } from "./sim.ts";
-import { effective, isMain, reactorFree, syncBayPower, usable, applyIon, damageSystem, clampPower } from "./power.ts";
+import { effective, isMain, reactorFree, syncBayPower, usable, applyIon, damageSystem, clampPower, manner } from "./power.ts";
 import { orderMove, makeBoarder } from "./crew.ts";
 import { chargeTime, targetValid, spawnLocalShot } from "./weapons.ts";
-import { startFire } from "./env.ts";
+import { startFire, startBreach } from "./env.ts";
 import { makeWeapon } from "./build.ts";
 
 // ─── Power ──────────────────────────────────────────────────────────────────────────────────────────────────
@@ -75,6 +76,7 @@ export function pickRoom(sim: Sim, shooter: SimShip): number {
   const T = sim.ships[0];
   const e = shooter.enemy;
   const weights = e?.ai.targets ?? { any: 1 };
+  if (e?.autonomous && usable(shooter.sys.helm) <= 0) return sim.rng.pick(T.rooms).i;
   const any = weights.any ?? 1;
   const opts: { room: number; w: number }[] = [];
   for (const r of T.rooms) {
@@ -98,6 +100,20 @@ function beamLine(sim: Sim, room: number, len: number): Target {
   return { kind: "beam", x0, y0, x1: x0 + dx, y1: y0 + dx * slope * dir };
 }
 
+/** Weapons with a duty of their own aim at systems in this order (skipping ones already broken), then at random.
+ *  The Iron Regent tests for a second way home: its Routing Edict goes for the route (helm, then drive), not for
+ *  the guns that would give it its proof. */
+export const WEAPON_AIM: Record<string, SysKey[]> = { "regent-edict": ["helm", "engines"] };
+
+function aimedRoom(sim: Sim, w: SimWeapon, shooter: SimShip): number {
+  const T = sim.ships[0];
+  for (const id of WEAPON_AIM[w.def.id] ?? []) {
+    const s = T.sys[id];
+    if (s && s.damage < s.level) return s.room;
+  }
+  return WEAPON_AIM[w.def.id] ? sim.rng.pick(T.rooms).i : pickRoom(sim, shooter);
+}
+
 export function aiTargets(sim: Sim, ship: SimShip, dt = 0) {
   // Machines fire in salvos: charged weapons wait (1.5 s, guardians 3 s) for the rest so shots land together.
   const hold = ship.enemy?.boss ? 3 : ship.kind === "human" ? 0.6 : 1.5;
@@ -114,7 +130,7 @@ export function aiTargets(sim: Sim, ship: SimShip, dt = 0) {
   for (const w of ship.weapons) {
     if (w.target && targetValid(sim, w.target, ship.side)) continue;
     if (w.charge < chargeTime(w) * 0.85) continue;
-    const room = pickRoom(sim, ship);
+    const room = aimedRoom(sim, w, ship);
     w.target = w.def.type === "beam" ? beamLine(sim, room, w.def.beamLength ?? 2) : { kind: "room", room };
   }
 }
@@ -223,6 +239,18 @@ export function updateEnemy(sim: Sim, ship: SimShip, dt: number) {
     aiCrew(sim, ship);
   }
   aiTargets(sim, ship, dt);
+  if (e.autonomous) {
+    const damaged = ship.systems.filter(s => s.damage > 0);
+    if (damaged.length && usable(ship.sys.helm) > 0) {
+      ship.repairArmT += dt;
+      if (ship.repairArmT >= 9) {
+        const system = damaged.sort((a, b) => b.damage - a.damage)[0];
+        system.damage--;
+        ship.repairArmT = 0;
+        sim.emit({ type: "robot-repair", side: 1, room: system.room });
+      }
+    } else ship.repairArmT = 0;
+  }
   // Veil when a volley is in the air.
   if (e.ai.veil && ship.sys.veil && usable(ship.sys.veil) > 0 && ship.veilT <= 0 && ship.veilCd <= 0) {
     let incoming = 0;
@@ -246,30 +274,43 @@ export function updateEnemy(sim: Sim, ship: SimShip, dt: number) {
     const b = e.boarders;
     if (ship.broodT === 0) ship.broodT = b.first;
     const before = ship.broodT;
-    if (effective(ship.sys.brood) > 0) ship.broodT -= dt;
+    if (effective(ship.sys.brood) > 0) ship.broodT -= dt / difficultyRules(sim.setup.difficulty).enemyWeaponCharge;
     if (before > 3 && ship.broodT <= 3) sim.emit({ type: "brood-charge", side: 1 });
     if (ship.broodT <= 0) {
       ship.broodT = b.every;
-      const alive = sim.crew.filter((c) => !c.dead && c.kind === "boarder" && c.side === 1).length;
+      const alive = sim.crew.filter((c) => !c.dead && c.kind === "boarder" && c.side === 1).length + sim.boarding.reduce((n, b) => n + b.count, 0);
       const n = Math.min(b.count + (usable(ship.sys.brood) >= 3 ? 1 : 0), b.max - alive);
       if (n > 0) sendBoarders(sim, b.kind, n);
     }
   }
+  updateBoarding(sim, dt);
   updateBoss(sim, ship, dt);
 }
 
 export function sendBoarders(sim: Sim, kind: "spark-mite" | "splicer" | "marshal-trooper", n: number) {
   const P = sim.ships[0];
-  const rooms = P.rooms.filter((r) => r.sys && r.tiles.length >= 1);
+  const rooms = P.rooms.filter(r => P.doors.some(d => d.airlock && d.a === r.i));
   const room = sim.rng.pick(rooms.length ? rooms : P.rooms);
-  const tiles = [...room.tiles];
-  sim.rng.shuffle(tiles);
-  for (let i = 0; i < n; i++) {
-    const tile = tiles[i % tiles.length];
-    const c = makeBoarder(kind, 1, 0, tile, P.cols);
-    sim.crew.push(c);
+  const door = P.doors.find(d => d.airlock && d.a === room.i);
+  sim.boarding.push({ id: sim.nextId++, kind, count: n, room: room.i, tile: door?.ta ?? room.tiles[0], elapsed: 0, duration: 4 });
+  sim.emit({ type: "boarding-launch", side: 0, room: room.i, n, kind });
+}
+
+function updateBoarding(sim: Sim, dt: number) {
+  for (const b of [...sim.boarding]) {
+    if (effective(sim.ships[1].sys.brood) <= 0) {
+      sim.boarding = sim.boarding.filter(q => q !== b);
+      sim.emit({ type: "boarding-cut", side: 0, room: b.room });
+      continue;
+    }
+    b.elapsed += dt;
+    if (b.elapsed < b.duration) continue;
+    const P = sim.ships[0], room = P.rooms[b.room];
+    startBreach(sim, P, b.tile);
+    for (let i = 0; i < b.count; i++) sim.crew.push(makeBoarder(b.kind, 1, 0, room.tiles[i % room.tiles.length], P.cols));
+    sim.emit({ type: "boarders", side: 0, room: b.room, n: b.count, kind: b.kind });
+    sim.boarding = sim.boarding.filter(q => q !== b);
   }
-  sim.emit({ type: "boarders", side: 0, room: room.i, n, kind });
 }
 
 // ─── Guardians ──────────────────────────────────────────────────────────────────────────────────────────────
@@ -278,23 +319,29 @@ const GATE_WINDOW = 2.2;
 const GLASS_WINDOW = 1.0;
 
 /** Boss shields: returns true when the hit is absorbed. `count` = simultaneous hits (beam rooms). */
-export function specialShield(sim: Sim, T: SimShip, source: string, count: number, x: number, y: number): boolean {
+/** Register an attack route on the Regent's sealed gate; true when this route opens it. A gate warden is a piece of
+ *  the gate stepped out, so a hit on one proves its route too. */
+export function gateRoute(sim: Sim, T: SimShip, source: string, x: number, y: number): boolean {
   const g = T.boss.gate;
-  if (g && g.up) {
-    g.locks = g.locks.filter((l) => sim.t - l.t <= GATE_WINDOW && l.source !== source);
-    g.locks.push({ source, t: sim.t });
-    const routes = new Set(g.locks.map((l) => l.source)).size;
-    if (routes >= 2) {
-      g.up = false;
-      const wardens = T.adjuncts.filter((a) => a.alive && a.kind === "gate-warden").length;
-      g.downT = 10 - wardens * 2.5 + (T.sys.gate ? T.sys.gate.damage * 2 : 0);
-      g.locks = [];
-      sim.emit({ type: "gate-open", side: T.side, x, y });
-      return false;
-    }
-    sim.emit({ type: "gate-lock", side: T.side, x, y, n: routes });
+  if (!g || !g.up) return false;
+  g.locks = g.locks.filter((l) => sim.t - l.t <= GATE_WINDOW && l.source !== source);
+  g.locks.push({ source, t: sim.t });
+  const routes = new Set(g.locks.map((l) => l.source)).size;
+  if (routes >= 2) {
+    g.up = false;
+    const wardens = T.adjuncts.filter((a) => a.alive && a.kind === "gate-warden").length;
+    g.downT = 10 - wardens * 2.5 + (T.sys.gate ? T.sys.gate.damage * 2 : 0);
+    g.locks = [];
+    sim.emit({ type: "gate-open", side: T.side, x, y });
     return true;
   }
+  sim.emit({ type: "gate-lock", side: T.side, x, y, n: routes });
+  return false;
+}
+
+export function specialShield(sim: Sim, T: SimShip, source: string, count: number, x: number, y: number): boolean {
+  const g = T.boss.gate;
+  if (g && g.up) return !gateRoute(sim, T, source, x, y);
   const gl = T.boss.glass;
   if (gl && gl.up) {
     gl.hits = gl.hits.filter((h) => sim.t - h <= GLASS_WINDOW);
@@ -346,8 +393,21 @@ function updateBoss(sim: Sim, ship: SimShip, dt: number) {
   const gl = ship.boss.glass;
   if (gl) {
     const bells = ship.sys.bells;
+    const P = sim.ships[0];
+    const holding = gl.tuning && usable(P.sys.helm) > 0 && (!!manner(sim, P, "helm") || usable(P.sys.helm) >= 2);
+    if (gl.up) {
+      gl.channel = holding ? Math.min(12, gl.channel + dt * (1 + (bells?.damage ?? 0) * 0.25)) : Math.max(0, gl.channel - dt * 2);
+      if (holding) P.hop = Math.max(0, P.hop - dt / 12);
+      if (gl.channel >= 12) {
+        gl.up = false;
+        gl.downT = 12 + (bells?.damage ?? 0) * 4;
+        gl.channel = 0;
+        sim.emit({ type: "choir-channel", side: 1 });
+      }
+    }
     if (!gl.up) {
-      gl.downT -= dt;
+      // Damaged bell machinery takes longer to reassert a compulsory single voice.
+      gl.downT -= dt / (1 + (bells?.damage ?? 0) * 0.35);
       if (gl.downT <= 0 && bells && usable(bells) > 0) {
         gl.up = true;
         sim.emit({ type: "glass-up", side: 1 });

@@ -1,0 +1,19 @@
+{
+ "id": "glasswing",
+ "note": "Glasswing G-04, optical inspection: compact 10x4, collimators under the cupola, prism housing forward, survey horns aft",
+ "canvas": [904, 520],
+ "grid": {"x": 48, "y": 152, "cols": 10, "rows": 4, "tile": 72},
+ "roof_h": 30, "keel_h": 42,
+ "rear": "rear-cap", "rear_w": 56, "rear_overlap": 8,
+ "nose": "nose-optical", "nose_w": 144, "nose_overlap": 8,
+ "body": ["body-4a:0", "body-4b:1", "body-4a:2", "body-4b:3", "body-4a:1", "body-4b:4", "body-4a:3", "body-4b:5", "body-4a:4", "body-4b:2"],
+ "cable": [370, 20],
+ "trolley": "trolley",
+ "mounts_top": [162, 560],
+ "mounts_belly": [140, 690],
+ "roof": [{"part": "survey-horns", "x": 58}, {"part": "prism-housing", "x": 598}],
+ "front": [{"part": "collimators", "anchor": "lamp", "dx": 10, "dy": 2}],
+ "keel": [{"part": "keel-air-tanks", "x": 180}, {"part": "keel-ballast", "x": 470}],
+ "keel_hang_x": 408,
+ "couplerRear": {"x": 4, "y": 332}
+}

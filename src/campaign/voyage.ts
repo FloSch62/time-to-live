@@ -7,13 +7,14 @@ import type { CombatResult, CombatSetup, ScriptBeat } from "../game/types.ts";
 import { catalog, isGuardian } from "./catalog.ts";
 import { content, eventById } from "./content.ts";
 import {
-  applyReward, markSeen, newCtx, presentEvent, resolveChoice, unlockCodex, withRng,
+  applyOutcome, applyReward, markSeen, newCtx, presentEvent, promisedEvents, resolveChoice, unlockCodex, withRng,
   type Applied, type EventView, type Notice,
 } from "./events.ts";
 import { currentRelay, isSealed, relayDepth, type PendingCombat, type RunState } from "./model.ts";
-import { advanceStage, claimRelayStores, hop, waitForSignal } from "./run.ts";
+import { advanceStage, claimRelayStores, hop, retreatRoute, retreatRoutes, safeRecovery, waitForSignal } from "./run.ts";
+import { tenderStats } from "./refit.ts";
 
-export type HubAction = { kind: "hop"; to: number } | { kind: "wait" };
+export type HubAction = { kind: "hop"; to: number } | { kind: "wait" } | { kind: "service" };
 
 export type ScriptKind = "prologue" | "intro" | "outro" | "guardian" | "ending" | "gameover";
 
@@ -77,6 +78,10 @@ export async function playVoyage(run: RunState, p: Presenter, opts: { prologue?:
       // The exit aftermath sets guardian-<stage>-ended (writing); a boss victory sets guardianBeaten (combat).
       if (run.flags.includes(`guardian-${run.stage}-ended`)) run.guardianBeaten = true;
       p.save(run);
+      if (end === "fled") {
+        await p.arrived(run);
+        continue;
+      }
       if (run.guardianBeaten) {
         const won = await stageTransition(run, p);
         if (won) return "victory";
@@ -89,6 +94,10 @@ export async function playVoyage(run: RunState, p: Presenter, opts: { prologue?:
       hop(run, act.to);
       p.save(run);
       await p.arrived(run);
+    } else if (act.kind === "service") {
+      safeRecovery(run);
+      p.save(run);
+      if (currentRelay(run).pendingCombat) await p.arrived(run);
     } else {
       waitForSignal(run);
       p.save(run);
@@ -115,12 +124,17 @@ async function stageTransition(run: RunState, p: Presenter): Promise<boolean> {
 /** Play the current relay's encounter: its event chain, fights, store visits. */
 export async function runEncounter(run: RunState, p: Presenter): Promise<EncounterEnd> {
   const relay = currentRelay(run);
-  const ctx = newCtx(run, relay.eventId ?? "");
+  let ctx = newCtx(run, relay.eventId ?? "");
   let eventId: string | undefined = relay.eventId;
+  // A promised handover must not vanish because the random route lacked an event node.
+  const followups = relay.type === "exit" && !relay.pendingCombat ? promisedEvents(run).map(e => e.id) : [];
+  const queued = [...followups, ...(eventId ? [eventId] : [])];
+  eventId = queued.shift();
   let pending: PendingCombat | undefined = relay.pendingCombat;
   if (pending) {
     relay.pendingCombat = undefined;
     eventId = undefined;
+    queued.length = 0;
   }
   for (let guard = 0; guard < 64; guard++) {
     if (pending) {
@@ -132,7 +146,9 @@ export async function runEncounter(run: RunState, p: Presenter): Promise<Encount
       if (r.outcome === "fled") {
         relay.pendingCombat = spec;
         relay.resolved = false;
-        relay.fledHere = true;
+        relay.fledHere = undefined;
+        const escape = retreatRoutes(run).find(route => route.to === (r.retreatTo ?? retreatRoute(run)?.to));
+        if (!escape || !hop(run, escape.to)) throw new Error("Combat returned a retreat without an available departure");
         return "fled";
       }
       if (r.outcome === "victory") eventId = spec.onWin ?? eventId;
@@ -140,9 +156,38 @@ export async function runEncounter(run: RunState, p: Presenter): Promise<Encount
       continue;
     }
     const def = eventById(eventId);
-    if (!def) break;
+    if (!def) {
+      if (queued.length) { eventId = queued.shift(); continue; }
+      break;
+    }
+    ctx = newCtx(run, def.id);
     markSeen(run, def.id);
     const view = presentEvent(run, def, ctx);
+    if (def.maintenance !== undefined) relay.maintenance = def.maintenance;
+    if (def.directCombat) {
+      const applied = withRng(run, rng => applyOutcome(run, { combat: def.directCombat }, ctx, rng));
+      pending = applied.combat;
+      eventId = undefined;
+      continue;
+    }
+    const appliedArrivals = relay.arrivalAppliedIds ?? (relay.arrivalApplied && relay.eventId ? [relay.eventId] : []);
+    if (def.arrival && !appliedArrivals.includes(def.id)) {
+      relay.arrivalApplied = true;
+      relay.arrivalAppliedIds = [...appliedArrivals, def.id];
+      const applied = withRng(run, rng => applyOutcome(run, def.arrival!, ctx, rng));
+      if (!applied.empty) await p.outcome(run, applied, view);
+      if (needsDecision(applied)) await p.overflow(run, applied);
+      if (applied.defeat) return "defeat";
+      if (applied.combat) { pending = applied.combat; eventId = applied.next; continue; }
+      if (!def.choices.length) { eventId = applied.next ?? queued.shift(); continue; }
+    }
+    if (def.arrival && !def.choices.length) { eventId = def.arrival.next ?? queued.shift(); continue; }
+    const quiet = def.glimpse || (def.pool === "empty" && def.choices.length === 1 && def.choices[0].outcomes.length === 1 && !Object.keys(def.choices[0].outcomes[0].outcome).length);
+    if (quiet) {
+      relay.glimpse = { title: view.title, text: view.text };
+      eventId = queued.shift();
+      continue;
+    }
     const idx = await p.choose(run, view);
     const applied = resolveChoice(run, def, idx, ctx);
     if (!applied.empty) await p.outcome(run, applied, view);
@@ -152,7 +197,7 @@ export async function runEncounter(run: RunState, p: Presenter): Promise<Encount
       p.closeEvent();
       await p.store(run);
     }
-    eventId = applied.next;
+    eventId = applied.next ?? queued.shift();
     if (applied.combat) pending = applied.combat;
   }
   p.closeEvent();
@@ -166,6 +211,7 @@ export function buildSetup(run: RunState, spec: PendingCombat): CombatSetup {
   const sealed = isSealed(run.map, relay);
   const boss = spec.boss ?? isGuardian(spec.enemy);
   return {
+    difficulty: run.difficulty,
     enemy: spec.enemy,
     stage: run.stage,
     seed: hashString(`${run.seed}|${run.stage}|${relay.id}|fight-${run.fights}`),
@@ -173,6 +219,9 @@ export function buildSetup(run: RunState, spec: PendingCombat): CombatSetup {
     surrenderable: spec.surrenderable ?? catalog.humans.includes(spec.enemy),
     boss: boss || undefined,
     intro: spec.intro,
+    scenario: spec.scenario,
+    retreat: retreatRoute(run),
+    retreatOptions: retreatRoutes(run),
     music: GUARDIAN_MUSIC[spec.enemy],
     noReward: spec.noReward || sealed || undefined,
     depth: boss ? 1 : relayDepth(run.map, relay),
@@ -194,8 +243,28 @@ async function fight(run: RunState, p: Presenter, spec: PendingCombat): Promise<
   run.fights++;
   meetEnemy(run, spec.enemy);
   const result = await p.combat(run, setup);
+  currentRelay(run).resolution = result.resolution;
+  for (const member of result.ship.crew) {
+    const before = run.ship.crew.find(c => c.id === member.id);
+    const where = currentRelay(run).name;
+    if (result.crewLost.length) member.memory = `Lost ${result.crewLost.map(c => c.name).join(" and ")} at ${where}.`;
+    else if (before && member.hp < before.hp - 15) member.memory = `Survived the fight at ${where} with serious injuries.`;
+    else if (before && (member.repairs ?? 0) > (before.repairs ?? 0)) member.memory = `Kept damaged systems running under fire at ${where}.`;
+    else if (result.resolution === "released") member.memory = `Helped end a machine's unfinished duty at ${where}.`;
+  }
   run.ship = result.ship;
   run.inv = result.inventory;
+  if (["victory", "surrendered", "escaped"].includes(result.outcome)) {
+    result.systemsPatched = 0;
+    for (const system of Object.values(run.ship.systems)) if (system) {
+      result.systemsPatched += system.damage;
+      system.damage = 0;
+    }
+    currentRelay(run).systemsPatched = result.systemsPatched;
+    result.hullRecovered = setup.boss ? 0 : Math.min(run.ship.hullMax - run.ship.hull, tenderStats(run.ship).salvageRepair);
+    run.ship.hull += result.hullRecovered;
+    currentRelay(run).hullRecovered = result.hullRecovered;
+  }
   run.stats.damageDealt += result.stats?.damageDealt ?? 0;
   run.stats.damageTaken += result.stats?.damageTaken ?? 0;
   for (const c of result.crewLost ?? []) run.stats.crewLost.push(c);
@@ -207,7 +276,8 @@ async function fight(run: RunState, p: Presenter, spec: PendingCombat): Promise<
     return result;
   }
   if (result.outcome === "victory") {
-    run.stats.machinesStopped++;
+    if (catalog.humans.includes(spec.enemy)) run.stats.humanFightsWon = (run.stats.humanFightsWon ?? 0) + 1;
+    else run.stats.machinesStopped++;
     if (setup.boss) run.guardianBeaten = true;
   } else if (result.outcome === "surrendered") {
     run.stats.shipsSpared++;

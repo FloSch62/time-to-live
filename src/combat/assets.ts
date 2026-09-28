@@ -9,6 +9,7 @@ import { DRONES } from "../data/drones";
 import { SYSTEMS } from "../data/systems";
 import { ENEMIES } from "../data/enemies";
 import { CARS } from "../data/cars";
+import { TILE } from "../data/layouts";
 import { MODULES } from "../data/modules";
 import type { LampColor } from "../game/ids";
 import * as flavor from "../content/flavor";
@@ -94,6 +95,106 @@ export function hullArtFits(id: string, grid?: [number, number]): boolean {
   if (!raw) return false;
   const g = raw.grid as { cols?: number; rows?: number } | undefined;
   return !grid || !g || g.cols === undefined || (g.cols === grid[0] && g.rows === grid[1]);
+}
+
+// ─── drive trolley layers (optional, from the art workstream) ────────────────────────────────────────────────
+
+/**
+ * A car's separately painted drive trolley. ships.json (HD px like every other field):
+ *   "<car id>": { …, "trolley": { "kind": "standard" | "heavy", "pivot": {x, y}, "saddle": {x, y} } }
+ *     saddle = where the carrier's centre line passes through the carriage; pivot = the hull's hanging point.
+ *   "trolley-<kind>": { "w": …, "h": …, "saddle": {x, y}, "frames"?: n }   (optional; layer geometry)
+ *     saddle = the same carrier point in the layer image; frames = sheave frames laid side by side, each w wide.
+ * Layers: public/art/ships/trolley-<kind>-back.png and -front.png. Draw order: hull, back, carrier, front.
+ */
+export interface TrolleyMeta {
+  kind: string;
+  pivot: Pt;
+  saddle: Pt;
+}
+export interface TrolleyLayers {
+  back: HTMLImageElement;
+  front: HTMLImageElement;
+  /** Layer geometry in layout units. */
+  w: number;
+  h: number;
+  saddle: Pt;
+  frames: number;
+}
+
+export function trolleyMeta(id: string): TrolleyMeta | null {
+  const raw = getJson<Record<string, RawMeta>>("art/ships/ships.json")?.[id];
+  const t = raw?.trolley as { kind?: string; pivot?: Pt; saddle?: Pt } | undefined;
+  if (!t?.kind || !t.saddle) return null;
+  const d = densityOf(raw!);
+  const saddle = { x: t.saddle.x / d, y: t.saddle.y / d };
+  return { kind: t.kind, saddle, pivot: t.pivot ? { x: t.pivot.x / d, y: t.pivot.y / d } : saddle };
+}
+
+/** Both layers of a trolley kind once loaded (null until then, or when the art does not exist). */
+export function trolleyLayers(kind: string): TrolleyLayers | null {
+  const back = art(`ships/trolley-${kind}-back`);
+  const front = art(`ships/trolley-${kind}-front`);
+  if (!back || !front) return null;
+  const raw = getJson<Record<string, RawMeta>>("art/ships/ships.json")?.[`trolley-${kind}`];
+  const d = raw ? densityOf(raw) : 2;
+  const frames = Math.max(1, (raw?.frames as number) ?? 1);
+  const w = ((raw?.w as number) ?? back.width / frames) / d;
+  const h = ((raw?.h as number) ?? back.height) / d;
+  const sd = raw?.saddle as Pt | undefined;
+  return { back, front, w, h, frames, saddle: sd ? { x: sd.x / d, y: sd.y / d } : { x: w / 2, y: h / 2 } };
+}
+
+// ─── weapon hardpoints ──────────────────────────────────────────────────────────────────────────────────────
+
+/** A weapon hardpoint (layout units, car-local): ships.json `mounts[i]` is the centre of a painted hardpoint plate,
+ *  and its optional `pylon` (image px) sets the pylon height for that mount (default: draw-ship PYLON_ROOF /
+ *  PYLON_BELLY). */
+export interface MountSpec { x: number; y: number; pylon?: number }
+export interface Box { x: number; y: number; w: number; h: number; what?: string }
+
+export function mountSpecs(id: string, meta: HullMeta, grid?: [number, number]): MountSpec[] {
+  const raw = getJson<Record<string, RawMeta>>("art/ships/ships.json")?.[id];
+  const ms = raw && hullArtFits(id, grid) ? raw.mounts as { x: number; y: number; pylon?: number }[] | undefined : undefined;
+  if (!ms) return meta.mounts.map((m) => ({ x: m.x, y: m.y }));
+  const d = densityOf(raw!);
+  return ms.map((m) => ({ x: m.x / d, y: m.y / d, ...(m.pylon !== undefined ? { pylon: m.pylon / d } : {}) }));
+}
+
+/** Zones no weapon may occupy (the drive trolley, roof fittings): ships.json `keepClear`, HD px → layout units. */
+export function keepClearBoxes(id: string, grid?: [number, number]): Box[] {
+  const raw = getJson<Record<string, RawMeta>>("art/ships/ships.json")?.[id];
+  const boxes = raw && hullArtFits(id, grid) ? raw.keepClear as Box[] | undefined : undefined;
+  if (!boxes?.length) return [];
+  const d = densityOf(raw!);
+  return boxes.map((b) => ({ x: b.x / d, y: b.y / d, w: b.w / d, h: b.h / d, what: b.what }));
+}
+
+const alphaCache = new Map<string, { w: number; h: number; d: number; a: Uint8ClampedArray } | null>();
+
+/** Opacity of the hull art at a car-local point (layout units): true where the painted hull is solid. */
+export function hullSolidAt(id: string, grid: [number, number], x: number, y: number): boolean | null {
+  const key = `${id}|${grid.join("x")}`;
+  let e = alphaCache.get(key);
+  if (e === undefined) {
+    const img = hullImage(id, undefined, grid);
+    if (!img || typeof document === "undefined" || (img instanceof HTMLImageElement && !img.complete)) return null;
+    const cv = document.createElement("canvas");
+    cv.width = img.width;
+    cv.height = img.height;
+    const ctx = cv.getContext("2d", { willReadFrequently: true });
+    if (!ctx) { alphaCache.set(key, null); return null; }
+    ctx.drawImage(img, 0, 0);
+    const data = ctx.getImageData(0, 0, cv.width, cv.height).data;
+    const a = new Uint8ClampedArray(cv.width * cv.height);
+    for (let i = 0; i < a.length; i++) a[i] = data[i * 4 + 3];
+    e = { w: cv.width, h: cv.height, d: cv.width / hullMeta(id, "crawler", grid).w, a };
+    alphaCache.set(key, e);
+  }
+  if (!e) return null;
+  const px = Math.floor(x * e.d), py = Math.floor(y * e.d);
+  if (px < 0 || py < 0 || px >= e.w || py >= e.h) return false;
+  return e.a[py * e.w + px] > 160;
 }
 
 // ─── livery ─────────────────────────────────────────────────────────────────────────────────────────────────
@@ -215,16 +316,17 @@ export function droneName(id: string): string {
   return fl("DRONE_FLAVOR", id)?.name ?? (DRONES as Record<string, { name: string }>)[id]?.name ?? id;
 }
 export function systemName(id: string): string {
+  if (id === "heart") return "Isolation Regulator";
   return fl("SYSTEM_FLAVOR", id)?.name ?? (SYSTEMS as Record<string, { name: string }>)[id]?.name ??
     ({ gate: "Gate Seal", bells: "Glass Bells", heart: "The Heart", brood: "Brood Chamber", artillery: "Custody Battery" } as Record<string, string>)[id] ?? id;
 }
 export function systemDesc(id: string): string {
   return (SYSTEMS as Record<string, { desc: string }>)[id]?.desc ??
     ({
-      gate: "The Regent's gate seal. While it holds, the gate stops every hit until two different routes strike within two seconds.",
-      bells: "The Choir's glass. It shatters only when three hits land together; alone, a hit only rings a bell.",
-      heart: "The Core's heart. It feeds the event horizon.",
-      brood: "Launches boarders across to your tender.",
+      gate: "The Regent's gate seal. While it holds, the gate stops every hit until two independent weapon or drone sources strike within 2.2 seconds.",
+      bells: "The Choir's resonance panes. Hold a helm channel for 12 seconds, or land three hits within one second. Bell damage extends the opening.",
+      heart: "Isolation machinery feeding the horizon pull. Disabling it protects the archive inside.",
+      brood: "Launches boarders along a grapple. Disable it during their 4-second transit to cut the line.",
       artillery: "One step of the Custody rotation. Break the room to skip the step.",
     } as Record<string, string>)[id] ?? "";
 }
@@ -286,4 +388,32 @@ export function pickCrewName(species: string, taken: string[], seed = 0): string
     if (!taken.includes(n)) return n;
   }
   return list[0];
+}
+
+/** Samples of the opaque hull art (nose lamp, keel and fittings included) for the ward envelope. With `underRoof`,
+ *  the drive trolley and grip arms above the roof are left out: the ward wraps the car, the trolley grounds it. */
+export function hullBodyPoints(id: string, m: HullMeta, grid: [number, number], underRoof = true): { points: [number, number][]; step: number } | null {
+  const step = 2;
+  const points: [number, number][] = [];
+  if (typeof document === "undefined" || !hullArtFits(id, grid)) return { points, step };
+  const img = hullImage(id, undefined, grid);
+  // Art that exists but has not loaded yet: ask again later.
+  if (!img || (img instanceof HTMLImageElement && !img.complete)) return null;
+  const canvas = document.createElement("canvas"); canvas.width = Math.ceil(m.w); canvas.height = Math.ceil(m.h);
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  if (!ctx) return { points, step };
+  ctx.drawImage(img, 0, 0, m.w, m.h);
+  const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+  // The drive trolley and its grip arms rise above the roof around the cable grip: leave that column out above the
+  // roof line, keep any other roof equipment (lamp housings, prisms, cradles).
+  const roof = m.gy - 14;
+  const gripX = m.cable?.x ?? m.w / 2;
+  const half = Math.max(44, m.w * 0.2);
+  for (let y = 1; y < canvas.height; y += step) {
+    for (let x = 1; x < canvas.width; x += step) {
+      if (underRoof && y < roof && Math.abs(x - gripX) < half) continue;
+      if (pixels[(y * canvas.width + x) * 4 + 3] > 160) points.push([x, y]);
+    }
+  }
+  return { points, step };
 }

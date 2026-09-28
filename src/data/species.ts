@@ -30,7 +30,7 @@ export const SPECIES: Record<SpeciesId, SpeciesDef> = {
   },
   warden: {
     id: "warden", name: "Warden", hp: 130, move: 0.85, repair: 0.8, combat: 1.5, breathes: true, fireMul: 0.5, learn: 1,
-    medbay: true, special: "Half damage from fire. +10% shield recharge when manning the Shield Array.",
+    medbay: true, special: "Half damage from fire. +10% mesh recharge when manning the Shield Array.",
   },
   rigger: {
     id: "rigger", name: "Rigger", hp: 90, move: 1, repair: 2, combat: 0.5, breathes: false, fireMul: 1, learn: 1,

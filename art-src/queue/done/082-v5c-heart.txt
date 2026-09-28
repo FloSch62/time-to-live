@@ -1,0 +1,5 @@
+bg/s3-a:v5c
+bg/s3-b:v5c
+bg/s3-c:v5c
+bg/s3-d:v5c
+bg/s3-e:v5c

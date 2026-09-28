@@ -1,0 +1,6 @@
+events/machine-hulk:v5b
+events/lamplighter-helm:v5b
+events/relay-switchyard:v5b
+events/lift-car-stuck:v5b
+events/copper-market:v5b
+events/tender-radio:v5b

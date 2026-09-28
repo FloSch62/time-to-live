@@ -23,7 +23,11 @@ Q = ART / "queue"
 
 
 def fresh_resolve():
-    sys.modules.pop("specs", None)
+    # drop every prompt module loaded from art-src (specs imports them), so edits made while a hold runs are picked up
+    for name, mod in list(sys.modules.items()):
+        f = getattr(mod, "__file__", None) or ""
+        if name != "gen" and f.startswith(str(ART)) and name != "__main__":
+            sys.modules.pop(name, None)
     return importlib.import_module("specs").resolve
 
 
@@ -40,6 +44,10 @@ def others_waiting():
     out = subprocess.run(["pgrep", "-af", "flock .*gpu.lock"], capture_output=True, text=True).stdout
     for line in out.splitlines():
         parts = line.split()
+        # serve.sh re-execs under systemd-run, so the worker no longer descends from loop.sh's flock (the lock
+        # HOLDER); that flock runs our own serve.sh and must not count as another job waiting.
+        if str(ART / "serve.sh") in line:
+            continue
         if len(parts) > 1 and parts[1].endswith("flock") and int(parts[0]) not in mine:
             return True
     return False

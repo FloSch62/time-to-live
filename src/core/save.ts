@@ -34,6 +34,9 @@ export interface Settings {
   sfx: number;
   scale: "auto" | "integer" | "fit";
   screenShake: boolean;
+  /** Suppress decorative movement and flashes; tactical state remains visible. */
+  reducedMotion: boolean;
+  textSpeed: "normal" | "fast" | "instant";
   /** Pause automatically when a crew member is hurt / a weapon is ready etc. (FTL-style auto-pause). */
   autoPause: { onArrive: boolean; onBoarders: boolean; onFire: boolean };
   tutorialDone: boolean;
@@ -45,6 +48,8 @@ export const DEFAULT_SETTINGS: Settings = {
   sfx: 0.8,
   scale: "auto",
   screenShake: true,
+  reducedMotion: false,
+  textSpeed: "normal",
   autoPause: { onArrive: true, onBoarders: true, onFire: false },
   tutorialDone: false,
 };

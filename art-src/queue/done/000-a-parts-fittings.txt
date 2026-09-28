@@ -1,0 +1,15 @@
+parts/prism-housing
+parts/collimators
+parts/survey-horns
+parts/drone-cradle
+parts/retrieval-crane
+parts/heavy-drive
+parts/keel-air-tanks
+parts/keel-ballast
+parts/keel-lug
+parts/roof-plate
+parts/belly-plate
+parts/roof-hatch
+parts/signal-lamp
+parts/antenna-mast
+parts/gangway-door

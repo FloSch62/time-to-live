@@ -15,6 +15,31 @@ SHIPS = {
                     "amber at the nose tip, small tool hardpoints on the roof fore and aft and under the belly, a "
                     "gangway coupler at the flat rear end on the left, a slim belly with two hanger lugs and a hatch. "
                     "No wheels under the car, no rails, no track."),
+    "glasswing": (f"Glasswing G-04, a compact lamplighter-pattern cable tender fitted for optical inspection: the same "
+                  "family as the Lamplighter, shorter, four decks, built "
+                  f"{TENDER_LOOK}. {TROLLEY}. Strict side elevation facing RIGHT. A rounded cab nose at the RIGHT "
+                  "with a warm amber cab window and a round glass guide-lamp cupola at the nose tip, like the "
+                  "Lamplighter's. Under the cupola, two short brass collimator lens tubes on an external brass "
+                  "rail, one teal lens above one amber lens, lens caps hanging on small chains. On the forward roof "
+                  "ahead of the trolley a faceted violet-and-teal glass prism housing with brass calibration rings; "
+                  "slim brass survey horns pointing aft on the rear roof. The trolley's grip arms rise from the "
+                  "roof and clamp the carrier; every roof fitting stands on the roof, nothing floats above it. A "
+                  "keel of rounded air tanks and hanger lugs under the belly, a gangway coupler at the flat rear end "
+                  "on the LEFT. Chipped ivory, dark brass collars, violet glass and teal accents, fine engraved "
+                  "optics. No wheels under the car, no rails, no track."),
+    "switchback": (f"Switchback S-08, a TALL lamplighter-pattern cable tender fitted for drone retrieval: the same family "
+                   "as the Lamplighter, taller and broader, five decks, built "
+                   f"{TENDER_LOOK}. {TROLLEY}. Strict side elevation facing RIGHT. A rounded cab nose at the RIGHT "
+                   "with a warm amber cab window and a round glass guide-lamp cupola at the nose tip, like the "
+                   "Lamplighter's. On the aft roof at LEFT, bolted to the roof, a jointed retrieval crane with a "
+                   "trussed horizontal jib, hanging cable and hook, and three separate U-shaped brass launch "
+                   "cradles with small parked dark rotor drones and teal indicators, open gaps between them. The "
+                   "drive trolley sits at roof centre, its grip arms rising from the roof to clamp the carrier; "
+                   "crane and trolley are separate assemblies and every roof fitting stands on the roof, nothing "
+                   "floats. Heavy riveted plating, dark gunmetal retrieval shutters across the lower deck, a keel "
+                   "of tanks and brass hanger lugs below, a gangway coupler at the flat rear end on the LEFT. "
+                   "Chipped ivory, brass, dark gunmetal and amber accents. A heavy working car, clearly taller "
+                   "than the optical inspection tender. No wheels under the car, no rails, no track."),
     "packet-leech": ("A hostile recovery-drone hulk clamped onto a carrier cable by a copper grip trolley on its top, "
                      "facing left: the Packet Leech. A bulbous overflowing round buffer tank of verdigris-green copper "
                      "plating with a big glowing amber buffer window, grasping jointed intake arms reaching forward "
@@ -124,6 +149,52 @@ SKY = ("A wide side-view panorama from the outside of the Line at the very edge 
 CALM = ("The middle of the picture, from a quarter to two thirds of its height, is calm open dark sky with only faint "
         "small stars and no large objects.")
 BG = {
+    "s1-d": ("The Cable Switchback Canyon, a completely different Copper Reach landmark. A close colossal "
+             "verdigris switch tower is cropped by the LEFT edge, with enormous exposed copper pulley wheels, "
+             "zigzag service stairs and long crane booms. A second narrow counterweight tower stands at the far "
+             "RIGHT edge; several taut carrier cables cross the upper sixth diagonally between them. Between the "
+             "towers lies a deep open indigo chasm. Far below, an island of stacked orange freight containers and "
+             "tiny warm workshops rises from dark low cloud. Low oblique copper dawn catches the worn edges. "
+             "Composition is asymmetrical and vertical, with enormous depth, NO continuous roof across the top. "),
+    "s1-e": ("The Sunward Drydock, a remote Copper Reach midpoint repair harbor at the edge of space. A huge "
+             "horseshoe-shaped ivory and dark copper maintenance dock rises at the lower RIGHT, with three "
+             "distinct crane booms, a bank of sleeping cable-car cradles and tiny amber workshop windows. The "
+             "upper LEFT holds a low pale gold SUN just above the far cloud horizon, partly behind the slender "
+             "silhouette of a distant spire top, shining long golden horizontal streaks through thin rust dust. In the lower LEFT are quiet stacked fuel tanks and a "
+             "small lamp-lit crew refuge on a suspended balcony. Most central space is deep midnight blue. "
+             "No continuous roof or ring underside; strong diagonal silhouette from low left to high right. "),
+    "s2-d": ("The Mirror Reservoir in the Glass Cathedral: a vast OPEN chamber framed by two immense cracked "
+             "hexagonal violet-glass mirror dishes at the LEFT and RIGHT edges, both angled inward in dark brass "
+             "gimbals. Low in the scene a descending staircase of translucent optical prisms catches thin cyan "
+             "beams reflected between the mirrors. Fine frosted cables cross high above the empty midnight-blue "
+             "center. The bottom is layered pale violet glass fog falling into a deep abyss, with a tiny isolated "
+             "calibration shelter glowing warm amber at the far bottom left. No cathedral roof or row of bells; "
+             "monumental angular mirror silhouettes and sparse light rather than repeating domes. "),
+    "s2-e": ("The Quiet Observatory, a refuge at the midpoint of the Glass Cathedral. At the far RIGHT a tall "
+             "slender ivory telescope tower carries one enormous open split violet-glass dome, a long horizontal "
+             "brass telescope pointing LEFT over the dark chasm. Below it, a sheltered balcony has a row of tiny "
+             "warm amber windows, a clearly visible kettle-shaped service tank and hung insulated cable coils. "
+             "At the lower LEFT are three much smaller distant telescope domes separated by a sea of soft-edged "
+             "stepped violet cloud. Delicate aurora-like glass refractions stripe the upper sky. Open starfield "
+             "across the upper middle, no overhead ring band. Quiet and inhabited, distinct from a combat ruin. "),
+    "s3-d": ("The Radiator Graveyard beside the Blackout Heart, an enormous abandoned heat exchanger field. "
+             "At the LEFT edge three BROKEN industrial cooling towers lean inward, their black steel frames "
+             "filled with hundreds of closely spaced thin radiator slats, heavy red copper coolant manifolds, "
+             "ribbed pipes, valve wheels and riveted service galleries. These are complex engineered machines, "
+             "NOT simple flat black feathers or solid fan shapes. Across the lower quarter, a graveyard of "
+             "staggered rectangular exchanger banks, detailed ladders and catwalks descends into ash-gray cloud. "
+             "At far RIGHT a distant white-hot reactor aperture glimmers THROUGH many dark structural ribs, "
+             "with a few ember sparks rising. Warm maintenance lamps trace access gantries in the immense ruins. "
+             "Broad central dark negative space, no continuous roof, no generic spires, strong diagonal depth. "
+             "Intricate but clean secondary detail and worn copper edges on every major silhouette. "),
+    "s3-e": ("The Last Maintenance Sanctuary, a small inhabited refuge embedded beneath the Blackout Heart. "
+             "A huge diagonal black lattice buttress frames the upper LEFT and recedes into the far right abyss. "
+             "Along the lower RIGHT a semicircular armored maintenance gallery has a chain of SMALL warm ivory "
+             "and amber windows, a bright sheltered doorway, neat oxygen cylinders and a tiny suspended platform. "
+             "Far lower LEFT, three concentric black archive shells are silhouetted around a dim red core. "
+             "A narrow service bridge and one unbroken amber cable connect the refuge to the dark structure. "
+             "Deep dark central void; warmth is concentrated only in the safe gallery, no continuous roof, no "
+             "wall of red fire. A rare human foothold amid immense angular machinery. "),
     "s1-a": ("The Copper Reach. Along the top fifth of the picture the underside of the colossal ring fills the whole "
              "width: a dense band of dark riveted hull plating gone green and orange, girders, gantries, relay "
              "housings, long loops of copper cable hanging down and many tiny amber lamps. Along the bottom fifth, a "
@@ -164,15 +235,18 @@ BG = {
 }
 
 SCENES = {
-    "title": ("The Lamplighter, a long brass-and-ivory cable tender car with a glowing amber lamp at its nose, hangs "
-              "from its drive trolley and rides a heavy braided carrier cable that sags in a long curve between two "
-              "dark spire tops, small in the lower middle of the picture. Above, the colossal dark arc of the Line, a "
-              "ring of relay machinery at the edge of space, crosses the sky as a string of tiny lamps with one "
-              "stretch dark: the Faultline gap. Slender spires rise from the cloud sea far below. Stars. The upper "
-              "third of the picture is quiet dark sky."),
+    "title": ("The Lamplighter seen in strict side view, small in the lower middle of the picture: a long "
+              "brass-and-ivory lamplighter-pattern cable tender with a rounded cab nose on the right, a round glass "
+              "lamp cupola glowing amber at the nose tip and a warm amber cab window under it, riveted plates, a "
+              "keel of tanks below. It hangs beneath its brass drive trolley, whose grip arms clamp a heavy braided "
+              "carrier cable; the cable sags in a long curve between two dark spire tops. Above, the colossal dark "
+              "arc of the Line, a ring of relay machinery at the edge of space, crosses the sky as a string of tiny "
+              "lamps with one stretch dark: the Faultline gap. Slender industrial spires rise from the cloud sea far "
+              "below. Stars. The upper third of the picture is quiet dark sky. No tram, no pantograph, no hanging "
+              "lantern, no wheels under the car, no castle."),
     "relay-seven": ("Inside the Relay Seven switchboard room, night: a tall old manual switchboard of brass jacks, "
-                    "ivory panels and braided patch cords, all its small lamps dark except one lamp in the middle "
-                    "blinking warm amber. A worn wooden operator's chair with a headset hanging on it in front of "
+                    "ivory panels and braided patch cords, all its small lamps dark except one small round "
+                    "indicator lamp in the middle blinking warm amber above an empty jack; no flame, no candle. A worn wooden operator's chair with a headset hanging on it in front of "
                     "the board, a round porthole showing the cloud sea and the arc of the Line, a kettle on a "
                     "shelf. Indigo shadows, warm amber light."),
     "line-quiet": ("Relay Seven switchboard room, very late at night: the tall brass-and-ivory switchboard, one "
@@ -185,9 +259,9 @@ SCENES = {
     "e2": ("Streams of small bright lights race along the colossal dark ring of the Line at the edge of space, "
            "thousands of messages flowing along it like a river of light, across violet glass halls and rusted "
            "copper sections, down the tall spires into the clouds."),
-    "e3": ("The ring of the Line seen from afar above the cloud-wrapped world: its long arc of lamps is coming back "
-           "on segment by segment, and the dark gap in the arc is closing with light. Stars, the curve of the "
-           "world, dawn light on the cloud sea."),
+    "e3": ("From a spire top on the Line: the long arc of relay lamps runs away to both horizons, coming back on "
+           "segment by segment, and the dark gap in the arc is closing with light from both ends. Stars above, "
+           "dawn light on the cloud sea far below. No planet curve, no view from space."),
     "e4": ("On the ground of the world below the clouds, at night: a settlement of old freight lift cars turned "
            "into homes at the foot of a colossal spire, windows lit warm amber, wet ferns and rain; people in "
            "coats stand outside looking up; the clouds above are thin and through them the arc of the Line is "
@@ -213,7 +287,7 @@ PORTRAITS = {
     "scavenger": ("one of the Dunmore brothers, a Night Shift scavenger of the skiff Second Helping: a rangy man in his "
                   "forties with a long unshaven jaw, a dust mask pulled down round his neck, a patched padded jacket "
                   "of mismatched canvas panels with salvage hooks and cord on the shoulder, grime on his face, a "
-                  "hard wary look; behind him the cramped cockpit of a patched skiff lit by an amber hand lamp."),
+                  "hard wary look; behind him the cramped cab of a patched skiff, a salvaged cable car, lit by an amber hand lamp."),
     "bench-keeper": ("Hobb Tallis, keeper of Bench Nine: an old cable-crew man in his seventies with a bald head, "
                      "big white moustache and bushy eyebrows, a friendly grumpy face, a worn brass-and-ivory cable "
                      "crew work vest with tools in its loops, holding a dented kettle; behind him a warm workbench "
@@ -234,19 +308,18 @@ PORTRAITS = {
 
 # ------------------------------------------------------------------------------------------------ events 320x160
 EVENTS = {
-    "drifting-lift-car": ("An old freight lift car of chipped ivory panels and tarnished brass, torn loose from its "
-                          "cable, drifting in the dark at the edge of space; its round windows are dark except one "
-                          "faint warm amber light; a snapped cable trails behind it. The cloud sea glows faintly far "
-                          "below."),
-    "relay-bench": ("A keeper's bench on the outer hull: a small sheltered alcove with a workbench, a lamp left on "
+    "drifting-lift-car": ("An old freight lift car of chipped ivory panels and tarnished brass, stopped askew in an open "
+                          "lattice lift shaft near a spire top; its round windows are dark except one faint warm "
+                          "amber light; a slack cable hangs above it. The cloud sea glows faintly far below."),
+    "relay-bench": ("A keeper's bench in a relay switch house: a small sheltered alcove with a workbench, a lamp left on "
                     "glowing warm amber, tools hung in order on a pegboard, a kettle on the shelf, a drawer of "
-                    "sorted spare parts, a battered stool. Dark hull plating around, stars outside."),
+                    "sorted spare parts, a battered stool. A small window shows the carriers and stars outside."),
     "copper-market": ("The Copper Market: a tall tower of shipping containers welded together on a spire top above "
                       "the cloud sea, lit by strings of salvaged relay lamps, stalls on every landing, a crane used "
                       "as a lift, small figures trading salvage. Dusk sky."),
-    "echo-tender": ("An old relay tender with nobody aboard flying slowly along the dark outer hull of the ring, its "
-                    "nose lamp still lit warm amber, sweeping its beam over a row of dead relay lamps; dust on its "
-                    "ivory hull, stars."),
+    "echo-tender": ("An old lamplighter-pattern cable tender with nobody aboard, hanging from its trolley on a "
+                    "carrier and running slowly toward a dark relay, its nose cupola still lit warm amber, sweeping "
+                    "its beam over a dark guide lamp; dust on its ivory panels, an empty cab window, stars."),
     "glass-bells": ("Huge violet glass bells hanging beneath the ring of the Glass Cathedral in dark brass frames, "
                     "glowing softly from within, glass fog drifting between them; one bell is ringing, rings of pale "
                     "violet light spreading from it."),
@@ -254,10 +327,10 @@ EVENTS = {
                      "field of thousands of small warm lights, each a waiting message, glowing in the dark like a "
                      "city seen from above, ember-red machinery framing the view."),
     "sealed-relay": ("A relay station on the ring sealed by the Seal: its lamp dark, its doors clamped shut by a "
-                     "black lattice with thin glowing red seams, two small black quarantine drones with red lights "
-                     "hovering beside it."),
-    "debris-field": ("A field of debris from the broken outer relays slowly turning in the dark: bent ring-gate "
-                     "segments, snapped cables, tumbling hull plates and container pieces glittering in the light "
+                     "black lattice with thin glowing red seams, two small black quarantine drones on rotors with red "
+                     "lights holding station beside it; the carrier under it still whole."),
+    "debris-field": ("Wreckage from the broken outer relays snagged on the carriers and swinging from them: bent "
+                     "ring-gate segments, snapped cables, torn plates and container pieces glittering in the light "
                      "of a low sun, a broken ring gate far behind."),
     "radio-mast": ("On the dark, wet green ground of the world below the clouds: a tall slender radio mast built "
                    "from old lift parts and cable beside a small house made from a lift car, one warm window, rain, "
@@ -273,7 +346,7 @@ PROPS = {
                  "cable-hung platforms, stacked containers and a small amber lamp at its tip",
     "ring-gate": "a huge broken ring gate of rusted copper and verdigris: a great circular gate frame snapped open, "
                  "with jagged broken ends and hanging cables",
-    "lamp-tower": "a relay lamp tower: a slender brass lattice tower on a hull platform with a big round glowing "
+    "lamp-tower": "a relay lamp tower: a slender brass lattice tower on a relay platform with a big round glowing "
                   "amber guide lamp at its top",
     "market-stack": "the Copper Market: a tower of welded rusty shipping containers on a spire top, strings of small "
                     "amber lamps, a crane on top",
@@ -286,7 +359,7 @@ PROPS = {
     "lift-car": "an old freight lift car of chipped ivory panels and tarnished brass with round windows and a snapped "
                 "cable on its roof",
     "cloud-bank": "a floating bank of the cloud sea: a big billowing cloud lit copper and rose by a low sun",
-    "solar-array": "an old solar array wing on a hull mast: large dark blue panels in brass frames, some panels "
+    "solar-array": "an old solar array wing on a spire-top mast: large dark blue panels in brass frames, some panels "
                    "broken, still turned to the sun",
     "bell-frame": "a huge violet glass bell hanging in a dark brass frame, glowing softly from within",
     "seal-lattice": "a node of the Seal's lattice: a black geometric lattice frame with thin glowing red seams and "
@@ -376,3 +449,85 @@ def parse_requests(path=None):
             buf.append(line.strip())
     flush()
     return out
+
+
+# ------------------------------------------------------------------------------------------------ hull parts (A2 kit)
+# Component sprites for assembling lamplighter-pattern tenders (tools/art/assemble_hull.py). Every part: strict side
+# view, facing RIGHT, lit from the upper left, the Reach-dock materials; painted alone on a flat backdrop and cut out.
+# id -> (target size in hull image px (1 px = 1 backing px at TILE 72), brief). Body strips are six 72-px modules wide
+# (roof strip on top, the plated wall, the keel strip below) and are sliced into modules by the assembler.
+PARTS = {
+    # shared
+    "roof-plate": ((64, 18), "a low rectangular riveted brass hardpoint base plate for bolting equipment onto the roof "
+                             "of a car, four heavy bolts, a raised rim, worn edges"),
+    "belly-plate": ((64, 14), "a flat riveted brass hardpoint plate for the underside of a car, two hanging lugs with "
+                              "bolt holes, worn dark bronze"),
+    "roof-hatch": ((52, 22), "a small round-cornered pressure hatch lid on a car roof, riveted brass rim, a wheel "
+                             "handle, chipped ivory lid"),
+    "signal-lamp": ((18, 26), "a small electric signal lamp on a short brass bracket, a glowing teal glass lens in a "
+                              "brass cage"),
+    "antenna-mast": ((24, 76), "a slim brass antenna mast on a bolted foot, two small cross arms, a tiny amber tip lamp"),
+    "rear-cap": ((56, 360), "the flat rear end of a pressurised cable car seen from the side: a narrow rounded end "
+                            "cap of chipped ivory plates framed by riveted brass, a sealed gangway coupler hatch in the "
+                            "middle with a heavy clamp, a small red marker lamp near the top"),
+    "gangway-door": ((40, 92), "a narrow riveted gangway door with a small round window and a brass handle, chipped "
+                               "ivory panels in a brass frame"),
+    # body plating strips: roof strip (30 px), wall (288 or 360 px), keel strip (42 px); six modules each
+    "body-4a": ((432, 360), "a straight side section of a long pressurised cable car body, six equal vertical panels "
+                            "side by side: chipped ivory ceramic plates framed by riveted tarnished brass ribs, a "
+                            "narrow brass roof rail along the top edge, a dark gunmetal keel strip with small tanks "
+                            "along the bottom edge; the panels alternate plain riveted plates, round brass portholes "
+                            "and verdigris pipe runs"),
+    "body-4b": ((432, 360), "a straight side section of a long pressurised cable car body, six equal vertical panels "
+                            "side by side: chipped ivory ceramic plates framed by riveted tarnished brass ribs, a "
+                            "narrow brass roof rail along the top edge, a dark gunmetal keel strip along the bottom "
+                            "edge; one panel is a riveted service door, one has a pair of small portholes, the others "
+                            "are plain plates with strap seams and inspection covers"),
+    "body-5a": ((432, 432), "a straight side section of a tall pressurised cable car body, six equal vertical panels "
+                            "side by side, five decks high: chipped ivory ceramic plates framed by riveted tarnished "
+                            "brass ribs, a narrow brass roof rail along the top edge, a dark gunmetal keel strip along "
+                            "the bottom edge; round brass portholes, verdigris pipe runs, strap seams"),
+    "body-5b": ((432, 432), "a straight side section of a tall pressurised cable car body, six equal vertical panels "
+                            "side by side, five decks high: chipped ivory ceramic plates framed by riveted tarnished "
+                            "brass ribs, a narrow brass roof rail along the top edge, a dark gunmetal keel strip along "
+                            "the bottom edge; one riveted service door, inspection covers, dark gunmetal retrieval "
+                            "shutters along the lowest deck"),
+    # noses (the right end of the car)
+    "nose-lamp": ((150, 360), "the rounded front end of a pressurised cable car, facing right: a bullet-shaped nose "
+                              "of chipped ivory plates framed by riveted brass, a slanted amber-lit cab window high "
+                              "up, and under it a big round glass guide lamp in a heavy brass ring glowing warm amber "
+                              "at the nose tip, a dark gunmetal keel curving up underneath"),
+    "nose-optical": ((150, 360), "the front end of a compact optical inspection cable car, facing right: a rounded "
+                                 "nose of chipped ivory plates framed by riveted brass, a slanted amber-lit cab "
+                                 "window high up, and a round glass lamp cupola at the nose tip with a violet-tinted "
+                                 "lens ring, a dark gunmetal keel curving up underneath"),
+    "nose-heavy": ((160, 432), "the blunt front end of a tall heavy cable car, facing right: a high flat-fronted "
+                               "nose of chipped ivory plates framed by thick riveted brass, a wide cab window high "
+                               "up, a round glass guide lamp glowing amber at the nose, dark gunmetal louvred "
+                               "retrieval shutters below it, a heavy keel underneath"),
+    # Glasswing G-04 fittings
+    "collimators": ((104, 92), "two short brass collimator lens tubes mounted one above the other on a vertical brass "
+                               "rail bracket, pointing right: the upper tube ends in a teal glass lens, the lower in an "
+                               "amber lens, small lens caps hanging on chains"),
+    "prism-housing": ((168, 96), "a faceted optical prism housing for a car roof: a low trapezoid cabin of violet and "
+                                 "teal glass panes in a dark brass frame with two brass calibration rings, standing "
+                                 "on a riveted base plate"),
+    "survey-horns": ((64, 76), "two slim brass survey horns (trumpet-shaped acoustic horns) on short masts facing "
+                               "left, on a small riveted base plate"),
+    # Switchback S-08 fittings
+    "drone-cradle": ((84, 96), "a U-shaped brass launch cradle bolted to a base plate, holding a parked compact "
+                               "maintenance drone with a dark teal cylindrical body, a rotor hub on top and a small "
+                               "teal lens"),
+    "retrieval-crane": ((300, 124), "a jointed retrieval crane on a round roof turntable: a small gunmetal crane cab, "
+                                    "a short knuckle arm and a long horizontal trussed brass jib pointing right, a "
+                                    "hook hanging on a cable from the jib tip"),
+    "heavy-drive": ((520, 100), "a heavy drive trolley seen from the side: two drive bogies, each with two grooved "
+                                "brass sheaves on top, joined by one long riveted brass yoke beam, a boxy motor "
+                                "housing in the middle, grip arms and two pairs of hanger struts going down"),
+    # keel
+    "keel-air-tanks": ((150, 42), "a row of three horizontal riveted air tanks in dark gunmetal slung under a car, "
+                                  "with brass straps and a small valve"),
+    "keel-ballast": ((150, 42), "a long ballast tank block in rusty dark gunmetal with riveted brass straps, slung "
+                                "under a car"),
+    "keel-lug": ((40, 30), "a heavy brass hanger lug with a bolt eye, bolted under a car"),
+}

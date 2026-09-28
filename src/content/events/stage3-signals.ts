@@ -108,7 +108,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
         ],
       },
       {
-        text: "Strip some of the shelving brackets for salvage.",
+        text: "Strip some of the shelving brackets for salvage. The shelves above lean out over the carrier.",
         outcomes: [
           { weight: 2, outcome: {
             resources: { salvage: [30, 50] },
@@ -146,10 +146,10 @@ export const STAGE3_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Look at it a little longer.",
+        text: "Look at it a little longer, and let the Seal gain.",
         outcomes: [{ outcome: {
           heal: true, seal: -1,
-          text: "Nobody says anything. After a while the relay switches you anyway, with a patience it did not seem to have before. The crew are steadier for it. Behind you, the Seal has come a little closer.",
+          text: "Nobody says anything. After a while the switchgear stops humming, as if it has decided to wait with you. The crew are steadier for it. Behind you, the Seal has come a little closer.",
         } }],
       },
     ],
@@ -164,7 +164,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
         outcomes: [
           { weight: 2, outcome: {
             seal: 1,
-            text: "The car takes the relay at a run with the lights dying around it. The switch throws with a second to spare, and the dark closes behind you like a door.",
+            text: "The car runs into the yard with the lights dying around it and a second to spare, and the dark closes behind you like a door.",
           } },
           { weight: 1, outcome: {
             resources: { hull: [-4, -2] }, crewDamage: { amount: 10, who: "one" },
@@ -176,7 +176,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
         text: "Brake and let the wave pass.",
         outcomes: [{ outcome: {
           seal: -1,
-          text: "The dark comes over the car and holds it. For a long minute there is only the tender's own lamp and the carrier creaking. Then the trickle catches, and the switch throws, slowly, politely, far too late to be comfortable.",
+          text: "The dark comes over the car and holds it. For a long minute there is only the tender's own lamp and the carrier creaking. Then the trickle catches, the yard lamp comes up, and the relay takes the car in, slowly, politely, far too late to be comfortable.",
         } }],
       },
       {
@@ -199,7 +199,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
         outcomes: [
           { weight: 2, outcome: {
             resources: { ttl: 1 }, seal: 1,
-            text: "The attempt runs down the carrier and the car runs with it. Two relays switch you without even counting the hop. When the attempt fails, you are already past it.",
+            text: "The attempt runs down the carrier and the car runs with it. The relay takes you in on the open route without counting the hop, and when the attempt fails you are already through, a step further ahead of the Seal.",
           } },
           { weight: 1, outcome: {
             resources: { hull: [-5, -3] },
@@ -256,7 +256,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
   {
     id: "s3-key-cabinet", pool: "event", stages: [3], unique: true,
     title: "The Key Cabinet", art: "checkpoint-gate",
-    text: "The checkpoint here is long dead, but its key office is not: a brass cabinet taller than the car's cabin, a thousand small hooks, and on every hook a key with a paper tag. Every one was signed by the Heart and renewed once a year. Every one expired within a year of the sealing.\n\nThe tags have names on them. Engineers, archivists, wardens, a kitchen porter. People who crossed this boundary every day and thought nothing of it.",
+    text: "The checkpoint here is long dark, but its key office is not: a brass cabinet taller than the car's cabin, a thousand small hooks, and on every hook a key with a paper tag. Every one was signed by the Heart and renewed once a year. Every one expired within a year of the sealing.\n\nThe tags have names on them. Engineers, archivists, wardens, a kitchen porter. People who crossed this boundary every day and thought nothing of it.",
     choices: [
       {
         text: "Take a ring of keys. Something might still count them.",
@@ -310,7 +310,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
     ],
   },
   {
-    id: "s3-reading-room", pool: "event", stages: [3],
+    id: "s3-reading-room", cast: "human", pool: "event", stages: [3],
     title: "The Reading Room", art: "ember-archive",
     text: "A reading room of the Record: long tables, green-shaded lamps on their trickle, request slips in wooden trays, a brass pneumatic tube at every seat. A sign asks for silence. Somebody has added underneath, in pencil: and no tea.\n\nThe tubes still work. Somewhere in the stacks, a machine is still waiting to fetch whatever is asked for.",
     choices: [
@@ -343,7 +343,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
   },
   {
     id: "s3-lift-control", pool: "event", stages: [3], unique: true,
-    title: "Lift Control · Inbound", art: "radio-mast-ground",
+    title: "Lift Control · Inbound", art: "lift-head",
     text: "The Heart's own lift control sits at the top of a spire shaft that runs all the way down through the cloud floor. Its inbound printer has been printing for thirty-one years. There was nobody to tear off the paper, so the paper went where paper goes: across the floor, over the desk, out of the door in a long pale bank against the switch house wall.\n\nEvery message the spire foot ever sent up is here, in order, a few lines each. Requests to reset the doors. Reports of rain. Please advise.",
     choices: [
       {
@@ -371,18 +371,18 @@ export const STAGE3_SIGNALS: EventDef[] = [
   {
     id: "s3-pulse-ahead", pool: "event", stages: [3],
     title: "Something Goes First", art: "relay-switchyard",
-    text: "The relay hears your hello and does not answer. Instead its lamp dims, and something passes the car on the carrier, fast and bright: a single gold pulse, running outward from the Heart ahead of you.\n\nOnly when it has gone does the relay answer. I hear you.\n\nAt the next relay it happens again. The Core is sending a test pulse down the route before it lets you onto it. It is checking the road.",
+    text: "The relay hears your hello and does not answer. Instead its lamp dims, and something passes the car on the carrier, fast and bright: a single gold pulse, running outward from the Heart ahead of you.\n\nOnly when it has gone does the relay answer. I hear you.\n\nAt the next relay it happens again. The Core is sending a test pulse down the route before it lets you onto it. It is checking the road. Nobody aboard knows what a pulse does when the road ahead refuses it.",
     choices: [
       {
         text: "Follow the pulse closely.",
         outcomes: [
           { weight: 2, outcome: {
             resources: { ttl: 1 },
-            text: "The relays switch you in the pulse's wake without counting the hop, as if the car were part of the test. Nobody aboard argues.",
+            text: "The relay takes you into its yard in the pulse's wake and does not count the hop, as if the car were part of the test. Nobody aboard argues.",
           } },
           { weight: 1, outcome: {
-            systemDamage: { system: "shields", amount: 1 },
-            text: "The pulse comes back. Something ahead refused it, and it returns down the carrier like a slap, straight through the ward mesh. Every lamp aboard pops at once.",
+            systemDamage: { system: "random", amount: 1 },
+            text: "The pulse comes back. Something ahead refused it, and it returns down the carrier like a slap and hits the car. Every lamp aboard pops at once, and one of the systems takes the worst of it.",
           } },
         ],
       },
@@ -390,7 +390,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
         text: "Hang back and let it clear the road.",
         outcomes: [{ outcome: {
           seal: -1,
-          text: "You wait until the pulse has gone by twice. Then the relay switches you properly, with the full greeting, like a guest. It takes longer than the Seal would like.",
+          text: "You wait until the pulse has gone by twice. Then the relay takes you in properly, with the full greeting, like a guest. It takes longer than the Seal would like.",
         } }],
       },
       {
@@ -480,7 +480,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
       {
         text: "Douse every lamp and slip under it.", blue: true, req: { system: { id: "veil", level: 1 } },
         outcomes: [{ outcome: {
-          text: "Lamp-dark, the car is only a cold shape on a cold carrier. The Moth never turns its head. You relight on the far side of the switch.",
+          text: "Lamp-dark, the car is only a cold shape on a cold carrier. The Moth never turns its head. You relight in the yard, with the Moth behind you.",
         } }],
       },
       {
@@ -491,7 +491,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
             text: "It doesn't turn. You are through with a grey coat of ash on the roof and a small fire in the hold, which {crew} stamps out with more enthusiasm than technique.",
           } },
           { weight: 1, outcome: {
-            text: "It turns. It comes. Ash falls on the ward mesh and catches.",
+            text: "It turns. It comes. Ash falls on the roof and catches.",
             combat: { enemy: "ash-moth", intro: "The Moth leaves the lamp and comes to cool you instead." },
           } },
         ],
@@ -522,7 +522,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Cut all power and coast past on the carrier's slope.",
+        text: "Cut all power and coast past. Silence might read as nothing, or as the weakest signal of all.",
         outcomes: [
           { weight: 1, outcome: {
             text: "It works. The Reaver waits for a signal that never comes, and you coast past in the dark and power up two spans on, cold and very pleased with yourselves.",
@@ -591,11 +591,11 @@ export const STAGE3_SIGNALS: EventDef[] = [
         text: "Take what is left in the gatehouse stores.",
         outcomes: [{ outcome: {
           reward: "med",
-          text: "Tinned rations labelled by shift, a case of spliced charges signed out to RELIEF, and a spare ward-wire coil. {crew} signs the stores book on the way out. It feels necessary.",
+          text: "Tinned rations labelled by shift, and whatever else the relief shift never came to collect, all of it signed out to RELIEF. {crew} signs the stores book on the way out. It feels necessary.",
         } }],
       },
       {
-        text: "Unbolt the armoury's payload rack for the tender.",
+        text: "Unbolt the armoury's payload rack for the tender.", req: { weapon: "payload" }, hideIfUnmet: true,
         outcomes: [{ outcome: {
           module: "payload-rack",
           text: "The rack comes off the armoury wall in one piece: brass cradles for spliced charges, a stencil reading ISSUE TO RELIEF ONLY. It will fit a socket in the hold. {crew} signs it out properly, in the book, to the relief.",
@@ -604,7 +604,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
     ],
   },
   {
-    id: "s3-shift-rations", pool: "event", stages: [3],
+    id: "s3-shift-rations", cast: "human", pool: "event", stages: [3],
     title: "Shift Rations", art: "relay-bench",
     text: "A ration store in the switch house, wardens' issue, every tin stencilled with a shift number and a guess at its contents. SHIFT 4,121 · BEANS. SHIFT 4,121 · BEANS, PROBABLY. SHIFT 4,122 · UNKNOWN.\n\nA card is pinned to the shelf: TAKE WHAT YOU NEED. LEAVE SOME FOR THE RELIEF SHIFT.\n\nBehind the ration store, a smaller door is marked ARMOURY · SIGN OUT ALL ISSUE.",
     choices: [
@@ -617,10 +617,16 @@ export const STAGE3_SIGNALS: EventDef[] = [
       },
       {
         text: "Sign out what the armoury holds.",
-        outcomes: [{ outcome: {
-          resources: { payloads: [2, 3] },
-          text: "Spliced charges in a crate, signed out to RELIEF SHIFT in a clerk's hand thirty-one years ago. {crew} writes the tender's name under it, and the date, and a line that says returned when possible.",
-        } }],
+        outcomes: [
+          { modifiers: [{ when: { tender: "glasswing" }, multiply: 0 }, { when: { tender: "switchback" }, multiply: 0 }], outcome: {
+            resources: { payloads: [2, 3] },
+            text: "Spliced charges in a crate, signed out to RELIEF SHIFT in a clerk's hand thirty-one years ago. {crew} writes the tender's name under it, and the date, and a line that says returned when possible.",
+          } },
+          { modifiers: [{ when: { tender: "lamplighter" }, multiply: 0 }], outcome: {
+            resources: { spares: 2 },
+            text: "Spliced charges for a slug thrower, and under them a box of escort spares, all signed out to RELIEF SHIFT in a clerk's hand thirty-one years ago. {crew} takes the spares, writes the tender's name under the entry, and a line that says returned when possible.",
+          } },
+        ],
       },
       {
         text: "Let {crew:warden} read the ration codes.", blue: true, req: { species: "warden" },
@@ -640,7 +646,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
         text: "Say it again, slowly, and hope (1 TTL).", req: { resources: { ttl: 1 } },
         outcomes: [{ outcome: {
           resources: { ttl: -1 },
-          text: "Hello. — I hear you. — I hear you hear me. On the second try the relay holds on long enough. The switch throws. The counter has taken its hop anyway.",
+          text: "Hello. — I hear you. — I hear you hear me. On the second try the relay holds on long enough to write the car into its switch log, and it will remember when the chart calls for the switch. The counter has taken its hop anyway.",
         } }],
       },
       {
@@ -654,11 +660,11 @@ export const STAGE3_SIGNALS: EventDef[] = [
         text: "{crew:courier} runs out and says it to the greeting plate by hand.", blue: true, req: { species: "courier" },
         outcomes: [
           { weight: 2, outcome: {
-            text: "{crew:courier} goes hand over hand along the carrier to the switch house and says the greeting into the brass plate from ten centimetres away. The relay has no chance to forget. The switch throws, and {crew:courier} has to run for the hatch.",
+            text: "{crew:courier} goes hand over hand along the carrier to the switch house and says the greeting into the brass plate from ten centimetres away. The relay has no chance to forget. It writes the car into its switch log with a clunk that jerks the carrier, and {crew:courier} has to run for the hatch.",
           } },
           { weight: 1, outcome: {
             crewDamage: { amount: 15, who: "one" },
-            text: "It works, but the switch throws while {crew:courier} is still on the carrier, and the ride back to the hatch is a lot faster than the ride out.",
+            text: "It works, but the relay takes the car into its yard while {crew:courier} is still out on the carrier, and the ride back to the hatch is a lot faster than the ride out.",
           } },
         ],
       },
@@ -683,10 +689,10 @@ export const STAGE3_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Back off and find another carrier.",
+        text: "Back off and find another carrier. It will cost time.",
         outcomes: [{ outcome: {
           seal: -1,
-          text: "You reverse and say hello to the last relay again. It switches you onto a side carrier, and behind you the lattice closes. It cost you time. The Seal will have noticed.",
+          text: "You reverse off the lattice and come into the yard by a side carrier instead, and behind you the lattice closes. It cost you time. The Seal will have noticed.",
         } }],
       },
     ],
@@ -697,14 +703,14 @@ export const STAGE3_SIGNALS: EventDef[] = [
     text: "The galleries here are dark, and the car's own lamps begin to dim. Not failing: being pulled. The Core is drawing power inward from everything on this stretch of carrier, the tender included, to spend on the shell.\n\nThe weapons bay needles sag. The lamp in the cupola bends, very slightly, toward the Heart.\n\nThe car can cut its trolley off from the carrier's feed and run on its own cells for a while, or it can let the Core take what it is asking for.",
     choices: [
       {
-        text: "Let it take a little.",
+        text: "Let it take a little from the weapons bay.",
         outcomes: [{ outcome: {
           systemDamage: { system: "weapons", amount: 1 }, seal: 2,
-          text: "The weapons bay goes dark for an hour. Somewhere in the shell, one more light holds steady. And for that hour the quarantine reads the tender as part of the archive's own grid, and the Seal loses the scent.",
+          text: "One bar of the weapons bay goes dark, and stays dark until someone repairs it. Somewhere in the shell, one more light holds steady. And while the car feeds it, the quarantine reads the tender as part of the archive's own grid, and the Seal loses the scent.",
         } }],
       },
       {
-        text: "Cut the feed and run on the cells.",
+        text: "Cut the feed and run on the cells. The drive may not like the change.",
         outcomes: [
           { weight: 2, outcome: {
             text: "The lamps come back to full the moment the trolley is cut off from the feed. You run the stretch on your own cells, lights bright, alone.",
@@ -792,14 +798,14 @@ export const STAGE3_SIGNALS: EventDef[] = [
         text: "Leave everything, and leave their lamp on.",
         outcomes: [{ outcome: {
           heal: true, reward: "low",
-          text: "{crew} rigs a spare wick into their cupola and lights it before you climb out. It is a small light down there in the dark. You don't take the card. You do take the spares from the drawer; they would have wanted that used.",
+          text: "{crew} rigs a spare wick into their cupola and lights it before you climb out. It is a small light down there in the dark. You don't take the card. You do take what is in the drawer; they would have wanted it used.",
         } }],
       },
     ],
   },
   {
     id: "s3-night-shift-car", pool: "event", stages: [3], unique: true,
-    title: "The Boundary Crew", art: "relay-switchyard", portrait: "recruit-courier-b", speaker: "Nesta Brisk",
+    title: "The Boundary Crew", art: "relay-switchyard", portrait: "recruit-courier-a", speaker: "Nesta Brisk",
     text: "A Night Shift car sits on a side carrier at the relay, lamps on, crew aboard: three people who came this far years ago to keep the boundary lamps lit and never saw a reason to go back. They have a stamp press, a kettle, and opinions.\n\n\"Keepers,\" says the one in the courier's coat, and looks at your car the way couriers look at a parcel that has come a very long way. \"We heard the page again. We always hear it. We never thought anyone would get it this far.\"",
     choices: [
       {
@@ -841,14 +847,14 @@ export const STAGE3_SIGNALS: EventDef[] = [
         text: "Couple it behind the tender.",
         outcomes: [{ outcome: {
           car: "bunk-car",
-          text: "The hook takes on the second try. The sleeper swings in behind the Lamplighter like it has been waiting for a shift change. {crew} turns the reading lamp off, then on again, and leaves it on.",
+          text: "The hook takes on the second try. The sleeper swings in behind {ship} like it has been waiting for a shift change. {crew} turns the reading lamp off, then on again, and leaves it on.",
         } }],
       },
       {
         text: "Unbolt the bunks and bring them aboard.",
         outcomes: [{ outcome: {
           module: "bunks",
-          text: "Six bunks, a frame, and the blankets, folded. They will go into a socket in the hold, and the crew will stop sleeping on the galley bench in shifts. Mostly.",
+          text: "Two of the bunks, a frame and a curtain, and the blankets, folded. They will go into a socket in the hold, and the crew will stop sleeping on the galley bench in shifts. Mostly.",
         } }],
       },
       {
@@ -885,7 +891,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
   },
   {
     id: "s3-cold-berth-wake", pool: "scripted", stages: [3],
-    title: "Is the Record Warm", art: "cold-berths", portrait: "recruit-linefolk-b", speaker: "T. Marl",
+    title: "Is the Record Warm", art: "cold-berths", portrait: "recruit-linefolk-a", speaker: "T. Marl",
     text: "The berth hisses. The frost runs to water. He wakes the way people do after thirty-one years: slowly, then all at once.\n\n\"Is the Record warm?\" is the first thing he says. Then he sees the ember light through the door. \"Oh. Oh, it's spending.\" He is out of the berth before anyone can help, and very unsteady.\n\nHis name tag says T. MARL. Archive staff, shelves forty-one to eighty. He would like to know what year it is, and then he would like not to know.",
     choices: [
       {
@@ -906,7 +912,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
   },
   {
     id: "s3-cold-berth-coat", pool: "scripted", stages: [3], requires: { flag: "s3-coat-taken" },
-    title: "That's Mine", art: "cold-berths", portrait: "recruit-linefolk-b", speaker: "Teodor Marl",
+    title: "That's Mine", art: "cold-berths", portrait: "recruit-linefolk-a", speaker: "Teodor Marl",
     text: "The berth hisses and the frost runs to water, and the man inside wakes slowly, then all at once. The first thing he sees is {crew}, holding out a grey coat.\n\n\"That's mine,\" he says. Then: \"You've been wearing it.\" Then, because it has been thirty-one years and he is cold: \"Thank you.\"\n\nHe puts it on, pats the pocket, and finds the pen he left there. He asks whether the Record is warm, and whether anyone relieved the shift.",
     choices: [
       {
@@ -941,7 +947,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
         text: "Hold the boundary behind us. Slow the Seal.",
         outcomes: [{ outcome: {
           seal: 2,
-          text: "She nods, as if she has waited a long time to be asked something she could do. From the next relay you look back, and her lamp is flashing warden code at the quarantine drones, very slowly and very officially, and they have stopped to read it.",
+          text: "She nods, as if she has waited a long time to be asked something she could do. From the far end of the yard you look back, and her lamp is flashing warden code at the quarantine drones, very slowly and very officially, and they have stopped to read it.",
         } }],
       },
       {
@@ -974,7 +980,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
       {
         text: "Call the relay on every band. Whoever is there should get out.",
         outcomes: [{ outcome: {
-          text: "Nobody answers. You go on. Behind you the tone stops, and a moment later the carrier shudders all the way to the next relay. Nobody aboard knows whether anyone was there. That is the worst part.",
+          text: "Nobody answers. Down the carrier behind you the tone stops, and a moment later the carrier shudders all the way into this yard. Nobody aboard knows whether anyone was there. That is the worst part.",
         } }],
       },
       {
@@ -1037,9 +1043,9 @@ export const STAGE3_SIGNALS: EventDef[] = [
     text: "An alarm on an archive band: STACK 212 · TEMPERATURE CRITICAL · RECORD AT RISK. The cooling fins for this stack have failed, and the Core, spending everything on the shell, has nothing left to send it.\n\nThe stack is a tower of shelving the height of a spire, full of the Record. Its fins run right beside your carrier, and the air around them shimmers.\n\nTwo Ash Moths are already on their way, on their rotors, to help.",
     choices: [
       {
-        text: "Vent the car's air over the fins until the Moths arrive.",
+        text: "Vent the car's air over the fins until the Moths arrive, and draw them to you.",
         outcomes: [{ outcome: {
-          text: "The car's air pours over the fins in a white plume. It is enough to hold the stack until the Moths arrive, and then it is too much: they turn toward the coldest, busiest thing on the carrier.",
+          text: "The car's air pours over the fins in a white plume. It is enough to hold the stack until the Moths arrive, and then it is too much: they read the plume as a cooling job half done, and follow it back to the car.",
           combat: { enemy: "ash-moth", onWin: "s3-stack-alarm-after", intro: "HEAT SOURCE FOUND ON CARRIER. COOLING. The Moths come for the plume." },
         } }],
       },
@@ -1091,7 +1097,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
         } }],
       },
       {
-        text: "Everyone out on the gantry: haul it free by hand.", req: { crewMin: 4 },
+        text: "Everyone out on the gantry: haul it free by hand, under the drone's clamps.", req: { crewMin: 4 },
         outcomes: [
           { weight: 2, outcome: {
             reward: "med",
@@ -1139,7 +1145,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
         text: "Answer it. You are the relief shift.",
         outcomes: [{ outcome: {
           resources: { ttl: 2 },
-          text: "{crew} keys the band: \"Relief shift. Received.\" The loop stops. After a moment, the archive's own switchgear opens the next two relays for you and re-stamps the connection, the way it would for staff arriving late.",
+          text: "{crew} keys the band: \"Relief shift. Received.\" The loop stops. After a moment, the archive's own switchgear re-stamps the connection with two hops, the way it would for staff arriving late.",
         } }],
       },
       {
@@ -1157,7 +1163,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
       },
       {
         text: "Leave it asking.",
-        outcomes: [{ outcome: { text: "Relief shift, please respond. It is still asking when you are three relays on." } }],
+        outcomes: [{ outcome: { text: "Relief shift, please respond. It is still asking when the crew stop listening." } }],
       },
     ],
   },
@@ -1180,11 +1186,11 @@ export const STAGE3_SIGNALS: EventDef[] = [
         ],
       },
       {
-        text: "Take the toolkit and the key and go before it arrives.",
+        text: "Take the toolkit and the key and get clear before it arrives.",
         outcomes: [
           { weight: 1, outcome: {
             reward: "med",
-            text: "You are two relays on before the Marshal reaches the empty trolley. The toolkit is excellent. The key opens nothing, but {crew} wears it on the lanyard anyway.",
+            text: "The car is out of sight across the yard before the Marshal reaches the empty trolley. The toolkit is excellent. The key opens nothing, but {crew} wears it on the lanyard anyway.",
           } },
           { weight: 1, outcome: {
             reward: "low",
@@ -1234,7 +1240,7 @@ export const STAGE3_SIGNALS: EventDef[] = [
         text: "Say the first hello to the escort.", blue: true, req: { species: "rigger" },
         outcomes: [{ outcome: {
           crewJoin: { species: "rigger" },
-          text: "{crew:rigger} helps; one escort to another. Hello. The lens lights teal before anyone gets to the third line. It climbs out of the car and follows you home, and it will not be separated from one small box of first packets, which it carries.",
+          text: "{crew:rigger} helps; one escort to another. Hello. The lens lights teal before anyone gets to the third line. It climbs out of the car and follows you aboard, and it will not be separated from one small box of first packets, which it carries.",
         } }],
       },
       {

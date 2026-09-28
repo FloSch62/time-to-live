@@ -3,7 +3,8 @@
 import { Gfx, Gfx as GfxCtor } from "../core/gfx";
 import type { App } from "../core/scene";
 import { atlas, atlasScale, markHD } from "../core/assets";
-import { measure, lineHeight, type FontId } from "../core/font";
+import { measure, lineHeight, capHeight, capTop, wrap, type FontId } from "../core/font";
+import { keyLabel } from "../core/ui";
 import { P, C, STAGE_TINT, rgba } from "../core/palette";
 import { sfx } from "../core/audio";
 import type { ResourceId, StageIndex } from "../game/ids";
@@ -23,13 +24,38 @@ export function tint(stage: StageIndex) {
 
 // ─── text ─────────────────────────────────────────────────────────────────────────────────────────────────
 
+/**
+ * The one type scale of the campaign screens (checked at 1920×1080 and 1366×768). Cap heights in layout units:
+ * display 20 › title 15 › body 10 › label / strong / note 7.5. The 5-px fonts (label, labelb, small) are not part of
+ * it: they stay for dense combat glyphs only.
+ */
+export const TYPE = {
+  /** Headlines and big numbers. */
+  display: "big",
+  /** Screen headings, card and item names in large cards. */
+  title: "head",
+  /** Running text, names, values, choices. */
+  body: "body",
+  /** Panel headers and field labels (upper case, lightly tracked). */
+  label: "caps",
+  /** Button, tab and plate labels (upper case). */
+  strong: "capsb",
+  /** Stats, captions, sub-lines and key hints (sentence case). */
+  note: "note",
+} as const satisfies Record<string, FontId>;
+
+/** Default tracking of the scaled caps (one backing pixel); the old 5-px labels keep their wide 2-unit tracking. */
+export function defaultTrack(font: FontId): number {
+  return font === "caps" || font === "capsb" || font === "note" ? 0.5 : 2;
+}
+
 /** Letter-spaced single-line text (labels, plates). Returns the width. */
 export function tracked(
   g: Gfx, text: string, x: number, y: number,
   opts: { font?: FontId; color?: string; track?: number; align?: "left" | "center" | "right"; shadow?: string | null; alpha?: number } = {},
 ): number {
   const font = opts.font ?? "label";
-  const track = opts.track ?? 2;
+  const track = opts.track ?? defaultTrack(font);
   const chars = [...text];
   const widths = chars.map((c) => measure(c, font));
   const total = widths.reduce((a, b) => a + b, 0) + track * Math.max(0, chars.length - 1);
@@ -41,9 +67,41 @@ export function tracked(
   return total;
 }
 
-export function trackedWidth(text: string, font: FontId = "label", track = 2): number {
+export function trackedWidth(text: string, font: FontId = "label", track = defaultTrack(font)): number {
   const chars = [...text];
   return chars.reduce((a, c) => a + measure(c, font), 0) + track * Math.max(0, chars.length - 1);
+}
+
+/** A panel header: upper-case caps at the top-left (or aligned) of a panel. y is the top of the capitals. */
+export function header(g: Gfx, text: string, x: number, y: number, opts: { color?: string; align?: "left" | "center" | "right"; font?: FontId; shadow?: string | null } = {}): number {
+  const font = opts.font ?? TYPE.label;
+  return tracked(g, text.toUpperCase(), x, y - capTop(font), { font, color: opts.color ?? P.ivory3, align: opts.align, shadow: opts.shadow ?? null });
+}
+
+/**
+ * Text drawn with the capitals' top at y (instead of the line box top). Wraps when width is given; returns the height
+ * used (lines × line height).
+ */
+export function textAt(g: Gfx, text: string, x: number, y: number, opts: { font?: FontId; color?: string; width?: number; align?: "left" | "center" | "right"; shadow?: string | null; lineHeight?: number; alpha?: number; reveal?: number } = {}): number {
+  const font = opts.font ?? TYPE.body;
+  return g.text(text, x, y - capTop(font), { ...opts, font, shadow: opts.shadow ?? undefined });
+}
+
+/** Number of lines text wraps to at a width. */
+export function lineCount(text: string, width: number, font: FontId = TYPE.body): number {
+  return text ? wrap(text, width, font).length : 0;
+}
+
+/** The first font (with its tracking) in which a single line fits the width; the last one when none does. */
+export function fitFont(text: string, width: number, candidates: [FontId, number?][]): { font: FontId; track: number; w: number } {
+  let last = { font: candidates[0][0], track: 0, w: 0 };
+  for (const [font, tr] of candidates) {
+    const track = tr ?? 0;
+    const w = track ? trackedWidth(text, font, track) : measure(text, font);
+    last = { font, track, w };
+    if (w <= width) return last;
+  }
+  return last;
 }
 
 // ─── frames, plates, dividers ─────────────────────────────────────────────────────────────────────────────
@@ -54,13 +112,14 @@ export function hasUi(frame: string): boolean {
 
 /** Brass title plate with centred tracked text. */
 export function titlePlate(g: Gfx, cx: number, y: number, text: string, opts: { w?: number; color?: string; font?: FontId; sub?: string } = {}) {
-  const font = opts.font ?? "labelb";
-  const tw = trackedWidth(text, font, 2);
-  const w = Math.max(opts.w ?? 0, tw + 44);
+  const font = opts.font ?? TYPE.strong;
+  const track = defaultTrack(font) + (font === TYPE.strong ? 0.5 : 0);
+  const tw = trackedWidth(text, font, track);
+  const w = Math.max(opts.w ?? 0, tw + 48);
   const h = 22;
   const x = Math.round(cx - w / 2);
   g.panel(x, y, w, h, hasUi("title-plate") ? "title-plate" : "panel-hi");
-  tracked(g, text, cx, y + 6, { font, color: opts.color ?? P.brass0, align: "center", shadow: P.ink0 });
+  tracked(g, text, cx, y + Math.round((h - capHeight(font)) / 2) - capTop(font), { font, track, color: opts.color ?? P.brass0, align: "center", shadow: P.ink0 });
   return { x, y, w, h };
 }
 
@@ -323,13 +382,16 @@ export function resChip(g: Gfx, app: App, id: ResourceId, value: number, x: numb
   if (tooltip) app.ui.area(`chip-${id}`, x, y, w, 22, { tooltip, cursor: "arrow" });
 }
 
+/** The band the run HUD occupies at the top of the screen; modals over a voyage keep clear of it. */
+export const HUD_BAND = 58;
+
 /** Top HUD of a run: hull, resources, stage/relay plate, Seal distance. */
 export function runHud(g: Gfx, app: App, run: RunState, opts: { compact?: boolean } = {}) {
   const ship = run.ship;
   // Hull
   g.panel(8, 8, 214, 44, "panel");
-  tracked(g, "HULL", 18, 15, { font: "label", color: P.ivory3 });
-  g.text(`${ship.hull}/${ship.hullMax}`, 212, 12, { font: "body", color: hullColor(ship.hull / ship.hullMax), align: "right", shadow: P.ink0 });
+  header(g, "HULL", 18, 15, { color: P.ivory3 });
+  g.text(`${ship.hull}/${ship.hullMax}`, 212, 11, { font: "body", color: hullColor(ship.hull / ship.hullMax), align: "right", shadow: P.ink0 });
   const segW = Math.max(3, Math.min(5, Math.floor(190 / ship.hullMax) - 1));
   hullBar(g, 18, 31, ship.hull, ship.hullMax, segW, 12);
   app.ui.area("hud-hull", 8, 8, 214, 44, { tooltip: "Hull: the tender's plating. Repairs at an exchange or a bench. At 0 the connection is lost.", cursor: "arrow" });
@@ -353,14 +415,123 @@ export function runHud(g: Gfx, app: App, run: RunState, opts: { compact?: boolea
   const cx = 600;
   g.panel(cx - 150, 8, 300, 44, "panel");
   g.rect(cx - 146, 12, 292, 2, t.dark);
-  tracked(g, label, cx, 17, { font: "labelb", color: t.light, align: "center" });
+  header(g, label, cx, 17, { font: TYPE.strong, color: t.light, align: "center" });
   const sealed = isSealed(run.map, r);
   const hops = hopsUntilSealed(run.map, r);
   const sealTxt = sealed ? "{ember1}SEALED{/}" : hops === Infinity ? "{verd1}the gate holds the Seal{/}" : hops <= 1 ? `{ember1}Seal: next hop{/}` : `{ivory3}Seal: ${hops} hops behind{/}`;
-  g.text(`{ivory1}${r.name}{/}  {ivory4}·{/}  ${sealTxt}`, cx, 30, { font: "body", align: "center", shadow: P.ink0 });
+  g.text(`{ivory1}${r.name}{/}  {ivory4}·{/}  ${sealTxt}`, cx, 29, { font: "body", align: "center", shadow: P.ink0 });
+}
+
+/** The modal scrim level: what lies underneath reads as clearly set aside, never half there. */
+export const SCRIM = 0.86;
+
+/**
+ * Dim everything underneath a modal to one clear level. Given a run, the run HUD is redrawn crisp above the scrim
+ * (so it is either fully there or fully set aside, never half-covered); such modals keep y < HUD_BAND clear.
+ */
+export function scrim(g: Gfx, app?: App, run?: RunState, a = SCRIM) {
+  g.dim(a);
+  if (app && run) runHud(g, app, run);
+}
+
+/**
+ * A standard modal frame: the brass dialog with its title plate on the top edge. Returns the content box (inside
+ * the ornate border, with the standard 24-unit margin).
+ */
+export function modalFrame(g: Gfx, x: number, y: number, w: number, h: number, title?: string, opts: { color?: string; plateW?: number } = {}) {
+  g.panel(x, y, w, h, "dialog");
+  if (title) titlePlate(g, x + w / 2, y - 11, title, { w: opts.plateW ?? 0, color: opts.color });
+  return { x: x + 24, y: y + 22, w: w - 48, h: h - 44 };
 }
 
 // ─── misc ─────────────────────────────────────────────────────────────────────────────────────────────────
+
+/** The full-width run modal (store, ship, chart, runbook in a voyage): below the HUD band, above the footer strip. */
+export const RUN_MODAL = { x: 16, y: 66, w: 928, h: 448 } as const;
+
+/**
+ * A full-width modal over a voyage: scrim, the run HUD crisp above it, the brass frame, and a header row inside the
+ * frame (title in the title face, an optional sub-line in the note face). Returns the content box below the header.
+ */
+export function runModal(g: Gfx, app: App, run: RunState, title: string, sub?: string, opts: { titleColor?: string; subColor?: string } = {}) {
+  scrim(g, app, run);
+  const { x, y, w, h } = RUN_MODAL;
+  g.panel(x, y, w, h, "dialog");
+  const ix = x + 24;
+  textAt(g, title, ix, y + 20, { font: TYPE.title, color: opts.titleColor ?? P.brass0, shadow: P.ink0 });
+  if (sub) textAt(g, sub, ix + Math.ceil(measure(title, TYPE.title)) + 14, y + 20 + capHeight(TYPE.title) - capHeight(TYPE.note), { font: TYPE.note, color: opts.subColor ?? P.ivory3 });
+  return { x: ix, y: y + 48, w: w - 48, h: h - 48 - 22, right: x + w - 24, bottom: y + h - 22, headerY: y + 20 };
+}
+
+/** A salvage counter chip (right-aligned at xr). */
+export function salvageChip(g: Gfx, key: string, value: number, xr: number, y: number, w = 112) {
+  const x = xr - w;
+  g.panel(x, y, w, 24, "panel-dark");
+  resIcon(g, "salvage", x + 5, y + 4);
+  g.text(String(counted(key, value)), xr - 8, centerYOf(TYPE.body, y, 24), { font: TYPE.body, color: P.brass1, align: "right", shadow: P.ink0 });
+}
+
+function centerYOf(font: FontId, y: number, h: number) {
+  return Math.round(y + (h - capHeight(font)) / 2 - capTop(font));
+}
+
+export interface TabSpec {
+  label: string;
+  /** Hover/click id of this tab (default `<row id>-<index>`). */
+  id?: string;
+  /** A small count after the label. */
+  count?: number;
+  /** Keyboard code that selects the tab (not drawn: list it in the footer). */
+  key?: string;
+  disabled?: boolean;
+  tooltip?: string;
+}
+
+/**
+ * A row of tabs spread over a width, each as wide as its label needs (the spare width shared out evenly). Labels in
+ * the caps face; the active tab is brass. Returns the selected index.
+ */
+export function tabRow(app: App, id: string, x: number, y: number, w: number, h: number, tabs: TabSpec[], selected: number, gap = 4): number {
+  const { g, ui, input } = app;
+  const font: FontId = TYPE.label;
+  const widths = tabs.map((t) => trackedWidth(t.label, font) + (t.count !== undefined ? 6 + measure(String(t.count), TYPE.note) : 0));
+  const need = widths.reduce((a, b) => a + b, 0);
+  const spare = Math.max(0, w - need - gap * (tabs.length - 1));
+  let sel = selected;
+  let tx = x;
+  tabs.forEach((t, i) => {
+    const tw = i === tabs.length - 1 ? x + w - tx : Math.floor(widths[i] + spare / tabs.length);
+    const on = i === selected;
+    const over = ui.hot(t.id ?? `${id}-${i}`, tx, y, tw, h, !t.disabled);
+    const hasBrass = hasUi("button-brass");
+    const slice = t.disabled ? "button-disabled" : on && hasBrass ? (over ? "button-brass-hover" : "button-brass") : over ? "button-hover" : "button-normal";
+    g.panel(tx, y, tw, h, slice);
+    const col = t.disabled ? P.ivory4 : on && hasBrass ? P.ink1 : over ? P.ivory0 : P.ivory1;
+    const lx = tx + Math.round((tw - widths[i]) / 2);
+    const ty = centerYOf(font, y, h);
+    tracked(g, t.label, lx, ty, { font, color: col, shadow: on && hasBrass ? null : P.ink0 });
+    if (t.count !== undefined) {
+      const cx = lx + trackedWidth(t.label, font) + 6;
+      g.text(String(t.count), cx, centerYOf(TYPE.note, y, h), { font: TYPE.note, color: on && hasBrass ? P.brass5 : P.ivory3 });
+    }
+    if (over) {
+      ui.cursor = t.disabled ? "blocked" : "pointer";
+      if (t.tooltip && ui.hoverTime() > 0.3) ui.setTooltip(t.tooltip, 240, { x: tx, y, w: tw, h });
+      if (!t.disabled && input.pressed(0)) {
+        input.consume();
+        if (i !== sel) sfx.play("ui-click");
+        sel = i;
+      }
+    }
+    if (t.key && !t.disabled && input.keyPressed(t.key)) {
+      input.eatKey(t.key);
+      if (i !== sel) sfx.play("ui-click");
+      sel = i;
+    }
+    tx += tw + gap;
+  });
+  return sel;
+}
 
 export function lh(font: FontId = "body") {
   return lineHeight(font);
@@ -372,23 +543,68 @@ export function ease(t: number) {
   return x * x * (3 - 2 * x);
 }
 
-/** Wrap an action key hint line: [KEY] label pairs. */
+/** Height of a key chip (and of a hint line). */
+export const KEY_H = 13;
+
+/** Width of a key chip for a label (already a display label like "ESC" or "M"). */
+export function keyChipWidth(label: string): number {
+  return Math.max(KEY_H, Math.ceil(measure(label, TYPE.note)) + 7);
+}
+
+/** A key chip: a small dark keycap with the key's name. Returns its width. */
+export function keyChip(g: Gfx, label: string, x: number, y: number, align: "left" | "right" = "left", lit = false): number {
+  const w = keyChipWidth(label);
+  const lx = align === "right" ? x - w : x;
+  g.panel(lx, y, w, KEY_H, "panel-dark");
+  g.text(label, lx + Math.round(w / 2), y + Math.round((KEY_H - capHeight(TYPE.note)) / 2) - capTop(TYPE.note), { font: TYPE.note, color: lit ? P.amber1 : P.ivory1, align: "center" });
+  return w;
+}
+
+function hintsWidth(hints: [string, string][]): number {
+  return hints.reduce((s, [k, l]) => s + keyChipWidth(k) + 4 + Math.ceil(measure(l, TYPE.note)) + 12, 0) - (hints.length ? 12 : 0);
+}
+
+/** A key hint line: [KEY] label pairs, 13 units high with y as its top. Returns the width. */
 export function keyHints(g: Gfx, app: App, x: number, y: number, hints: [string, string][], align: "left" | "right" = "left") {
-  let total = 0;
-  const parts = hints.map(([k, l]) => {
-    const kw = measure(k, "small") + 6;
-    const lw = measure(l, "small");
-    total += kw + 4 + lw + 10;
-    return { k, l, kw, lw };
-  });
-  let cx = align === "right" ? x - total + 10 : x;
-  for (const p of parts) {
-    g.panel(cx, y, p.kw, 11, "panel-dark");
-    g.text(p.k, cx + 3, y + 1, { font: "small", color: P.ivory2 });
-    g.text(p.l, cx + p.kw + 4, y + 1, { font: "small", color: P.ivory4 });
-    cx += p.kw + 4 + p.lw + 10;
+  const total = hintsWidth(hints);
+  let cx = align === "right" ? x - total : x;
+  const ty = y + Math.round((KEY_H - capHeight(TYPE.note)) / 2) - capTop(TYPE.note);
+  for (const [k, l] of hints) {
+    cx += keyChip(g, k, cx, y) + 4;
+    g.text(l, cx, ty, { font: TYPE.note, color: P.ivory3, shadow: P.ink0 });
+    cx += Math.ceil(measure(l, TYPE.note)) + 12;
   }
   void app;
+  return total;
+}
+
+/** A random line from a list whose note-face width fits the given width (so a tip is never cut); "" when none does. */
+export function fittingLine(lines: readonly string[], width: number, font: FontId = TYPE.note): string {
+  const ok = lines.filter((l) => measure(l, font) <= width);
+  return ok.length ? ok[Math.floor(Math.random() * ok.length)] : "";
+}
+
+/** Top of the footer strip along the bottom edge of the screen. */
+export const FOOTER_Y = 540 - 18;
+
+/**
+ * The key-hint footer: one strip along the bottom edge, outside every frame. Hints on the left and/or right, and an
+ * optional note (a tip) between them that is wrapped to the free width, never clipped at the edge.
+ */
+export function footer(g: Gfx, app: App, left: [string, string][], right: [string, string][] = [], opts: { note?: string; band?: boolean } = {}) {
+  const y = FOOTER_Y + 3;
+  if (opts.band !== false) {
+    g.alpha(0.85, () => g.rect(0, FOOTER_Y - 4, 960, 540 - FOOTER_Y + 4, P.ink0));
+    g.hline(0, FOOTER_Y - 4, 960, rgba(P.brass4, 0.5));
+  }
+  const lw = left.length ? keyHints(g, app, 16, y, left) : 0;
+  const rw = right.length ? keyHints(g, app, 960 - 16, y, right, "right") : 0;
+  if (opts.note) {
+    const x0 = 16 + (lw ? lw + 24 : 0);
+    const x1 = 960 - 16 - (rw ? rw + 24 : 0);
+    const fit = fitFont(opts.note, x1 - x0, [[TYPE.note, 0], ["small", 0]]);
+    g.text(opts.note, x0, y + Math.round((KEY_H - capHeight(fit.font)) / 2) - capTop(fit.font), { font: fit.font, color: P.ivory3, width: fit.w > x1 - x0 ? x1 - x0 : undefined, maxLines: 1 });
+  }
 }
 
 // ─── buttons ──────────────────────────────────────────────────────────────────────────────────────────────
@@ -412,7 +628,7 @@ export function brassButton(app: App, id: string, x: number, y: number, w: numbe
   let clicked = false;
   if (over) {
     ui.cursor = opts.disabled ? "blocked" : "pointer";
-    if (opts.tooltip && ui.hoverTime() > 0.3) ui.setTooltip(opts.tooltip, 260);
+    if (opts.tooltip && ui.hoverTime() > 0.3) ui.setTooltip(opts.tooltip, 260, { x, y, w, h });
     if (!opts.disabled && input.pressed(0)) {
       input.consume();
       clicked = true;
@@ -440,27 +656,31 @@ export function brassButton(app: App, id: string, x: number, y: number, w: numbe
   g.panel(x, y, w, h, slice);
   const dark = v === "brass" && hasBrass && !opts.disabled;
   const col = opts.disabled ? P.ivory4 : dark ? P.ink1 : v === "blue" ? P.teal1 : v === "danger" ? P.ember1 : over ? P.ivory0 : P.ivory1;
-  const font = opts.font ?? "labelb";
-  let tx = x + Math.round(w / 2);
-  const hasIcon = !!opts.icon && !!iconSize(opts.icon);
-  const lhh = lineHeight(font);
-  const ty = y + Math.round((h - lhh) / 2) + (pressed ? 1 : 0) - (opts.sub ? 5 : 0);
-  if (hasIcon) {
-    const s = iconSize(opts.icon!)!;
-    const tw = (font === "label" || font === "labelb" ? trackedWidth(label, font, 2) : measure(label, font)) + s.w + 6;
-    const ix = x + Math.round((w - tw) / 2);
-    icon(app.g, opts.icon!, ix, y + Math.round((h - s.h) / 2) + (pressed ? 1 : 0) - (opts.sub ? 5 : 0), opts.disabled ? 0.5 : 1);
-    tx = ix + s.w + 6 + Math.round((tw - s.w - 6) / 2);
-  }
-  if (font === "label" || font === "labelb") tracked(g, label, tx, ty + 1, { font, color: col, align: "center", shadow: dark ? null : P.ink0 });
-  else g.text(label, tx, ty, { font, color: col, align: "center", shadow: dark ? null : P.ink0 });
-  if (opts.sub) g.text(opts.sub, x + Math.round(w / 2), ty + lhh - 1, { font: "small", color: dark ? P.brass5 : P.ivory3, align: "center" });
-  if (opts.hotkey) {
-    const kl = opts.hotkey.replace(/^Key|^Digit/, "").replace("Escape", "ESC").replace("Enter", "ENTER").replace("Space", "SPACE");
-    const kw = measure(kl, "small") + 6;
-    g.panel(x + w - kw - 4, y + 4, kw, 11, "panel-dark");
-    g.text(kl, x + w - kw - 1, y + 5, { font: "small", color: P.ivory2 });
-  }
+  const dy = pressed ? 1 : 0;
+  // hotkey chip: inside the right edge, vertically centred (dropped on very low buttons)
+  const kl = opts.hotkey ? keyLabel(opts.hotkey) : "";
+  const chip = !!kl && h >= 20 && w >= 64;
+  const chipW = chip ? keyChipWidth(kl) : 0;
+  const s = opts.icon ? iconSize(opts.icon) : null;
+  const iconW = s ? s.w + 6 : 0;
+  const inner = w - 16 - (chip ? chipW + 6 : 0);
+  // The label font: the requested one; the old 5-px labels are upgraded to the legible caps whenever they fit.
+  const req = opts.font ?? "labelb";
+  const fit = req === "label" || req === "labelb"
+    ? fitFont(label, inner - iconW, [[req === "label" ? "caps" : "capsb", 0.5], ["caps", 0.5], ["caps", 0], [req, 1], [req, 0]])
+    : { font: req, track: 0, w: measure(label, req) };
+  const font = fit.font;
+  const subH = opts.sub ? 3 + capHeight(TYPE.note) : 0;
+  const blockH = capHeight(font) + subH;
+  const top = y + Math.round((h - blockH) / 2) + dy;
+  const groupW = iconW + fit.w;
+  const left = x + 8 + Math.max(0, Math.round((inner - groupW) / 2));
+  if (s) icon(app.g, opts.icon!, left, y + Math.round((h - s.h) / 2) - (opts.sub ? 4 : 0) + dy, opts.disabled ? 0.5 : 1);
+  const lx = left + iconW;
+  if (fit.track) tracked(g, label, lx, top - capTop(font), { font, track: fit.track, color: col, shadow: dark ? null : P.ink0 });
+  else g.text(label, lx, top - capTop(font), { font, color: col, shadow: dark ? null : P.ink0 });
+  if (opts.sub) g.text(opts.sub, lx + Math.round(fit.w / 2), top + capHeight(font) + 3 - capTop(TYPE.note), { font: TYPE.note, color: dark ? P.brass5 : opts.disabled ? P.ivory4 : P.ivory3, align: "center" });
+  if (chip) keyChip(g, kl, x + w - 5 - chipW, y + Math.round((h - KEY_H) / 2));
   if (clicked && opts.sound !== null) sfx.play(opts.sound ?? "ui-click");
   return clicked;
 }

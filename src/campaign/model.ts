@@ -3,7 +3,8 @@
 import type {
   AugmentId, DroneId, EnemyId, HazardId, ResourceId, SpeciesId, StageIndex, WeaponId,
 } from "../game/ids.ts";
-import type { Inventory, ShipState } from "../game/types.ts";
+import type { CombatResult, CombatScenario, Inventory, ShipState } from "../game/types.ts";
+import type { DifficultyId } from "../data/difficulty.ts";
 
 export const SAVE_VERSION = 1;
 
@@ -19,6 +20,7 @@ export interface PendingCombat {
   onWin?: string;
   onSurrender?: string;
   boss?: boolean;
+  scenario?: CombatScenario;
 }
 
 export interface StoreItem {
@@ -45,6 +47,15 @@ export interface StoreStock {
 export interface Relay {
   /** One-time maintenance stores recovered after clearing this relay. Persisted to prevent farming. */
   serviceSalvage?: number;
+  /** Overrides the stage service allocation, including an explicit inaccessible-store loss. */
+  maintenance?: number | false;
+  /** Authored patrol territory: arrival goes directly to a robotic interception. */
+  interception?: boolean;
+  glimpse?: { title?: string; text: string };
+  /** Set before applying a fixed arrival loss, so a restored/revisited relay cannot repeat it. */
+  arrivalApplied?: boolean;
+  /** Fixed arrivals already applied on this relay, including later events in an aftermath chain. */
+  arrivalAppliedIds?: string[];
   id: number;
   x: number; // chart pixels (0..CHART_W)
   y: number;
@@ -61,6 +72,10 @@ export interface Relay {
   eventId?: string;
   /** The relay's encounter is over (nothing left to do but hop). */
   resolved: boolean;
+  /** The actual result of the last confrontation here; clearing a menu does not restore a machine. */
+  resolution?: CombatResult["resolution"];
+  systemsPatched?: number;
+  hullRecovered?: number;
   pendingCombat?: PendingCombat;
   store?: StoreStock;
   /** The player fled a fight here and has not left yet (the hub opens instead of the fight). */
@@ -97,6 +112,8 @@ export interface RunStats {
   hops: number;
   relaysVisited: number;
   machinesStopped: number;
+  /** Human-crewed vessels defeated; distinct from autonomous machines stopped. Optional for old saves. */
+  humanFightsWon?: number;
   shipsSpared: number;
   fightsFled: number;
   salvageEarned: number;
@@ -112,6 +129,7 @@ export interface RunStats {
 }
 
 export interface RunState {
+  difficulty: DifficultyId;
   version: number;
   seed: number;
   /** Main generator state (sfc32). */
@@ -150,7 +168,7 @@ export const RESOURCE_KEYS: readonly ResourceId[] = ["salvage", "ttl", "payloads
 
 export function emptyStats(): RunStats {
   return {
-    hops: 0, relaysVisited: 0, machinesStopped: 0, shipsSpared: 0, fightsFled: 0, salvageEarned: 0, salvageSpent: 0,
+    hops: 0, relaysVisited: 0, machinesStopped: 0, humanFightsWon: 0, shipsSpared: 0, fightsFled: 0, salvageEarned: 0, salvageSpent: 0,
     crewLost: [], crewJoined: 0, eventsSeen: 0, damageDealt: 0, damageTaken: 0, waits: 0, seconds: 0, itemsFound: 0,
   };
 }

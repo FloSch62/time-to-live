@@ -1,0 +1,19 @@
+{
+ "stage": "I",
+ "hull": "lamplighter",
+ "scale": 0.95,
+ "at": [
+  1300,
+  380
+ ],
+ "tilt": -9,
+ "lamp": false,
+ "extras": [
+  "gantry",
+  "towers"
+ ],
+ "size": [
+  2560,
+  1280
+ ]
+}

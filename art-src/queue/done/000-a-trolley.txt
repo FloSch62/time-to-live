@@ -1,0 +1,6 @@
+trolley/standard:d45
+trolley/standard:d55
+trolley/standard:d65
+trolley/heavy:d45
+trolley/heavy:d55
+trolley/heavy:d65

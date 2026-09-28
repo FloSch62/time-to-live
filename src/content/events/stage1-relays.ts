@@ -27,7 +27,7 @@ export const STAGE1_RELAYS: EventDef[] = [
       },
       {
         text: "Back up the span and ask the relay for another switch (1 TTL).", req: { resources: { ttl: 1 } },
-        outcomes: [{ outcome: { text: "The relay hears you, switches you onto a side carrier and takes a hop off the connection for its trouble. Behind you the leech settles back onto its braid, still holding, still waiting for an exchange that stopped answering before most of your crew were born.", resources: { ttl: -1 } } }],
+        outcomes: [{ outcome: { text: "The relay hears you, brings the car into its yard by a side carrier and takes a hop off the connection for its trouble. Behind you the leech settles back onto its braid, still holding, still waiting for an exchange that stopped answering thirty-one years ago.", resources: { ttl: -1 } } }],
       },
     ],
   },
@@ -56,11 +56,11 @@ export const STAGE1_RELAYS: EventDef[] = [
   {
     id: "s1-combat-leech-lift-cage-after", pool: "scripted", stages: [1],
     title: "Held for Collection", art: "lift-head",
-    text: "The leech hangs light and still. The cage swings free on its rails.\n\nThe crates hold dock stores: rivets, lamp glass, a case of payload shells packed in straw. Under the tarpaulin is a dressmaker's form wearing a lift attendant's coat, cap and all, with a brass name badge that says HELLO, I AM HERE TO HELP.\n\nIt has been helping in the dark for thirty-one years.",
+    text: "The leech hangs light and still. The cage swings free on its rails.\n\nThe crates hold dock stores: rivets, lamp glass, a case of something packed in straw. Under the tarpaulin is a dressmaker's form wearing a lift attendant's coat, cap and all, with a brass name badge that says HELLO, I AM HERE TO HELP.\n\nIt has been helping in the dark for thirty-one years.",
     choices: [
       {
         text: "Take the crates.",
-        outcomes: [{ outcome: { text: "Rivets, lamp glass and a case of shells, stowed in the hold. {crew} salutes the attendant on the way out, and nobody laughs, quite.", reward: "med" } }],
+        outcomes: [{ outcome: { text: "Rivets, lamp glass and the straw-packed case, stowed in the hold. {crew} salutes the attendant on the way out, and nobody laughs, quite.", reward: "med" } }],
       },
       {
         text: "Take the coat as well. It is cold out here.",
@@ -119,7 +119,7 @@ export const STAGE1_RELAYS: EventDef[] = [
       },
       {
         text: "Strip it for stores and let it hang.",
-        outcomes: [{ outcome: { text: "Stores, a crate of spares and the manifest, which you keep because somebody should. The car stays on its pin, lighter.", reward: "med" } }],
+        outcomes: [{ outcome: { text: "Stores, a crate of odds and ends and the manifest, which you keep because somebody should. The car stays on its pin, lighter.", reward: "med" } }],
       },
     ],
   },
@@ -159,12 +159,12 @@ export const STAGE1_RELAYS: EventDef[] = [
       },
       {
         text: "Brake, back into the yard, ask for another switch (1 TTL).", req: { resources: { ttl: 1 } },
-        outcomes: [{ outcome: { text: "The relay switches you onto a side carrier. Behind you the span parts with a sound like a bell dropped on a floor, and the wraith hangs from the stub on its shears, satisfied, already listening for the next route.", resources: { ttl: -1 } } }],
+        outcomes: [{ outcome: { text: "The relay brings the car in by a side carrier, and counts the extra switch. Behind you the span parts with a sound like a bell dropped on a floor, and the wraith hangs from the stub on its shears, satisfied, already listening for the next route.", resources: { ttl: -1 } } }],
       },
       {
-        text: "Put a slug through its grip from here.", blue: true, req: { weapon: "payload" },
+        text: "Put a slug through its grip from here (1 payload).", blue: true, req: { weapon: "payload", resources: { payloads: 1 } },
         outcomes: [
-          { weight: 2, outcome: { text: "The slug takes its grip clean off. The wraith falls, shears still closed on a length of nothing, and fetches up on a gantry far below, where it will cut nothing for a long time. A spare shell of yours is gone; the span is whole.", resources: { payloads: -1 }, reward: "low" } },
+          { weight: 2, outcome: { text: "The slug takes its grip clean off. The wraith falls, shears still closed on a length of nothing, and fetches up on a gantry far below, where it will cut nothing for a long time. One payload spent; the span is whole.", resources: { payloads: -1 }, reward: "low" } },
           { weight: 1, outcome: { text: "The slug rings off its shears. Now it knows where you are.", resources: { payloads: -1 }, combat: { enemy: "cable-wraith", intro: "It comes up the span, shears first." } } },
         ],
       },
@@ -195,15 +195,15 @@ export const STAGE1_RELAYS: EventDef[] = [
         outcomes: [{ outcome: { text: "Wenna climbs across with her toolbag, looks round the galley, and puts the kettle on without being asked. Nobody objects.", crewJoin: { species: "linefolk", name: "Wenna Pollard" } } }],
       },
       {
-        text: "Tow her car to the next relay for a share of its salvage.",
-        outcomes: [{ outcome: { text: "You tow the little car into the next yard and she pays you out of her hold, fair and square, with a handshake that is mostly cable dust. \"Leave the lamp on,\" she says, and means it.", reward: "med" } }],
+        text: "Tow her car into the yard for a share of its salvage.",
+        outcomes: [{ outcome: { text: "You tow the little car into the yard, clear of the carrier, and she pays you out of her hold, fair and square, with a handshake that is mostly cable dust. \"Leave the lamp on,\" she says, and means it.", reward: "med" } }],
       },
     ],
   },
   {
     id: "s1-combat-prophet-mast", pool: "combat", stages: [1], weight: 2,
     title: "A Warning Mast", art: "rust-yard",
-    text: "The carrier runs past a relay yard, and over the yard stands a mast with a horned beacon at the top, its warning lamp turning. As you come in range every speaker in the car talks at once.\n\nCORROSION WARNING. CORROSION WARNING. ALL TRAFFIC PASSING THIS MAST WILL BE INFORMED.\n\nThe Listening Post hisses. The ward mesh crackles. Something in the galley starts to smell of pennies.",
+    text: "The carrier runs past a relay yard, and over the yard stands a mast with a horned beacon at the top, its warning lamp turning. As you come in range every speaker in the car talks at once.\n\nCORROSION WARNING. CORROSION WARNING. ALL TRAFFIC PASSING THIS MAST WILL BE INFORMED.\n\nThe Listening Post hisses. The wiring crackles. Something in the galley starts to smell of pennies.",
     choices: [
       {
         text: "Silence the horns as you pass.",
@@ -232,7 +232,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         outcomes: [{ outcome: { combat: { enemy: "rust-prophet", intro: "Every horn on the mast swings round to the car.", onWin: "s1-combat-prophet-horn-after" } } }],
       },
       {
-        text: "Duck under the fallen mast and keep going.",
+        text: "Duck under the fallen mast and keep going. It will scrape.",
         outcomes: [
           { weight: 2, outcome: { text: "The car scrapes under the fallen mast with a noise like a dropped tray of cutlery, and comes out the other side missing some paint and a little plating. The standing mast warns you about the corrosion on the scrape.", resources: { hull: [-3, -1] } } },
           { weight: 1, outcome: { text: "You get halfway under. The standing mast has opinions about that.", resources: { hull: -2 }, combat: { enemy: "rust-prophet", intro: "CORROSION WARNING. OBSTRUCTION WARNING. ALL WARNINGS." } } },
@@ -250,7 +250,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         outcomes: [{ outcome: { text: "It takes two hours, three spanners and one argument. Mounted backwards on the cupola, the horn picks up the carriers ahead: the hum of a relay, the tick of a machine, the silence of an empty yard. Much nicer company than it was.", augment: "listening-horn" } }],
       },
       {
-        text: "Strip the mast for brass and spares.",
+        text: "Strip the mast for brass and parts.",
         outcomes: [{ outcome: { text: "Good Reach brass, a coil of signal cable and a box of warning-lamp bulbs, stowed in the hold.", reward: "med" } }],
       },
     ],
@@ -287,7 +287,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         outcomes: [{ outcome: { combat: { enemy: "scrap-foreman", intro: "The foreman sees you near its skip and takes it personally.", onWin: "s1-combat-foreman-skip-after" } } }],
       },
       {
-        text: "Wait for it to roll to the far end, then dash in.",
+        text: "Wait for it to roll to the far end, then dash in. Waiting lets the Seal gain.",
         outcomes: [
           { weight: 2, outcome: { text: "It takes the foreman an age to roll away, and the Seal gains on you while you wait, but the dash works. {crew} comes back with an armful of condemned but excellent parts and chalk on both sleeves.", reward: "low", seal: -1 } },
           { weight: 1, outcome: { text: "The foreman stops halfway down its rail, turns, and rolls back, as if it forgot something. It did. It forgot you.", seal: -1, combat: { enemy: "scrap-foreman", intro: "CONDEMNED. CONDEMNED. CONDEMNED." } } },
@@ -316,7 +316,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         outcomes: [{ outcome: { text: "{crew:rigger} stands in front of the escort and says the three lines slowly, the way somebody once said them to it. Hello. The lens flickers. I hear you. It goes teal. I hear you hear me. The escort puts down the condemned lamp and follows the rigger across to the car.", crewJoin: { species: "rigger" } } }],
       },
       {
-        text: "Try the first hello yourselves.",
+        text: "Try the first hello yourselves. It is still holding that lamp.",
         outcomes: [
           { weight: 1, outcome: { text: "You say it right, all three lines, and wait. The lens goes teal. The escort looks at each of you in turn, as if memorising you, and climbs aboard.", crewJoin: { species: "rigger" } } },
           { weight: 1, outcome: { text: "Somebody rushes the second line. The lens goes red, the escort swings the condemned lamp at {crew} with great precision, and then powers down for good, looking faintly embarrassed.", crewDamage: { amount: 15, who: "one" } } },
@@ -382,7 +382,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Throw them a line and talk.",
+        text: "Throw them a line and offer a spare.",
         outcomes: [
           { weight: 1, outcome: { text: "They are hungry, not stupid. A spare off your rack buys the nets off your roof and a warning about a leech two relays on. Fair trade.", resources: { spares: -1 } } },
           { weight: 2, outcome: { text: "They laugh, kindly, and throw the second net.", combat: { enemy: "scavenger-skiff", surrenderable: true, intro: "The second net lands. So do their emitters.", onSurrender: "s1-combat-skiff-nets-surrender" } } },
@@ -393,7 +393,7 @@ export const STAGE1_RELAYS: EventDef[] = [
   {
     id: "s1-combat-skiff-nets-surrender", pool: "scripted", stages: [1], art: "scavenger-skiff-hail",
     title: "Nets Down",
-    text: "The skiff brakes hard and its nets drop slack. A white work shirt is waved from the hatch on the end of a boathook.\n\n\"Fair's fair,\" calls their captain. \"You're harder than you look. We've got a bit in the hold. And our Linnet has been asking to see the glass bells since she was nine, if you're going that way. She's no use to us. She reads.\"",
+    text: "The skiff brakes hard and its nets drop slack. A white work shirt is waved from the hatch on the end of a salvage hook.\n\n\"Fair's fair,\" calls their captain. \"You're harder than you look. We've got a bit in the hold. And our Linnet has been asking to see the glass bells since she was nine, if you're going that way. She's no use to us. She reads.\"",
     choices: [
       {
         text: "Take the salvage and let them go.",
@@ -420,7 +420,7 @@ export const STAGE1_RELAYS: EventDef[] = [
       {
         text: "Share the galley, keep the spares.",
         outcomes: [
-          { weight: 2, outcome: { text: "They come aboard two at a time and eat standing up, fast, like people who have learned not to trust a table. Their captain thanks you properly and tells you where the Seal is cutting: two relays back and closing. You take the long carrier and gain a hop on it.", seal: 1 } },
+          { weight: 2, outcome: { text: "They come aboard two at a time and eat standing up, fast, like people who have learned not to trust a table. Their captain thanks you properly and tells you where the Seal is closing: two relays back. You take the long carrier and put a relay between you and it.", seal: 1 } },
           { weight: 1, outcome: { text: "They eat, and thank you, and then decide they would like the spares as well.", combat: { enemy: "scavenger-skiff", surrenderable: true, intro: "Full bellies, bad manners. Their emitters come up.", onSurrender: "s1-combat-skiff-hungry-surrender" } } },
         ],
       },
@@ -443,7 +443,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         text: "Leave them their salvage. Let whoever wants to come, come.",
         outcomes: [
           { weight: 2, outcome: { text: "The courier is across the gap before the captain can say anything. \"I want to see where the chart ends,\" they say. The captain shrugs and throws their bag after them.", crewJoin: { species: "courier" } } },
-          { weight: 1, outcome: { text: "Nobody moves. The captain thanks you anyway, and gives you a warning worth having: a nest two relays on. You take a different carrier.", seal: 1 } },
+          { weight: 1, outcome: { text: "Nobody moves. The captain thanks you anyway, and gives you a warning worth having: a nest two relays on. You take a different carrier, and the Seal loses your trail for a relay.", seal: 1 } },
         ],
       },
     ],
@@ -460,7 +460,7 @@ export const STAGE1_RELAYS: EventDef[] = [
       {
         text: "Seal every hatch and run the switch.", blue: true, req: { system: { id: "doors", level: 2 } },
         outcomes: [
-          { weight: 2, outcome: { text: "Every hatch dogged, every door shut. The mites scrabble on the roof for a whole span, looking for a gap that is not there, and fall off in a crackling shower at the switch.", resources: { hull: -1 }, codex: "machines-boarders" } },
+          { weight: 2, outcome: { text: "Every hatch dogged, every door shut. The mites scrabble on the roof for a whole span, looking for a gap that is not there, and fall off in a crackling shower at the switch, leaving the roof plating chewed.", resources: { hull: -1 }, codex: "machines-boarders" } },
           { weight: 1, outcome: { text: "One hatch sticks. There is always one hatch.", codex: "machines-boarders", combat: { enemy: "static-nest", intro: "They are through the galley hatch." } } },
         ],
       },
@@ -485,7 +485,7 @@ export const STAGE1_RELAYS: EventDef[] = [
       },
       {
         text: "Back out and take the other carrier (1 TTL).", req: { resources: { ttl: 1 } },
-        outcomes: [{ outcome: { text: "You reverse out of the yard and the relay switches you round the long way. The nest keeps its 4,112 lines and does not miss you.", resources: { ttl: -1 } } }],
+        outcomes: [{ outcome: { text: "You reverse off the nest's carrier and the relay brings the car into its yard the long way round, by a side carrier. The nest keeps its 4,112 lines and does not miss you.", resources: { ttl: -1 } } }],
       },
     ],
   },
@@ -521,7 +521,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Wait at the relay until the foundry wall cools.",
+        text: "Wait at the relay until the foundry wall cools. The Seal will not wait.",
         outcomes: [{ outcome: { text: "It does cool, eventually, the way a furnace cools, which is slowly. The Colossus settles. You pass under it in the small hours. Behind you, the Seal has spent the whole wait catching up.", seal: -2, codex: "places-foundries" } }],
       },
     ],
@@ -536,7 +536,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         outcomes: [{ outcome: { text: "It is short, and practical, and hopeful, and it was written by someone who thought they would be back in a week. {crew} puts it back in the tray very carefully, then takes the foundry's good tools, because they would have wanted that too.", fragment: "f1-furnace", reward: "med" } }],
       },
       {
-        text: "Rake the banked furnace for good iron.",
+        text: "Rake the banked furnace for good iron. It is still hot.",
         outcomes: [{ outcome: { text: "The iron inside is the best in the Reach, thirty-one years in the making. The furnace is also still very hot, which everyone knew, and {crew} proves anyway.", reward: "high", crewDamage: { amount: 15, who: "one" } } }],
       },
     ],
@@ -588,7 +588,7 @@ export const STAGE1_RELAYS: EventDef[] = [
     ],
   },
   {
-    id: "s1-hazard-rust-squall-lamps", pool: "hazard", hazard: "rust-squall", stages: [1],
+    id: "s1-hazard-rust-squall-lamps", cast: "human", pool: "hazard", hazard: "rust-squall", stages: [1],
     title: "Rust Squall", art: "rust-squall",
     text: "The squall comes along the carriers like weather in an old story: a brown-orange wall of oxide dust off a thousand kilometres of cable, lamps showing through it as smudged amber dots. It gets into everything. It gets into the air plant. {crew} says it tastes like sucking a coin.\n\nThe machines out here have no paint left, and the squall eats them slowly. You still have paint. For now.\n\nIn the dust ahead, a rust-eaten leech hangs from the carrier, half gone.",
     choices: [
@@ -597,7 +597,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         outcomes: [{ outcome: { text: "The car comes out the far side orange from nose to keel and a little thinner in places. The air plant coughs for an hour.", resources: { hull: [-3, -1] } } }],
       },
       {
-        text: "Seal the vents and wait it out at the relay.",
+        text: "Shut the vents and wait it out at the relay. The Seal will gain.",
         outcomes: [{ outcome: { text: "You sit in the switch house with the vents shut and the lamp on while the squall goes over. It takes most of a shift. The Seal does not wait for weather.", seal: -1 } }],
       },
       {
@@ -644,7 +644,7 @@ export const STAGE1_RELAYS: EventDef[] = [
     text: "The carrier swings round to the sun side of the ring, and the Reach turns into a mirror. Every copper plate, every green-crusted cable, throws the light back at you. The cab window goes white. Somewhere aft, a curtain starts to smoke.\n\n\"Is that ours,\" says {crew}. It is.",
     choices: [
       {
-        text: "Put out the curtain and push on.",
+        text: "Beat out the curtain and push on through the glare.",
         outcomes: [
           { weight: 2, outcome: { text: "Out with a blanket and a great deal of language. The curtain is lost. So is some wiring behind it.", systemDamage: { system: "random", amount: 1 } } },
           { weight: 1, outcome: { text: "Out with a blanket. {crew} singes both hands doing it and is very brave about it for nearly a minute.", crewDamage: { amount: 10, who: "one" } } },
@@ -803,7 +803,7 @@ export const STAGE1_RELAYS: EventDef[] = [
   },
   {
     id: "s1-bench-sleeper", pool: "bench", stages: [1], unique: true,
-    title: "Somebody Asleep at the Bench", art: "relay-bench", portrait: "recruit-linefolk-b", speaker: "Ottilie Crimp",
+    title: "Somebody Asleep at the Bench", art: "relay-bench", speaker: "Ottilie Crimp",
     text: "There is a cot at this bench, and someone in it, under three blankets and a cable-crew coat, snoring like a trolley with a bad bearing. The kettle beside her is still warm.\n\nShe wakes when the car's lamp crosses the window, sits up, and looks at you with great suspicion.\n\n\"If you're the Seal,\" says Ottilie Crimp, \"you're very small.\"",
     choices: [
       {
@@ -838,7 +838,11 @@ export const STAGE1_RELAYS: EventDef[] = [
       },
       {
         text: "Take the tin of payload shells.",
-        outcomes: [{ outcome: { text: "The note under the tin says: for whoever needs them more than I did. You decide that is you, and hope it is true.", resources: { payloads: 2 } } }],
+        // Tender-aware: the Lamplighter carries a slug thrower; the other cars take the brass instead.
+        outcomes: [
+          { modifiers: [{ when: { tender: "glasswing" }, multiply: 0 }, { when: { tender: "switchback" }, multiply: 0 }], outcome: { text: "The note under the tin says: for whoever needs them more than I did. You decide that is you, and hope it is true.", resources: { payloads: 2 } } },
+          { modifiers: [{ when: { tender: "lamplighter" }, multiply: 0 }], outcome: { text: "The note under the tin says: for whoever needs them more than I did. You break the shells down for their brass casings, which spend anywhere, and put the note back on the shelf.", resources: { salvage: 10 } } },
+        ],
       },
     ],
   },
@@ -847,7 +851,7 @@ export const STAGE1_RELAYS: EventDef[] = [
   {
     id: "s1-market-pell", pool: "market", stages: [1], weight: 2, music: "exchange",
     title: "Pell's Stall", art: "pell-stall", portrait: "pell", speaker: "Pell",
-    text: "The Copper Market climbs the spire top in welded containers, lamp-strung, noisy, smelling of solder and soup. Pell's stall is the biggest, three landings up, under a hand-painted sign: PELL · SALVAGE · FAIR PRICES · NO LENDING.\n\nPell looks up from her ledger at the car, down at the ledger, and back up.\n\n\"Dock Twelve's grip,\" she says. \"Riding nicely. The Night Shift still owe me for it, but I don't hold that against the car.\"\n\nBehind her, on its own hook, hangs one very good crimper.",
+    text: "The Copper Market climbs the spire top in welded containers, lamp-strung, noisy, smelling of solder and soup. Pell's stall is the biggest, three landings up, under a hand-painted sign: PELL · SALVAGE · FAIR PRICES · NO LENDING.\n\nPell looks up from her ledger at the car, down at the ledger, and back up.\n\n\"Night Shift,\" she says. \"Still sending tenders out. I keep a page for every dock. Some of them even pay.\"\n\nBehind her, on its own hook, hangs one very good crimper.",
     choices: [
       {
         text: "Trade.",
@@ -862,7 +866,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         outcomes: [{ outcome: { codex: "people-pell", next: "s1-market-pell-tally" } }],
       },
       {
-        text: "Settle what the Night Shift owe for the grip (20 salvage).", req: { resources: { salvage: 20 }, notFlag: "s1-grip-paid" }, hideIfUnmet: true,
+        text: "Settle what the Night Shift owe for the grip (20 salvage).", req: { resources: { salvage: 20 }, notFlag: "s1-grip-paid", tender: "lamplighter" }, hideIfUnmet: true,
         outcomes: [{ outcome: { text: "Pell takes the salvage, finds the page, and writes PAID beside the grip, and underlines it twice. \"Mostly,\" she adds, from habit, and then crosses that out too. It is the first time anybody has seen her cross anything out.", resources: { salvage: -20 }, flags: ["s1-grip-paid"], codex: "people-pell", store: true } }],
       },
     ],
@@ -935,7 +939,10 @@ export const STAGE1_RELAYS: EventDef[] = [
       },
       {
         text: "Let them hear you were civil to the Short Measure.", blue: true, req: { flag: "s1-tollands-friendly" },
-        outcomes: [{ outcome: { text: "One of the Tolland sisters is here, at the far end of the table. She nods at you. After that, somebody slides two payload shells across the plank without being asked, and the prices go down a little.", resources: { payloads: 2 }, store: true } }],
+        outcomes: [
+          { modifiers: [{ when: { tender: "glasswing" }, multiply: 0 }, { when: { tender: "switchback" }, multiply: 0 }], outcome: { text: "One of the Tolland sisters is here, at the far end of the table. She nods at you. After that, somebody slides two payload shells across the plank without being asked, and the prices go down a little.", resources: { payloads: 2 }, store: true } },
+          { modifiers: [{ when: { tender: "lamplighter" }, multiply: 0 }], outcome: { text: "One of the Tolland sisters is here, at the far end of the table. She nods at you. After that, somebody slides a tin of spare lenses across the plank without being asked, and the prices go down a little.", resources: { spares: 1, salvage: 5 }, store: true } },
+        ],
       },
       {
         text: "Buy a stamp off the trestle (20 salvage).", req: { resources: { salvage: 20 } },
@@ -1000,7 +1007,7 @@ export const STAGE1_RELAYS: EventDef[] = [
     title: "A Dark Switch House", art: "relay-switchyard",
     text: "The relay is dark, but it hears your hello and throws the switch like any other. There is a note chalked on the switch-house door, in a cable-crew hand: GONE DOWN. KEY UNDER THE MAT.\n\nThere is no mat.",
     choices: [
-      { text: "Ride on.", outcomes: [{ outcome: { text: "The switch throws. The note stays." } }] },
+      { text: "Ride on.", outcomes: [{ outcome: { text: "The note stays where it is." } }] },
       {
         text: "Look under where a mat would be.",
         outcomes: [
@@ -1012,17 +1019,17 @@ export const STAGE1_RELAYS: EventDef[] = [
   },
   {
     id: "s1-empty-departures", pool: "empty", stages: [1],
-    title: "Departures", art: "lift-head",
-    text: "The relay sits beside a lift head, and the lift head's departure board is still lit, amber letters on black:\n\nCAR 31 DEPARTED. CAR 32 DEPARTED. CAR 33 DEPARTED. CAR 34 BOARDING.\n\nIt has said BOARDING for thirty-one years.",
-    choices: [{ text: "Ride on.", outcomes: [{ outcome: { text: "Nobody looks back at the board. Everybody looks back at the board." } }] }],
+    title: "Arrivals", art: "lift-head",
+    text: "The relay sits beside a lift head, and the lift head's board is still lit, amber letters on black. It is the arrivals board. Every line reads the same:\n\nCAR FROM BELOW · AWAITED.\n\nNothing has come up the shaft in thirty-one years. The board has never once stopped expecting it.",
+    choices: [{ text: "Ride on.", outcomes: [{ outcome: { text: "Nobody looks at the board. Everybody looks at the board." } }] }],
   },
   {
     id: "s1-empty-heartbeat", pool: "empty", stages: [1],
-    title: "Somebody Still Counting", art: "relay-switchyard",
-    text: "An automatic lamp on the switch house is blinking. Once. A long pause. Once. The same rhythm, over and over, patient as a clock.\n\n{crew} says it before anyone else can. It is the heartbeat, the hourly pulse the Heart used to send round the whole Line, being kept by one small lamp on its own, to nobody.",
+    title: "Still Here", art: "relay-switchyard",
+    text: "A small lamp on the switch house roof is blinking, quick and even, every few seconds. Not the guide lamp: a keepalive, the little signal a relay sends its neighbour to say still here. The neighbour has not answered in thirty-one years. The lamp has not missed a beat.\n\n{crew} says what everybody is thinking: somebody should answer it.",
     choices: [
-      { text: "Count with it.", outcomes: [{ outcome: { text: "The Listening Post picks up the message it sends with every blink. It has been sending it for thirty-one years.", fragment: "f1-heartbeat" } }] },
-      { text: "Ride on.", outcomes: [{ outcome: { text: "The lamp blinks behind you, once, and once." } }] },
+      { text: "Answer it from the cab: still here.", outcomes: [{ outcome: { text: "{crew} keys the lamp twice, the way lampers used to. The keepalive stutters, as if surprised, and goes on. The Listening Post catches the old message folded into every blink. It has been sending it for thirty-one years.", fragment: "f1-heartbeat" } }] },
+      { text: "Ride on.", outcomes: [{ outcome: { text: "The little lamp goes on blinking at its neighbour. Still here. Still here." } }] },
     ],
   },
   {
@@ -1046,7 +1053,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         text: "Douse every lamp and ride through lamp-dark.", blue: true, req: { system: { id: "veil", level: 1 } },
         outcomes: [
           { weight: 2, outcome: { text: "Every lamp out. The car goes through the yard like a shadow through a shadow, and the drones hold station over nothing." } },
-          { weight: 1, outcome: { text: "The switch throws with a clank the veil cannot hide.", combat: { enemy: "quarantine-drone", noReward: true, intro: "The drones turn on the sound." } } },
+          { weight: 1, outcome: { text: "The switchgear answers the greeting with a clank the veil cannot hide.", combat: { enemy: "quarantine-drone", noReward: true, intro: "The drones turn on the sound." } } },
         ],
       },
     ],
@@ -1054,7 +1061,7 @@ export const STAGE1_RELAYS: EventDef[] = [
   {
     id: "s1-sealed-cut-carrier", pool: "sealed", stages: [1],
     title: "A Cut Carrier", art: "carrier-cut",
-    text: "The carrier you came in on is gone behind you, cut at the relay, its end hanging over the cloud sea. The relay itself is sealed in lattice and red seams, and a Quarantine Drone lifts off the switch-house roof as you come in, clamps opening.\n\nThere is no way back. There never was. The Seal only makes it obvious.",
+    text: "A side carrier into this relay has been cut, a wraith's work, its end hanging over the cloud sea. The relay itself is sealed in lattice and red seams, and a Quarantine Drone lifts off the switch-house roof as you come in, clamps opening.\n\nThe carrier under you holds, and the switch still answers a hello. The drone will read the greeting as a breach.",
     choices: [
       {
         text: "Clear the drone off the switch.",
@@ -1117,7 +1124,7 @@ export const STAGE1_RELAYS: EventDef[] = [
   {
     id: "s1-exit-copper-gate", pool: "exit", stages: [1], music: "iron-regent",
     title: "The Copper Gate", art: "copper-gate",
-    text: "Every carrier in the Reach ends here. The Copper Gate stands across the ring, two gate wings the height of a spire top, closed, and the carriers run into the gap between them and stop at a crowned iron bulk built into the frame. The crown is tarnished brass. It is the only part of the gate that is lit.\n\nBehind you the Seal is cutting the carriers relay by relay. Ahead of you the Iron Regent has held this gate for thirty-one years, and it keeps one law, older than the linefolk.\n\nHALT. COPPER GATE. NO PASSAGE WITHOUT PROOF OF A SECOND WAY HOME.",
+    text: "Every carrier in the Reach ends here. The Copper Gate stands across the ring, two gate wings the height of a spire top, closed, and the carriers run into the gap between them and stop at a crowned iron bulk built into the frame. The crown is tarnished brass. It is the only part of the gate that is lit.\n\nBehind you the Seal is closing signaling routes relay by relay. Ahead of you the Iron Regent has held this gate for thirty-one years, and it keeps one law, older than the linefolk.\n\nHALT. COPPER GATE. NO PASSAGE WITHOUT PROOF OF A SECOND WAY HOME.",
     choices: [
       {
         text: "Answer the gate properly. Hello.",
@@ -1128,7 +1135,7 @@ export const STAGE1_RELAYS: EventDef[] = [
         outcomes: [{ outcome: { text: "ROUTE BEHIND YOU: SEALED. The Regent checks, carefully, the way it has checked everything for thirty-one years. SECOND ROUTE: NOT SHOWN. PASSAGE REFUSED. DEMONSTRATE.", codex: "places-copper-gate", combat: { enemy: "iron-regent", intro: "The gate wings flex. DEMONSTRATE.", onWin: "s1-exit-after" } } }],
       },
       {
-        text: "Charge the mesh and take the gate.",
+        text: "Power every tool and take the gate.",
         outcomes: [{ outcome: { text: "The drive surges. The crown turns toward you like a lamp being lit.", codex: "places-copper-gate", combat: { enemy: "iron-regent", intro: "NO PASSAGE WITHOUT PROOF. THE GATE WILL SEE PROOF.", onWin: "s1-exit-after" } } }],
       },
     ],
@@ -1144,7 +1151,7 @@ export const STAGE1_RELAYS: EventDef[] = [
       },
       {
         text: "Let {crew:rigger} draw a route the gate has never seen.", blue: true, req: { species: "rigger" },
-        outcomes: [{ outcome: { text: "{crew:rigger} projects a route onto the cab window from somewhere inside itself: carriers that are not on any chart, running round the gate on the far side of the ring. It cannot say where it learned them. The Regent studies the route for a long time. ROUTE UNVERIFIED. ROUTE PLAUSIBLE. DEMONSTRATE. The crew breathe easier for having seen it.", heal: true, codex: "runbook-second-way-home", combat: { enemy: "iron-regent", intro: "ROUTE PLAUSIBLE. DEMONSTRATE.", onWin: "s1-exit-after" } } }],
+        outcomes: [{ outcome: { text: "{crew:rigger} chalks a route on the cab window from somewhere in its memory: carriers that are not on any chart, running round the gate on the far side of the ring. It cannot say where it learned them. The Regent studies the route for a long time. ROUTE UNVERIFIED. ROUTE PLAUSIBLE. DEMONSTRATE. The crew breathe easier for having seen it.", heal: true, codex: "runbook-second-way-home", combat: { enemy: "iron-regent", intro: "ROUTE PLAUSIBLE. DEMONSTRATE.", onWin: "s1-exit-after" } } }],
       },
       {
         text: "There is no second way home. Show it the car will keep coming anyway.",
@@ -1155,7 +1162,7 @@ export const STAGE1_RELAYS: EventDef[] = [
   {
     id: "s1-exit-after", pool: "scripted", stages: [1], music: "rust-kingdom",
     title: "Passage Granted", art: "copper-gate",
-    text: "The crown dims to the colour of old brass. The Regent lowers its gauntlets very slowly, as if it has been holding them up for a long time, and the Gate Wardens fold back into the wings, keyholes going dark.\n\nPASSAGE GRANTED. GOOD ROAD, UNKNOWN SENDER.\n\nWith a sound like a very old door, the gate wings open, and the carriers run on through. Beyond them the light is violet, and a long way off, bells are ringing.",
+    text: "The crown dims to the colour of old brass. The Regent settles back into its frame very slowly, as if it has been holding itself up for a long time, and the Gate Wardens fold back into the wings, keyholes going dark.\n\nPASSAGE GRANTED. GOOD ROAD, UNKNOWN SENDER.\n\nWith a sound like a very old door, the gate wings open, and the carriers run on through. Beyond them the light is violet, and a long way off, bells are ringing.",
     choices: [
       {
         text: "Pry a shard loose from the crown.",

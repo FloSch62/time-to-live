@@ -12,7 +12,7 @@ import { content } from "../campaign/content";
 import { loadRun, meta, saveSummary } from "../campaign/persist";
 import { stageName } from "../campaign/events";
 import { drawBackdrop, twinkle } from "./backdrop";
-import { ROMAN, brassButton, keeperLamp, tracked, glow, divider } from "./kit";
+import { ROMAN, SCRIM, TYPE, brassButton, footer, header, keeperLamp, textAt, glow, divider } from "./kit";
 import { Session } from "./session";
 import { registerTitle } from "./nav";
 import { createNewVoyage } from "./newvoyage";
@@ -22,6 +22,7 @@ import { createGuideScene } from "./guide";
 import { createCreditsScene } from "./credits";
 import { carrierScene } from "./tender";
 import { baselineShip } from "../campaign/shipops";
+import { difficultyRules } from "../data/difficulty";
 
 let logoCanvas: HTMLCanvasElement | null = null;
 
@@ -124,74 +125,77 @@ export function createTitle(app: App): Scene {
         const lx = Math.round(u * 960);
         const ly = Math.round(2 * (64 + 26 * ((lx / 2 - 240) / 240) ** 2)) - 3;
         glow(g, lx, ly, 8, P.amber1, 0.35);
-        carrierScene(g, demoShip, t, { x: 700 + mx, cableY: 250, sway: true });
       }
-      // left vignette for the menu
-      g.alpha(0.55, () => {
-        for (let x = 0; x < 420; x += 2) g.alpha(Math.max(0, 1 - x / 420), () => g.rect(x, 0, 2, 540, P.ink0));
-      });
+      // The real Lamplighter on its drive trolley and carrier, over the painted night (the v5 title art leaves the
+      // car to the game so it is always the car the player rides).
+      // Seen from outside on the title card: the closed car (no cutaway). The carrier starts under the menu's solid
+      // backing and comes out of it through the fade, so it never crosses the menu text at full contrast.
+      const COL = 404;
+      carrierScene(g, demoShip, t, { x: 700 + mx, cableY: 250, sway: true, region: 1, exterior: true, carrierFrom: COL - 48 });
+      // The menu column has its own dark backing, so it reads over any title art (bright clouds included): solid
+      // behind the logo and the menu, then a short fade into the picture.
+      g.alpha(0.82, () => g.rect(0, 0, COL, 540, P.ink0));
+      for (let x = 0; x < 96; x += 2) g.alpha(0.82 * (1 - x / 96), () => g.rect(COL + x, 0, 2, 540, P.ink0));
       // logo
       const L = logo();
-      tracked(g, "A FAULTLINE VOYAGE", MENU_X + 2, 74, { font: "label", color: P.brass2, track: 4 });
-      g.hline(MENU_X - 24, 79, 18, P.brass3);
-      if (L) g.image(L, MENU_X - 5, 92);
-      else g.text("TIME TO LIVE", MENU_X, 100, { font: "big", color: P.brass1 });
-      const ty = 90 + 34 * 2 + 10;
-      divider(g, MENU_X, ty + 4, 150);
-      keeperLamp(g, MENU_X + 170, ty + 4, t);
-      g.text("Every hop costs a little life.", MENU_X, ty + 16, { font: "head", color: P.ivory1, shadow: P.ink0 });
-      // menu
-      let my = summary ? 260 : 300;
+      // kicker (with the KEEPER lamp blinking at its end) and the wordmark; the menu follows
+      const top = summary ? 96 : 112;
+      const kw = header(g, "A Faultline voyage", MENU_X + 2, top, { color: P.brass1 });
+      g.hline(MENU_X - 24, top + 3, 18, P.brass3);
+      keeperLamp(g, MENU_X + 2 + kw + 16, top + 3, t);
+      if (L) g.image(L, MENU_X - 5, top + 16);
+      else g.text("TIME TO LIVE", MENU_X, top + 22, { font: "big", color: P.brass1 });
+      let my = top + 110;
       const bw = 300;
       if (summary) {
-        const sub = `STAGE ${ROMAN[summary.stage as 1 | 2 | 3]} · ${summary.relay} · ${summary.ship.toUpperCase()}`;
-        if (brassButton(a, "t-continue", MENU_X, my, bw, 46, "CONTINUE VOYAGE", { hotkey: "Enter", sub, font: "labelb" })) continueVoyage();
-        my += 54;
+        const sub = `${difficultyRules(summary.difficulty).name} · ${summary.ship} · Stage ${ROMAN[summary.stage as 1 | 2 | 3]}`;
+        if (brassButton(a, "t-continue", MENU_X, my, bw, 46, "CONTINUE VOYAGE", { hotkey: "Enter", sub })) continueVoyage();
+        my += 56;
       }
       const item = (id: string, label: string, sub: string, key?: string) => {
-        const over = a.ui.hot(id, MENU_X, my, bw, 30, true);
+        const ih = sub ? 40 : 30;
+        const over = a.ui.hot(id, MENU_X, my, bw, ih, true);
         if (over) {
           a.ui.cursor = "pointer";
-          g.rect(MENU_X, my, bw, 30, rgba(P.brass3, 0.12));
+          g.rect(MENU_X, my, bw, ih, rgba(P.brass3, 0.16));
         }
-        g.vline(MENU_X, my + 2, 26, over ? P.brass1 : P.brass4);
-        g.text(label, MENU_X + 16, my + 4, { font: "head", color: over ? P.ivory0 : P.ivory1, shadow: P.ink0 });
-        if (sub) tracked(g, sub, MENU_X + bw - 8, my + 11, { font: "small", color: P.ivory2, shadow: P.ink0, align: "right", track: 1 });
+        g.rect(MENU_X, my + 2, 2, ih - 4, over ? P.brass1 : P.brass4);
+        textAt(g, label, MENU_X + 16, my + 6, { font: TYPE.title, color: over ? P.ivory0 : P.ivory1, shadow: P.ink0 });
+        if (sub) textAt(g, sub, MENU_X + 16, my + 26, { font: TYPE.note, color: over ? P.ivory1 : P.ivory3 });
         const hit = (over && a.input.pressed(0)) || (key && a.input.keyPressed(key));
         if (hit) {
           a.input.consume();
           if (key) a.input.eatKey(key);
           sfx.play("ui-click");
         }
-        my += 36;
+        my += ih + 6;
         return !!hit;
       };
-      if (item("t-new", "New voyage", summary ? "ABANDONS THE CURRENT ONE" : "FROM RELAY SEVEN", summary ? undefined : "Enter")) {
+      if (item("t-new", "New voyage", summary ? "Abandons the voyage underway" : "From Relay Seven", summary ? undefined : "Enter")) {
         if (summary) confirmNew = true;
         else newVoyage();
       }
       const m = meta();
       const entries = [...content.codex.values()].filter((c) => c.unlock === "start" || m.codex.includes(c.id)).length;
-      if (item("t-runbook", "The Runbook", `${entries} ENTRIES · ${m.fragments.length} FRAGMENTS`)) a.scenes.push(createRunbookScene(a, () => {}, { standalone: false }));
+      if (item("t-runbook", "The Runbook", `${entries} entries · ${m.fragments.length} message fragments`)) a.scenes.push(createRunbookScene(a, () => {}, { standalone: false }));
       if (item("t-settings", "Settings", "")) a.scenes.push(createSettingsScene(a));
-      if (item("t-guide", "Field guide", "CONTROLS & TACTICS · F1", "F1")) a.scenes.push(createGuideScene(a));
+      if (item("t-guide", "Field guide", "Controls and tactics · F1", "F1")) a.scenes.push(createGuideScene(a));
       if (item("t-credits", "Credits", "")) a.scenes.switchTo(createCreditsScene(a));
       // footer
-      tracked(g, `ALPHA · ${m.voyages} VOYAGE${m.voyages === 1 ? "" : "S"} · ${m.completed} ANSWERED`, MENU_X, 540 - 28, { font: "small", color: P.ivory4, track: 2 });
-      tracked(g, "MUSIC · TIME TO LIVE", 960 - 24, 540 - 28, { font: "small", color: P.ivory4, align: "right", track: 2 });
+      footer(g, a, [], summary ? [["ENTER", "continue"], ["F1", "field guide"]] : [["ENTER", "new voyage"], ["F1", "field guide"]], { note: `Alpha · ${m.voyages} voyage${m.voyages === 1 ? "" : "s"} · ${m.completed} answered` });
       if (confirmNew) confirmDialog(g, a);
     },
   };
 
   function confirmDialog(g: Gfx, a: App) {
-    g.dim(0.6);
+    g.dim(SCRIM);
     const w = 420;
     const h = 150;
     const x = 480 - w / 2;
     const y = 270 - h / 2;
     g.panel(x, y, w, h, "panel-danger");
-    tracked(g, "ABANDON THE VOYAGE?", 480, y + 20, { font: "labelb", color: P.ember1, align: "center" });
-    g.text(`The ${summary?.ship ?? "tender"} is still out on the Line. Starting again drops that connection for good.`, 480, y + 40, { align: "center", width: w - 40, color: C.text });
+    header(g, "Abandon the voyage?", 480, y + 20, { font: TYPE.strong, color: P.ember1, align: "center" });
+    textAt(g, `The ${summary?.ship ?? "tender"} is still out on the Line. Starting again drops that connection for good.`, 480, y + 42, { align: "center", width: w - 40, color: C.text });
     if (brassButton(a, "cn-yes", x + 30, y + h - 44, 170, 28, "START AGAIN", { variant: "danger" })) {
       confirmNew = false;
       newVoyage();

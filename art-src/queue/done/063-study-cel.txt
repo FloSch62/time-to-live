@@ -1,0 +1,5 @@
+study/cr:cel
+study/gc:cel
+study/cm:cel
+study/cm:pix8
+study/cm:pix8s

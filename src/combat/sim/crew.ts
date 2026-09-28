@@ -457,7 +457,7 @@ export function crewAt(sim: Sim, side: Side, tile: number): SimCrew | null {
   return null;
 }
 
-/** Dockside movement shares real doors and lifts, without combat, damage, healing or XP ticks. */
+/** Dockside movement and staffed recovery, without combat, damage or skill farming. */
 export function updateDeckMovement(sim: Sim, dt: number) {
   const ship = sim.ships[0];
   sim.t += dt;
@@ -471,6 +471,14 @@ export function updateDeckMovement(sim: Sim, dt: number) {
     else {
       const room = ship.rooms[ship.tileRoom[c.tile]];
       c.task = room?.station === c.tile ? "man" : "idle";
+    }
+    if (!c.path.length && !c.dead) {
+      const room = ship.rooms[ship.tileRoom[c.tile]];
+      // Shore power supplies an intact infirmary at a settled relay. Riggers use their repair bench.
+      const med = ship.sys.medbay;
+      const medical = med && med.room === room?.i && usable(med) > 0 && c.medbay ? TUNING.medbayHps[Math.min(3, usable(med))] : 0;
+      const healing = medical + (room?.bench ?? 0);
+      if (healing > 0 && c.hp < c.maxHp) { c.hp = Math.min(c.maxHp, c.hp + healing * dt); c.healT = 0; }
     }
   }
   sim.takeEvents();

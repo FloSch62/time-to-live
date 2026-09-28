@@ -1,0 +1,17 @@
+{
+ "stage": "shared",
+ "hull": "cars/freight-car",
+ "scale": 1.4,
+ "at": [
+  1280,
+  360
+ ],
+ "lamp": false,
+ "extras": [
+  "towers"
+ ],
+ "size": [
+  2560,
+  1280
+ ]
+}

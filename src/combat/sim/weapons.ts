@@ -1,3 +1,4 @@
+import { difficultyRules } from "../../data/difficulty.ts";
 // Weapons: charging, volleys, projectiles (two flight legs: leaving the shooter, arriving at the target), evasion,
 // shields (ward mesh), boss shields, beams dragged across rooms, flak scatter, and damage to rooms/systems/crew.
 import { FLIGHT, type WeaponDef } from "../../data/weapons.ts";
@@ -17,8 +18,9 @@ export function chargeTime(w: SimWeapon): number {
   return Math.max(1, c);
 }
 
-function chargeRate(sim: Sim, ship: SimShip): number {
-  let r = ship.chargeMul;
+export function chargeRate(sim: Sim, ship: SimShip): number {
+  let r = ship.chargeMul / (ship.side === 1 ? difficultyRules(sim.setup.difficulty).enemyWeaponCharge : 1);
+  r *= 1 + ship.mods.weaponCharge;
   const m = manner(sim, ship, "weapons");
   if (m) r *= 1 + MAN_BONUS.weaponsCharge[skillLevel(m.xp, "weapons")];
   if (ship.augments.includes("hot-swap-rig")) r *= 1.1;
@@ -248,6 +250,7 @@ function resolve(sim: Sim, p: Projectile) {
     a.hitT = 0;
     if (p.from === 0) sim.stats.damageDealt += dmg;
     sim.emit({ type: "adj-hit", side: T.side, x: a.x, y: a.y, n: dmg, kind: p.kind });
+    if (a.kind === "gate-warden" && T.boss.gate?.up) sim.gateRoute(T, p.source, a.x, a.y);
     if (a.hp <= 0) {
       a.alive = false;
       a.hp = 0;
@@ -257,7 +260,7 @@ function resolve(sim: Sim, p: Projectile) {
   }
   // Evasion.
   if (p.kind !== "crawler" && sim.rng.next() * 100 < T.evasion) {
-    sim.emit({ type: "miss", side: T.side, x: p.px, y: p.py, kind: p.kind });
+    sim.emit({ type: "miss", side: T.side, x: p.px, y: p.py, kind: p.kind, projectile: p });
     pilotXp(sim, T);
     return;
   }
@@ -269,7 +272,7 @@ function resolve(sim: Sim, p: Projectile) {
   if (shieldable && T.shields > 0) {
     T.shields--;
     if (p.ion > 0 && T.sys.shields) applyIon(sim, T, T.sys.shields, p.ion);
-    sim.emit({ type: "shield-hit", side: T.side, x: p.px, y: p.py, kind: p.ion > 0 ? "ion" : p.kind });
+    sim.emit({ type: "shield-hit", side: T.side, x: p.px, y: p.py, kind: p.ion > 0 ? "ion" : p.kind, projectile: p });
     if (T.side === 0) {
       const m = manner(sim, T, "shields");
       if (m) addXp(m, "shields", 1);
@@ -282,6 +285,7 @@ function resolve(sim: Sim, p: Projectile) {
     sim.crawlerArrives(p, T, tile);
     return;
   }
+  if (p.kind === "payload" && T.shields > 0) sim.emit({ type: "shield-bypass", side: T.side, x: p.px, y: p.py });
   hitRoom(sim, T, ri, tile, {
     dmg: p.dmg, ion: p.ion, fire: p.fire, breach: p.breach, crewDmg: p.crewDmg, sysBonus: p.sysBonus, from: p.from, kind: p.kind,
   }, p.px, p.py);
@@ -311,7 +315,7 @@ export function hitRoom(sim: Sim, T: SimShip, ri: number, tile: number, h: HitSp
     if (s) damageSystem(sim, T, s, h.dmg + h.sysBonus);
     for (const c of sim.crew) {
       if (c.dead || c.ship !== T.side || T.tileRoom[c.tile] !== ri) continue;
-      hurt(sim, c, h.dmg * h.crewDmg * (c.armour ?? 1), null);
+      hurt(sim, c, h.dmg * h.crewDmg * (c.armour ?? 1) * (h.from === 1 ? difficultyRules(sim.setup.difficulty).enemyDamage : 1), null);
     }
     if (h.fire > 0 && sim.rng.chance(h.fire)) startFire(sim, T, tile);
     if (h.breach > 0 && sim.rng.chance(h.breach)) startBreach(sim, T, tile);

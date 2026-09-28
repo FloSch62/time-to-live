@@ -1,0 +1,2 @@
+ships/packet-leech:r2
+weapons/payload-launcher:slug

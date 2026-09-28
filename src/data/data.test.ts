@@ -1,7 +1,7 @@
 // Content validation for the combat workstream's data (layouts, cars, enemies, weapons, rewards, refits).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { ENEMY_IDS, WEAPON_IDS, DRONE_IDS, AUGMENT_IDS, SYSTEM_IDS, REAR_CAR_IDS, KEEL_CAR_IDS, MODULE_IDS } from "../game/ids.ts";
+import { ENEMY_IDS, WEAPON_IDS, DRONE_IDS, AUGMENT_IDS, SYSTEM_IDS, REAR_CAR_IDS, KEEL_CAR_IDS, MODULE_IDS, LEAD_CAR_IDS } from "../game/ids.ts";
 import { ENEMY_LAYOUTS, ENEMY_GRIDS, enemyLayout, parseLayout, TILE } from "./layouts.ts";
 import { ENEMIES, scaleEnemy } from "./enemies.ts";
 import { WEAPONS, weaponDef } from "./weapons.ts";
@@ -14,6 +14,9 @@ import { composeConsist, consistStats, coupleCar, applyRefit, validateShip, norm
 import { makePlayerShip } from "./ship.ts";
 import { rollReward } from "./rewards.ts";
 import { Rng } from "../core/rng.ts";
+import { Sim } from "../combat/sim/sim.ts";
+import { findPath } from "../combat/sim/path.ts";
+import { newInventory } from "./ship.ts";
 
 test("tile size follows the contract (★v4)", () => {
   assert.equal(TILE, 36);
@@ -62,12 +65,12 @@ test("enemy weapons exist and scaled enemies stay sane", () => {
 test("the rooms of every car are rectangles and the layouts connect", () => {
   for (const [id, def] of Object.entries(CARS)) {
     const L = parseLayout(def.map, "right", def.legend, def.airlocks);
-    if (def.slot === "lead") assert.deepEqual([L.cols, L.rows], [12, 4], "lead car 12×4 (★v4)");
+    if (def.slot === "lead") assert.deepEqual([L.cols, L.rows], id === "glasswing" ? [10, 4] : id === "switchback" ? [13, 5] : [12, 4], `${id} independent deck plan`);
     if (def.slot === "rear") assert.deepEqual([L.cols, L.rows], [4, 4], `${id} rear car 4×4`);
     if (def.slot === "keel") assert.deepEqual([L.cols, L.rows], [6, 2], `${id} keel car 6×2`);
     for (const a of def.airlocks) assert.ok(L.rooms.some((r) => r.id === a.room), `${id} airlock room ${a.room}`);
   }
-  assert.equal(CARS.lamplighter.hardpoints.length, 4);
+  assert.equal(CARS.lamplighter.hardpoints.length, 3);
   assert.equal(Object.values(CARS.lamplighter.legend).filter((l) => l.socket).length, 2);
 });
 
@@ -87,7 +90,7 @@ test("the starting tender is valid and composes", () => {
   const L = composeConsist(s.consist, s.modules);
   assert.equal(L.cols, 12);
   assert.equal(L.rows, 4);
-  assert.equal(s.weaponSlots, 4);
+  assert.equal(s.weaponSlots, 3);
   assert.equal(s.crew.length, 3);
   assert.equal(s.hull, 30);
 });
@@ -99,7 +102,7 @@ test("coupling cars and refitting modules keep the ship valid", () => {
   assert.equal(s.systemRooms.drones, "rear:bay");
   assert.equal(s.droneSlots, 3);
   s = coupleCar(s, "keel", "ballast-keel");
-  assert.equal(s.hullMax, 36);
+  assert.equal(s.hullMax, 38);
   assert.deepEqual(validateShip(s), []);
   const L = composeConsist(s.consist, s.modules);
   assert.equal(L.connectors?.length, 2, "gangway and keel hatch");
@@ -112,24 +115,24 @@ test("coupling cars and refitting modules keep the ship valid", () => {
   s = applyRefit(s, "lead:hold-a", "drone-bay");
   assert.equal(s.systemRooms.drones, "lead:hold-a");
   s = applyRefit(s, "lead:hold-b", "ballast");
-  assert.equal(s.hullMax, 39);
+  assert.equal(s.hullMax, 41);
   s = applyRefit(s, "lead:hold-b", null);
-  assert.equal(s.hullMax, 36);
+  assert.equal(s.hullMax, 38);
   assert.ok(s.moduleStore.includes("ballast"));
   assert.deepEqual(validateShip(s), []);
   const st = consistStats(s.consist, s.modules);
-  assert.equal(st.weaponSlots, 4);
+  assert.equal(st.weaponSlots, 3);
 });
 
 test("armory car adds a hardpoint; crew in a removed car move to the lead", () => {
   let s = makePlayerShip("L");
   s = coupleCar(s, "rear", "armory-car");
-  assert.equal(s.weaponSlots, 5);
-  s.weapons[4] = "packet-laser";
+  assert.equal(s.weaponSlots, 4);
+  s.weapons[3] = "packet-laser";
   s.crew[0].station = "rear:magazine";
   s = coupleCar(s, "rear", null);
-  assert.equal(s.weaponSlots, 4);
-  assert.ok(s.cargo.includes("packet-laser"), "the fifth weapon goes to cargo");
+  assert.equal(s.weaponSlots, 3);
+  assert.ok(s.cargo.includes("packet-laser"), "the fourth weapon goes to cargo");
   assert.equal(s.crew[0].station, "lead:hall");
 });
 
@@ -144,4 +147,44 @@ test("rewards scale with stage and tier", () => {
   assert.ok(boss > low * 3);
   const b = rollReward(new Rng(5), 2, 1, "boss");
   assert.ok(b.weapon || b.drone || b.augment, "guardians always drop an item");
+});
+
+test("all three deck plans keep every bay and console reachable with every rear and keel combination", () => {
+  for (const lead of LEAD_CAR_IDS) for (const rear of [null, ...REAR_CAR_IDS]) for (const keel of [null, ...KEEL_CAR_IDS]) {
+    let state = makePlayerShip("Connectivity", undefined, "amber", lead);
+    state = coupleCar(coupleCar(state, "rear", rear), "keel", keel);
+    assert.deepEqual(validateShip(state), [], `${lead}/${rear}/${keel}`);
+    const sim = new Sim(state, newInventory(lead), { enemy: "packet-leech", stage: 1, seed: 42, depth: 0 });
+    const ship = sim.ships[0], from = ship.rooms[0].tiles[0];
+    for (const room of ship.rooms) for (const tile of room.tiles) {
+      assert.ok(tile === from || findPath(ship, from, tile).length, `${lead}/${rear}/${keel}: ${room.id} tile ${tile}`);
+    }
+  }
+});
+
+test("native retrieval bays preserve sockets and obsolete module saves migrate without duplicate hosts", () => {
+  const s = makePlayerShip("S", undefined, "amber", "switchback");
+  assert.equal(s.systemRooms.drones, "lead:drones");
+  assert.equal(s.systemRooms.veil, "lead:veil");
+  assert.deepEqual(s.modules, {});
+  assert.equal(s.droneSlots, 3);
+  assert.equal(s.weaponSlots, 2);
+  s.modules = { "lead:hold-a": "drone-bay", "lead:hold-b": "veil-housing" };
+  normalizeShip(s);
+  assert.deepEqual(s.modules, {});
+  assert.deepEqual(new Set(s.moduleStore), new Set(["drone-bay", "veil-housing"]));
+  assert.deepEqual(validateShip(s), []);
+});
+
+test("reusable ballast modules never supply free hull repairs", () => {
+  let ship = makePlayerShip("Damaged");
+  ship.hull = 1;
+  ship.moduleStore.push("ballast");
+  for (let i = 0; i < 5; i++) {
+    ship = applyRefit(ship, "lead:hold-a", "ballast");
+    assert.equal(ship.hullMax, 33);
+    assert.equal(ship.hull, 1);
+    ship = applyRefit(ship, "lead:hold-a", null);
+    assert.equal(ship.hull, 1);
+  }
 });

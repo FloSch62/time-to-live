@@ -1,0 +1,14 @@
+parts/prism-housing:b
+parts/collimators:b
+parts/survey-horns:b
+parts/drone-cradle:b
+parts/retrieval-crane:b
+parts/heavy-drive:b
+parts/keel-air-tanks:b
+parts/keel-ballast:b
+parts/keel-lug:b
+parts/roof-plate:b
+parts/belly-plate:b
+parts/roof-hatch:b
+parts/signal-lamp:b
+parts/antenna-mast:b

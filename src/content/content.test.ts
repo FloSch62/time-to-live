@@ -101,7 +101,7 @@ const STANDARD_ART = new Set<string>([
   "bg/title", "bg/relay-seven", "bg/line-quiet",
   ...[1, 2, 3].flatMap(s => ["a", "b", "c"].map(v => `bg/s${s}-${v}`)),
   ...[1, 2, 3, 4, 5, 6].map(n => `ending/e${n}`),
-  "ships/lamplighter", ...ENEMY_IDS.map(id => `ships/${id}`), "ships/gate-warden", "ships/sealing-drone",
+  "ships/lamplighter", "ships/glasswing", "ships/switchback", ...ENEMY_IDS.map(id => `ships/${id}`), "ships/gate-warden", "ships/sealing-drone",
   ...["operator", "pell", "scavenger", "bench-keeper", "bellmaker", "teal-jacket", "warden-memory"].map(p => `portraits/${p}`),
 ]);
 const ART_REQUESTS_PATH = new URL("../../docs/art-requests.md", import.meta.url);
@@ -123,8 +123,15 @@ for (const e of ALL_EVENTS) {
 const FRAGMENT_IDS = new Set(FRAGMENTS.map(f => f.id));
 const CODEX_BY_ID = new Map<string, CodexEntry>(CODEX.map(c => [c.id, c]));
 
+/** Validate automatic arrivals and direct fights through the same outcome contract as choices. */
+function validationChoices(e: EventDef): ChoiceDef[] {
+  return [...e.choices,
+    ...(e.arrival ? [{ text: "Automatic arrival", outcomes: [{ outcome: e.arrival }] }] : []),
+    ...(e.directCombat ? [{ text: "Direct interception", outcomes: [{ outcome: { combat: e.directCombat } }] }] : [])];
+}
+
 function* outcomesOf(e: EventDef): Generator<[ChoiceDef, Outcome]> {
-  for (const c of e.choices) for (const w of c.outcomes) yield [c, w.outcome];
+  for (const c of validationChoices(e)) for (const w of c.outcomes) yield [c, w.outcome];
 }
 
 /** Every event reachable from `id` through next / onWin / onSurrender (including itself). */
@@ -199,6 +206,7 @@ function checkPlaceholders(where: string, text: string, speciesOk: Set<string>, 
 
 function checkCondition(where: string, c: Condition | undefined, errors: string[]): void {
   if (!c) return;
+  if (c.tender && !(LEAD_CAR_IDS as readonly string[]).includes(c.tender)) errors.push(`${where}: unknown tender ${c.tender}`);
   for (const [k, v] of Object.entries(c.resources ?? {})) {
     if (!(RESOURCE_IDS as readonly string[]).includes(k)) errors.push(`${where}: unknown resource ${k}`);
     if (typeof v !== "number" || v < 0) errors.push(`${where}: bad resource amount ${k}=${v}`);
@@ -240,7 +248,9 @@ test("every event is well formed and every reference resolves", () => {
     if (!e.text?.trim()) errors.push(`${at}: empty text`);
     if (e.text && e.text.length > 900) errors.push(`${at}: body text is ${e.text.length} chars (max 900)`);
     if (e.title && e.title.length > 40) errors.push(`${at}: title too long`);
-    if (!e.choices?.length) errors.push(`${at}: no choices`);
+    if (!e.choices?.length && !e.directCombat && !e.glimpse && !e.arrival) errors.push(`${at}: no playable or automatic entry`);
+    if (e.directCombat && (e.arrival || e.glimpse || e.choices.length)) errors.push(`${at}: direct fight would discard another entry path`);
+    if (e.glimpse && (e.arrival || e.choices.length)) errors.push(`${at}: quiet glimpse must not discard effects or choices`);
     if (e.weight !== undefined && e.weight <= 0) errors.push(`${at}: weight must be positive`);
     if (e.music && !(MUSIC_IDS as readonly string[]).includes(e.music)) errors.push(`${at}: unknown music ${e.music}`);
     if (e.art) { const k = `events/${e.art}`; usedArt.add(k); if (!artOk(k)) errors.push(`${at}: art ${k} is not standard or requested`); }
@@ -254,7 +264,7 @@ test("every event is well formed and every reference resolves", () => {
     const bodySpecies = new Set<string>(e.requires?.species ? [e.requires.species] : []);
     checkPlaceholders(`${at}.text`, e.text ?? "", bodySpecies, errors);
 
-    e.choices?.forEach((c, ci) => {
+    validationChoices(e).forEach((c, ci) => {
       const cat = `${at}.choices[${ci}]`;
       if (!c.text?.trim()) errors.push(`${cat}: empty choice text`);
       if (c.text && c.text.length > 110) errors.push(`${cat}: choice text is ${c.text.length} chars (max 110)`);
@@ -276,6 +286,10 @@ test("every event is well formed and every reference resolves", () => {
         const oat = `${cat}.outcomes[${oi}]`;
         const o = w.outcome;
         if (w.weight !== undefined && w.weight <= 0) errors.push(`${oat}: weight must be positive`);
+        for (const modifier of w.modifiers ?? []) {
+          if (!Number.isFinite(modifier.multiply) || modifier.multiply < 0) errors.push(`${oat}: invalid conditional weight`);
+          checkCondition(`${oat}.modifiers`, modifier.when, errors);
+        }
         if (o.text) {
           checkPlaceholders(`${oat}.text`, o.text, species, errors);
           if (o.text.length > 700) errors.push(`${oat}: outcome text is ${o.text.length} chars (max 700)`);
@@ -318,6 +332,12 @@ test("every event is well formed and every reference resolves", () => {
           const enemy = o.combat.enemy;
           if (!(ENEMY_IDS as readonly string[]).includes(enemy)) { errors.push(`${oat}: unknown enemy ${enemy}`); return; }
           if (o.combat.intro) checkPlaceholders(`${oat}.combat.intro`, o.combat.intro, species, errors);
+          if (o.combat.scenario) {
+            const sc = o.combat.scenario;
+            if (sc.objective !== "release-duty") errors.push(`${oat}: unknown combat objective`);
+            if (![...SYSTEM_IDS, "artillery"].includes(sc.system)) errors.push(`${oat}: unknown objective target`);
+            if (sc.holdSeconds !== undefined && !(sc.holdSeconds > 0)) errors.push(`${oat}: nonpositive hold time`);
+          }
           const guardianStage = ([1, 2, 3] as StageIndex[]).find(s => GUARDIANS[s] === enemy);
           if (guardianStage) {
             if (!(e.pool === "exit" || e.pool === "scripted") || e.stages?.join() !== String(guardianStage)) errors.push(`${oat}: guardian ${enemy} outside its stage's exit sequence`);
@@ -419,7 +439,7 @@ test("flags are declared, and every flag that is read is set somewhere", () => {
       if (c?.notFlag) read.set(c.notFlag, where);
     };
     note(e.requires, e.id);
-    for (const c of e.choices) {
+    for (const c of validationChoices(e)) {
       note(c.req, e.id);
       for (const w of c.outcomes) for (const f of w.outcome.flags ?? []) set.add(f);
     }
@@ -606,7 +626,7 @@ test("names and tips", () => {
   uniq("TENDER_NAMES", TENDER_NAMES, 10);
   uniq("BELLMAKER_NAMES", BELLMAKER_NAMES, 6);
   for (const d of RIGGER_DESIGNATIONS) if (!/^Rigger \d+-[A-Z][a-z]+$/.test(d)) errors.push(`rigger designation "${d}" should look like "Rigger 7-Tern"`);
-  if (!TENDER_NAMES.includes(DEFAULT_TENDER_NAME)) errors.push("TENDER_NAMES should include the default name");
+  for (const dock of [DEFAULT_TENDER_NAME, "Glasswing", "Switchback"]) if (TENDER_NAMES.includes(dock)) errors.push(`TENDER_NAMES should not suggest the dock name ${dock}`);
   // Characters who join by name in events must not also be rolled as random recruits.
   const pools = new Set([...LINEFOLK_NAMES, ...WARDEN_NAMES, ...COURIER_NAMES, ...BELLMAKER_NAMES, ...RIGGER_DESIGNATIONS]);
   const named = new Map<string, string>();

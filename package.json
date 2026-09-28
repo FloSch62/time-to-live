@@ -20,6 +20,7 @@
     "test:soak": "node tools/soak.mjs",
     "test:campaign": "node --experimental-strip-types tools/balance/campaign.ts --n 128 --out tools/shots/qa/campaign-balance.json",
     "test:ux": "node tools/ux-qa.mjs",
+    "test:mounts": "node tools/mount-qa.mjs",
     "test:production": "node tools/production-qa.mjs"
   },
   "devDependencies": {

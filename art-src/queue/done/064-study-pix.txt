@@ -1,0 +1,3 @@
+study/cr:pix8n
+study/gc:pix8n@1
+study/gc:pix8@1

@@ -62,7 +62,7 @@ export type StageIndex = 1 | 2 | 3;
 // ─── The modular tender (contract "★ DIRECTION v2.1") ────────────────────────────────────────────────────────
 
 /** Lead cars (the tender's front car: cab, helm, drive trolley). One for now; more tenders can be added as data. */
-export const LEAD_CAR_IDS = ["lamplighter"] as const;
+export const LEAD_CAR_IDS = ["lamplighter", "glasswing", "switchback"] as const;
 export type LeadCarId = (typeof LEAD_CAR_IDS)[number];
 
 /** Rear cars coupled behind the lead car (grid 5×3). */

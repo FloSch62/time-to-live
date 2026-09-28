@@ -1,0 +1,6 @@
+events/machine-hulk:v5c
+events/relay-switchyard:v5c
+events/lift-car-stuck:v5c
+events/copper-market:v5c
+events/echo-tender-lit:v5c
+events/scavenger-skiff-hail:v5c

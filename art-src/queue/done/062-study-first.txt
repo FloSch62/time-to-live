@@ -1,0 +1,2 @@
+study/cr:pix8@1
+study/cr:pix8w@1

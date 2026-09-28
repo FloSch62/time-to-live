@@ -50,7 +50,7 @@ hanging from its drive trolley) riding in on a carrier from the left. Stars abov
 with a warm lamp.
 
 ### `events/tender-radio`
-The Lamplighter's galley deck at night: a lamper's radio set built into the wall (brass dials, cracked speaker grille, a
+A tender's galley deck at night: a lamper's radio set built into the wall (brass dials, cracked speaker grille, a
 glowing teal tuning needle), a mug steaming beside it, a crew member's shoulder and headset in silhouette at the
 edge of frame. Through a small porthole, the arc of the Line. Mood: listening, late.
 
@@ -76,18 +76,18 @@ tarpaulin flapping. The Lamplighter's cupola lamp picking it out from the right.
 tint; works for any stage. Mood: a spare part with a history.
 
 ### `events/refit-bay`
-A relay switch house turned workshop: the Lamplighter's hold room opened up at the socket, a module crate (brass
+A relay switch house turned workshop: a lamplighter-pattern tender's hold opened up at the socket, a module crate (brass
 frame, ivory panels, stencilled lettering) swinging on a chain hoist toward it, tools laid out, a kettle on a crate.
 Warm amber work lamps. Used for refits at benches and markets in any stage.
 
 ### `events/cold-berths`
 A medical bay on the Line: a row of frost-covered cold berths (glass-lidded capsules) in a dim ivory room. All the
-status lamps are dark except one, which is green. Frost on the glass. Mood: a held breath.
+status lamps are dark except one, which glows teal. Frost on the glass. Mood: a held breath.
 
 ### `events/sealed-relay`
 A relay closed by the Seal: a black geometric lattice grown over the relay's switch house and lamp, a thin red seam
-of light running along every joint, the carrier behind it cut and hanging, two Quarantine Drones (black shells, red
-seams, four rotors) holding station nearby. The lamp is still faintly visible behind the lattice. Mood: patient,
+of light running along every joint, the carrier running through it still whole (the Seal shutters signal conduits,
+it does not cut steel), two Quarantine Drones (black shells, red seams, four rotors) holding station nearby. The lamp is still faintly visible behind the lattice. Mood: patient,
 closed. Works for any stage (tint the backdrop per stage).
 
 ### `events/machine-escort`
@@ -119,7 +119,8 @@ engraved plate. (Used on the Stage III side of the story; distinct from the endi
 
 ### `events/copper-market`
 The Copper Market: shipping containers stacked and welded into a tower on a Reach spire top, stalls on every
-landing, strings of salvaged relay lamps, a crane swinging a container like a lift, patched skiffs moored alongside.
+landing, strings of salvaged relay lamps, a crane swinging a container like a lift, patched skiffs (small cable cars)
+hanging from carriers alongside.
 Warm amber lamps against copper-green rust. Busy, a little funny.
 
 ### `events/pell-stall`
@@ -146,13 +147,15 @@ A lift head at the top of a spire: freight gates, a loading cage hanging open, a
 letters still showing the last departures, handprints on the gate. The shaft drops away into cloud. Copper and brass.
 
 ### `events/carrier-cut`
-A carrier parting: a Cable Wraith (a long thin crawler with enormous shears at its nose) clamped on a heavy braided
-cable behind the tender, shears closed, the severed cable end whipping away in a spray of verdigris and sparks, the
-relay beyond going dark. Seen from the tender's rear window. Copper and teal sparks. Used for the Seal and wraiths.
+A work span parting: a Cable Wraith (a long thin crawler with enormous shears at its nose) clamped on a side carrier
+that runs beside the tender's own, shears closed, the severed cable end whipping away in a spray of verdigris and
+sparks. The carrier the tender hangs from holds. Seen from the tender's rear window. Copper and teal sparks. Used for
+wraith cuts only; ordinary quarantine closes conduits and never cuts steel.
 
 ### `events/foundry-mouth`
 A Reach foundry seen from outside: a vast furnace mouth in a black iron wall, glowing dull red because it was
-banked, not doused. Iron and ember in a copper landscape. The silhouette of a Ferric Colossus standing guard.
+banked, not doused. Iron and ember in a copper landscape. The silhouette of a Ferric Colossus built into the foundry
+wall beside the mouth, standing guard.
 
 ### `events/debris-field`
 The outer relays after the break: great broken ring gates like teeth against the stars, and the carriers around them
@@ -288,3 +291,11 @@ A courier: light coat, satchel strap across the chest, goggles pushed up, amber 
 
 ### `portraits/recruit-courier-b`
 A second courier: forties, goggles down, scarf, a bundle of letters tied with string visible in the satchel.
+
+### `portraits/recruit-linefolk-c`
+A third linefolk recruit, an older woman: sixties, grey hair in a short plait under a knitted cap, reading glasses on
+a cord, worn ivory work coat, amber chest lamp, a clerk's or cook's steady face.
+
+### `portraits/bellmaker-b`
+A second bellmaker, very old: eighties, thin white hair, a long violet-trimmed coat gone grey at the cuffs, a glass
+tuning fork held close to the ear, a small glass pendant. Violet glass behind.

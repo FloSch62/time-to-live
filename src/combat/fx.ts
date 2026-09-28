@@ -155,7 +155,7 @@ export class Fx {
   // ─── projectiles ──────────────────────────────────────────────────────────────────────────────────────────
 
   /** Screen position of a projectile now. `start(p)` gives its screen start once; `end(p)` its screen target. */
-  projPos(p: Projectile, start: (p: Projectile) => [number, number], end: (p: Projectile) => [number, number]): [number, number, number, number] {
+  projectileStart(p: Projectile, start: (p: Projectile) => [number, number]): [number, number] {
     let s = this.starts.get(p.id);
     if (!s) {
       s = start(p);
@@ -165,6 +165,11 @@ export class Fx {
         this.starts.delete(k);
       }
     }
+    return s;
+  }
+
+  projPos(p: Projectile, start: (p: Projectile) => [number, number], end: (p: Projectile) => [number, number]): [number, number, number, number] {
+    const s = this.projectileStart(p, start);
     const [ex, ey] = end(p);
     const total = p.t1 + p.t2;
     const f = Math.max(0, Math.min(1, p.t / total));

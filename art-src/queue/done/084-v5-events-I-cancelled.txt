@@ -1,0 +1,1 @@
+events/copper-market:v5 events/pell-stall:v5 events/scavenger-skiff-hail:v5 events/rust-yard:v5 events/sorting-office:v5 events/lift-head:v5 events/carrier-cut:v5 events/foundry-mouth:v5 events/debris-field:v5 events/rust-squall:v5 events/sun-glare:v5 events/copper-gate:v5 events/switchback-seventh-drone:v5

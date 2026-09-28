@@ -2,16 +2,20 @@
 // beat shields, strip the shield room first, keep the helm/weapons/shields manned, send crew to fires, breaches,
 // damage and boarders, heal at the infirmary, use the veil when a volley is incoming, accept surrenders).
 import type { SysKey } from "../../data/layouts.ts";
-import type { SimCrew, SimShip, Target } from "./model.ts";
+import type { SimCrew, SimShip, SimWeapon, Target } from "./model.ts";
 import type { Sim } from "./sim.ts";
 import { effective, usable, reactorFree } from "./power.ts";
 import { chargeTime } from "./weapons.ts";
 
 export interface AutoOpts {
+  /** Exercise a real retreat: keep damage control working, reserve the drive, and leave at the first valid handshake. */
+  escapeOnly?: boolean;
   /** Hop away when the hull drops below this fraction and the drive is ready (0 = never). */
   fleeAt?: number;
   /** Fire every weapon as soon as it is ready instead of volleying. */
   sloppy?: boolean;
+  /** Preserve this many payloads for later fights. Guardians can explicitly use a zero reserve. */
+  payloadReserve?: number;
 }
 
 const STATIONS: SysKey[] = ["helm", "weapons", "shields", "engines", "sensors", "doors"];
@@ -28,15 +32,19 @@ export class AutoPlayer {
   tick(dt: number) {
     const sim = this.sim;
     if (sim.outcome) return;
+    if (sim.deliveryReady) { sim.deliver(); return; }
     if (sim.surrender?.pending) sim.acceptSurrender();
     this.t -= dt;
     if (this.t > 0) return;
     this.t = 0.25;
     const P = sim.ships[0];
+    if (sim.ships[1].boss.glass && !sim.ships[1].boss.glass!.tuning) sim.tuneChoir(true);
     this.power(P);
-    this.weapons(P);
+    if (!this.opts.escapeOnly) this.weapons(P);
     this.crew(P);
-    // Veil against an incoming volley.
+    if (this.opts.escapeOnly && sim.hopReady()) { sim.hop(); return; }
+    // Veil against an incoming volley (measured against the Iron Regent: casting as soon as a volley of two or more
+    // bolts is inbound beat holding it for the heavy Edict or casting before a heavy gun fires).
     if (P.sys.veil && P.veilT <= 0 && P.veilCd <= 0 && effective(P.sys.veil) > 0) {
       let n = 0;
       for (const p of sim.projectiles) if (!p.dead && p.to === 0 && p.t > p.t1) n++;
@@ -63,13 +71,14 @@ export class AutoPlayer {
       target.set(id, n);
       budget -= n;
     };
+    if (this.opts.escapeOnly) take("engines", 2);
     take("shields", 99);
     const ws = P.sys.weapons;
     const weaponsOn = new Set<number>();
-    if (ws) {
+    if (ws && !this.opts.escapeOnly) {
       let load = 0;
       P.weapons.forEach((w, i) => {
-        if (w.def.ammo && P.payloads < w.def.ammo) return;
+        if (w.def.ammo && P.payloads - w.def.ammo < (this.opts.payloadReserve ?? 0)) return;
         const need = w.def.power;
         if (load + need <= usable(ws) && need <= budget + Math.max(0, ws.bonus - load)) {
           const draw = Math.max(0, load + need - ws.bonus) - Math.max(0, load - ws.bonus);
@@ -81,12 +90,16 @@ export class AutoPlayer {
     }
     take("air", lowAir ? 99 : 1);
     take("medbay", hurt ? 99 : 0);
-    take("engines", 99);
+    if (!this.opts.escapeOnly) take("engines", 1);
     const dronesOn = new Set<number>();
     const ds = P.sys.drones;
     if (ds && P.spares + P.drones.filter((d) => d.out).length > 0) {
       let load = 0;
       P.drones.forEach((d, i) => {
+        if (this.opts.escapeOnly && ["combat", "anti", "boarding"].includes(d.def.kind)) return;
+        const E = sim.ships[1];
+        const interceptable = E.weapons.some(w => w.def.type === "payload") || E.drones.some(q => q.def.kind === "boarding") || sim.setup.hazard === "debris-field";
+        if (d.def.kind === "defence" && !interceptable) return;
         if (d.def.kind === "repair" && P.hull > P.hullMax * 0.6 && !d.out) return;
         if (!d.out && P.spares <= 0) return;
         const need = d.def.power;
@@ -98,6 +111,9 @@ export class AutoPlayer {
       });
     }
     take("veil", 99);
+    const engines = target.get("engines") ?? 0;
+    budget += engines;
+    take("engines", 99);
     // Apply: remove first, then add.
     for (const [id, n] of target) {
       const s = P.sys[id]!;
@@ -123,15 +139,25 @@ export class AutoPlayer {
     sim.events = sim.events.filter((e) => e.type !== "power-denied" && e.type !== "power-up" && e.type !== "power-down");
   }
 
-  private pickTarget(E: SimShip, w: { def: { type: string } }): Target {
+  private pickTarget(E: SimShip, w: SimWeapon): Target {
     const sim = this.sim;
     const sh = E.sys.shields;
-    // Kill guardian adjuncts that add shield layers.
-    const adj = E.adjuncts.findIndex((a) => a.alive && a.active && a.kind === "sealing-drone");
-    if (adj >= 0 && w.def.type === "laser") return { kind: "adj", i: adj };
-    // Gate wardens are exposed repair craft. Remove them before fighting the gate they keep rebuilding.
-    const warden = E.adjuncts.findIndex((a) => a.alive && a.active && a.kind === "gate-warden");
-    if (warden >= 0 && ["laser", "payload", "flak"].includes(w.def.type)) return { kind: "adj", i: warden };
+    const dutySystem = sim.setup.scenario && E.sys[sim.setup.scenario.system];
+    if (dutySystem && (!sh || effective(sh) < 2)) {
+      const r = E.rooms[dutySystem.room];
+      return w.def.type === "beam" ? { kind: "beam", x0: r.x + .2, y0: r.y + .5, x1: r.x + r.w - .2, y1: r.y + .5 } : { kind: "room", room: dutySystem.room };
+    }
+    // Split a ready volley across exposed repair/sealing craft. Sending every
+    // gun at the first four-HP drone wastes the volley and lets the other keep firing.
+    if (["laser", "payload", "flak"].includes(w.def.type)) {
+      const pending = (i: number) => sim.projectiles.filter(p => !p.dead && p.from === 0 && p.target.kind === "adj" && p.target.i === i).reduce((n, p) => n + p.dmg, 0)
+        + sim.ships[0].weapons.reduce((n, q) => n + (q.target?.kind === "adj" && q.target.i === i ? q.def.damage * q.def.shots : 0)
+          + (q.volleyTarget?.kind === "adj" && q.volleyTarget.i === i ? q.def.damage * q.queue : 0), 0);
+      const damage = w.def.damage * w.def.shots;
+      const craft = E.adjuncts.filter(a => a.alive && a.active).map(a => ({ a, remaining: a.hp - pending(a.i) })).filter(a => a.remaining > 0);
+      craft.sort((a, b) => (a.remaining < damage ? 1 : 0) - (b.remaining < damage ? 1 : 0) || a.remaining - b.remaining);
+      if (craft.length) return { kind: "adj", i: craft[0].a.i };
+    }
     let room: number;
     if (sh && effective(sh) >= 2) room = sh.room;
     else {
@@ -155,19 +181,21 @@ export class AutoPlayer {
     const E = sim.ships[1];
     if (E.dead) return;
     sim.setAutofire(false);
-    const live = P.weapons.filter((w) => w.powered && w.def.type !== "beam" && !(w.def.ammo && P.payloads < w.def.ammo));
-    if (!live.length) return;
+    if (sim.dutyProgress > 0) return; // Keep the disabled machine intact while the helm acknowledges.
+    const live = P.weapons.filter((w) => w.powered && w.def.type !== "beam" && !(w.def.ammo && P.payloads - w.def.ammo < (this.opts.payloadReserve ?? 0)));
+    if (!live.length && !P.weapons.some(w => w.powered && w.def.type === "beam")) return;
     const shields = E.shields + (E.boss.gate?.up ? 1 : 0) + (E.boss.glass?.up ? 1 : 0);
     const allReady = live.every((w) => w.charge >= chargeTime(w) - 0.05);
     const volley = this.opts.sloppy || shields === 0 || allReady;
     // Don't wait forever for a slow weapon: fire when the rest have been ready a while.
-    const longest = Math.max(...live.map((w) => chargeTime(w) - w.charge));
+    const longest = Math.max(0, ...live.map((w) => chargeTime(w) - w.charge));
     const force = longest > 6 && live.filter((w) => w.charge >= chargeTime(w) - 0.05).length >= 2;
     // Beams go in after the bolts have stripped the mesh (FTL habit).
     const inbound = sim.projectiles.filter((p) => !p.dead && p.from === 0 && p.to === 1 && p.kind !== "payload" && p.t > p.t1 + p.t2 - 0.45).length;
     for (let i = 0; i < P.weapons.length; i++) {
       const w = P.weapons[i];
       if (!w.powered || w.target) continue;
+      if (w.def.ammo && P.payloads - w.def.ammo < (this.opts.payloadReserve ?? 0)) continue;
       if (w.charge < chargeTime(w) - 0.05) continue;
       if (w.def.type === "beam") {
         const through = E.shields < w.def.damage || inbound >= E.shields || !!w.def.ion;
@@ -205,6 +233,7 @@ export class AutoPlayer {
     const medOk = !!med && effective(med) > 0 && P.rooms[med.room].o2 > 20 && !P.rooms[med.room].tiles.some((t) => P.fire[t] > 0);
     // Work: boarders, fires, breaches, damaged systems — by importance.
     const IMP: Partial<Record<SysKey, number>> = { shields: 6, weapons: 5, helm: 5, engines: 4, air: 3, medbay: 3, drones: 2, doors: 1, sensors: 1, veil: 2 };
+    if (this.opts.escapeOnly) { IMP.helm = 8; IMP.engines = 7; IMP.weapons = 0; }
     const work: { room: number; w: number; fight: boolean }[] = [];
     for (const r of P.rooms) {
       let w = 0;
@@ -224,12 +253,23 @@ export class AutoPlayer {
     work.sort((a, b) => b.w - a.w);
     const assigned = new Set<number>();
     const heading = (c: SimCrew) => P.tileRoom[c.path.length ? c.dest : c.tile];
-    // Wounded to the infirmary first.
+    // Begin recovery before a long lift journey becomes lethal. Riggers use
+    // real workshop/recovery benches; people can use them when the clinic is down.
     for (const c of mine) {
-      if (medOk && c.hp < c.maxHp * 0.35 && c.species !== "rigger") {
-        if (heading(c) !== med!.room) sim.moveCrew([c.uid], med!.room);
-        assigned.add(c.uid);
-      } else if (medOk && heading(c) === med!.room && c.hp < c.maxHp * 0.8 && c.species !== "rigger" && !c.path.length) assigned.add(c.uid);
+      const healing = P.rooms.filter(r => (r.bench > 0 || c.medbay && medOk && r.i === med!.room)
+        && (!c.breathes || r.o2 > 35) && !r.tiles.some(t => P.fire[t] > 0 || P.breach[t] > 0)
+        && !sim.crew.some(e => !e.dead && e.side === 1 && e.ship === 0 && P.tileRoom[e.tile] === r.i));
+      const current = healing.find(r => r.i === heading(c));
+      if (current && c.hp < c.maxHp * .8) { assigned.add(c.uid); continue; }
+      if (c.hp >= c.maxHp * .5) continue;
+      healing.sort((a, b) => {
+        const score = (r: typeof a) => Math.abs(c.x - r.x - r.w / 2) + Math.abs(c.y - r.y - .5) * 3 - (r.bench + (c.medbay && medOk && r.i === med!.room ? 4 : 0)) * 2;
+        return score(a) - score(b);
+      });
+      for (const room of healing) {
+        sim.moveCrew([c.uid], room.i);
+        if (heading(c) === room.i) { assigned.add(c.uid); break; }
+      }
     }
     for (const job of work) {
       const crewThere = mine.filter((c) => heading(c) === job.room).length;

@@ -1,0 +1,10 @@
+bg/s2-a:v5g
+bg/s2-b:v5g
+bg/s2-c:v5g
+bg/s2-d:v5g
+bg/s2-e:v5g
+bg/s3-a:v5g
+bg/s3-b:v5g
+bg/s3-c:v5g
+bg/s3-d:v5g
+bg/s3-e:v5g

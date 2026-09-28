@@ -1,0 +1,16 @@
+{
+ "stage": "III",
+ "hull": "lamplighter",
+ "scale": 0.75,
+ "at": [
+  1250,
+  500
+ ],
+ "extras": [
+  "fins"
+ ],
+ "size": [
+  2560,
+  1280
+ ]
+}

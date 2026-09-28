@@ -5,11 +5,12 @@ import { Rng } from "../core/rng.ts";
 import type { HazardId, StageIndex } from "../game/ids.ts";
 import type { Relay, RelayType, StageMap } from "./model.ts";
 import { content } from "./content.ts";
+import { difficultyRules, type DifficultyId } from "../data/difficulty.ts";
 
 export const CHART_W = 760;
 export const CHART_H = 330;
-const MIN_DIST = 70;
-const HOP_RADIUS = 134;
+const MIN_DIST = 58;
+const HOP_RADIUS = 108;
 
 export const STAGE_HAZARDS: Record<StageIndex, HazardId[]> = {
   1: ["debris-field", "rust-squall", "sun-glare"],
@@ -19,9 +20,9 @@ export const STAGE_HAZARDS: Record<StageIndex, HazardId[]> = {
 
 /** Relay type weights per stage for the non-fixed relays. */
 const TYPE_WEIGHTS: Record<StageIndex, [RelayType, number][]> = {
-  1: [["combat", 30], ["event", 27], ["distress", 12], ["hazard", 10], ["bench", 7], ["empty", 10]],
-  2: [["combat", 31], ["event", 25], ["distress", 12], ["hazard", 14], ["bench", 7], ["empty", 9]],
-  3: [["combat", 37], ["event", 21], ["distress", 10], ["hazard", 16], ["bench", 6], ["empty", 8]],
+  1: [["combat", 42], ["event", 22], ["distress", 12], ["hazard", 10], ["bench", 7], ["empty", 10]],
+  2: [["combat", 48], ["event", 21], ["distress", 12], ["hazard", 14], ["bench", 7], ["empty", 9]],
+  3: [["combat", 60], ["event", 16], ["distress", 10], ["hazard", 16], ["bench", 6], ["empty", 8]],
 };
 
 /** Hops of slack the Seal gives beyond the shortest route (FTL fleet pressure). */
@@ -74,14 +75,14 @@ export function hopDistances(relays: { links: number[] }[], from: number): numbe
   return d;
 }
 
-function tryGenerate(stage: StageIndex, rng: Rng): StageMap | null {
+function tryGenerate(stage: StageIndex, rng: Rng, difficulty: DifficultyId): StageMap | null {
   const W = CHART_W;
   const H = CHART_H;
   const pts: Pt[] = [];
   const start = { x: 22, y: Math.round(H / 2 + rng.int(-50, 50)) };
   const exit = { x: W - 20, y: Math.round(H / 2 + rng.int(-60, 60)) };
   pts.push(start, exit);
-  const target = rng.int(20, 24);
+  const target = rng.int(28, 32);
   // Dart throwing with a minimum distance (Poisson-disc); a few passes with shrinking spacing if needed.
   for (let pass = 0; pass < 3 && pts.length < target; pass++) {
     const md = MIN_DIST - pass * 6;
@@ -90,7 +91,7 @@ function tryGenerate(stage: StageIndex, rng: Rng): StageMap | null {
       if (pts.every((q) => dist(p, q) >= md)) pts.push(p);
     }
   }
-  if (pts.length < 20) return null;
+  if (pts.length < 28) return null;
 
   const n = pts.length;
   const links: Set<number>[] = pts.map(() => new Set<number>());
@@ -134,7 +135,7 @@ function tryGenerate(stage: StageIndex, rng: Rng): StageMap | null {
   const lowDeg = links.filter((s) => s.size < 2).length;
   if (lowDeg > 1) return null;
   const shortest = d[1];
-  const [minHops, maxHops] = stage === 1 ? [6, 8] : [6, 9];
+  const [minHops, maxHops] = stage === 3 ? [8, 10] : [9, 11];
   if (shortest < minHops || shortest > maxHops) return null;
 
   // Order relays left → right (start = 0 stays first, exit last) for stable ids and names.
@@ -164,7 +165,7 @@ function tryGenerate(stage: StageIndex, rng: Rng): StageMap | null {
   relays[exitId].type = "exit";
   assignTypes(stage, relays, startId, exitId, rng);
 
-  const budget = shortest + SEAL_MARGIN[stage];
+  const budget = shortest + SEAL_MARGIN[stage] + difficultyRules(difficulty).extraSealHops;
   const sealStep = (relays[exitId].x - 34 - SEAL_START) / budget;
   return {
     stage, w: W, h: H, relays, start: startId, exit: exitId, sealX: SEAL_START, sealStep, shortest, revealed: false,
@@ -192,21 +193,38 @@ function assignTypes(stage: StageIndex, relays: Relay[], startId: number, exitId
     if (r) r.type = t;
   }
   for (const r of rest) r.type = rng.weighted(TYPE_WEIGHTS[stage], (w) => w[1])[0];
-  // Relays right next to the start are gentler: no combat on the first hop if it can be helped.
-  for (const id of relays[startId].links) {
-    const r = relays[id];
-    if (r.type === "combat" && rng.chance(0.6)) r.type = "event";
+  // One charted carrier corridor crosses the patrol territory and a midpoint service yard.
+  // This is fixed world composition, never a quota that spawns extra enemies after the player chooses a route.
+  const toExit = hopDistances(relays, exitId);
+  const corridor: Relay[] = [];
+  let pos = startId;
+  while (pos !== exitId) {
+    pos = relays[pos].links.find(id => toExit[id] === toExit[pos] - 1)!;
+    if (pos !== exitId) corridor.push(relays[pos]);
   }
+  const middle = Math.floor(corridor.length / 2);
+  if (corridor[middle]) {
+    const nearMarket = free.filter(r => r.type === "market").sort((a, b) => Math.abs(a.x - corridor[middle].x) - Math.abs(b.x - corridor[middle].x))[0];
+    if (nearMarket) nearMarket.type = "event";
+    corridor[middle].type = "market";
+  }
+  if (corridor[1]) corridor[1].type = "bench";
+  const fights = stage === 1 ? [0, 2, 5, 7] : stage === 2 ? [0, 2, 3, 5, 7] : [0, 2, 3, 5, 6, 7];
+  for (const i of fights) if (corridor[i] && i !== middle) {
+    corridor[i].type = "combat";
+    corridor[i].interception = i === 0 || i === 5 || stage === 3;
+  }
+  for (const r of free) if (r.type === "combat" && !r.interception) r.interception = rng.chance(0.45);
   for (const r of relays) {
     if (r.type === "hazard") r.hazard = rng.pick(STAGE_HAZARDS[stage]);
   }
 }
 
 /** Deterministic map for a stage of a run. */
-export function generateMap(stage: StageIndex, seed: number): StageMap {
+export function generateMap(stage: StageIndex, seed: number, difficulty: DifficultyId = "medium"): StageMap {
   const base = new Rng((seed ^ Math.imul(stage, 0x9e3779b1)) >>> 0);
   for (let attempt = 0; attempt < 200; attempt++) {
-    const m = tryGenerate(stage, base.fork(`map-${stage}-${attempt}`));
+    const m = tryGenerate(stage, base.fork(`map-${stage}-${attempt}`), difficulty);
     if (m) return m;
   }
   throw new Error(`map generation failed for stage ${stage}`);

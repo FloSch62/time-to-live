@@ -145,6 +145,60 @@ export class Gfx {
   }
 
   /**
+   * Draw a low-resolution pixel-art scene (DIRECTION v5: e.g. 640×360 drawn 3×, 480×270 drawn 4×) over the whole
+   * screen at an integer number of backing pixels per art pixel, smoothing off. Larger images (overscan) are centred.
+   * Offsets are in layout units and snap to the art-pixel grid; an offset that exposes an edge repeats the border
+   * column/row. Returns the art-pixel size in layout units, or 0 when `img` is not a low-resolution scene.
+   */
+  pixelScene(img: CanvasImageSource | null, offsetX = 0, offsetY = 0, alpha = 1): number {
+    const cell = pixelSceneCell(img);
+    if (!img || !cell) return 0;
+    const iw = (img as HTMLImageElement).width;
+    const ih = (img as HTMLImageElement).height;
+    const w = iw * cell;
+    const h = ih * cell;
+    const x = Math.round(((960 - w) / 2 + offsetX) / cell) * cell;
+    const y = Math.round(((540 - h) / 2 + offsetY) / cell) * cell;
+    const c = this.ctx;
+    const a = c.globalAlpha;
+    const smooth = c.imageSmoothingEnabled;
+    c.globalAlpha = a * alpha;
+    c.imageSmoothingEnabled = false;
+    c.drawImage(img, x, y, w, h);
+    if (x > 0) c.drawImage(img, 0, 0, 1, ih, 0, y, x, h);
+    if (x + w < 960) c.drawImage(img, iw - 1, 0, 1, ih, x + w, y, 960 - x - w, h);
+    if (y > 0) c.drawImage(img, 0, 0, iw, 1, x, 0, w, y);
+    if (y + h < 540) c.drawImage(img, 0, ih - 1, iw, 1, x, y + h, w, 540 - y - h);
+    c.imageSmoothingEnabled = smooth;
+    c.globalAlpha = a;
+    return cell;
+  }
+
+  /**
+   * Draw a low-resolution illustration inside a layout box at the largest integer number of backing pixels per art
+   * pixel that fits, centred on the backing grid, smoothing off (DIRECTION v5 event art: 213×106 drawn 3× in the
+   * 320×160 event frame). Returns the backing pixels per art pixel, or 0 when the image does not fit.
+   */
+  pixelFit(img: CanvasImageSource | null, x: number, y: number, w: number, h: number, alpha = 1): number {
+    if (!img) return 0;
+    const iw = (img as HTMLImageElement).width;
+    const ih = (img as HTMLImageElement).height;
+    const k = Math.floor(Math.min((w * 2) / iw, (h * 2) / ih));
+    if (k < 1) return 0;
+    const c = this.ctx;
+    const a = c.globalAlpha;
+    const smooth = c.imageSmoothingEnabled;
+    c.globalAlpha = a * alpha;
+    c.imageSmoothingEnabled = false;
+    const bx = Math.round(x * 2) + Math.floor((Math.round(w * 2) - iw * k) / 2);
+    const by = Math.round(y * 2) + Math.floor((Math.round(h * 2) - ih * k) / 2);
+    c.drawImage(img, bx / 2, by / 2, (iw * k) / 2, (ih * k) / 2);
+    c.imageSmoothingEnabled = smooth;
+    c.globalAlpha = a;
+    return k;
+  }
+
+  /**
    * Draw part of an image. Source rect in image pixels; destination in layout units at the image's density `d`
    * (pass the atlas scale for HD atlases).
    */
@@ -239,6 +293,30 @@ export class Gfx {
     const a = atlas("ui");
     const s = a?.slices[variant] ?? (variant !== "panel" ? a?.slices["panel"] : undefined);
     if (a && s) {
+      // A 9-slice tiles its edges and centre from small source cells, which can mean hundreds of blits for one large
+      // panel. Each size is composed once into an offscreen canvas and reused.
+      if (w > 0 && h > 0 && typeof document !== "undefined") {
+        const key = `${variant}|${w}|${h}`;
+        let cv = panelCache.get(key);
+        if (!cv) {
+          const k = atlasScale(a);
+          cv = document.createElement("canvas");
+          cv.width = Math.ceil(w * k);
+          cv.height = Math.ceil(h * k);
+          const cc = cv.getContext("2d")!;
+          cc.imageSmoothingEnabled = false;
+          cc.scale(k, k);
+          nineSlice(cc, a, s, 0, 0, w, h);
+          if (panelCache.size > 400) panelCache.clear();
+          panelCache.set(key, cv);
+        }
+        const c = this.ctx;
+        const smooth = c.imageSmoothingEnabled;
+        c.imageSmoothingEnabled = false;
+        c.drawImage(cv, x, y, w, h);
+        c.imageSmoothingEnabled = smooth;
+        return;
+      }
       nineSlice(this.ctx, a, s, x, y, w, h);
       return;
     }
@@ -279,6 +357,8 @@ export class Gfx {
   }
 }
 
+const panelCache = new Map<string, HTMLCanvasElement>();
+
 /** 9-slice with insets in atlas pixels; the destination is in layout units (atlas scale k = HD atlases). */
 function nineSlice(c: Ctx, a: Atlas, s: { x: number; y: number; w: number; h: number; l: number; t: number; r: number; b: number }, x: number, y: number, w: number, h: number) {
   const img = a.image;
@@ -314,6 +394,18 @@ function tile(c: Ctx, img: CanvasImageSource, k: number, sx: number, sy: number,
       c.drawImage(img, sx, sy, ww * k, hh * k, dx + x, dy + y, ww, hh);
     }
   }
+}
+
+/**
+ * Art-pixel size in layout units of a low-resolution pixel-art scene: the smallest integer number of backing pixels
+ * (1920×1080 store) per art pixel that covers the screen, ≥ 2 (so 640×360 → 1.5, 480×270 → 2). 0 for HD art.
+ */
+export function pixelSceneCell(img: CanvasImageSource | null | undefined): number {
+  const iw = (img as HTMLImageElement | null)?.width ?? 0;
+  const ih = (img as HTMLImageElement | null)?.height ?? 0;
+  if (!iw || !ih || iw > 960) return 0;
+  const k = Math.max(Math.ceil(1920 / iw - 1e-6), Math.ceil(1080 / ih - 1e-6));
+  return k >= 2 ? k / 2 : 0;
 }
 
 /** Round a layout coordinate to the nearest backing pixel for density d (d = 2 → half units). */

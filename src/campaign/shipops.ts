@@ -11,7 +11,7 @@ import { makePlayerShip, newInventory, installSystem as dataInstallSystem } from
 import { afterHop as dataAfterHop } from "../data/augments.ts";
 import type { RunState } from "./model.ts";
 import { cargoCap, crewCap, freeSocket, normalizeShip, refit } from "./refit.ts";
-import type { LampColor, ModuleId } from "../game/ids.ts";
+import type { LampColor, LeadCarId, ModuleId } from "../game/ids.ts";
 
 export { cargoCap, crewCap };
 export const AUGMENT_MAX = 3;
@@ -71,15 +71,15 @@ export function makeCrew(run: RunState, species: SpeciesId, name: string | undef
 }
 
 /** The Lamplighter at the start of a voyage (src/data), crew named from the writing's name lists. */
-export function newShip(name: string, rng: Rng, lamp: LampColor = "amber"): ShipState {
-  const ship = normalizeShip(makePlayerShip(name, (species, taken) => pickCrewName(species, taken, rng), lamp));
+export function newShip(name: string, rng: Rng, lamp: LampColor = "amber", tenderId: LeadCarId = "lamplighter"): ShipState {
+  const ship = normalizeShip(makePlayerShip(name, (species, taken) => pickCrewName(species, taken, rng), lamp, tenderId));
   // Stable, short crew ids within the run.
   ship.crew.forEach((c, i) => (c.id = `c${i + 1}`));
   return ship;
 }
 
-export function startInventory(): Inventory {
-  return typeof newInventory === "function" ? newInventory() : { ...START_INVENTORY };
+export function startInventory(tenderId: LeadCarId = "lamplighter"): Inventory {
+  return typeof newInventory === "function" ? newInventory(tenderId) : { ...START_INVENTORY };
 }
 
 /** Augment effects between relays (src/data: Varga's Crimper, Harrow's Kettle). */
@@ -144,7 +144,7 @@ export function baselineShip(name: string): ShipState {
   };
 }
 
-export const START_INVENTORY: Inventory = { salvage: 30, ttl: 16, payloads: 8, spares: 2 };
+export const START_INVENTORY: Inventory = { salvage: 20, ttl: 16, payloads: 8, spares: 2 };
 
 /** Rooms where purchasable systems go (contract §4.6: hold-a = drones slot, hold-b = veil slot). */
 export const SYSTEM_ROOM: Partial<Record<SystemId, string>> = { drones: "hold-a", veil: "hold-b" };

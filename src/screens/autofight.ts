@@ -7,7 +7,7 @@ import { ENEMY_FLAVOR } from "../content/flavor";
 import type { CombatResult, CombatSetup } from "../game/types";
 import type { RunState } from "../campaign/model";
 import { enemyName } from "../campaign/catalog";
-import { brassButton, titlePlate, tracked } from "./kit";
+import { HUD_BAND, TYPE, brassButton, header, scrim, titlePlate } from "./kit";
 
 const DEV = typeof location !== "undefined" && new URLSearchParams(location.search).has("dev");
 
@@ -29,14 +29,14 @@ export function createAutoFightScene(app: App, run: RunState, setup: CombatSetup
       }
     },
     draw(g, a) {
-      g.dim(0.6);
+      scrim(g, app, run);
       const w = 520;
       const h = 230;
       const x = 480 - w / 2;
-      const y = 270 - h / 2;
+      const y = Math.round(HUD_BAND + 8 + (514 - HUD_BAND - 8 - h) / 2);
       g.panel(x, y, w, h, setup.boss ? "panel-danger" : "dialog");
-      titlePlate(g, 480, y - 10, setup.boss ? "GUARDIAN" : "UNKNOWN SENDER", { w: 220, color: P.ember1 });
-      tracked(g, (fl?.name ?? enemyName(setup.enemy)).toUpperCase(), 480, y + 26, { font: "labelb", color: P.brass0, align: "center" });
+      titlePlate(g, 480, y - 11, setup.boss ? "GUARDIAN" : "UNKNOWN SENDER", { w: 220, color: P.ember1 });
+      header(g, fl?.name ?? enemyName(setup.enemy), 480, y + 26, { font: TYPE.strong, color: P.brass0, align: "center" });
       if (fl?.classLine) g.text(`{ivory3}${fl.classLine}{/}`, 480, y + 40, { align: "center" });
       g.text(`{teal1}${fl?.handshake ?? "UNKNOWN SENDER."}{/}`, 480, y + 64, { align: "center", width: w - 60 });
       if (setup.intro) g.text(setup.intro, 480, y + 104, { align: "center", width: w - 60, color: C.textDim });
@@ -44,7 +44,7 @@ export function createAutoFightScene(app: App, run: RunState, setup: CombatSetup
         const f = Math.min(1, resolving / 1.3);
         g.rect(x + 60, y + h - 50, w - 120, 8, P.ink0);
         g.rect(x + 61, y + h - 49, Math.round((w - 122) * f), 6, P.ember2);
-        tracked(g, "HELLO · I HEAR YOU · I HEAR YOU HEAR ME", 480, y + h - 34, { font: "small", color: P.ivory3, align: "center", track: 1 });
+        header(g, "Hello · I hear you · I hear you hear me", 480, y + h - 32, { color: P.ivory3, align: "center" });
         return;
       }
       const bw = DEV ? 120 : 200;

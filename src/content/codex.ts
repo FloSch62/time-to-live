@@ -298,7 +298,7 @@ export const CODEX: CodexEntry[] = [
   },
   {
     id: "machines-gate-wardens", category: "machines", title: "Gate Wardens", unlock: "outcome", // s1 relays (exit)
-    text: "Portcullis engines that answer only the Iron Regent's crown. When the Regent rises they step out of its gate wings, keyholes lit, to hold the threshold one more time. When their task ends they fold back into pieces of the gate.",
+    text: "Portcullis engines that answer only the Iron Regent's crown. When the Regent rises they unfold from its gate wings on rotors, keyholes lit, to hold the threshold one more time, and they mend the Regent while they fly. When their task ends they fold back into pieces of the gate.",
   },
   {
     id: "machines-sealing-drones", category: "machines", title: "Sealing Drones", unlock: "outcome", // s3 relays (exit)
@@ -352,11 +352,11 @@ export const CODEX: CodexEntry[] = [
   },
   {
     id: "runbook-second-way-home", category: "runbook", title: "Never Trust One Road", unlock: "outcome", // s1 relays (exit)
-    text: "The Iron Regent's law is the oldest proverb on the Line: no passage without proof of a second way home. A network that can lose any one road and still arrive is a network that will survive what is ahead. The Regent does not want to be beaten. It wants to see you lose a road and keep coming.",
+    text: "The Iron Regent's law is the oldest proverb on the Line: no passage without proof of a second way home. A network that can lose any one road and still arrive is a network that will survive what is ahead. The Regent does not want to be beaten. It wants to see you lose a road and keep coming, and its gate only opens to two roads at once: two different weapons, or a weapon and a drone, striking within a breath of each other.",
   },
   {
     id: "runbook-plurality", category: "runbook", title: "One Voice Is an Echo", unlock: "outcome", // s2 relays (exit)
-    text: "The bellmakers' saying: one voice is an echo; many voices can break the glass. A single strike only makes a bell ring. Many landing at once, lasers and beams and payloads together, break it. The Hollow Choir only lets a voice go when more than one voice is speaking.",
+    text: "The bellmakers' saying: one voice is an echo; many voices can break the glass. A single strike only makes a bell ring. Three landing within a breath of one another, bolts and beams and payloads together, break it. A crew that holds the helm on the Choir's own note long enough can open the glass too. The Hollow Choir only lets a voice go when more than one voice is speaking.",
   },
   {
     id: "runbook-quarantine-procedure", category: "runbook", title: "Quarantine Procedure", unlock: "outcome", // s3 relays (exit)
@@ -369,8 +369,20 @@ export const CODEX: CodexEntry[] = [
 
   // ─── The tender ──────────────────────────────────────────────────────────────────────────────────────────
   {
-    id: "tender-lamplighter", category: "tender", title: "The Lamplighter", unlock: "start", art: "ships/lamplighter",
-    text: "Car L-12, out of Reach Dock Twelve. A long brass-and-ivory cable tender: riveted plates, a lamp cupola at the nose, a cab window at the helm, the drive trolley and grip arms on the roof, a keel of air tanks below, tool mounts built for splicers and signal lamps. It ran relighting rounds for two hundred years. For thirty-one more it was the one tender nobody took, because its trolley grip had cracked. Pell found a grip this year. Every keeper paints a name over the old one. The old one shows through. Its maintenance key still opens the stores at every cleared relay: 24 salvage in the Reach, 36 in the Cathedral, 48 near the Heart. One locker, one claim. The Seal empties the lockers it reaches first.",
+    id: "tender-pattern", category: "tender", title: "The Lamplighter Pattern", unlock: "start", art: "ships/lamplighter",
+    text: "The Reach docks built forty-one tenders over four hundred years, all to one pattern: a long brass-and-ivory pressure car with a lamp cupola at the nose, a cab window under it, the drive trolley and grip arms on the roof holding the car to its carrier, a keel of air tanks and ballast below, and tool mounts on the roof and belly. The dock crews called it the lamplighter pattern, because every tender's first job was lamps. Cars built for other work kept the pattern and changed the fittings: lenses for an inspection car, cradles and a crane for a retrieval car. Every tender also carries a maintenance key. At a working relay it registers a one-time arrival allocation from the service locker: it pays for making the connection, not for choosing the right answer. A damaged or inaccessible locker supplies nothing. One locker, one claim. The Seal empties the lockers it reaches first.",
+  },
+  {
+    id: "tender-lamplighter", category: "tender", title: "L-12, the Lamplighter", unlock: "start", art: "ships/lamplighter",
+    text: "Car L-12, out of Reach Dock Twelve: the pattern as the docks first drew it, a lamp and rescue tender with tool mounts built for splicers and signal lamps. It ran relighting rounds for two hundred years, and eleven rescue trips on the Night of the Fault under Ilse Corran. For thirty-one more it was the one tender nobody took, because its trolley grip had cracked. Pell found a grip this year. Every keeper paints a name over the old one. The old one shows through.",
+  },
+  {
+    id: "tender-glasswing", category: "tender", title: "G-04, the Glasswing", unlock: "start", art: "ships/glasswing",
+    text: "A lamplighter-pattern car fitted for optical inspection: shorter than L-12, with paired collimator lenses under the nose cupola, a prism housing and survey horns on the roof, and a calibration cradle where the second hold used to be. Its crews kept the Reach's warning lamps in focus and read carrier glass for cracks. When the glass routes closed they parked it with the lenses capped and painted KEEP THE PAIR TOGETHER on the tool rack. The Night Shift uncapped both lenses. Driven hard, the paired emitters that once aligned a lamp now fire together.",
+  },
+  {
+    id: "tender-switchback", category: "tender", title: "S-08, the Switchback", unlock: "start", art: "ships/switchback",
+    text: "A lamplighter-pattern car built tall for drone retrieval: five decks, launch cradles and a retrieval crane on the roof beside the drive trolley, and dark retrieval shutters along the lower deck. It fetched inspection drones back from spans no person could reach. Its last dock list reads six returned, one still missing. There was never a ward mesh aboard: the heavy drive and the shutters were its defence, and the shutters can still douse every lamp while its drones keep working outside.",
   },
   {
     id: "tender-consist", category: "tender", title: "Consists", unlock: "start",
@@ -386,7 +398,7 @@ export const CODEX: CodexEntry[] = [
   },
   {
     id: "tender-seal", category: "tender", title: "The Seal", unlock: "start", art: "events/sealed-relay",
-    text: "To the quarantine machinery a live connection crossing the Line looks exactly like storm traffic. So it follows. Cable Wraiths cut the carriers behind you; Quarantine Drones close and hold each relay you pass in a black lattice with a red seam. It is not a hunt. It is the order doing its job, from the direction you came. Lingering keeps a route warm, and the Seal moves faster toward warm routes.",
+    text: "To the quarantine machinery a live connection crossing the Line looks exactly like storm traffic. So it follows. Quarantine Drones lock the signaling conduits and service lockers in a black lattice with a red seam. The supporting carrier remains intact, and independent switchgear still hears a manned greeting; arriving means facing the patrol. Wraiths can physically cut individual work spans, but ordinary quarantine is isolation, not missing steel. Hops, deliberate waits and marked actions advance the Seal. Reading and tactical pause do not. A confirmed delivery releases isolation along the surviving route.",
   },
   {
     id: "tender-crew", category: "tender", title: "The Crew", unlock: "start",

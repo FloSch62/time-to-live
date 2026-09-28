@@ -1,0 +1,3 @@
+events/echo-tender-lit:v5m
+events/tender-wreck:v5m
+events/relay-switchyard:v5m

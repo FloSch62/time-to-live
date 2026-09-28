@@ -35,6 +35,7 @@ ROLE = {
     "verdi": (63, 138, 116), "verdi_dk": (42, 92, 82), "rust": (106, 45, 32), "violet": (79, 58, 143),
     "violet_hi": (125, 91, 201), "violet_lt": (178, 140, 240), "glass": (44, 33, 89), "black": (19, 26, 43),
     "ember": (163, 34, 46), "ember_dk": (94, 18, 36),
+    "ivory_dk": (168, 155, 123), "ivory_sh": (125, 113, 89),
     # glows (drawn as decals, never part of the silhouette unless the shape says so)
     "amber": (255, 179, 71), "amber_hi": (255, 241, 194), "teal": (63, 211, 201), "teal_hi": (200, 255, 246),
     "red": (224, 68, 58), "red_hi": (255, 138, 107), "vglow": (226, 200, 255),
@@ -154,6 +155,245 @@ def lamplighter():
     s["glow"] = [(485, 142, 13), (470, 82, 10), (22, 64, 3)]
     s["couplerRear"] = (2, 150)
     s["keelHang"] = (232, 219)
+    return s
+
+
+def glasswing():
+    """Native 10x4 survey hull. Narrow pressure body with a separate twin optics rail, never a scaled Lamplighter."""
+    s = {"canvas": (452, 244), "grid": (24, 76, 10, 4), "face": "right", "class": "player", "unit": 36}
+    tr, cable = trolley(106, 238, 64, "brass")
+    s["shapes"] = tr + [
+        body_rect(s, 7, 12),
+        poly("ivory", [(378, 68), (402, 78), (413, 107), (413, 138), (384, 150)]),
+        poly("brass_dk", [(388, 83), (400, 88), (406, 111), (386, 111)]),
+        poly("lamp", [(391, 87), (398, 91), (402, 106), (389, 106)], False),
+        # Independent low survey bridge and huge faceted prism outside the occupied grid.
+        rect("brass_dk", 266, 52, 103, 15),
+        poly("brass", [(270, 47), (319, 14), (360, 26), (373, 53), (318, 63)]),
+        poly("teal", [(278, 45), (319, 21), (351, 30), (361, 48), (319, 55)], False),
+        line("steel_hi", [(319, 21), (319, 55), (351, 30)], 2, False),
+        # Pair of long exposed optical tubes gives the survey nose its own silhouette.
+        rect("steel_dk", 381, 143, 59, 18), rect("brass", 385, 139, 10, 26),
+        rect("brass", 414, 138, 9, 28), ell("brass_hi", 441, 152, 10, 17),
+        ell("teal", 445, 152, 5, 12, False),
+        rect("steel_dk", 381, 189, 59, 18), rect("brass", 385, 185, 10, 26),
+        rect("brass", 414, 184, 9, 28), ell("brass_hi", 441, 198, 10, 17),
+        ell("lamp", 445, 198, 5, 12, False),
+        # Compact stepped service tail, clear aerial vanes, coupler at rear tile [0,2].
+        rect("steel_dk", 12, 89, 10, 46), rect("verdi", 16, 101, 7, 20),
+        line("steel_hi", [(37, 70), (37, 39), (47, 33)], 4),
+        line("brass", [(53, 70), (53, 44), (61, 37)], 3),
+        rect("brass", 2, 147, 16, 38), rect("steel_hi", 6, 152, 7, 27),
+        rect("brass_dk", 18, 219, 372, 10),
+        rect("steel", 62, 228, 26, 12), rect("steel", 329, 228, 26, 12),
+        rect("steel", 63, 60, 25, 12), rect("steel", 379, 56, 25, 15),
+        rect("brass_hi", 96, 224, 15, 17), rect("brass_hi", 243, 224, 15, 17),
+        rect("steel", 138, 228, 26, 14),
+        dot("lamp", 22, 82, 3), dot("teal", 349, 64, 3),
+    ]
+    s.update(cable=cable, keep=[], lamp_repaint=1.0,
+             mounts=[(75, 60), (391, 56), (75, 240), (342, 240)],
+             glow=[(445, 198, 10), (445, 152, 10), (396, 97, 8), (319, 36, 14)],
+             couplerRear=(2, 166), keelHang=(150, 242))
+    return s
+
+
+def switchback():
+    """Native 13x5 retrieval workshop. Five decks, a tall lifting crane and three external drone cradles."""
+    s = {"canvas": (560, 292), "grid": (24, 90, 13, 5), "face": "right", "class": "player", "unit": 36}
+    # The open yoke is intentionally unlike a solid cab-shaped pylon: visible negative space prevents
+    # the model interpreting the cable grip as a small wheeled vehicle parked on the roof.
+    cable = (317, 10)
+    tr = [line("brass", [(251, 38), (272, 78)], 9), line("brass", [(383, 38), (362, 78)], 9),
+          line("steel_hi", [(256, 44), (276, 77)], 3), line("steel_hi", [(378, 44), (358, 77)], 3),
+          rect("brass_dk", 309, 37, 16, 43), rect("steel_hi", 314, 45, 6, 29),
+          rrect("brass", 236, 30, 162, 13, 4), rect("steel_dk", 271, 7, 92, 6)]
+    for wheel in (251, 383):
+        tr += [ell("steel_dk", wheel, 22, 19), ell("brass", wheel, 22, 15),
+               ell("steel", wheel, 22, 12), ell("brass_hi", wheel, 22, 5),
+               line("brass_hi", [(wheel - 12, 22), (wheel + 12, 22)], 2),
+               line("brass_hi", [(wheel, 10), (wheel, 34)], 2)]
+    s["shapes"] = tr + [
+        body_rect(s, 8, 6),
+        rect("brass_dk", 17, 82, 481, 10),
+        poly("ivory", [(489, 82), (526, 94), (548, 124), (548, 168), (526, 178), (514, 270), (489, 278)]),
+        rect("brass_dk", 500, 103, 33, 47), rect("lamp", 505, 109, 23, 32, False),
+        rect("steel_dk", 513, 188, 45, 56), rect("brass", 523, 183, 34, 7),
+        rect("brass", 523, 242, 34, 7), rect("lamp", 547, 200, 7, 20, False),
+        # The articulated crane stands above the drive and the occupied grid.
+        rect("steel_dk", 28, 64, 37, 22),
+        line("brass", [(44, 69), (69, 21), (176, 21)], 12),
+        line("steel_hi", [(51, 66), (75, 31), (168, 31)], 4),
+        ell("brass_hi", 70, 25, 9), line("steel", [(176, 20), (176, 60), (166, 68)], 4),
+        # Three separate drone saddles, with open space between the rotor-shaped equipment.
+        rect("brass_dk", 78, 71, 136, 12),
+        rect("steel_dk", 81, 48, 31, 25), rect("steel_dk", 127, 48, 31, 25), rect("steel_dk", 173, 48, 31, 25),
+        ell("steel", 97, 55, 16, 10), ell("steel", 143, 55, 16, 10), ell("steel", 189, 55, 16, 10),
+        dot("teal", 97, 54, 3), dot("teal", 143, 54, 3), dot("teal", 189, 54, 3),
+        # Bottom-deck retrieval mouth, deep belly racks and five-deck rear gangway.
+        rect("brass", 2, 197, 16, 38), rect("steel_hi", 6, 202, 7, 27),
+        rect("brass_dk", 16, 271, 489, 10),
+        rect("steel_dk", 66, 272, 106, 18), rect("steel_dk", 330, 272, 108, 18),
+        line("brass_hi", [(70, 277), (168, 277)], 3, False),
+        line("brass_hi", [(334, 277), (434, 277)], 3, False),
+        rect("steel", 212, 270, 64, 20), rect("brass_hi", 191, 276, 17, 15), rect("brass_hi", 347, 276, 17, 15),
+        rect("steel", 33, 76, 25, 12), rect("steel", 464, 70, 25, 15),
+        rect("steel", 35, 279, 24, 12), rect("steel", 461, 279, 24, 12),
+        dot("lamp", 20, 96, 3), dot("teal", 485, 87, 3),
+    ]
+    s.update(cable=cable, keep=[], lamp_repaint=1.0,
+             mounts=[(45, 76), (477, 70), (47, 291), (473, 291)],
+             glow=[(550, 210, 8), (516, 124, 12), (97, 54, 4), (143, 54, 4), (189, 54, 4)],
+             couplerRear=(2, 216), keelHang=(258, 291))
+    return s
+
+
+# ---------------------------------------------------------------------------------------------------- A2 v5 tenders
+# Lamplighter-pattern sisters with volume (lead, A2 revision): a capsule body with a rounded roofline and lower edge,
+# cylinder shading (lit top band, shadow band below), brass ribs and rails, a roof saddle plate for the separate drive
+# trolley (tools/art/trolley.py; no trolley is baked into the hull), nose lamp and cab window, tail cap with the
+# gangway coupler, keel tanks strapped to the belly. The roof line is always 36 units (72 px) under the carrier, so the
+# one trolley design fits every tender. Job fittings (Krea parts on a key backdrop) are composited by hull_v5.py.
+TROLLEY_DROP = 36   # layout units from the carrier centre line to the roof line (trolley.py: 72 px)
+
+
+def _tender_v5(canvas, grid, body_top, body_bot, nose, cable_x, mounts, keel, ribs_every=2, saddle_half=75,
+               minimal=True):
+    """minimal=True (A2 round 5): only the capsule volume, nose, keel, rails and saddle are blocked in; Krea invents
+    the plating, ribs, pipes and ports at full repaint (as it did for the Lamplighter), so the side is its own."""
+    gx, gy, cols, rows = grid
+    gw, gh = cols * TILE, rows * TILE
+    x0, x1 = gx - 8, gx + gw + 6
+    shapes = []
+    # keel tanks first (behind the belly), strapped
+    for kx, kw in keel:
+        # a horizontal riveted air tank: rounded end caps, a lit upper band, two brass straps up into the belly
+        shapes += [rrect("steel", kx, body_bot - 6, kw, 18, 9), rect("steel_hi", kx + 8, body_bot - 3, kw - 16, 3, False),
+                   rect("steel_dk", kx + 8, body_bot + 7, kw - 16, 3, False),
+                   ell("steel_dk", kx + 5, body_bot + 3, 4, 7, False), ell("steel_dk", kx + kw - 5, body_bot + 3, 4, 7, False)]
+        for sx in (kx + kw // 4, kx + 3 * kw // 4):
+            shapes += [rect("brass", sx - 3, body_bot - 10, 6, 22), rect("brass_hi", sx - 3, body_bot - 10, 2, 22, False)]
+    # tail cap with the gangway coupler
+    shapes += [rrect("ivory", x0 - 10, body_top + 6, 26, body_bot - body_top - 12, 10),
+               rect("brass", x0 - 14, (body_top + body_bot) // 2 - 16, 10, 34),
+               rect("steel_hi", x0 - 11, (body_top + body_bot) // 2 - 12, 5, 26)]
+    # the capsule body, its plates in slightly different tones (patched and replaced over four hundred years)
+    shapes.append(rrect("ivory", x0, body_top, x1 - x0, body_bot - body_top, 20))
+    for c in range(0, cols, 2) if not minimal else ():
+        for r in range(rows):
+            if (c * 7 + r * 3) % 5 in (1, 3):
+                shapes.append(rect("ivory_dk" if (c + r) % 3 else "ivory_hi", gx + c * TILE + 3, gy + r * TILE + 2,
+                                   2 * TILE - 6, TILE - 4, False))
+    shapes += nose
+    if minimal:
+        shapes += [rrect("ivory_hi", x0 + 6, body_top + 3, x1 - x0 - 10, 8, 3, False),
+                   rrect("ivory_dk", x0 + 6, body_bot - 26, x1 - x0 - 10, 18, 6, False),
+                   rrect("brass", x0 + 4, body_top - 3, x1 - x0 - 8, 5, 2),
+                   rect("brass_dk", x0 + 6, body_bot - 5, x1 - x0 - 12, 4),
+                   rrect("brass", cable_x - saddle_half, body_top - 7, 2 * saddle_half, 8, 2)]
+        for mx in mounts[:2]:
+            shapes.append(rect("steel", mx - 13, body_top - 7, 26, 8))
+        for mx in mounts[2:]:
+            shapes.append(rect("steel", mx - 13, body_bot - 2, 26, 9))
+        return shapes
+    # cylinder shading (decals inside the silhouette)
+    shapes += [rrect("ivory_hi", x0 + 6, body_top + 3, x1 - x0 - 10, 6, 3, False),
+               rrect("ivory_dk", x0 + 6, body_bot - 22, x1 - x0 - 10, 14, 6, False),
+               rrect("ivory_sh", x0 + 10, body_bot - 9, x1 - x0 - 18, 5, 3, False)]
+    # brass roof rail, belly rail, ribs every other column, deck straps
+    shapes += [rrect("brass", x0 + 4, body_top - 3, x1 - x0 - 8, 5, 2), rect("brass_dk", x0 + 6, body_bot - 5, x1 - x0 - 12, 4)]
+    for c in range(0, cols + 1, ribs_every):
+        x = gx + c * TILE - 2
+        shapes += [rect("brass", x, body_top + 1, 4, body_bot - body_top - 3, False),
+                   rect("brass_hi", x, body_top + 1, 1, body_bot - body_top - 3, False)]
+    for r in range(1, rows):
+        shapes.append(rect("brass_dk", x0 + 4, gy + r * TILE - 1, x1 - x0 - 8, 3, False))
+    # verdigris pipe runs with elbows and drops, rust streaks under straps, brass-rimmed portholes
+    L = (x1 - x0)
+    shapes += [rect("verdi", x0 + 30, body_top + 9, L // 3, 3, False), rect("verdi", x0 + 30 + L // 3, body_top + 9, 3, 30, False),
+               rect("verdi_dk", x0 + 30, body_top + 12, L // 3, 1, False),
+               rect("verdi", x0 + L // 2, body_bot - 17, L // 3, 3, False), rect("verdi", x0 + L // 2, body_bot - 40, 3, 26, False),
+               rect("verdi_dk", x0 + L // 2, body_bot - 14, L // 3, 1, False)]
+    for k in range(9):
+        rx = x0 + 20 + (k * 97) % (L - 40)
+        shapes.append(rect("rust", rx, body_top + 12 + (k * 23) % 60, 2, 10 + (k * 7) % 14, False))
+    for c in range(1, cols, 3):
+        px_, py_ = gx + c * TILE + TILE // 2, gy + TILE // 2
+        shapes += [ell("brass", px_, py_, 7, 7, False), ell("glass", px_, py_, 5, 5, False),
+                   ell("steel_hi", px_ - 2, py_ - 2, 1.5, 1.5, False)]
+    # roof saddle plate for the trolley hanger (struts land at +-17 units), roof hardpoint pedestals
+    roof = body_top
+    shapes += [rrect("brass", cable_x - saddle_half, roof - 7, 2 * saddle_half, 8, 2),
+               rect("brass_dk", cable_x - saddle_half + 2, roof - 1, 2 * saddle_half - 4, 2)]
+    for mx in mounts[:2]:
+        shapes.append(rect("steel", mx - 13, roof - 7, 26, 8))
+    for mx in mounts[2:]:
+        shapes.append(rect("steel", mx - 13, body_bot - 2, 26, 9))
+    return shapes
+
+
+def glasswing_v5():
+    """Glasswing G-04, optical inspection (10x4): compact, rounded optical nose with a violet lens ring round the
+    guide lamp; prism housing forward, collimators under the lamp and survey horns aft come from hull_v5.py."""
+    grid = (24, 76, 10, 4)
+    top, bot = 66, 230
+    cable_x = 180
+    nose = [ell("ivory", 380, 148, 56, 80),
+            poly("brass_dk", [(392, 82), (418, 90), (432, 118), (392, 118)]),
+            poly("lamp", [(395, 86), (416, 93), (428, 115), (395, 115)], False),
+            ell("violet_hi", 422, 160, 20, 22), ell("brass", 422, 160, 16, 18),
+            ell("lamp", 424, 160, 12, 14, False), ell("lamp_hi", 426, 156, 4, 5, False),
+            rrect("ivory_dk", 350, 196, 70, 20, 8, False),
+            ell("brass", 404, 200, 6, 6), ell("glass", 404, 200, 4, 4, False)]
+    s = {"canvas": (490, 256), "grid": grid, "face": "right", "class": "player", "unit": 36}
+    mounts = [80, 277, 70, 330]
+    s["shapes"] = _tender_v5(s["canvas"], grid, top, bot, nose, cable_x, mounts, [(40, 120), (200, 130)], saddle_half=75)
+    s["shapes"] += [dot("lamp", 20, 84, 3), dot("teal", 60, 74, 2)]
+    keep = [(0.85, ell("x", 380, 148, 58, 82)), (0.45, ell("x", 422, 160, 22, 24)),
+            (0.55, poly("x", [(390, 80), (420, 88), (434, 120), (390, 120)])),
+            (0.85, rect("x", 38, bot - 12, 124, 26)), (0.85, rect("x", 198, bot - 12, 134, 26)),
+            (0.5, rect("x", 0, 124, 22, 50))]
+    s.update(cable=(cable_x, top - TROLLEY_DROP), keep=keep, lamp_repaint=0.35,
+             mounts=[(80, top - 7), (277, top - 7), (70, bot + 9), (330, bot + 9)],
+             glow=[(424, 160, 13), (412, 101, 10), (20, 84, 3)],
+             couplerRear=(2, (top + bot) // 2), keelHang=(200, bot + 8))
+    return s
+
+
+def switchback_v5():
+    """Switchback S-08, drone retrieval (13x5): tall and heavy, a blunt high nose with a wide cab window, the guide
+    lamp above dark louvred retrieval shutters; the heavy double trolley; retrieval crane and drone cradles aft
+    (hull_v5.py)."""
+    grid = (24, 90, 13, 5)
+    top, bot = 80, 280
+    cable_x = 385
+    nose = [poly("ivory", [(470, 80), (518, 84), (540, 104), (546, 160), (546, 262), (528, 280), (470, 280)]),
+            poly("brass_dk", [(494, 94), (530, 98), (538, 132), (494, 132)]),
+            poly("lamp", [(497, 97), (528, 100), (535, 129), (497, 129)], False),
+            ell("brass", 528, 158, 16, 18), ell("lamp", 530, 158, 12, 14, False),
+            ell("lamp_hi", 532, 154, 4, 5, False),
+            rect("steel_dk", 500, 188, 42, 64)] + [
+            rect("steel_hi", 503, 192 + 8 * k, 36, 3, False) for k in range(8)] + [
+            rect("brass", 498, 186, 46, 4), rect("brass", 498, 252, 46, 4),
+            rrect("ivory_dk", 474, 256, 66, 20, 8, False)]
+    s = {"canvas": (560, 296), "grid": grid, "face": "right", "class": "player", "unit": 36}
+    mounts = [35, 502, 90, 440]
+    s["shapes"] = _tender_v5(s["canvas"], grid, top, bot, nose, cable_x, mounts, [(60, 150), (300, 150)], saddle_half=104)
+    s["shapes"] += [dot("lamp", 20, 98, 3), dot("teal", 480, 88, 2)]
+    # the lowest deck: a band of roll-up retrieval shutters in dark gunmetal behind brass frames
+    sy0, sy1 = 90 + 4 * 36 + 4, 90 + 5 * 36 - 3
+    for k in range(8):
+        bx0 = 30 + k * 56
+        s["shapes"] += [rect("brass_dk", bx0, sy0 - 2, 54, sy1 - sy0 + 4), rect("steel_dk", bx0 + 2, sy0, 50, sy1 - sy0)]
+        s["shapes"] += [rect("steel", bx0 + 3, yy, 48, 1, False) for yy in range(sy0 + 3, sy1 - 1, 4)]
+    keep = [(0.85, poly("x", [(470, 78), (520, 82), (548, 102), (550, 282), (470, 284)])),
+            (0.45, ell("x", 528, 158, 18, 20)), (0.55, poly("x", [(492, 92), (532, 96), (540, 134), (492, 134)])),
+            (0.7, rect("x", 496, 184, 50, 74)), (0.85, rect("x", 58, bot - 12, 154, 26)),
+            (0.85, rect("x", 298, bot - 12, 154, 26)), (0.5, rect("x", 0, 160, 22, 60))]
+    s.update(cable=(cable_x, top - TROLLEY_DROP), keep=keep, lamp_repaint=0.35,
+             mounts=[(35, top - 7), (502, top - 7), (90, bot + 9), (440, bot + 9)],
+             glow=[(530, 158, 13), (516, 114, 12), (20, 98, 3)],
+             couplerRear=(2, (top + bot) // 2), keelHang=(270, bot + 8))
     return s
 
 
@@ -776,6 +1016,7 @@ def sealing_drone():
 
 SHIPS = {
     "lamplighter": lamplighter,
+    "glasswing": glasswing_v5, "switchback": switchback_v5,
     "packet-leech": packet_leech, "cable-wraith": cable_wraith, "rust-prophet": rust_prophet,
     "scrap-foreman": scrap_foreman, "scavenger-skiff": scavenger_skiff, "static-nest": static_nest,
     "ferric-colossus": ferric_colossus, "iron-regent": iron_regent, "gate-warden": gate_warden,
@@ -787,7 +1028,7 @@ SHIPS = {
 }
 
 # the lead's fixed room grids, DIRECTION v2 (cols x rows of 32 px tiles, side view)
-GRIDS = {"lamplighter": (12, 4), "packet-leech": (7, 3), "cable-wraith": (8, 2), "rust-prophet": (4, 5),
+GRIDS = {"lamplighter": (12, 4), "glasswing": (10, 4), "switchback": (13, 5), "packet-leech": (7, 3), "cable-wraith": (8, 2), "rust-prophet": (4, 5),
          "scrap-foreman": (7, 3), "scavenger-skiff": (6, 3), "static-nest": (5, 4), "ferric-colossus": (8, 4),
          "iron-regent": (9, 5), "prism-widow": (7, 3), "glass-echo": (5, 2), "wire-weaver": (7, 3),
          "glass-choir": (8, 3), "coil-serpent": (8, 2), "echo-tender": (8, 3), "hollow-choir": (9, 5),
@@ -936,7 +1177,7 @@ def render(sid, s=None):
         want = GRIDS.get(sid) or CAR_GRIDS.get(s.get("class"))
         if want and tuple(s["grid"][2:]) != want:
             raise SystemExit(f"{sid}: grid {s['grid'][2:]} != fixed {want}")
-    lim = LIMITS["boss"] if sid in BOSSES else (504, 224) if sid == "lamplighter" else (244, 224) if sid in CARS \
+    lim = LIMITS["boss"] if sid in BOSSES else (560, 296) if s.get("class") == "player" else (244, 224) if sid in CARS \
         else LIMITS["hostile"]
     if W > lim[0] or H > lim[1]:
         raise SystemExit(f"{sid}: canvas {W}x{H} exceeds {lim}")
@@ -944,7 +1185,8 @@ def render(sid, s=None):
     d = 5 * SCALE
     m = sil_gen.point(lambda v: 255 if v >= 64 else 0).filter(ImageFilter.MaxFilter(2 * (d // 2) + 1))
     m = m.filter(ImageFilter.MaxFilter(2 * (d // 2) + 1)).filter(ImageFilter.GaussianBlur(3 * SCALE))
-    keep = list(s.get("keep", [])) + [sh for sh in s["shapes"] if sh[0] in LAMP_ROLES]
+    keep = list(s.get("keep", [])) + [(s.get("lamp_repaint", KEEP), sh)
+                                      for sh in s["shapes"] if sh[0] in LAMP_ROLES]
     if keep:
         # partial repaint strength over detail the model tends to drop (KSampler blends the init back there)
         km = Image.new("L", (W * k, H * k), 0)

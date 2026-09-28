@@ -9,6 +9,8 @@ import { effective, usable, reactorFree, shieldMax, applyIon, damageSystem } fro
 import { findPath } from "./sim/path.ts";
 import { updateCrew } from "./sim/crew.ts";
 import { startFire, startBreach } from "./sim/env.ts";
+import { aiTargets } from "./sim/ai.ts";
+import { spawnLocalShot } from "./sim/weapons.ts";
 import { chargeTime, specialShieldForTest } from "./sim/testkit.ts";
 import { makePlayerShip, newInventory } from "../data/ship.ts";
 import { coupleCar } from "../data/consist.ts";
@@ -120,7 +122,8 @@ test("a laser volley strips shields; a payload ignores them", () => {
   const sim = fight("packet-leech");
   const [P, E] = sim.ships;
   run(sim, 13);
-  assert.ok(P.weapons.every((w) => w.charge >= chargeTime(w)));
+  assert.ok(P.weapons.filter((w) => w.powered).every((w) => w.charge >= chargeTime(w)));
+  assert.equal(P.weapons.find((w) => w.def.id === "packet-laser")?.powered, false, "the spare packet emitter waits for a fourth bay bar");
   const hull0 = E.hull;
   const sh0 = E.shields;
   assert.equal(sh0, 1);
@@ -267,11 +270,12 @@ test("the Hollow Choir's glass breaks only under three hits together", () => {
 test("the Blackout Core changes phase, restoring hull", () => {
   const sim = fight("blackout-core", { ship: benchShip(3, "strong") });
   const E = sim.ships[1];
-  E.hull = 15;
+  const firstThreshold = E.hullMax * .5;
+  E.hull = firstThreshold;
   run(sim, 0.1);
   assert.equal(E.boss.core?.phase, 2);
-  assert.equal(E.hull, 22);
-  E.hull = 7;
+  assert.equal(E.hull, firstThreshold + 7);
+  E.hull = E.hullMax * .25;
   run(sim, 0.1);
   assert.equal(E.boss.core?.phase, 3);
   assert.ok(E.adjuncts.every((a) => a.active), "sealing drones rise");
@@ -293,6 +297,7 @@ test("scavengers offer to surrender; accepting ends the fight with a reward", ()
 
 test("the handshake charges with a pilot and the drive, and HOP flees", () => {
   const sim = fight("packet-leech");
+  sim.setup.retreat = { to: 4, name: "Keeper bench", cost: 1 };
   run(sim, 0.5);
   assert.ok(sim.ships[0].hop > 0);
   sim.ships[0].hop = 1;
@@ -337,9 +342,56 @@ test("every enemy loads and can be beaten by a reasonable tender", () => {
         enemy: id, stage, seed: 100 + s, depth: 0.5, boss: !!def.boss, surrenderable: def.kind === "human",
       });
       autoFight(sim, {}, 900);
+      if (!sim.outcome) continue;
       const o = sim.result().outcome;
       if (o === "victory" || o === "surrendered") wins++;
     }
     assert.ok(wins > 0, `${id} beatable`);
   }
+});
+
+test("a drone is a legitimate second route through the Iron Regent's gate", () => {
+  const sim = fight("iron-regent");
+  const E = sim.ships[1];
+  assert.equal(specialShieldForTest(sim, E, "w0:0"), true, "one weapon alone is stopped");
+  assert.equal(specialShieldForTest(sim, E, "d0:0"), false, "a relay drone's bolt from another route opens the gate");
+  assert.equal(E.boss.gate?.up, false);
+});
+
+test("while the gate is sealed a combat drone works the gate, and a hit on a gate warden proves a route", () => {
+  const sim = fight("iron-regent", { ship: makePlayerShip("T", undefined, "amber", "switchback") });
+  const E = sim.ships[1];
+  assert.equal(sim.gateRoute(E, "w0:0", 0, 0), false, "a gun's hit on a warden registers one route");
+  assert.equal(specialShieldForTest(sim, E, "d0:0"), false, "the drone's bolt on the gate is the second route: open");
+  E.boss.gate!.up = true;
+  // The relay drone waits to answer a gun, then aims at the gate room.
+  const P = sim.ships[0];
+  const relay = P.drones.find((d) => d.def.kind === "combat")!;
+  sim.setDronePower(P.drones.indexOf(relay), true);
+  for (let i = 0; i < 60 * 14 && !sim.projectiles.some((p) => p.source.startsWith("d0")); i++) sim.step();
+  const bolt = sim.projectiles.find((p) => p.source.startsWith("d0"));
+  assert.ok(bolt, "the drone fires within its hold time");
+  assert.equal(bolt!.target.kind === "room" && bolt!.target.room, E.sys.gate!.room);
+});
+
+test("the Regent's Routing Edict aims at the route and a charged ward layer stops it like any bolt", () => {
+  const sim = fight("iron-regent", { ship: benchShip(1, "typical") });
+  const [P, E] = sim.ships;
+  const edict = E.weapons.find((w) => w.def.id === "regent-edict")!;
+  edict.charge = 99;
+  aiTargets(sim, E, 0);
+  assert.deepEqual(edict.target, { kind: "room", room: P.sys.helm!.room }, "helm first");
+  P.sys.helm!.damage = P.sys.helm!.level;
+  edict.target = null;
+  aiTargets(sim, E, 0);
+  assert.deepEqual(edict.target, { kind: "room", room: P.sys.engines!.room }, "then the drive");
+  // Against a charged ward layer: the layer takes the bolt and the hull is untouched.
+  const layers = P.shields, hull = P.hull;
+  assert.ok(layers > 0);
+  P.evasion = 0;
+  const p = spawnLocalShot(sim, 1, 0, 1, 1, { kind: "room", room: P.sys.engines!.room }, { dmg: 2, source: "w1:0", kind: "laser" });
+  p.def = edict.def;
+  for (let i = 0; i < 120 && !p.dead; i++) { sim.step(); P.evasion = 0; }
+  assert.equal(P.shields, layers - 1);
+  assert.equal(P.hull, hull, "the ward grounds it");
 });

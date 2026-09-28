@@ -47,14 +47,14 @@ export const STAGE3_RELAYS: EventDef[] = [
           {
             weight: 1,
             outcome: {
-              text: "WARDEN PATTERN RECOGNISED. KEY EXPIRED. A PATTERN IS NOT A KEY. The eye goes red again. {crew:warden} puts the badge away with great care, and goes to the ward mesh.",
+              text: "WARDEN PATTERN RECOGNISED. KEY EXPIRED. A PATTERN IS NOT A KEY. The eye goes red again. {crew:warden} puts the badge away with great care, and goes to a station.",
               combat: { enemy: "gate-sentinel", intro: "The checkpoint has made up its mind. It was always going to." },
             },
           },
         ],
       },
       {
-        text: "Flood the key-scanner with a jammer and slip under the bars.",
+        text: "Flood the key-scanner with a jammer and scrape under the bars.",
         blue: true,
         req: { weapon: "ion" },
         outcomes: [
@@ -226,7 +226,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Let it escort you out. Nobody gets hurt.",
+        text: "Let it escort you out (1 TTL). Nobody gets hurt, but the Seal gains.",
         req: { resources: { ttl: 1 } },
         outcomes: [
           {
@@ -246,7 +246,7 @@ export const STAGE3_RELAYS: EventDef[] = [
           {
             weight: 2,
             outcome: {
-              text: "The troopers try every hatch in order, as the procedure says, then stand on the roof waiting for someone to open one. The procedure does not say what to do next. The Marshal is still thinking about it when the next relay switches you away.",
+              text: "The troopers try every hatch in order, as the procedure says, then stand on the roof waiting for someone to open one. The procedure does not say what to do next. The Marshal is still thinking about it when its troopers give up and climb back down the grapple line to ask.",
             },
           },
           {
@@ -309,7 +309,7 @@ export const STAGE3_RELAYS: EventDef[] = [
           {
             weight: 1,
             outcome: {
-              text: "The Marshal considers this for a long time. ARGUMENT RECEIVED. WARRANT STANDS. The warrant lamp stays lit. {crew:warden} says it was a very good argument, and goes to the ward mesh.",
+              text: "The Marshal considers this for a long time. ARGUMENT RECEIVED. WARRANT STANDS. The warrant lamp stays lit. {crew:warden} says it was a very good argument, and goes to a station.",
               combat: { enemy: "null-marshal", intro: "The warrant stands. So do the troopers.", onWin: "s3-marshal-after" },
             },
           },
@@ -370,7 +370,7 @@ export const STAGE3_RELAYS: EventDef[] = [
           {
             weight: 1,
             outcome: {
-              text: "The car bucks, the switch throws hard, the gantry goes by overhead, and three troopers are left standing on it watching you go. One of them waves, or checks its arm. Hard to tell. The trolley took the switch badly.",
+              text: "The car bucks forward into the yard at full drive, the gantry goes by overhead, and three troopers are left standing on it watching you go. One of them waves, or checks its arm. Hard to tell. The trolley took the jolt badly.",
               resources: { hull: [-3, -2] },
             },
           },
@@ -464,7 +464,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Put the lamp out and wait for it to lose interest.",
+        text: "Put the lamp out and wait for it to lose interest, however long that takes.",
         outcomes: [
           {
             weight: 2,
@@ -490,7 +490,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "Every lamp out, every hum damped. To the moth the {ship} is suddenly a cold piece of carrier, and it has no interest in cold carrier. It wanders off down the gallery toward the fins, and you switch away in the dark.",
+              text: "Every lamp out, every hum damped. To the moth the {ship} is suddenly a cold piece of carrier, and it has no interest in cold carrier. It wanders off down the gallery toward the fins, and the car slips on into the yard in the dark.",
             },
           },
         ],
@@ -522,7 +522,7 @@ export const STAGE3_RELAYS: EventDef[] = [
           {
             weight: 2,
             outcome: {
-              text: "Hello. I hear you. I hear you hear me. The moth keeps its mind on the relay. A little of its ash lands on the roof and burns a small black flower into the paint, and then the switch throws and you are through.",
+              text: "Hello. I hear you. I hear you hear me. The moth keeps its mind on the relay. A little of its ash lands on the roof and burns a small black flower into the paint, and then the car is into the yard and the moth is behind it.",
               resources: { hull: -1 },
             },
           },
@@ -536,7 +536,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Find the relay's old coolant valve and give the moth something to cool.",
+        text: "Find the relay's old coolant valve and give the moth something to cool. Someone will have to go out to it.",
         blue: true,
         req: { system: { id: "sensors", level: 2 } },
         outcomes: [
@@ -659,7 +659,7 @@ export const STAGE3_RELAYS: EventDef[] = [
           {
             weight: 2,
             outcome: {
-              text: "It is slow; it was built for reactors, and reactors do not run. One claw reaches the tail as the switch throws and takes a souvenir.",
+              text: "It is slow; it was built for reactors, and reactors do not run. One claw reaches the tail as the car pulls into the yard and takes a souvenir.",
               resources: { hull: [-4, -2] },
             },
           },
@@ -757,7 +757,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "The weapons crew wire it to an emitter on the roof mount. It charges on the old heartbeat, and then a little faster, as if it were catching up on thirty-one years.",
+              text: "The weapons crew wire it into a spare emitter. It charges on the old heartbeat, and then a little faster, as if it were catching up on thirty-one years.",
               weapon: "heartpulse-chain",
             },
           },
@@ -806,7 +806,7 @@ export const STAGE3_RELAYS: EventDef[] = [
           {
             weight: 2,
             outcome: {
-              text: "You leave it to its sorting. As the {ship} passes overhead, the Reaver lifts one claw and sets something on the carrier in your path, the way a crane sets down a load: two polished lenses from the dead tender's escorts. Parts that could live again.",
+              text: "You leave it to its sorting. As the {ship} passes overhead, the Reaver lifts one claw and sets something on the carrier in your path, the way a crane sets down a load: two polished lenses from the wrecked tender's escorts. Parts that could live again.",
               resources: { spares: 2 },
             },
           },
@@ -840,11 +840,11 @@ export const STAGE3_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Relight its lamp before you go.",
+        text: "Relight its lamp before you go. It will take time.",
         outcomes: [
           {
             outcome: {
-              text: "It takes a cell from the hold and half an hour on the gantry, and the Seal gains on you while you do it. But when you switch away there is a lamp lit on the wreck below, which there was not before. Leave it lit, the lampers said. The crew are quieter for a while, in a good way.",
+              text: "It takes a cell from the hold and half an hour on the gantry, and the Seal gains on you while you do it. But when you look back from the yard there is a lamp lit on the wreck below, which there was not before. Leave it lit, the lampers said. The crew are quieter for a while, in a good way.",
               seal: -1,
               heal: true,
             },
@@ -963,7 +963,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Pull into a siding and let it through to the sealed relay.",
+        text: "Pull into a siding and let it through to the sealed relay (1 TTL).",
         req: { resources: { ttl: 1 } },
         outcomes: [
           {
@@ -986,7 +986,7 @@ export const STAGE3_RELAYS: EventDef[] = [
     text: "The countdown lamp dims to nothing. The relay it came for will stand another night.\n\nIts breaker charges are still racked along its flank, unarmed, each one stencilled WORK ORDER 7. Its breaching rig hangs under its nose: the heaviest slug thrower the crew have ever seen outside a foundry.",
     choices: [
       {
-        text: "Take the breaker charges.",
+        text: "Take the breaker charges.", req: { weapon: "payload" }, hideIfUnmet: true,
         outcomes: [
           {
             outcome: {
@@ -1002,7 +1002,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "It takes three people and the whole of the belly mount. It was built to open relays. It will open other things.",
+              text: "It takes three people to bring it aboard. It was built to open relays. It will open other things.",
               weapon: "breach-spike",
             },
           },
@@ -1031,7 +1031,7 @@ export const STAGE3_RELAYS: EventDef[] = [
     text: "The carrier here runs between two banks of cooling fins, and the Heart is spending hard. Heat comes off the fins in rivers of sparks and glowing ash that pour across the carrier and over the car. The paint on the roof blisters. A spark finds a gap in the galley window seal and lies on the floor glowing until someone steps on it.\n\nFires aboard will spread faster here, and new ones will start on their own.",
     choices: [
       {
-        text: "Run the draft at full drive.",
+        text: "Run the draft at full drive and take the scorching.",
         outcomes: [
           {
             weight: 2,
@@ -1108,7 +1108,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Back out and take the long way round on another carrier.",
+        text: "Back out and take the long way round on another carrier (1 TTL).",
         req: { resources: { ttl: 1 } },
         outcomes: [
           {
@@ -1275,7 +1275,7 @@ export const STAGE3_RELAYS: EventDef[] = [
     ],
   },
   {
-    id: "s3-hazard-sealing-lattice-bench",
+    id: "s3-hazard-sealing-lattice-bench", cast: "human",
     pool: "hazard", hazard: "sealing-lattice",
     stages: [3],
     title: "A Lamp Behind the Lattice",
@@ -1283,7 +1283,7 @@ export const STAGE3_RELAYS: EventDef[] = [
     text: "The lattice is growing over the relay here while you watch, strut by strut. Inside the switch house, behind the black bars, there is a bench: a lamp still on, a kettle on the shelf, a drawer of spares sorted by what they could still save. Somebody left it for the next shift.\n\nIn a few minutes it will be sealed in for good. The drones building the lattice have not noticed you yet.",
     choices: [
       {
-        text: "Get the drawer out before the lattice closes.",
+        text: "Send someone in for the drawer before the lattice closes. It will cost them some skin.",
         outcomes: [
           {
             weight: 2,
@@ -1347,7 +1347,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "He does not talk much. He asks about the carriers behind you, and the Seal, and whether the Operator is still on the board. When you say yes, he writes that down too. When you leave, there is a crate on the step: his spare workshop, a vice and a pegboard. 'For the next one,' he says. 'You're the next one.'",
+              text: "He does not talk much. He asks about the carriers behind you, and the Seal, and whether the Operator is still on the board. When you say yes, he writes that down too. When you leave, there is a crate on the step: his spare workshop, a vice and a pegboard. \"For the next one,\" he says. \"You're the next one.\"",
               heal: true,
               repair: 4,
               module: "workshop",
@@ -1363,7 +1363,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "He oils the press first. 'It sticks,' he says, and it does not. Two hops. He writes those down as well.",
+              text: "He oils the press first. \"It sticks,\" he says, and it does not. Two hops. He writes those down as well.",
               resources: { salvage: -30, ttl: 2 },
               codex: "people-ennis",
               flags: ["s3-ennis-list"],
@@ -1376,7 +1376,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "She has been sharpening the edge of a visor for an hour. 'Trained her from sixteen,' Ennis says. 'As the order says.' He looks at the list, and then at her. 'Ask her yourself.' She is already packing.",
+              text: "She has been sharpening the edge of a visor for an hour. \"Trained her from sixteen,\" Ennis says. \"As the order says.\" He looks at the list, and then at her. \"Ask her yourself.\" She is already packing.",
               crewJoin: { species: "warden" },
               codex: "people-ennis",
               flags: ["s3-ennis-list"],
@@ -1391,7 +1391,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "He sees the kettle and goes very still. 'That's the Commander's kettle.' A long pause. 'It says a cup.' And then Ennis Rook laughs, which by the look on the young warden's face nobody here has heard before, and fills it for you from his own tap.",
+              text: "He sees the kettle and goes very still. \"That's the Commander's kettle.\" A long pause. \"It says a cup.\" And then Ennis Rook laughs, which by the look on the young warden's face nobody here has heard before, and fills it for you from his own tap.",
               heal: true,
               repair: 3,
               codex: "people-ennis",
@@ -1629,7 +1629,7 @@ export const STAGE3_RELAYS: EventDef[] = [
           {
             weight: 1,
             outcome: {
-              text: "The lens stays dark. After a while you take the spare lens from its housing, as the Night Shift would, and leave the kettle where it is, still shining.",
+              text: "The lens stays dark. After a while you take the spare lenses from its housing, as the Night Shift would, and leave the kettle where it is, still shining.",
               resources: { spares: 2 },
             },
           },
@@ -1718,7 +1718,7 @@ export const STAGE3_RELAYS: EventDef[] = [
     portrait: "recruit-warden-b",
     speaker: "Sigrid Voss",
     music: "exchange",
-    text: "The quarantine office kept stores for a siege that never came: ward-wire in drums, spliced charges stamped HOUR 11, air cells, rations nobody should eat. Sigrid Voss has been trading them out of the office window for twenty years, one relay short of the Heart.\n\nShe is a warden, older than her armour, and she keeps her ledger in the same flat hand as the order framed on the wall behind her. 'Everything here was requisitioned for the quarantine,' she says. 'So technically, you're helping.'",
+    text: "The quarantine office kept stores for a siege that never came: ward-wire in drums, spliced charges stamped HOUR 11, air cells, rations nobody should eat. Sigrid Voss has been trading them out of the office window for twenty years, one relay short of the Heart.\n\nShe is a warden, older than her armour, and she keeps her ledger in the same flat hand as the order framed on the wall behind her. \"Everything here was requisitioned for the quarantine,\" she says. \"So technically, you're helping.\"",
     choices: [
       {
         text: "Trade.",
@@ -1737,7 +1737,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "It is out the back on its own trolley, stencilled QUARANTINE OFFICE and, underneath, NEVER FIRE ALONG THE LINE. 'Nobody's fired along the Line in years,' Voss says. 'Mostly.' The coupling takes first time. Then she opens the window.",
+              text: "It is out the back on its own trolley, stencilled QUARANTINE OFFICE and, underneath, NEVER FIRE ALONG THE LINE. \"Nobody's fired along the Line in years,\" Voss says. \"Mostly.\" The coupling takes first time. Then she opens the window.",
               resources: { salvage: -70 },
               car: "armory-car",
               store: true,
@@ -1751,7 +1751,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "'Forty,' she says. 'Same as it cost on the night of the order. Prices are frozen.' The press comes down three times, very firmly.",
+              text: "\"Forty,\" she says. \"Same as it cost on the night of the order. Prices are frozen.\" The press comes down three times, very firmly.",
               resources: { salvage: -40, ttl: 3 },
               store: true,
             },
@@ -1764,10 +1764,20 @@ export const STAGE3_RELAYS: EventDef[] = [
         req: { species: "warden" },
         outcomes: [
           {
+            modifiers: [{ when: { tender: "glasswing" }, multiply: 0 }, { when: { tender: "switchback" }, multiply: 0 }],
             outcome: {
-              text: "She checks the badge against a roster that has not been updated in thirty-one years, finds the crew, and writes WARDEN RATE in her ledger. Two charges go on the counter before the window opens, and a payload rack in a crate with them. 'Requisitioned,' she says. 'For the quarantine.'",
+              text: "She checks the badge against a roster that has not been updated in thirty-one years, finds the crew, and writes WARDEN RATE in her ledger. Two charges go on the counter before the window opens, and a payload rack in a crate with them. \"Requisitioned,\" she says. \"For the quarantine.\"",
               resources: { payloads: 2 },
               module: "payload-rack",
+              store: true,
+            },
+          },
+          {
+            modifiers: [{ when: { tender: "lamplighter" }, multiply: 0 }],
+            outcome: {
+              text: "She checks the badge against a roster that has not been updated in thirty-one years, finds the crew, and writes WARDEN RATE in her ledger. Two spare lenses go on the counter before the window opens, and a crated cargo hold with them. \"Requisitioned,\" she says. \"For the quarantine.\"",
+              resources: { spares: 2 },
+              module: "cargo-hold",
               store: true,
             },
           },
@@ -1784,7 +1794,7 @@ export const STAGE3_RELAYS: EventDef[] = [
     portrait: "scavenger",
     speaker: "Hask",
     music: "exchange",
-    text: "A scavenger skiff hangs off the last gantry before the Heart, its salvage nets folded, its lamps strung along the carrier like a market street. Painted on its flank: LAST ORDERS.\n\n'Came in to see the queue,' says its captain, a woman called Hask with a voice like a winch. 'Saw it. Can't afford the hops home. So we're selling everything, and then we're going to sit here and watch it glow.' She does not sound unhappy about it.",
+    text: "A scavenger skiff hangs off the last gantry before the Heart, its salvage nets folded, its lamps strung along the carrier like a market street. Painted on its flank: LAST ORDERS.\n\n\"Came in to see the queue,\" says its captain, a man called Hask with a voice like a winch. \"Saw it. Can't afford the hops home. So we're selling everything, and then we're going to sit here and watch it glow.\" He does not sound unhappy about it.",
     choices: [
       {
         text: "Trade.",
@@ -1803,7 +1813,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "'Won't be needing it,' says Hask, and stamps your card herself. Three hops.",
+              text: "\"Won't be needing it,\" says Hask, and stamps your card himself. Three hops.",
               resources: { salvage: -55, ttl: 3 },
               store: true,
             },
@@ -1816,7 +1826,7 @@ export const STAGE3_RELAYS: EventDef[] = [
           {
             weight: 2,
             outcome: {
-              text: "One of Hask's crew, a young linefolk with a satchel of tools and a borrowed coat, looks at the queue, then at the {ship}, then at Hask. Hask nods. 'Go on. Tell it I said hello.'",
+              text: "One of Hask's crew, a young linefolk with a satchel of tools and a borrowed coat, looks at the queue, then at the {ship}, then at Hask. Hask nods. \"Go on. Tell it I said hello.\"",
               crewJoin: { species: "linefolk" },
               store: true,
             },
@@ -1824,7 +1834,7 @@ export const STAGE3_RELAYS: EventDef[] = [
           {
             weight: 1,
             outcome: {
-              text: "Nobody. 'We came to watch,' Hask says. 'Somebody should.' She sells you something at a discount instead, out of what might be pride.",
+              text: "Nobody. \"We came to watch,\" Hask says. \"Somebody should.\" He presses thirty salvage on you instead, for the last stretch, out of what might be pride.",
               resources: { salvage: 30 },
               store: true,
             },
@@ -1840,16 +1850,16 @@ export const STAGE3_RELAYS: EventDef[] = [
     title: "The Archive Canteen",
     art: "ember-archive",
     portrait: "recruit-linefolk-b",
-    speaker: "Agathe Marrow",
+    speaker: "Anselm Marrow",
     music: "exchange",
-    text: "The archive staff canteen still has its menu board up: soup of the day, thirty-one years ago. Behind the counter, Agathe Marrow, who shelved the Record for forty years and did not go down because somebody had to keep the shelving lamps trimmed, sells what the archive no longer needs: shelving motors, index drawers full of spares, lamp cells, and tea.\n\n'Everything's catalogued,' she says. 'Tell me what you want and I'll tell you which drawer.'",
+    text: "The archive staff canteen still has its menu board up: soup of the day, thirty-one years ago. Behind the counter, Anselm Marrow, who shelved the Record for forty years and did not go down because somebody had to keep the shelving lamps trimmed, sells what the archive no longer needs: shelving motors, index drawers full of spares, lamp cells, and tea.\n\n\"Everything's catalogued,\" he says. \"Tell me what you want and I'll tell you which drawer.\"",
     choices: [
       {
         text: "Trade.",
         outcomes: [
           {
             outcome: {
-              text: "She is right. Everything is catalogued, including the things she will not sell, which have a small red dot on the card.",
+              text: "He is right. Everything is catalogued, including the things he will not sell, which have a small red dot on the card.",
               store: true,
             },
           },
@@ -1870,11 +1880,11 @@ export const STAGE3_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Ask her about the lamps in the galleries.",
+        text: "Ask him about the lamps in the galleries.",
         outcomes: [
           {
             outcome: {
-              text: "'Somebody has to keep them trimmed,' she says. 'The Record's in there. You don't leave it in the dark just because nobody can read it.' She gives you a box of lamp cells from under the counter, uncatalogued, and opens the drawers.",
+              text: "\"Somebody has to keep them trimmed,\" he says. \"The Record's in there. You don't leave it in the dark just because nobody can read it.\" He gives you a spare lens from under the counter, uncatalogued, and opens the drawers.",
               resources: { spares: 1 },
               store: true,
             },
@@ -1902,7 +1912,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "The lamp picks out the stacks, shelf after shelf, labels in small ivory letters. Then the switch throws, and the gallery is dark again.",
+              text: "The lamp picks out the stacks, shelf after shelf, labels in small ivory letters. Then the car runs on into the yard, and the gallery behind it is dark again.",
             },
           },
         ],
@@ -1983,15 +1993,15 @@ export const STAGE3_RELAYS: EventDef[] = [
     stages: [3],
     title: "Bells Dropped on Stone",
     art: "sealing-lattice",
-    text: "Far behind you, back along the carriers, something parts with a sound like a bell dropped on a stone floor. Then again, further off. Then again.\n\nThe Seal is cutting the carriers you came down, one after another, in order, as the quarantine says. It is not in a hurry. It never has been.",
+    text: "Far behind you, back along the carriers, a quarantine shutter slams with a sound like a bell dropped on a stone floor. Then again, further off. Then again.\n\nThe Seal is closing the signal shutters behind you, one relay after another, in order, as the quarantine says. The steel carries the tender; the closed conduits carry no ordinary traffic. It is not in a hurry. It never has been.",
     choices: [
       {
         text: "Listen.",
         outcomes: [{ outcome: { text: "Seven. Eight. Nine. Then nothing, which is worse, because it means it has found the next carrier and is working on it." } }],
       },
       {
-        text: "Get moving.",
-        outcomes: [{ outcome: { text: "The helm sends the greeting before the next bell drops. The switch throws. There is no way home the way you came. There never was." } }],
+        text: "Get the car ready to move.",
+        outcomes: [{ outcome: { text: "The helm has the greeting ready before the next bell drops, and the drive spooled. The way home runs through the lattice now. It was always going to." } }],
       },
     ],
   },
@@ -2025,11 +2035,11 @@ export const STAGE3_RELAYS: EventDef[] = [
     stages: [3],
     title: "The Switch Throws",
     art: "relay-switchyard",
-    text: "Nothing here but the relay and its lamp, and the heat of the Heart coming through the switch house walls. The helm sends the greeting.\n\nHello.\n\nI hear you.\n\nI hear you hear me.\n\nThe switch throws. This close to the Heart, it is surprising how ordinary that still feels, and how much it helps.",
+    text: "Nothing here but the relay and its lamp, and the heat of the Heart coming through the switch house walls. The helm sends the greeting.\n\nHello.\n\nI hear you.\n\nI hear you hear me.\n\nThe relay takes the car into its yard. This close to the Heart, it is surprising how ordinary that still feels, and how much it helps.",
     choices: [
       {
         text: "Go ahead.",
-        outcomes: [{ outcome: { text: "The grip bites the next carrier. {ttl} hops left on the connection." } }],
+        outcomes: [{ outcome: { text: "The grip settles in the yard. {ttl} hops left on the connection." } }],
       },
       {
         text: "Say it again, for luck.",
@@ -2059,21 +2069,21 @@ export const STAGE3_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Go lamp-dark and switch under their clamps.",
+        text: "Go lamp-dark and slip into the yard under their clamps.",
         blue: true,
         req: { system: { id: "veil", level: 1 } },
         outcomes: [
           {
             weight: 2,
             outcome: {
-              text: "Every lamp out. The drones hold the relay against a warm route, and for a few seconds there is no warm route, only a cold dark car whispering hello to the switchgear. The switch throws. The drones are still holding when you are gone.",
+              text: "Every lamp out. The drones hold the relay against a warm route, and for a few seconds there is no warm route, only a cold dark car whispering hello to the switchgear. The relay takes it in. The drones go on holding the relay around a car they cannot find.",
             },
           },
           {
             weight: 1,
             outcome: {
-              text: "The veil holds until the switch throws, and the switch throws loudly.",
-              combat: { enemy: "quarantine-drone", noReward: true, intro: "The switch gave you away. The drones turn." },
+              text: "The veil holds until the switchgear answers the greeting, and the switchgear answers loudly.",
+              combat: { enemy: "quarantine-drone", noReward: true, intro: "The switchgear gave you away. The drones turn." },
             },
           },
         ],
@@ -2166,12 +2176,12 @@ export const STAGE3_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Push the drive and try to take the switch before they close.",
+        text: "Push the drive and try to reach the yard before they close.",
         outcomes: [
           {
             weight: 1,
             outcome: {
-              text: "The car goes through the line at full drive, clamps skating off the ward mesh and the plating, and the switch throws with the drones still turning round.",
+              text: "The car goes through the line at full drive, clamps skating off the plating, and is under the switch house with the drones still turning round.",
               resources: { hull: [-4, -2] },
             },
           },
@@ -2265,7 +2275,7 @@ export const STAGE3_RELAYS: EventDef[] = [
         outcomes: [
           {
             outcome: {
-              text: "'Order received,' {crew:warden} says at the cab window, visor up. 'We are the route.' The shell turns. ORDER RECEIVED. ROUTE UNDER TEST. The crew stand a little straighter. They will need to.",
+              text: "\"Order received,\" {crew:warden} says at the cab window, visor up. \"We are the route.\" The shell turns. ORDER RECEIVED. ROUTE UNDER TEST. The crew stand a little straighter. They will need to.",
               heal: true,
               codex: "runbook-quarantine-procedure",
               combat: { enemy: "blackout-core", intro: "ROUTE UNDER TEST. CUSTODY.", onWin: "s3-exit-after" },
@@ -2274,11 +2284,11 @@ export const STAGE3_RELAYS: EventDef[] = [
         ],
       },
       {
-        text: "Say nothing. Charge the ward mesh.",
+        text: "Say nothing. Every hand to a station.",
         outcomes: [
           {
             outcome: {
-              text: "There is nothing to say to it that it has not already said to itself eleven thousand times. The mesh comes up. The shell's outer plate begins to turn the other way.",
+              text: "There is nothing to say to it that it has not already said to itself eleven thousand times. Every station reports ready. The shell's outer plate begins to turn the other way.",
               combat: { enemy: "blackout-core", intro: "HOLD ALL DELIVERIES. The shell closes on the carrier like a hand.", onWin: "s3-exit-after" },
             },
           },
@@ -2287,39 +2297,13 @@ export const STAGE3_RELAYS: EventDef[] = [
     ],
   },
   {
-    id: "s3-exit-after",
-    pool: "scripted",
-    stages: [3],
-    title: "Route Held",
-    art: "heart-shell",
-    text: "The shells stop turning. The sealing drones hang in the air on idling rotors, clamps open. For the first time in thirty-one years, the Heart is quiet.\n\nThen, inside, very small: a lamp on a board you cannot see changes from red to green.\n\nSAFE ROUTE CONFIRMED.",
-    choices: [
-      {
-        text: "Go ahead.",
-        outcomes: [
-          {
-            outcome: {
-              text: "One message comes out first, before all the others, on every band at once. If this arrives, the route works. Please answer, even with one word. The whole crew answer at once, and not all with the same word.",
-              flags: ["guardian-3-ended"],
-              fragment: "f3-last-ack",
-              codex: "machines-sealing-drones",
-            },
-          },
-        ],
-      },
-      {
-        text: "Wait, and listen.",
-        outcomes: [
-          {
-            outcome: {
-              text: "Nobody moves. The drones fold their clamps one by one, all the way round the shell, a sound like rain. Then one message comes out ahead of the others, small and plain: If this arrives, the route works. Please answer, even with one word. Somebody answers.",
-              flags: ["guardian-3-ended"],
-              fragment: "f3-last-ack",
-              codex: "machines-sealing-drones",
-            },
-          },
-        ],
-      },
-    ],
+    id: "s3-exit-after", pool: "scripted", stages: [3],
+    title: "The First Receipt", art: "heart-shell",
+    text: "The shell is open. Your greeting has an answer; the archive is still lit.",
+    arrival: {
+      text: "DELIVERED. The receipt returns along the connection the crew kept alive. Behind that first small light, the held messages begin to move.",
+      flags: ["guardian-3-ended"], fragment: "f3-last-ack", codex: "machines-sealing-drones",
+    },
+    choices: [],
   },
 ];

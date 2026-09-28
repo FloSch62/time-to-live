@@ -101,7 +101,7 @@ export const SYSTEM_FLAVOR: Record<SystemId, Flavor> = {
   },
   helm: {
     name: "Helm",
-    desc: "Must be manned to send the greeting that makes a relay switch you, and for evasion. Higher levels help a little on their own.",
+    desc: "Must be attended to complete a relay greeting and provide evasion. Automation prepares the switch; a crew member answers.",
     lore: "Up in the nose, under the lamp, at the cab window. Scratched brass above the switch lever. The Runbook never trusted a greeting to a machine alone.",
   },
   sensors: {
@@ -142,7 +142,7 @@ export const WEAPON_FLAVOR: Record<WeaponId, Flavor> = {
   "triple-burst": {
     name: "Triple Burst",
     desc: "Signal emitter · 3 bolts, 1 damage each · 2 power.",
-    lore: "The Reach docks' answer to anything with three shields. The answer is three.",
+    lore: "The Reach docks' answer to anything with three mesh layers. The answer is three.",
   },
   "jumbo-frame": {
     name: "Jumbo Frame",
@@ -301,7 +301,7 @@ export const AUGMENT_FLAVOR: Record<AugmentId, Flavor> = {
   },
   keepalive: {
     name: "Keepalive",
-    desc: "Shields recharge 15% faster.",
+    desc: "Mesh layers recharge 15% faster.",
     lore: "A small signal that says still here, sent every second to the ward mesh. It listens.",
   },
   "drone-recovery": {
@@ -336,7 +336,7 @@ export const SPECIES_FLAVOR: Record<SpeciesId, Flavor> = {
   },
   courier: {
     name: "Courier",
-    desc: "80 HP. Fast. +3% evasion while piloting or at the engines.",
+    desc: "80 HP. Fast. +3% evasion while at the Helm or the Thrusters.",
     lore: "Message runners. What the Line could not carry, they carried, and some still do.",
   },
   bellmaker: {
@@ -685,34 +685,44 @@ export const CAR_FLAVOR: Record<LeadCarId | RearCarId | KeelCarId, CarFlavor> = 
     desc: "The lead car: cab and helm at the nose, drive trolley on the roof, three tool mounts, two socket holds.",
     lore: "Car L-12 out of Dock Twelve. Two hundred years of relighting rounds. Grip from Pell, paid (mostly).",
   },
+  glasswing: {
+    name: "Glasswing", slot: "lead",
+    desc: "Lamplighter-pattern inspection car: paired emitters, a survey lab and a ward mesh. No payloads, one drone slot.",
+    lore: "G-04 kept the Reach's warning lamps in focus. KEEP THE PAIR TOGETHER is still painted on its tool rack.",
+  },
+  switchback: {
+    name: "Switchback", slot: "lead",
+    desc: "Tall lamplighter-pattern retrieval car: launch cradles, a heavy drive and Veil shutters. No ward mesh fitted.",
+    lore: "S-08 fetched inspection drones back from spans no person could reach. Its last dock list reads six returned, one missing.",
+  },
   "drone-car": {
     name: "Drone Car", slot: "rear",
-    desc: "Rear car. A Drone Bay room, one extra drone rack and a socket. Couples behind the lead car.",
+    desc: "Drone Bay IV, +1 drone slot, +6 spare capacity, 15% faster drone cycles and a socket. Drones and power sold separately.",
     lore: "A rigger-yard car with a rotor hatch in the roof. The drones come home to it like lampers to a bar at the end of a shift.",
   },
   "armory-car": {
     name: "Armory Car", slot: "rear",
-    desc: "Rear car. One extra roof mount and a socket.",
+    desc: "One extra roof mount, 10% faster weapon charging and a socket. Buy the gun and reactor power separately.",
     lore: "A warden escort car from the Copper Gate garrison. The mount ring is still stencilled NEVER FIRE ALONG THE LINE.",
   },
   "freight-car": {
     name: "Freight Car", slot: "rear",
-    desc: "Rear car. +4 cargo, a payload rack (+4 max payloads), +3 hull, and a socket.",
+    desc: "Logistics car: +4 salvage at each supplying relay, +4 cargo, +4 payload capacity, +3 hull and a socket.",
     lore: "A Reach freight car with a sliding door that sticks halfway. It has carried everything from cable drums to a piano, once.",
   },
   "bunk-car": {
     name: "Bunk Car", slot: "rear",
-    desc: "Rear car. Berths for 2 more crew, a bench room where crew heal slowly, and a socket.",
+    desc: "Crew support: +3 berths, an equipped recovery bench and a socket. Recruit crew separately.",
     lore: "A lift crew's rest car: six bunks, a curtain, a kettle ring. Somebody carved initials into every bunk, including the ceiling.",
   },
   "veil-car": {
     name: "Veil Car", slot: "rear",
-    desc: "Rear car. Houses the Lamp-Dark Veil, and a socket.",
+    desc: "Veil II, 10% shorter cooldown and a socket. Reserve two reactor power for its full dark window.",
     lore: "A dampened car the lampers took to misfiring relays: soot-black inside and out, lamps on shutters, the quietest room on the Line.",
   },
   "ballast-keel": {
     name: "Ballast Keel", slot: "keel",
-    desc: "Belly car. +6 hull, and the air lasts longer.",
+    desc: "Storm protection: +8 hull, half the hull damage from debris and half the air loss.",
     lore: "Tanks and lead slung under the lead car on hangers. The car swings less and breathes longer. The crew call it the cellar.",
   },
   "listening-keel": {
@@ -722,12 +732,12 @@ export const CAR_FLAVOR: Record<LeadCarId | RearCarId | KeelCarId, CarFlavor> = 
   },
   "sling-keel": {
     name: "Sling Keel", slot: "keel",
-    desc: "Belly car. One extra belly mount and +2 max payloads.",
+    desc: "A light weapon cradle: one belly mount and +4 payload capacity. Buy the gun and power separately.",
     lore: "A slung cradle for a slug thrower. Scavengers call it the underarm, and throw from it accordingly.",
   },
   "workshop-keel": {
     name: "Workshop Keel", slot: "keel",
-    desc: "Belly car. Repairs 25% faster, +2 max spares, and a socket.",
+    desc: "35% faster repairs, +2 hull recovered after secured ordinary fights, an equipped bench, +2 spare capacity and a socket.",
     lore: "A bench keeper's belly car: a vice, a lathe, and a drawer sorted by what it could still save.",
   },
 };
@@ -765,7 +775,7 @@ export const MODULE_FLAVOR: Record<ModuleId, Flavor> = {
   },
   ballast: {
     name: "Ballast Tanks",
-    desc: "+3 hull.",
+    desc: "+3 maximum hull. Repair the added capacity at an exchange; refitting does not restore hull.",
     lore: "Water and lead in riveted tanks. Heavy is safe, the Reach docks said. The Reach docks were usually right.",
   },
   "listening-horn-array": {

@@ -38,7 +38,10 @@ try {
         for (const choice of view.choices) choice.hidden = false;
         current = `${def.id}: choices`;
         win.setChoices(view,()=>{}); win.update(999,app); win.draw(app.g,app); events++;
-        for (const [i,choice] of def.choices.entries()) for (const [j,item] of choice.outcomes.entries()) {
+        const authored = [...def.choices];
+        if (def.arrival) authored.push({outcomes:[{outcome:def.arrival}]});
+        if (def.directCombat) authored.push({outcomes:[{outcome:{combat:def.directCombat}}]});
+        for (const [i,choice] of authored.entries()) for (const [j,item] of choice.outcomes.entries()) {
           const applied = applyOutcome(structuredClone(run),item.outcome,ctx,new Rng(100+i*10+j));
           current = `${def.id}: outcome ${i}/${j}`;
           win.setOutcome(applied,view,()=>{}); win.update(999,app); win.draw(app.g,app); outcomes++;

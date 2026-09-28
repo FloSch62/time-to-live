@@ -18,7 +18,7 @@ test("every relay is reachable, start left, exit right, 2–5 links, sensible si
   for (let seed = 1; seed <= 120; seed++) {
     for (const st of STAGES) {
       const m = generateMap(st, seed * 7919 + 13);
-      assert.ok(m.relays.length >= 20 && m.relays.length <= 24, `relay count ${m.relays.length}`);
+      assert.ok(m.relays.length >= 28 && m.relays.length <= 32, `relay count ${m.relays.length}`);
       const d = hopDistances(m.relays, m.start);
       assert.ok(d.every((x) => x >= 0), "connected");
       assert.equal(m.relays[m.start].type, "start");
@@ -34,7 +34,7 @@ test("every relay is reachable, start left, exit right, 2–5 links, sensible si
       assert.ok(m.relays.filter((r) => r.links.length < 2).length <= 1, "at most one dead end");
       const markets = m.relays.filter((r) => r.type === "market").length;
       assert.ok(markets >= 1 && markets <= 3, `markets ${markets}`);
-      assert.ok(m.shortest >= 6 && m.shortest <= 9, `shortest ${m.shortest}`);
+      assert.ok(m.shortest >= (st === 3 ? 8 : 9) && m.shortest <= (st === 3 ? 10 : 11), `shortest ${m.shortest}`);
     }
   }
 });
@@ -55,8 +55,8 @@ test("the exit is reachable within the stage with a TTL margin before the Seal c
         assert.ok(!isSealed(m, m.relays[pos]), `seed ${seed} stage ${st}: sealed on the shortest route at hop ${hops}`);
       }
       assert.equal(hops, m.shortest);
-      // Starting TTL (16) covers the shortest route with a margin of at least 6 hops.
-      assert.ok(16 - m.shortest >= 6);
+      // The canonical sixteen-hop stamp covers the longer route with a five-hop preparation margin.
+      assert.ok(16 - m.shortest >= 5);
     }
   }
 });

@@ -6,7 +6,7 @@ import { autoResolve } from "./autoresolve.ts";
 import { eventById } from "./content.ts";
 import type { Applied, EventView } from "./events.ts";
 import { currentRelay, isSealed, type RunState } from "./model.ts";
-import { canHop, knowledge } from "./run.ts";
+import { canHop, knowledge, safeRecoveryStatus } from "./run.ts";
 import { buyItem, buySupply, repairHullAt, storeHere } from "./store.ts";
 import { upgradeCost, upgradeSystem } from "./upgrades.ts";
 import { hopDistances } from "./map.ts";
@@ -83,6 +83,7 @@ export function headlessPresenter(seed: number, opts: { forceWin?: boolean; log?
       }
       const options = cur.links.filter((j) => canHop(run, j).ok);
       if (!options.length) {
+        if (safeRecoveryStatus(run).ok) return { kind: "service" };
         log.problems.push(`no hop from ${cur.name}`);
         return { kind: "wait" };
       }

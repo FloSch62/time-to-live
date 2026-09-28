@@ -1,0 +1,16 @@
+{
+ "stage": "II",
+ "hull": "lamplighter",
+ "scale": 0.3,
+ "at": [
+  500,
+  800
+ ],
+ "extras": [
+  "hall"
+ ],
+ "size": [
+  2560,
+  1280
+ ]
+}

@@ -32,6 +32,8 @@ export interface EnemyDef {
   stage: StageIndex;
   /** machine: crewless auto-ship (may carry escort automatons). human: crewed, can surrender. autopilot: an empty tender. */
   kind: "machine" | "human" | "autopilot";
+  /** The vessel itself is the robot: no walking crew or repair escorts. */
+  autonomous?: boolean;
   /** ★v2 mobility class: crawlers ride a carrier (low evasion), installations are built in (0 evasion, more hull),
    *  fliers are rotor drones (high evasion). */
   mobility: "crawler" | "installation" | "flier";
@@ -244,8 +246,9 @@ export const ENEMIES: Record<EnemyId, EnemyDef> = {
   // ─── Any stage (sealed relays) ──────────────────────────────────────────────────────────────────────────
   "quarantine-drone": {
     id: "quarantine-drone", name: "Quarantine Drone", stage: 1, kind: "machine", mobility: "flier", hull: 11, reactor: 7,
-    systems: { shields: 2, engines: 2, weapons: 3, helm: 1 }, weapons: ["burst-emitter", "jammer"], escorts: 1,
-    ai: { targets: T_STD, power: ["weapons", "shields", "engines", "helm"] }, reward: "low",
+    autonomous: true,
+    systems: { shields: 2, engines: 2, weapons: 3, helm: 1 }, weapons: ["burst-emitter", "jammer"], escorts: 0,
+    ai: { targets: { helm: 4, engines: 3, weapons: 2, shields: 2, any: 1 }, power: ["weapons", "shields", "engines", "helm"] }, reward: "low",
     stages: {
       2: { hull: 14, reactor: 11, systems: { shields: 4, engines: 3, weapons: 5, helm: 2 }, weapons: ["triple-burst", "jammer", "packet-laser"] },
       3: { hull: 21, reactor: 15, systems: { shields: 6, engines: 4, weapons: 6, helm: 2 }, weapons: ["triple-burst", "jumbo-frame-ii", "jammer"] },

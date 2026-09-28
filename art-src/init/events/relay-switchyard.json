@@ -1,0 +1,18 @@
+{
+ "stage": "shared",
+ "hull": "lamplighter",
+ "scale": 0.62,
+ "at": [
+  820,
+  520
+ ],
+ "extras": [
+  "switchbox",
+  "cables3",
+  "towers"
+ ],
+ "size": [
+  2560,
+  1280
+ ]
+}

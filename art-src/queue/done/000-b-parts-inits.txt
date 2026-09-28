@@ -1,0 +1,9 @@
+parts/nose-optical:i
+parts/nose-heavy:i
+parts/nose-lamp:i
+parts/body-4a:i
+parts/body-4b:i
+parts/body-5a:i
+parts/body-5b:i
+parts/rear-cap:i
+parts/rear-cap-5:i

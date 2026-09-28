@@ -67,7 +67,7 @@ export const CHAIN_EVENTS: EventDef[] = [
       {
         text: "Leave the heater turned up.",
         outcomes: [
-          { outcome: { text: "It stays turned up. Nobody mentions it. It is a very warm galley for the rest of the Reach.", fragment: "f1-teal-cold", heal: true } },
+          { outcome: { text: "It stays turned up. Nobody mentions it. It is a very warm galley for the rest of the Reach, and everyone aboard sleeps better for it.", fragment: "f1-teal-cold", heal: true } },
         ],
       },
       {
@@ -354,18 +354,18 @@ export const CHAIN_EVENTS: EventDef[] = [
       {
         text: "Pull onto the side carrier, let it pass, then couple to its tail.",
         outcomes: [
-          { outcome: { text: "It passes close enough to touch. {crew} lines up the coupling on its rear car and the hooks go home. The Kittiwake's autopilot, finding itself held, politely stops.", next: "chain-kittiwake-aboard" } },
+          { outcome: { text: "It passes close enough to touch. {crew} gets a line onto its rear coupling and the hooks go home. The Kittiwake's autopilot, finding itself held, politely stops.", next: "chain-kittiwake-aboard" } },
         ],
       },
       {
         text: "Hail it the way couriers hailed each other.",
         blue: true, req: { species: "courier" },
         outcomes: [
-          { outcome: { text: "{crew:courier} sends three short and one long on the cupola lamp, and then the greeting, and then a word that is not in the Runbook. The Kittiwake stops dead on its carrier and opens its cab door.", next: "chain-kittiwake-aboard" } },
+          { outcome: { text: "{crew:courier} sends two short and two long on the cupola lamp, and then the greeting, and then a word that is not in the Runbook. The Kittiwake stops dead on its carrier and opens its cab door.", next: "chain-kittiwake-aboard" } },
         ],
       },
       {
-        text: "Hold your ground on its carrier.",
+        text: "Hold your ground on its carrier. It will try to clear you.",
         outcomes: [
           { outcome: { text: "The Kittiwake's autopilot reads {ship} as wreckage on its carrier, and it was built to clear wreckage.", combat: { enemy: "echo-tender", intro: "The Kittiwake comes on, lamp lit, to clear its carrier. Nobody is aboard to call it off.", onWin: "chain-kittiwake-aboard" } } },
         ],
@@ -392,7 +392,7 @@ export const CHAIN_EVENTS: EventDef[] = [
       {
         text: "Take its rear car along, and leave the lamp lit.",
         outcomes: [
-          { outcome: { text: "Its rear car is a bunk car, one bunk made up, a courier's satchel for a pillow. The Kittiwake does not need it for its round. You couple it behind your own and leave the lamp lit.", flags: ["courier-log-2", "kittiwake-lit"], car: "bunk-car" } },
+          { outcome: { text: "Its rear car is a bunk car, one bunk made up, a courier's satchel for a pillow. The Kittiwake does not need it for its round. You couple it behind {ship} and leave the lamp lit.", flags: ["courier-log-2", "kittiwake-lit"], car: "bunk-car" } },
         ],
       },
     ],
@@ -422,7 +422,7 @@ export const CHAIN_EVENTS: EventDef[] = [
   {
     id: "chain-moss-reach", pool: "event", stages: [1], weight: 2, unique: true,
     title: "The Second Helping", art: "scavenger-skiff-hail", portrait: "moss", speaker: "Moss Adair",
-    text: "A skiff comes alongside on the parallel carrier: a freight car, half a lift car and something that used to be a tender's galley, welded onto one working trolley and painted the same patient brown. Salvage nets. Two men arguing in the hatch. The name on the side, in three different hands: SECOND HELPING.\n\nIts captain leans out with a hand lamp. \"That's a Dock Twelve car. That's Pell's grip on your trolley. So you've got spares, and you owe Pell, which means you understand debt.\" He smiles. \"Moss Adair. Let's talk about what comes off easy.\"",
+    text: "A skiff comes alongside on the parallel carrier: a freight car, half a lift car and something that used to be a tender's galley, welded onto one working trolley and painted the same patient brown. Salvage nets. Two men arguing in the hatch. The name on the side, in three different hands: SECOND HELPING.\n\nIts captain leans out with a hand lamp. \"That's a Reach dock car, Night Shift paint. Nobody gets a tender riding this year without something off Pell's shelves. So you've got spares, and you owe Pell, which means you understand debt.\" He smiles. \"Moss Adair. Let's talk about what comes off easy.\"",
     choices: [
       {
         text: "Offer them a fair trade (20 salvage).",
@@ -432,13 +432,13 @@ export const CHAIN_EVENTS: EventDef[] = [
         ],
       },
       {
-        text: "Keep a hand on the emitters and tell them to move on.",
+        text: "Keep a hand on the emitters and tell them to move on. Moss may not take it well.",
         outcomes: [
           { outcome: { text: "Moss sighs, the sigh of a man who has done this before and never enjoyed it.", flags: ["moss-met"], combat: { enemy: "scavenger-skiff", surrenderable: true, intro: "The Dunmore brothers agree, for once, that this is a bad idea. Moss does it anyway.", onWin: "chain-moss-reach-stripped", onSurrender: "chain-moss-reach-spared" } } },
         ],
       },
       {
-        text: "Let the warden stand in the open hatch where they can see her.",
+        text: "Let the warden stand in the open hatch where they can see the ember stripe.",
         blue: true, req: { species: "warden" },
         outcomes: [
           { outcome: { text: "{crew:warden} stands in the hatch with the visor up and says nothing at all. Moss looks at the ember stripe for a long moment. \"Another day,\" he says cheerfully, and the Second Helping backs off down its carrier, the Dunmores arguing about whose idea it was.", flags: ["moss-met"], codex: "people-moss" } },
@@ -458,9 +458,15 @@ export const CHAIN_EVENTS: EventDef[] = [
         ],
       },
       {
-        text: "Ask for payloads instead of promises.",
+        text: "Ask for payloads instead of promises.", req: { weapon: "payload" }, hideIfUnmet: true,
         outcomes: [
           { outcome: { text: "He laughs, throws in a crate of payloads, and reads you the packet again anyway.", fragment: "f1-fern", codex: "people-moss", resources: { payloads: 3 } } },
+        ],
+      },
+      {
+        text: "Ask for spares instead of promises.",
+        outcomes: [
+          { outcome: { text: "He laughs, throws in a tin of lenses off a powered-down escort, and reads you the packet again anyway.", fragment: "f1-fern", codex: "people-moss", resources: { spares: 2 } } },
         ],
       },
     ],
@@ -508,7 +514,7 @@ export const CHAIN_EVENTS: EventDef[] = [
     id: "chain-moss-glass", pool: "event", stages: [2], weight: 3, unique: true,
     requires: { flag: "moss-owes" },
     title: "Paid in Full", art: "glass-fog", portrait: "moss", speaker: "Moss Adair",
-    text: "Out of the glass fog, down a side carrier, frost on its nets: the Second Helping, a very long way from the Copper Market. The Dunmore brothers are arguing about the fog. Moss is at the hatch with a lamp.\n\n\"Told you I pay what I owe. We followed the Seal's cuts in, side carriers all the way. No place for a skiff.\" He looks up at the ringing panes. \"Beautiful, though. So. What'll it be.\"",
+    text: "Out of the glass fog, down a side carrier, frost on its nets: the Second Helping, a very long way from the Copper Market. The Dunmore brothers are arguing about the fog. Moss is at the hatch with a lamp.\n\n\"Told you I pay what I owe. We came in behind the Seal, side carriers all the way. No place for a skiff.\" He looks up at the ringing panes. \"Beautiful, though. So. What'll it be.\"",
     choices: [
       {
         text: "Stamps.",
@@ -517,9 +523,15 @@ export const CHAIN_EVENTS: EventDef[] = [
         ],
       },
       {
-        text: "Payloads, and a rack to keep them in.",
+        text: "Payloads, and a rack to keep them in.", req: { weapon: "payload" }, hideIfUnmet: true,
         outcomes: [
           { outcome: { text: "A payload rack off the skiff's own freight car, crated for your socket, and the payloads to fill it. \"Cleared us out,\" Moss says, delighted.", resources: { payloads: 3 }, module: "payload-rack", flags: ["moss-paid"] } },
+        ],
+      },
+      {
+        text: "Spares, and a hold to keep them in.",
+        outcomes: [
+          { outcome: { text: "A crate of escort lenses and a cargo hold off the skiff's own freight car, both crated for your socket. \"Cleared us out,\" Moss says, delighted.", resources: { spares: 3 }, module: "cargo-hold", flags: ["moss-paid"] } },
         ],
       },
       {
@@ -534,19 +546,20 @@ export const CHAIN_EVENTS: EventDef[] = [
     id: "chain-moss-glass-grudge", pool: "event", stages: [2], weight: 3, unique: true,
     requires: { flag: "moss-robbed" },
     title: "We Remember", art: "glass-fog",
-    text: "The fog is thick enough that the Listening Post misses them until the grapples bite. The Second Helping, lamp-dark, on your carrier behind you, hooked onto your tail. By the time {crew} gets to the rear window the grapples are gone, there is a note tucked into the coupling, and the payload rack is lighter.\n\nThe note says: WE REMEMBER. It is not signed. It does not need to be.",
+    text: "The fog is thick enough that the Listening Post misses them until the grapples bite. The Second Helping, lamp-dark, on your carrier behind you, hooked onto your tail. By the time {crew} gets to the rear window the grapples are gone, there is a note tucked into the coupling, and whatever was stacked nearest the rear hatch, payloads or spares, is missing from the stores.\n\nThe note says: WE REMEMBER. It is not signed. It does not need to be.",
     choices: [
       {
         text: "Call them on the radio and pay back what you took (30 salvage).",
         req: { resources: { salvage: 30 } },
         outcomes: [
-          { outcome: { text: "A long silence on the band. Then Moss: \"That's not nothing.\" The payloads come back across on a line. The skiff's lamps come on, once, and it goes back into the fog.", resources: { salvage: -30 }, clearFlags: ["moss-robbed"], flags: ["moss-owes"] } },
+          { outcome: { text: "A long silence on the band. Then Moss: \"That's not nothing.\" What they took comes back across on a line. The skiff's lamps come on, once, and it goes back into the fog.", resources: { salvage: -30 }, clearFlags: ["moss-robbed"], flags: ["moss-owes"] } },
         ],
       },
       {
-        text: "Let them have it. Fair is fair.",
+        text: "Let them keep what they took. Fair is fair.",
         outcomes: [
-          { outcome: { text: "The fog closes over them. Fair is fair, says {crew}, and nobody argues.", resources: { payloads: [-3, -2] } } },
+          { modifiers: [{ when: { tender: "glasswing" }, multiply: 0 }, { when: { tender: "switchback" }, multiply: 0 }], outcome: { text: "Two or three payloads gone. The fog closes over them. Fair is fair, says {crew}, and nobody argues.", resources: { payloads: [-3, -2] } } },
+          { modifiers: [{ when: { tender: "lamplighter" }, multiply: 0 }], outcome: { text: "A spare or two gone. The fog closes over them. Fair is fair, says {crew}, and nobody argues.", resources: { spares: [-2, -1] } } },
         ],
       },
     ],

@@ -15,6 +15,8 @@ import sys
 from pathlib import Path
 
 from PIL import Image
+import numpy as np
+from scipy import ndimage
 
 ROOT = Path(__file__).resolve().parents[2]
 ART_SRC = ROOT / "art-src"
@@ -32,7 +34,30 @@ def load_json(p, default):
     return json.loads(p.read_text()) if p.exists() else default
 
 
-def finalize(key, cand, overrides=None, note=None, post=None):
+def painted_lamps(cand, size):
+    """Reserve livery colours only for actual painted amber emitters, never blank guide-position plating."""
+    rgb = np.asarray(Image.open(cand).convert("RGB").resize(size, Image.Resampling.BOX)).astype(np.float32)
+    r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
+    # The high red floor excludes reflective brass rims; lower orange edge tones are admitted only
+    # immediately around a verified bright emitter core.
+    mask = (r > 235) & (g > 120) & (g < 240) & (b < 170) & (r > g * 1.10) & (g > b * 1.35)
+    labels, count = ndimage.label(mask)
+    points = []
+    for label in range(1, count + 1):
+        yy, xx = np.where(labels == label)
+        if len(xx) < 80:
+            mask[labels == label] = False
+            continue
+        points.append({"x": round(float(xx.mean())), "y": round(float(yy.mean())),
+                       "r": max(8, min(24, round(float(max(np.ptp(xx), np.ptp(yy))) * 0.7)))})
+    warm = (r > 160) & (g > 60) & (b < 170) & (r > g * 1.10) & (g > b * 1.35)
+    mask = ndimage.binary_dilation(mask, iterations=2) & warm
+    dest = cand.with_name(cand.stem + "-lamps.png")
+    Image.fromarray(mask.astype(np.uint8) * 255).save(dest)
+    return dest, points
+
+
+def finalize(key, cand, overrides=None, note=None, post=None, detect_lamps=False):
     group, aid = key.split("/")
     cand = Path(cand)
     if not cand.is_absolute():
@@ -44,6 +69,10 @@ def finalize(key, cand, overrides=None, note=None, post=None):
     if group in ("ships", "cars"):
         meta = json.loads((recipes.INIT / f"{aid}.json").read_text())
         size = tuple(meta["canvas"])
+    painted_glow = None
+    if detect_lamps:
+        lamp_path, painted_glow = painted_lamps(cand, size)
+        params["lamps"] = str(lamp_path)
     with Image.open(cand) as im:
         out, info = pixelize(im, size, **params)
     if post:
@@ -77,8 +106,12 @@ def finalize(key, cand, overrides=None, note=None, post=None):
     }
     if note:
         record["note"] = note
-    if "sil" in params:
-        record["pixelize"]["sil"] = str(Path(params["sil"]).relative_to(ROOT))
+    if detect_lamps:
+        record["painted_lamp_detection"] = {"method": "painted_lamps in tools/art/finalize.py",
+                                             "minimum_component_pixels": 80, "glow": painted_glow}
+    for key in ("sil", "lamps"):
+        if key in params:
+            record["pixelize"][key] = str(Path(params[key]).relative_to(ROOT))
     man.setdefault(group, {})[aid] = record
     man_path.write_text(json.dumps(man, indent=1, sort_keys=True) + "\n")
 
@@ -90,7 +123,7 @@ def finalize(key, cand, overrides=None, note=None, post=None):
         for k in ("cable", "couplerRear", "couplerFront", "keelHang", "hangTop"):
             if meta.get(k):
                 entry[k] = meta[k]
-        entry.update(mounts=meta["mounts"], glow=meta["glow"])
+        entry.update(mounts=meta["mounts"], glow=painted_glow if painted_glow is not None else meta["glow"])
         if meta.get("lampColors"):
             entry["lampColors"] = meta["lampColors"]
         sj[aid] = entry
@@ -105,8 +138,9 @@ def main():
     ap.add_argument("cand")
     ap.add_argument("--params")
     ap.add_argument("--note")
+    ap.add_argument("--detect-lamps", action="store_true", help="derive livery mask and glow from the candidate's actual amber lights")
     a = ap.parse_args()
-    finalize(a.key, a.cand, json.loads(a.params) if a.params else None, a.note)
+    finalize(a.key, a.cand, json.loads(a.params) if a.params else None, a.note, detect_lamps=a.detect_lamps)
 
 
 if __name__ == "__main__":
