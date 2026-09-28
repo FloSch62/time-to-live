@@ -207,7 +207,7 @@ Burst Emitter and two powered Packet Lasers (Weapons Bay 4, reactor 9); Krea ren
 - 40 of 44 event illustrations and the two tender-story events (jobs in `art-src/queue/skipped/`; tender subjects need
   the render-empty-then-composite path), `bg/line-quiet`, scrap-foreman and cable-wraith hull repaints, two portraits.
 - Medium sits at 44.6% after the Glasswing change (target 38–42%); Easy at ~80%; Switchback/Glasswing lead on Hard.
-- Delete the review copies in `public/art/_study/` before release. Nothing is committed yet.
+- Published: committed to `main` and deployed by `.github/workflows/pages.yml` to https://flosch62.github.io/time-to-live/.
 
 ### A: art
 
